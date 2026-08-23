@@ -7,11 +7,11 @@ maj: 2026-08-21
 
 # Créer un agent
 
-Commande : `/create_agent <chemin_projet_cible> <dossier> [rôle]` — s'exécute toujours depuis le kit, jamais copiée dans les projets cibles. Référence : [`../../_docs/protocole_vibecoding.md`](../../_docs/protocole_vibecoding.md) (section /create_agent).
+Commande : `/create_agent <chemin_projet_cible> <dossier> [rôle] [parent=<alias_equipe>]` — s'exécute toujours depuis le kit, jamais copiée dans les projets cibles. Référence : [`../../_docs/protocole_vibecoding.md`](../../_docs/protocole_vibecoding.md) (section /create_agent).
 
 ## Ce que c'est
 
-Un agent = une zone à rôle : charte `agent_role.md` (rôle, périmètre d'écriture, invariants) + `_contexte/` propre, enregistrée dans `zones.md` du projet cible, pilotable par /start et /close.
+Un agent = une zone à rôle : charte `agent_role.md` (rôle, périmètre d'écriture, invariants) + `_contexte/` propre, enregistrée dans `zones.md` du projet cible, pilotable par /start et /close. L'option `parent=` l'ajoute à une équipe existante et met à jour son `team.md`.
 
 ## Phases
 

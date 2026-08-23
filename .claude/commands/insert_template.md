@@ -34,7 +34,7 @@ templates), pas seulement à un template particulier.
   | Placeholder | Résolu par |
   |-------------|------------|
   | `{{NOM_PROJET}}` | Nom du dossier racine du projet cible |
-  | `{{ALIAS_PROJET}}` | Alias de la zone racine dans `<projet_cible>/.claude/zones.md` (cf. règle `{{ALIAS_RACINE}}` de `create_agent.md` : ne retenir que si la première ligne de `zones.md` pointe vers la racine elle-même) |
+  | `{{ALIAS_PROJET}}` | Alias de la zone racine dans `<projet_cible>/.claude/zones.md` (ne retenir que si la ligne de `zones.md` pointe vers la racine elle-même) |
   | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
 
   Un fichier contenant un token `{{...}}` hors de cette liste bloque

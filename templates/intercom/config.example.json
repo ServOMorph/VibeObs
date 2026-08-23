@@ -1,0 +1,6 @@
+{
+  "project": "nom-du-projet",
+  "recipients": {
+    "alias-destinataire": { "path": "D:/chemin/vers/le/projet" }
+  }
+}

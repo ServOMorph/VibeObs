@@ -11,10 +11,13 @@ Commande : `/init_projet <chemin vers le projet>` — s'exécute depuis le kit. 
 
 ## Déroulé
 
-1. Claude pose 5 questions : alias, objectif, stack, git, première zone ou zone supplémentaire
+1. Claude pose les questions d'initialisation : alias, objectif, stack, git, première zone ou zone
+   supplémentaire, données sensibles, AGENTS.md, GEMINI.md, puis ajout éventuel d'agents
 2. Projet sans git : question complémentaire sur le backup miroir Google Drive (rclone) à chaque /close
 3. Copie les templates, remplace les placeholders, committe dans le projet cible
-4. Enregistre le déploiement dans `DEPLOYMENTS.md` (registre hors git)
+4. Si l'utilisateur le demande, enchaîne dans la même exécution sur `/create_agent` ou
+   `/create_team`, après l'initialisation complète du projet
+5. Enregistre le déploiement dans `DEPLOYMENTS.md` (registre hors git)
 
 La racine du projet cible est l'argument — jamais demandée.
 

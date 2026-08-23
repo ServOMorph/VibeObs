@@ -15,6 +15,7 @@
 - Les livrables de cet agent restent stockés dans {{DOSSIER_AGENT}}/
 
 ## Méta
-- Zone parente : {{ALIAS_RACINE}}
+- Zone parente : {{ALIAS_PARENT}}
 - Alias zones.md : {{ALIAS_AGENT}}
 - Créé le : {{DATE}}
+{{COMMUNICATION_HIERARCHIQUE}}

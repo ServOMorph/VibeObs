@@ -16,6 +16,9 @@ DEPLOYMENTS.md
 # Local agents registry (chemins absolus locaux)
 AGENTS_REGISTRY.md
 
+# Intercom — messages et chemins locaux entre projets
+.intercom/
+
 # Runtime artifacts of the Control PC template
 templates/control_PC/analysis/session_*/
 templates/control_PC/analysis/linkedin_ephemere.png

@@ -1,14 +1,14 @@
 ---
 description: Crée un agent (zone à rôle) dans un projet cible, exécutable depuis le kit
-argument-hint: "<chemin_projet_cible>" <dossier> [rôle]
+argument-hint: "<chemin_projet_cible>" <dossier> [rôle] [parent=<alias_equipe>]
 model: sonnet
 ---
 
-# /create_agent <chemin_projet_cible> <dossier> [rôle]
+# /create_agent <chemin_projet_cible> <dossier> [rôle] [parent=<alias_equipe>]
 
 ## Objectif
 
-Créer un agent générique : un sous-dossier d'un projet cible, doté d'une charte
+Créer un agent générique : un sous-dossier d'un projet cible ou d'une équipe, doté d'une charte
 (`agent_role.md`) et de sa propre structure `_contexte/`, enregistré comme zone
 dans `<projet_cible>/.claude/zones.md`. Un agent n'est pas un subagent Claude
 Code : c'est une zone à rôle pilotée par `/start`/`/close`.
@@ -27,7 +27,8 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      s'arrêter.
    - Dossier absent : demander "Nom du dossier pour ce nouvel agent ?" et
      s'arrêter.
-   - Normaliser le nom du dossier en MAJUSCULES (meilleure reconnaissance
+  - Reconnaître l'option finale `parent=<alias>` ; elle n'est pas une partie du rôle.
+  - Normaliser le nom du dossier en MAJUSCULES (meilleure reconnaissance
      visuelle dans l'arborescence du projet) — s'applique en mode création
      comme en mode conversion (renommage du dossier existant si sa casse
      diffère). L'alias de zone (dérivé à l'étape 4) reste en minuscules,
@@ -45,7 +46,11 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    confirmation ("Continuer quand même (o/n) ?"). Ne jamais créer l'agent
    silencieusement dans ce cas.
 
-4. Dériver l'alias par défaut = nom du dossier cible en minuscules, puis lire
+4. Résoudre la zone parente : sans `parent=<alias>`, utiliser la zone racine (ligne de `zones.md`
+   pointant vers la racine du projet). Avec l'option, l'alias doit exister et son dossier doit
+   contenir `team.md`, sinon s'arrêter. Créer le dossier de l'agent sous ce parent, pas à la racine.
+   Dériver l'alias par défaut = nom du dossier cible en minuscules pour un parent racine, ou
+   `<alias-parent>-<nom-dossier-en-minuscules>` pour une équipe, puis lire
    `zones.md` et résoudre le **mode** :
    - Alias absent → mode **création**.
    - Alias présent, pointant vers un autre dossier → refuser, proposer une
@@ -91,14 +96,14 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      |-------------|--------------|
      | `{{DOSSIER_AGENT}}` | Nom du dossier cible |
      | `{{ROLE}}` | Rôle collecté en [COLLECTE] |
-     | `{{ALIAS_RACINE}}` | Alias racine du projet cible (cf. règle ci-dessous) |
+| `{{ALIAS_PARENT}}` | Alias de la zone parente résolue (racine ou équipe) |
      | `{{ALIAS_AGENT}}` | Alias résolu en [PREFLIGHT] |
      | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
-     | `{{ECRITURE_ETENDUE}}` | Vide, ou `, <chemins déclarés en [COLLECTE]>` |
+| `{{ECRITURE_ETENDUE}}` | Vide, ou `, <chemins déclarés en [COLLECTE]>` |
+| `{{COMMUNICATION_HIERARCHIQUE}}` | Vide pour un agent simple |
 
-     Règle `{{ALIAS_RACINE}}` : ne retenir la première ligne de `zones.md`
-     que si son chemin correspond à la racine du projet cible elle-même (pas
-     un sous-dossier). Si non déterminable, ne pas laisser le champ vide :
+     Règle `{{ALIAS_PARENT}}` : utiliser la zone parente résolue au [PREFLIGHT]. Si la zone racine
+     n'est pas déterminable et qu'aucun parent n'est fourni, ne pas laisser le champ vide :
      supprimer entièrement la ligne `- Zone parente : ...` de la charte
      générée, plutôt que d'afficher un champ orphelin ou d'affirmer une zone
      parente incorrecte.
@@ -108,6 +113,8 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      produit en [COLLECTE].
    - Ajouter à `<projet_cible>/.claude/zones.md` :
      `| <alias> | <chemin absolu du dossier de l'agent> |`
+   - Si le parent est une équipe : ajouter une ligne du membre dans son `team.md` (alias, type
+     `agent`, dossier et rôle), sans toucher aux autres lignes.
 
    Mode **conversion** — ne créer que ce qui manque, ne jamais écraser :
    - `agent_role.md` : le créer (règles ci-dessus).
@@ -143,15 +150,14 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
 ## [SORTIE]
 
 10. Demander à l'utilisateur : "Copier dans le presse-papier un message de mise à
-    jour pour l'agent racine (`{{ALIAS_RACINE}}`), résumant les agents créés
+    jour pour la zone parente (`{{ALIAS_PARENT}}`), résumant les agents créés
     cette session (o/n) ?" Ne poser qu'une fois par appel, même si plusieurs
     agents ont été créés en lot. Si oui : générer un message court (5-10 lignes
     max, optimisé tokens — liste des agents créés, alias, rôle en une ligne,
     périmètre étendu le cas échéant) et le copier dans le presse-papier
     (`Set-Clipboard`) — ne rien écrire dans les fichiers du projet cible.
-    `{{ALIAS_RACINE}}` non déterminable (cf. règle de l'étape 7) : poser la
-    question sans résoudre automatiquement la cible, demander le nom de la zone
-    racine à mentionner dans le message.
+    `{{ALIAS_PARENT}}` non déterminable : poser la question sans résoudre automatiquement la
+    cible, demander le nom de la zone parente à mentionner dans le message.
 
 11. Un seul récapitulatif :
     - Fichiers créés / laissés intacts (liens cliquables, chemin absolu).

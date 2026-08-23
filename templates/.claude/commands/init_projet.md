@@ -41,6 +41,18 @@ Initialiser le protocole vibecoding dans le projet cible à partir de ce kit de 
    Jamais créé automatiquement, toujours demandé. (oui/non)
 8. Créer `GEMINI.md` ? Équivalent de `CLAUDE.md` spécifique à Gemini — utile seulement si Gemini
    intervient aussi sur ce projet. Jamais créé automatiquement, toujours demandé. (oui/non)
+9. Voulez-vous ajouter des agents ? (oui/non)
+   - Si "non" : poursuivre normalement.
+   - Si "oui" : demander "Un agent seul ou une équipe ?"
+     - **Agent seul** : après l'initialisation, enchaîner immédiatement sur la collecte et
+       l'exécution de `/create_agent` pour ce projet.
+     - **Équipe** : après l'initialisation, demander une description collée ou le chemin d'un
+       fichier de description, puis enchaîner immédiatement sur `/create_team`.
+
+Ne jamais créer d'agent ou d'équipe avant que l'initialisation soit terminée : les commandes
+ont besoin de `.claude/zones.md`, `start.md` et `close.md`. La création choisie fait partie de la
+même exécution, mais reste soumise à sa confirmation explicite avant les écritures propres aux
+agents/équipes.
 
 La racine du projet cible ne doit jamais être demandée si $ARGUMENTS est fourni.
 
@@ -109,7 +121,14 @@ git -C "$ARGUMENTS" add .claude/ _contexte/ ollama_call.py _docs/
 git -C "$ARGUMENTS" commit -m "init: protocole vibecoding — zone <alias>"
 ```
 
-### 6. Enregistrer le déploiement dans le kit
+### 6. Créer les agents ou l'équipe demandée (si Q9 = "oui")
+
+- Une fois les étapes 3 à 5 terminées, exécuter dans le même flux `/create_agent` ou
+  `/create_team` selon le choix de Q9.
+- Ne pas redemander le chemin du projet cible : utiliser `$ARGUMENTS` résolu.
+- Conserver les listes de fichiers produites par la sous-commande pour le bilan final.
+
+### 7. Enregistrer le déploiement dans le kit
 
 Ajouter une ligne dans `<kit>/DEPLOYMENTS.md` :
 
@@ -119,7 +138,7 @@ Ajouter une ligne dans `<kit>/DEPLOYMENTS.md` :
 
 La version du kit est la dernière entrée de `<kit>/CHANGELOG.md` (ex: `v2.2`).
 
-### 7. Lister les fichiers écrits ou modifiés
+### 8. Lister les fichiers écrits ou modifiés
 
 Avant la confirmation finale, afficher la liste de tous les fichiers créés ou modifiés aux étapes 3 à 4bis et 6, sous forme de liens cliquables (chemin absolu) :
 
@@ -127,6 +146,6 @@ Avant la confirmation finale, afficher la liste de tous les fichiers créés ou 
 - [<fichier>](<chemin absolu>)
 ```
 
-### 8. Confirmer
+### 9. Confirmer
 
 Répondre uniquement : "✅ Init <alias> terminé. Lancer /start <alias> pour commencer."

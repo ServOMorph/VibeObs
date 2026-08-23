@@ -1,5 +1,5 @@
 ---
-description: Installe le mécanisme de communication agent↔orchestrateur (statut.md/messages.md) dans un projet cible
+description: Installe le mécanisme de communication hiérarchique agent↔coordinateur↔orchestrateur
 argument-hint: "<chemin_projet_cible>"
 model: sonnet
 ---
@@ -9,15 +9,17 @@ model: sonnet
 ## Objectif
 
 Installer, dans un projet déjà initialisé (`.claude/zones.md` présent), un mécanisme de
-communication en étoile agent↔orchestrateur, sans communication agent↔agent directe :
+communication hiérarchique agent↔coordinateur↔orchestrateur, sans communication latérale :
 
 - chaque zone-agent (dossier avec `agent_role.md`) maintient `_contexte/statut.md` — état
   courant, écrasé (pas append), mis à jour à chaque `/close` de cette zone ;
 - chaque zone-agent maintient `_contexte/messages.md` — boîte de réception, écrite
   directement par l'orchestrateur en session (pas de commande dédiée pour "envoyer"), lue
   et purgée au `/start` de la zone destinataire ;
-- la zone racine (orchestrateur) agrège automatiquement le `statut.md` de chaque zone-agent
-  à son propre `/start`.
+- chaque coordinateur (dossier avec `team.md`) agrège les `statut.md` de ses membres directs à son
+  propre `/start`, puis remonte son propre état ;
+- la zone racine agrège uniquement les coordinateurs directement rattachés à elle. Sans `team.md`,
+  le comportement historique est conservé : elle agrège tous les agents directs.
 
 Cette commande vit dans le kit et n'est jamais copiée dans les projets cibles : elle
 s'exécute toujours depuis le kit, projet cible en argument. Elle ne modifie que `start.md`
@@ -38,7 +40,9 @@ le périmètre déjà déclaré de chaque zone : "peut mettre à jour son propre
    réinstallation. Présent dans un seul des deux fichiers (état incohérent) : signaler et
    demander comment procéder plutôt que corriger silencieusement.
 4. Lister les zones de `zones.md`. Pour chacune sauf la racine, vérifier la présence de
-   `agent_role.md` dans son dossier → zone-agent. Pour chaque zone-agent, vérifier si
+   `agent_role.md` dans son dossier → zone-agent. Si `team.md` existe, valider sa table « Membres
+   directs » : alias présents dans `zones.md`, chemins cohérents et aucun membre dupliqué. Un écart
+   bloque l'écriture, car la hiérarchie serait ambiguë. Pour chaque zone-agent, vérifier si
    `_contexte/statut.md` existe déjà :
    - Absent : rien à signaler, sera créé au premier `/close` de cette zone après
      installation.
@@ -65,6 +69,7 @@ le périmètre déjà déclaré de chaque zone : "peut mettre à jour son propre
       Bloqué : <non, ou oui + raison en 1 ligne>
       Prochaine action : <1 ligne, reprise de "Prochaine étape exacte">
       Mis à jour : AAAA-MM-JJ
+      Destinataire : <alias de la zone parente, ou "aucun" pour la racine>
       ```
    ```
 
@@ -87,14 +92,13 @@ le périmètre déjà déclaré de chaque zone : "peut mettre à jour son propre
    2c. <!-- COM_AGENTS --> Si `<dossier>/_contexte/messages.md` existe et n'est pas vide :
        l'afficher intégralement, avant `signals.md`, puis le vider.
 
-   2d. <!-- COM_AGENTS --> OBLIGATOIRE, ne pas sauter cette étape même si elle semble
-       redondante avec la suite : si le dossier résolu est la racine du projet (celui
-       contenant directement `.claude/zones.md`), pour chaque zone de `zones.md` ayant un
-       `agent_role.md`, lire `_contexte/statut.md` s'il existe, produire une synthèse
-       condensée par agent (phase, avancement, blocage), puis proposer 2 à 4 actions
-       concrètes dérivées (ex: lancer `/start <alias>` pour une zone bloquée). Fichier
-       absent pour une zone : l'ignorer silencieusement pour cette zone, sans bloquer les
-       autres. Zone non racine : ignorer entièrement cette étape.
+   2d. <!-- COM_AGENTS --> OBLIGATOIRE : si le dossier résolu est un coordinateur (`team.md`) ou
+       la racine du projet, déterminer ses membres **directs**. Pour un coordinateur, utiliser la
+       table de son `team.md`. Pour la racine, ne retenir que les équipes dont `team.md` déclare la
+       racine comme zone parente ; si aucun `team.md` n'existe, conserver le mode historique et
+       retenir chaque zone-agent. Lire `_contexte/statut.md` s'il existe, produire une synthèse
+       condensée par membre (phase, avancement, blocage), puis proposer 2 à 4 actions concrètes.
+       Fichier absent : l'ignorer silencieusement. Une zone simple n'agrège jamais.
    ```
 
    Adapter la numérotation aux étapes réellement présentes dans le `start.md` cible (ne pas

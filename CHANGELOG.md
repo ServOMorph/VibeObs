@@ -3,6 +3,18 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.0 — 2026-08-23
+
+### Ajouté
+- `/create_team` et `templates/team_TEMPLATE.md` : équipes d'agents hiérarchiques avec un coordinateur, manifeste `team.md`, agents et sous-équipes ; les alias, statuts et messages suivent la relation parent-enfant.
+- `/init_intercom`, `/intercom_inbox`, `/intercom_listen`, `templates/intercom/` et `INTERCOM_AGENT.md` : messagerie locale inter-projets, à files append-only et traitement explicite des urgences, commune à Claude Code, Codex et autres agents.
+- Guides DOCUMENTATION sur les équipes et la messagerie Intercom.
+
+### Modifié
+- `/init_projet` demande désormais si un agent seul ou une équipe doit être créée après l'initialisation.
+- `/create_agent` accepte `parent=<alias_equipe>` ; le placeholder de zone parente devient `{{ALIAS_PARENT}}` afin de couvrir la racine comme les coordinateurs.
+- `AGENTS.md`, README et le protocole de documentation intègrent Intercom.
+
 ## v3.40 — 2026-08-20
 
 ### Modifié

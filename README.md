@@ -14,9 +14,13 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/update` — met à jour les fichiers de protocole dans un projet déjà initialisé, sans toucher aux données projet
 - `/create_memory [alias_zone] [contenu]` — ajoute une entrée dans la mémoire projet persistante (`.claude/memory.md`) ou, si un alias de zone est reconnu, dans la mémoire de cette zone (`<dossier_zone>/_contexte/memory.md`, chargée par `/start`)
 - `/create_agent <chemin_projet_cible> <dossier> [rôle]` — crée un agent (zone à rôle : charte `agent_role.md` + `_contexte/` propre, pilotable par `/start`/`/close`) dans un projet cible ; s'exécute toujours depuis le kit, n'est jamais copiée dans les projets cibles
+- `/create_team <chemin_projet_cible> <dossier_equipe> [description ou fichier]` — crée une équipe hiérarchique : un coordinateur-agent, son `team.md`, ses agents ou sous-équipes, et installe la remontée des statuts / descente des consignes ; kit uniquement
 - `/create_com_agents <chemin_projet_cible>` — installe un mécanisme de communication en étoile agent↔orchestrateur (`_contexte/statut.md` pull écrasé à chaque `/close` d'une zone-agent, `_contexte/messages.md` push purgé à chaque `/start` de la zone destinataire) dans un projet cible déjà initialisé ; s'exécute toujours depuis le kit, ne modifie que `start.md`/`close.md` du projet cible
 - `/insert_template <chemin_projet_cible> <nom_template> [dossier_destination]` — insère un template (`templates/<nom>/`) dans un projet cible, résout les placeholders génériques (`{{NOM_PROJET}}`/`{{ALIAS_PROJET}}`/`{{DATE}}`) et ne jamais écraser un fichier déjà présent ; s'exécute toujours depuis le kit, jamais copiée dans les projets cibles
 - `/init_discord_mode <chemin_projet_cible>` — insère le template `discord_com` dans un projet cible et guide la configuration jusqu'à un bot opérationnel (token, channel_id, invitation OAuth2, Message Content Intent, dépendances) ; kit uniquement, s'exécute toujours depuis le kit
+- `/init_intercom <chemin_projet_cible>` — installe la messagerie locale append-only Intercom dans un projet déjà initialisé ; kit uniquement
+- `/intercom_inbox` — lit la boîte Intercom ; disponible dans le kit et copiée par `/init_intercom` dans le projet cible
+- `/intercom_listen` — surveille la boîte Intercom dans un terminal persistant ; disponible dans le kit et copiée par `/init_intercom` dans le projet cible
 - `/cherche_meilleure_action [décision]` — commande d'aide à la décision (kit uniquement) : analyse le contexte réel de la zone, évalue les options selon des critères explicites, recommande une action et demande confirmation ; à invoquer quand on ne sait pas quoi faire ensuite
 - `/doc_sync` — synchronise toute la documentation du kit (commandes, templates, structure) après une modification
 - `/cherche_fonction <description>` — recherche une fonctionnalité déjà codée dans d'anciens projets à partir d'une description ; les dossiers cibles sont toujours redemandés à chaque appel (kit uniquement)
@@ -45,7 +49,7 @@ Dans Claude Code, ouvrir le dossier du kit (claude-vibecoding-kit).
 /init_projet <chemin vers le projet à initialiser>
 ```
 
-Claude pose 5 questions (alias, objectif, stack, git, première zone ou supplémentaire — si le projet n'est pas sous git, une question complémentaire propose d'automatiser un backup miroir du dossier vers Google Drive à chaque `/close`). La racine du projet cible est l'argument fourni — non demandée. Copie les fichiers, remplace les placeholders, committe dans le projet cible, enregistre le déploiement dans `DEPLOYMENTS.md`.
+Claude pose les questions d'initialisation (alias, objectif, stack, git, zone, données sensibles et fichiers d'instructions ; sans git, une question complémentaire propose un backup miroir Google Drive à chaque `/close`), puis demande si un agent seul ou une équipe doit être créé. La racine du projet cible est l'argument fourni — non demandée. L'agent ou l'équipe est créé dans la même exécution après l'initialisation, sur confirmation du plan interprété.
 
 ### 4. Démarrer
 
@@ -109,7 +113,7 @@ claude-vibecoding-kit/
     └── notification/                     # notification systray (icône + bulle Windows), alternative à overlay
 ```
 
-Les commandes `/create_agent`, `/create_com_agents`, `/insert_template`, `/cherche_meilleure_action`
+Les commandes `/create_agent`, `/create_team`, `/create_com_agents`, `/insert_template`, `/cherche_meilleure_action`
 et `/doc_sync` vivent uniquement dans `.claude/commands/` du kit : elles s'exécutent depuis le kit
 et ne sont jamais copiées dans les projets cibles, donc absentes de `templates/`.
 
@@ -131,7 +135,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v3.40** (2026-08-20) : `templates/roberto/` réduit — `MASCOTTE/` supprimée (extraite en projet standalone par l'utilisateur) et `AUTOMATISATIONS/`/`com_telephone/` (assistant vocal, workflow quotidien) déplacés hors du kit vers `D:\ServOMorph\Roberto` (nouveau repo). Reste à faire : allègement de `/start` (kit jugé surchargé). Mission ROBERTO (`Appli_TSA_SDI_TDAH`, hors dépôt kit) toujours en pause depuis le 2026-08-18. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v4.0** (2026-08-23) : équipes d'agents hiérarchiques (`/create_team`, coordinateurs et `team.md`) et messagerie inter-projets Intercom (`/init_intercom`) ajoutées. Le pilote `Meuniers` a validé une équipe COMMUNICATION et un échange réel ; la généralisation reste à éprouver sur d'autres projets. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 
