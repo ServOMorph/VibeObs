@@ -23,6 +23,12 @@ Sortie concrète de l'étape [ECRITURE] de la commande et des rétrospectives de
 
 ## Historique
 
+## 2026-08-23 — équipe communication (Meuniers)
+
+Création via `create_team` d'un coordinateur et de trois agents directs. Le parent explicite,
+les alias hiérarchiques et `team.md` conservent une remontée de statut lisible sans permettre de
+communication latérale.
+
 ## 2026-08-18 — agent roberto (Appli_TSA_SDI_TDAH)
 
 Création de l'agent ROBERTO (implémenter et faire évoluer le système d'orchestration de workflow
@@ -408,3 +414,24 @@ de `_contexte/contexte.md` et de l'arborescence (`UI_WEB/`, ancienne mascotte da
 en cours de remplacement) nécessaire avant de pouvoir formuler un rôle durable exploitable.
 `{{STACK}}` filtré en conséquence : UI web (pywebview, HTML/CSS/JS) + référence à l'ancienne
 mascotte AHK comme repère de comportement, pas de code à reprendre.
+
+## 2026-08-21 — agent documentation (claude-vibecoding-kit)
+
+Creation en mode creation simple (alias `documentation` absent de `zones.md`), dossier `DOCUMENTATION/`
+pre-existant mais vide. Particularite : le projet cible etait le kit lui-meme, non initialise
+(pas de `.claude/zones.md`) — le flux s'est arrete en [PREFLIGHT] et a necessite un `/init_projet`
+prealable sur le kit (decision utilisateur : initialiser le kit d'abord), sans quoi la creation
+n'aurait pas pu avoir lieu. La question a ete posee via une question groupsee plutot qu'un arret sec.
+
+A bien fonctionne : `{{ALIAS_RACINE}}` correct (premiere ligne de `zones.md` = `kit`, vraie racine —
+ligne creee par l'init du kit). `start.md` du kit charge deja `agent_role.md` (pas de warning).
+L'analyse stack a exploite README.md et le bloc base de connaissances du CLAUDE.md pour produire
+un `{{STACK}}` reel (format INDEX.md, progressive disclosure, sources canoniques).
+
+Friction a noter : cree dans le kit lui-meme, l'agent DOCUMENTATION a un role deja defini par le
+CLAUDE.md du kit (base de connaissance interne) — le role durable a ete confirme par l'utilisateur
+plutot qu'invente, mais la frontiere avec `base_connaissances/` (deja existant a la racine du kit,
+qui joue un role similaire) reste a clarifier au premier /start.
+
+## 2026-08-29 — agent vertia (JeGeekUtile)
+Création directe, sans clarification manuelle : la demande formulait un rôle durable (conception et évolution de VertIA) et identifiait explicitement la priorité initiale (recruter des personnes intéressées avec une landing page MVP 1). Le dossier `VERTIA/` existait mais était vide et non référencé dans `zones.md` : création normale, sans conversion ni écrasement. Le périmètre est resté limité à `VERTIA/`, ce qui permet de produire la roadmap et la landing page sans modifier prématurément les applications existantes de Je Geek Utile.

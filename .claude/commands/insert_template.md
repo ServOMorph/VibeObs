@@ -15,7 +15,7 @@ silencieusement un fichier déjà présent côté cible.
 Cette commande vit dans le kit et n'est jamais copiée dans les projets
 cibles : elle s'exécute toujours depuis le kit, projet cible en premier
 argument. Généraliste : applicable à tout dossier `templates/<nom>/`
-respectant la convention ci-dessous (`roberto`, `control_PC`, futurs
+respectant la convention ci-dessous (`control_PC`, futurs
 templates), pas seulement à un template particulier.
 
 ## Convention d'un template
@@ -62,8 +62,8 @@ templates), pas seulement à un template particulier.
 
 4. Résoudre le dossier de destination :
    - Fourni en argument → `<projet_cible>/<dossier_destination>`.
-   - Absent → `<projet_cible>/ROBERTO` (dossier dédié qui centralise tous les
-     templates insérés, créé s'il n'existe pas).
+   - Absent → `<projet_cible>/claude-vibecoding-kit` (dossier dédié qui
+     centralise tous les templates insérés, créé s'il n'existe pas).
 
 5. Lister récursivement `templates/<nom_template>/`, dossier `analysis/`
    exclu. Pour chaque fichier, calculer le chemin cible et vérifier s'il

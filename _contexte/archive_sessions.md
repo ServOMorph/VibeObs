@@ -2,6 +2,31 @@
 <!-- Ce fichier contient les anciennes sessions de signals.md, archivées automatiquement par /close -->
 <!-- Format: chaque session est séparée par une ligne vide -->
 
+# Session du 2026-08-20
+
+## Décisions prises
+- `MASCOTTE/` (zone-agent extraite par l'utilisateur en projet standalone) supprimée du kit ; références retirées de `templates/roberto/.claude/zones.md` et `README.md`. `UI_WEB/mascotte/` conservé (intégration indépendante).
+- `AUTOMATISATIONS/` et `com_telephone/` déplacés hors du kit vers `D:\ServOMorph\Roberto` (projet standalone, nouveau repo git).
+- Process verrouillant les fichiers arrêtés avec autorisation explicite pour débloquer les déplacements (watcher `run.py --watch`, 3 process com_telephone, 2x `node server.js`).
+
+## Livrables produits ou modifiés
+- `templates/roberto/MASCOTTE/` : supprimé.
+- `templates/roberto/AUTOMATISATIONS/`, `com_telephone/` : supprimés du kit (déplacés).
+- `D:\ServOMorph\Roberto\AUTOMATISATIONS\`, `com_telephone\` : créés, `.gitignore` ajouté (`__pycache__/`).
+- Commit kit `d81f96a` (retrait MASCOTTE + extraction), push OK. Commit `Roberto` `b802f4b`, premier push OK (branche `main` créée sur le remote).
+
+## Hypothèses validées / invalidées
+- INVALIDE : déplacement direct des dossiers sans arrêt préalable des process qui les servaient → échecs silencieux (`Device or resource busy`, `Permission denied`) sur `mv`/`Move-Item`.
+- VALIDE : tous les fichiers effacés par erreur (`rm -rf` intermédiaire sur une destination partiellement peuplée) étaient récupérables — tout était tracké en git côté kit, restauré via `git checkout HEAD`.
+
+## Prochaine étape exacte
+Relancer manuellement depuis `D:\ServOMorph\Roberto` les process arrêtés si besoin (UI workflow quotidien, 3 process com_telephone).
+
+## Question bloquante pour la session suivante
+Aucune.
+
+---
+
 # Session du 2026-08-19
 
 ## Décisions prises

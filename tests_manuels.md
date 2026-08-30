@@ -10,4 +10,4 @@ sans dossier de destination) que :
   rien (fusion correcte, pas d'écrasement).
 
 À valider avant de considérer la convention déployée pour tous les templates
-existants (`roberto`, `control_PC`, `discord_com`, `overlay`).
+existants (`control_PC`, `discord_com`, `overlay`).
