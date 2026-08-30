@@ -35,13 +35,17 @@ Créée le : 2026-08-12
 
 ---
 
-## Phase 2 — Pilote sur Roberto2 [EN COURS]
-- [x] Lancer `create_com_agents` sur `D:\ServOMorph\Roberto2` (installation réelle, jamais testée avant commit dans le kit).
-- [x] Vérifier la détection du `statut.md` ad hoc existant de MASCOTTE (non conforme, signalé — champ "Dernier test visuel" en trop, "Mis à jour" manquant, pas converti automatiquement comme prévu par la commande).
-- [x] Bug trouvé et corrigé (2026-08-13) : premier `/start roberto2` réel a sauté l'étape d'agrégation `statut.md` (placée en 4c, après la synthèse narrative de `signals.md`). Déplacée en `2d`, adjacente à `2c` (qui avait fonctionné) — corrigée dans Roberto2 et dans `create_com_agents.md` (kit).
-- [ ] Retester `/start roberto2` pour valider le correctif 2d.
-- [ ] `/close mascotte` réel : vérifier la mise à jour automatique de `statut.md`.
-- [ ] Écrire un message réel dans `MASCOTTE/_contexte/messages.md` depuis la racine, puis `/start mascotte` : vérifier affichage + purge.
+## Phase 2 — Pilote sur Meuniers [EN COURS]
+
+**Changement de pilote (2026-08-30)** : `D:\ServOMorph\Roberto2` définitivement supprimé du disque — l'installation pilote et les 3 tests réels qui y avaient été menés/prévus sont perdus. Nouveau pilote désigné par l'utilisateur : `D:\ServOMorph\Meuniers` (multi-zones : équipe COMMUNICATION + agent DOCUMENTATION). Pas de `statut.md` ad hoc à convertir sur ce projet — la branche « conversion d'un `statut.md` non conforme » restera non exercée par ce pilote. Les tests ci-dessous sont à refaire intégralement sur Meuniers.
+
+- [x] ~~Lancer `create_com_agents` sur `D:\ServOMorph\Roberto2`~~ (perdu, à refaire sur Meuniers) (installation réelle, jamais testée avant commit dans le kit).
+- [x] _(Roberto2, perdu)_ Détection du `statut.md` ad hoc de MASCOTTE : signalée non conforme (champ "Dernier test visuel" en trop, "Mis à jour" manquant), pas convertie automatiquement. Acquis conservé dans `create_com_agents.md` (kit) ; non rejouable sur Meuniers (pas de `statut.md` ad hoc).
+- [x] _(Roberto2, perdu)_ Bug corrigé (2026-08-13) : `/start` sautait l'agrégation `statut.md` placée en 4c (après la synthèse narrative de `signals.md`). Déplacée en `2d`, adjacente à `2c`. Correctif intégré à `create_com_agents.md` (kit) — c'est cet acquis qu'il faut revalider sur Meuniers.
+- [ ] Lancer `create_com_agents` sur `D:\ServOMorph\Meuniers` (installation réelle).
+- [ ] `/start` d'une zone Meuniers puis `/start` racine : vérifier le placement 2c/2d (lecture/purge `messages.md`, agrégation `statut.md` pour la racine) et que l'agrégation n'est pas sautée.
+- [ ] `/close` réel d'un agent Meuniers (ex. `documentation`) : vérifier l'écriture automatique de son `_contexte/statut.md`.
+- [ ] Écrire un message réel dans `<agent>/_contexte/messages.md` depuis la racine, puis `/start <agent>` : vérifier affichage + purge.
 - [ ] Bilan : garder tel quel, ajuster, ou écarter.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer. Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.

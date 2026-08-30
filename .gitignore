@@ -1,3 +1,6 @@
+# Env local (dossier parent des nouveaux projets, cf. .env.example)
+.env
+
 # OS
 .DS_Store
 Thumbs.db

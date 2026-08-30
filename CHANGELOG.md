@@ -3,6 +3,29 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.2 — 2026-08-31
+
+### Ajouté
+- `/create_projet_public` (`.claude/commands/`, kit uniquement) : crée un projet vierge de bout en bout — dossier sous `PROJETS_PARENT_DIR` (lu dans `.env`), dépôt GitHub public via `gh`, `git init` + premier commit + push, saisie d'une courte description appliquée au dépôt (`gh repo edit`), puis enchaînement automatique sur `/init_projet`.
+- `.env.example` : gabarit de configuration locale (`PROJETS_PARENT_DIR`). `.env` ajouté au `.gitignore`.
+
+### Modifié
+- `roadmap_com_agents.md` : Phase 2 repointée sur `D:\ServOMorph\Meuniers` (`Roberto2` acté supprimé), tests réécrits pour les zones Meuniers.
+- `roadmap_messages_zones.md` : Phase 1 mise en pause (pilote de remplacement à désigner, fusion éventuelle avec `roadmap_com_agents.md` à trancher).
+
+### Connu
+- Substitution des placeholders de `/init_projet` (étape 4) non robuste aux `\` des chemins Windows quand faite via `sed` : constaté sur l'init réel de `Stop_Motion_IA` (`zones.md` corrigé à la main). Suivi en action ouverte.
+
+## v4.1 — 2026-08-29
+
+### Retiré
+- `templates/roberto/` supprimé du kit (`MACROS/`, `UI_WEB/`, `run.py`, `README.md`, `analysis/inventaire.md`, `.claude/zones.md`) : plus d'usage identifié, sa source `D:\ServOMorph\Roberto2` n'existe plus sur le disque. `MACROS/`, `UI_WEB/`, `run.py` (aucun équivalent trouvé dans `D:\ServOMorph\Roberto`) déplacés tels quels dans ce projet plutôt que perdus, note laissée dans son `_contexte/signals.md`.
+- `roadmap_template_roberto.md` archivée dans `_archives/` (5/5 phases FAIT, template supprimé).
+- `roadmap_workflow_quotidien.md` déplacée vers `D:\ServOMorph\Roberto` (Phases 3-5 encore ouvertes, code déjà hors du kit depuis le 2026-08-20).
+
+### Modifié
+- `README.md`, `.claude/commands/insert_template.md`, `tests_manuels.md` : retrait des références à `roberto` comme exemple de template existant.
+
 ## v4.0 — 2026-08-23
 
 ### Ajouté

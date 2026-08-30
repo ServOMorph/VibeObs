@@ -11,6 +11,7 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/start [zone]` — charge le contexte du projet au démarrage de session (zone implicite si absent)
 - `/close [zone]` — sauvegarde l'état, met à jour les fichiers de contexte, committe (zone implicite si absent)
 - `/init_projet` — initialise le protocole dans un nouveau projet en quelques questions
+- `/create_projet_public <nom_projet>` — crée un projet vierge de bout en bout : dossier sous `PROJETS_PARENT_DIR` (défini dans `.env`), dépôt GitHub public via `gh`, `git init` + commit + push, saisie d'une courte description appliquée au dépôt, puis enchaîne `/init_projet` ; kit uniquement, s'exécute toujours depuis le kit
 - `/update` — met à jour les fichiers de protocole dans un projet déjà initialisé, sans toucher aux données projet
 - `/create_memory [alias_zone] [contenu]` — ajoute une entrée dans la mémoire projet persistante (`.claude/memory.md`) ou, si un alias de zone est reconnu, dans la mémoire de cette zone (`<dossier_zone>/_contexte/memory.md`, chargée par `/start`)
 - `/create_agent <chemin_projet_cible> <dossier> [rôle]` — crée un agent (zone à rôle : charte `agent_role.md` + `_contexte/` propre, pilotable par `/start`/`/close`) dans un projet cible ; s'exécute toujours depuis le kit, n'est jamais copiée dans les projets cibles
@@ -107,8 +108,8 @@ claude-vibecoding-kit/
     ├── AGENTS.md                         # équivalent CLAUDE.md pour agents non-Claude (Codex, ChatGPT...), sur confirmation
     └── GEMINI.md                         # équivalent CLAUDE.md spécifique à Gemini, sur confirmation
     ├── control_PC/                       # template local de contrôle visuel, macros et workflows par application
-    ├── roberto/                          # template extrait de Roberto2 (UI PC), testé de bout en bout
     ├── discord_com/                      # intégration Discord ↔ Claude Code, généricisée depuis Agents_IA_V2
+    ├── netlify/                          # déploiement Netlify : CLI, API REST générique et CI Git
     ├── overlay/                          # overlay néon plein écran, signal de fin de tâche d'agent
     └── notification/                     # notification systray (icône + bulle Windows), alternative à overlay
 ```
@@ -135,7 +136,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v4.0** (2026-08-23) : équipes d'agents hiérarchiques (`/create_team`, coordinateurs et `team.md`) et messagerie inter-projets Intercom (`/init_intercom`) ajoutées. Le pilote `Meuniers` a validé une équipe COMMUNICATION et un échange réel ; la généralisation reste à éprouver sur d'autres projets. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v4.2** (2026-08-31) : `/create_projet_public` ajoutée (création d'un projet vierge : dossier + dépôt GitHub public + `/init_projet` en un flux). Équipes d'agents hiérarchiques (`/create_team`) et messagerie inter-projets Intercom (`/init_intercom`) restent à éprouver hors du pilote `Meuniers`. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

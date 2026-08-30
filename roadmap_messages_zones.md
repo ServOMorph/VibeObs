@@ -37,6 +37,9 @@ Créée le : 2026-08-12
 **Stratégie de déploiement** : implémentation d'abord en pilote isolé sur `Roberto2` (`D:\ServOMorph\Roberto2`, alias `roberto2`, un seul zone racine actuellement), pas dans les templates du kit. Propagation au kit (templates + `.claude/` du kit + autres projets) seulement après validation en conditions réelles.
 
 ## Phase 1 — Pilote sur Roberto2 [TODO]
+
+**⚠ Bloqueur (2026-08-30)** : `D:\ServOMorph\Roberto2` définitivement supprimé du disque. Aucune implémentation n'avait commencé, rien de perdu. Choix du pilote de remplacement reporté par l'utilisateur (« on le traitera plus tard »). Phase 1 en pause jusqu'à désignation d'un pilote (projet à zone racine simple, isolé du template). À noter : `roadmap_com_agents.md` se pose explicitement en superseding de ce design — trancher fusion vs maintien avant de relancer.
+
 - [ ] Niveau normal : ajouter l'étape de lecture/affichage/purge de `_contexte/messages.md` dans `D:\ServOMorph\Roberto2\.claude\commands\start.md` (bloc "Spécificités projet", pas le corps générique, pour rester isolé du template tant que ce n'est pas validé).
 - [ ] Niveau urgent : ajouter une section courte dans `D:\ServOMorph\Roberto2\.claude\CLAUDE.md` (section "Spécificités projet") — instruction de vérification de `_contexte/urgent.md` avant toute action significative.
 - [ ] Test à blanc : écrire un `messages.md` et un `urgent.md` de test dans `D:\ServOMorph\Roberto2\_contexte\`, vérifier lecture/purge des deux (le second avant une action significative simulée, pas seulement à `/start`).
