@@ -58,12 +58,27 @@ placeholder par défaut, résultat booléen uniquement).
    `config_bot_discord.example.json` (`enabled: false` par défaut tant que la configuration
    n'est pas complète). Si `<destination>/discord_com/.env` n'existe pas : le créer en
    copiant `.env.example` (jamais en construisant son contenu soi-même).
-8. Demander à l'utilisateur de compléter **lui-même** `<destination>/discord_com/.env`
-   (rappeler : Developer Portal → application → Bot → Add Bot / Reset Token → copier le
-   token, puis le coller à la place du placeholder dans `.env`, dans son éditeur). Claude ne
-   demande jamais le token dans le chat et ne touche jamais au contenu de `.env`. Attendre
-   confirmation que c'est fait, puis vérifier uniquement par une commande shell à sortie
-   booléenne (cf. étape 4) que le placeholder a été remplacé — jamais lire la valeur.
+8. Demander à l'utilisateur de compléter **lui-même** `<destination>/discord_com/.env`.
+   Fournir la procédure exacte pour trouver le **Bot Token** (source de confusion fréquente) :
+   1. https://discord.com/developers/applications → se connecter → cliquer sur l'application
+      (ou **New Application** pour en créer une).
+   2. Menu de gauche → **Bot**.
+   3. Section **Token** (sous le nom et l'avatar du bot) → **Reset Token** → confirmer
+      (mot de passe ou 2FA possible).
+   4. Le token s'affiche **une seule fois** → **Copy**. Format : longue chaîne à deux points,
+      ex. `MTA5xxxx.G3xxxx.xxxxxxxx` (~70 caractères).
+   5. Le coller après `DISCORD_BOT_TOKEN=` dans `.env`, sans guillemets ni espace.
+
+   Préciser ce que le Bot Token **n'est pas** : ni l'**Application ID / Client ID** (nombre
+   d'environ 19 chiffres, onglet *General Information* — sert à l'URL d'invitation de l'étape 9),
+   ni la **Public Key** (*General Information*), ni le **Client Secret** (onglet *OAuth2*).
+   Token perdu (page fermée sans copier) : refaire **Reset Token**.
+
+   Claude ne demande jamais le token dans le chat et ne touche jamais au contenu de `.env`.
+   Attendre confirmation que c'est fait, puis vérifier uniquement par une commande shell à
+   sortie booléenne (cf. étape 4) que le placeholder a été remplacé — jamais lire la valeur.
+   Renvoyer aussi vers `<destination>/discord_com/DISCORD_SECURITY.md` (§ Bot Token) et
+   `SETUP.md` (§ 1) pour la même procédure détaillée.
 9. Demander l'**Application ID** (Developer Portal → application → General Information —
    valeur publique, pas un secret). Construire l'URL d'invitation OAuth2 :
    `https://discord.com/api/oauth2/authorize?client_id=<APPLICATION_ID>&permissions=68608&scope=bot`

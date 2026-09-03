@@ -74,6 +74,12 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    - Périmètre d'écriture : par défaut l'agent n'écrit que dans son propre
      dossier ; lister les chemins si extension nécessaire → `{{ECRITURE_ETENDUE}}`.
    - En mode conversion : confirmation explicite du mode.
+   - **Agent Discord** (dossier nommé `DISCORD` ou rôle mentionnant Discord/bot) :
+     demander si l'utilisateur veut insérer le template `templates/discord_com/`
+     dans le dossier de l'agent (`<dossier>/discord_com/`). Par défaut oui.
+     Refus → aucune insertion. Accord → l'insertion est faite en [ECRITURE] ;
+     la configuration (token, channel_id, invitation OAuth2, Message Content
+     Intent) reste à faire ensuite via `/init_discord_mode <projet_cible>`.
 
 6. Analyse du projet cible pour `{{STACK}}` — **uniquement si le résultat sera
    utilisé** (mode création, ou mode conversion avec `contexte.md` absent ou
@@ -129,6 +135,17 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    - Dossier existant dont la casse n'est pas déjà en majuscules : le
      renommer avant toute écriture (`git mv` si le dossier est suivi par
      git), puis répercuter le nouveau chemin dans `zones.md`.
+
+   Template Discord (les deux modes) — si l'insertion a été acceptée en
+   [COLLECTE] : copier `templates/discord_com/` (récursif, hors `analysis/`,
+   copie brute) vers `<projet_cible>/<dossier>/discord_com/`, sans écraser un
+   fichier déjà présent ; créer `config_bot_discord.json` depuis
+   `config_bot_discord.example.json` (`enabled: false`) et `.env` depuis
+   `.env.example` (jamais construire son contenu). Ne pas configurer ni lancer
+   le bot ici — renvoyer à `/init_discord_mode`. Signaler que la commande
+   `/discord_loop` livrée dans le template n'est active que copiée dans
+   `<projet_cible>/.claude/commands/` (hors périmètre agent) — laisser
+   l'utilisateur trancher.
 
 8. Ajouter une ligne à `<racine du kit>/AGENTS_REGISTRY.md` (créer le fichier
    avec son en-tête standard s'il n'existe pas) :

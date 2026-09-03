@@ -1,11 +1,25 @@
 # Discord Com - Setup rapide
 
-## 1. Créer le bot
-1. https://discord.com/developers/applications → New Application
-2. Bot → Add Bot → copier le token
-3. Copier `.env.example` vers `.env` et coller le token dans `DISCORD_BOT_TOKEN`
-   (fichier local, jamais commité, jamais lu par Claude)
-4. Copier `config_bot_discord.example.json` vers `config_bot_discord.json`
+## 1. Créer le bot et récupérer le Bot Token
+
+1. https://discord.com/developers/applications → se connecter → cliquer sur l'application
+   (ou **New Application** pour en créer une : nom, Create).
+2. Menu de gauche → **Bot**.
+3. Section **Token** (sous le nom et l'avatar du bot) → bouton **Reset Token** → confirmer
+   (mot de passe ou 2FA possible).
+4. Le token s'affiche **une seule fois** → **Copy**. Format : longue chaîne à deux points,
+   ex. `MTA5xxxxxxxxxxxxxxxxxx.G3xxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` (~70 caractères).
+5. Copier `.env.example` vers `.env`, coller le token après `DISCORD_BOT_TOKEN=`
+   (sans guillemets ni espace). Fichier local, jamais commité, jamais lu par Claude.
+6. Copier `config_bot_discord.example.json` vers `config_bot_discord.json`.
+
+**Le Bot Token n'est pas** :
+- l'**Application ID** / **Client ID** (nombre d'environ 19 chiffres, onglet *General
+  Information*) — il sert à l'URL d'invitation (étape 2), pas à l'authentification.
+- la **Public Key** (64 caractères hexadécimaux, *General Information*).
+- le **Client Secret** (onglet *OAuth2*) — non utilisé par ce bot.
+
+Token perdu (page fermée sans copier) : refaire **Reset Token**, l'ancien devient invalide.
 
 ## 2. Inviter le bot sur le serveur
 1. Developer Portal → application → **General Information** → copier l'**Application ID**

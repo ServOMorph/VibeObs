@@ -20,7 +20,7 @@ TOKEN = os.environ["DISCORD_BOT_TOKEN"]
 CHANNEL_ID = int(CONFIG["channel_id"])
 QUEUE = DIR / "queue.json"
 COMMANDS = DIR / "commands.json"
-POLL_INTERVAL = 1
+POLL_INTERVAL = 0.5
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -116,6 +116,8 @@ async def on_message(message):
             "command": contenu,
             "timestamp": int(time.time())
         })
+    else:
+        await _channel.send("⏳ Claude traite déjà une commande. Renvoie ce message quand il a répondu.")
 
 
 async def boucle_polling():
@@ -127,7 +129,7 @@ async def boucle_polling():
             ts = q.get("timestamp", 0)
             if q["status"] == "pending" and q["message"] and ts != _dernier_ts_envoye:
                 _dernier_ts_envoye = ts
-                q["status"] = "waiting"
+                q["status"] = "waiting" if q.get("expect_reply") else "idle"
                 q["response"] = ""
                 ecrire(QUEUE, q)
                 await _channel.send(q["message"])

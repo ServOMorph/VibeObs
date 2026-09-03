@@ -27,6 +27,7 @@
 - [P2|ouvert] Décider quelles propositions des Lots 2-4 de `base_connaissances/PROPOSITIONS_AMELIORATION.md` mettre en œuvre (Lot 1 clos). Lot 3 = 1.4+2.2, 1.5, 1.6 ; Lot 4 = 2.1, 2.3, 3.2-A, 3.4. fait quand: décision actée pour chaque proposition restante, implémentée si retenue. réf: `base_connaissances/PROPOSITIONS_AMELIORATION.md`
 - [P2|ouvert] `jeu_zombies` (déployé v2.26, `D:\ServOMorph\jeu_zombies`) en retard sur le kit — n'a pas encore la section "Tests manuels" ni "Déclencheurs de vérification" de `CLAUDE.md`, ni la base de connaissances. Propagation reportée par l'utilisateur le 2026-07-28. fait quand: `/update` lancé sur jeu_zombies et `.claude/CLAUDE.md` du projet reflète le contenu à jour. réf: `DEPLOYMENTS.md`, `.claude/CLAUDE.md`
 - [P2|ouvert] `templates/discord_com/` : mode `enabled: false` et préfixe novice `"? "` (préfixage de message) jamais testés en conditions réelles — le flux principal (connexion, `!ping`/`!help`, commande libre, `notify`/`notifier`/`envoyer`, `bot_manager.py`) est validé, ces deux branches ne l'ont pas été. fait quand: les deux comportements vérifiés en conditions réelles (bot ignore les messages avec `enabled: false`, préfixe novice reformule correctement la commande transmise). réf: `templates/discord_com/bot.py`, `templates/discord_com/README_DISCORD_COM.md`
+- [P1|ouvert|zone kit] Correctif latence + perte de messages du template `discord_com` (2026-09-03) non testé en conditions réelles. Changements : `queue.json` remis à `idle` après un envoi non interactif (avant : jamais réinitialisé → un message Discord sur deux capté comme réponse `claude_bridge.envoyer` et jamais transmis à Claude), nouveau champ `expect_reply` posé par `claude_bridge.envoyer` seul ; `WAIT_TIMEOUT` de `discord_loop.py` 10→110 s (moins de tours modèle à vide) ; `POLL_INTERVAL` bot 1→0,5 s et poll interne `wait` 1→0,3 s ; ack "⏳ occupé" quand Claude traite déjà une commande. fait quand : `bot.py` relancé, cycle Discord complet vérifié (aucun message perdu sur envois consécutifs, latence à vide tombée à quelques secondes), et divergence avec la refonte `gateway/` d'Appli_TSA_SDI_TDAH tranchée. réf : `templates/discord_com/bot.py`, `templates/discord_com/discord_loop.py`, `templates/discord_com/claude_bridge.py`, `templates/discord_com/.claude/commands/discord_loop.md`
 - [P1|ouvert] Poursuivre la mission de conception du skill générique d'orchestration multi-agents via le skill `chatgpt-orchestrateur` : ChatGPT a reçu les extraits des sections 11/12/13/14/18 de `etude_architecture_skill.md` et a répondu "Confirmation technique reçue. Pour cette étape, ne fais aucune action suppl[émentaire]..." (réponse non encore lue en entier). Reste à trancher : nom du skill générique, emplacement (`skills/` vs commande kit), mécanisme technique, ordre d'implémentation. fait quand: nom/emplacement/mécanisme actés avec l'orchestrateur ChatGPT, `roadmap_<nom_skill>.md` créée. réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\ROBERTO\_orchestrateur_ia\chatgpt\etat.md`, `D:\ServOMorph\Appli_TSA_SDI_TDAH\ROBERTO\etude_architecture_skill.md`
 - [P2|ouvert] Aucune automatisation n'ajoute `discord_com/.env` (ni `config_bot_discord.json`) au `.gitignore` d'un projet cible lors de l'insertion — `DISCORD_SECURITY.md` suppose la couverture mais rien ne l'écrit ni ne la vérifie (constaté le 2026-08-18, `insert_template.md` ne gère aucun `.gitignore`). fait quand: mécanisme de vérification/ajout tranché (dans `/insert_template` ou `/init_discord_mode`) et testé sur un projet cible réel, ou décision explicite de ne pas automatiser actée. réf: `.claude/commands/insert_template.md`, `.claude/commands/init_discord_mode.md`, `templates/discord_com/DISCORD_SECURITY.md`
 - [P1|ouvert] Fiabiliser la substitution des placeholders de `/init_projet` (étape 4) sur chemin Windows : lors de l'init réel de `Stop_Motion_IA` le 2026-08-31, une substitution `sed` de `{{RACINE}}` a mangé les `\` du chemin (`D:\ServOMorph\Stop_Motion_IA` → `D:ServOMorphStop_Motion_IA` dans `zones.md`), corrigé à la main. `/init_projet.md` ne prescrit pas d'outil ; toute exécution via `sed` reproduira le bug. fait quand: méthode de substitution robuste aux `\` documentée ou imposée dans `.claude/commands/init_projet.md` (et `templates/.claude/commands/init_projet.md`), vérifiée sur un init de test à chemin Windows. réf: `.claude/commands/init_projet.md`, `.claude/commands/create_projet_public.md`
@@ -48,30 +49,31 @@
 - Agent `roberto` créé dans `Appli_TSA_SDI_TDAH` via `/create_agent` (mode création sur un dossier `ROBERTO/` déjà riche en contenu — code Flux A + `_docs/` de cadrage produits avant l'existence de la zone). Périmètre étendu à `scripts/` et `_contexte/` racine.
 - Vigilance credentials Discord : 3 incidents en session du 2026-08-16 sur le token bot, tous traités avant commit. Incident supplémentaire le 2026-08-18 : token lu/écrit par Claude via `/init_discord_mode` (design initial de la commande, pas une erreur ponctuelle) — corrigé structurellement par le passage à `.env` (cf. décision du 2026-08-18 dans `contexte.md`). Toujours vérifier `git check-ignore`/`git status` avant tout commit touchant `discord_com/`.
 - Copie de test `discord_com/` (racine du kit) et `.claude/commands/discord_loop.md` (racine du kit) : artefacts de test local, intentionnellement non commités (redondants avec `templates/discord_com/`, `bot.py` de test porte un contournement — `message_content` désactivé — à ne jamais propager au template). Résidus CRLF signalés par `check_kit.py` (`discord_com/commands.json`, `discord_com/queue.json`, `ROBERTO/_docs/workflow1-chatgpt.md`) — dossiers non trackés, hors périmètre.
+- `templates/discord_com/` session 2026-09-03 : deux nouveaux bugs traités sur le débit du bot. (1) `queue.json` jamais remis à `idle` après un `send`/`notify` → dès le premier échange, tout message suivant tombait dans la branche `q["status"] == "waiting"` de `on_message` (réponse interactive `claude_bridge.envoyer`) et n'était jamais écrit dans `commands.json` — un message sur deux perdu. Corrigé : `boucle_polling` repasse à `idle` sauf si `expect_reply` (posé uniquement par `claude_bridge.envoyer`). (2) `WAIT_TIMEOUT=10` imposait un tour de modèle complet entre deux cycles `wait` → latence à vide de 10-40 s. Porté à 110 s (< timeout Bash 120 s). Correctif **non testé en conditions réelles** côté kit — voir action ouverte. Divergence connue : le `discord_com/` d'Appli_TSA_SDI_TDAH est en refonte parallèle vers une architecture `gateway/` (constaté cette session : `claude_bridge.py` y est déprécié, `bot.py` a logging/backfill/filtre mention/file d'attente) — ne pas propager mécaniquement dans un sens ou l'autre.
 
-## Dernière session (2026-08-31)
+## Dernière session (2026-09-03)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 
-# Session du 2026-08-31
+# Session du 2026-09-03
 
 ## Décisions prises
-- `Roberto2` acté définitivement supprimé. Pilote de remplacement de `roadmap_com_agents.md` Phase 2 : `D:\ServOMorph\Meuniers`. `roadmap_messages_zones.md` Phase 1 : en pause, choix du pilote reporté.
-- Nouvelle commande kit `/create_projet_public` (format : commande `.claude/commands/`, pas un skill `skills/` — choix utilisateur, cohérent avec `/init_projet`).
-- Dossier parent des nouveaux projets stocké hors git dans `.env` (`.env.example` versionné, `.env` gitignoré).
+- `/create_agent` propose désormais systématiquement l'insertion du template `discord_com` pour tout agent Discord (dossier `DISCORD` ou rôle mentionnant Discord/bot), défaut oui — question groupée en [COLLECTE], insertion brute en [ECRITURE], config renvoyée à `/init_discord_mode`.
+- Le Bot Token (`DISCORD_BOT_TOKEN`) est explicitement distingué de l'Application ID / Client ID, de la Public Key et du Client Secret dans `init_discord_mode.md` (étape 8) et les docs du template.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/create_projet_public.md` : créé (phases `[PREFLIGHT]`→`[SORTIE]`, enchaîne `/init_projet`).
-- `.env.example` : créé (`PROJETS_PARENT_DIR`). `.gitignore` : `.env` ajouté.
-- `roadmap_com_agents.md` : Phase 2 repointée sur Meuniers, tests réécrits. `roadmap_messages_zones.md` : Phase 1 bloquée/en pause.
-- `DEPLOYMENTS.md` : entrée `Stop_Motion_IA` (gitignoré, registre local).
-- Hors dépôt kit : `D:\ServOMorph\Stop_Motion_IA` créé (dépôt public `github.com/ServOMorph/Stop_Motion_IA`, protocole vibecoding zone `stop_motion_ia`, 2 commits poussés).
+- `.claude/commands/create_agent.md` : question opt-in template Discord ([COLLECTE] + [ECRITURE]).
+- `.claude/commands/init_discord_mode.md` : étape 8 réécrite (procédure Reset Token pas à pas + liste "n'est pas").
+- `templates/discord_com/` : `SETUP.md`, `DISCORD_SECURITY.md`, `README_DISCORD_COM.md`, `.env.example` — guidage Bot Token.
+- `templates/discord_com/bot.py` + `discord_loop.py` + `claude_bridge.py` + `.claude/commands/discord_loop.md` : correctif latence + perte de messages (voir Contexte chaud).
+- `base_connaissances/ameliorations_create_agent.md` : 2 entrées 2026-09-02 (lot design+discord, suite template).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/create_projet_public` + enchaînement `/init_projet` fonctionne de bout en bout (un run réel).
-- INVALIDE : substitution `sed` de `{{RACINE}}` fiable sur chemin Windows — les `\` sont mangés (`zones.md` corrigé à la main). Bug à traiter dans `/init_projet`.
+- VALIDE : les 3 fichiers Python du template compilent après correctif (`py_compile`).
+- INVALIDE : le bot ne perdait aucun message — `queue.json` jamais remis à `idle` faisait avaler un message sur deux (jamais transmis à Claude). Corrigé (`expect_reply` + reset `idle`).
+- EN ATTENTE : correctif non testé en conditions réelles (bot non relancé côté kit ; `discord_com/` d'Appli_TSA_SDI_TDAH en refonte parallèle vers `gateway/`).
 
 ## Prochaine étape exacte
-Corriger la substitution de placeholders de `/init_projet` (robustesse aux `\` Windows), puis rejouer la Phase 2 de `roadmap_com_agents.md` sur Meuniers.
+Tester le flux Discord corrigé en conditions réelles (relancer `bot.py`, vérifier zéro perte sur envois consécutifs + chute de latence à vide). Puis reprendre le `/doc_sync` complet en suspens depuis le 2026-08-31.
 
 ## Question bloquante pour la session suivante
 Aucune.

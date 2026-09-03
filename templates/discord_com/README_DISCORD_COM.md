@@ -78,7 +78,10 @@ bot.py ──── écrit ──→ commands.json
 ### 1. Créer le bot Discord
 
 1. [discord.com/developers/applications](https://discord.com/developers/applications) → New Application
-2. Bot → Add Bot → copier le **token**
+2. Menu de gauche → **Bot** → section **Token** → **Reset Token** → **Copy**. Le token
+   s'affiche une seule fois ; format `MTA5....G3x....xxxx` (~70 caractères). C'est cette
+   valeur qui va dans `DISCORD_BOT_TOKEN` — **pas** l'Application ID, la Public Key ni le
+   Client Secret (voir `DISCORD_SECURITY.md`).
 3. Developer Portal → Bot → activer **Message Content Intent**
 
 ### 2. Inviter le bot sur le serveur

@@ -46,11 +46,11 @@ Répéter indéfiniment jusqu'à "stop" :
 python discord_com/discord_loop.py wait
 ```
 
-Ce script bloque jusqu'à 10 secondes par cycle. Quand un message Discord arrive :
+Ce script bloque jusqu'à 110 secondes par cycle et rend la main dès qu'un message arrive (poll interne toutes les 0,3 s). Quand un message Discord arrive :
 - Affiche la commande sur stdout
 - Marque `commands.json` → `"processing"`
 
-Si la sortie est `TIMEOUT` → relancer `wait` immédiatement. Ce cycle peut se répéter indéfiniment (heures, jours). L'attente n'a pas de limite — juste des cycles de 10 secondes.
+Si la sortie est `TIMEOUT` → relancer `wait` immédiatement. Ce cycle peut se répéter indéfiniment (heures, jours). L'attente n'a pas de limite. Cycle long (110 s) volontaire : un message envoyé pendant qu'un `wait` tourne est pris en < 1 s ; seul un message tombant dans le court intervalle entre deux `wait` (le temps d'un tour de la session) subit un délai.
 
 #### 3b. Traiter la commande directement
 
@@ -112,7 +112,7 @@ stop                              → Arrête la boucle proprement
 
 Bot     : ✅ actif
 Mode    : Claude natif (pas de sous-processus)
-Timeout : cycles de 10s (reboucle automatiquement)
+Timeout : cycles de 110s (reboucle automatiquement)
 
 Envoie "stop" sur Discord pour arrêter.
 ```

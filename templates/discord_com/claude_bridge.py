@@ -25,6 +25,7 @@ def envoyer(message: str, timeout: int = 300) -> str:
         "status": "pending",
         "message": message,
         "response": "",
+        "expect_reply": True,
         "timestamp": int(time.time())
     }, ensure_ascii=False, indent=2), encoding="utf-8")
 

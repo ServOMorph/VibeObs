@@ -136,7 +136,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v4.2** (2026-08-31) : `/create_projet_public` ajoutée (création d'un projet vierge : dossier + dépôt GitHub public + `/init_projet` en un flux). Équipes d'agents hiérarchiques (`/create_team`) et messagerie inter-projets Intercom (`/init_intercom`) restent à éprouver hors du pilote `Meuniers`. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v4.3** (2026-09-03) : correctif du template `discord_com` (le bot perdait un message Discord sur deux, latence à vide réduite) et guidage renforcé pour trouver le Bot Token ; `/create_agent` propose l'insertion du template `discord_com` pour un agent Discord. `/create_projet_public` (v4.2) crée un projet vierge en un flux. Équipes d'agents hiérarchiques (`/create_team`) et messagerie inter-projets Intercom (`/init_intercom`) restent à éprouver hors du pilote `Meuniers`. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

@@ -3,6 +3,18 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.3 — 2026-09-03
+
+### Corrigé
+- `templates/discord_com/bot.py` : `queue.json` n'était jamais remis à `idle` après un envoi non interactif (`discord_loop.py send` / `notify`). Dès le premier échange, tout message Discord suivant tombait dans la branche « réponse interactive » de `on_message` et n'était jamais transmis à Claude — un message sur deux perdu. `boucle_polling` repasse maintenant à `idle` sauf si `expect_reply` est posé (uniquement par `claude_bridge.envoyer`).
+- `templates/discord_com/discord_loop.py` : `WAIT_TIMEOUT` 10 → 110 s (< timeout Bash 120 s) — supprime un tour de modèle complet entre chaque cycle `wait`, principale source de latence à vide. Poll interne `wait` 1 → 0,3 s.
+- `templates/discord_com/bot.py` : `POLL_INTERVAL` 1 → 0,5 s ; ack « occupé » quand une commande est déjà en traitement (au lieu d'un silence).
+
+### Modifié
+- `.claude/commands/init_discord_mode.md` : étape 8 réécrite — procédure pas à pas pour récupérer le Bot Token (Developer Portal → application → Bot → Reset Token) et liste explicite de ce que le token n'est pas (Application ID / Client ID, Public Key, Client Secret).
+- `templates/discord_com/` : `SETUP.md`, `DISCORD_SECURITY.md`, `README_DISCORD_COM.md`, `.env.example` alignés sur ce guidage.
+- `.claude/commands/create_agent.md` : pour un agent Discord (dossier `DISCORD` ou rôle mentionnant Discord/bot), la commande demande désormais si le template `discord_com` doit être inséré dans le dossier de l'agent (défaut oui) ; insertion en [ECRITURE], configuration renvoyée à `/init_discord_mode`.
+
 ## v4.2 — 2026-08-31
 
 ### Ajouté

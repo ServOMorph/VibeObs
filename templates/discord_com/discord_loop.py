@@ -20,7 +20,7 @@ COMMANDS = DIR / "commands.json"
 QUEUE = DIR / "queue.json"
 CONFIG_FILE = DIR / "config_bot_discord.json"
 
-WAIT_TIMEOUT = 10    # secondes par cycle (< timeout Bash 120s) — rebouclage infini possible
+WAIT_TIMEOUT = 110   # secondes par cycle (< timeout Bash 120s) — moins de tours modele entre deux cycles
 SEND_TIMEOUT = 10    # secondes max pour confirmer envoi bot
 
 
@@ -41,7 +41,7 @@ def wait_for_command() -> str | None:
             d["status"] = "processing"
             _ecrire(COMMANDS, d)
             return d["command"]
-        time.sleep(1)
+        time.sleep(0.3)
     return None
 
 

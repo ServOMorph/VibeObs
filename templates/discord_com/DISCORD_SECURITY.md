@@ -59,13 +59,25 @@ git status
 
 ## Obtenir les credentials
 
-### Bot Token
+### Bot Token — c'est cette clé qui va dans `DISCORD_BOT_TOKEN`
 
-1. Aller sur https://discord.com/developers/applications
-2. Sélectionner ton application
-3. Aller dans "Bot" → copier le **Token**
+1. https://discord.com/developers/applications → se connecter → cliquer sur ton application.
+2. Menu de gauche → **Bot**.
+3. Section **Token** (sous le nom et l'avatar du bot) → **Reset Token** → confirmer.
+4. Le token s'affiche **une seule fois** → **Copy**. Format : longue chaîne à deux points,
+   ex. `MTA5xxxxxxxxxxxxxxxxxx.G3xxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` (~70 caractères).
 
 **⚠️ Jamais partager ce token. Il permet de contrôler le bot.**
+
+**Ne pas confondre** (aucune de ces valeurs ne va dans `DISCORD_BOT_TOKEN`) :
+
+| Valeur | Où | À quoi elle sert |
+|---|---|---|
+| Application ID / Client ID | *General Information* | URL d'invitation OAuth2 du bot |
+| Public Key | *General Information* | vérification des interactions (non utilisé ici) |
+| Client Secret | *OAuth2* | flux OAuth2 utilisateur (non utilisé ici) |
+
+Token perdu (page fermée sans copier) : refaire **Reset Token**, l'ancien devient invalide.
 
 ### Channel ID
 
