@@ -1,4 +1,4 @@
-# INDEX — Documentation du kit claude-vibecoding-kit
+# INDEX — Documentation du kit VibeObs
 
 Base de connaissance interne de l'équipe d'agents, progressive disclosure. Toujours lire ce fichier en premier : une ligne par document, n'ouvrir que le(s) document(s) pertinent(s), jamais tout le dossier.
 

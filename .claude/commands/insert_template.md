@@ -36,6 +36,7 @@ templates), pas seulement à un template particulier.
   | `{{NOM_PROJET}}` | Nom du dossier racine du projet cible |
   | `{{ALIAS_PROJET}}` | Alias de la zone racine dans `<projet_cible>/.claude/zones.md` (ne retenir que si la ligne de `zones.md` pointe vers la racine elle-même) |
   | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
+  | `{{RCLONE_REMOTE}}` | Remote rclone Google Drive choisi, uniquement pour `rclone_backup` |
 
   Un fichier contenant un token `{{...}}` hors de cette liste bloque
   l'insertion de ce fichier précis (jamais de substitution devinée) : le
@@ -62,7 +63,7 @@ templates), pas seulement à un template particulier.
 
 4. Résoudre le dossier de destination :
    - Fourni en argument → `<projet_cible>/<dossier_destination>`.
-   - Absent → `<projet_cible>/claude-vibecoding-kit` (dossier dédié qui
+   - Absent → `<projet_cible>/VibeObs` (dossier dédié qui
      centralise tous les templates insérés, créé s'il n'existe pas).
 
 5. Lister récursivement `templates/<nom_template>/`, dossier `analysis/`
@@ -80,9 +81,21 @@ templates), pas seulement à un template particulier.
 
 7. Scanner le contenu texte des fichiers de la liste **à créer** à la
    recherche de tokens `{{...}}`. Tout token hors `NOM_PROJET`/
-   `ALIAS_PROJET`/`DATE` : retirer ce fichier de la liste **à créer**,
+   `ALIAS_PROJET`/`DATE`/`RCLONE_REMOTE` : retirer ce fichier de la liste **à créer**,
    l'ajouter à une liste **bloqués** avec le token en cause. Ne jamais
    deviner une valeur de substitution.
+
+7bis. Seulement pour `rclone_backup`, résoudre `{{RCLONE_REMOTE}}` avant toute écriture :
+   - Demander si l'utilisateur veut utiliser un remote rclone déjà configuré ou connecter un
+     nouveau compte Google.
+   - Compte existant : exécuter `rclone listremotes`, présenter les remotes avec une numérotation
+     et demander le numéro choisi. Utiliser le nom du remote correspondant.
+   - Nouveau compte : demander le nom logique du remote (par exemple `rayonne_toi_drive`), puis
+     annoncer que l'authentification Google ouvrira un navigateur et attendre une confirmation explicite.
+     Exécuter seulement alors `rclone config create <remote> drive`. L'utilisateur choisit son compte
+     Google dans le navigateur. Ne poursuivre que lorsque la commande a réussi.
+   - Écrire le remote retenu dans `rclone_backup.json`. Le choix est propre au projet ; `/close`
+     ne doit jamais lancer d'authentification ni demander un compte.
 
 ## [ECRITURE] — toutes les écritures groupées
 

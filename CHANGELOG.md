@@ -1,7 +1,17 @@
-# Changelog — claude-vibecoding-kit
+# Changelog — VibeObs
 
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
+
+## v5.0 — 2026-09-04
+
+### Modifié
+- Le kit et son dépôt GitHub sont renommés **VibeObs** ; les chemins, URLs, zones et sauvegarde interne associée sont alignés sur ce nom.
+- `/create_projet_public` est remplacée par `/create_projet`, qui permet de choisir entre un dépôt Git local seul ou un dépôt GitHub public ou privé.
+- Le backup rclone devient le template `rclone_backup`, avec choix explicite du remote Google Drive lors de l’insertion.
+
+### Ajouté
+- Template `netlify` pour initialiser et déployer un projet Netlify par CLI ou API REST.
 
 ## v4.7 — 2026-09-04
 

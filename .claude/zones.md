@@ -2,5 +2,5 @@
 
 | Alias | Dossier |
 |-------|---------|
-| kit | D:\ServOMorph\claude-vibecoding-kit |
-| documentation | D:\ServOMorph\claude-vibecoding-kit\DOCUMENTATION |
+| kit | D:\ServOMorph\VibeObs |
+| documentation | D:\ServOMorph\VibeObs\DOCUMENTATION |

@@ -1,4 +1,4 @@
-# Propositions d'amélioration — claude-vibecoding-kit
+# Propositions d'amélioration — VibeObs
 
 Date : 2026-07-17. Issues de l'analyse transversale (`ANALYSE.md`) de 11 projets déployés + le kit. Chaque proposition référence la friction (F1-F10) ou le pattern terrain qui la motive. Priorisation : P1 = corrige un défaut avéré, P2 = intègre un pattern validé sur le terrain, P3 = amélioration opportuniste.
 

@@ -5,7 +5,7 @@ Ce protocole est indépendant de l'agent utilisé. Les scripts `intercom/interco
 
 ## Correspondant actuel
 
-- Projet local : `claude-vibecoding-kit`
+- Projet local : `VibeObs`
 - Correspondant : `meuniers` (`D:/ServOMorph/Meuniers`)
 - Envoi : `python intercom/intercom.py send meuniers --priority normal --subject "Sujet" --body "Message"`
 

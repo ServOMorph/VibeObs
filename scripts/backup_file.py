@@ -26,7 +26,7 @@ if not file_path.exists():
     print(f"ERREUR : fichier introuvable {file_path}")
     sys.exit(1)
 
-drive_dest = sys.argv[2] if len(sys.argv) > 2 else "googledrive:BackUps/claude-vibecoding-kit"
+drive_dest = sys.argv[2] if len(sys.argv) > 2 else "googledrive:BackUps/VibeObs"
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 file_name = file_path.stem

@@ -1,7 +1,7 @@
-# claude-vibecoding-kit (le kit)
+# VibeObs (le kit)
 
 ## Identité
-- Chemin : `d:\ServOMorph\claude-vibecoding-kit`
+- Chemin : `D:\ServOMorph\VibeObs`
 - Zone : -
 - Version kit : v2.14
 
@@ -44,7 +44,7 @@ M .claude/commands/doc_sync.md
 
 ## Contexte stable (_contexte/contexte.md)
 
-# Contexte — claude-vibecoding-kit
+# Contexte — VibeObs
 
 ## Objectif (immuable sauf décision explicite)
 Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-sessions, avec contexte persistant via `/start`/`/close` et support multi-zones.
@@ -79,7 +79,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 
 ## Signals (_contexte/signals.md)
 
-# Signals — claude-vibecoding-kit (MAJ 2026-07-17)
+# Signals — VibeObs (MAJ 2026-07-17)
 
 ## Actions ouvertes
 - [P1|en attente de test] Tester la mise à jour v2.14 sur un projet dédié avant toute propagation. fait quand: un `/update <chemin absolu>` a mis à jour un projet de test, les fichiers `ollama_call.py` et `CLAUDE.md` sont vérifiés, et le résultat est consigné. réf: `.claude/commands/update.md` ; `DEPLOYMENTS.md`
@@ -126,7 +126,7 @@ Aucune
 
 ## Archive des décisions (_contexte/archive_decisions.md)
 
-# Archive des décisions — claude-vibecoding-kit
+# Archive des décisions — VibeObs
 
 ## Décisions archivées le 2026-07-17
 
@@ -140,4 +140,3 @@ Aucune
 - Dossier : `d--ServOMorph-claude-vibecoding-kit`
 - Nombre de sessions : 26
 - Période : 2026-06-21 → 2026-07-17
-

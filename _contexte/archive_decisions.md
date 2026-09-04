@@ -1,4 +1,8 @@
-# Archive des décisions — claude-vibecoding-kit
+# Archive des décisions — VibeObs
+
+- 2026-08-20 : `templates/roberto/MASCOTTE/` supprimée du kit (extraite par l'utilisateur en projet standalone) ; `UI_WEB/mascotte/` conservé. `templates/roberto/AUTOMATISATIONS/` et `templates/roberto/com_telephone/` déplacés vers `D:\ServOMorph\Roberto` (nouveau repo git, premier push). Les processus verrouillant les fichiers ont été arrêtés avec autorisation explicite ; les services doivent être relancés depuis leur nouvel emplacement si nécessaire.
+- 2026-08-20 : authentification par token ajoutée à l'UI mobile du prototype « assistant vocal » (`voice-code-bridge/server.js`) ; token stocké dans `server/.env` gitignoré. L’accès est protégé, pas les actions ultérieures de l’agent.
+- 2026-08-20 : `decisions.md` du workflow `quotidien` reste une roadmap vivante, cochée après validation explicite ; les réponses vocales sont reformulées de façon courte et le débit TTS est ralenti.
 
 ## Décisions archivées le 2026-08-29 (session suppression templates/roberto)
 

@@ -1,4 +1,4 @@
-# Archive des sessions — claude-vibecoding-kit
+# Archive des sessions — VibeObs
 <!-- Ce fichier contient les anciennes sessions de signals.md, archivées automatiquement par /close -->
 <!-- Format: chaque session est séparée par une ligne vide -->
 

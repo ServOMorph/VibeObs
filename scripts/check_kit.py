@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-check_kit.py — Contrôle d'intégrité mécanique du claude-vibecoding-kit.
+check_kit.py — Contrôle d'intégrité mécanique de VibeObs.
 
 Contrôles implémentés (Phase 3 de roadmap_refacto_kit.md) :
 1. Paires miroir .claude/ <-> templates/.claude/ identiques (hors bloc SPECIFICITES PROJET et placeholders {{...}})
@@ -44,7 +44,7 @@ MIRROR_PAIRS = [
 ]
 
 # Commandes kit-only (absentes de templates/)
-KIT_ONLY_COMMANDS = {"cherche_meilleure_action.md", "create_agent.md", "create_com_agents.md", "doc_sync.md", "init_discord_mode.md", "create_projet_public.md"}
+KIT_ONLY_COMMANDS = {"cherche_meilleure_action.md", "create_agent.md", "create_com_agents.md", "doc_sync.md", "init_discord_mode.md", "create_projet.md"}
 
 
 def get_version_from_changelog():

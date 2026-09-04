@@ -78,8 +78,8 @@ Les placeholders sont des marqueurs de personnalisation pour les projets cibles 
 
 > **Note :** Les fichiers suivants ne font pas partie des paires miroir et ne doivent pas être synchronisés :
 > - `llms.txt` : description du kit pour les LLM (fichier racine uniquement, pas de miroir)
-> - `templates/ollama_call.py`, `templates/backup_project.py` : scripts templates pour les projets cibles, pas des miroirs de `scripts/`
-> - `scripts/backup_file.py`, `scripts/deploy_create_memory.py`, `scripts/check_kit.py` : scripts internes du kit (pas de miroir dans `templates/`)
+> - `templates/ollama_call.py`, `templates/rclone_backup/backup_project.py` : scripts templates pour les projets cibles, pas des miroirs de `scripts/`
+> - `scripts/backup_file.py`, `scripts/deploy_create_memory.py`, `scripts/check_kit.py`, `scripts/check_docs.py` : scripts internes du kit (pas de miroir dans `templates/`)
 
 Pour chaque paire :
 - Pour `start.md` et `close.md`, comparer uniquement le contenu situé hors des marqueurs

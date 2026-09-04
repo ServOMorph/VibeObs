@@ -1,4 +1,4 @@
-# claude-vibecoding-kit
+# VibeObs
 
 > Kit de protocole Claude Code pour le vibecoding long : commandes /start, /close, /init_projet, /update, /create_memory qui persistent le contexte entre sessions. Zéro infrastructure, multi-zones, délégation locale Ollama optionnelle.
 
@@ -55,6 +55,6 @@ MIT.
 
 ## Liens
 
-- Dépôt : https://github.com/ServOMorph/claude-vibecoding-kit
+- Dépôt : https://github.com/ServOMorph/VibeObs
 - Documentation interne : `Protocole_start_close_context.md`
 - Historique : `CHANGELOG.md`

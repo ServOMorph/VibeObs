@@ -6,7 +6,7 @@ Générée le 2026-07-17 à partir de : historique git, `_contexte/` (contexte, 
 
 | Projet | Fichier | Version kit | Commits | Sessions Claude | Période sessions |
 |--------|---------|-------------|---------|-----------------|------------------|
-| claude-vibecoding-kit (le kit) | [kit.md](kit.md) | v2.14 | 21 | 26 | 2026-06-21 → 2026-07-17 |
+| VibeObs (le kit) | [kit.md](kit.md) | v2.14 | 21 | 26 | 2026-06-21 → 2026-07-17 |
 | robert-ia | [robert-ia.md](robert-ia.md) | v2.10 | 31 | 20 | 2026-06-18 → 2026-06-25 |
 | Jeu pour Nino | [jeu-pour-nino.md](jeu-pour-nino.md) | v2.10 | 84 | 40 | 2026-06-21 → 2026-07-14 |
 | Appli_TSA_SDI_TDAH | [appli-tsa-sdi-tdah.md](appli-tsa-sdi-tdah.md) | v2.10 | 81 | 60 | 2026-06-23 → 2026-07-17 |

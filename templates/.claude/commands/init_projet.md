@@ -31,6 +31,8 @@ Initialiser le protocole vibecoding dans le projet cible à partir de ce kit de 
      /close (miroir via rclone, dans BackUps/<nom_du_dossier>/) ? (oui/non)" (Q4bis). Un projet
      sans git n'a aucune protection contre la perte de travail ; ce backup en tient lieu.
      Si "oui" à Q4bis : noter le nom du dossier projet (nom de `$ARGUMENTS`) comme destination.
+     Puis appliquer la collecte de compte de `[COLLECTE]` de `/insert_template` pour choisir ou
+     connecter le remote Google Drive, et conserver sa valeur dans `<rclone_remote>`.
 5. Première zone de ce projet, ou zone supplémentaire ?
    - Si supplémentaire : `.claude/commands/start.md` et `close.md` existent déjà.
      Ajouter une ligne `{{ALIAS}} | {{RACINE}}` à leur table des zones au lieu de copier ces fichiers.
@@ -74,7 +76,9 @@ La racine du projet cible ne doit jamais être demandée si $ARGUMENTS est fourn
   (seulement si réponse "oui" à Q7 ; si déjà présent : demander avant d'écraser)
 - `templates/GEMINI.md` → `$ARGUMENTS/GEMINI.md`
   (seulement si réponse "oui" à Q8 ; si déjà présent : demander avant d'écraser)
-- `templates/backup_project.py` → `$ARGUMENTS/backup_project.py`
+- `templates/rclone_backup/backup_project.py` → `$ARGUMENTS/backup_project.py`
+  (seulement si réponse "oui" à Q4bis)
+- `templates/rclone_backup/rclone_backup.json` → `$ARGUMENTS/rclone_backup.json`
   (seulement si réponse "oui" à Q4bis)
 
 Ne pas copier `roadmap_TEMPLATE.md` (utilisé uniquement à la création d'un chantier).
@@ -91,6 +95,7 @@ Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claud
 | `{{STACK}}` | Stack technique (réponse Q3) |
 | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
 | `{{DONNEES_SENSIBLES}}` | Réponse Q6, en liste à puces ; "Aucun déclaré." si réponse négative |
+| `{{RCLONE_REMOTE}}` | Remote rclone retenu à Q4bis, seulement dans `rclone_backup.json` |
 
 ### 4bis. Brancher le backup Google Drive dans close.md (si réponse "oui" à Q4bis)
 

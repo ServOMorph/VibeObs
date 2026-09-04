@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v4.0** — Révision du 2026-08-23. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.0** — Révision du 2026-09-04. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -288,7 +288,7 @@ Ne pas déléguer à Ollama quand :
 ## Contenu du kit
 
 ```
-claude-vibecoding-kit/
+VibeObs/
 ├── Protocole_start_close_context.md   <- ce document, copié dans _docs/
 ├── DEPLOYMENTS.md                      <- registre local des déploiements (ignoré par git)
 └── templates/

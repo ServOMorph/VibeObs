@@ -1,4 +1,4 @@
-# claude-vibecoding-kit — Persistance de contexte pour le vibecoding avec Claude Code
+# VibeObs — Persistance de contexte pour le vibecoding avec Claude Code
 
 Kit de protocole pour travailler avec Claude Code sur des projets qui s'étalent dans le temps.
 
@@ -11,7 +11,7 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/start [zone]` — charge le contexte du projet au démarrage de session (zone implicite si absent)
 - `/close [zone]` — sauvegarde l'état, met à jour les fichiers de contexte, committe (zone implicite si absent)
 - `/init_projet` — initialise le protocole dans un nouveau projet en quelques questions
-- `/create_projet_public <nom_projet>` — crée un projet vierge de bout en bout : dossier sous `PROJETS_PARENT_DIR` (défini dans `.env`), dépôt GitHub public via `gh`, `git init` + commit + push, saisie d'une courte description appliquée au dépôt, puis enchaîne `/init_projet` ; kit uniquement, s'exécute toujours depuis le kit
+- `/create_projet <nom_projet>` — crée un projet vierge : dossier sous `PROJETS_PARENT_DIR` (défini dans `.env`), Git local ou dépôt GitHub public/privé via `gh`, puis enchaîne `/init_projet` et propose les templates installables ; kit uniquement, s'exécute toujours depuis le kit
 - `/update` — met à jour les fichiers de protocole dans un projet déjà initialisé, sans toucher aux données projet
 - `/create_memory [alias_zone] [contenu]` — ajoute une entrée dans la mémoire projet persistante (`.claude/memory.md`) ou, si un alias de zone est reconnu, dans la mémoire de cette zone (`<dossier_zone>/_contexte/memory.md`, chargée par `/start`)
 - `/create_agent <chemin_projet_cible> <dossier> [rôle]` — crée un agent (zone à rôle : charte `agent_role.md` + `_contexte/` propre, pilotable par `/start`/`/close`) dans un projet cible ; s'exécute toujours depuis le kit, n'est jamais copiée dans les projets cibles
@@ -37,12 +37,12 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 ### 1. Cloner ce repo
 
 ```bash
-git clone https://github.com/ServOMorph/claude-vibecoding-kit.git
+git clone https://github.com/ServOMorph/VibeObs.git
 ```
 
 ### 2. Ouvrir ce kit dans Claude Code
 
-Dans Claude Code, ouvrir le dossier du kit (claude-vibecoding-kit).
+Dans Claude Code, ouvrir le dossier du kit (VibeObs).
 
 ### 3. Lancer l'initialisation
 
@@ -61,7 +61,7 @@ Claude pose les questions d'initialisation (alias, objectif, stack, git, zone, d
 ## Structure du kit
 
 ```
-claude-vibecoding-kit/
+VibeObs/
 ├── README.md                             # ce fichier
 ├── Protocole_start_close_context.md      # documentation complète
 ├── CHANGELOG.md                          # historique des versions
@@ -103,7 +103,7 @@ claude-vibecoding-kit/
     │   ├── contexte.md                   # contexte stable du projet
     │   └── signals.md                    # actions ouvertes, blocages, dernière session
     ├── ollama_call.py                    # délégation vers modèle local
-    ├── backup_project.py                 # backup miroir du dossier projet vers Google Drive (rclone), sur confirmation si projet sans git
+    ├── rclone_backup/                    # template de backup miroir Google Drive via rclone
     ├── agent_role_TEMPLATE.md            # template de charte pour /create_agent
     ├── roadmap_TEMPLATE.md               # template pour chantiers multi-phases
     ├── AGENTS.md                         # équivalent CLAUDE.md pour agents non-Claude (Codex, ChatGPT...), sur confirmation
@@ -137,7 +137,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v4.6** (2026-09-04) : la base `DOCUMENTATION/` dispose d'un contrôle mécanique (`check_docs.py`) exécuté par `/doc_sync`, et les `/close` signalent les informations durables à l’agent Documentation. Une roadmap terminée est proposée à l'archivage, jamais archivée automatiquement. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v5.0** (2026-09-04) : renommé **VibeObs**, avec le dépôt GitHub et les chemins locaux alignés. `/create_projet` remplace `/create_projet_public` et peut créer un dépôt local, GitHub public ou GitHub privé ; le backup rclone et le template Netlify sont disponibles. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 
