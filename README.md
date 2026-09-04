@@ -137,7 +137,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v4.5** (2026-09-04) : la base `DOCUMENTATION/` dispose d'un contrôle mécanique (`check_docs.py`) exécuté par `/doc_sync`, et les `/close` signalent les informations durables à l’agent Documentation. Une roadmap terminée est proposée à l'archivage, jamais archivée automatiquement. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v4.6** (2026-09-04) : la base `DOCUMENTATION/` dispose d'un contrôle mécanique (`check_docs.py`) exécuté par `/doc_sync`, et les `/close` signalent les informations durables à l’agent Documentation. Une roadmap terminée est proposée à l'archivage, jamais archivée automatiquement. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

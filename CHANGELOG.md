@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.6 — 2026-09-04
+
+### Modifié
+- Clôture de la zone Documentation : contexte et backlog alignés sur la livraison du contrôle qualité ; validation réelle du signal `/close` → Documentation reste à effectuer.
+
 ## v4.5 — 2026-09-04
 
 ### Ajouté

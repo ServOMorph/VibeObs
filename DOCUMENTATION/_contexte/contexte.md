@@ -9,13 +9,14 @@ Centraliser la documentation métier du kit en fichiers Markdown (base de connai
 - Stack du projet parent : Claude Code, Markdown, Python stdlib, PowerShell/Bash ; zéro dépendance externe
 
 ## État actuel (réécrit intégralement à chaque /close)
-Base : INDEX.md + 7 documents (6 du bootstrap + spec contrôle qualité) ; `scripts/check_docs.py` et `check_kit.py` passent sur la base réelle.
-Le contrôle est intégré à `/doc_sync` ; les CRLF non suivis sont désormais exclus du contrôle, conforme à son contrat « fichiers versionnés ».
-`/close` alimente la file de triage de DOCUMENTATION sans toucher aux documents de connaissance ni créer de doublon.
-Prochaine étape : ajouter changelog/README, puis committer et pousser cette livraison.
+Base : INDEX.md + 7 documents ; `scripts/check_docs.py` et `check_kit.py` passent sur la base réelle.
+Le contrôle est intégré à `/doc_sync` ; les CRLF non suivis sont exclus conformément au contrat « fichiers versionnés ».
+`/close` met les informations durables d'une autre zone en file de triage Documentation, sans publication automatique.
+Livraison v4.5 commitée et poussée ; prochaine étape : valider le signal sur une clôture réelle.
 
 ## Décisions structurantes (append only — 10 entrées max, 5 lignes max/entrée, archiver au-delà)
 - 2026-08-21 : Initialisation du protocole vibecoding.
 - 2026-08-21 : Articulation complémentaire avec base_connaissances/ (fiches projets ≠ doc du kit), écriture limitée à DOCUMENTATION/, alimentation double (signaux /close des autres zones + sessions dédiées).
 - 2026-08-21 : Bootstrap réalisé (INDEX.md + 10_concepts/ + 20_guides/ + 30_decisions/, lint OK).
 - 2026-08-21 : Contrôle qualité de la base spécifié (check_docs.py mécanique + phase doc_sync sémantique), portage en session kit, pas de commande dédiée.
+- 2026-09-04 : `check_docs.py` est intégré à `/doc_sync` et le signal `/close` → Documentation est livré ; la publication d'une information reste soumise à validation utilisateur.
