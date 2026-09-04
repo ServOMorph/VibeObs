@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.3 — 2026-09-04
+
+### Modifié
+- Les fichiers d’instructions `.claude/CLAUDE.md`, `AGENTS.md` et `GEMINI.md` sont harmonisés à l’identique, après confirmation explicite de la source canonique ; le contrôle final compare leur hash SHA-256.
+
 ## v5.2 — 2026-09-04
 
 ### Modifié

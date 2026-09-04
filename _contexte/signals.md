@@ -39,14 +39,15 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-04
 
 ## Décisions prises
-- Le pilote Appli_TSA_SDI_TDAH utilise les zones `TESTS`, `ONBOARD` et `RETOURS`, chacune avec un worktree dédié quand elle travaille en parallèle.
+- Les fichiers `.claude/CLAUDE.md`, `AGENTS.md` et `GEMINI.md` doivent être strictement identiques lorsqu'ils coexistent dans un projet.
 
 ## Livrables produits ou modifiés
-- Pilote Appli_TSA_SDI_TDAH : coordinateur, rôles, communication hiérarchique, branches et worktrees créés.
-- `roadmap_agents_paralleles.md` : phase 2 en cours, attente des premiers cycles des agents.
+- Skill local `harmonize-agent-instructions` : créé et validé ; analyse des écarts et confirmation explicite avant harmonisation.
+- Fichiers d'instructions harmonisés dans huit projets, dont VibeObs.
 
 ## Hypothèses validées / invalidées
-- VALIDE : les deux worktrees isolés et leurs messages initiaux existent ; le dépôt principal n'est pas modifié par les branches agents.
+- VALIDE : le hash SHA-256 confirme l'identité binaire des trois fichiers après harmonisation.
+- EN ATTENTE : résoudre les variantes de nommage de chemins avant toute écriture sur de futurs projets.
 
 ## Prochaine étape exacte
 Lancer `/start ONBOARD` et `/start RETOURS` dans leurs worktrees, puis chacun clôture avec `/close <alias>`.

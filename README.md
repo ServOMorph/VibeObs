@@ -6,7 +6,7 @@ Stack : **Claude Code** (agent IA), **Markdown** (fichiers de contexte), **Pytho
 
 Résout le problème structurel du vibecoding : **le contexte est perdu à chaque nouvelle conversation**. Sans protocole, chaque session repart de zéro, les décisions prises ne sont pas tracées, et l'IA ne sait pas où en est le projet.
 
-État actuel : le kit v5.2 dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) ; les premiers cycles réels des deux agents restent à exécuter avant toute intégration.
+État actuel : le kit v5.3 dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) ; les fichiers d’instructions Claude, agents et Gemini peuvent être harmonisés à l’identique après choix explicite de leur source canonique.
 
 ## Ce que ça fait
 
@@ -141,7 +141,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v5.2** (2026-09-04) : les équipes parallèles peuvent maintenant isoler chaque agent dans un worktree et une branche Git. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v5.3** (2026-09-04) : les équipes parallèles peuvent isoler chaque agent dans un worktree et une branche Git ; les instructions Claude, agents et Gemini peuvent être alignées à l’identique après confirmation. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

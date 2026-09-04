@@ -7,6 +7,27 @@
 # Session du 2026-09-04
 
 ## Décisions prises
+- Les fichiers `.claude/CLAUDE.md`, `AGENTS.md` et `GEMINI.md` doivent être strictement identiques lorsqu'ils coexistent dans un projet.
+
+## Livrables produits ou modifiés
+- Skill local `harmonize-agent-instructions` : créé et validé ; il analyse les écarts puis attend le choix explicite d'une source canonique.
+- Projets pilotes : fichiers d'instructions harmonisés depuis leur `.claude/CLAUDE.md` respectif.
+
+## Hypothèses validées / invalidées
+- VALIDE : une vérification par hash SHA-256 garantit l'identité binaire des trois fichiers.
+- EN ATTENTE : les chemins de projets futurs peuvent employer des variantes de nommage ; les résoudre avant toute écriture.
+
+## Prochaine étape exacte
+Reprendre l'action P1 de validation des cycles `start`/`close` dans les worktrees `ONBOARD` et `RETOURS`.
+
+## Question bloquante pour la session suivante
+Aucune.
+
+---
+
+# Session du 2026-09-04
+
+## Décisions prises
 - Le kit et le dépôt GitHub sont renommés VibeObs ; le remote local est `origin` vers `ServOMorph/VibeObs`.
 - `/create_projet_public` est remplacée par `/create_projet` (Git local ou GitHub public/privé).
 - Les backups rclone sont distribués comme template avec un remote explicite ; le template Netlify est ajouté.
