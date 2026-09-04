@@ -122,13 +122,10 @@ async def on_message(message):
 
 async def boucle_polling():
     """Envoie les messages en attente dans queue.json vers Discord."""
-    _dernier_ts_envoye = 0
     while True:
         try:
             q = lire(QUEUE)
-            ts = q.get("timestamp", 0)
-            if q["status"] == "pending" and q["message"] and ts != _dernier_ts_envoye:
-                _dernier_ts_envoye = ts
+            if q["status"] == "pending" and q["message"]:
                 q["status"] = "waiting" if q.get("expect_reply") else "idle"
                 q["response"] = ""
                 ecrire(QUEUE, q)

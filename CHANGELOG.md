@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.7 — 2026-09-04
+
+### Corrigé
+- `templates/discord_com/bot.py` : deux sorties produites dans la même seconde ne sont plus confondues par une déduplication sur timestamp ; l’état de `queue.json` garantit l’envoi unique.
+- `templates/discord_com/discord_loop.py` : `notify` attend désormais la prise en charge du bot, évitant l’écrasement d’une notification consécutive.
+
+### Modifié
+- `templates/discord_com/README_DISCORD_COM.md` : Bot Token documenté dans `.env` uniquement ; configuration JSON et sémantique de `notify` alignées sur le code.
+
 ## v4.6 — 2026-09-04
 
 ### Modifié

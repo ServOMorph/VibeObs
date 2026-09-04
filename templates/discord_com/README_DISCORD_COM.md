@@ -66,7 +66,8 @@ bot.py ──── écrit ──→ commands.json
 | `claude_bridge.py` | Module Python importable — `envoyer()` / `notifier()` pour agents/scripts |
 | `commands.json` | File de commandes entrantes (Discord → Claude) |
 | `queue.json` | File de messages sortants (Claude → Discord) |
-| `config_bot_discord.json` | Configuration bot (token, channel_id, enabled) — jamais commité |
+| `.env` | Bot Token (`DISCORD_BOT_TOKEN`) — jamais commité |
+| `config_bot_discord.json` | Configuration non sensible (`enabled`, `channel_id`) — ignorée par Git |
 | `requirements.txt` | Dépendances Python |
 | `SETUP.md` | Guide configuration bot Discord |
 | `DISCORD_SECURITY.md` | Gestion des credentials (gitignore, rotation) |
@@ -96,12 +97,12 @@ https://discord.com/api/oauth2/authorize?client_id=APPLICATION_ID&permissions=68
 
 ### 3. Configurer
 
-Copier `discord_com/config_bot_discord.example.json` vers `discord_com/config_bot_discord.json` et remplir :
+Copier `.env.example` vers `.env` et y placer le Bot Token, puis copier
+`discord_com/config_bot_discord.example.json` vers `discord_com/config_bot_discord.json` et remplir :
 
 ```json
 {
   "enabled": true,
-  "bot_token": "TON_TOKEN_ICI",
   "channel_id": 123456789012345678
 }
 ```
@@ -179,7 +180,7 @@ python discord_com/discord_loop.py send "Message ici"
 # Marquer la commande courante comme traitée
 python discord_com/discord_loop.py done
 
-# Notification rapide (fire & forget)
+# Notification sans réponse utilisateur ; attend seulement la prise en charge par le bot
 python discord_com/discord_loop.py notify "Message ici"
 ```
 

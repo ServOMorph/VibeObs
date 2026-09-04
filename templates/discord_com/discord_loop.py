@@ -5,7 +5,7 @@ Usage CLI :
   python discord_loop.py wait           → bloque jusqu'à commande, affiche sur stdout
   python discord_loop.py send "msg"     → envoie message Discord et attend envoi
   python discord_loop.py done           → marque commande comme traitée (idle)
-  python discord_loop.py notify "msg"   → notifie Discord sans attendre (fire & forget)
+  python discord_loop.py notify "msg"   → notifie Discord et confirme sa prise en charge
 
 Ces 4 commandes sont utilisées par la boucle native Claude via /discord_loop.
 Claude exécute lui-même les commandes reçues — aucun sous-processus claude -p.
@@ -91,12 +91,7 @@ if __name__ == "__main__":
 
     elif action == "notify":
         msg = " ".join(sys.argv[2:]) if len(sys.argv) > 2 else ""
-        _ecrire(QUEUE, {
-            "status": "pending",
-            "message": msg[:1900],
-            "response": "",
-            "timestamp": int(time.time())
-        })
+        send_response(msg)
 
     elif action == "done":
         mark_done()
