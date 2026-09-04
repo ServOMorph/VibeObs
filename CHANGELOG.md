@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.4 — 2026-09-04
+
+### Modifié
+- Protocole Roadmap (`.claude/CLAUDE.md` et son miroir) : lorsqu'une roadmap a toutes ses phases achevées, l'agent propose son archivage à l'utilisateur ; il ne l'effectue jamais sans accord explicite.
+- Documentation de session : le guide `DOCUMENTATION/20_guides/sessions_start_close.md` précise cette règle.
+
 ## v4.3 — 2026-09-03
 
 ### Corrigé

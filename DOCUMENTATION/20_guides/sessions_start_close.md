@@ -23,7 +23,7 @@ Compression de l'historique en place. Usage normal entre phases d'une même sess
 
 ## Roadmap
 
-Chantier multi-phases : une seule phase `[EN COURS]` à la fois, checkpoint /compact obligatoire entre phases — ne pas commencer la phase suivante sans confirmation écrite. Statuts mis à jour par /close, jamais en cours de session. Chargée automatiquement par /start tant qu'active.
+Chantier multi-phases : une seule phase `[EN COURS]` à la fois, checkpoint /compact obligatoire entre phases — ne pas commencer la phase suivante sans confirmation écrite. Statuts mis à jour par /close, jamais en cours de session. Chargée automatiquement par /start tant qu'active. Une fois toutes ses phases achevées, l'agent propose à l'utilisateur de l'archiver ; il ne l'archive jamais automatiquement.
 
 ## Modèles
 

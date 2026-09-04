@@ -69,6 +69,10 @@ Si aucun de ces critères n'est rempli, le signaler avant de créer le fichier.
   (anonymisation, prompt système, pipeline), le gate peut être un benchmark reproductible
   à N cas verrouillés plutôt que des tests unitaires classiques.
 
+### Clôture
+- Une fois toutes les phases de la roadmap achevées, proposer à l'utilisateur de l'archiver.
+  Ne jamais l'archiver automatiquement sans son accord explicite.
+
 ## Tests manuels
 Utiliser `tests_manuels.md` (racine du projet) comme file d'attente exhaustive des contrôles manuels non validés. Lorsqu'un test manuel reste à effectuer, l'ajouter à ce fichier, même si d'autres tests y sont déjà en attente. Après validation d'un test, supprimer immédiatement sa section. Lorsque tous les tests en attente sont validés, vider intégralement le fichier, sans en conserver le titre ni les consignes.
 
