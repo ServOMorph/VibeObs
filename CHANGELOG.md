@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.2 — 2026-09-04
+
+### Modifié
+- Pilote `Appli_TSA_SDI_TDAH` configuré avec les zones `TESTS`, `ONBOARD` et `RETOURS`, worktrees isolés et intégration manuelle ; les premiers cycles agents restent à valider.
+
 ## v5.1 — 2026-09-04
 
 ### Ajouté

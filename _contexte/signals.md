@@ -25,7 +25,7 @@
   - fait quand: une seconde installation indépendante échange et accuse réception des messages.
   - réf: `.claude/commands/create_team.md`, `INTERCOM_AGENT.md`.
 - Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
-  - fait quand: les worktrees, branches et cycles `start`/`close` des deux agents sont validés sans écriture sur `main`.
+  - fait quand: les premiers cycles `start`/`close` de `ONBOARD` et `RETOURS` sont validés sans écriture sur `main`.
   - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
 
 ### Backlog P2
@@ -39,17 +39,17 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-04
 
 ## Décisions prises
-- Les équipes parallèles à écriture de code utilisent désormais un worktree et une branche Git par agent ; l’intégration reste explicitement validée.
+- Le pilote Appli_TSA_SDI_TDAH utilise les zones `TESTS`, `ONBOARD` et `RETOURS`, chacune avec un worktree dédié quand elle travaille en parallèle.
 
 ## Livrables produits ou modifiés
-- `/create_parallel_team`, templates parallèles et guide associés : socle créé.
-- `/create_com_agents` : relève de messages rendue résistante à une arrivée pendant `/start`.
+- Pilote Appli_TSA_SDI_TDAH : coordinateur, rôles, communication hiérarchique, branches et worktrees créés.
+- `roadmap_agents_paralleles.md` : phase 2 en cours, attente des premiers cycles des agents.
 
 ## Hypothèses validées / invalidées
-- VALIDE : la suite de tests du kit et les contrôles documentaire et mécanique passent.
+- VALIDE : les deux worktrees isolés et leurs messages initiaux existent ; le dépôt principal n'est pas modifié par les branches agents.
 
 ## Prochaine étape exacte
-Créer le pilote EVOLUTIONS_TESTS dans Appli_TSA_SDI_TDAH après le checkpoint de roadmap.
+Lancer `/start ONBOARD` et `/start RETOURS` dans leurs worktrees, puis chacun clôture avec `/close <alias>`.
 
 ## Question bloquante pour la session suivante
 Aucune.

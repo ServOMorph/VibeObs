@@ -14,10 +14,10 @@ Créée le : 2026-09-04
 
 ---
 
-## Phase 2 — Pilote Appli_TSA_SDI_TDAH [TODO]
-- [ ] Créer l'équipe `EVOLUTIONS_TESTS`, son coordinateur et les deux agents à périmètres distincts.
-- [ ] Installer la communication hiérarchique compatible avec les règles de branches du projet.
-- [ ] Créer le worktree de l'agent code et vérifier un cycle `start`/`close` par agent.
+## Phase 2 — Pilote Appli_TSA_SDI_TDAH [EN COURS]
+- [x] Créer l'équipe `TESTS`, son coordinateur et les deux agents `ONBOARD` et `RETOURS` à périmètres distincts.
+- [x] Installer la communication hiérarchique compatible avec les règles de branches du projet.
+- [ ] Faire exécuter et vérifier un cycle `start`/`close` par agent dans son worktree.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer. Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
