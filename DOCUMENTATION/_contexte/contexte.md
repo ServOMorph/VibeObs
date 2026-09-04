@@ -9,9 +9,10 @@ Centraliser la documentation métier du kit en fichiers Markdown (base de connai
 - Stack du projet parent : Claude Code, Markdown, Python stdlib, PowerShell/Bash ; zéro dépendance externe
 
 ## État actuel (réécrit intégralement à chaque /close)
-Base : INDEX.md + 7 documents (6 du bootstrap + spec contrôle qualité), script check_docs.py spécifié et testé (exit 0 sur la base réelle).
-3 actions P2 ouvertes en zone kit : signal /close → DOCUMENTATION, écarts check_kit (CRLF, versions), implémentation check_docs.py + doc_sync.
-Prochaine étape : session kit — implémenter la spec 40_specs/controle_qualite_base.md.
+Base : INDEX.md + 7 documents (6 du bootstrap + spec contrôle qualité) ; `scripts/check_docs.py` et `check_kit.py` passent sur la base réelle.
+Le contrôle est intégré à `/doc_sync` ; les CRLF non suivis sont désormais exclus du contrôle, conforme à son contrat « fichiers versionnés ».
+`/close` alimente la file de triage de DOCUMENTATION sans toucher aux documents de connaissance ni créer de doublon.
+Prochaine étape : ajouter changelog/README, puis committer et pousser cette livraison.
 
 ## Décisions structurantes (append only — 10 entrées max, 5 lignes max/entrée, archiver au-delà)
 - 2026-08-21 : Initialisation du protocole vibecoding.

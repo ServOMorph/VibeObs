@@ -16,3 +16,4 @@ Append-only : ajouter en bas, ne jamais réécrire une entrée. Format : `AAAA-M
 - 2026-08-21 — Articulation complémentaire avec base_connaissances/ : fiches projets ≠ documentation du kit ; renvoi croisé par liens, jamais de recopie.
 - 2026-08-21 — Écriture limitée à DOCUMENTATION/ ; alimentation double : signaux des /close des autres zones (mécanisme à implémenter côté kit) + sessions dédiées /start documentation.
 - 2026-08-21 — Bootstrap : INDEX.md + 10_concepts/ + 20_guides/ + 30_decisions/, frontmatter minimal (type, description, tags, maj), documents ≤ ~200 lignes.
+- 2026-09-04 — Qualité documentaire : `check_docs.py` est le gate mécanique de `/doc_sync` ; les informations durables issues des autres zones sont mises en file de triage à leur `/close`, puis publiées uniquement après validation utilisateur.

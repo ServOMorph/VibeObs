@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v4.5 — 2026-09-04
+
+### Ajouté
+- `scripts/check_docs.py` : contrôle mécanique de la base `DOCUMENTATION/` (index, liens, doublons, frontmatter, taille, journal append-only et secrets potentiels), intégré comme gate à `/doc_sync`.
+
+### Modifié
+- `/close` : une information durable issue d’une autre zone est déposée sans doublon dans la file de triage de Documentation, sans modification automatique des documents de connaissance.
+- `check_kit.py` : le contrôle CRLF examine désormais uniquement les fichiers versionnés, conformément à son contrat.
+
 ## v4.4 — 2026-09-04
 
 ### Modifié

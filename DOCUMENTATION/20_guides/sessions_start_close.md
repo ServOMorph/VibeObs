@@ -13,7 +13,7 @@ Référence : [`../../_docs/protocole_vibecoding.md`](../../_docs/protocole_vibe
 
 1. **`/start [zone]`** (Haiku) — charge le contexte : `agent_role.md` si zone-agent (affiché intégralement), puis `signals.md` (priorité absolue : actions ouvertes, blocages, dernière session), puis `contexte.md` et `roadmap*.md` si présente
 2. **Travail** — traiter d'abord les actions ouvertes de signals.md ; les actions avec champ `réf:` : lire la référence avant de demander des précisions
-3. **`/close [zone]`** (Sonnet) — sauvegarde l'état : contexte.md (état actuel réécrit, décisions ajoutées), signals.md (dernière session écrasée), roadmap mise à jour, commit
+3. **`/close [zone]`** (Sonnet) — sauvegarde l'état : contexte.md (état actuel réécrit, décisions ajoutées), signals.md (dernière session écrasée), roadmap mise à jour, commit. Si une autre zone produit une information durable utile à l'équipe, elle est aussi ajoutée sans doublon à la file de triage de `DOCUMENTATION/_contexte/signals.md` ; l’agent Documentation décide ensuite de sa publication après validation utilisateur.
 
 Zone implicite si l'argument est absent (working directory courant). Zone inconnue : erreur listant les alias valides de `zones.md`.
 

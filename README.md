@@ -84,7 +84,8 @@ claude-vibecoding-kit/
 │       └── scripts/                      # init_agent, maj_etat, log_echange, generer_reprise, coller_et_envoyer (.ps1)
 ├── scripts/
 │   ├── backup_file.py                    # sauvegarde horodatée d'un fichier vers Google Drive (rclone)
-│   └── deploy_create_memory.py           # déploiement massif d'un fichier sur les projets de DEPLOYMENTS.md
+│   ├── deploy_create_memory.py           # déploiement massif d'un fichier sur les projets de DEPLOYMENTS.md
+│   └── check_kit.py / check_docs.py       # contrôles mécaniques du kit et de la base documentaire
 ├── tests/                                # suite unittest du lanceur Ollama
 ├── base_connaissances/                   # audit des projets déployés + journaux de retex /create_agent
 ├── _archives/                            # roadmaps closes et documents historiques
@@ -136,7 +137,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v4.3** (2026-09-03) : correctif du template `discord_com` (le bot perdait un message Discord sur deux, latence à vide réduite) et guidage renforcé pour trouver le Bot Token ; `/create_agent` propose l'insertion du template `discord_com` pour un agent Discord. `/create_projet_public` (v4.2) crée un projet vierge en un flux. Équipes d'agents hiérarchiques (`/create_team`) et messagerie inter-projets Intercom (`/init_intercom`) restent à éprouver hors du pilote `Meuniers`. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v4.5** (2026-09-04) : la base `DOCUMENTATION/` dispose d'un contrôle mécanique (`check_docs.py`) exécuté par `/doc_sync`, et les `/close` signalent les informations durables à l’agent Documentation. Une roadmap terminée est proposée à l'archivage, jamais archivée automatiquement. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

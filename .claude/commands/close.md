@@ -80,6 +80,11 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    - Si oui : proposer à l'utilisateur l'entrée à ajouter/mettre à jour dans `DOCUMENTATION/`
      (fichier concerné + ligne d'`INDEX.md`) et attendre confirmation avant d'écrire — cette zone
      n'a pas la main sur le dossier d'une autre zone.
+   - Si oui : ajouter aussi une action de triage dans `DOCUMENTATION/_contexte/signals.md`, sans
+     modifier les documents de connaissance. Utiliser le format `[P2|ouvert|source=<alias>]`, avec
+     `fait quand:` (décision documentaire prise) et `réf:` (fichier ou décision source). Ne pas
+     créer de doublon si une action portant la même référence est déjà ouverte.
+   - Si `DOCUMENTATION/_contexte/signals.md` a été modifié : l'inclure au commit de l'étape 13.
    - Si non : ne rien faire, ne pas le mentionner dans le bilan.
 
 8. Mettre à jour `README.md` à la racine du projet :

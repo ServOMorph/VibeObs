@@ -43,7 +43,26 @@ Repérer les fichiers modifiés/ajoutés/supprimés depuis le dernier commit, en
 
 Si rien n'a changé (working tree propre) : répondre "Rien à synchroniser — aucune modification détectée." et s'arrêter.
 
-### 2. Synchroniser les paires miroir
+### 3. Contrôle de la base DOCUMENTATION/
+
+Exécuter le contrôle qualité de la base :
+```bash
+python scripts/check_docs.py
+```
+
+**Règle :** un écart signalé bloque la synchronisation tant qu'il n'est pas traité ou explicitement écarté (comme à l'étape 1).
+
+Si le contrôle passe et que l'étape 2 a identifié des changements touchant le contenu documenté (commandes, templates, `CLAUDE.md`, structure), contrôler aussi la cohérence sémantique :
+
+- Relire les documents de `DOCUMENTATION/` qui traitent des éléments modifiés (commencer par `INDEX.md`).
+- Vérifier la fraîcheur réelle et la couverture, comparées aux sources canoniques.
+- Chaque remarque cite un fichier et une ligne précise ; chaque amélioration proposée est actionnable.
+- Ne jamais conclure « tout est bon » sans avoir relu chaque document concerné.
+- Ne pas modifier `DOCUMENTATION/` directement : présenter les propositions à l'utilisateur ; n'écrire dans `DOCUMENTATION/_contexte/signals.md` que les propositions validées.
+
+Spec : `DOCUMENTATION/40_specs/controle_qualite_base.md`
+
+### 4. Synchroniser les paires miroir
 
 Ces fichiers doivent être identiques dans les deux emplacements **après exclusion des lignes contenant des placeholders `{{...}}`** (ex: `{{DONNEES_SENSIBLES}}` dans `CLAUDE.md`).
 Les placeholders sont des marqueurs de personnalisation pour les projets cibles et ne doivent pas bloquer la synchronisation :
@@ -72,14 +91,14 @@ Pour chaque paire :
   lequel fait autorité plutôt que de trancher seul.
 - Si un fichier n'existe que d'un côté : signaler l'asymétrie sans la corriger seul (peut être volontaire).
 
-### 3. Vérifier `README.md`
+### 5. Vérifier `README.md`
 
 - Section "Structure du kit" (arborescence) : doit lister tous les fichiers réellement présents dans
   `templates/` et à la racine. Ajouter les fichiers manquants, retirer ceux qui n'existent plus.
 - Section "Ce que ça fait" (liste des commandes) : doit correspondre exactement aux commandes présentes
   dans `templates/.claude/commands/`. Ajouter/retirer une ligne si une commande a été ajoutée/supprimée.
 
-### 4. Vérifier `CHANGELOG.md`
+### 6. Vérifier `CHANGELOG.md`
 
 - Comparer la dernière entrée à la nature du changement détecté à l'étape 1.
 - Si le changement n'est pas encore documenté (aucune entrée ne le mentionne) : ajouter une nouvelle
@@ -95,12 +114,12 @@ Pour chaque paire :
 - Ne jamais modifier une entrée existante.
 - **Note :** `Protocole_start_close_context.md` ne duplique plus le changelog — il renvoie désormais à `CHANGELOG.md`.
 
-### 5. Vérifier `DEPLOYMENTS.md`
+### 7. Vérifier `DEPLOYMENTS.md`
 
 - Ne pas modifier ce fichier ici (il ne reflète pas des changements du kit mais des déploiements dans
   des projets tiers, gérés par `/init` et `/update`).
 
-### 6. Rapport final
+### 8. Rapport final
 
 Lister, en une ligne par fichier, ce qui a été modifié à cette étape :
 ```

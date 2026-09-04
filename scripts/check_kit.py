@@ -14,8 +14,8 @@ Sortie : une ligne par écart, exit code 1 si au moins un écart.
 Aucun correctif automatique.
 """
 
-import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -169,49 +169,33 @@ def check_mirror_pairs():
 def check_crlf_files():
     """Contrôle 2 : aucun fichier versionné en CRLF."""
     errors = []
-    
-    # Dossiers à ignorer (gitignore standard + dossiers de build/test)
-    ignored_dirs = {".git", "__pycache__", ".pytest_cache", ".vscode", ".idea", "build", "dist", "venv", ".venv"}
-    runtime_dirs = {
-        Path("templates/control_PC/analysis"),
-        Path("templates/control_PC/logs"),
-    }
-    # Extensions de fichiers à ignorer
+
     ignored_extensions = {".pyc", ".swp", ".swo", ".DS_Store", ".log", ".bak", ".tmp"}
-    # Extensions binaires à ignorer
     binary_extensions = {".png", ".jpg", ".jpeg", ".gif", ".bin", ".exe", ".dll", ".so", ".pyd", ".pyo"}
-    
-    for root, dirs, files in os.walk(KIT_ROOT):
-        # Filtrer les dossiers ignorés
-        relative_root = Path(root).relative_to(KIT_ROOT)
-        dirs[:] = [
-            d for d in dirs
-            if d not in ignored_dirs and relative_root / d not in runtime_dirs
-        ]
-        
-        for file in files:
-            filepath = Path(root) / file
-            
-            # Ignorer par extension
-            if filepath.suffix.lower() in ignored_extensions or filepath.suffix.lower() in binary_extensions:
-                continue
-            
-            try:
-                with open(filepath, "rb") as f:
-                    content = f.read()
-                
-                # Vérifier la présence de CRLF
-                if b"\r\n" in content:
-                    # Vérifier que ce n'est pas un fichier binaire
-                    try:
-                        content.decode("utf-8")
-                        errors.append(f"Fichier CRLF : {filepath.relative_to(KIT_ROOT)}")
-                    except UnicodeDecodeError:
-                        # Fichier binaire, ignorer
-                        pass
-            except (PermissionError, OSError):
-                pass
-    
+
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(KIT_ROOT), "ls-files", "-z"],
+            check=True,
+            capture_output=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return ["Impossible de lister les fichiers versionnés pour le contrôle CRLF"]
+
+    for raw_path in result.stdout.split(b"\0"):
+        if not raw_path:
+            continue
+        filepath = KIT_ROOT / raw_path.decode("utf-8")
+        if filepath.suffix.lower() in ignored_extensions | binary_extensions:
+            continue
+        try:
+            content = filepath.read_bytes()
+            if b"\r\n" in content:
+                content.decode("utf-8")
+                errors.append(f"Fichier CRLF : {filepath.relative_to(KIT_ROOT)}")
+        except (OSError, UnicodeDecodeError):
+            continue
+
     return errors
 
 

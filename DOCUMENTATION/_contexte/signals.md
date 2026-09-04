@@ -1,15 +1,10 @@
 # Signals — documentation   (MAJ 2026-08-21)
 
 ## Actions ouvertes
-- [P2|ouvert|zone kit] Implémenter le signal /close → DOCUMENTATION/_contexte/signals.md (hors périmètre de cette zone, à porter en session kit)
-  - fait quand: les /close des autres zones du kit écrivent dans DOCUMENTATION/_contexte/signals.md
-  - réf: contexte.md (décision alimentation double), agent_role.md (cycle de vie)
-- [P2|ouvert|zone kit] Corriger les écarts check_kit constatés au /close documentation du 2026-08-21 (CRLF : _AFAIRE.txt, base_connaissances/ameliorations_create_agent.md, discord_com/*.json ; versions incohérentes v3.39/v3.40 entre CHANGELOG.md et Protocole_start_close_context.md)
-  - fait quand: python scripts/check_kit.py sort en exit 0
-  - réf: bilan du commit close(documentation) du 2026-08-21
-- [P2|ouvert|zone kit] Implémenter le contrôle qualité de la base DOCUMENTATION : scripts/check_docs.py + phase doc_sync (étape 3 + note scripts sans miroir)
-  - fait quand: python scripts/check_docs.py et python scripts/check_kit.py sortent en exit 0, doc_sync.md mis à jour, CHANGELOG ajouté
-  - réf: DOCUMENTATION/40_specs/controle_qualite_base.md
+- [P2|ouvert|zone kit] Publier le contrôle qualité de la base DOCUMENTATION et le signal `/close` → Documentation
+  - fait quand: CHANGELOG et README reflètent les deux mécanismes, les changements sont commités, puis poussés
+  - réf: scripts/check_docs.py, .claude/commands/doc_sync.md, .claude/commands/close.md
+  - fait partiel (2026-09-04) : `check_docs.py` et `check_kit.py` passent ; `/doc_sync` intègre le contrôle et `/close` alimente la file de triage documentaire sans doublon.
 
 ## Dernière session (2026-08-21)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
