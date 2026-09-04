@@ -12,6 +12,7 @@ Base de connaissance interne de l'équipe d'agents, progressive disclosure. Touj
 | [20_guides/sessions_start_close.md](20_guides/sessions_start_close.md) | Travailler en session : /start, /close, /compact, roadmap et archivage proposé | guide, session, roadmap | 2026-09-04 |
 | [20_guides/creer_un_agent.md](20_guides/creer_un_agent.md) | /create_agent : créer un agent (zone à rôle) | guide, agent | 2026-08-21 |
 | [20_guides/creer_une_equipe.md](20_guides/creer_une_equipe.md) | /create_team : créer une équipe hiérarchique d'agents | guide, équipe, communication | 2026-08-23 |
+| [20_guides/equipes_paralleles.md](20_guides/equipes_paralleles.md) | /create_parallel_team : créer une équipe Git isolée par worktree | guide, équipe, worktree, git | 2026-09-04 |
 | [20_guides/messagerie_interprojets.md](20_guides/messagerie_interprojets.md) | Installer et utiliser Intercom entre projets locaux | guide, communication, urgence | 2026-08-23 |
 | [30_decisions/journal.md](30_decisions/journal.md) | Journal append-only des décisions structurantes de la base | decisions | 2026-09-04 |
 | [40_specs/controle_qualite_base.md](40_specs/controle_qualite_base.md) | Spec : contrôle qualité de la base (check_docs.py + phase doc_sync) | spec, qualité | 2026-08-21 |

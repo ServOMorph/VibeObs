@@ -21,7 +21,9 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 - `/update` : met à jour les fichiers du protocole dans un projet déjà initialisé, sans toucher aux données projet.
 - `/create_memory` : ajoute une entrée dans la mémoire projet persistante.
 - `/create_agent <chemin_projet_cible> <dossier> [rôle]` : crée un agent (zone à rôle) dans un projet cible (kit uniquement).
-- `/create_com_agents <chemin_projet_cible>` : installe un mécanisme de communication agent↔orchestrateur (kit uniquement).
+- `/create_team <chemin_projet_cible> <dossier_equipe> [description]` : crée une équipe hiérarchique d'agents (kit uniquement).
+- `/create_parallel_team <chemin_projet_cible> <dossier_equipe> [description]` : crée une équipe d'agents avec branches et worktrees Git isolés (kit uniquement).
+- `/create_com_agents <chemin_projet_cible>` : installe une communication hiérarchique avec statuts et messages sans perte à la relève (kit uniquement).
 - `/cherche_meilleure_action [décision]` : aide à la décision basée sur le contexte de la zone (kit uniquement).
 - `/doc_sync` : synchronise la documentation du kit (kit uniquement).
 - `scripts/backup_file.py` : sauvegarde horodatée d'un fichier vers Google Drive (rclone).

@@ -14,12 +14,12 @@ communication hiérarchique agent↔coordinateur↔orchestrateur, sans communica
 - chaque zone-agent (dossier avec `agent_role.md`) maintient `_contexte/statut.md` — état
   courant, écrasé (pas append), mis à jour à chaque `/close` de cette zone ;
 - chaque zone-agent maintient `_contexte/messages.md` — boîte de réception, écrite
-  directement par l'orchestrateur en session (pas de commande dédiée pour "envoyer"), lue
-  et purgée au `/start` de la zone destinataire ;
+  directement par son parent en session (pas de commande dédiée pour "envoyer"), lue au
+  `/start` de la zone destinataire sans perdre un message écrit pendant cette lecture ;
 - chaque coordinateur (dossier avec `team.md`) agrège les `statut.md` de ses membres directs à son
   propre `/start`, puis remonte son propre état ;
-- la zone racine agrège uniquement les coordinateurs directement rattachés à elle. Sans `team.md`,
-  le comportement historique est conservé : elle agrège tous les agents directs.
+- la zone racine agrège ses coordinateurs et ses agents directs, y compris ceux qui existaient avant
+  la création d'une équipe.
 
 Cette commande vit dans le kit et n'est jamais copiée dans les projets cibles : elle
 s'exécute toujours depuis le kit, projet cible en argument. Elle ne modifie que `start.md`
@@ -89,14 +89,23 @@ le périmètre déjà déclaré de chaque zone : "peut mettre à jour son propre
    correctement) :
 
    ```
-   2c. <!-- COM_AGENTS --> Si `<dossier>/_contexte/messages.md` existe et n'est pas vide :
-       l'afficher intégralement, avant `signals.md`, puis le vider.
+   2c. <!-- COM_AGENTS --> Relever les messages du parent avant `signals.md` :
+       - Si `<dossier>/_contexte/messages.processing.md` existe et n'est pas vide, l'afficher
+         d'abord. Le supprimer seulement après traitement effectif dans la session.
+       - Sinon, si `messages.md` existe et n'est pas vide, le renommer atomiquement en
+         `messages.processing.md`, l'afficher intégralement, puis le supprimer seulement après
+         traitement effectif. Un message écrit entre le renommage et la suppression reste dans un
+         nouveau `messages.md` et sera lu à la prochaine session.
+       - Le parent écrit toujours un message complet dans un fichier temporaire du même dossier,
+         puis le renomme en `messages.md`. S'il existe déjà un `messages.md`, il y ajoute son
+         message avant ce renommage ; seul le parent direct est autorisé à l'écrire.
 
    2d. <!-- COM_AGENTS --> OBLIGATOIRE : si le dossier résolu est un coordinateur (`team.md`) ou
        la racine du projet, déterminer ses membres **directs**. Pour un coordinateur, utiliser la
-       table de son `team.md`. Pour la racine, ne retenir que les équipes dont `team.md` déclare la
-       racine comme zone parente ; si aucun `team.md` n'existe, conserver le mode historique et
-       retenir chaque zone-agent. Lire `_contexte/statut.md` s'il existe, produire une synthèse
+       table de son `team.md`. Pour la racine, retenir les équipes dont `team.md` déclare la racine
+       comme zone parente et les zones-agents dont `agent_role.md` déclare la racine comme parent :
+       cela conserve la remontée des agents directs existants après l'ajout d'une équipe. Lire
+       `_contexte/statut.md` s'il existe, produire une synthèse
        condensée par membre (phase, avancement, blocage), puis proposer 2 à 4 actions concrètes.
        Fichier absent : l'ignorer silencieusement. Une zone simple n'agrège jamais.
    ```

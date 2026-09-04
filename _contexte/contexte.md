@@ -17,9 +17,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - 2026-09-04 : `rclone_backup` devient un template avec remote Google Drive explicite ; template `netlify` ajouté.
 - 2026-09-04 : le template `discord_com` ne déduplique plus à la seconde ; `notify` attend la prise en charge du bot. Tests isolés passants, test Discord réel en attente d’autorisation système.
 - 2026-09-04 : la base `DOCUMENTATION/` dispose d'un contrôle mécanique (`check_docs.py`) exécuté par `/doc_sync`.
+- 2026-09-04 : `/create_parallel_team` isole les agents code dans des worktrees Git et des branches dédiées ; l’intégration reste manuelle.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-08-20 archivées dans `_contexte/archive_decisions.md`._
+- 2026-09-04 : une équipe à écriture parallèle est créée via `/create_parallel_team`, distinct de `/create_team` ; chaque membre a son worktree et sa branche, sans merge, rebase ou déploiement automatique.
 - 2026-09-04 : `discord_com` ne déduplique pas les sorties sur un timestamp à la seconde ; l’état de la file est l’unique garde contre le renvoi. `notify` attend l’ack du bot afin de sérialiser les notifications consécutives. Le Bot Token reste exclusivement dans `.env` local gitignoré.
 - 2026-09-04 : le kit est renommé VibeObs. La commande `/create_projet` remplace `/create_projet_public` et couvre Git local ou GitHub public/privé ; les sauvegardes rclone sont distribuées comme template avec un remote explicite.
 - 2026-09-04 : une roadmap achevée déclenche une proposition d'archivage à l'utilisateur ; l'archivage reste soumis à son accord explicite. Règle ajoutée au protocole et à sa documentation de session.

@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.1 — 2026-09-04
+
+### Ajouté
+- `/create_parallel_team` et `templates/parallel_agents/` : création d'équipes avec worktrees et branches `agent/<alias>` isolés ; les intégrations restent soumises à une validation explicite.
+- Guide `DOCUMENTATION/20_guides/equipes_paralleles.md` et tests de contrat associés.
+
+### Modifié
+- `/create_com_agents` : les messages sont relevés via `messages.processing.md` afin de ne pas effacer une arrivée pendant un `/start` ; la racine agrège aussi ses agents directs quand une équipe existe.
+
 ## v5.0 — 2026-09-04
 
 ### Modifié

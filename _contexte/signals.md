@@ -24,6 +24,9 @@
 - Valider la généricité de `/create_team` et d’Intercom sur un second projet cible.
   - fait quand: une seconde installation indépendante échange et accuse réception des messages.
   - réf: `.claude/commands/create_team.md`, `INTERCOM_AGENT.md`.
+- Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
+  - fait quand: les worktrees, branches et cycles `start`/`close` des deux agents sont validés sans écriture sur `main`.
+  - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -36,20 +39,17 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-04
 
 ## Décisions prises
-- Le kit et le dépôt GitHub sont renommés VibeObs ; le remote local est `origin` vers `ServOMorph/VibeObs`.
-- `/create_projet_public` est remplacée par `/create_projet` (Git local ou GitHub public/privé).
-- Les backups rclone sont distribués comme template avec un remote explicite ; le template Netlify est ajouté.
+- Les équipes parallèles à écriture de code utilisent désormais un worktree et une branche Git par agent ; l’intégration reste explicitement validée.
 
 ## Livrables produits ou modifiés
-- Documentation, contexte, zones et scripts de backup : références renommées vers VibeObs.
-- `.claude/commands/create_projet.md`, `templates/rclone_backup/` et `templates/netlify/` : création ou mise à jour prêtes à versionner.
+- `/create_parallel_team`, templates parallèles et guide associés : socle créé.
+- `/create_com_agents` : relève de messages rendue résistante à une arrivée pendant `/start`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passent après synchronisation documentaire.
-- EN ATTENTE : test Discord réel du correctif de file.
+- VALIDE : la suite de tests du kit et les contrôles documentaire et mécanique passent.
 
 ## Prochaine étape exacte
-Autoriser le lancement temporaire du bot, envoyer deux notifications réelles, puis vérifier `queue.json` à `idle`.
+Créer le pilote EVOLUTIONS_TESTS dans Appli_TSA_SDI_TDAH après le checkpoint de roadmap.
 
 ## Question bloquante pour la session suivante
-Autoriser le lancement temporaire du bot Discord pour ce test réel ?
+Aucune.

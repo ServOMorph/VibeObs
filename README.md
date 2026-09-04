@@ -16,7 +16,8 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/create_memory [alias_zone] [contenu]` — ajoute une entrée dans la mémoire projet persistante (`.claude/memory.md`) ou, si un alias de zone est reconnu, dans la mémoire de cette zone (`<dossier_zone>/_contexte/memory.md`, chargée par `/start`)
 - `/create_agent <chemin_projet_cible> <dossier> [rôle]` — crée un agent (zone à rôle : charte `agent_role.md` + `_contexte/` propre, pilotable par `/start`/`/close`) dans un projet cible ; s'exécute toujours depuis le kit, n'est jamais copiée dans les projets cibles
 - `/create_team <chemin_projet_cible> <dossier_equipe> [description ou fichier]` — crée une équipe hiérarchique : un coordinateur-agent, son `team.md`, ses agents ou sous-équipes, et installe la remontée des statuts / descente des consignes ; kit uniquement
-- `/create_com_agents <chemin_projet_cible>` — installe un mécanisme de communication en étoile agent↔orchestrateur (`_contexte/statut.md` pull écrasé à chaque `/close` d'une zone-agent, `_contexte/messages.md` push purgé à chaque `/start` de la zone destinataire) dans un projet cible déjà initialisé ; s'exécute toujours depuis le kit, ne modifie que `start.md`/`close.md` du projet cible
+- `/create_parallel_team <chemin_projet_cible> <dossier_equipe> [description ou fichier]` — crée une équipe dont chaque membre travaille dans son worktree Git et sa branche isolée ; le coordinateur propose les intégrations, jamais automatiques ; kit uniquement
+- `/create_com_agents <chemin_projet_cible>` — installe un mécanisme de communication hiérarchique (`_contexte/statut.md` mis à jour à chaque `/close`, messages relevés sans effacer une arrivée concurrente) dans un projet cible déjà initialisé ; s'exécute toujours depuis le kit, ne modifie que `start.md`/`close.md` du projet cible
 - `/insert_template <chemin_projet_cible> <nom_template> [dossier_destination]` — insère un template (`templates/<nom>/`) dans un projet cible, résout les placeholders génériques (`{{NOM_PROJET}}`/`{{ALIAS_PROJET}}`/`{{DATE}}`) et ne jamais écraser un fichier déjà présent ; s'exécute toujours depuis le kit, jamais copiée dans les projets cibles
 - `/init_discord_mode <chemin_projet_cible>` — insère le template `discord_com` dans un projet cible et guide la configuration jusqu'à un bot opérationnel (token, channel_id, invitation OAuth2, Message Content Intent, dépendances) ; kit uniquement, s'exécute toujours depuis le kit
 - `/init_intercom <chemin_projet_cible>` — installe la messagerie locale append-only Intercom dans un projet déjà initialisé ; kit uniquement
@@ -75,7 +76,8 @@ VibeObs/
 ├── .claude/                              # instance du protocole appliquée au kit lui-même
 │   ├── CLAUDE.md                         # règles permanentes
 │   └── commands/                         # /start /close /update /init_projet /create_memory
-│       │                                 #   + kit uniquement : /create_agent /create_com_agents
+│       │                                 #   + kit uniquement : /create_agent /create_team
+│       │                                 #                     /create_parallel_team /create_com_agents
 │       └───────────────────────────────  #                     /cherche_meilleure_action /doc_sync
 │                                          #                     /cherche_fonction
 ├── _contexte/                            # contexte du kit (contexte, signals, archive_decisions)
@@ -115,7 +117,7 @@ VibeObs/
     └── notification/                     # notification systray (icône + bulle Windows), alternative à overlay
 ```
 
-Les commandes `/create_agent`, `/create_team`, `/create_com_agents`, `/insert_template`, `/cherche_meilleure_action`
+Les commandes `/create_agent`, `/create_team`, `/create_parallel_team`, `/create_com_agents`, `/insert_template`, `/cherche_meilleure_action`
 et `/doc_sync` vivent uniquement dans `.claude/commands/` du kit : elles s'exécutent depuis le kit
 et ne sont jamais copiées dans les projets cibles, donc absentes de `templates/`.
 
@@ -137,7 +139,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v5.0** (2026-09-04) : renommé **VibeObs**, avec le dépôt GitHub et les chemins locaux alignés. `/create_projet` remplace `/create_projet_public` et peut créer un dépôt local, GitHub public ou GitHub privé ; le backup rclone et le template Netlify sont disponibles. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v5.1** (2026-09-04) : les équipes parallèles peuvent maintenant isoler chaque agent dans un worktree et une branche Git. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

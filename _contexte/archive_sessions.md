@@ -2,6 +2,29 @@
 <!-- Ce fichier contient les anciennes sessions de signals.md, archivées automatiquement par /close -->
 <!-- Format: chaque session est séparée par une ligne vide -->
 
+---
+
+# Session du 2026-09-04
+
+## Décisions prises
+- Le kit et le dépôt GitHub sont renommés VibeObs ; le remote local est `origin` vers `ServOMorph/VibeObs`.
+- `/create_projet_public` est remplacée par `/create_projet` (Git local ou GitHub public/privé).
+- Les backups rclone sont distribués comme template avec un remote explicite ; le template Netlify est ajouté.
+
+## Livrables produits ou modifiés
+- Documentation, contexte, zones et scripts de backup : références renommées vers VibeObs.
+- `.claude/commands/create_projet.md`, `templates/rclone_backup/` et `templates/netlify/` : création ou mise à jour prêtes à versionner.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` et `check_docs.py` passent après synchronisation documentaire.
+- EN ATTENTE : test Discord réel du correctif de file.
+
+## Prochaine étape exacte
+Autoriser le lancement temporaire du bot, envoyer deux notifications réelles, puis vérifier `queue.json` à `idle`.
+
+## Question bloquante pour la session suivante
+Autoriser le lancement temporaire du bot Discord pour ce test réel ?
+
 # Session du 2026-08-20
 
 ## Décisions prises
