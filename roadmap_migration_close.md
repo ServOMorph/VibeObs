@@ -49,7 +49,7 @@ corps générique kit porte des étapes kit-only qui planteraient un `/close` c�
 
 ---
 
-## Phase 3 — Rejouer `/update` sur Appli_TSA_SDI_TDAH [TODO]
+## Phase 3 — Rejouer `/update` sur Appli_TSA_SDI_TDAH [FAIT]
 
 **Préalable d'ordre (bloquant)** : `/update` (cible unique) fait deux commits git dans le repo cible
 (`backup:` puis `update:`) et `git add .claude/commands/`. Ne lancer qu'après :
@@ -58,9 +58,18 @@ corps générique kit porte des étapes kit-only qui planteraient un `/close` c�
 Sinon `/update` embarque du travail cible non lié sous des messages kit trompeurs, et estampille
 `DEPLOYMENTS.md` avec une version kit périmée.
 
-- [ ] `/update D:\ServOMorph\Appli_TSA_SDI_TDAH` depuis le kit.
-- [ ] Vérifier après coup : `start.md` et `close.md` intacts hors SPECIFICITES, marqueurs uniques,
-      `_contexte/` et `zones.md` non touchés, blocs projet préservés.
-- [ ] Mettre à jour la ligne d'Appli_TSA_SDI_TDAH dans `DEPLOYMENTS.md` (version kit + date).
+- [x] Préalable : migration Phase 2 non commitée dans la cible récupérée (commit `eef53e1` :
+      `close.md`/`start.md`/`discord_loop.md`/`on_close.md`) avant `/update`.
+- [x] `/update D:\ServOMorph\Appli_TSA_SDI_TDAH` depuis le kit (commit cible `00166dd`, poussé).
+- [x] Vérifié : `start.md`/`close.md` non touchés (déjà byte-identiques au kit), une seule paire de
+      marqueurs SPECIFICITES par fichier, `_contexte/` et `zones.md` intacts (git diff vide), commit
+      cible limité aux fichiers protocole. `create_memory.md` → version scopée par zone.
+- [x] Écart assumé : helper Ollama conservé dans `scripts/ollama_call.py` (pas de copie racine),
+      documenté dans `CLAUDE.md` § Spécificités projet ; `AGENTS.md`/`GEMINI.md` non touchés.
+- [x] Ligne d'Appli_TSA_SDI_TDAH dans `DEPLOYMENTS.md` → `v5.4 | 2026-09-06`.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer. Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
+
+---
+
+**Roadmap achevée (3/3).** Proposer l'archivage à l'utilisateur (accord explicite requis).

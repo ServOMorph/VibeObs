@@ -7,6 +7,9 @@
 - [P2|ouvert|source=kit] Relire la sous-section « Hooks de zone » de `20_guides/sessions_start_close.md` face aux sources canoniques (`start.md`/`close.md` étapes 3-bis/5-bis/2-bis/14-ter, `templates/on_start_TEMPLATE.md`, `templates/on_close_TEMPLATE.md`)
   - fait quand: la sous-section est confirmée fidèle aux numéros d'étape et au contrat des sections, ou corrigée
   - réf: DOCUMENTATION/20_guides/sessions_start_close.md, templates/on_start_TEMPLATE.md, templates/on_close_TEMPLATE.md
+- [P2|ouvert|source=kit] Documenter le principe : `/update` peut dévier d'une règle générique du kit quand le projet cible a un choix structurant incompatible (ex. helper Ollama dans `scripts/` vs racine) — ne pas forcer, documenter l'écart en `CLAUDE.md` § Spécificités projet, ne pas toucher `AGENTS.md`/`GEMINI.md` déjà présents
+  - fait quand: le principe figure dans un guide `DOCUMENTATION/` ou est explicitement écarté
+  - réf: .claude/commands/update.md, close kit 2026-09-06, Appli_TSA_SDI_TDAH commit 00166dd
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

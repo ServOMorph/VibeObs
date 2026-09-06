@@ -12,9 +12,9 @@
 - Rejouer la phase 2 de `create_com_agents` sur `D:\ServOMorph\Meuniers`.
   - fait quand: installation, échange agent↔racine et purge de message sont validés sur Meuniers.
   - réf: `roadmap_com_agents.md`.
-- Valider `/insert_template`, la mémoire scopée de `/create_memory`, et la conversion de `/create_agent`.
+- Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
   - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
-  - réf: `_contexte/signals_backlog_2026-09-04.md`.
+  - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `00166dd`).
 - Fiabiliser la substitution Windows de `/init_projet` puis la tester.
   - fait quand: un projet cible Windows est initialisé avec les placeholders correctement résolus.
   - réf: `.claude/commands/init_projet.md`.
@@ -27,9 +27,6 @@
 - Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
   - fait quand: les premiers cycles `start`/`close` de `ONBOARD` et `RETOURS` sont validés sans écriture sur `main`.
   - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
-- Exécuter la Phase 3 de `roadmap_migration_close.md` (`/update D:\ServOMorph\Appli_TSA_SDI_TDAH` puis MAJ ligne `DEPLOYMENTS.md`), après le `/close` du kit et le `/close` d'Appli_TSA_SDI_TDAH.
-  - fait quand: `/update` sur repos propres laisse `start.md`/`close.md` intacts hors SPECIFICITES, marqueurs uniques, `_contexte/` non touché.
-  - réf: `roadmap_migration_close.md` Phase 3.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -42,25 +39,21 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-06
 
 ## Décisions prises
-- Migration de `close.md` vers le mécanisme SPECIFICITES pilotée par `roadmap_migration_close.md` ; Phase 3 (`/update`) reportée après les `/close` des deux repos (ordre : `/close` kit -> `/close` cible -> `/update`).
-- `/start` et `/close` exposent quatre hooks de zone opt-in ; l'étape 10 de `close.md` (check_kit.py) devient conditionnelle à la présence du script.
+- L'écart `/create_memory` signalé depuis Appli_TSA_SDI_TDAH était un déploiement périmé (cible v3.1), pas un bug kit : `create_memory.md` du kit porte la résolution d'alias de zone depuis v3.31 (2026-08-18). Résolu par `/update`.
+- `/update` sur Appli_TSA_SDI_TDAH : helper Ollama conservé dans `scripts/ollama_call.py` (pas racine), écart documenté dans `CLAUDE.md` § Spécificités projet ; pas de copie `ollama_call.py` racine, `AGENTS.md`/`GEMINI.md` non touchés (cohérence préservée).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md` + `templates/.claude/commands/close.md` : hooks étapes 2-bis (Pré-synthèse) et 14-ter (Fin) ; étape 10 check_kit.py conditionnelle ; renvois « étape 11 » -> « étape 12 ».
-- `.claude/commands/start.md` + `templates/.claude/commands/start.md` : hooks étapes 3-bis (Pré-synthèse) et 5-bis (Post-synthèse).
-- `templates/on_start_TEMPLATE.md`, `templates/on_close_TEMPLATE.md` : contrats des sections de hook (opt-in).
-- `DOCUMENTATION/20_guides/sessions_start_close.md` : sous-section « Hooks de zone ».
-- `roadmap_migration_close.md` : nouvelle roadmap 3 phases ; Phases 1-2 [FAIT].
-- Hors commit kit — Appli_TSA_SDI_TDAH : `close.md` migré (corps générique = templates verbatim, comportement projet en SPECIFICITES).
+- `DEPLOYMENTS.md` (kit, gitignoré) : ligne Appli_TSA_SDI_TDAH → v5.4 / 2026-09-06.
+- `roadmap_migration_close.md` : Phase 3 [FAIT] ; roadmap achevée 3/3, archivage proposé à l'utilisateur.
+- Hors commit kit — Appli_TSA_SDI_TDAH : commit `eef53e1` (migration Phase 2 non commitée récupérée : `close.md`/`start.md`/`discord_loop.md`/`on_close.md`) + commit `00166dd` (`/update` : `create_memory.md` scopé + `CLAUDE.md` fusionné kit v5.4), poussés sur `main`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : corps génériques `start.md`/`close.md` de la cible byte-identiques aux `templates/` du kit, marqueurs SPECIFICITES uniques (contrôle Python).
-- VALIDE : `check_kit.py` exit 0 sur la paire miroir `close.md` / `templates/close.md`.
-- EN ATTENTE : `/update` sur repos propres (Phase 3) — non exécuté, prématuré tant que kit et cible ne sont pas commités.
+- VALIDE : `/update` sur repo cible propre — `_contexte/` et `zones.md` intacts (git diff vide), une seule paire de marqueurs SPECIFICITES par fichier, commit limité aux fichiers protocole.
+- VALIDE : corps génériques `start.md`/`close.md` de la cible déjà byte-identiques au kit (Phase 2) → `/update` no-op sur ces deux fichiers.
+- EN ATTENTE : `/create_memory <alias_zone> <contenu>` jamais exercé en exécution réelle.
 
 ## Prochaine étape exacte
-1. `/close` dans Appli_TSA_SDI_TDAH pour committer la migration cible (`start.md` + `close.md` + `discord_loop.md` + `on_close.md` + `.gitignore` + suppression `rclone_backup_files.txt`).
-2. Session kit ultérieure : Phase 3 de `roadmap_migration_close.md`.
+Exercer `/create_memory <alias_zone> <contenu>` en réel sur Appli_TSA_SDI_TDAH (crée `<zone>/_contexte/memory.md`, confirme le routage), puis reprendre le backlog P1.
 
 ## Question bloquante pour la session suivante
 Aucune.

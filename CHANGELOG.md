@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.5 — 2026-09-06
+
+### Modifié
+- `/update` rejoué sur Appli_TSA_SDI_TDAH (kit v3.1 → v5.4) : `create_memory.md` scopé par zone déployé (correctif de l'écart signalé — la cible était sur une version antérieure à v3.31), `CLAUDE.md` fusionné sur le corps kit v5.4 (`### Inbox gateway` déplacée en SPECIFICITES), `start.md`/`close.md` déjà byte-identiques au kit (no-op).
+- Écart de `/update` assumé et acté : quand le projet cible a un choix structurant incompatible avec une règle générique (ici : helper Ollama dans `scripts/` et non à la racine), ne pas forcer — documenter l'écart dans `CLAUDE.md` § Spécificités projet, ne pas copier le fichier générique, ne pas toucher `AGENTS.md`/`GEMINI.md` déjà présents.
+- `roadmap_migration_close.md` : Phase 3 [FAIT], roadmap achevée (3/3), archivage proposé.
+- `DEPLOYMENTS.md` : Appli_TSA_SDI_TDAH → v5.4 / 2026-09-06.
+
 ## v5.4 — 2026-09-06
 
 ### Ajouté
