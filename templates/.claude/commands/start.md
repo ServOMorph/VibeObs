@@ -40,6 +40,12 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    > `contexte.md` peut être chargé à la demande plutôt que systématiquement.
    > En cas de doute : le charger.
 
+3-bis. **Hook de zone — Pré-synthèse.** Si `<dossier>/_contexte/on_start.md` existe : le charger et
+   exécuter les instructions de sa section « Pré-synthèse » si elle est présente. Rien à faire si le
+   fichier est absent ou si cette section n'y figure pas. Non bloquant : en cas d'échec d'une
+   commande du hook, le signaler en une ligne et poursuivre `/start`. Contrat des sections :
+   `on_start_TEMPLATE.md` du kit.
+
 4. Afficher le contenu intégral de `signals.md` (sans résumé ni reformulation).
 
 4b. Pour chaque action listée dans `signals.md` qui contient un champ `réf:`, lire les fichiers
@@ -50,6 +56,11 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     et le point d'attention immédiat.
 
 5. Afficher en fin de réponse : 🎉🎉🎉
+
+5-bis. **Hook de zone — Post-synthèse.** Si `<dossier>/_contexte/on_start.md` existe et contient une
+   section « Post-synthèse » : l'exécuter maintenant, juste après l'affichage de l'étape 5. Rien à
+   faire sinon. Non bloquant. Un hook Post-synthèse peut légitimement ne pas rendre la main
+   (enchaînement d'une autre commande) — c'est permis.
 
 <!-- SPECIFICITES PROJET : DEBUT (préservé par /update, ne pas toucher hors de ce bloc) -->
 <!-- Convention : toute règle liée à une étape précise de la Procédure ci-dessus doit la

@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.4 — 2026-09-06
+
+### Ajouté
+- Hooks de zone opt-in pour `/start` et `/close` : un fichier `<dossier_zone>/_contexte/on_start.md` ou `on_close.md` peut porter des sections `## Pré-synthèse` / `## Post-synthèse` (start, étapes 3-bis et 5-bis) et `## Pré-synthèse` / `## Fin` (close, étapes 2-bis et 14-ter), exécutées aux points d'ancrage correspondants. Absence de fichier ou de section : cycle inchangé. Non bloquant.
+- `templates/on_start_TEMPLATE.md` et `templates/on_close_TEMPLATE.md` : contrats des sections de hook.
+
+### Modifié
+- `close.md` étape 10 (`python scripts/check_kit.py`) : exécutée uniquement si `scripts/check_kit.py` existe à la racine du projet, sinon saut direct à l'étape 12. Un `close.md` déployé dans un projet peut désormais aligner son corps générique sur le kit sans référencer de commande inexistante. Renvois « étape 11 » corrigés en « étape 12 ».
+- `DOCUMENTATION/20_guides/sessions_start_close.md` : sous-section « Hooks de zone ».
+
 ## v5.3 — 2026-09-04
 
 ### Modifié

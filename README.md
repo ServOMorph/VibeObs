@@ -6,7 +6,7 @@ Stack : **Claude Code** (agent IA), **Markdown** (fichiers de contexte), **Pytho
 
 Résout le problème structurel du vibecoding : **le contexte est perdu à chaque nouvelle conversation**. Sans protocole, chaque session repart de zéro, les décisions prises ne sont pas tracées, et l'IA ne sait pas où en est le projet.
 
-État actuel : le kit v5.3 dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) ; les fichiers d’instructions Claude, agents et Gemini peuvent être harmonisés à l’identique après choix explicite de leur source canonique.
+État actuel : le kit v5.4 ajoute des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) ; il dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) et les fichiers d’instructions Claude, agents et Gemini peuvent être harmonisés à l’identique après choix explicite de leur source canonique.
 
 ## Ce que ça fait
 
@@ -110,6 +110,8 @@ VibeObs/
     ├── rclone_backup/                    # template de backup miroir Google Drive via rclone
     ├── agent_role_TEMPLATE.md            # template de charte pour /create_agent
     ├── roadmap_TEMPLATE.md               # template pour chantiers multi-phases
+    ├── on_start_TEMPLATE.md              # contrat des sections du hook de zone _contexte/on_start.md
+    ├── on_close_TEMPLATE.md              # contrat des sections du hook de zone _contexte/on_close.md
     ├── AGENTS.md                         # équivalent CLAUDE.md pour agents non-Claude (Codex, ChatGPT...), sur confirmation
     └── GEMINI.md                         # équivalent CLAUDE.md spécifique à Gemini, sur confirmation
     ├── control_PC/                       # template local de contrôle visuel, macros et workflows par application
@@ -141,7 +143,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v5.3** (2026-09-04) : les équipes parallèles peuvent isoler chaque agent dans un worktree et une branche Git ; les instructions Claude, agents et Gemini peuvent être alignées à l’identique après confirmation. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v5.4** (2026-09-06) : `/start` et `/close` acceptent des hooks de zone opt-in (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) exécutés à des points d'ancrage définis ; l'étape 10 de `close.md` (contrôle `check_kit.py`) est conditionnelle à la présence du script. Les équipes parallèles peuvent isoler chaque agent dans un worktree et une branche Git ; les instructions Claude, agents et Gemini peuvent être alignées à l’identique après confirmation. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

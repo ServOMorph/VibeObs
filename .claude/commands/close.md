@@ -23,6 +23,11 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 
 2. Résoudre le dossier réel via la table (ou utiliser le working directory si pas d'argument).
 
+2-bis. **Hook de zone — Pré-synthèse.** Si `<dossier>/_contexte/on_close.md` existe : le charger et
+   exécuter les instructions de sa section « Pré-synthèse » si elle est présente. Rien à faire sinon.
+   Non bloquant : en cas d'échec d'une commande du hook, le signaler en une ligne et poursuivre la
+   clôture. Contrat des sections : `on_close_TEMPLATE.md` du kit.
+
 3. Produire une synthèse de session (< 25 lignes) au format suivant :
 
 ```
@@ -107,14 +112,15 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
      ```
    - Ne pas modifier les entrées existantes.
 
-10. Avant de committer, exécuter le contrôle d'intégrité mécanique :
+10. Avant de committer, si `scripts/check_kit.py` existe à la racine du projet, exécuter le
+   contrôle d'intégrité mécanique (sinon passer directement à l'étape 12) :
    ```bash
    python scripts/check_kit.py
    ```
    **Règle :** un écart signalé bloque le commit tant qu'il n'est pas traité ou explicitement écarté.
-   
-   Si le contrôle passe (exit code 0) : continuer à l'étape 11.
-   Si le contrôle échoue (exit code 1) : 
+
+   Si le contrôle passe (exit code 0) : continuer à l'étape 12.
+   Si le contrôle échoue (exit code 1) :
    - Lister les écarts détectés
    - Traiter chaque écart ou le consigner explicitement comme "écart connu à corriger en Phase X"
    - Ne pas committer tant que des écarts non consignés persistent
@@ -147,6 +153,10 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     échoue (pas de remote tracking, conflit, réseau, etc.) : afficher l'erreur telle quelle dans
     le bilan de l'étape 15, ne pas tenter de résolution automatique (pas de force push, pas de
     pull/rebase automatique).
+
+14-ter. **Hook de zone — Fin.** Si `<dossier>/_contexte/on_close.md` existe et contient une section
+    « Fin » : l'exécuter maintenant. Rien à faire sinon. Non bloquant. S'exécute même si le `git
+    push` de l'étape 14 a échoué : une sauvegarde de fin de session ne dépend pas du push.
 
 15. Afficher un bilan des résidus non commités :
     ```bash
