@@ -85,17 +85,40 @@ templates), pas seulement à un template particulier.
    l'ajouter à une liste **bloqués** avec le token en cause. Ne jamais
    deviner une valeur de substitution.
 
-7bis. Seulement pour `rclone_backup`, résoudre `{{RCLONE_REMOTE}}` avant toute écriture :
-   - Demander si l'utilisateur veut utiliser un remote rclone déjà configuré ou connecter un
-     nouveau compte Google.
-   - Compte existant : exécuter `rclone listremotes`, présenter les remotes avec une numérotation
-     et demander le numéro choisi. Utiliser le nom du remote correspondant.
-   - Nouveau compte : demander le nom logique du remote (par exemple `rayonne_toi_drive`), puis
-     annoncer que l'authentification Google ouvrira un navigateur et attendre une confirmation explicite.
-     Exécuter seulement alors `rclone config create <remote> drive`. L'utilisateur choisit son compte
-     Google dans le navigateur. Ne poursuivre que lorsque la commande a réussi.
-   - Écrire le remote retenu dans `rclone_backup.json`. Le choix est propre au projet ; `/close`
-     ne doit jamais lancer d'authentification ni demander un compte.
+7bis. Seulement pour `rclone_backup`, résoudre `{{RCLONE_REMOTE}}` avant toute écriture.
+   **Règle : un remote rclone est dédié à un seul projet par défaut. Un partage entre projets
+   n'est accepté que s'il est déclaré explicitement ici (voir `c`) ; il est alors tracé au
+   registre. Toute réutilisation non déclarée est refusée.**
+
+   a. Charger la section « Remotes rclone » de `<racine du kit>/DEPLOYMENTS.md`. En extraire la
+      liste des remotes déjà attribués à un projet autre que la cible (le registre fait foi).
+
+   b. Demander si l'utilisateur veut réutiliser un remote déjà configuré ou connecter un nouveau
+      compte Google.
+
+   c. Remote existant : exécuter `rclone listremotes`. Présenter, avec une numérotation, les
+      remotes absents de la liste extraite en `a` (réutilisables sans question). Un remote déjà
+      attribué à la cible elle-même (ré-insertion) est accepté tel quel. Si l'utilisateur désigne
+      un remote déjà attribué à un **autre** projet (par son nom, ou un numéro d'une liste complète
+      qu'il aurait) : ne pas l'accepter d'office. Rappeler la règle, puis demander une confirmation
+      explicite de partage assumé entre la cible et le(s) projet(s) déjà titulaire(s). Sans
+      confirmation explicite : refuser, rediriger vers la connexion d'un nouveau compte. Avec
+      confirmation : accepter le remote et marquer les lignes registre comme partagées en `f`.
+
+   d. Nouveau compte : demander le nom logique du remote (convention
+      `<nom_projet_en_minuscules>_drive`). Vérifier qu'il n'existe ni dans `rclone listremotes` ni
+      dans le registre ; sinon en redemander un autre. Annoncer que l'authentification Google
+      ouvrira un navigateur et attendre une confirmation explicite. Exécuter seulement alors
+      `rclone config create <remote> drive`. L'utilisateur choisit son compte Google dans le
+      navigateur. Ne poursuivre qu'au succès de la commande.
+
+   e. Écrire le remote retenu dans `rclone_backup.json`. Le choix est propre au projet ; `/close`
+      ne doit jamais lancer d'authentification ni demander un compte.
+
+   f. Mettre à jour la section « Remotes rclone » de `<racine du kit>/DEPLOYMENTS.md` : ajouter ou
+      corriger la ligne `| <nom_projet> | <remote> | <compte Google si connu> | <DATE> | <note> |`.
+      Partage assumé confirmé en `c` : renseigner la note `partagé: <projetA> + <projetB>` sur la
+      ligne de chaque projet concerné.
 
 ## [ECRITURE] — toutes les écritures groupées
 

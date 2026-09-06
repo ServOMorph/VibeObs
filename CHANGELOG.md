@@ -3,6 +3,29 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.7 — 2026-09-06
+
+### Ajouté
+- Remotes rclone dédiés créés : `vibeobs_drive` (compte servomorph14@gmail.com, backup du kit) et `sereniatech_drive` (compte sereniatech33@gmail.com, script `SérénIATech_dev/ClaudeCode/backup_drive.py`, dépôt séparé). Registre « Remotes rclone » de `DEPLOYMENTS.md` finalisé : 4 lignes, `Rayonne_Toi` + `Appli_TSA_SDI_TDAH` marqués `partagé:` sur `rayonne_toi_drive`.
+
+### Corrigé
+- Bug multicompte rclone : toutes les sauvegardes de projets atterrissaient dans le compte rayonnetoi@gmail.com. Chaque mécanisme est repointé vers son compte dédié. Données mal placées dans `rayonne_toi_drive:BackUps/` migrées puis purgées : `VibeObs/` (copie + `rclone check` 0 différence vers `vibeobs_drive`), `BACKUPS-SerenIATech_dev/` et `claude-vibecoding-kit/` (purge directe — `sereniatech_drive` porte déjà un backup plus complet). `claude-vibecoding-kit/` également purgé de `sereniatech_drive`. État final `rayonne_toi_drive:BackUps/` = `Rayonne_Toi` + `Appli_TSA_SDI_TDAH` (partage assumé).
+- Remote rclone `googledrive:` (doublon du compte rayonnetoi@gmail.com, orphelin après repointage) supprimé.
+
+### Retiré
+- `roadmap_rclone_multicompte.md` → `_archives/` (3 phases achevées).
+
+## v5.6 — 2026-09-06
+
+### Ajouté
+- Registre « Remotes rclone » dans `DEPLOYMENTS.md` (kit) : une ligne par projet sauvegardé vers Google Drive (template `rclone_backup`, backup du kit, ou script propre au projet), `projet → remote → compte Google`, avec note `partagé:` quand un compte est assumé commun à plusieurs projets.
+
+### Modifié
+- `rclone_backup` : un remote rclone est dédié à un seul projet par défaut. `/insert_template` (étape 7bis réécrite a→f) lit le registre, masque les remotes déjà attribués à un autre projet et les refuse — sauf partage explicitement confirmé par l'opérateur, alors tracé `partagé: A + B` sur la ligne de chaque projet. Le remote retenu est écrit dans `rclone_backup.json` puis dans le registre. `/create_projet` (bloc rclone_backup) et `/init_projet` (Q4bis) délèguent à ce contrôle.
+- `/init_projet` étape 4bis : la destination annoncée n'est plus codée en dur `googledrive:` mais `<remote de rclone_backup.json>`.
+- `templates/rclone_backup/README.md` : règle « dédié par défaut, partage déclaré ». `templates/rclone_backup/analysis/garde_fou_collision.md` : 5 cas verrouillés du garde-fou (dont partage explicitement déclaré).
+- Backup du kit repointé : `scripts/backup_file.py` (destination par défaut) et `close.md` étape 14bis passent de `googledrive:` (compte rayonnetoi@gmail.com) au remote dédié `vibeobs_drive` (compte servomorph14@gmail.com). Remote `vibeobs_drive` créé le 2026-09-06.
+
 ## v5.5 — 2026-09-06
 
 ### Modifié

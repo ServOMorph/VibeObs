@@ -7,6 +7,12 @@
 - [P2|ouvert|source=kit] Relire la sous-section « Hooks de zone » de `20_guides/sessions_start_close.md` face aux sources canoniques (`start.md`/`close.md` étapes 3-bis/5-bis/2-bis/14-ter, `templates/on_start_TEMPLATE.md`, `templates/on_close_TEMPLATE.md`)
   - fait quand: la sous-section est confirmée fidèle aux numéros d'étape et au contrat des sections, ou corrigée
   - réf: DOCUMENTATION/20_guides/sessions_start_close.md, templates/on_start_TEMPLATE.md, templates/on_close_TEMPLATE.md
+- [P2|ouvert|source=kit] `check_docs.py` échoue : « Journal non append-only : le commit 26b9cdd4 a modifié des lignes existantes » — écart préexistant hérité, sans lien avec les sessions rclone
+  - fait quand: `python scripts/check_docs.py` repasse (journal corrigé ou règle du contrôle ajustée), ou l'écart est acté définitivement comme toléré
+  - réf: scripts/check_docs.py, DOCUMENTATION/30_decisions/journal.md, commit 26b9cdd4
+- [P2|ouvert|source=kit] Décider si la règle rclone « un remote = un projet, partage déclaré et tracé » mérite une entrée de base de connaissances (guide backup ou décision) et une ligne d'INDEX
+  - fait quand: entrée créée dans `DOCUMENTATION/` (ou décision explicite de ne pas documenter), face aux sources `insert_template.md` étape 7bis, `templates/rclone_backup/README.md`, `templates/rclone_backup/analysis/garde_fou_collision.md`
+  - réf: .claude/commands/insert_template.md, templates/rclone_backup/README.md, _archives/roadmap_rclone_multicompte.md
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

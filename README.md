@@ -6,7 +6,7 @@ Stack : **Claude Code** (agent IA), **Markdown** (fichiers de contexte), **Pytho
 
 Résout le problème structurel du vibecoding : **le contexte est perdu à chaque nouvelle conversation**. Sans protocole, chaque session repart de zéro, les décisions prises ne sont pas tracées, et l'IA ne sait pas où en est le projet.
 
-État actuel : le kit v5.5 offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) ; il dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) et les fichiers d’instructions Claude, agents et Gemini peuvent être harmonisés à l’identique après choix explicite de leur source canonique.
+État actuel : le kit v5.7 impose un remote rclone dédié par projet (compte Google distinct, partage entre projets déclaré et tracé au registre) ; il offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) ; il dispose d'un pilote d'équipe parallèle dans `Appli_TSA_SDI_TDAH` (`TESTS` / `ONBOARD` / `RETOURS`) et les fichiers d’instructions Claude, agents et Gemini peuvent être harmonisés à l’identique après choix explicite de leur source canonique.
 
 ## Ce que ça fait
 
@@ -143,7 +143,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v5.5** (2026-09-06) : `/start` et `/close` acceptent des hooks de zone opt-in (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) exécutés à des points d'ancrage définis ; l'étape 10 de `close.md` (contrôle `check_kit.py`) est conditionnelle à la présence du script. `/update` sait dévier d'une règle générique quand le projet cible a un choix structurant incompatible (écart documenté en SPECIFICITES, `AGENTS.md`/`GEMINI.md` non touchés). Les équipes parallèles peuvent isoler chaque agent dans un worktree et une branche Git ; les instructions Claude, agents et Gemini peuvent être alignées à l’identique après confirmation. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
+Kit **v5.7** (2026-09-06) : un remote rclone est dédié à un seul projet (compte Google distinct par projet) ; `/insert_template` (étape 7bis), `/create_projet` et `/init_projet` lisent le registre « Remotes rclone » de `DEPLOYMENTS.md` et refusent un remote déjà attribué à un autre projet sauf partage explicitement déclaré et tracé `partagé: A + B`. `/start` et `/close` acceptent des hooks de zone opt-in (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) exécutés à des points d'ancrage définis ; l'étape 10 de `close.md` (contrôle `check_kit.py`) est conditionnelle à la présence du script. `/update` sait dévier d'une règle générique quand le projet cible a un choix structurant incompatible (écart documenté en SPECIFICITES, `AGENTS.md`/`GEMINI.md` non touchés). Les équipes parallèles peuvent isoler chaque agent dans un worktree et une branche Git ; les instructions Claude, agents et Gemini peuvent être alignées à l’identique après confirmation. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet.
 
 ## Vérifier le lanceur Ollama
 

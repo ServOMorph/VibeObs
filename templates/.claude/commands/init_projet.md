@@ -31,8 +31,11 @@ Initialiser le protocole vibecoding dans le projet cible à partir de ce kit de 
      /close (miroir via rclone, dans BackUps/<nom_du_dossier>/) ? (oui/non)" (Q4bis). Un projet
      sans git n'a aucune protection contre la perte de travail ; ce backup en tient lieu.
      Si "oui" à Q4bis : noter le nom du dossier projet (nom de `$ARGUMENTS`) comme destination.
-     Puis appliquer la collecte de compte de `[COLLECTE]` de `/insert_template` pour choisir ou
-     connecter le remote Google Drive, et conserver sa valeur dans `<rclone_remote>`.
+     Puis appliquer l'étape 7bis de `/insert_template` pour choisir ou connecter le remote Google
+     Drive (règle : un remote dédié par projet par défaut, partage entre projets seulement s'il est
+     déclaré explicitement ; contrôle anti-collision sur le registre « Remotes rclone » de
+     `<kit>/DEPLOYMENTS.md` ; écriture du remote retenu dans ce registre), et conserver sa valeur
+     dans `<rclone_remote>`.
 5. Première zone de ce projet, ou zone supplémentaire ?
    - Si supplémentaire : `.claude/commands/start.md` et `close.md` existent déjà.
      Ajouter une ligne `{{ALIAS}} | {{RACINE}}` à leur table des zones au lieu de copier ces fichiers.
@@ -113,7 +116,7 @@ cette exécution (pas en cas de zone supplémentaire, Q5) :
      ```powershell
      python "{{RACINE}}\backup_project.py" "{{RACINE}}" "{{ALIAS}}"
      ```
-   - Le dossier sera synchronisé (miroir) vers `googledrive:BackUps/{{ALIAS}}/`.
+   - Le dossier sera synchronisé (miroir) vers `<remote de rclone_backup.json>:BackUps/{{ALIAS}}/`.
    - Si rclone échoue : afficher l'erreur telle quelle, ne pas bloquer la clôture.
    ```
 

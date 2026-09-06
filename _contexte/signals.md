@@ -3,6 +3,12 @@
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
+- Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (partagé avec `SérénIATech_dev`, non déclaré au registre « Remotes rclone »).
+  - fait quand: le remote de backup de `Meuniers` est identifié, sa ligne registre créée dans `DEPLOYMENTS.md` (avec `partagé:` si assumé) ou `Meuniers` repointé vers un compte dédié.
+  - réf: `DEPLOYMENTS.md` § Remotes rclone ; `_archives/roadmap_rclone_multicompte.md`.
+- Exécuter le backup réel de `SérénIATech_dev` vers `sereniatech_drive` et vérifier les `/close` des projets partageant `rayonne_toi_drive`.
+  - fait quand: `tests_manuels.md` sections « rclone multicompte » toutes validées et retirées.
+  - réf: `tests_manuels.md`.
 - Valider le correctif `templates/discord_com` en conditions réelles : deux notifications consécutives reçues et file finale `idle`.
   - fait quand: le bot local reçoit puis transmet deux notifications réelles sans perte.
   - réf: `templates/discord_com/`, `discord_com/` local (non versionné).
@@ -34,26 +40,31 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 ## Garde-fous permanents
 - Secrets Discord uniquement dans `.env` gitignoré ; vérifier `git check-ignore` et `git status` avant un commit qui touche `discord_com/`.
 - Écriture dans `control_pc.sqlite` via Python `sqlite3` paramétré, jamais par `INSERT` shell.
+- rclone : un remote = un projet, compte Google dédié par projet. Partage entre projets seulement s'il est déclaré explicitement à l'insertion du template et tracé `partagé: A + B` dans `DEPLOYMENTS.md` § Remotes rclone. Remotes actifs : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33), `rayonne_toi_drive` (rayonnetoi — partagé Rayonne_Toi + Appli_TSA_SDI_TDAH).
 
 ## Dernière session
 # Session du 2026-09-06
 
 ## Décisions prises
-- L'écart `/create_memory` signalé depuis Appli_TSA_SDI_TDAH était un déploiement périmé (cible v3.1), pas un bug kit : `create_memory.md` du kit porte la résolution d'alias de zone depuis v3.31 (2026-08-18). Résolu par `/update`.
-- `/update` sur Appli_TSA_SDI_TDAH : helper Ollama conservé dans `scripts/ollama_call.py` (pas racine), écart documenté dans `CLAUDE.md` § Spécificités projet ; pas de copie `ollama_call.py` racine, `AGENTS.md`/`GEMINI.md` non touchés (cohérence préservée).
+- rclone multicompte : un remote = un projet, compte Google dédié par projet ; partage entre projets uniquement si déclaré à l'insertion (tracé `partagé: A + B` dans `DEPLOYMENTS.md`).
+- `Appli_TSA_SDI_TDAH` partage volontairement `rayonne_toi_drive` avec `Rayonne_Toi` : état final `rayonne_toi_drive:BackUps/` = `Rayonne_Toi` + `Appli_TSA_SDI_TDAH` (écart assumé vs texte Phase 3 de la roadmap).
+- `BACKUPS-SerenIATech_dev` et `claude-vibecoding-kit` sur le compte rayonnetoi : purge directe (sereniatech_drive a déjà un backup plus complet, pas de fusion).
 
 ## Livrables produits ou modifiés
-- `DEPLOYMENTS.md` (kit, gitignoré) : ligne Appli_TSA_SDI_TDAH → v5.4 / 2026-09-06.
-- `roadmap_migration_close.md` : Phase 3 [FAIT] ; roadmap achevée 3/3, archivage proposé à l'utilisateur.
-- Hors commit kit — Appli_TSA_SDI_TDAH : commit `eef53e1` (migration Phase 2 non commitée récupérée : `close.md`/`start.md`/`discord_loop.md`/`on_close.md`) + commit `00166dd` (`/update` : `create_memory.md` scopé + `CLAUDE.md` fusionné kit v5.4), poussés sur `main`.
+- Kit durci : `insert_template.md` (7bis a→f), `create_projet.md`, `init_projet.md` (+miroir), `templates/rclone_backup/README.md` + `analysis/garde_fou_collision.md` (5 cas).
+- Backup kit repointé : `scripts/backup_file.py` + `close.md` 14bis → `vibeobs_drive`.
+- Remotes créés : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33) ; `googledrive:` supprimé. `DEPLOYMENTS.md` registre finalisé (gitignoré).
+- Données migrées puis purgées du compte rayonnetoi : `VibeObs/` (copy+check → `vibeobs_drive`), `BACKUPS-SerenIATech_dev/`, `claude-vibecoding-kit/` ; `claude-vibecoding-kit/` aussi purgé de `sereniatech_drive`.
+- `SérénIATech_dev/ClaudeCode/backup_drive.py` repointé → `sereniatech_drive` (dépôt séparé, non commité ici).
+- `roadmap_rclone_multicompte.md` → `_archives/` (3/3 phases FAIT).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/update` sur repo cible propre — `_contexte/` et `zones.md` intacts (git diff vide), une seule paire de marqueurs SPECIFICITES par fichier, commit limité aux fichiers protocole.
-- VALIDE : corps génériques `start.md`/`close.md` de la cible déjà byte-identiques au kit (Phase 2) → `/update` no-op sur ces deux fichiers.
-- EN ATTENTE : `/create_memory <alias_zone> <contenu>` jamais exercé en exécution réelle.
+- VALIDE : `vibeobs_drive` et `sereniatech_drive` sont des comptes distincts de rayonnetoi (empreintes `rclone about`).
+- VALIDE : migration `VibeObs/` — `rclone check` 0 différence avant purge.
+- EN ATTENTE : backup réel `SérénIATech_dev` → `sereniatech_drive` ; `/close` de `Rayonne_Toi` et `Appli_TSA_SDI_TDAH` (`tests_manuels.md`).
 
 ## Prochaine étape exacte
-Exercer `/create_memory <alias_zone> <contenu>` en réel sur Appli_TSA_SDI_TDAH (crée `<zone>/_contexte/memory.md`, confirme le routage), puis reprendre le backlog P1.
+Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (2 projets, non déclaré au registre). Puis reprendre backlog P1.
 
 ## Question bloquante pour la session suivante
 Aucune.

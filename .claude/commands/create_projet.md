@@ -123,14 +123,15 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     - le dossier source sera `<cible>` ; le miroir sera envoyé vers
       `<remote-rclone>:BackUps/<nom_projet>/` ; `.git`, `node_modules`, les environnements virtuels,
       `dist`, `build` et `__pycache__` seront exclus ;
-    - demander si l'utilisateur veut utiliser un remote rclone déjà configuré ou connecter un nouveau
-      compte Google. Pour un remote existant, présenter `rclone listremotes` avec une numérotation ;
-    - pour un nouveau compte, demander d'abord le nom logique du remote, puis annoncer clairement que
-      l'autorisation Google va ouvrir un navigateur et attendre une confirmation explicite avant de lancer
-      `rclone config create <remote> drive`. Ne jamais ouvrir cette connexion sans ce feu vert ;
-    - une fois l'autorisation terminée, le remote retenu est enregistré dans le fichier de configuration
-      `rclone_backup.json` livré avec le template. À chaque `/close`, la sauvegarde se lance avec ce compte
-      sans redemander de connexion. Si rclone échoue, afficher l'erreur sans bloquer la clôture.
+    - **un remote rclone est dédié à un seul projet par défaut ; un partage entre projets doit
+      être déclaré explicitement** : la collecte et le contrôle anti-collision du compte sont ceux
+      de l'étape 7bis de `/insert_template` (lecture du registre « Remotes rclone » de
+      `<kit>/DEPLOYMENTS.md`, refus d'un remote déjà attribué à un autre projet sauf partage
+      confirmé explicitement, connexion d'un nouveau compte Google avec feu vert explicite avant
+      `rclone config create`, écriture du remote retenu dans `rclone_backup.json` puis dans le
+      registre avec la note `partagé:` le cas échéant) ;
+    - à chaque `/close`, la sauvegarde se lance avec ce compte sans redemander de connexion. Si
+      rclone échoue, afficher l'erreur sans bloquer la clôture.
 
 ## [SORTIE]
 

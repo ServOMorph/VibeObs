@@ -183,6 +183,6 @@ documentation du kit avant le commit.
       ```powershell
       python "scripts/backup_file.py" "DEPLOYMENTS.md"
       ```
-    - Le fichier sera uploadé vers `googledrive:BackUps/VibeObs/` avec horodatage.
+    - Le fichier sera uploadé vers `vibeobs_drive:BackUps/VibeObs/` avec horodatage.
     - Si le kit n'est pas fermé, ou si rclone échoue : afficher l'erreur telle quelle, ne pas bloquer la clôture.
 <!-- SPECIFICITES PROJET : FIN -->
