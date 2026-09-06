@@ -2,7 +2,7 @@
 type: journal
 description: Journal append-only des décisions structurantes de la base de documentation
 tags: decisions, journal
-maj: 2026-08-21
+maj: 2026-09-06
 ---
 
 # Journal des décisions
@@ -18,3 +18,4 @@ Append-only : ajouter en bas, ne jamais réécrire une entrée. Format : `AAAA-M
 - 2026-08-21 — Bootstrap : INDEX.md + 10_concepts/ + 20_guides/ + 30_decisions/, frontmatter minimal (type, description, tags, maj), documents ≤ ~200 lignes.
 - 2026-09-04 — Qualité documentaire : `check_docs.py` est le gate mécanique de `/doc_sync` ; les informations durables issues des autres zones sont mises en file de triage à leur `/close`, puis publiées uniquement après validation utilisateur.
 - 2026-09-04 — Équipes parallèles : les agents code sont isolés par worktree et branche ; les intégrations restent soumises à une validation explicite afin d'éviter les collisions sur la branche principale.
+- 2026-09-06 — `/update` déviation assumée : quand le projet cible a un choix structurant incompatible avec une règle générique du kit (ex. helper Ollama dans `scripts/` vs racine), ne pas forcer — conserver le choix projet, documenter l'écart dans `CLAUDE.md` § Spécificités projet, ne pas toucher `AGENTS.md`/`GEMINI.md` déjà présents. Guide : `20_guides/mettre_a_jour_un_projet.md`.
