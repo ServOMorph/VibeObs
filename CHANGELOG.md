@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.9 — 2026-09-10
+
+### Corrigé
+- `templates/rclone_backup/backup_project.py` : `EXCLUDES` étendu aux artefacts régénérables (`test-results`, `playwright-report`, `.pytest_cache`, `.ruff_cache`, `.mypy_cache`, `coverage`, `htmlcov`, `.netlify`, `tmp`) — ils n'étaient plus filtrés et partaient vers Drive. Sorties console rendues tolérantes à l'encodage Windows cp1252 : `sys.stdout`/`sys.stderr.reconfigure(encoding="utf-8", errors="replace")` en tête de `main()` et `subprocess.run` rclone en `encoding="utf-8", errors="replace"`. Sans ce correctif, un chemin non-ASCII (dossiers Playwright avec `—`/`→`) faisait échouer le script en `UnicodeEncodeError` avant l'upload. Correctifs équivalents portés hors kit sur la copie vendored `Appli_TSA_SDI_TDAH/claude-vibecoding-kit/backup_project.py` (+ `test_backup_project.py`, 4 cas).
+
+### Modifié
+- Hook de zone « Fin » de `/close` : sous auto-mode, le classifieur de sécurité refuse tout `rclone copy` de secrets vers un cloud, sans être contournable par `permissions.allow`. Le hook backup se limite désormais à `--refresh-list` (manifeste tenu à jour) ; l'upload Drive devient une action manuelle hors session, tracée dans `tests_manuels.md` du projet. Appliqué à `Appli_TSA_SDI_TDAH/_contexte/on_close.md`.
+
 ## v5.8 — 2026-09-10
 
 ### Ajouté

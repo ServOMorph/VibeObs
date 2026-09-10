@@ -182,3 +182,7 @@
 - 2026-08-29 : `templates/roberto/` supprimé du kit (plus d'usage identifié, demande explicite utilisateur) — plus aucun template `roberto` disponible pour `/insert_template`. Son launcher `MACROS/`/`UI_WEB/` (pywebview, macros PC, capture écran, communication OpenCode) et `roadmap_workflow_quotidien.md` (Phases 3-5 ouvertes), sans équivalent dans `D:\ServOMorph\Roberto` (source `Roberto2` disparue du disque), déplacés vers ce projet plutôt que perdus — note laissée dans son `_contexte/signals.md`. `roadmap_template_roberto.md` archivée (`_archives/`, 5/5 phases FAIT).
 - 2026-08-23 : une équipe d'agents est toujours représentée par un coordinateur dans son propre dossier ; son `team.md` est le manifeste des membres directs et son alias est hiérarchique. Les messages et statuts ne circulent qu'entre un parent et ses enfants directs, sans communication latérale.
 - 2026-08-23 : Intercom est indépendant de Claude Code et sert de protocole partagé par Codex, Claude Code ou un autre agent. Les urgences sont relevées aux points de contrôle de l'agent ; un processus externe ne peut pas interrompre un appel d'outil déjà en cours.
+
+## Décisions archivées le 2026-09-10 (rotation contexte.md > 10 entrées)
+
+- 2026-09-04 : une roadmap achevée déclenche une proposition d'archivage à l'utilisateur ; l'archivage reste soumis à son accord explicite. Règle ajoutée au protocole et à sa documentation de session.

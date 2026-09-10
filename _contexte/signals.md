@@ -6,6 +6,12 @@
 - Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (partagé avec `SérénIATech_dev`, non déclaré au registre « Remotes rclone »).
   - fait quand: le remote de backup de `Meuniers` est identifié, sa ligne registre créée dans `DEPLOYMENTS.md` (avec `partagé:` si assumé) ou `Meuniers` repointé vers un compte dédié.
   - réf: `DEPLOYMENTS.md` § Remotes rclone (et § Templates installés : `Meuniers | rclone_backup | backup_project.py (racine)`) ; `_archives/roadmap_rclone_multicompte.md`.
+- Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
+  - fait quand: `on_close.md` d'Appli est commité via `/close` de sa zone, et un `python claude-vibecoding-kit/backup_project.py . --upload` réel a réussi.
+  - réf: `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin ; Appli commit `746afcd` (correctifs `backup_project.py`).
+- Décider si les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) doivent être portés aux copies vendored lignée `rclone sync`.
+  - fait quand: port effectué sur chaque copie, ou décision de non-port tracée.
+  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `Rayonne_Toi/claude-vibecoding-kit/rclone_backup/backup_project.py` ; `Meuniers/backup_project.py`.
 - Exercer `/insert_template` en réel et vérifier l'écriture de la ligne dans `DEPLOYMENTS.md` § Templates installés (couple absent → ajout, couple présent → pas de doublon).
   - fait quand: une insertion réelle a créé une ligne correcte, une ré-insertion n'a pas dupliqué.
   - réf: `.claude/commands/insert_template.md` étape `[SORTIE]` 9 ; `DEPLOYMENTS.md` § Templates installés.
@@ -44,28 +50,27 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Secrets Discord uniquement dans `.env` gitignoré ; vérifier `git check-ignore` et `git status` avant un commit qui touche `discord_com/`.
 - Écriture dans `control_pc.sqlite` via Python `sqlite3` paramétré, jamais par `INSERT` shell.
 - rclone : un remote = un projet, compte Google dédié par projet. Partage entre projets seulement s'il est déclaré explicitement à l'insertion du template et tracé `partagé: A + B` dans `DEPLOYMENTS.md` § Remotes rclone. Remotes actifs : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33), `rayonne_toi_drive` (rayonnetoi — partagé Rayonne_Toi + Appli_TSA_SDI_TDAH).
+- Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
 # Session du 2026-09-10
 
 ## Décisions prises
-- Traçage des templates installés : section « Templates installés » dans `DEPLOYMENTS.md` (kit, gitignoré), une ligne par couple (projet, template) — même régime que la section « Remotes rclone ».
-- Alimentation auto : `/insert_template` (étape `[SORTIE]` 9) écrit la ligne ; `/init_discord_mode` et `/create_projet` en héritent par délégation à cette procédure ; `/init_intercom` (nouvelle étape 6) écrit sa propre ligne.
-- Rétro-remplissage initial par scan de signature (profondeur 6, exclusion des copies de kit embarquées) — détection non exhaustive assumée.
+- L'upload Drive du hook « Fin » de `/close` ne peut pas être automatisé sous auto-mode : le classifieur de sécurité bloque tout `rclone copy` de secrets vers un cloud, quel que soit l'emballage du script. Le hook se limite à `--refresh-list` ; l'upload reste manuel hors session (tâche planifiée OS possible mais écartée).
+- Le classifieur d'auto-mode n'est pas un réglage local et n'est pas contourné par `permissions.allow` : non modifiable, non désactivé par allowlist.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/insert_template.md` : étape `[SORTIE]` 9 (écriture registre), récap 9→10.
-- `.claude/commands/init_intercom.md` : étape 6 (écriture registre), renum. 5→7.
-- `DEPLOYMENTS.md` : section « Templates installés » + 8 lignes rétro (gitignoré, non commité).
-- `CHANGELOG.md` : entrée v5.8.
+- `templates/rclone_backup/backup_project.py` : `EXCLUDES` étendu (`test-results`, `playwright-report`, `.pytest_cache`, `.ruff_cache`, `.mypy_cache`, `coverage`, `htmlcov`, `.netlify`, `tmp`) ; sorties console tolérantes à l'encodage (`sys.stdout/stderr.reconfigure` utf-8/replace) ; `subprocess.run` rclone en `encoding="utf-8", errors="replace"`. Commité par ce `/close`.
+- `Appli_TSA_SDI_TDAH/claude-vibecoding-kit/backup_project.py` + `test_backup_project.py` : mêmes correctifs (set `EXCLUDED_PARTS`) + 4 tests (4/4). Commités hors kit (Appli `746afcd`).
+- `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin : `--upload` retiré, rappel commande manuelle + trace `tests_manuels.md`. Non commité (dépôt Appli).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/init_discord_mode` et `/create_projet` délèguent déjà à la procédure `/insert_template` [SORTIE] → traçage hérité sans les modifier.
-- INVALIDE (partiel) : le scan ne détecte pas `control_PC`/`notification`/`overlay`/`parallel_agents` ; 2 projets injoignables (chemins morts `Open_Code_Apprentissage`, `claude-vibecoding-kit`).
-- EN ATTENTE : test réel d'une insertion `/insert_template` écrivant la ligne registre.
+- VALIDE : `--refresh-list` exit 0 avec chemins non-ASCII (`→`, accents) après `reconfigure` ; sans correctif, `PYTHONIOENCODING=cp1252` + `→` → exit 1. Run réel Appli : manifeste 374 → 222 lignes, junk filtré, tri et `\n` final préservés.
+- INVALIDE : « un script dédié appelé par `close.md` ferait l'upload tout seul » — bloqué par le classifieur, indépendant du nom du script.
+- EN ATTENTE : upload Drive réel d'Appli (manuel) ; port des correctifs aux copies vendored lignée `rclone sync` (`Rayonne_Toi`, `Meuniers`) non tranché.
 
 ## Prochaine étape exacte
-Exercer `/insert_template` en réel et vérifier l'écriture / non-duplication de la ligne « Templates installés ». Puis reprendre P1 (angle mort backup `meuniers/`).
+Reprendre P1 : angle mort backup `meuniers/`. Committer `on_close.md` d'Appli via `/close` de sa zone.
 
 ## Question bloquante pour la session suivante
 Aucune.

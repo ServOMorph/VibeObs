@@ -811,3 +811,29 @@ Ajouter une authentification (mot de passe) sur l'UI avant exposition prolongée
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-09-10
+
+## Décisions prises
+- Traçage des templates installés : section « Templates installés » dans `DEPLOYMENTS.md` (kit, gitignoré), une ligne par couple (projet, template) — même régime que la section « Remotes rclone ».
+- Alimentation auto : `/insert_template` (étape `[SORTIE]` 9) écrit la ligne ; `/init_discord_mode` et `/create_projet` en héritent par délégation à cette procédure ; `/init_intercom` (nouvelle étape 6) écrit sa propre ligne.
+- Rétro-remplissage initial par scan de signature (profondeur 6, exclusion des copies de kit embarquées) — détection non exhaustive assumée.
+
+## Livrables produits ou modifiés
+- `.claude/commands/insert_template.md` : étape `[SORTIE]` 9 (écriture registre), récap 9→10.
+- `.claude/commands/init_intercom.md` : étape 6 (écriture registre), renum. 5→7.
+- `DEPLOYMENTS.md` : section « Templates installés » + 8 lignes rétro (gitignoré, non commité).
+- `CHANGELOG.md` : entrée v5.8.
+
+## Hypothèses validées / invalidées
+- VALIDE : `/init_discord_mode` et `/create_projet` délèguent déjà à la procédure `/insert_template` [SORTIE] → traçage hérité sans les modifier.
+- INVALIDE (partiel) : le scan ne détecte pas `control_PC`/`notification`/`overlay`/`parallel_agents` ; 2 projets injoignables (chemins morts `Open_Code_Apprentissage`, `claude-vibecoding-kit`).
+- EN ATTENTE : test réel d'une insertion `/insert_template` écrivant la ligne registre.
+
+## Prochaine étape exacte
+Exercer `/insert_template` en réel et vérifier l'écriture / non-duplication de la ligne « Templates installés ». Puis reprendre P1 (angle mort backup `meuniers/`).
+
+## Question bloquante pour la session suivante
+Aucune.

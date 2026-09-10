@@ -13,6 +13,9 @@
 - [P2|ouvert|source=kit] Décider si la règle rclone « un remote = un projet, partage déclaré et tracé » mérite une entrée de base de connaissances (guide backup ou décision) et une ligne d'INDEX
   - fait quand: entrée créée dans `DOCUMENTATION/` (ou décision explicite de ne pas documenter), face aux sources `insert_template.md` étape 7bis, `templates/rclone_backup/README.md`, `templates/rclone_backup/analysis/garde_fou_collision.md`
   - réf: .claude/commands/insert_template.md, templates/rclone_backup/README.md, _archives/roadmap_rclone_multicompte.md
+- [P2|ouvert|source=kit] Décider si la limite « sous auto-mode le classifieur bloque tout upload cloud de secrets ; un hook `/close` Fin ne peut faire que `--refresh-list`, l'upload est manuel hors session » mérite une entrée de base de connaissances (guide sessions/hooks) et une ligne d'INDEX.
+  - fait quand: entrée créée ou mise à jour dans `DOCUMENTATION/` (ou décision explicite de ne pas documenter), face aux sources `templates/rclone_backup/backup_project.py`, `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin.
+  - réf: DOCUMENTATION/20_guides/sessions_start_close.md, templates/rclone_backup/backup_project.py
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

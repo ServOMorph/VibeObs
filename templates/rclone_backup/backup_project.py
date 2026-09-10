@@ -18,10 +18,25 @@ EXCLUDES = [
     ".venv/**",
     "dist/**",
     "build/**",
+    "test-results/**",
+    "playwright-report/**",
+    ".pytest_cache/**",
+    ".ruff_cache/**",
+    ".mypy_cache/**",
+    "coverage/**",
+    "htmlcov/**",
+    ".netlify/**",
+    "tmp/**",
 ]
 
 
 def main() -> int:
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
     if len(sys.argv) < 2:
         print("Usage: python backup_project.py <chemin_projet> [nom_dossier_drive]")
         return 1
@@ -52,7 +67,9 @@ def main() -> int:
         command += ["--exclude", pattern]
 
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Sauvegarde {project_path} -> {drive_dest}")
-    result = subprocess.run(command, capture_output=True, text=True)
+    result = subprocess.run(
+        command, capture_output=True, text=True, encoding="utf-8", errors="replace"
+    )
     if result.returncode != 0:
         print(f"ERREUR upload : {result.stderr.strip()}")
         return 1
