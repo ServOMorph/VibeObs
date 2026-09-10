@@ -130,7 +130,17 @@ templates), pas seulement à un template particulier.
 
 ## [SORTIE]
 
-9. Un seul récapitulatif :
+9. Mettre à jour le registre « Templates installés » de `<racine du kit>/DEPLOYMENTS.md`,
+   seulement si au moins un fichier a été créé à l'étape 8 :
+   - Couple `(<nom_projet>, <nom_template>)` absent du tableau → ajouter une ligne
+     `| <nom_projet> | <nom_template> | <destination relative à la racine du projet> | <DATE> | <note> |`.
+     `<destination>` = chemin de `<dossier_destination>` relatif à `<projet_cible>` ; note vide
+     par défaut (`rclone_backup` : `cf. section « Remotes rclone »`).
+   - Couple déjà présent → ne pas dupliquer la ligne ; corriger `Destination` ou `Note` si
+     elles ont changé, laisser `Inséré le` inchangé.
+   - Aucun fichier créé (template déjà entièrement présent, arrêt à l'étape 5) → ne rien écrire.
+
+10. Un seul récapitulatif :
    - Fichiers créés (compte, lien vers le dossier racine de destination).
    - Fichiers déjà présents et laissés intacts (liste, si non vide).
    - Fichiers bloqués par un placeholder inconnu (liste avec le token en

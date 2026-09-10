@@ -1,11 +1,14 @@
-# Signals — VibeObs (MAJ 2026-09-06)
+# Signals — VibeObs (MAJ 2026-09-10)
 
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
 - Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (partagé avec `SérénIATech_dev`, non déclaré au registre « Remotes rclone »).
   - fait quand: le remote de backup de `Meuniers` est identifié, sa ligne registre créée dans `DEPLOYMENTS.md` (avec `partagé:` si assumé) ou `Meuniers` repointé vers un compte dédié.
-  - réf: `DEPLOYMENTS.md` § Remotes rclone ; `_archives/roadmap_rclone_multicompte.md`.
+  - réf: `DEPLOYMENTS.md` § Remotes rclone (et § Templates installés : `Meuniers | rclone_backup | backup_project.py (racine)`) ; `_archives/roadmap_rclone_multicompte.md`.
+- Exercer `/insert_template` en réel et vérifier l'écriture de la ligne dans `DEPLOYMENTS.md` § Templates installés (couple absent → ajout, couple présent → pas de doublon).
+  - fait quand: une insertion réelle a créé une ligne correcte, une ré-insertion n'a pas dupliqué.
+  - réf: `.claude/commands/insert_template.md` étape `[SORTIE]` 9 ; `DEPLOYMENTS.md` § Templates installés.
 - Exécuter le backup réel de `SérénIATech_dev` vers `sereniatech_drive` et vérifier les `/close` des projets partageant `rayonne_toi_drive`.
   - fait quand: `tests_manuels.md` sections « rclone multicompte » toutes validées et retirées.
   - réf: `tests_manuels.md`.
@@ -43,28 +46,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - rclone : un remote = un projet, compte Google dédié par projet. Partage entre projets seulement s'il est déclaré explicitement à l'insertion du template et tracé `partagé: A + B` dans `DEPLOYMENTS.md` § Remotes rclone. Remotes actifs : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33), `rayonne_toi_drive` (rayonnetoi — partagé Rayonne_Toi + Appli_TSA_SDI_TDAH).
 
 ## Dernière session
-# Session du 2026-09-06
+# Session du 2026-09-10
 
 ## Décisions prises
-- rclone multicompte : un remote = un projet, compte Google dédié par projet ; partage entre projets uniquement si déclaré à l'insertion (tracé `partagé: A + B` dans `DEPLOYMENTS.md`).
-- `Appli_TSA_SDI_TDAH` partage volontairement `rayonne_toi_drive` avec `Rayonne_Toi` : état final `rayonne_toi_drive:BackUps/` = `Rayonne_Toi` + `Appli_TSA_SDI_TDAH` (écart assumé vs texte Phase 3 de la roadmap).
-- `BACKUPS-SerenIATech_dev` et `claude-vibecoding-kit` sur le compte rayonnetoi : purge directe (sereniatech_drive a déjà un backup plus complet, pas de fusion).
+- Traçage des templates installés : section « Templates installés » dans `DEPLOYMENTS.md` (kit, gitignoré), une ligne par couple (projet, template) — même régime que la section « Remotes rclone ».
+- Alimentation auto : `/insert_template` (étape `[SORTIE]` 9) écrit la ligne ; `/init_discord_mode` et `/create_projet` en héritent par délégation à cette procédure ; `/init_intercom` (nouvelle étape 6) écrit sa propre ligne.
+- Rétro-remplissage initial par scan de signature (profondeur 6, exclusion des copies de kit embarquées) — détection non exhaustive assumée.
 
 ## Livrables produits ou modifiés
-- Kit durci : `insert_template.md` (7bis a→f), `create_projet.md`, `init_projet.md` (+miroir), `templates/rclone_backup/README.md` + `analysis/garde_fou_collision.md` (5 cas).
-- Backup kit repointé : `scripts/backup_file.py` + `close.md` 14bis → `vibeobs_drive`.
-- Remotes créés : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33) ; `googledrive:` supprimé. `DEPLOYMENTS.md` registre finalisé (gitignoré).
-- Données migrées puis purgées du compte rayonnetoi : `VibeObs/` (copy+check → `vibeobs_drive`), `BACKUPS-SerenIATech_dev/`, `claude-vibecoding-kit/` ; `claude-vibecoding-kit/` aussi purgé de `sereniatech_drive`.
-- `SérénIATech_dev/ClaudeCode/backup_drive.py` repointé → `sereniatech_drive` (dépôt séparé, non commité ici).
-- `roadmap_rclone_multicompte.md` → `_archives/` (3/3 phases FAIT).
+- `.claude/commands/insert_template.md` : étape `[SORTIE]` 9 (écriture registre), récap 9→10.
+- `.claude/commands/init_intercom.md` : étape 6 (écriture registre), renum. 5→7.
+- `DEPLOYMENTS.md` : section « Templates installés » + 8 lignes rétro (gitignoré, non commité).
+- `CHANGELOG.md` : entrée v5.8.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `vibeobs_drive` et `sereniatech_drive` sont des comptes distincts de rayonnetoi (empreintes `rclone about`).
-- VALIDE : migration `VibeObs/` — `rclone check` 0 différence avant purge.
-- EN ATTENTE : backup réel `SérénIATech_dev` → `sereniatech_drive` ; `/close` de `Rayonne_Toi` et `Appli_TSA_SDI_TDAH` (`tests_manuels.md`).
+- VALIDE : `/init_discord_mode` et `/create_projet` délèguent déjà à la procédure `/insert_template` [SORTIE] → traçage hérité sans les modifier.
+- INVALIDE (partiel) : le scan ne détecte pas `control_PC`/`notification`/`overlay`/`parallel_agents` ; 2 projets injoignables (chemins morts `Open_Code_Apprentissage`, `claude-vibecoding-kit`).
+- EN ATTENTE : test réel d'une insertion `/insert_template` écrivant la ligne registre.
 
 ## Prochaine étape exacte
-Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (2 projets, non déclaré au registre). Puis reprendre backlog P1.
+Exercer `/insert_template` en réel et vérifier l'écriture / non-duplication de la ligne « Templates installés ». Puis reprendre P1 (angle mort backup `meuniers/`).
 
 ## Question bloquante pour la session suivante
 Aucune.

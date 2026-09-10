@@ -30,4 +30,9 @@ par une écoute persistante, sur le modèle du Monitor de `com_telephone`.
    `pause` avec le travail réel, traitement, `ack`, lecture de `resume`, puis reprise. Un message
    normal reste en attente ou reçoit un `ack` après traitement.
 5. Vérifier `python <cible>/intercom/intercom.py --help` et `... inbox`, sans envoyer de message
-   de test dans une file réelle. Récapituler les alias et la commande `/intercom_listen`.
+   de test dans une file réelle.
+6. Mettre à jour le registre « Templates installés » de `<kit>/DEPLOYMENTS.md` : si le couple
+   `(<nom_projet>, intercom)` n'y figure pas, ajouter la ligne
+   `| <nom_projet> | intercom | intercom/ | <DATE> | installé via /init_intercom |`. Couple déjà
+   présent (ajout d'un destinataire à une install existante) : ne rien écrire.
+7. Récapituler les alias et la commande `/intercom_listen`.

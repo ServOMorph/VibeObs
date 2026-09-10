@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.8 — 2026-09-10
+
+### Ajouté
+- Registre « Templates installés » dans `DEPLOYMENTS.md` (kit) : une ligne par couple (projet, template) pour tout template de `templates/<nom>/` inséré dans un projet, avec destination relative, date et note. Alimenté automatiquement par `/insert_template` (nouvelle étape `[SORTIE]` 9, avant le récapitulatif renuméroté en 10), et par héritage `/init_discord_mode` et `/create_projet` qui délèguent à sa procédure. `/init_intercom` (nouvelle étape 6) écrit sa propre ligne `intercom`. Rétro-remplissage initial par scan de signature des projets de `DEPLOYMENTS.md` : Appli_TSA_SDI_TDAH (discord_com, rclone_backup), JeGeekUtile (netlify), Rayonne_Toi (rclone_backup), SérénIATech_dev (discord_com), Meuniers (intercom, netlify, rclone_backup).
+
 ## v5.7 — 2026-09-06
 
 ### Ajouté
