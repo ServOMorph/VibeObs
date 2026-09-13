@@ -99,6 +99,7 @@ Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claud
 | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
 | `{{DONNEES_SENSIBLES}}` | Réponse Q6, en liste à puces ; "Aucun déclaré." si réponse négative |
 | `{{RCLONE_REMOTE}}` | Remote rclone retenu à Q4bis, seulement dans `rclone_backup.json` |
+| `{{NOM_PROJET}}` | Nom du dossier racine du projet, seulement dans `rclone_backup.json` |
 
 ### 4bis. Brancher le backup Google Drive dans close.md (si réponse "oui" à Q4bis)
 
@@ -114,9 +115,9 @@ cette exécution (pas en cas de zone supplémentaire, Q5) :
    Sauvegarde du dossier projet vers Google Drive (projet sans git) :
    - Exécuter :
      ```powershell
-     python "{{RACINE}}\backup_project.py" "{{RACINE}}" "{{ALIAS}}"
+     python "{{RACINE}}\backup_project.py" "{{RACINE}}"
      ```
-   - Le dossier sera synchronisé (miroir) vers `<remote de rclone_backup.json>:BackUps/{{ALIAS}}/`.
+   - Le dossier sera synchronisé (miroir) vers `<remote de rclone_backup.json>:BackUps/<folder de rclone_backup.json>/`.
    - Si rclone échoue : afficher l'erreur telle quelle, ne pas bloquer la clôture.
    ```
 

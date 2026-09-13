@@ -122,7 +122,8 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     Si `rclone_backup` est sélectionné, expliciter avant son insertion :
     - le dossier source sera `<cible>` ; le miroir sera envoyé vers
       `<remote-rclone>:BackUps/<nom_projet>/` ; `.git`, `node_modules`, les environnements virtuels,
-      `dist`, `build` et `__pycache__` seront exclus ;
+      `dist`, `build`, `__pycache__`, `.env*`, les clés privées, certificats, credentials, tokens et
+      configurations rclone seront exclus ;
     - **un remote rclone est dédié à un seul projet par défaut ; un partage entre projets doit
       être déclaré explicitement** : la collecte et le contrôle anti-collision du compte sont ceux
       de l'étape 7bis de `/insert_template` (lecture du registre « Remotes rclone » de

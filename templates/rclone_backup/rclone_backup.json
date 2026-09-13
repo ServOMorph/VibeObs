@@ -1,3 +1,4 @@
 {
-  "remote": "{{RCLONE_REMOTE}}"
+  "remote": "{{RCLONE_REMOTE}}",
+  "folder": "{{NOM_PROJET}}"
 }

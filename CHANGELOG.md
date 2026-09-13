@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.10 — 2026-09-13
+
+### Modifié
+- `rclone_backup` : le dossier Drive canonique est désormais configuré dans `rclone_backup.json`; le script exclut les fichiers sensibles usuels et propose `--check` pour contrôler le miroir sans le modifier. `/init_projet`, `/create_projet` et la documentation du template sont alignés ; trois tests automatisés couvrent ce comportement.
+
 ## v5.9 — 2026-09-10
 
 ### Corrigé

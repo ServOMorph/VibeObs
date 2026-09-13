@@ -1,11 +1,8 @@
-# Signals — VibeObs (MAJ 2026-09-10)
+# Signals — VibeObs (MAJ 2026-09-13)
 
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
-- Traiter l'angle mort `meuniers/` sur le compte `sereniatech33@gmail.com` (partagé avec `SérénIATech_dev`, non déclaré au registre « Remotes rclone »).
-  - fait quand: le remote de backup de `Meuniers` est identifié, sa ligne registre créée dans `DEPLOYMENTS.md` (avec `partagé:` si assumé) ou `Meuniers` repointé vers un compte dédié.
-  - réf: `DEPLOYMENTS.md` § Remotes rclone (et § Templates installés : `Meuniers | rclone_backup | backup_project.py (racine)`) ; `_archives/roadmap_rclone_multicompte.md`.
 - Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
   - fait quand: `on_close.md` d'Appli est commité via `/close` de sa zone, et un `python claude-vibecoding-kit/backup_project.py . --upload` réel a réussi.
   - réf: `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin ; Appli commit `746afcd` (correctifs `backup_project.py`).
@@ -53,24 +50,23 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-09-10
+# Session du 2026-09-13
 
 ## Décisions prises
-- L'upload Drive du hook « Fin » de `/close` ne peut pas être automatisé sous auto-mode : le classifieur de sécurité bloque tout `rclone copy` de secrets vers un cloud, quel que soit l'emballage du script. Le hook se limite à `--refresh-list` ; l'upload reste manuel hors session (tâche planifiée OS possible mais écartée).
-- Le classifieur d'auto-mode n'est pas un réglage local et n'est pas contourné par `permissions.allow` : non modifiable, non désactivé par allowlist.
+- Le dossier cible Drive est défini dans `rclone_backup.json` afin d'éviter les doublons liés à la casse du chemin local.
+- Les sauvegardes rclone excluent les fichiers sensibles usuels et proposent un contrôle non destructif `--check`.
 
 ## Livrables produits ou modifiés
-- `templates/rclone_backup/backup_project.py` : `EXCLUDES` étendu (`test-results`, `playwright-report`, `.pytest_cache`, `.ruff_cache`, `.mypy_cache`, `coverage`, `htmlcov`, `.netlify`, `tmp`) ; sorties console tolérantes à l'encodage (`sys.stdout/stderr.reconfigure` utf-8/replace) ; `subprocess.run` rclone en `encoding="utf-8", errors="replace"`. Commité par ce `/close`.
-- `Appli_TSA_SDI_TDAH/claude-vibecoding-kit/backup_project.py` + `test_backup_project.py` : mêmes correctifs (set `EXCLUDED_PARTS`) + 4 tests (4/4). Commités hors kit (Appli `746afcd`).
-- `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin : `--upload` retiré, rappel commande manuelle + trace `tests_manuels.md`. Non commité (dépôt Appli).
+- `templates/rclone_backup/` : dossier canonique configuré, exclusions de secrets, mode `--check` et documentation actualisée.
+- `.claude/commands/init_projet.md` et `create_projet.md` : configuration et garanties rclone alignées avec le template.
+- `tests/test_rclone_backup.py` : trois tests automatisés ajoutés.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `--refresh-list` exit 0 avec chemins non-ASCII (`→`, accents) après `reconfigure` ; sans correctif, `PYTHONIOENCODING=cp1252` + `→` → exit 1. Run réel Appli : manifeste 374 → 222 lignes, junk filtré, tri et `\n` final préservés.
-- INVALIDE : « un script dédié appelé par `close.md` ferait l'upload tout seul » — bloqué par le classifieur, indépendant du nom du script.
-- EN ATTENTE : upload Drive réel d'Appli (manuel) ; port des correctifs aux copies vendored lignée `rclone sync` (`Rayonne_Toi`, `Meuniers`) non tranché.
+- VALIDE : sauvegardes et contrôles rclone de `Meuniers` et `Rayonne_Toi` réussis vers leurs dossiers canoniques.
+- EN ATTENTE : port des correctifs d'encodage et d'artefacts régénérables aux copies vendored rclone.
 
 ## Prochaine étape exacte
-Reprendre P1 : angle mort backup `meuniers/`. Committer `on_close.md` d'Appli via `/close` de sa zone.
+Traiter l'upload Drive manuel d'Appli_TSA_SDI_TDAH puis committer son hook `on_close.md` via `/close` de cette zone.
 
 ## Question bloquante pour la session suivante
 Aucune.

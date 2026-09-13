@@ -27,6 +27,17 @@ EXCLUDES = [
     "htmlcov/**",
     ".netlify/**",
     "tmp/**",
+    "**/.env",
+    "**/.env.*",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.p12",
+    "**/*.pfx",
+    "**/credentials*.json",
+    "**/token*.json",
+    "**/rclone.conf",
+    "**/settings.local.json",
+    "**/SECRETS.local.md",
 ]
 
 
@@ -37,8 +48,8 @@ def main() -> int:
         except (AttributeError, ValueError):
             pass
 
-    if len(sys.argv) < 2:
-        print("Usage: python backup_project.py <chemin_projet> [nom_dossier_drive]")
+    if len(sys.argv) not in {2, 3} or (len(sys.argv) == 3 and sys.argv[2] != "--check"):
+        print("Usage: python backup_project.py <chemin_projet> [--check]")
         return 1
 
     if not RCLONE.exists():
@@ -48,10 +59,11 @@ def main() -> int:
     try:
         config = json.loads(CONFIG.read_text(encoding="utf-8"))
         remote = config["remote"].strip()
+        drive_folder = config["folder"].strip()
     except (FileNotFoundError, KeyError, json.JSONDecodeError, AttributeError):
         print(f"ERREUR : compte Google Drive non configuré dans {CONFIG}")
         return 1
-    if not remote:
+    if not remote or not drive_folder or drive_folder in {".", ".."} or "/" in drive_folder or "\\" in drive_folder:
         print(f"ERREUR : compte Google Drive non configuré dans {CONFIG}")
         return 1
 
@@ -60,21 +72,24 @@ def main() -> int:
         print(f"ERREUR : dossier introuvable {project_path}")
         return 1
 
-    drive_name = sys.argv[2] if len(sys.argv) > 2 else project_path.name
-    drive_dest = f"{remote}:BackUps/{drive_name}"
-    command = [str(RCLONE), "sync", str(project_path), drive_dest]
+    drive_dest = f"{remote}:BackUps/{drive_folder}"
+    check_only = len(sys.argv) == 3
+    command = [str(RCLONE), "check" if check_only else "sync", str(project_path), drive_dest]
+    if check_only:
+        command.append("--one-way")
     for pattern in EXCLUDES:
         command += ["--exclude", pattern]
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Sauvegarde {project_path} -> {drive_dest}")
+    action = "Contrôle" if check_only else "Sauvegarde"
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {action} {project_path} -> {drive_dest}")
     result = subprocess.run(
         command, capture_output=True, text=True, encoding="utf-8", errors="replace"
     )
     if result.returncode != 0:
-        print(f"ERREUR upload : {result.stderr.strip()}")
+        print(f"ERREUR {action.lower()} : {result.stderr.strip()}")
         return 1
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Sauvegarde OK -> {drive_dest}")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {action} OK -> {drive_dest}")
     return 0
 
 
