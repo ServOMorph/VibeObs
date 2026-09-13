@@ -103,17 +103,20 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     (exclure les dossiers techniques `_contexte`, `.claude` et `__pycache__`) dans cet ordre, avec une numérotation :
     ```text
     Templates disponibles :
+    0. Aucun template
     1. control_PC
     2. discord_com
     3. intercom
     4. netlify
-       5. notification
-       6. overlay
-       7. rclone_backup
-       0. Aucun template
+    5. notification
+    6. overlay
+    7. rclone_backup
 
     Répondez uniquement par le ou les numéros souhaités, séparés par des virgules (ex. 2,5).
     ```
+    `0` en tête (jamais en dernier) : certains rendus Markdown renumérotent une liste ordonnée en
+    ignorant les valeurs explicites suivant le premier élément — placer `0` en premier fige le
+    numéro de départ et évite que `0. Aucun template` s'affiche sous un autre chiffre.
     Construire cette liste dynamiquement à partir des dossiers réellement présents ; ne jamais
     proposer de dossier technique ou généré. Une réponse doit être `0` seul ou une liste de numéros valides,
     sans doublon. Sinon, réafficher la question. Pour chaque sélection, enchaîner

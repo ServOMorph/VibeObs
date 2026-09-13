@@ -12,12 +12,14 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de la liste des templates pour éviter la renumérotation Markdown ; vérification en conditions réelles restant à faire.
+- 2026-09-13 : nouveau projet `VertIA_v2` créé (Git local + GitHub public), protocole vibecoding initialisé, aucun template inséré.
 - 2026-09-13 : `rclone_backup` définit son dossier Drive canonique dans sa configuration, exclut les secrets et propose `--check` ; Meuniers et Rayonne_Toi ont été mis à jour et sauvegardés avec contrôle réussi.
 - 2026-09-10 : le hook « Fin » de `/close` d'Appli_TSA_SDI_TDAH se limite à `--refresh-list` ; son upload Drive reste manuel hors session.
-- 2026-09-10 : `DEPLOYMENTS.md` trace les templates installés ; la validation Discord réelle reste ouverte.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-03 archivées dans `_contexte/archive_decisions.md`._
+- 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de la liste de sélection des templates (jamais en dernier) — les rendus Markdown fixent le numéro de départ d'une liste ordonnée sur son premier élément et ignorent les valeurs explicites suivantes, ce qui provoquait un décalage d'affichage (`0` rendu comme le chiffre suivant, ex. `8`).
 - 2026-09-13 : `rclone_backup.json` porte `remote` et `folder` ; le dossier Drive ne dépend plus de la casse du chemin local. Le script exclut `.env*`, clés, certificats, credentials, tokens, configurations rclone et paramètres locaux ; `--check` réalise un contrôle rclone à sens unique.
 - 2026-09-10 : le hook « Fin » de `/close` ne tente plus d'upload cloud sous auto-mode — le classifieur de sécurité refuse systématiquement `rclone copy` de secrets, sans être contournable par `permissions.allow` ni un réglage local. Le hook se limite à `--refresh-list` (manifeste tenu à jour), l'upload Drive devient une action manuelle hors session, tracée dans `tests_manuels.md` du projet. Correctifs `backup_project.py` (template kit + copie vendored Appli) : exclusion élargie des artefacts régénérables (match sur segment de chemin) et sorties robustes à l'encodage — `sys.stdout/stderr.reconfigure(encoding="utf-8", errors="replace")` + `subprocess.run(..., encoding="utf-8", errors="replace")` — pour ne plus crasher sur un nom de fichier non-ASCII (Windows cp1252).
 - 2026-09-10 : les templates de `templates/<nom>/` insérés dans un projet sont tracés dans une section « Templates installés » de `DEPLOYMENTS.md` (kit, gitignoré, même régime que « Remotes rclone »), une ligne par couple (projet, template) avec destination relative, date et note. `/insert_template` l'écrit à l'étape `[SORTIE]` 9 (si au moins un fichier créé, pas de doublon sur couple existant) ; `/init_discord_mode` et `/create_projet` héritent via délégation à cette procédure ; `/init_intercom` écrit sa ligne à sa nouvelle étape 6. `doc_sync` ne touche pas ce fichier (déjà exclu).
@@ -27,5 +29,3 @@ _Décisions antérieures au 2026-09-03 archivées dans `_contexte/archive_decisi
 - 2026-09-04 : quand un projet utilise les trois fichiers `.claude/CLAUDE.md`, `AGENTS.md` et `GEMINI.md`, ils portent strictement le même contenu ; l’harmonisation attend le choix explicite de la source canonique et se vérifie par hash.
 - 2026-09-04 : une équipe à écriture parallèle est créée via `/create_parallel_team`, distinct de `/create_team` ; chaque membre a son worktree et sa branche, sans merge, rebase ou déploiement automatique.
 - 2026-09-04 : les aliases de zone destinés à être utilisés par les personnes sont en majuscules (`TESTS`, `ONBOARD`, `RETOURS`) ; les noms de branches Git peuvent rester en minuscules sur Windows.
-- 2026-09-04 : `discord_com` ne déduplique pas les sorties sur un timestamp à la seconde ; l’état de la file est l’unique garde contre le renvoi. `notify` attend l’ack du bot afin de sérialiser les notifications consécutives. Le Bot Token reste exclusivement dans `.env` local gitignoré.
-- 2026-09-04 : le kit est renommé VibeObs. La commande `/create_projet` remplace `/create_projet_public` et couvre Git local ou GitHub public/privé ; les sauvegardes rclone sont distribuées comme template avec un remote explicite.

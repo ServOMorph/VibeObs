@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.11 — 2026-09-13
+
+### Corrigé
+- `/create_projet` : la liste de sélection des templates (étape `[TEMPLATES]` 17) place désormais `0. Aucun template` en tête (jamais en dernier). Certains rendus Markdown fixent le numéro de départ d'une liste ordonnée sur son premier élément et ignorent les valeurs explicites des éléments suivants — `0` placé en dernier s'affichait donc sous le chiffre suivant la séquence (ex. `8` au lieu de `0`).
+
 ## v5.10 — 2026-09-13
 
 ### Modifié

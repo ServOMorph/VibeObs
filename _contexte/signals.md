@@ -39,6 +39,15 @@
 - Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
   - fait quand: les premiers cycles `start`/`close` de `ONBOARD` et `RETOURS` sont validés sans écriture sur `main`.
   - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
+- Vérifier en conditions réelles que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête).
+  - fait quand: un `/create_projet` exécuté affiche `0. Aucun template` suivi de `1.` à `7.` sans renumérotation.
+  - réf: `.claude/commands/create_projet.md` étape [TEMPLATES] 17.
+- Traiter l'écart `check_docs.py` : le commit `26b9cdd4` (2026-09-06) a modifié la ligne `maj:` du frontmatter de `journal.md` en plus d'ajouter une entrée en bas — le script considère cela comme une violation append-only. Décider : assouplir le contrôle pour exclure le frontmatter, ou traiter comme une vraie violation.
+  - fait quand: `check_docs.py` passe sans écart, ou l'exception est explicitement documentée dans `40_specs/controle_qualite_base.md`.
+  - réf: `scripts/check_docs.py`, `DOCUMENTATION/30_decisions/journal.md`, commit `26b9cdd4`.
+- Corriger la regex de version de `check_kit.py` (`get_version_from_readme`) : elle cherche le littéral `Kit v\d+\.\d+` et ne matche pas `Kit **v5.11**` (gras Markdown) — le contrôle de cohérence des versions ne vérifie donc jamais réellement README.md en pratique.
+  - fait quand: la regex tolère le gras Markdown, ou le format de README.md est aligné sur ce qu'elle attend.
+  - réf: `scripts/check_kit.py` fonction `get_version_from_readme`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -53,20 +62,18 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-13
 
 ## Décisions prises
-- Le dossier cible Drive est défini dans `rclone_backup.json` afin d'éviter les doublons liés à la casse du chemin local.
-- Les sauvegardes rclone excluent les fichiers sensibles usuels et proposent un contrôle non destructif `--check`.
+- `/create_projet` place `0. Aucun template` en tête de la liste de sélection (jamais en dernier) pour éviter la renumérotation Markdown.
 
 ## Livrables produits ou modifiés
-- `templates/rclone_backup/` : dossier canonique configuré, exclusions de secrets, mode `--check` et documentation actualisée.
-- `.claude/commands/init_projet.md` et `create_projet.md` : configuration et garanties rclone alignées avec le template.
-- `tests/test_rclone_backup.py` : trois tests automatisés ajoutés.
+- `.claude/commands/create_projet.md` : correctif de numérotation de la liste des templates.
+- Nouveau projet `VertIA_v2` (`D:\ServOMorph\VertIA_v2`) : Git local + dépôt GitHub public (https://github.com/ServOMorph/VertIA_v2), protocole vibecoding initialisé (zone `VertIA`), aucun template inséré.
+- `DEPLOYMENTS.md` : ligne ajoutée pour `VertIA_v2`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : sauvegardes et contrôles rclone de `Meuniers` et `Rayonne_Toi` réussis vers leurs dossiers canoniques.
-- EN ATTENTE : port des correctifs d'encodage et d'artefacts régénérables aux copies vendored rclone.
+- EN ATTENTE : vérification en conditions réelles de la nouvelle numérotation lors d'un prochain `/create_projet`.
 
 ## Prochaine étape exacte
-Traiter l'upload Drive manuel d'Appli_TSA_SDI_TDAH puis committer son hook `on_close.md` via `/close` de cette zone.
+Rejouer `/create_projet` pour confirmer l'affichage correct de la liste des templates.
 
 ## Question bloquante pour la session suivante
 Aucune.

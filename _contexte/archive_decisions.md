@@ -186,3 +186,8 @@
 ## Décisions archivées le 2026-09-10 (rotation contexte.md > 10 entrées)
 
 - 2026-09-04 : une roadmap achevée déclenche une proposition d'archivage à l'utilisateur ; l'archivage reste soumis à son accord explicite. Règle ajoutée au protocole et à sa documentation de session.
+
+## Décisions archivées le 2026-09-13 (rotation contexte.md > 10 entrées)
+
+- 2026-09-04 : le kit est renommé VibeObs. La commande `/create_projet` remplace `/create_projet_public` et couvre Git local ou GitHub public/privé ; les sauvegardes rclone sont distribuées comme template avec un remote explicite.
+- 2026-09-04 : `discord_com` ne déduplique pas les sorties sur un timestamp à la seconde ; l'état de la file est l'unique garde contre le renvoi. `notify` attend l'ack du bot afin de sérialiser les notifications consécutives. Le Bot Token reste exclusivement dans `.env` local gitignoré.
