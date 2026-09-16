@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.13 — 2026-09-16
+
+### Modifié
+- Session d'étude uniquement (aucun fichier fonctionnel modifié) : harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` analysée (contradiction templates minimaux vs identité v5.3, `/update` étape 7 fige la dérive, skill `harmonize-agent-instructions` introuvable) ; piste source unique `INSTRUCTIONS.md` + wrappers avec portée générique/spécifique demandée avant écriture ; mise en œuvre reportée en P1 sur ordre utilisateur.
+
 ## v5.12 — 2026-09-16
 
 ### Modifié

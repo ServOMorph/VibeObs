@@ -858,3 +858,26 @@ Exercer `/insert_template` en réel et vérifier l'écriture / non-duplication d
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-09-16
+
+## Décisions prises
+- Rôle DOCUMENTATION d'un projet cible pouvant couvrir métier + technique en un seul agent, structure calquée sur celle du kit (10_concepts/20_guides/30_decisions/40_specs).
+- P14 tranchée et implémentée : `agent_role_TEMPLATE.md` § Invariants réutilise `{{ECRITURE_ETENDUE}}`, cohérence automatique avec le Périmètre pour tout agent à écriture étendue.
+
+## Livrables produits ou modifiés
+- `templates/agent_role_TEMPLATE.md` : Invariants paramétrés (P14).
+- `base_connaissances/ameliorations_create_agent.md` : entrée P14 (propositions + historique), entrée création agent documentation.
+- `CHANGELOG.md` : v5.12.
+- Hors kit (autre dépôt) : agent DOCUMENTATION créé dans `Appli_TSA_SDI_TDAH` via `/create_agent`, commité côté ce projet (`88bf668`).
+
+## Hypothèses validées / invalidées
+- VALIDE : réutiliser `{{ECRITURE_ETENDUE}}` dans la ligne "Ne jamais committer hors de" suffit à corriger P14, sans toucher `create_agent.md`.
+
+## Prochaine étape exacte
+Répercuter P14 sur les chartes déjà écrites avec périmètre étendu si un besoin réel se présente (DESIGN/DISCORD d'Appli_TSA_SDI_TDAH) — pas fait rétroactivement cette session.
+
+## Question bloquante pour la session suivante
+Aucune.

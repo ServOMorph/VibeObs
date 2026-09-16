@@ -48,6 +48,9 @@
 - Corriger la regex de version de `check_kit.py` (`get_version_from_readme`) : elle cherche le littéral `Kit v\d+\.\d+` et ne matche pas `Kit **v5.11**` (gras Markdown) — le contrôle de cohérence des versions ne vérifie donc jamais réellement README.md en pratique.
   - fait quand: la regex tolère le gras Markdown, ou le format de README.md est aligné sur ce qu'elle attend.
   - réf: `scripts/check_kit.py` fonction `get_version_from_readme`.
+- Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
+  - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
+  - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -62,20 +65,17 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-09-16
 
 ## Décisions prises
-- Rôle DOCUMENTATION d'un projet cible pouvant couvrir métier + technique en un seul agent, structure calquée sur celle du kit (10_concepts/20_guides/30_decisions/40_specs).
-- P14 tranchée et implémentée : `agent_role_TEMPLATE.md` § Invariants réutilise `{{ECRITURE_ETENDUE}}`, cohérence automatique avec le Périmètre pour tout agent à écriture étendue.
+- Harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` reportée : notée en P1, mise en œuvre sur ordre explicite ultérieur.
 
 ## Livrables produits ou modifiés
-- `templates/agent_role_TEMPLATE.md` : Invariants paramétrés (P14).
-- `base_connaissances/ameliorations_create_agent.md` : entrée P14 (propositions + historique), entrée création agent documentation.
-- `CHANGELOG.md` : v5.12.
-- Hors kit (autre dépôt) : agent DOCUMENTATION créé dans `Appli_TSA_SDI_TDAH` via `/create_agent`, commité côté ce projet (`88bf668`).
+- Aucun fichier modifié (session d'étude et vulgarisation uniquement).
 
 ## Hypothèses validées / invalidées
-- VALIDE : réutiliser `{{ECRITURE_ETENDUE}}` dans la ligne "Ne jamais committer hors de" suffit à corriger P14, sans toucher `create_agent.md`.
+- VALIDE : les templates minimaux contredisent la règle d'identité v5.3 ; `/update` étape 7 fige la dérive.
+- EN ATTENTE : support d'un renvoi `@` vers source unique par chaque outil (Claude/Codex/Gemini) non vérifié.
 
 ## Prochaine étape exacte
-Répercuter P14 sur les chartes déjà écrites avec périmètre étendu si un besoin réel se présente (DESIGN/DISCORD d'Appli_TSA_SDI_TDAH) — pas fait rétroactivement cette session.
+Reprendre la P1 harmonisation (source `INSTRUCTIONS.md` + wrappers + portée demandée) sur ordre utilisateur.
 
 ## Question bloquante pour la session suivante
 Aucune.

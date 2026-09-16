@@ -12,11 +12,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-09-16 : `/create_agent` a créé l'agent DOCUMENTATION du projet `Appli_TSA_SDI_TDAH` (métier + technique, périmètre étendu à `CLAUDE.md`) ; friction P14 (Invariants incohérents avec un périmètre étendu) tranchée et corrigée dans `agent_role_TEMPLATE.md`.
-- 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de la liste des templates pour éviter la renumérotation Markdown ; vérification en conditions réelles restant à faire.
-- 2026-09-13 : nouveau projet `VertIA_v2` créé (Git local + GitHub public), protocole vibecoding initialisé, aucun template inséré.
-- 2026-09-13 : `rclone_backup` définit son dossier Drive canonique dans sa configuration, exclut les secrets et propose `--check` ; Meuniers et Rayonne_Toi ont été mis à jour et sauvegardés avec contrôle réussi.
-- 2026-09-10 : le hook « Fin » de `/close` d'Appli_TSA_SDI_TDAH se limite à `--refresh-list` ; son upload Drive reste manuel hors session.
+- 2026-09-16 : étude harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` (contradiction templates minimaux vs identité v5.3, `/update` fige la dérive) ; mise en œuvre reportée en P1 sur ordre utilisateur.
+- 2026-09-16 : `/create_agent` a créé l'agent DOCUMENTATION du projet `Appli_TSA_SDI_TDAH` ; friction P14 tranchée et corrigée dans `agent_role_TEMPLATE.md`.
+- 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de liste ; vérification réelle restant à faire.
+- 2026-09-13 : `rclone_backup` définit son dossier Drive canonique, exclut les secrets et propose `--check`.
+- 2026-09-10 : le hook « Fin » de `/close` d'Appli_TSA_SDI_TDAH se limite à `--refresh-list` ; upload Drive manuel hors session.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-04 archivées dans `_contexte/archive_decisions.md`._
