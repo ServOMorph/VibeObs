@@ -1,5 +1,9 @@
 # Archive des décisions — VibeObs
 
+## Décisions archivées le 2026-09-16 (rotation contexte.md > 10 entrées)
+
+- 2026-09-04 : les aliases de zone destinés à être utilisés par les personnes sont en majuscules (`TESTS`, `ONBOARD`, `RETOURS`) ; les noms de branches Git peuvent rester en minuscules sur Windows.
+
 ## Décisions archivées le 2026-09-10 (rotation contexte.md > 10 entrées)
 
 - 2026-09-03 : `/create_agent` propose systématiquement l'insertion du template `discord_com` pour un agent Discord (défaut oui, config renvoyée à `/init_discord_mode`). Le Bot Token (`DISCORD_BOT_TOKEN`) est distingué explicitement de l'Application ID / Public Key / Client Secret partout dans la doc Discord. Correctif du template `discord_com` : `queue.json` repasse à `idle` après un envoi non interactif (fin du bug « un message Discord sur deux avalé »), `WAIT_TIMEOUT` de `discord_loop.py` porté à 110 s (moins de tours de modèle à vide). Non testé en conditions réelles.

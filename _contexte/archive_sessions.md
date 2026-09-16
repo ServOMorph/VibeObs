@@ -4,6 +4,27 @@
 
 ---
 
+# Session du 2026-09-13
+
+## Décisions prises
+- `/create_projet` place `0. Aucun template` en tête de la liste de sélection (jamais en dernier) pour éviter la renumérotation Markdown.
+
+## Livrables produits ou modifiés
+- `.claude/commands/create_projet.md` : correctif de numérotation de la liste des templates.
+- Nouveau projet `VertIA_v2` (`D:\ServOMorph\VertIA_v2`) : Git local + dépôt GitHub public (https://github.com/ServOMorph/VertIA_v2), protocole vibecoding initialisé (zone `VertIA`), aucun template inséré.
+- `DEPLOYMENTS.md` : ligne ajoutée pour `VertIA_v2`.
+
+## Hypothèses validées / invalidées
+- EN ATTENTE : vérification en conditions réelles de la nouvelle numérotation lors d'un prochain `/create_projet`.
+
+## Prochaine étape exacte
+Rejouer `/create_projet` pour confirmer l'affichage correct de la liste des templates.
+
+## Question bloquante pour la session suivante
+Aucune.
+
+---
+
 # Session du 2026-09-04
 
 ## Décisions prises

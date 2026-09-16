@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.12 — 2026-09-16
+
+### Modifié
+- `templates/agent_role_TEMPLATE.md` : la section Invariants réutilise `{{ECRITURE_ETENDUE}}` sur sa ligne « Ne jamais committer hors de », pour rester automatiquement cohérente avec la ligne « Peut écrire » du Périmètre dès qu'un agent a un périmètre d'écriture étendu — friction P14 tranchée (constatée deux fois : `roberto` le 2026-08-18, `documentation` d'Appli_TSA_SDI_TDAH le 2026-09-16), sans changement de `create_agent.md`.
+
 ## v5.11 — 2026-09-13
 
 ### Corrigé

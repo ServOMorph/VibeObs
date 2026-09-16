@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-09-13)
+# Signals — VibeObs (MAJ 2026-09-16)
 
 ## Actions ouvertes — pilotage
 
@@ -59,21 +59,23 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-09-13
+# Session du 2026-09-16
 
 ## Décisions prises
-- `/create_projet` place `0. Aucun template` en tête de la liste de sélection (jamais en dernier) pour éviter la renumérotation Markdown.
+- Rôle DOCUMENTATION d'un projet cible pouvant couvrir métier + technique en un seul agent, structure calquée sur celle du kit (10_concepts/20_guides/30_decisions/40_specs).
+- P14 tranchée et implémentée : `agent_role_TEMPLATE.md` § Invariants réutilise `{{ECRITURE_ETENDUE}}`, cohérence automatique avec le Périmètre pour tout agent à écriture étendue.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/create_projet.md` : correctif de numérotation de la liste des templates.
-- Nouveau projet `VertIA_v2` (`D:\ServOMorph\VertIA_v2`) : Git local + dépôt GitHub public (https://github.com/ServOMorph/VertIA_v2), protocole vibecoding initialisé (zone `VertIA`), aucun template inséré.
-- `DEPLOYMENTS.md` : ligne ajoutée pour `VertIA_v2`.
+- `templates/agent_role_TEMPLATE.md` : Invariants paramétrés (P14).
+- `base_connaissances/ameliorations_create_agent.md` : entrée P14 (propositions + historique), entrée création agent documentation.
+- `CHANGELOG.md` : v5.12.
+- Hors kit (autre dépôt) : agent DOCUMENTATION créé dans `Appli_TSA_SDI_TDAH` via `/create_agent`, commité côté ce projet (`88bf668`).
 
 ## Hypothèses validées / invalidées
-- EN ATTENTE : vérification en conditions réelles de la nouvelle numérotation lors d'un prochain `/create_projet`.
+- VALIDE : réutiliser `{{ECRITURE_ETENDUE}}` dans la ligne "Ne jamais committer hors de" suffit à corriger P14, sans toucher `create_agent.md`.
 
 ## Prochaine étape exacte
-Rejouer `/create_projet` pour confirmer l'affichage correct de la liste des templates.
+Répercuter P14 sur les chartes déjà écrites avec périmètre étendu si un besoin réel se présente (DESIGN/DISCORD d'Appli_TSA_SDI_TDAH) — pas fait rétroactivement cette session.
 
 ## Question bloquante pour la session suivante
 Aucune.

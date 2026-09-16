@@ -2,7 +2,7 @@
 type: guide
 description: Créer un agent (zone à rôle) avec /create_agent
 tags: guide, agent, create_agent
-maj: 2026-08-21
+maj: 2026-09-16
 ---
 
 # Créer un agent
@@ -25,7 +25,9 @@ Un agent = une zone à rôle : charte `agent_role.md` (rôle, périmètre d'écr
 
 ## Effets de bord
 
-- Charte générée depuis `templates/agent_role_TEMPLATE.md`
+- Charte générée depuis `templates/agent_role_TEMPLATE.md` ; depuis le 2026-09-16, un périmètre
+  étendu (`{{ECRITURE_ETENDUE}}`) se répercute automatiquement dans les Invariants (« Ne jamais
+  committer hors de ») — plus besoin de patch manuel (P14)
 - Chaque création alimente `ameliorations_create_agent.md` (racine du kit) et `AGENTS_REGISTRY.md` (hors git)
 - Les commandes kit-only restent dans `.claude/commands/` du kit, absentes de `templates/`
 

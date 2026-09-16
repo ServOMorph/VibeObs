@@ -20,8 +20,45 @@ Sortie concrète de l'étape [ECRITURE] de la commande et des rétrospectives de
   (charte seule, sans toucher `zones.md`/`_contexte/` existants) — intégré à l'étape [PREFLIGHT]/[ECRITURE].
 - P13 — [Implémentée le 2026-07-26] Analyse du projet cible pour `{{STACK}}`, désormais conditionnée
   au mode et à l'état de `contexte.md` (évite le scan systématique en conversion).
+- P14 — [Implémentée le 2026-09-16] `agent_role_TEMPLATE.md` § Invariants, ligne "Ne jamais
+  committer hors de" : réutilise désormais `{{ECRITURE_ETENDUE}}` (déjà substitué en [ECRITURE]),
+  pour rester automatiquement cohérente avec la ligne "Peut écrire" du Périmètre — plus besoin de
+  patch manuel à chaque agent à périmètre étendu.
 
 ## Historique
+
+## 2026-09-16 — agent documentation (Appli_TSA_SDI_TDAH)
+
+Création de l'agent DOCUMENTATION, mode création simple (alias `documentation` absent de
+`zones.md`, dossier inexistant). Rôle collecté en amont via question groupée (AskUserQuestion, 4
+questions séquentielles à la demande de l'utilisateur) plutôt qu'en une seule interaction
+[COLLECTE] : rôle couvrant métier + technique (plutôt que deux agents séparés), structure calquée
+sur celle du kit (10_concepts/20_guides/30_decisions/40_specs), migration du contenu de `CLAUDE.md`
+§ Spécificités projet différée à une session dédiée (pas immédiate), périmètre d'écriture étendu à
+`CLAUDE.md` en conséquence.
+
+Friction confirmée (P14, déjà notée sur l'agent roberto du 2026-08-18) : la section "Invariants" du
+template (`agent_role_TEMPLATE.md`) est un texte fixe non paramétré, incohérent avec tout périmètre
+étendu accordé en "Périmètre" — corrigé à la main dans la charte produite, template non modifié
+(pas d'accord explicite de l'utilisateur).
+
+`{{STACK}}` produit à partir de `package.json` (React 19, Vite 8, TypeScript, Dexie/IndexedDB, PWA,
+Vitest/Playwright) — `README.md` absent à la racine du projet.
+
+`{{ALIAS_PARENT}}` correct (`Appli_TSA_SDI_TDAH`, vraie racine dans `zones.md`). `start.md` du
+projet charge déjà `agent_role.md` (pas de warning).
+
+## 2026-09-16 — suite : implémentation P14
+
+Friction P14 (ci-dessus) tranchée dans la foulée plutôt que reportée : `agent_role_TEMPLATE.md`
+§ Invariants réutilise `{{ECRITURE_ETENDUE}}` sur sa première ligne. Aucun changement nécessaire à
+`create_agent.md` (le placeholder était déjà substitué globalement, pas restreint à la ligne
+"Peut écrire"). Non répercuté sur les chartes déjà écrites (DESIGN, DISCORD d'Appli_TSA_SDI_TDAH,
+etc.) — hors périmètre de cette session, pas de rétroactivité demandée.
+
+## 2026-09-10 — agent communication (Rayonne_Toi)
+
+Création de l'agent COMMUNICATION avec un dossier préexistant mais non enregistré dans `zones.md` : mode création normale. Le rôle durable et le périmètre limité à `COMMUNICATION/` ont été confirmés en une interaction groupée. Le projet ne définit pas de stack technique exploitable pour ce rôle ; le contexte indique qu'il hérite de la stack parente.
 
 ## 2026-08-23 — équipe communication (Meuniers)
 

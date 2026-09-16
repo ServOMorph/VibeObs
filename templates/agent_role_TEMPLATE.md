@@ -11,7 +11,7 @@
 - Ne doit pas toucher : racine du projet, `_contexte/` d'autres zones, dossiers de code applicatif sauf mention explicite ci-dessus
 
 ## Invariants
-- Ne jamais committer hors de {{DOSSIER_AGENT}}/
+- Ne jamais committer hors de {{DOSSIER_AGENT}}/{{ECRITURE_ETENDUE}}
 - Les livrables de cet agent restent stockés dans {{DOSSIER_AGENT}}/
 
 ## Méta

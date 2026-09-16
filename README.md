@@ -6,7 +6,7 @@ Stack : **Claude Code** (agent IA), **Markdown** (fichiers de contexte), **Pytho
 
 Résout le problème structurel du vibecoding : **le contexte est perdu à chaque nouvelle conversation**. Sans protocole, chaque session repart de zéro, les décisions prises ne sont pas tracées, et l'IA ne sait pas où en est le projet.
 
-État actuel : le kit v5.11 trace les templates insérés dans chaque projet (section « Templates installés » de `DEPLOYMENTS.md`, alimentée par `/insert_template`, `/init_discord_mode`, `/create_projet` et `/init_intercom`) ; le template `rclone_backup` impose un dossier Drive canonique configuré, exclut les secrets et permet un contrôle `--check` ; il offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) — l'upload cloud d'un hook « Fin » étant bloqué sous auto-mode par le classifieur, le hook s'y limite à rafraîchir le manifeste et l'envoi vers Drive reste manuel.
+État actuel : le kit v5.12 trace les templates insérés dans chaque projet (section « Templates installés » de `DEPLOYMENTS.md`, alimentée par `/insert_template`, `/init_discord_mode`, `/create_projet` et `/init_intercom`) ; le template `rclone_backup` impose un dossier Drive canonique configuré, exclut les secrets et permet un contrôle `--check` ; il offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) — l'upload cloud d'un hook « Fin » étant bloqué sous auto-mode par le classifieur, le hook s'y limite à rafraîchir le manifeste et l'envoi vers Drive reste manuel. `agent_role_TEMPLATE.md` répercute désormais automatiquement un périmètre d'écriture étendu dans ses Invariants.
 
 ## Ce que ça fait
 

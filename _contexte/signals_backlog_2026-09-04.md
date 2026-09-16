@@ -11,7 +11,7 @@ Les détails opérationnels restent dans les fichiers référencés.
 
 ## Décisions de conception
 
-- Trancher P14 (`agent_role_TEMPLATE.md`) et P7–P10 (`/create_agent`).
+- Trancher P7–P10 (`/create_agent`).
 - Décider la suite des lots 2–4 de `PROPOSITIONS_AMELIORATION.md`, l’éventuelle revue de code conditionnelle dans les roadmaps, et le design de pause d’agents dans `/init_projet`.
 - Décider si `roadmap_messages_zones.md` fusionne avec `roadmap_com_agents.md` et désigner un pilote de remplacement.
 - Clarifier les branches non-main de `jeu_zombies` et `Appli_TSA_SDI_TDAH`, ainsi que le chemin réel d’`Open_Code_Apprentissage`.
