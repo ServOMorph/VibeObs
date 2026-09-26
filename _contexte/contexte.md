@@ -12,14 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-09-26 : projet `PromptGuard` créé et initialisé (protocole + agents `securite`/`qa`/`documentation`) ; skill de cohérence CLAUDE/AGENTS/GEMINI mémorisé pour expérimentation locale côté PromptGuard.
 - 2026-09-16 : étude harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` (contradiction templates minimaux vs identité v5.3, `/update` fige la dérive) ; mise en œuvre reportée en P1 sur ordre utilisateur.
 - 2026-09-16 : `/create_agent` a créé l'agent DOCUMENTATION du projet `Appli_TSA_SDI_TDAH` ; friction P14 tranchée et corrigée dans `agent_role_TEMPLATE.md`.
 - 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de liste ; vérification réelle restant à faire.
 - 2026-09-13 : `rclone_backup` définit son dossier Drive canonique, exclut les secrets et propose `--check`.
-- 2026-09-10 : le hook « Fin » de `/close` d'Appli_TSA_SDI_TDAH se limite à `--refresh-list` ; upload Drive manuel hors session.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-04 archivées dans `_contexte/archive_decisions.md`._
+- 2026-09-26 : nouveau projet `PromptGuard` (retrait des données sensibles avant envoi à un LLM cloud) créé via `/create_projet`→`/init_projet` ; 3 agents (`securite`, `qa`, `documentation`) créés en lot. Idée de skill de cohérence CLAUDE/AGENTS/GEMINI (tronc commun + section propre par fichier) mémorisée pour expérimentation locale côté PromptGuard, pas de généralisation au kit pour l'instant.
 - 2026-09-16 : `agent_role_TEMPLATE.md` § Invariants réutilise `{{ECRITURE_ETENDUE}}` (P14) pour rester cohérent avec le Périmètre de tout agent à écriture étendue, sans changement de `create_agent.md`.
 - 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de la liste de sélection des templates (jamais en dernier) — les rendus Markdown fixent le numéro de départ d'une liste ordonnée sur son premier élément et ignorent les valeurs explicites suivantes, ce qui provoquait un décalage d'affichage (`0` rendu comme le chiffre suivant, ex. `8`).
 - 2026-09-13 : `rclone_backup.json` porte `remote` et `folder` ; le dossier Drive ne dépend plus de la casse du chemin local. Le script exclut `.env*`, clés, certificats, credentials, tokens, configurations rclone et paramètres locaux ; `--check` réalise un contrôle rclone à sens unique.
@@ -29,4 +30,3 @@ _Décisions antérieures au 2026-09-04 archivées dans `_contexte/archive_decisi
 - 2026-09-06 : `/update` peut légitimement dévier d'une règle générique du kit quand le projet cible a un choix structurant incompatible (ex. helper Ollama dans `scripts/` et non à la racine) : ne pas forcer, documenter l'écart dans `CLAUDE.md` § Spécificités projet, ne pas toucher `AGENTS.md`/`GEMINI.md` déjà présents. `roadmap_migration_close.md` achevée : le corps générique de `start.md`/`close.md` d'un projet déployé peut rester byte-identique au kit, le comportement projet vivant en SPECIFICITES.
 - 2026-09-06 : `/start` et `/close` exposent quatre points d'ancrage de hook de zone (`on_start.md` : Pré-synthèse étape 3-bis, Post-synthèse 5-bis ; `on_close.md` : Pré-synthèse 2-bis, Fin 14-ter), opt-in, non bloquants, contrats dans `templates/on_*_TEMPLATE.md`. L'étape 10 de `close.md` (check_kit.py) devient conditionnelle à la présence du script ; corollaire : `close.md` d'un projet déployé peut être migré vers le mécanisme SPECIFICITES sans que `/update` casse la clôture.
 - 2026-09-04 : quand un projet utilise les trois fichiers `.claude/CLAUDE.md`, `AGENTS.md` et `GEMINI.md`, ils portent strictement le même contenu ; l’harmonisation attend le choix explicite de la source canonique et se vérifie par hash.
-- 2026-09-04 : une équipe à écriture parallèle est créée via `/create_parallel_team`, distinct de `/create_team` ; chaque membre a son worktree et sa branche, sans merge, rebase ou déploiement automatique.

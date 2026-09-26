@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.14 — 2026-09-26
+
+### Ajouté
+- Mémoire projet du kit (`.claude/memory.md`) : piste d'un skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` (déclenché à chaque modification, tronc commun conservé séparément, section de divergence propre à chaque fichier) — à expérimenter d'abord localement dans un projet tiers (`PromptGuard`) avant toute généralisation au kit.
+
 ## v5.13 — 2026-09-16
 
 ### Modifié

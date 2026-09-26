@@ -1,5 +1,9 @@
 # Archive des décisions — VibeObs
 
+## Décisions archivées le 2026-09-26 (rotation contexte.md > 10 entrées)
+
+- 2026-09-04 : une équipe à écriture parallèle est créée via `/create_parallel_team`, distinct de `/create_team` ; chaque membre a son worktree et sa branche, sans merge, rebase ou déploiement automatique.
+
 ## Décisions archivées le 2026-09-16 (rotation contexte.md > 10 entrées)
 
 - 2026-09-04 : les aliases de zone destinés à être utilisés par les personnes sont en majuscules (`TESTS`, `ONBOARD`, `RETOURS`) ; les noms de branches Git peuvent rester en minuscules sur Windows.

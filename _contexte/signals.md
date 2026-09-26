@@ -62,20 +62,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-09-16
+# Session du 2026-09-26
 
 ## Décisions prises
-- Harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` reportée : notée en P1, mise en œuvre sur ordre explicite ultérieur.
+- Nouveau projet `PromptGuard` créé (Git local + GitHub public) via `/create_projet` → `/init_projet`, stack et agents validés par l'utilisateur.
+- Idée de skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` à expérimenter localement dans PromptGuard d'abord, pas de généralisation au kit pour l'instant.
 
 ## Livrables produits ou modifiés
-- Aucun fichier modifié (session d'étude et vulgarisation uniquement).
+- `.claude/memory.md` (kit) : créé, 2 entrées (skill de cohérence + divergences par fichier).
+- `base_connaissances/ameliorations_create_agent.md` : entrée session PromptGuard (3 agents créés en lot).
+- `DEPLOYMENTS.md`, `AGENTS_REGISTRY.md` (hors git) : PromptGuard et ses 3 agents enregistrés.
+- Projet `D:\ServOMorph\PromptGuard` : protocole vibecoding posé, agents `securite`/`qa`/`documentation` créés.
 
 ## Hypothèses validées / invalidées
-- VALIDE : les templates minimaux contredisent la règle d'identité v5.3 ; `/update` étape 7 fige la dérive.
-- EN ATTENTE : support d'un renvoi `@` vers source unique par chaque outil (Claude/Codex/Gemini) non vérifié.
+- VALIDE : les flags d'isolation de Claude CLI (`--tools`, `--strict-mcp-config`, etc.) existent en 2.1.259.
+- EN ATTENTE : leur efficacité réelle pour isoler Claude CLI (test canari à faire côté PromptGuard/SECURITE).
+- EN ATTENTE : skill de cohérence des 3 fichiers `.md` (expérimentation à mener côté PromptGuard).
 
 ## Prochaine étape exacte
-Reprendre la P1 harmonisation (source `INSTRUCTIONS.md` + wrappers + portée demandée) sur ordre utilisateur.
+Rien de nouveau côté kit — la suite se joue dans `/start PromptGuard` (construction de sa roadmap).
 
 ## Question bloquante pour la session suivante
 Aucune.
