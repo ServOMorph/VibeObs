@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.15 — 2026-10-08
+
+### Modifié
+- `base_connaissances/ameliorations_create_agent.md` : retour d'expérience de la création des agents `textes` et `modeles_llm` (CreaZik_V3) — dossier préexistant sans charte, périmètre clarifié par présentation de l'arborescence, stockage hors projet choisi après analyse du disque, exclusion de `tests_ace/`. Aucune commande ni template modifiés.
+
 ## v5.14 — 2026-09-26
 
 ### Ajouté

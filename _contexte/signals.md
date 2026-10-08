@@ -55,6 +55,10 @@
   - fait quand: `git -C D:\ServOMorph\CreaZik_V3 status` montre la branche à jour avec `origin/main`, et `_contexte/contexte.md` de CreaZik_V3 porte une stack.
   - réf: `D:\ServOMorph\CreaZik_V3` commit `a8b74a8` ; `DEPLOYMENTS.md`.
 
+- Démarrer les agents `textes` et `modeles_llm` de `D:\ServOMorph\CreaZik_V3` et valider leurs chartes en conditions réelles.
+  - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
+  - réf: `D:\ServOMorph\CreaZik_V3\TEXTESgent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLMgent_role.md`, `AGENTS_REGISTRY.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -65,22 +69,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-08
+# Session du 2026-10-08 (2)
 
 ## Décisions prises
-- Nouveau projet `CreaZik_V3` (expérimentation de création de musique par IA, instrumental et vocal, modifiable intégralement) créé le 2026-10-05 via `/create_projet` : Git local + GitHub public, zone `CreaZik_V3`, sans AGENTS.md/GEMINI.md ni agents ; stack laissée vide.
-- Pas de bump de version ni de `/doc_sync` : aucun fichier suivi du kit n'a changé.
+- Agents `textes` (écriture limitée à `TEXTES/`, récupération via l'orchestrateur) et `modeles_llm` créés dans `D:\ServOMorph\CreaZik_V3` via `/create_agent`.
+- Stockage des modèles de `modeles_llm` : `D:\AI\Musique\<modele>\` (convention `D:\AI\`, `HF_HOME=D:\HuggingFaceCache` déjà partagé) ; `D:\Modeles_IA\` proposé puis écarté.
+- `webradio/tests_ace/` exclu du périmètre de `modeles_llm` (réservé aux tests du modèle ACE).
+- Pas de `/doc_sync` : aucune commande ni template du kit modifié.
 
 ## Livrables produits ou modifiés
-- `DEPLOYMENTS.md` (gitignoré) : ligne CreaZik_V3 ajoutée (v5.14).
-- Projet `D:\ServOMorph\CreaZik_V3` : dépôt GitHub `ServOMorph/CreaZik_V3`, protocole vibecoding posé (commit `a8b74a8`, non poussé).
+- `D:\ServOMorph\CreaZik_V3` : chartes et `_contexte/` des deux agents, `.claude/zones.md` (non commités dans ce repo).
+- `AGENTS_REGISTRY.md` (gitignoré) : deux lignes ajoutées.
+- `base_connaissances/ameliorations_create_agent.md` : entrée du jour et correction de périmètre.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/create_projet` enchaîne dépôt, description GitHub et `/init_projet` sans blocage.
-- EN ATTENTE : affichage de la liste des templates (étape 17) non exercé, l'utilisateur n'a pas atteint cette étape.
+- VALIDE : `start.md` de CreaZik_V3 référence `agent_role.md` (pas de warning).
+- INVALIDE : question de périmètre brute suffisante -> pivot vers présentation de l'arborescence avant choix.
+- EN ATTENTE : comportement réel des deux agents au premier `/start`.
 
 ## Prochaine étape exacte
-`/start CreaZik_V3` pour définir la stack et la roadmap du projet.
+`/start textes` ou `/start modeles_llm` depuis `D:\ServOMorph\CreaZik_V3`.
 
 ## Question bloquante pour la session suivante
 Aucune.

@@ -12,14 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-08 : agents `textes` et `modeles_llm` créés dans `CreaZik_V3` (modèles sur `D:\AI\Musique\`, `webradio/tests_ace/` exclu de leur périmètre) ; premiers `/start` à faire.
 - 2026-10-05 : projet `CreaZik_V3` créé et initialisé (GitHub public, zone `CreaZik_V3`, stack à définir) ; commit d'init local non poussé.
 - 2026-09-26 : projet `PromptGuard` créé et initialisé (protocole + agents `securite`/`qa`/`documentation`) ; skill de cohérence CLAUDE/AGENTS/GEMINI mémorisé pour expérimentation locale côté PromptGuard.
 - 2026-09-16 : étude harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` (contradiction templates minimaux vs identité v5.3, `/update` fige la dérive) ; mise en œuvre reportée en P1 sur ordre utilisateur.
-- 2026-09-16 : `/create_agent` a créé l'agent DOCUMENTATION du projet `Appli_TSA_SDI_TDAH` ; friction P14 tranchée et corrigée dans `agent_role_TEMPLATE.md`.
 - 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de liste ; vérification réelle restant à faire.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-04 archivées dans `_contexte/archive_decisions.md`._
+- 2026-10-08 : agents d'un projet cible qui stockent des modèles lourds hors dépôt suivent la convention `D:\AI\<domaine>\` et le cache `HF_HOME` existant ; un dossier réservé à un autre outil (ex. `tests_ace/`) est exclu du périmètre d'écriture.
 - 2026-09-26 : nouveau projet `PromptGuard` (retrait des données sensibles avant envoi à un LLM cloud) créé via `/create_projet`→`/init_projet` ; 3 agents (`securite`, `qa`, `documentation`) créés en lot. Idée de skill de cohérence CLAUDE/AGENTS/GEMINI (tronc commun + section propre par fichier) mémorisée pour expérimentation locale côté PromptGuard, pas de généralisation au kit pour l'instant.
 - 2026-09-16 : `agent_role_TEMPLATE.md` § Invariants réutilise `{{ECRITURE_ETENDUE}}` (P14) pour rester cohérent avec le Périmètre de tout agent à écriture étendue, sans changement de `create_agent.md`.
 - 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de la liste de sélection des templates (jamais en dernier) — les rendus Markdown fixent le numéro de départ d'une liste ordonnée sur son premier élément et ignorent les valeurs explicites suivantes, ce qui provoquait un décalage d'affichage (`0` rendu comme le chiffre suivant, ex. `8`).

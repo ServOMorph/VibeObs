@@ -488,3 +488,8 @@ Friction relevée : le template embarque `.claude/commands/discord_loop.md`. Pla
 Création en lot enchaînée depuis `/create_projet` → `/init_projet` (Q9). Rôles proposés par Claude après analyse de la stack (recherche web + analyse IA_V7), validés par l'utilisateur ; un seul aller-retour groupé (texte libre) pour rôles + périmètres.
 A bien fonctionné : `start.md` charge `agent_role.md` (pas de warning), zone racine `PromptGuard` déterminable, aliases absents → mode création propre.
 Friction : projet vierge (README d'une ligne) → étape 6 sans matière ; stack filtrée dérivée de `_contexte/contexte.md` racine et de `_docs/brief_initial.md` créé pendant l'init. Périmètres croisés à délimiter explicitement (`benchmarks/adversarial/` à securite, reste de `benchmarks/` à qa) pour éviter un chevauchement d'écriture.
+
+## 2026-10-08 — agents textes, modeles_llm (D:\ServOMorph\CreaZik_V3)
+A bien fonctionné : `start.md` charge `agent_role.md`, zone racine déterminable, création en lot.
+Frictions : dossier TEXTES/ préexistant avec fichiers mais sans alias ni charte (ni création pure ni conversion au sens de la commande) ; traité comme création sans toucher aux fichiers. Périmètre TEXTES clarifié par l'utilisateur après présentation de l'arborescence (la question de périmètre brute était insuffisante). Chemin de stockage des modèles hors projet imprécis ("dans d:") : D:\AI\Musique\ D:\Modeles_IA\ proposé puis remplacé par D:\AI\Musique\ après analyse de D: (D:/AI/ existant, HF_HOME déjà sur D:).
+Correction : périmètre webradio/tests_ace/ retiré pour modeles_llm (réservé aux tests du modèle ACE) ; l'option avait été proposée par Claude sans savoir cette réservation.
