@@ -12,11 +12,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-05 : projet `CreaZik_V3` créé et initialisé (GitHub public, zone `CreaZik_V3`, stack à définir) ; commit d'init local non poussé.
 - 2026-09-26 : projet `PromptGuard` créé et initialisé (protocole + agents `securite`/`qa`/`documentation`) ; skill de cohérence CLAUDE/AGENTS/GEMINI mémorisé pour expérimentation locale côté PromptGuard.
 - 2026-09-16 : étude harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` (contradiction templates minimaux vs identité v5.3, `/update` fige la dérive) ; mise en œuvre reportée en P1 sur ordre utilisateur.
 - 2026-09-16 : `/create_agent` a créé l'agent DOCUMENTATION du projet `Appli_TSA_SDI_TDAH` ; friction P14 tranchée et corrigée dans `agent_role_TEMPLATE.md`.
 - 2026-09-13 : `/create_projet` place `0. Aucun template` en tête de liste ; vérification réelle restant à faire.
-- 2026-09-13 : `rclone_backup` définit son dossier Drive canonique, exclut les secrets et propose `--check`.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-04 archivées dans `_contexte/archive_decisions.md`._

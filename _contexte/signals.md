@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-09-16)
+# Signals — VibeObs (MAJ 2026-10-08)
 
 ## Actions ouvertes — pilotage
 
@@ -51,6 +51,9 @@
 - Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
   - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
   - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
+- Pousser le commit d'init de `D:\ServOMorph\CreaZik_V3` et renseigner sa stack (laissée vide à l'init) lors du premier `/start CreaZik_V3`.
+  - fait quand: `git -C D:\ServOMorph\CreaZik_V3 status` montre la branche à jour avec `origin/main`, et `_contexte/contexte.md` de CreaZik_V3 porte une stack.
+  - réf: `D:\ServOMorph\CreaZik_V3` commit `a8b74a8` ; `DEPLOYMENTS.md`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -62,25 +65,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-09-26
+# Session du 2026-10-08
 
 ## Décisions prises
-- Nouveau projet `PromptGuard` créé (Git local + GitHub public) via `/create_projet` → `/init_projet`, stack et agents validés par l'utilisateur.
-- Idée de skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` à expérimenter localement dans PromptGuard d'abord, pas de généralisation au kit pour l'instant.
+- Nouveau projet `CreaZik_V3` (expérimentation de création de musique par IA, instrumental et vocal, modifiable intégralement) créé le 2026-10-05 via `/create_projet` : Git local + GitHub public, zone `CreaZik_V3`, sans AGENTS.md/GEMINI.md ni agents ; stack laissée vide.
+- Pas de bump de version ni de `/doc_sync` : aucun fichier suivi du kit n'a changé.
 
 ## Livrables produits ou modifiés
-- `.claude/memory.md` (kit) : créé, 2 entrées (skill de cohérence + divergences par fichier).
-- `base_connaissances/ameliorations_create_agent.md` : entrée session PromptGuard (3 agents créés en lot).
-- `DEPLOYMENTS.md`, `AGENTS_REGISTRY.md` (hors git) : PromptGuard et ses 3 agents enregistrés.
-- Projet `D:\ServOMorph\PromptGuard` : protocole vibecoding posé, agents `securite`/`qa`/`documentation` créés.
+- `DEPLOYMENTS.md` (gitignoré) : ligne CreaZik_V3 ajoutée (v5.14).
+- Projet `D:\ServOMorph\CreaZik_V3` : dépôt GitHub `ServOMorph/CreaZik_V3`, protocole vibecoding posé (commit `a8b74a8`, non poussé).
 
 ## Hypothèses validées / invalidées
-- VALIDE : les flags d'isolation de Claude CLI (`--tools`, `--strict-mcp-config`, etc.) existent en 2.1.259.
-- EN ATTENTE : leur efficacité réelle pour isoler Claude CLI (test canari à faire côté PromptGuard/SECURITE).
-- EN ATTENTE : skill de cohérence des 3 fichiers `.md` (expérimentation à mener côté PromptGuard).
+- VALIDE : `/create_projet` enchaîne dépôt, description GitHub et `/init_projet` sans blocage.
+- EN ATTENTE : affichage de la liste des templates (étape 17) non exercé, l'utilisateur n'a pas atteint cette étape.
 
 ## Prochaine étape exacte
-Rien de nouveau côté kit — la suite se joue dans `/start PromptGuard` (construction de sa roadmap).
+`/start CreaZik_V3` pour définir la stack et la roadmap du projet.
 
 ## Question bloquante pour la session suivante
 Aucune.

@@ -881,3 +881,27 @@ Répercuter P14 sur les chartes déjà écrites avec périmètre étendu si un b
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+# Session du 2026-09-26
+
+## Décisions prises
+- Nouveau projet `PromptGuard` créé (Git local + GitHub public) via `/create_projet` → `/init_projet`, stack et agents validés par l'utilisateur.
+- Idée de skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` à expérimenter localement dans PromptGuard d'abord, pas de généralisation au kit pour l'instant.
+
+## Livrables produits ou modifiés
+- `.claude/memory.md` (kit) : créé, 2 entrées (skill de cohérence + divergences par fichier).
+- `base_connaissances/ameliorations_create_agent.md` : entrée session PromptGuard (3 agents créés en lot).
+- `DEPLOYMENTS.md`, `AGENTS_REGISTRY.md` (hors git) : PromptGuard et ses 3 agents enregistrés.
+- Projet `D:\ServOMorph\PromptGuard` : protocole vibecoding posé, agents `securite`/`qa`/`documentation` créés.
+
+## Hypothèses validées / invalidées
+- VALIDE : les flags d'isolation de Claude CLI (`--tools`, `--strict-mcp-config`, etc.) existent en 2.1.259.
+- EN ATTENTE : leur efficacité réelle pour isoler Claude CLI (test canari à faire côté PromptGuard/SECURITE).
+- EN ATTENTE : skill de cohérence des 3 fichiers `.md` (expérimentation à mener côté PromptGuard).
+
+## Prochaine étape exacte
+Rien de nouveau côté kit — la suite se joue dans `/start PromptGuard` (construction de sa roadmap).
+
+## Question bloquante pour la session suivante
+Aucune.
