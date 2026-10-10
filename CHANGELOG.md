@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.16 — 2026-10-10
+
+### Modifié
+- `base_connaissances/ameliorations_create_agent.md` : retour d'expérience de la création de l'agent `jeux` (Appli_TSA_SDI_TDAH) — brief détaillé plus large qu'un rôle durable intégré à la charte, périmètre d'écriture étendu déduit de la demande, faisabilité de `run_jeux.py` sans toucher `src/` non vérifiée. Aucune commande ni template modifiés.
+
 ## v5.15 — 2026-10-08
 
 ### Modifié

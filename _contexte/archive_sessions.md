@@ -926,3 +926,28 @@ Aucune.
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+# Session du 2026-10-08 (2)
+
+## Décisions prises
+- Agents `textes` (écriture limitée à `TEXTES/`, récupération via l'orchestrateur) et `modeles_llm` créés dans `D:\ServOMorph\CreaZik_V3` via `/create_agent`.
+- Stockage des modèles de `modeles_llm` : `D:\AI\Musique\<modele>\` (convention `D:\AI\`, `HF_HOME=D:\HuggingFaceCache` déjà partagé) ; `D:\Modeles_IA\` proposé puis écarté.
+- `webradio/tests_ace/` exclu du périmètre de `modeles_llm` (réservé aux tests du modèle ACE).
+- Pas de `/doc_sync` : aucune commande ni template du kit modifié.
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\CreaZik_V3` : chartes et `_contexte/` des deux agents, `.claude/zones.md` (non commités dans ce repo).
+- `AGENTS_REGISTRY.md` (gitignoré) : deux lignes ajoutées.
+- `base_connaissances/ameliorations_create_agent.md` : entrée du jour et correction de périmètre.
+
+## Hypothèses validées / invalidées
+- VALIDE : `start.md` de CreaZik_V3 référence `agent_role.md` (pas de warning).
+- INVALIDE : question de périmètre brute suffisante -> pivot vers présentation de l'arborescence avant choix.
+- EN ATTENTE : comportement réel des deux agents au premier `/start`.
+
+## Prochaine étape exacte
+`/start textes` ou `/start modeles_llm` depuis `D:\ServOMorph\CreaZik_V3`.
+
+## Question bloquante pour la session suivante
+Aucune.

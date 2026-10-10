@@ -493,3 +493,7 @@ Friction : projet vierge (README d'une ligne) → étape 6 sans matière ; stack
 A bien fonctionné : `start.md` charge `agent_role.md`, zone racine déterminable, création en lot.
 Frictions : dossier TEXTES/ préexistant avec fichiers mais sans alias ni charte (ni création pure ni conversion au sens de la commande) ; traité comme création sans toucher aux fichiers. Périmètre TEXTES clarifié par l'utilisateur après présentation de l'arborescence (la question de périmètre brute était insuffisante). Chemin de stockage des modèles hors projet imprécis ("dans d:") : D:\AI\Musique\ D:\Modeles_IA\ proposé puis remplacé par D:\AI\Musique\ après analyse de D: (D:/AI/ existant, HF_HOME déjà sur D:).
 Correction : périmètre webradio/tests_ace/ retiré pour modeles_llm (réservé aux tests du modèle ACE) ; l'option avait été proposée par Claude sans savoir cette réservation.
+
+## 2026-10-10 — agent jeux (D:\ServOMorph\Appli_TSA_SDI_TDAH)
+A bien fonctionné : start.md charge agent_role.md, alias absent, mode création, périmètre étendu déduit de la demande (run_jeux.py) sans question groupée.
+Friction : le brief contenait un workflow détaillé (sources, 5 jeux, mode test) bien plus large qu un rôle durable ; intégré dans la section Rôle de la charte. Faisabilité de run_jeux.py (accueil sans onboarding) sans toucher src/ non vérifiée.

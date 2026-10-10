@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-08)
+# Signals — VibeObs (MAJ 2026-10-10)
 
 ## Actions ouvertes — pilotage
 
@@ -59,6 +59,10 @@
   - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
   - réf: `D:\ServOMorph\CreaZik_V3\TEXTESgent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLMgent_role.md`, `AGENTS_REGISTRY.md`.
 
+- Démarrer l'agent `jeux` d'`Appli_TSA_SDI_TDAH` et valider sa charte, notamment la faisabilité de `run_jeux.py` (accueil sans onboarding, outils ouverts) sans modifier `src/`.
+  - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
+  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUXgent_role.md`, `AGENTS_REGISTRY.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -69,26 +73,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-08 (2)
+# Session du 2026-10-10
 
 ## Décisions prises
-- Agents `textes` (écriture limitée à `TEXTES/`, récupération via l'orchestrateur) et `modeles_llm` créés dans `D:\ServOMorph\CreaZik_V3` via `/create_agent`.
-- Stockage des modèles de `modeles_llm` : `D:\AI\Musique\<modele>\` (convention `D:\AI\`, `HF_HOME=D:\HuggingFaceCache` déjà partagé) ; `D:\Modeles_IA\` proposé puis écarté.
-- `webradio/tests_ace/` exclu du périmètre de `modeles_llm` (réservé aux tests du modèle ACE).
+- Agent `jeux` créé dans `Appli_TSA_SDI_TDAH/JEUX` via `/create_agent` (alias `jeux`, parent racine) : jeux pour TSA/SDI/TDAH, 5 jeux simples proposés avant développement.
+- Jeux non branchés sur l'application pendant le développement ; test via `run_jeux.py` (racine, périmètre d'écriture étendu) ; `src/` et `IA-TSA` en lecture seule.
+- Message de mise à jour pour la zone parente copié dans le presse-papier.
 - Pas de `/doc_sync` : aucune commande ni template du kit modifié.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\CreaZik_V3` : chartes et `_contexte/` des deux agents, `.claude/zones.md` (non commités dans ce repo).
-- `AGENTS_REGISTRY.md` (gitignoré) : deux lignes ajoutées.
-- `base_connaissances/ameliorations_create_agent.md` : entrée du jour et correction de périmètre.
+- `Appli_TSA_SDI_TDAH` : `JEUX/agent_role.md`, `JEUX/_contexte/`, `.claude/zones.md` (non commités dans ce repo).
+- `AGENTS_REGISTRY.md` (gitignoré) : ligne `jeux` ajoutée.
+- `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `start.md` de CreaZik_V3 référence `agent_role.md` (pas de warning).
-- INVALIDE : question de périmètre brute suffisante -> pivot vers présentation de l'arborescence avant choix.
-- EN ATTENTE : comportement réel des deux agents au premier `/start`.
+- VALIDE : `start.md` d'Appli référence `agent_role.md` (pas de warning).
+- EN ATTENTE : faisabilité de `run_jeux.py` sans toucher `src/` ; emplacement des données de recherche du projet.
 
 ## Prochaine étape exacte
-`/start textes` ou `/start modeles_llm` depuis `D:\ServOMorph\CreaZik_V3`.
+`/start jeux` depuis `D:\ServOMorph\Appli_TSA_SDI_TDAH`.
 
 ## Question bloquante pour la session suivante
 Aucune.
