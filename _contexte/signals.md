@@ -57,11 +57,11 @@
 
 - Démarrer les agents `textes` et `modeles_llm` de `D:\ServOMorph\CreaZik_V3` et valider leurs chartes en conditions réelles.
   - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
-  - réf: `D:\ServOMorph\CreaZik_V3\TEXTESgent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLMgent_role.md`, `AGENTS_REGISTRY.md`.
+  - réf: `D:\ServOMorph\CreaZik_V3\TEXTES\agent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLM\agent_role.md`, `AGENTS_REGISTRY.md`.
 
 - Démarrer l'agent `jeux` d'`Appli_TSA_SDI_TDAH` et valider sa charte, notamment la faisabilité de `run_jeux.py` (accueil sans onboarding, outils ouverts) sans modifier `src/`.
   - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
-  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUXgent_role.md`, `AGENTS_REGISTRY.md`.
+  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUX\agent_role.md`, `AGENTS_REGISTRY.md`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
