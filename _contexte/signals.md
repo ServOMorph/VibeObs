@@ -18,18 +18,18 @@
 - Valider le correctif `templates/discord_com` en conditions réelles : deux notifications consécutives reçues et file finale `idle`.
   - fait quand: le bot local reçoit puis transmet deux notifications réelles sans perte.
   - réf: `templates/discord_com/`, `discord_com/` local (non versionné).
-- Résoudre le vol de focus avant la phase 3 de `roadmap_reprise_multicompte.md`.
-  - fait quand: une action de clic vise de façon fiable la nouvelle fenêtre Chrome.
-  - réf: `roadmap_reprise_multicompte.md`.
+- Résoudre le vol de focus avant la phase 3 de `roadmap_reprise_multicompte.md`. 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
+  - fait quand: le test manuel de `tests_manuels.md` (section « vol de focus ») est validé et `roadmap_reprise_multicompte.md` + `SKILL.md` sont mis à jour.
+  - réf: `roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.
 - Rejouer la phase 2 de `create_com_agents` sur `D:\ServOMorph\Meuniers`.
   - fait quand: installation, échange agent↔racine et purge de message sont validés sur Meuniers.
   - réf: `roadmap_com_agents.md`.
 - Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
   - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
   - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `00166dd`).
-- Fiabiliser la substitution Windows de `/init_projet` puis la tester. 2026-10-12 : `site_internet_ST_v3` initialisé avec `{{RACINE}}` Windows correct, mais substitution faite par script Python ad hoc, pas par une procédure fixée dans `init_projet.md`.
-  - fait quand: `init_projet.md` prescrit une méthode de substitution sûre sous Windows (UTF-8, LF, antislashs) et un projet est initialisé en la suivant.
-  - réf: `.claude/commands/init_projet.md`.
+- Tester la substitution Windows de `/init_projet` sur un projet réel. 2026-10-12 : méthode prescrite à l'étape 4 de `init_projet.md` (kit + template, kit v5.18), non encore exercée ; `rclone_backup.json` hors périmètre du script.
+  - fait quand: un projet est initialisé en suivant la méthode, sans `{{` résiduel et avec `{{RACINE}}` Windows valide.
+  - réf: `.claude/commands/init_projet.md` étape 4.
 - Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `roadmap_reprise_multicompte.md`.
@@ -45,9 +45,6 @@
 - Traiter l'écart `check_docs.py` : le commit `26b9cdd4` (2026-09-06) a modifié la ligne `maj:` du frontmatter de `journal.md` en plus d'ajouter une entrée en bas — le script considère cela comme une violation append-only. Décider : assouplir le contrôle pour exclure le frontmatter, ou traiter comme une vraie violation.
   - fait quand: `check_docs.py` passe sans écart, ou l'exception est explicitement documentée dans `40_specs/controle_qualite_base.md`.
   - réf: `scripts/check_docs.py`, `DOCUMENTATION/30_decisions/journal.md`, commit `26b9cdd4`.
-- Corriger la regex de version de `check_kit.py` (`get_version_from_readme`) : elle cherche le littéral `Kit v\d+\.\d+` et ne matche pas `Kit **v5.11**` (gras Markdown) — le contrôle de cohérence des versions ne vérifie donc jamais réellement README.md en pratique.
-  - fait quand: la regex tolère le gras Markdown, ou le format de README.md est aligné sur ce qu'elle attend.
-  - réf: `scripts/check_kit.py` fonction `get_version_from_readme`.
 - Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
   - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
   - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
@@ -81,26 +78,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-12
+# Session du 2026-10-12 (suite)
 
 ## Décisions prises
-- Projet test `site_internet_ST_v3` (zone `site_st`, GitHub public) créé via `/create_projet` → `/init_projet`, un seul agent, aucun template ; roadmap 8 phases (MVP = phases 1-3).
-- Kit v5.17 : `/init_projet` pose un `.gitignore` et inscrit les données sensibles ; `/close` crée `CHANGELOG.md` absent ; template `signals.md` conforme ; liste `/create_projet` à 8 templates.
-- Non corrigés volontairement : numérotation 10→12 de `close.md` (références existantes), `backup_file.py` du frontmatter template (miroir `check_kit`).
+- Vol de focus : correctif `focus_fiable.ps1` appliqué aux 4 scripts de clic/saisie ; test réel reporté par l'utilisateur (section ajoutée à `tests_manuels.md`).
+- `check_kit.py` : regex de version tolérante au gras Markdown ; `/init_projet` prescrit désormais une méthode de substitution Python littérale (kit v5.18).
 
 ## Livrables produits ou modifiés
-- `init_projet.md`, `close.md` (kit + template), `create_projet.md`, `doc_sync.md`, `templates/_contexte/signals.md` : corrigés.
-- `CHANGELOG.md` v5.17, `README.md`, `Protocole_start_close_context.md` : version alignée.
-- `DEPLOYMENTS.md` (gitignoré) : ligne `site_internet_ST_v3`.
-- `D:\ServOMorph\site_internet_ST_v3` : 3 commits poussés (`6f55ba2`, `3aca57a`, `c2455c2`).
+- `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` (nouveau) + `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre` : modifiés, non validés en réel.
+- `scripts/check_kit.py`, `.claude/commands/init_projet.md` + miroir `templates/`, `tests_manuels.md`, `CHANGELOG.md` v5.18, `README.md`, `Protocole_start_close_context.md` : mis à jour.
 
 ## Hypothèses validées / invalidées
-- VALIDE : enchaînement `/create_projet` → `/init_projet` en conditions réelles ; `check_kit.py` passant.
-- INVALIDE : placeholder `{{DONNEES_SENSIBLES}}` dans `CLAUDE.md` → casse le contrôle miroir, pivot vers remplacement explicite.
-- EN ATTENTE : rendu de la liste des templates côté utilisateur ; propositions DOCUMENTATION.
+- VALIDE : `check_kit.py` passant avec README effectivement contrôlé (`v5.18`).
+- EN ATTENTE : efficacité du correctif de focus (cause présumée, non confirmée) ; effet parasite possible de la touche Alt sur la barre de menus Chrome.
 
 ## Prochaine étape exacte
-`/start site_st` depuis une session ouverte sur `D:\ServOMorph\site_internet_ST_v3`.
+Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des correctifs `backup_project.py` et la mise à jour du guide `initialiser_un_projet.md`.
 
 ## Question bloquante pour la session suivante
 Aucune.

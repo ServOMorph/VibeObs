@@ -28,3 +28,18 @@ session de ce projet :
 Pour `Rayonne_Toi` et `Appli_TSA_SDI_TDAH` (partage assumé de `rayonne_toi_drive`) :
 au prochain `/close` de chacun, vérifier via `rclone lsf rayonne_toi_drive:BackUps`
 que le backup atterrit dans le bon sous-dossier de projet.
+
+## chatgpt-orchestrateur — correctif vol de focus (`focus_fiable.ps1`)
+
+Le correctif (activation avec nouvelles tentatives + contrôle du focus avant chaque
+clic, dans `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre`)
+n'a été validé qu'en syntaxe. À exécuter, VS Code ayant le focus au lancement :
+- lancer `cliquer_fenetre.ps1` sur une fenêtre Chrome ChatGPT : le clic doit atterrir
+  dans Chrome, pas dans VS Code ;
+- répéter 5 fois de suite, y compris avec une autre application au premier plan ;
+- simuler un échec (fenêtre cible minimisée ou bloquée) : le script doit s'arrêter
+  avec le code 2 et le message « Focus non obtenu », sans aucun clic ;
+- contrôler qu'aucun effet parasite de la touche Alt (barre de menus Chrome activée) ne
+  gêne le clic ou la saisie qui suit ;
+- si validé : mettre à jour `roadmap_reprise_multicompte.md` (blocage Phase 3) et la
+  section dédiée de `skills/chatgpt-orchestrateur/SKILL.md`.

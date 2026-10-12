@@ -12,14 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-12 : kit v5.18 — `/init_projet` prescrit une méthode de substitution Windows ; `check_kit.py` contrôle réellement la version de `README.md` ; correctif de focus `focus_fiable.ps1` en attente de test réel.
 - 2026-10-12 : projet test `site_internet_ST_v3` (zone `site_st`, refonte serenia-tech.fr) créé via `/create_projet` + `/init_projet`, roadmap 8 phases ; premier `/start site_st` à faire.
 - 2026-10-12 : kit v5.17 — `/init_projet` pose un `.gitignore` et inscrit les données sensibles, `/close` crée `CHANGELOG.md` absent, template `signals.md` conforme à l'invariant.
 - 2026-10-10 : agent `jeux` créé dans `Appli_TSA_SDI_TDAH/JEUX` ; premier `/start jeux` à faire.
 - 2026-10-08 : agents `textes` et `modeles_llm` créés dans `CreaZik_V3` ; premiers `/start` à faire.
-- 2026-09-16 : harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` reportée en P1 sur ordre utilisateur.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-10-12 : la substitution des placeholders de `/init_projet` se fait par remplacement littéral Python (UTF-8 sans BOM, LF), jamais par regex/`sed`/`-replace` qui interprètent `\` et `$`.
 - 2026-10-12 : `/init_projet` crée ou complète un `.gitignore` de sécurité (motifs ciblés `*token*.json`, `credentials*.json`, jamais `token*` qui masquerait des design tokens). Les données sensibles sont inscrites dans `CLAUDE.md` par remplacement explicite de `Aucun déclaré.`, pas par placeholder : `check_kit.py` retire les lignes à placeholder et un placeholder sans équivalent côté kit décale la comparaison miroir.
 - 2026-10-12 : projet `site_internet_ST_v3` = un seul agent (zone racine `site_st`), sert à la fois de refonte de serenia-tech.fr et de banc d'essai VibeObs ; mise à jour automatique du site uniquement via `site_com.md` par projet suivi + brouillon validé ; `creation_superagent.md` écrit après le MVP.
 - 2026-10-10 : un agent dont le périmètre d'écriture déborde de son dossier le déclare au minimum (ici `run_jeux.py`) ; le code applicatif (`src/`) reste en lecture seule tant que l'utilisateur n'a pas validé l'intégration.

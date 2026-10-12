@@ -110,8 +110,8 @@ if ($nombre -gt 1) {
 
 $hwnd = $candidats[0].Key
 $titre = $candidats[0].Value
-[FenetreFinderEnvoi]::SetForegroundWindow($hwnd) | Out-Null
-Start-Sleep -Milliseconds 200
+. (Join-Path $PSScriptRoot 'focus_fiable.ps1')
+Assert-FocusFenetre -Hwnd $hwnd -Reactiver
 
 $rect = New-Object RectFEnvoi
 [FenetreFinderEnvoi]::GetWindowRect($hwnd, [ref]$rect) | Out-Null
@@ -123,6 +123,7 @@ $y = [int]($rect.Top + $hauteur * $PositionClicY)
 if (-not $SeulementValider) {
     [FenetreFinderEnvoi]::SetCursorPos($x, $y)
     Start-Process -FilePath 'powershell.exe' -ArgumentList @('-NoProfile', '-WindowStyle', 'Hidden', '-File', (Join-Path $PSScriptRoot 'afficher_indicateur_clic.ps1'), '-X', $x, '-Y', $y) -WindowStyle Hidden -Wait
+    Assert-FocusFenetre -Hwnd $hwnd -Reactiver
     [FenetreFinderEnvoi]::mouse_event($MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
     [FenetreFinderEnvoi]::mouse_event($MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
     Start-Sleep -Milliseconds $DelaiApresClicMs

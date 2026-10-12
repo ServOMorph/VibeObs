@@ -115,6 +115,33 @@ Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claud
 | `{{RCLONE_REMOTE}}` | Remote rclone retenu à Q4bis, seulement dans `rclone_backup.json` |
 | `{{NOM_PROJET}}` | Nom du dossier racine du projet, seulement dans `rclone_backup.json` |
 
+**Méthode de substitution (obligatoire, notamment sous Windows).** Remplacement littéral, jamais par
+regex ni `sed`/`-replace` (le `\` de `C:\...` et un `$` dans une réponse y seraient interprétés).
+Lecture et écriture en UTF-8 sans BOM, fins de ligne conservées (LF des templates inchangé),
+`{{RACINE}}` écrit tel quel avec ses antislashs. Exécuter ce script Python (valeurs entre guillemets
+à renseigner) :
+
+```python
+import pathlib
+valeurs = {"{{ALIAS}}": "...", "{{RACINE}}": r"C:\chemin\projet", "{{OBJECTIF}}": "...",
+           "{{STACK}}": "...", "{{DATE}}": "AAAA-MM-JJ"}
+racine = pathlib.Path(r"C:\chemin\projet")
+cibles = [*racine.glob("_contexte/**/*.md"), *racine.glob(".claude/commands/*.md"), racine / ".claude/zones.md"]
+for f in cibles:
+    if not f.is_file():
+        continue
+    t = f.read_bytes().decode("utf-8")
+    n = t
+    for k, v in valeurs.items():
+        n = n.replace(k, v)
+    if n != t:
+        f.write_bytes(n.encode("utf-8"))
+```
+
+Contrôle obligatoire ensuite : aucune occurrence résiduelle de `{{` dans les fichiers traités
+(`grep -rn "{{" _contexte .claude`) hors placeholders volontairement conservés ; `{{RACINE}}` doit
+apparaître en chemin Windows valide (`D:\...`), pas en forme déformée (`D:...`, `/d/...`).
+
 Dans `$ARGUMENTS/.claude/CLAUDE.md`, section « Données sensibles » : si la réponse Q6 n'est pas
 négative, remplacer la ligne `Aucun déclaré.` par la réponse Q6 en liste à puces. Sinon, laisser
 la ligne telle quelle.

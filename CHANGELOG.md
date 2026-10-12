@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.18 — 2026-10-12
+
+### Ajouté
+- `/init_projet` (kit + template) étape 4 : méthode de substitution des placeholders prescrite (remplacement littéral en Python, UTF-8 sans BOM, LF conservées, antislashs de `{{RACINE}}` intacts) et contrôle des `{{` résiduels.
+- `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` : activation de fenêtre avec nouvelles tentatives et contrôle du focus avant clic, branché dans `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre` (non validé en réel, test dans `tests_manuels.md`).
+
+### Corrigé
+- `scripts/check_kit.py` : `get_version_from_readme` tolère le gras Markdown (`Kit **v5.18**`) ; le contrôle de version couvre enfin `README.md`.
+
 ## v5.17 — 2026-10-12
 
 ### Corrigé

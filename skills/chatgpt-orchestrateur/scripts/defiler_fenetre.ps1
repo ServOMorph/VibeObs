@@ -99,8 +99,8 @@ if ($nombre -gt 1) {
 
 $hwnd = $candidats[0].Key
 $titre = $candidats[0].Value
-[FenetreFinderDefil]::SetForegroundWindow($hwnd) | Out-Null
-Start-Sleep -Milliseconds 200
+. (Join-Path $PSScriptRoot 'focus_fiable.ps1')
+Assert-FocusFenetre -Hwnd $hwnd -Reactiver
 
 $rect = New-Object RectFD
 [FenetreFinderDefil]::GetWindowRect($hwnd, [ref]$rect) | Out-Null
@@ -110,6 +110,7 @@ $x = [int]($rect.Left + $largeur * $PositionSourisX)
 $y = [int]($rect.Top + $hauteur * $PositionSourisY)
 
 [FenetreFinderDefil]::SetCursorPos($x, $y)
+Assert-FocusFenetre -Hwnd $hwnd -Reactiver
 
 if ($AllerEnBas) {
     [FenetreFinderDefil]::mouse_event($MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)

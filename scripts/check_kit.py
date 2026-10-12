@@ -64,9 +64,9 @@ def get_version_from_readme():
     with open(README_PATH, "r", encoding="utf-8") as f:
         content = f.read()
     # Chercher dans la section État actuel
-    match = re.search(r"## État actuel\s*\n\n.*?(Kit v\d+\.\d+)", content, re.DOTALL)
+    match = re.search(r"## État actuel\s*\n\n.*?Kit \**(v\d+\.\d+)", content, re.DOTALL)
     if match:
-        return match.group(1).replace("Kit ", "")
+        return match.group(1)
     return None
 
 

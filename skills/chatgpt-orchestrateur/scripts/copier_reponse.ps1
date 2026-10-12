@@ -98,8 +98,8 @@ if ($nombre -gt 1) {
 
 $hwnd = $candidats[0].Key
 $titre = $candidats[0].Value
-[FenetreFinderCopie]::SetForegroundWindow($hwnd) | Out-Null
-Start-Sleep -Milliseconds 200
+. (Join-Path $PSScriptRoot 'focus_fiable.ps1')
+Assert-FocusFenetre -Hwnd $hwnd -Reactiver
 
 $rect = New-Object RectFCopie
 [FenetreFinderCopie]::GetWindowRect($hwnd, [ref]$rect) | Out-Null
@@ -113,6 +113,7 @@ Set-Clipboard -Value $marqueurVide
 
 [FenetreFinderCopie]::SetCursorPos($x, $y)
 Start-Process -FilePath 'powershell.exe' -ArgumentList @('-NoProfile', '-WindowStyle', 'Hidden', '-File', (Join-Path $PSScriptRoot 'afficher_indicateur_clic.ps1'), '-X', $x, '-Y', $y) -WindowStyle Hidden -Wait
+Assert-FocusFenetre -Hwnd $hwnd -Reactiver
 [FenetreFinderCopie]::mouse_event($MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
 [FenetreFinderCopie]::mouse_event($MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 Start-Sleep -Milliseconds $DelaiApresClicMs
