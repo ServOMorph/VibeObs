@@ -99,6 +99,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 
 9. Bumper la version dans `CHANGELOG.md` :
    - Lire la dernière entrée de `CHANGELOG.md` pour extraire la version actuelle (ex: `v2.2`).
+   - Si `CHANGELOG.md` n'existe pas : le créer avec l'en-tête `# Changelog` et une première entrée
+     `## v0.1 — AAAA-MM-JJ` (pas de calcul de bump), puis passer à l'étape 10.
    - Déterminer le type de bump à partir de la synthèse de l'étape 3 :
      - **major** si : structure de `_contexte/` modifiée, placeholder renommé ou supprimé, commande supprimée
      - **minor** dans tous les autres cas

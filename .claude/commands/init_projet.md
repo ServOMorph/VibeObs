@@ -86,6 +86,21 @@ La racine du projet cible ne doit jamais être demandée si $ARGUMENTS est fourn
 
 Ne pas copier `roadmap_TEMPLATE.md` (utilisé uniquement à la création d'un chantier).
 
+Créer ou compléter `$ARGUMENTS/.gitignore` avec les lignes suivantes (si le fichier existe, ajouter
+uniquement les lignes absentes, sans réordonner ni supprimer l'existant) :
+
+```
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials*.json
+*token*.json
+*.token
+.claude/settings.local.json
+```
+
 ### 4. Remplacer les placeholders
 
 Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claude/zones.md` :
@@ -97,9 +112,12 @@ Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claud
 | `{{OBJECTIF}}` | Objectif du projet (réponse Q2) |
 | `{{STACK}}` | Stack technique (réponse Q3) |
 | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
-| `{{DONNEES_SENSIBLES}}` | Réponse Q6, en liste à puces ; "Aucun déclaré." si réponse négative |
 | `{{RCLONE_REMOTE}}` | Remote rclone retenu à Q4bis, seulement dans `rclone_backup.json` |
 | `{{NOM_PROJET}}` | Nom du dossier racine du projet, seulement dans `rclone_backup.json` |
+
+Dans `$ARGUMENTS/.claude/CLAUDE.md`, section « Données sensibles » : si la réponse Q6 n'est pas
+négative, remplacer la ligne `Aucun déclaré.` par la réponse Q6 en liste à puces. Sinon, laisser
+la ligne telle quelle.
 
 ### 4bis. Brancher le backup Google Drive dans close.md (si réponse "oui" à Q4bis)
 
@@ -126,7 +144,7 @@ cette exécution (pas en cas de zone supplémentaire, Q5) :
 Dans le dépôt du projet cible ($ARGUMENTS) :
 
 ```bash
-git -C "$ARGUMENTS" add .claude/ _contexte/ ollama_call.py _docs/
+git -C "$ARGUMENTS" add .gitignore .claude/ _contexte/ ollama_call.py _docs/
 git -C "$ARGUMENTS" commit -m "init: protocole vibecoding — zone <alias>"
 ```
 

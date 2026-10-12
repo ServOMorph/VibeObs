@@ -16,6 +16,9 @@
 - [P2|ouvert|source=kit] Décider si la limite « sous auto-mode le classifieur bloque tout upload cloud de secrets ; un hook `/close` Fin ne peut faire que `--refresh-list`, l'upload est manuel hors session » mérite une entrée de base de connaissances (guide sessions/hooks) et une ligne d'INDEX.
   - fait quand: entrée créée ou mise à jour dans `DOCUMENTATION/` (ou décision explicite de ne pas documenter), face aux sources `templates/rclone_backup/backup_project.py`, `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin.
   - réf: DOCUMENTATION/20_guides/sessions_start_close.md, templates/rclone_backup/backup_project.py
+- [P2|ouvert|source=kit] Mettre à jour `20_guides/initialiser_un_projet.md` après kit v5.17 : § Fichiers déployés (ajouter `.gitignore`, `_docs/protocole_vibecoding.md` ; retirer `agent_role_TEMPLATE.md` non copié par l'étape 3), § Déroulé (données sensibles inscrites dans `CLAUDE.md`)
+  - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
+  - réf: .claude/commands/init_projet.md, CHANGELOG.md v5.17
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

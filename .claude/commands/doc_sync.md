@@ -64,7 +64,7 @@ Spec : `DOCUMENTATION/40_specs/controle_qualite_base.md`
 
 ### 4. Synchroniser les paires miroir
 
-Ces fichiers doivent être identiques dans les deux emplacements **après exclusion des lignes contenant des placeholders `{{...}}`** (ex: `{{DONNEES_SENSIBLES}}` dans `CLAUDE.md`).
+Ces fichiers doivent être identiques dans les deux emplacements **après exclusion des lignes contenant des placeholders `{{...}}`** (ex: `{{ALIAS}}`, `{{DATE}}`).
 Les placeholders sont des marqueurs de personnalisation pour les projets cibles et ne doivent pas bloquer la synchronisation :
 
 | `.claude/...` | `templates/.claude/...` |

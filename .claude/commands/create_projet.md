@@ -110,7 +110,8 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     4. netlify
     5. notification
     6. overlay
-    7. rclone_backup
+    7. parallel_agents
+    8. rclone_backup
 
     Répondez uniquement par le ou les numéros souhaités, séparés par des virgules (ex. 2,5).
     ```

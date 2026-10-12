@@ -951,3 +951,28 @@ Aucune.
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-10-10
+
+## Décisions prises
+- Agent `jeux` créé dans `Appli_TSA_SDI_TDAH/JEUX` via `/create_agent` (alias `jeux`, parent racine) : jeux pour TSA/SDI/TDAH, 5 jeux simples proposés avant développement.
+- Jeux non branchés sur l'application pendant le développement ; test via `run_jeux.py` (racine, périmètre d'écriture étendu) ; `src/` et `IA-TSA` en lecture seule.
+- Message de mise à jour pour la zone parente copié dans le presse-papier.
+- Pas de `/doc_sync` : aucune commande ni template du kit modifié.
+
+## Livrables produits ou modifiés
+- `Appli_TSA_SDI_TDAH` : `JEUX/agent_role.md`, `JEUX/_contexte/`, `.claude/zones.md` (non commités dans ce repo).
+- `AGENTS_REGISTRY.md` (gitignoré) : ligne `jeux` ajoutée.
+- `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
+
+## Hypothèses validées / invalidées
+- VALIDE : `start.md` d'Appli référence `agent_role.md` (pas de warning).
+- EN ATTENTE : faisabilité de `run_jeux.py` sans toucher `src/` ; emplacement des données de recherche du projet.
+
+## Prochaine étape exacte
+`/start jeux` depuis `D:\ServOMorph\Appli_TSA_SDI_TDAH`.
+
+## Question bloquante pour la session suivante
+Aucune.

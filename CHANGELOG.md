@@ -3,6 +3,18 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.17 — 2026-10-12
+
+### Corrigé
+- `/init_projet` (kit + template) : crée ou complète un `.gitignore` de sécurité (`.env*`, clés, `credentials*.json`, `*token*.json`, `settings.local.json`) et l'inclut au commit initial ; remplace explicitement `Aucun déclaré.` de `CLAUDE.md` § Données sensibles par la réponse Q6 ; ligne morte `{{DONNEES_SENSIBLES}}` retirée du tableau des placeholders.
+- `/close` (kit + template) étape 9 : création de `CHANGELOG.md` en `v0.1` s'il est absent.
+- `templates/_contexte/signals.md` : l'action d'amorçage porte `fait quand:` et `réf:` (invariant de `/close`).
+- `/create_projet` : liste d'exemple des templates alignée sur les 8 dossiers réels (`parallel_agents` ajouté).
+- `/doc_sync` : exemple de placeholder miroir mis à jour (`{{DONNEES_SENSIBLES}}` n'existe plus dans `CLAUDE.md`).
+
+### Ajouté
+- Projet test `site_internet_ST_v3` (zone `site_st`, GitHub public) créé via `/create_projet` → `/init_projet` pour exercer le kit en conditions réelles ; écarts relevés corrigés ci-dessus.
+
 ## v5.16 — 2026-10-10
 
 ### Modifié

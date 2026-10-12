@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-10)
+# Signals — VibeObs (MAJ 2026-10-12)
 
 ## Actions ouvertes — pilotage
 
@@ -27,8 +27,8 @@
 - Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
   - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
   - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `00166dd`).
-- Fiabiliser la substitution Windows de `/init_projet` puis la tester.
-  - fait quand: un projet cible Windows est initialisé avec les placeholders correctement résolus.
+- Fiabiliser la substitution Windows de `/init_projet` puis la tester. 2026-10-12 : `site_internet_ST_v3` initialisé avec `{{RACINE}}` Windows correct, mais substitution faite par script Python ad hoc, pas par une procédure fixée dans `init_projet.md`.
+  - fait quand: `init_projet.md` prescrit une méthode de substitution sûre sous Windows (UTF-8, LF, antislashs) et un projet est initialisé en la suivant.
   - réf: `.claude/commands/init_projet.md`.
 - Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
@@ -39,8 +39,8 @@
 - Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
   - fait quand: les premiers cycles `start`/`close` de `ONBOARD` et `RETOURS` sont validés sans écriture sur `main`.
   - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
-- Vérifier en conditions réelles que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête).
-  - fait quand: un `/create_projet` exécuté affiche `0. Aucun template` suivi de `1.` à `7.` sans renumérotation.
+- Vérifier dans le rendu de l'interface utilisateur que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête). Exécuté le 2026-10-12 (8 templates listés), rendu côté utilisateur non confirmé.
+  - fait quand: l'utilisateur confirme l'affichage `0. Aucun template` suivi de `1.` à `8.` sans renumérotation.
   - réf: `.claude/commands/create_projet.md` étape [TEMPLATES] 17.
 - Traiter l'écart `check_docs.py` : le commit `26b9cdd4` (2026-09-06) a modifié la ligne `maj:` du frontmatter de `journal.md` en plus d'ajouter une entrée en bas — le script considère cela comme une violation append-only. Décider : assouplir le contrôle pour exclure le frontmatter, ou traiter comme une vraie violation.
   - fait quand: `check_docs.py` passe sans écart, ou l'exception est explicitement documentée dans `40_specs/controle_qualite_base.md`.
@@ -63,6 +63,14 @@
   - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
   - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUX\agent_role.md`, `AGENTS_REGISTRY.md`.
 
+- Démarrer le projet test `site_internet_ST_v3` (refonte serenia-tech.fr + banc d'essai VibeObs) depuis une session ouverte sur sa racine.
+  - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
+  - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
+
+- Mettre à jour `DOCUMENTATION/20_guides/initialiser_un_projet.md` (§ Fichiers déployés : ajouter `.gitignore` et `_docs/protocole_vibecoding.md`, retirer `agent_role_TEMPLATE.md` non copié ; § Déroulé : données sensibles inscrites dans `CLAUDE.md`) — propositions en attente de validation utilisateur.
+  - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
+  - réf: `.claude/commands/init_projet.md` étapes 3-4, `DOCUMENTATION/_contexte/signals.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -73,25 +81,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-10
+# Session du 2026-10-12
 
 ## Décisions prises
-- Agent `jeux` créé dans `Appli_TSA_SDI_TDAH/JEUX` via `/create_agent` (alias `jeux`, parent racine) : jeux pour TSA/SDI/TDAH, 5 jeux simples proposés avant développement.
-- Jeux non branchés sur l'application pendant le développement ; test via `run_jeux.py` (racine, périmètre d'écriture étendu) ; `src/` et `IA-TSA` en lecture seule.
-- Message de mise à jour pour la zone parente copié dans le presse-papier.
-- Pas de `/doc_sync` : aucune commande ni template du kit modifié.
+- Projet test `site_internet_ST_v3` (zone `site_st`, GitHub public) créé via `/create_projet` → `/init_projet`, un seul agent, aucun template ; roadmap 8 phases (MVP = phases 1-3).
+- Kit v5.17 : `/init_projet` pose un `.gitignore` et inscrit les données sensibles ; `/close` crée `CHANGELOG.md` absent ; template `signals.md` conforme ; liste `/create_projet` à 8 templates.
+- Non corrigés volontairement : numérotation 10→12 de `close.md` (références existantes), `backup_file.py` du frontmatter template (miroir `check_kit`).
 
 ## Livrables produits ou modifiés
-- `Appli_TSA_SDI_TDAH` : `JEUX/agent_role.md`, `JEUX/_contexte/`, `.claude/zones.md` (non commités dans ce repo).
-- `AGENTS_REGISTRY.md` (gitignoré) : ligne `jeux` ajoutée.
-- `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
+- `init_projet.md`, `close.md` (kit + template), `create_projet.md`, `doc_sync.md`, `templates/_contexte/signals.md` : corrigés.
+- `CHANGELOG.md` v5.17, `README.md`, `Protocole_start_close_context.md` : version alignée.
+- `DEPLOYMENTS.md` (gitignoré) : ligne `site_internet_ST_v3`.
+- `D:\ServOMorph\site_internet_ST_v3` : 3 commits poussés (`6f55ba2`, `3aca57a`, `c2455c2`).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `start.md` d'Appli référence `agent_role.md` (pas de warning).
-- EN ATTENTE : faisabilité de `run_jeux.py` sans toucher `src/` ; emplacement des données de recherche du projet.
+- VALIDE : enchaînement `/create_projet` → `/init_projet` en conditions réelles ; `check_kit.py` passant.
+- INVALIDE : placeholder `{{DONNEES_SENSIBLES}}` dans `CLAUDE.md` → casse le contrôle miroir, pivot vers remplacement explicite.
+- EN ATTENTE : rendu de la liste des templates côté utilisateur ; propositions DOCUMENTATION.
 
 ## Prochaine étape exacte
-`/start jeux` depuis `D:\ServOMorph\Appli_TSA_SDI_TDAH`.
+`/start site_st` depuis une session ouverte sur `D:\ServOMorph\site_internet_ST_v3`.
 
 ## Question bloquante pour la session suivante
 Aucune.
