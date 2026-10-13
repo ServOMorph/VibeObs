@@ -64,6 +64,10 @@
   - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
   - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
 
+- Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts.
+  - fait quand: `/start shorts` charge la charte sans warning, l'état des lieux est écrit dans `Communication/SHORTS/` et validé par l'utilisateur, sans lecture des données sensibles.
+  - réf: `Communication/SHORTS/agent_role.md` de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+
 - Mettre à jour `DOCUMENTATION/20_guides/initialiser_un_projet.md` (§ Fichiers déployés : ajouter `.gitignore` et `_docs/protocole_vibecoding.md`, retirer `agent_role_TEMPLATE.md` non copié ; § Déroulé : données sensibles inscrites dans `CLAUDE.md`) — propositions en attente de validation utilisateur.
   - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
   - réf: `.claude/commands/init_projet.md` étapes 3-4, `DOCUMENTATION/_contexte/signals.md`.
@@ -78,21 +82,20 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-13
+# Session du 2026-10-13 (2)
 
 ## Décisions prises
-- Deux règles issues de `_AFAIRE.txt` (installation sur D:, `run.py` / `run_<nom>.py` à la racine) ajoutées à `CLAUDE.md` § Spécificités projet, kit et template (miroir exigé par `check_kit.py`).
+- Agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` (alias `shorts`), lecture étendue à tout le dépôt hors données sensibles, écriture limitée à son dossier ; ligne « Zone parente » retirée (aucune zone racine dans `zones.md`, Communication sans `team.md`).
 
 ## Livrables produits ou modifiés
-- `.claude/CLAUDE.md`, `templates/.claude/CLAUDE.md` : modifiés. `CHANGELOG.md` v5.19, `README.md`, `Protocole_start_close_context.md` : version alignée.
-- `_AFAIRE.txt` : supprimé par l'utilisateur (suppression refusée par le classifieur auto-mode).
+- `SérénIATech_dev/Communication/SHORTS/{agent_role.md,_contexte/contexte.md,_contexte/signals.md}` : créés ; `.claude/zones.md` de SérénIATech_dev : ligne `shorts` ajoutée (hors dépôt du kit).
+- `AGENTS_REGISTRY.md` (local, hors git) : ligne ajoutée. `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` passe après alignement du miroir.
-- EN ATTENTE : écart `check_docs.py` (journal append-only) toujours présent, inchangé.
+- EN ATTENTE : `/start shorts` jamais lancé ; chargement de la charte non testé.
 
 ## Prochaine étape exacte
-Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des correctifs `backup_project.py`, l'écart `check_docs.py` et le guide `initialiser_un_projet.md`.
+Lancer `/start shorts` depuis `SérénIATech_dev`, puis l'état des lieux des Shorts. Priorités P1 ci-dessus inchangées.
 
 ## Question bloquante pour la session suivante
 Aucune.

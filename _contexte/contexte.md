@@ -12,6 +12,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-13 : agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` ; premier `/start shorts` à faire.
 - 2026-10-13 : kit v5.19 — règles « installation sur D: » et « `run.py` / `run_<nom>.py` à la racine » ajoutées à `CLAUDE.md` (kit + template).
 - 2026-10-12 : kit v5.18 — `/init_projet` prescrit une méthode de substitution Windows ; `check_kit.py` contrôle réellement la version de `README.md` ; correctif de focus `focus_fiable.ps1` en attente de test réel.
 - 2026-10-12 : projet test `site_internet_ST_v3` (zone `site_st`, refonte serenia-tech.fr) créé via `/create_projet` + `/init_projet`, roadmap 8 phases ; premier `/start site_st` à faire.
