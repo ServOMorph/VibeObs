@@ -497,3 +497,6 @@ Correction : périmètre webradio/tests_ace/ retiré pour modeles_llm (réservé
 ## 2026-10-10 — agent jeux (D:\ServOMorph\Appli_TSA_SDI_TDAH)
 A bien fonctionné : start.md charge agent_role.md, alias absent, mode création, périmètre étendu déduit de la demande (run_jeux.py) sans question groupée.
 Friction : le brief contenait un workflow détaillé (sources, 5 jeux, mode test) bien plus large qu un rôle durable ; intégré dans la section Rôle de la charte. Faisabilité de run_jeux.py (accueil sans onboarding) sans toucher src/ non vérifiée.
+
+## 2026-10-13 — agent shorts (SérénIATech_dev)
+Syntaxe d'appel inversée (dossier puis "dans <chemin>") : le projet cible a dû être déduit en remontant de Communication/ jusqu'au .claude/zones.md. Aucune zone racine dans zones.md et Communication sans team.md : parent non déterminable, ligne Zone parente supprimée. Besoin de lecture étendue à tout le dépôt non prévu par le template (déclaré dans Périmètre/Invariants, pas de placeholder dédié).
