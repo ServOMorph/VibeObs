@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.19 — 2026-10-13
+
+### Ajouté
+- `.claude/CLAUDE.md` + miroir `templates/.claude/CLAUDE.md` § Spécificités projet : règles d'installation sur le lecteur D: quand c'est possible, et de création d'un `run.py` à la racine (`run_<nom>.py` si plusieurs).
+
 ## v5.18 — 2026-10-12
 
 ### Ajouté

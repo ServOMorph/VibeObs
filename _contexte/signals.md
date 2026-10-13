@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-12)
+# Signals — VibeObs (MAJ 2026-10-13)
 
 ## Actions ouvertes — pilotage
 
@@ -78,22 +78,21 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-12 (suite)
+# Session du 2026-10-13
 
 ## Décisions prises
-- Vol de focus : correctif `focus_fiable.ps1` appliqué aux 4 scripts de clic/saisie ; test réel reporté par l'utilisateur (section ajoutée à `tests_manuels.md`).
-- `check_kit.py` : regex de version tolérante au gras Markdown ; `/init_projet` prescrit désormais une méthode de substitution Python littérale (kit v5.18).
+- Deux règles issues de `_AFAIRE.txt` (installation sur D:, `run.py` / `run_<nom>.py` à la racine) ajoutées à `CLAUDE.md` § Spécificités projet, kit et template (miroir exigé par `check_kit.py`).
 
 ## Livrables produits ou modifiés
-- `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` (nouveau) + `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre` : modifiés, non validés en réel.
-- `scripts/check_kit.py`, `.claude/commands/init_projet.md` + miroir `templates/`, `tests_manuels.md`, `CHANGELOG.md` v5.18, `README.md`, `Protocole_start_close_context.md` : mis à jour.
+- `.claude/CLAUDE.md`, `templates/.claude/CLAUDE.md` : modifiés. `CHANGELOG.md` v5.19, `README.md`, `Protocole_start_close_context.md` : version alignée.
+- `_AFAIRE.txt` : supprimé par l'utilisateur (suppression refusée par le classifieur auto-mode).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` passant avec README effectivement contrôlé (`v5.18`).
-- EN ATTENTE : efficacité du correctif de focus (cause présumée, non confirmée) ; effet parasite possible de la touche Alt sur la barre de menus Chrome.
+- VALIDE : `check_kit.py` passe après alignement du miroir.
+- EN ATTENTE : écart `check_docs.py` (journal append-only) toujours présent, inchangé.
 
 ## Prochaine étape exacte
-Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des correctifs `backup_project.py` et la mise à jour du guide `initialiser_un_projet.md`.
+Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des correctifs `backup_project.py`, l'écart `check_docs.py` et le guide `initialiser_un_projet.md`.
 
 ## Question bloquante pour la session suivante
 Aucune.

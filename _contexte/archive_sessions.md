@@ -976,3 +976,25 @@ Aucune.
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-10-12 (suite)
+
+## Décisions prises
+- Vol de focus : correctif `focus_fiable.ps1` appliqué aux 4 scripts de clic/saisie ; test réel reporté par l'utilisateur (section ajoutée à `tests_manuels.md`).
+- `check_kit.py` : regex de version tolérante au gras Markdown ; `/init_projet` prescrit désormais une méthode de substitution Python littérale (kit v5.18).
+
+## Livrables produits ou modifiés
+- `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` (nouveau) + `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre` : modifiés, non validés en réel.
+- `scripts/check_kit.py`, `.claude/commands/init_projet.md` + miroir `templates/`, `tests_manuels.md`, `CHANGELOG.md` v5.18, `README.md`, `Protocole_start_close_context.md` : mis à jour.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` passant avec README effectivement contrôlé (`v5.18`).
+- EN ATTENTE : efficacité du correctif de focus (cause présumée, non confirmée) ; effet parasite possible de la touche Alt sur la barre de menus Chrome.
+
+## Prochaine étape exacte
+Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des correctifs `backup_project.py` et la mise à jour du guide `initialiser_un_projet.md`.
+
+## Question bloquante pour la session suivante
+Aucune.

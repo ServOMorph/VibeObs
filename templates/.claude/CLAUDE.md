@@ -111,3 +111,6 @@ Pour les tâches répétitives et templated (commits, posts, changelogs, donnée
 ## Spécificités projet
 
 Section réservée aux règles propres à ce projet, hors périmètre du kit. Cette section est préservée intégralement par `/update` (jamais écrasée ni fusionnée avec le contenu du kit). Convention : toute règle liée à une section précise du fichier doit la référencer explicitement par son titre (ex: "Section Roadmap : ..."), plutôt que compter sur la position physique de cette section (toujours en fin de fichier).
+
+- Installation : installer sur le lecteur D: quand c'est possible.
+- Lancement : créer un `run.py` à la racine pour lancer le projet si besoin. Si plusieurs `run.py` sont nécessaires, les nommer `run_<nom>.py`.
