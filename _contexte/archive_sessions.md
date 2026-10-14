@@ -998,3 +998,22 @@ Exécuter le test de focus (`tests_manuels.md`), puis trancher le port des corre
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+# Session du 2026-10-13 (2)
+
+## Décisions prises
+- Agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` (alias `shorts`), lecture étendue à tout le dépôt hors données sensibles, écriture limitée à son dossier ; ligne « Zone parente » retirée (aucune zone racine dans `zones.md`, Communication sans `team.md`).
+
+## Livrables produits ou modifiés
+- `SérénIATech_dev/Communication/SHORTS/{agent_role.md,_contexte/contexte.md,_contexte/signals.md}` : créés ; `.claude/zones.md` de SérénIATech_dev : ligne `shorts` ajoutée (hors dépôt du kit).
+- `AGENTS_REGISTRY.md` (local, hors git) : ligne ajoutée. `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
+
+## Hypothèses validées / invalidées
+- EN ATTENTE : `/start shorts` jamais lancé ; chargement de la charte non testé.
+
+## Prochaine étape exacte
+Lancer `/start shorts` depuis `SérénIATech_dev`, puis l'état des lieux des Shorts. Priorités P1 ci-dessus inchangées.
+
+## Question bloquante pour la session suivante
+Aucune.

@@ -500,3 +500,20 @@ Friction : le brief contenait un workflow détaillé (sources, 5 jeux, mode test
 
 ## 2026-10-13 — agent shorts (SérénIATech_dev)
 Syntaxe d'appel inversée (dossier puis "dans <chemin>") : le projet cible a dû être déduit en remontant de Communication/ jusqu'au .claude/zones.md. Aucune zone racine dans zones.md et Communication sans team.md : parent non déterminable, ligne Zone parente supprimée. Besoin de lecture étendue à tout le dépôt non prévu par le template (déclaré dans Périmètre/Invariants, pas de placeholder dédié).
+
+## 2026-10-13 — agent espace_l-invariable (SérénIATech_dev)
+Appel avec le chemin d'un sous-dossier non initialisé : projet cible déduit en remontant jusqu'au .claude/zones.md de SérénIATech_dev. Aucune zone racine : ligne Zone parente supprimée. Lecture étendue au dépôt entier déclarée en Périmètre (pas de placeholder dédié).
+Friction : la normalisation en MAJUSCULES du [PREFLIGHT] n'a pas pu s'appliquer (git mv Permission denied, sous-dossiers verrouillés par un processus non identifié) ; reportée sur décision utilisateur, tracée en P2 dans signals.md. Dépendance non prévue par la commande : le nom du dossier est stocké en base (UI/sereniatech.db, clients.dossier) ; la commande ne prévoit aucune recherche de références au nom du dossier avant renommage.
+Analyse à froid (Opus, 2026-10-13) :
+- Erreur d'application : zone `gestion-clients` (dossier `Gestion clients/`) contient le dossier de l'agent → zone imbriquée non détectée, parent déclaré « non déterminé ». Conséquences : double propriété du dossier, actions L'Invariable (P1/P2) dupliquées dans `Gestion clients/_contexte/signals.md`.
+- Erreur d'application : lecture « dépôt entier » sans exclure `Gestion clients\Devis\devis_créés`, déclaré sensible dans le CLAUDE.md du projet.
+- Conflit de périmètre : `/ecoute_commentaires` (zone shorts) écrit dans `Espace_L-Invariable/Ateliers/17 octobre 2026/clip_promo/diffusion`. Recouvrement de rôle avec la zone `ateliers` (ateliers L'Invariable).
+- Hypothèse non vérifiée sur le verrou : deux `python -m http.server` actifs (8765, 8781), répertoire courant non identifié.
+- Propositions :
+  - P1 [Implémentée le 2026-10-14] [PREFLIGHT] : résoudre comme parent la zone englobante la plus proche (préfixe de chemin dans zones.md), pas seulement racine/équipe.
+  - P2 [Implémentée le 2026-10-14] [PREFLIGHT] : chemin sans .claude/zones.md → remonter les parents et proposer le projet trouvé (2 cas : shorts, espace_l-invariable).
+  - P3 [Implémentée le 2026-10-14] [ECRITURE] : avant renommage, rechercher les références au nom du dossier (fichiers, base de données, configs) ; si Permission denied → proposer le report au lieu d'un arrêt.
+  - P4 [Implémentée le 2026-10-14] [COLLECTE] : lire la section « Données sensibles » du CLAUDE.md cible et l'injecter en exclusion dans le Périmètre.
+  - P5 [Implémentée le 2026-10-14] Template : placeholder `{{LECTURE_ETENDUE}}` (2 cas : shorts, espace_l-invariable).
+  - P6 [Implémentée le 2026-10-14] [PREFLIGHT] : repérer les actions des signals.md du parent qui citent le dossier et proposer leur migration.
+Suite (2026-10-14) : charte espace_l-invariable corrigée (parent gestion-clients, exclusion données sensibles, écriture partagée clip_promo/diffusion avec shorts, aussi déclarée dans la charte shorts) ; 2 actions L'Invariable migrées depuis gestion-clients.

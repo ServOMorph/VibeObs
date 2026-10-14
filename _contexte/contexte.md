@@ -12,16 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-14 : kit v5.20 — `/create_agent` choisit le parent englobant, déduit le projet cible, exclut les données sensibles, migre les actions du parent ; agent `espace_l-invariable` créé (SérénIATech_dev), renommage en majuscules en attente.
 - 2026-10-13 : agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` ; premier `/start shorts` à faire.
-- 2026-10-13 : kit v5.19 — règles « installation sur D: » et « `run.py` / `run_<nom>.py` à la racine » ajoutées à `CLAUDE.md` (kit + template).
-- 2026-10-12 : kit v5.18 — `/init_projet` prescrit une méthode de substitution Windows ; `check_kit.py` contrôle réellement la version de `README.md` ; correctif de focus `focus_fiable.ps1` en attente de test réel.
-- 2026-10-12 : projet test `site_internet_ST_v3` (zone `site_st`, refonte serenia-tech.fr) créé via `/create_projet` + `/init_projet`, roadmap 8 phases ; premier `/start site_st` à faire.
-- 2026-10-12 : kit v5.17 — `/init_projet` pose un `.gitignore` et inscrit les données sensibles, `/close` crée `CHANGELOG.md` absent, template `signals.md` conforme à l'invariant.
-- 2026-10-10 : agent `jeux` créé dans `Appli_TSA_SDI_TDAH/JEUX` ; premier `/start jeux` à faire.
-- 2026-10-08 : agents `textes` et `modeles_llm` créés dans `CreaZik_V3` ; premiers `/start` à faire.
+- 2026-10-13 : kit v5.19 — règles « installation sur D: » et « `run.py` à la racine » ajoutées à `CLAUDE.md` (kit + template).
+- 2026-10-12 : kit v5.18 — substitution Windows de `/init_projet` prescrite ; correctif de focus `focus_fiable.ps1` en attente de test réel.
+- 2026-10-12 : projet test `site_internet_ST_v3` créé ; premier `/start site_st` à faire.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-10-14 : `/create_agent` résout le parent par la zone englobante la plus proche (pas seulement la zone racine) et lit les « Données sensibles » du `CLAUDE.md` cible pour les exclure de la lecture étendue de l'agent ; un renommage de casse refusé par le système est reporté et tracé en action P2, sans terminer de processus.
 - 2026-10-13 : les règles « installation sur D: » et « `run.py` à la racine » sont posées dans `CLAUDE.md` § Spécificités projet du kit ET du template (miroir exigé par `check_kit.py`), donc déployées dans les futurs projets.
 - 2026-10-12 : la substitution des placeholders de `/init_projet` se fait par remplacement littéral Python (UTF-8 sans BOM, LF), jamais par regex/`sed`/`-replace` qui interprètent `\` et `$`.
 - 2026-10-12 : `/init_projet` crée ou complète un `.gitignore` de sécurité (motifs ciblés `*token*.json`, `credentials*.json`, jamais `token*` qui masquerait des design tokens). Les données sensibles sont inscrites dans `CLAUDE.md` par remplacement explicite de `Aucun déclaré.`, pas par placeholder : `check_kit.py` retire les lignes à placeholder et un placeholder sans équivalent côté kit décale la comparaison miroir.

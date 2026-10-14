@@ -34,8 +34,12 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      diffère). L'alias de zone (dérivé à l'étape 4) reste en minuscules,
      indépendamment de cette normalisation.
 
-2. Vérifier `<projet_cible>/.claude/zones.md`. Absent → s'arrêter, le projet
-   n'a pas encore été initialisé via `/init_projet`.
+2. Vérifier `<projet_cible>/.claude/zones.md`. Absent → remonter les dossiers
+   parents jusqu'au premier contenant `.claude/zones.md`. Trouvé : proposer ce
+   dossier comme projet cible et le chemin fourni (relatif à lui) comme
+   dossier de l'agent si aucun dossier n'a été donné ; demander confirmation
+   dans la question groupée de [COLLECTE]. Aucun ancêtre initialisé →
+   s'arrêter, le projet n'a pas encore été initialisé via `/init_projet`.
 
 3. Vérifier que `<projet_cible>/.claude/commands/start.md` contient une
    référence à `agent_role.md` (chargement automatique de la charte par
@@ -46,8 +50,10 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    confirmation ("Continuer quand même (o/n) ?"). Ne jamais créer l'agent
    silencieusement dans ce cas.
 
-4. Résoudre la zone parente : sans `parent=<alias>`, utiliser la zone racine (ligne de `zones.md`
-   pointant vers la racine du projet). Avec l'option, l'alias doit exister et son dossier doit
+4. Résoudre la zone parente : sans `parent=<alias>`, utiliser la zone englobante la plus proche,
+   c'est-à-dire la ligne de `zones.md` dont le dossier (relatif ou absolu, normalisé par rapport à
+   la racine du projet, casse ignorée) est l'ancêtre le plus profond du dossier de l'agent ; à
+   défaut, la zone racine (ligne pointant vers la racine du projet). Avec l'option, l'alias doit exister et son dossier doit
    contenir `team.md`, sinon s'arrêter. Créer le dossier de l'agent sous ce parent, pas à la racine.
    Dériver l'alias par défaut = nom du dossier cible en minuscules pour un parent racine, ou
    `<alias-parent>-<nom-dossier-en-minuscules>` pour une équipe, puis lire
@@ -62,6 +68,18 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    - `agent_role.md` déjà présent dans le dossier cible → s'arrêter, la zone
      est déjà un agent.
 
+4b. Parent résolu : rechercher dans `<dossier_parent>/_contexte/signals.md` les
+    actions ouvertes qui citent le dossier de l'agent (nom ou chemin, casse
+    ignorée). Les lister pour la question groupée de [COLLECTE] (migration
+    proposée).
+
+4c. Renommage nécessaire (casse) : rechercher dans le projet les références au
+    nom du dossier (casse ignorée, hors `.git/`, logs et archives) et les
+    classer en fonctionnelles (code, configs, bases de données — chercher le
+    nom dans les colonnes texte des bases présentes) ou documentaires.
+    Présenter les fonctionnelles dans la question groupée de [COLLECTE] ; les
+    documentaires ne sont pas modifiées.
+
 ## [COLLECTE] — une seule interaction, puis analyse conditionnelle
 
 5. Si rôle, périmètre d'écriture ou mode conversion restent à confirmer,
@@ -73,7 +91,20 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      générique par défaut.
    - Périmètre d'écriture : par défaut l'agent n'écrit que dans son propre
      dossier ; lister les chemins si extension nécessaire → `{{ECRITURE_ETENDUE}}`.
+   - Périmètre de lecture : par défaut son dossier et la racine du projet ;
+     extension éventuelle (ex. dépôt entier en lecture seule) → `{{LECTURE_ETENDUE}}`.
    - En mode conversion : confirmation explicite du mode.
+   - Projet cible déduit par remontée ([PREFLIGHT]) : confirmation.
+   - Actions du parent citant le dossier ([PREFLIGHT] 4b) : migrer vers l'agent (o/n).
+   - Références fonctionnelles au nom du dossier ([PREFLIGHT] 4c) : les mettre
+     à jour avec le renommage (o/n). Base de données : sauvegarde du fichier
+     avant toute mise à jour.
+
+5b. Lire la section « Données sensibles » du `CLAUDE.md` (ou `AGENTS.md`) du
+    projet cible → `{{DONNEES_SENSIBLES}}` = `- Ne jamais lire ni écrire les
+    données sensibles déclarées dans .claude/CLAUDE.md (section « Données
+    sensibles ») : <liste>, ainsi que tout fichier .env`. Section absente ou
+    vide : `- Ne jamais lire ni écrire de fichier .env`.
    - **Agent Discord** (dossier nommé `DISCORD` ou rôle mentionnant Discord/bot) :
      demander si l'utilisateur veut insérer le template `templates/discord_com/`
      dans le dossier de l'agent (`<dossier>/discord_com/`). Par défaut oui.
@@ -106,6 +137,8 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      | `{{ALIAS_AGENT}}` | Alias résolu en [PREFLIGHT] |
      | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
 | `{{ECRITURE_ETENDUE}}` | Vide, ou `, <chemins déclarés en [COLLECTE]>` |
+| `{{LECTURE_ETENDUE}}` | Vide, ou `, <chemins déclarés en [COLLECTE]> (lecture seule)` |
+| `{{DONNEES_SENSIBLES}}` | Ligne produite en [COLLECTE] |
 | `{{COMMUNICATION_HIERARCHIQUE}}` | Vide pour un agent simple |
 
      Règle `{{ALIAS_PARENT}}` : utiliser la zone parente résolue au [PREFLIGHT]. Si la zone racine
@@ -122,6 +155,12 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    - Si le parent est une équipe : ajouter une ligne du membre dans son `team.md` (alias, type
      `agent`, dossier et rôle), sans toucher aux autres lignes.
 
+   Migration d'actions (les deux modes, si acceptée en [COLLECTE]) : recopier
+   les actions du parent dans `_contexte/signals.md` de l'agent (mention
+   « migré depuis <alias_parent> le {{DATE}} », chemins rendus relatifs au
+   dossier de l'agent) et les remplacer dans le `signals.md` du parent par une
+   seule ligne `[info]` indiquant la délégation à l'agent.
+
    Mode **conversion** — ne créer que ce qui manque, ne jamais écraser :
    - `agent_role.md` : le créer (règles ci-dessus).
    - `_contexte/contexte.md`/`signals.md` absents : les créer normalement.
@@ -134,7 +173,14 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      ne change pas.
    - Dossier existant dont la casse n'est pas déjà en majuscules : le
      renommer avant toute écriture (`git mv` si le dossier est suivi par
-     git), puis répercuter le nouveau chemin dans `zones.md`.
+     git ; sous Windows, changement de casse seule en deux temps via un nom
+     intermédiaire), puis répercuter le nouveau chemin dans `zones.md` et
+     dans les références fonctionnelles acceptées en [COLLECTE].
+   - Renommage refusé par le système (Permission denied, dossier verrouillé) :
+     ne rien modifier, ne terminer aucun processus, proposer le report.
+     Report accepté : créer l'agent avec la casse actuelle et ajouter dans
+     son `signals.md` une action P2 de renommage listant les références
+     fonctionnelles à aligner.
 
    Template Discord (les deux modes) — si l'insertion a été acceptée en
    [COLLECTE] : copier `templates/discord_com/` (récursif, hors `analysis/`,

@@ -19,6 +19,9 @@
 - [P2|ouvert|source=kit] Mettre à jour `20_guides/initialiser_un_projet.md` après kit v5.17 : § Fichiers déployés (ajouter `.gitignore`, `_docs/protocole_vibecoding.md` ; retirer `agent_role_TEMPLATE.md` non copié par l'étape 3), § Déroulé (données sensibles inscrites dans `CLAUDE.md`)
   - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
   - réf: .claude/commands/init_projet.md, CHANGELOG.md v5.17
+- [P2|ouvert|source=kit] Mettre à jour `20_guides/creer_un_agent.md` après kit v5.20 : [PREFLIGHT] (parent englobant, remontée du projet cible, actions du parent), [COLLECTE] (lecture étendue, données sensibles), [ECRITURE] (migration d'actions, report si renommage refusé), § Après création (« zone racine » -> zone englobante)
+  - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
+  - réf: .claude/commands/create_agent.md, CHANGELOG.md v5.20
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

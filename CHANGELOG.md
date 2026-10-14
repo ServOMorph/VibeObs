@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.20 — 2026-10-14
+
+### Ajouté
+- `/create_agent` ([PREFLIGHT]) : zone parente = zone englobante la plus proche dans `zones.md` (au lieu de la seule zone racine ou équipe) ; projet cible déduit en remontant jusqu'au premier `.claude/zones.md` si le chemin fourni n'est pas initialisé ; repérage des actions du `signals.md` du parent citant le dossier (migration proposée) ; recherche des références au nom du dossier avant renommage de casse (code, configs, bases de données).
+- `/create_agent` ([COLLECTE]) : périmètre de lecture étendu (`{{LECTURE_ETENDUE}}`) et lecture de la section « Données sensibles » du `CLAUDE.md` cible (`{{DONNEES_SENSIBLES}}`).
+- `/create_agent` ([ECRITURE]) : migration des actions du parent ; renommage de casse sous Windows en deux temps ; renommage refusé (verrou) → report tracé en action P2 sans terminer de processus.
+- `templates/agent_role_TEMPLATE.md` : placeholders `{{LECTURE_ETENDUE}}` (section Périmètre) et `{{DONNEES_SENSIBLES}}` (section Invariants). `/create_team` les résout de la même façon (vides ou selon `/create_agent`).
+- Propositions P1 à P6 de l'analyse d'`espace_l-invariable` implémentées et tracées dans `base_connaissances/ameliorations_create_agent.md`.
+
 ## v5.19 — 2026-10-13
 
 ### Ajouté

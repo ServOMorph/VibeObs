@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-13)
+# Signals — VibeObs (MAJ 2026-10-14)
 
 ## Actions ouvertes — pilotage
 
@@ -64,9 +64,13 @@
   - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
   - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
 
-- Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts.
+- Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts (charte complétée le 2026-10-14 : zone parente `communication`, écriture partagée `clip_promo/diffusion`).
   - fait quand: `/start shorts` charge la charte sans warning, l'état des lieux est écrit dans `Communication/SHORTS/` et validé par l'utilisateur, sans lecture des données sensibles.
   - réf: `Communication/SHORTS/agent_role.md` de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+
+- Démarrer l'agent `espace_l-invariable` de `SérénIATech_dev` (`Gestion clients/Clients/Espace_L-Invariable`), puis renommer son dossier en majuscules une fois le verrou levé.
+  - fait quand: `/start espace_l-invariable` charge la charte sans warning ; renommage en `ESPACE_L-INVARIABLE` fait avec mise à jour de `clients.dossier` (id 8) dans `UI/sereniatech.db`, `zones.md` et `upload_short_atelier.py`.
+  - réf: `Gestion clients/Clients/Espace_L-Invariable/_contexte/signals.md` (P2) de SérénIATech_dev, `AGENTS_REGISTRY.md`.
 
 - Mettre à jour `DOCUMENTATION/20_guides/initialiser_un_projet.md` (§ Fichiers déployés : ajouter `.gitignore` et `_docs/protocole_vibecoding.md`, retirer `agent_role_TEMPLATE.md` non copié ; § Déroulé : données sensibles inscrites dans `CLAUDE.md`) — propositions en attente de validation utilisateur.
   - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
@@ -82,20 +86,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-13 (2)
+# Session du 2026-10-14
 
 ## Décisions prises
-- Agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` (alias `shorts`), lecture étendue à tout le dépôt hors données sensibles, écriture limitée à son dossier ; ligne « Zone parente » retirée (aucune zone racine dans `zones.md`, Communication sans `team.md`).
+- Agent `espace_l-invariable` créé dans `SérénIATech_dev/Gestion clients/Clients/Espace_L-Invariable` (parent `gestion-clients`, lecture du dépôt hors données sensibles, écriture limitée à son dossier) ; renommage en majuscules reporté (dossier verrouillé, `clients.dossier` en base).
+- `clip_promo/diffusion` en écriture partagée avec `shorts` ; charte `shorts` complétée (parent `communication`) ; 2 actions L'Invariable migrées de `gestion-clients` vers l'agent.
+- `/create_agent` : P1 à P6 implémentées (parent englobant, remontée du projet cible, migration d'actions, références avant renommage, données sensibles, lecture étendue) ; kit v5.20.
 
 ## Livrables produits ou modifiés
-- `SérénIATech_dev/Communication/SHORTS/{agent_role.md,_contexte/contexte.md,_contexte/signals.md}` : créés ; `.claude/zones.md` de SérénIATech_dev : ligne `shorts` ajoutée (hors dépôt du kit).
-- `AGENTS_REGISTRY.md` (local, hors git) : ligne ajoutée. `base_connaissances/ameliorations_create_agent.md` : entrée du jour.
+- `create_agent.md`, `create_team.md`, `templates/agent_role_TEMPLATE.md`, `CHANGELOG.md`, `README.md`, `Protocole_start_close_context.md`, `base_connaissances/ameliorations_create_agent.md` : modifiés. Hors dépôt : chartes et `_contexte/` d'`espace_l-invariable` et `shorts`, `zones.md` et `signals.md` de `gestion-clients` (SérénIATech_dev).
 
 ## Hypothèses validées / invalidées
-- EN ATTENTE : `/start shorts` jamais lancé ; chargement de la charte non testé.
+- INVALIDE : « zone parente non déterminée » pour shorts/espace_l-invariable -> parent englobant dans `zones.md`.
+- EN ATTENTE : processus verrouillant le dossier (deux `http.server`, ports 8765/8781, non vérifiés) ; commande modifiée non exercée en réel.
 
 ## Prochaine étape exacte
-Lancer `/start shorts` depuis `SérénIATech_dev`, puis l'état des lieux des Shorts. Priorités P1 ci-dessus inchangées.
+Lever le verrou et renommer le dossier (action ci-dessus), puis `/start espace_l-invariable` depuis `SérénIATech_dev`. Priorités P1 inchangées.
 
 ## Question bloquante pour la session suivante
 Aucune.

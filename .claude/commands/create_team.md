@@ -60,7 +60,8 @@ Cette commande est kit-only, comme `/create_agent` : ne jamais la copier dans le
    - `agent_role.md` depuis `templates/agent_role_TEMPLATE.md`, avec `{{ALIAS_PARENT}}` = alias du
      parent, `{{ALIAS_AGENT}}` = alias équipe, rôle collecté et `{{COMMUNICATION_HIERARCHIQUE}}` =
      l'exception explicite : lecture des `statut.md` et écriture des `messages.md` des membres
-     directs seulement ;
+     directs seulement ; `{{ECRITURE_ETENDUE}}`/`{{LECTURE_ETENDUE}}` vides et
+     `{{DONNEES_SENSIBLES}}` résolu comme dans `/create_agent` ;
    - `_contexte/contexte.md` et `signals.md` depuis les templates ;
    - `team.md` depuis `templates/team_TEMPLATE.md`, contenant le parent et la table des membres.
 10. Ajouter la ligne de l'équipe à `zones.md`. Pour chaque membre de type **agent**, créer son
