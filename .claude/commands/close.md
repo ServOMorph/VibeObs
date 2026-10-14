@@ -2,7 +2,7 @@
 description: Clôture la session d'une zone — synthèse, mise à jour du contexte, commit
 argument-hint: <zone>
 model: sonnet
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), PowerShell(python *backup_file.py*)
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git check-ignore:*), Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git show:*), PowerShell(python *backup_file.py*)
 ---
 
 # /close <zone>
@@ -51,8 +51,39 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 [1 question, ou "Aucune"]
 ```
 
+3-bis. **Attribution par zone.** Avant d'écrire le moindre signal, déterminer la zone propriétaire de
+   chaque action, décision et point d'attention de la session. Critère : la zone dont le dossier
+   (table de `.claude/zones.md`) contient les fichiers concernés ; en cas d'égalité, celle dont le
+   `agent_role.md` couvre le sujet.
+   - **Zone racine** : ne garde que les tâches de coordination réellement transversales (roadmap
+     commune, arbitrage entre zones, décision valable pour plusieurs zones). Une action métier
+     d'une zone n'est jamais recopiée à la racine, même « pour mémoire » ; une action transversale
+     la mentionne au plus par un champ `réf:`.
+   - **Zone fermée ≠ travail réalisé** : si l'essentiel du travail ou des éléments à reporter
+     appartient à une autre zone que celle passée en argument, le dire en une ligne (« /close <A>
+     lancé, travail constaté dans <B> ») et traiter explicitement la destination de chaque
+     élément ; ne jamais les écrire dans la zone fermée par défaut.
+   - **Droits d'écriture** : lire le `agent_role.md` de la zone fermée (s'il existe), sections
+     « Peut écrire » et « Ne doit pas toucher ». Écriture dans le `_contexte/` d'une autre zone
+     permise seulement si ces droits ou une autorisation explicite de l'utilisateur la couvrent
+     (une zone sans `agent_role.md` n'a pas de restriction propre). Sinon : ne pas écrire chez
+     l'autre zone, conserver l'élément dans le `signals.md` de la zone fermée sous la mention
+     `[à transférer vers <alias>]`, et le lister dans le bilan de l'étape 15.
+   - **Session touchant plusieurs zones** : la synthèse de l'étape 3 décrit la zone fermée. Pour
+     chaque autre zone concernée, ne mettre à jour que ses actions et points d'attention
+     (jamais sa section « Dernière session », jamais son `contexte.md` sans demande), et lister
+     chaque fichier de signal touché pour l'étape 13.
+   - **Pas de doublon, pas de perte** : avant d'ajouter une action dans le `signals.md` d'une
+     zone, le lire ; si une action de même objet ou de même `réf:` existe, la mettre à jour
+     (`fait quand:`, `réf:`, priorité, état) au lieu d'en ajouter une. Un transfert se fait en
+     deux temps : écrire à la destination, relire pour constater la présence, puis seulement
+     retirer l'élément de la source. Si l'écriture à la destination échoue, l'élément reste à la
+     source.
+
 4. Mettre à jour `<dossier>/_contexte/signals.md` :
-   - Lire le fichier existant. Reporter tout élément non résolu.
+   - Lire le fichier existant. Reporter tout élément non résolu **appartenant à cette zone**
+     (attribution de l'étape 3-bis) ; ne jamais supprimer un élément d'une autre zone sans
+     l'avoir transféré selon 3-bis.
    - **Rotation des sessions :** Si le nombre de blocs `# Session du` dépasse 1 (seuil) :
      - Déplacer toutes les sessions sauf la plus récente vers `<dossier>/_contexte/archive_sessions.md` (append only, préfixer par `---` si le fichier existe déjà).
      - Conserver uniquement la dernière session dans `signals.md`.
@@ -133,6 +164,17 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    maintenant, avant le commit — jamais après.
 
 13. Effectuer un commit git :
+    - Pour chaque fichier de signal modifié pendant la session (zone fermée et autres zones de
+      l'étape 3-bis), contrôler son statut Git avant toute annonce de commit :
+      ```bash
+      git check-ignore -v <fichier>             # exit 0 = ignoré
+      git ls-files --error-unmatch <fichier>    # exit 1 = non suivi
+      ```
+      Fichier ignoré : il ne peut pas être commité ; ne pas le forcer (`git add -f`), le signaler
+      dans le bilan. Fichier non suivi et non ignoré : l'ajouter. Si le fichier est dans un autre
+      dépôt Git que le dossier de travail (`git rev-parse --show-toplevel`), committer dans ce
+      dépôt-là ou le signaler. Ne jamais annoncer « commit réussi » pour un fichier absent de
+      `git show --name-only HEAD` après le commit.
     ```bash
     git diff --name-only          # vérifier tous les fichiers modifiés pendant la session
     git status                    # confirmer l'état du repo
@@ -166,6 +208,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     ```
     S'il reste des fichiers non commités : ajouter à la synthèse finale une ligne
     "résidus non commités : N fichiers". Pas d'action automatique — uniquement rendre visible.
+    Ajouter aussi, si présents : les fichiers de signal ignorés par Git (non commités), les
+    éléments marqués `[à transférer vers <alias>]` et tout écart de zone traité à l'étape 3-bis.
 
 16. Afficher en fin de réponse en grand format : ✌️😎
 

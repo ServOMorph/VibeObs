@@ -43,3 +43,15 @@ n'a été validé qu'en syntaxe. À exécuter, VS Code ayant le focus au lanceme
   gêne le clic ou la saisie qui suit ;
 - si validé : mettre à jour `roadmap_reprise_multicompte.md` (blocage Phase 3) et la
   section dédiée de `skills/chatgpt-orchestrateur/SKILL.md`.
+
+## /start et /close — attribution par zone (SérénIATech_dev)
+
+Commandes déployées par `/update` le 2026-10-14 (étapes `/close` 3-bis, 4, 13, 15 ; `/start` 4c).
+À rejouer dans une nouvelle session ouverte sur `SérénIATech_dev`, un scénario à la fois :
+- `/start` racine : `signals.md` affiché intégralement ; bloc 4c présent seulement si justifié (sortie reçue le 2026-10-14 : aucun bloc, roadmap Luna laissée à la racine par décision) ;
+- `/start shorts` : charte puis signaux de la zone, bloc 4c éventuel ;
+- `/close` racine après un travail dans SHORTS : écart zone/travail signalé, éléments dans le signal de SHORTS (ou `[à transférer vers shorts]` si `agent_role.md` l'interdit), rien recopié à la racine ;
+- session touchant plusieurs zones : seules les actions et points d'attention des autres zones sont modifiés, jamais leur « Dernière session » ;
+- action déjà présente dans sa zone : mise à jour, aucun doublon ;
+- signal ignoré par Git : non annoncé comme commité, signalé au bilan.
+Transmettre chaque divergence au kit (scénario, étape, attendu, observé).

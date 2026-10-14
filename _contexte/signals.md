@@ -3,6 +3,9 @@
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
+- Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués.
+  - fait quand: les 6 scénarios de `tests_manuels.md` (section « /start et /close — attribution par zone ») sont rejoués et leurs divergences transmises au kit, traitées ou écartées.
+  - réf: `tests_manuels.md` ; `.claude/commands/close.md` étapes 3-bis et 13 ; `.claude/commands/start.md` étape 4c ; `SérénIATech_dev` commit « update: protocole vibecoding — zone racine — kit v5.20 ».
 - Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
   - fait quand: `on_close.md` d'Appli est commité via `/close` de sa zone, et un `python claude-vibecoding-kit/backup_project.py . --upload` réel a réussi.
   - réf: `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin ; Appli commit `746afcd` (correctifs `backup_project.py`).
@@ -89,19 +92,19 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 # Session du 2026-10-14
 
 ## Décisions prises
-- Agent `espace_l-invariable` créé dans `SérénIATech_dev/Gestion clients/Clients/Espace_L-Invariable` (parent `gestion-clients`, lecture du dépôt hors données sensibles, écriture limitée à son dossier) ; renommage en majuscules reporté (dossier verrouillé, `clients.dossier` en base).
-- `clip_promo/diffusion` en écriture partagée avec `shorts` ; charte `shorts` complétée (parent `communication`) ; 2 actions L'Invariable migrées de `gestion-clients` vers l'agent.
-- `/create_agent` : P1 à P6 implémentées (parent englobant, remontée du projet cible, migration d'actions, références avant renommage, données sensibles, lecture étendue) ; kit v5.20.
+- `/close` attribue chaque élément à sa zone propriétaire (3-bis) et contrôle le statut Git des signaux avant d'annoncer un commit (13) ; `/start` signale les éléments mal classés (4c) sans les déplacer ; kit v5.21.
+- Déploiement par `/update` dans `SérénIATech_dev` (blocs SPECIFICITES PROJET préservés, `create_memory.md` et `CLAUDE.md` mis à jour par la procédure standard).
+- Roadmap `roadmap_actions_ouvertes_luna.md` laissée à la racine de `SérénIATech_dev` et étape 4c inchangée : « on ne change rien » (décision de l'utilisateur).
 
 ## Livrables produits ou modifiés
-- `create_agent.md`, `create_team.md`, `templates/agent_role_TEMPLATE.md`, `CHANGELOG.md`, `README.md`, `Protocole_start_close_context.md`, `base_connaissances/ameliorations_create_agent.md` : modifiés. Hors dépôt : chartes et `_contexte/` d'`espace_l-invariable` et `shorts`, `zones.md` et `signals.md` de `gestion-clients` (SérénIATech_dev).
+- `.claude/commands/start.md`, `close.md` et leurs templates, `Protocole_start_close_context.md`, `CHANGELOG.md`, `README.md`, `tests_manuels.md` : modifiés. Hors dépôt kit : `SérénIATech_dev/.claude/` (4 fichiers, commit d'update) ; `DEPLOYMENTS.md` (local, gitignoré).
 
 ## Hypothèses validées / invalidées
-- INVALIDE : « zone parente non déterminée » pour shorts/espace_l-invariable -> parent englobant dans `zones.md`.
-- EN ATTENTE : processus verrouillant le dossier (deux `http.server`, ports 8765/8781, non vérifiés) ; commande modifiée non exercée en réel.
+- VALIDE : miroir kit/template identique hors bloc, `check_kit.py` et 14 tests passent, commandes installées identiques aux templates (comparaison refaite après un faux positif).
+- EN ATTENTE : comportement réel des étapes 3-bis, 4c, 13 (scénarios non rejoués) ; limite connue : 4c ne contrôle pas une roadmap posée à la racine.
 
 ## Prochaine étape exacte
-Lever le verrou et renommer le dossier (action ci-dessus), puis `/start espace_l-invariable` depuis `SérénIATech_dev`. Priorités P1 inchangées.
+L'utilisateur rejoue les scénarios dans `SérénIATech_dev` (nouvelle session, prompt de guidage fourni) puis transmet les divergences au kit.
 
 ## Question bloquante pour la session suivante
-Aucune.
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?

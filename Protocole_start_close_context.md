@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.20** — Révision du 2026-10-14. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.21** — Révision du 2026-10-14. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -128,12 +128,22 @@ Charge `signals.md`, `contexte.md`, et `roadmap*.md` si présente — sans fichi
 Étape 2b : si `<dossier>/agent_role.md` existe (zone-agent créée via `/create_agent`), la charger et
 l'afficher intégralement avant `signals.md`. Absent pour une zone racine classique.
 
+Étape 4c : après l'affichage intégral de `signals.md`, signale (sans rien déplacer) les éléments
+manifestement mal classés : action d'une autre zone, action métier à la racine, doublon avec le
+`signals.md` de la zone propriétaire.
+
 Voir `templates/.claude/commands/start.md`.
 
 
 # /close [zone]
 
 > **Frontmatter :** le fichier `.claude/commands/close.md` porte `model: sonnet` et `allowed-tools` autorisant `git status/diff/add/commit/push` — plus de prompts de permission au commit ni au push de clôture.
+
+Étape 3-bis : chaque action, décision et point d'attention est attribué à sa zone propriétaire avant
+écriture ; la racine ne garde que la coordination transversale ; un écart entre la zone fermée et le
+travail réalisé est signalé ; les droits d'écriture suivent `agent_role.md` ; une action déjà présente
+dans sa zone est mise à jour, jamais dupliquée ; un transfert écrit à la destination avant de retirer
+de la source. Étape 13 : statut Git (suivi/ignoré) de chaque fichier de signal contrôlé avant d'annoncer un commit.
 
 Voir `templates/.claude/commands/close.md`.
 

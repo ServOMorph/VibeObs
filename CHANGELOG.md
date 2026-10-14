@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.21 — 2026-10-14
+
+### Modifié
+- `/close` (kit + template) : étape 3-bis (attribution de chaque action, décision et point d'attention à sa zone propriétaire avant écriture ; la racine ne garde que la coordination transversale ; écart zone fermée / travail réalisé signalé ; droits lus dans `agent_role.md` ; mise à jour plutôt que doublon ; transfert en deux temps sans perte, marqueur `[à transférer vers <alias>]`), étape 4 (ne reporte que les éléments de la zone), étape 13 (statut Git suivi/ignoré de chaque signal modifié avant d'annoncer un commit), étape 15 (bilan enrichi) ; `allowed-tools` étendu à `git check-ignore`, `ls-files`, `rev-parse`, `show`.
+- `/start` (kit + template) : étape 4c, bloc « Éléments possiblement mal classés » après l'affichage intégral de `signals.md`, sans rien déplacer.
+- `Protocole_start_close_context.md` : étapes 3-bis, 4c et 13 documentées.
+- Déployé dans `SérénIATech_dev` via `/update` (blocs SPECIFICITES PROJET préservés). Validation en conditions réelles en attente (`tests_manuels.md`).
+
 ## v5.20 — 2026-10-14
 
 ### Ajouté

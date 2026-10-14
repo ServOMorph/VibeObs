@@ -1017,3 +1017,25 @@ Lancer `/start shorts` depuis `SérénIATech_dev`, puis l'état des lieux des Sh
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-10-14
+
+## Décisions prises
+- Agent `espace_l-invariable` créé dans `SérénIATech_dev/Gestion clients/Clients/Espace_L-Invariable` (parent `gestion-clients`, lecture du dépôt hors données sensibles, écriture limitée à son dossier) ; renommage en majuscules reporté (dossier verrouillé, `clients.dossier` en base).
+- `clip_promo/diffusion` en écriture partagée avec `shorts` ; charte `shorts` complétée (parent `communication`) ; 2 actions L'Invariable migrées de `gestion-clients` vers l'agent.
+- `/create_agent` : P1 à P6 implémentées (parent englobant, remontée du projet cible, migration d'actions, références avant renommage, données sensibles, lecture étendue) ; kit v5.20.
+
+## Livrables produits ou modifiés
+- `create_agent.md`, `create_team.md`, `templates/agent_role_TEMPLATE.md`, `CHANGELOG.md`, `README.md`, `Protocole_start_close_context.md`, `base_connaissances/ameliorations_create_agent.md` : modifiés. Hors dépôt : chartes et `_contexte/` d'`espace_l-invariable` et `shorts`, `zones.md` et `signals.md` de `gestion-clients` (SérénIATech_dev).
+
+## Hypothèses validées / invalidées
+- INVALIDE : « zone parente non déterminée » pour shorts/espace_l-invariable -> parent englobant dans `zones.md`.
+- EN ATTENTE : processus verrouillant le dossier (deux `http.server`, ports 8765/8781, non vérifiés) ; commande modifiée non exercée en réel.
+
+## Prochaine étape exacte
+Lever le verrou et renommer le dossier (action ci-dessus), puis `/start espace_l-invariable` depuis `SérénIATech_dev`. Priorités P1 inchangées.
+
+## Question bloquante pour la session suivante
+Aucune.

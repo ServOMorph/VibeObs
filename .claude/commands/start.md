@@ -55,6 +55,16 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     Ajouter ensuite, à partir des autres fichiers chargés : la phase en cours si roadmap active,
     et le point d'attention immédiat.
 
+4c. **Contrôle de classement.** Après l'affichage intégral de l'étape 4 (qui n'est jamais filtré
+    ni réduit), repérer les éléments manifestement mal classés dans `signals.md` :
+    - une action dont tous les `réf:` pointent dans le dossier d'une autre zone de `zones.md` ;
+    - à la racine, une action métier d'une zone (non transversale) ;
+    - une action dont l'objet ou la `réf:` figure aussi dans le `signals.md` de la zone
+      propriétaire (lire seulement ce fichier, pour les cas candidats).
+    Les lister dans un bloc « Éléments possiblement mal classés » : élément, zone probable,
+    doublon constaté oui/non. Ne rien déplacer ni supprimer : le reclassement se fait par
+    `/close` (étape 3-bis) sur décision de l'utilisateur. Aucun candidat : ne pas afficher le bloc.
+
 5. Afficher en fin de réponse : 🎉🎉🎉
 
 5-bis. **Hook de zone — Post-synthèse.** Si `<dossier>/_contexte/on_start.md` existe et contient une
