@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-14)
+# Signals — VibeObs (MAJ 2026-10-17)
 
 ## Actions ouvertes — pilotage
 
@@ -30,9 +30,6 @@
 - Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
   - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
   - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `00166dd`).
-- Tester la substitution Windows de `/init_projet` sur un projet réel. 2026-10-12 : méthode prescrite à l'étape 4 de `init_projet.md` (kit + template, kit v5.18), non encore exercée ; `rclone_backup.json` hors périmètre du script.
-  - fait quand: un projet est initialisé en suivant la méthode, sans `{{` résiduel et avec `{{RACINE}}` Windows valide.
-  - réf: `.claude/commands/init_projet.md` étape 4.
 - Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `roadmap_reprise_multicompte.md`.
@@ -79,6 +76,13 @@
   - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
   - réf: `.claude/commands/init_projet.md` étapes 3-4, `DOCUMENTATION/_contexte/signals.md`.
 
+- Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
+  - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
+  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités).
+- Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
+  - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
+  - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -89,22 +93,23 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
 ## Dernière session
-# Session du 2026-10-14
+
+# Session du 2026-10-17
 
 ## Décisions prises
-- `/close` attribue chaque élément à sa zone propriétaire (3-bis) et contrôle le statut Git des signaux avant d'annoncer un commit (13) ; `/start` signale les éléments mal classés (4c) sans les déplacer ; kit v5.21.
-- Déploiement par `/update` dans `SérénIATech_dev` (blocs SPECIFICITES PROJET préservés, `create_memory.md` et `CLAUDE.md` mis à jour par la procédure standard).
-- Roadmap `roadmap_actions_ouvertes_luna.md` laissée à la racine de `SérénIATech_dev` et étape 4c inchangée : « on ne change rien » (décision de l'utilisateur).
+- Projet `REA` créé via `/create_projet` (Git local, sans GitHub) puis `/init_projet` : alias `REA`, objectif « Utiliser REA (https://github.com/morluto/rea) », stack « À définir », `AGENTS.md` et `GEMINI.md` demandés, aucun agent, aucun template.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/start.md`, `close.md` et leurs templates, `Protocole_start_close_context.md`, `CHANGELOG.md`, `README.md`, `tests_manuels.md` : modifiés. Hors dépôt kit : `SérénIATech_dev/.claude/` (4 fichiers, commit d'update) ; `DEPLOYMENTS.md` (local, gitignoré).
+- `D:\ServOMorph\REA` : dépôt créé, commits `b753cfc` (init) et `ef8ed53` (protocole, kit v5.21). `AGENTS.md` et `GEMINI.md` créés mais non commités.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne REA ajoutée au tableau des projets. Aucun fichier du kit versionné modifié, pas de bump `CHANGELOG.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : miroir kit/template identique hors bloc, `check_kit.py` et 14 tests passent, commandes installées identiques aux templates (comparaison refaite après un faux positif).
-- EN ATTENTE : comportement réel des étapes 3-bis, 4c, 13 (scénarios non rejoués) ; limite connue : 4c ne contrôle pas une roadmap posée à la racine.
+- VALIDE : substitution Windows de `/init_projet` exercée sur un projet réel (aucun `{{` résiduel, `{{RACINE}}` en `D:\ServOMorph\REA`).
+- INVALIDE : `init_projet.md` étape 7 (« ajouter une ligne ») ne précise pas le tableau cible ; l'ajout en fin de fichier est tombé dans le tableau des templates, déplacé à la main.
+- INVALIDE : l'étape 5 de `init_projet.md` ne stage pas `AGENTS.md`/`GEMINI.md` quand ils sont demandés.
 
 ## Prochaine étape exacte
-L'utilisateur rejoue les scénarios dans `SérénIATech_dev` (nouvelle session, prompt de guidage fourni) puis transmet les divergences au kit.
+Lancer `/start REA` dans `D:\ServOMorph\REA` et y renseigner la stack ; corriger les deux écarts de `init_projet.md` (actions P2 ci-dessus).
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?

@@ -1039,3 +1039,25 @@ Lever le verrou et renommer le dossier (action ci-dessus), puis `/start espace_l
 
 ## Question bloquante pour la session suivante
 Aucune.
+
+---
+
+# Session du 2026-10-14
+
+## Décisions prises
+- `/close` attribue chaque élément à sa zone propriétaire (3-bis) et contrôle le statut Git des signaux avant d'annoncer un commit (13) ; `/start` signale les éléments mal classés (4c) sans les déplacer ; kit v5.21.
+- Déploiement par `/update` dans `SérénIATech_dev` (blocs SPECIFICITES PROJET préservés, `create_memory.md` et `CLAUDE.md` mis à jour par la procédure standard).
+- Roadmap `roadmap_actions_ouvertes_luna.md` laissée à la racine de `SérénIATech_dev` et étape 4c inchangée : « on ne change rien » (décision de l'utilisateur).
+
+## Livrables produits ou modifiés
+- `.claude/commands/start.md`, `close.md` et leurs templates, `Protocole_start_close_context.md`, `CHANGELOG.md`, `README.md`, `tests_manuels.md` : modifiés. Hors dépôt kit : `SérénIATech_dev/.claude/` (4 fichiers, commit d'update) ; `DEPLOYMENTS.md` (local, gitignoré).
+
+## Hypothèses validées / invalidées
+- VALIDE : miroir kit/template identique hors bloc, `check_kit.py` et 14 tests passent, commandes installées identiques aux templates (comparaison refaite après un faux positif).
+- EN ATTENTE : comportement réel des étapes 3-bis, 4c, 13 (scénarios non rejoués) ; limite connue : 4c ne contrôle pas une roadmap posée à la racine.
+
+## Prochaine étape exacte
+L'utilisateur rejoue les scénarios dans `SérénIATech_dev` (nouvelle session, prompt de guidage fourni) puis transmet les divergences au kit.
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
