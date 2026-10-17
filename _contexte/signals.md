@@ -78,10 +78,14 @@
 
 - Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
   - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
-  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités).
+  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17, contournés à la main).
 - Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
   - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
   - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
+
+- Démarrer le projet `D:\ServOMorph\IA_Eco-Responsable` (`/start IA_Eco-Responsable`), définir sa stack et cadrer le MVP.
+  - fait quand: `/start IA_Eco-Responsable` charge le contexte sans warning, `contexte.md` porte une stack, une roadmap du MVP est créée ou son report est tracé.
+  - réf: `D:\ServOMorph\IA_Eco-Responsable\_contexte\contexte.md` ; https://github.com/ServOMorph/IA_Eco-Responsable ; `DEPLOYMENTS.md`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -94,22 +98,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-17
+# Session du 2026-10-17 (2)
 
 ## Décisions prises
-- Projet `REA` créé via `/create_projet` (Git local, sans GitHub) puis `/init_projet` : alias `REA`, objectif « Utiliser REA (https://github.com/morluto/rea) », stack « À définir », `AGENTS.md` et `GEMINI.md` demandés, aucun agent, aucun template.
+- Projet `IA_Eco-Responsable` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/IA_Eco-Responsable`) puis `/init_projet` : alias = nom du projet, objectif « Interface open source pour installer et lancer des IA locales (chat, image) en un clic, adaptées à la machine de l'utilisateur, pensée pour les novices », stack « À définir », `AGENTS.md` demandé, `GEMINI.md` refusé, aucun agent, aucun template.
+- Les noms proposés en amont (Hearth, Atelier, Nestor...) n'ont pas été retenus : l'utilisateur a imposé `IA_Eco-Responsable`.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\REA` : dépôt créé, commits `b753cfc` (init) et `ef8ed53` (protocole, kit v5.21). `AGENTS.md` et `GEMINI.md` créés mais non commités.
-- `DEPLOYMENTS.md` (local, gitignoré) : ligne REA ajoutée au tableau des projets. Aucun fichier du kit versionné modifié, pas de bump `CHANGELOG.md`.
+- `D:\ServOMorph\IA_Eco-Responsable` : dépôt créé, commits `6e5d208` (init) et `075aaf5` (protocole, kit v5.21), poussés sur `origin/main` (contrôlé par `git log origin/main`). `AGENTS.md` commité.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne IA_Eco-Responsable ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : substitution Windows de `/init_projet` exercée sur un projet réel (aucun `{{` résiduel, `{{RACINE}}` en `D:\ServOMorph\REA`).
-- INVALIDE : `init_projet.md` étape 7 (« ajouter une ligne ») ne précise pas le tableau cible ; l'ajout en fin de fichier est tombé dans le tableau des templates, déplacé à la main.
-- INVALIDE : l'étape 5 de `init_projet.md` ne stage pas `AGENTS.md`/`GEMINI.md` quand ils sont demandés.
+- VALIDE : `/create_projet` avec GitHub public, avec `gh repo edit` pour la description, de bout en bout (dépôt créé, description appliquée, push contrôlé).
+- INVALIDE : les écarts de `init_projet.md` étapes 5 (staging `AGENTS.md`) et 7 (tableau cible de `DEPLOYMENTS.md`) se sont reproduits à l'identique ; contournés à la main, toujours non corrigés dans le kit.
 
 ## Prochaine étape exacte
-Lancer `/start REA` dans `D:\ServOMorph\REA` et y renseigner la stack ; corriger les deux écarts de `init_projet.md` (actions P2 ci-dessus).
+Lancer `/start IA_Eco-Responsable` dans `D:\ServOMorph\IA_Eco-Responsable`, définir la stack et cadrer le MVP (2 modèles, filtrage matériel 8 Go RAM / 8 Go VRAM) ; corriger les deux écarts de `init_projet.md` (action P2 ci-dessus).
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?

@@ -12,11 +12,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-10-17 : projet `IA_Eco-Responsable` créé (Git local + GitHub public, kit v5.21, stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 reproduits, toujours à corriger.
 - 2026-10-17 : projet `REA` créé (`/create_projet` puis `/init_projet`, Git local, kit v5.21) ; substitution Windows de `/init_projet` exercée en réel ; `init_projet.md` étapes 5 et 7 à corriger.
 - 2026-10-14 : kit v5.21 — `/close` attribue chaque élément à sa zone (3-bis) et contrôle le statut Git des signaux (13), `/start` signale les éléments mal classés (4c) ; déployé dans `SérénIATech_dev`, scénarios réels à rejouer.
 - 2026-10-14 : kit v5.20 — `/create_agent` choisit le parent englobant, exclut les données sensibles, migre les actions du parent ; agent `espace_l-invariable` créé (SérénIATech_dev), renommage en majuscules en attente.
 - 2026-10-13 : agent `shorts` créé dans `SérénIATech_dev/Communication/SHORTS` ; kit v5.19 — règles « installation sur D: » et « `run.py` à la racine » dans `CLAUDE.md`.
-- 2026-10-12 : kit v5.18 — substitution Windows de `/init_projet` prescrite ; correctif de focus `focus_fiable.ps1` en attente de test réel.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-09-10 archivées dans `_contexte/archive_decisions.md`._

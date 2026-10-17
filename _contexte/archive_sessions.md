@@ -1061,3 +1061,25 @@ L'utilisateur rejoue les scénarios dans `SérénIATech_dev` (nouvelle session, 
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-17
+
+## Décisions prises
+- Projet `REA` créé via `/create_projet` (Git local, sans GitHub) puis `/init_projet` : alias `REA`, objectif « Utiliser REA (https://github.com/morluto/rea) », stack « À définir », `AGENTS.md` et `GEMINI.md` demandés, aucun agent, aucun template.
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\REA` : dépôt créé, commits `b753cfc` (init) et `ef8ed53` (protocole, kit v5.21). `AGENTS.md` et `GEMINI.md` créés mais non commités.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne REA ajoutée au tableau des projets. Aucun fichier du kit versionné modifié, pas de bump `CHANGELOG.md`.
+
+## Hypothèses validées / invalidées
+- VALIDE : substitution Windows de `/init_projet` exercée sur un projet réel (aucun `{{` résiduel, `{{RACINE}}` en `D:\ServOMorph\REA`).
+- INVALIDE : `init_projet.md` étape 7 (« ajouter une ligne ») ne précise pas le tableau cible ; l'ajout en fin de fichier est tombé dans le tableau des templates, déplacé à la main.
+- INVALIDE : l'étape 5 de `init_projet.md` ne stage pas `AGENTS.md`/`GEMINI.md` quand ils sont demandés.
+
+## Prochaine étape exacte
+Lancer `/start REA` dans `D:\ServOMorph\REA` et y renseigner la stack ; corriger les deux écarts de `init_projet.md` (actions P2 ci-dessus).
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
