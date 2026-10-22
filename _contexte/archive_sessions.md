@@ -1083,3 +1083,25 @@ Lancer `/start REA` dans `D:\ServOMorph\REA` et y renseigner la stack ; corriger
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-17 (2)
+
+## Décisions prises
+- Projet `IA_Eco-Responsable` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/IA_Eco-Responsable`) puis `/init_projet` : alias = nom du projet, objectif « Interface open source pour installer et lancer des IA locales (chat, image) en un clic, adaptées à la machine de l'utilisateur, pensée pour les novices », stack « À définir », `AGENTS.md` demandé, `GEMINI.md` refusé, aucun agent, aucun template.
+- Les noms proposés en amont (Hearth, Atelier, Nestor...) n'ont pas été retenus : l'utilisateur a imposé `IA_Eco-Responsable`.
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\IA_Eco-Responsable` : dépôt créé, commits `6e5d208` (init) et `075aaf5` (protocole, kit v5.21), poussés sur `origin/main` (contrôlé par `git log origin/main`). `AGENTS.md` commité.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne IA_Eco-Responsable ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
+
+## Hypothèses validées / invalidées
+- VALIDE : `/create_projet` avec GitHub public, avec `gh repo edit` pour la description, de bout en bout (dépôt créé, description appliquée, push contrôlé).
+- INVALIDE : les écarts de `init_projet.md` étapes 5 (staging `AGENTS.md`) et 7 (tableau cible de `DEPLOYMENTS.md`) se sont reproduits à l'identique ; contournés à la main, toujours non corrigés dans le kit.
+
+## Prochaine étape exacte
+Lancer `/start IA_Eco-Responsable` dans `D:\ServOMorph\IA_Eco-Responsable`, définir la stack et cadrer le MVP (2 modèles, filtrage matériel 8 Go RAM / 8 Go VRAM) ; corriger les deux écarts de `init_projet.md` (action P2 ci-dessus).
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?

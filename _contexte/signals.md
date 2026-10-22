@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-17)
+# Signals — VibeObs (MAJ 2026-10-22)
 
 ## Actions ouvertes — pilotage
 
@@ -78,7 +78,7 @@
 
 - Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
   - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
-  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17, contournés à la main).
+  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17) et de `creation_llm` (2026-10-22), contournés à la main.
 - Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
   - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
   - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
@@ -86,6 +86,9 @@
 - Démarrer le projet `D:\ServOMorph\IA_Eco-Responsable` (`/start IA_Eco-Responsable`), définir sa stack et cadrer le MVP.
   - fait quand: `/start IA_Eco-Responsable` charge le contexte sans warning, `contexte.md` porte une stack, une roadmap du MVP est créée ou son report est tracé.
   - réf: `D:\ServOMorph\IA_Eco-Responsable\_contexte\contexte.md` ; https://github.com/ServOMorph/IA_Eco-Responsable ; `DEPLOYMENTS.md`.
+- Démarrer le projet `D:\ServOMorph\creation_llm` (`/start creation_llm`), définir sa stack, pousser le commit du protocole et cadrer la démarche (LLM from scratch sur PC local).
+  - fait quand: `/start creation_llm` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\creation_llm status` montre la branche à jour avec `origin/main`.
+  - réf: `D:\ServOMorph\creation_llm\_contexte\contexte.md` ; https://github.com/ServOMorph/creation_llm ; `DEPLOYMENTS.md`.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -98,22 +101,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-17 (2)
+# Session du 2026-10-22
 
 ## Décisions prises
-- Projet `IA_Eco-Responsable` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/IA_Eco-Responsable`) puis `/init_projet` : alias = nom du projet, objectif « Interface open source pour installer et lancer des IA locales (chat, image) en un clic, adaptées à la machine de l'utilisateur, pensée pour les novices », stack « À définir », `AGENTS.md` demandé, `GEMINI.md` refusé, aucun agent, aucun template.
-- Les noms proposés en amont (Hearth, Atelier, Nestor...) n'ont pas été retenus : l'utilisateur a imposé `IA_Eco-Responsable`.
+- Projet `creation_llm` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/creation_llm`, description « Création d'un LLM from scratch sur mon PC ») puis `/init_projet` : alias = nom du projet, stack « À définir », sensibles « Aucun », `AGENTS.md` et `GEMINI.md` demandés (lecture de la numérotation décalée des réponses), aucun agent, aucun template.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\IA_Eco-Responsable` : dépôt créé, commits `6e5d208` (init) et `075aaf5` (protocole, kit v5.21), poussés sur `origin/main` (contrôlé par `git log origin/main`). `AGENTS.md` commité.
-- `DEPLOYMENTS.md` (local, gitignoré) : ligne IA_Eco-Responsable ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
+- `D:\ServOMorph\creation_llm` : dépôt créé, commits `5df09ec` (init) et `d343b1e` (protocole, kit v5.21). Le commit du protocole n'est pas poussé sur `origin/main`.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne creation_llm ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/create_projet` avec GitHub public, avec `gh repo edit` pour la description, de bout en bout (dépôt créé, description appliquée, push contrôlé).
-- INVALIDE : les écarts de `init_projet.md` étapes 5 (staging `AGENTS.md`) et 7 (tableau cible de `DEPLOYMENTS.md`) se sont reproduits à l'identique ; contournés à la main, toujours non corrigés dans le kit.
+- VALIDE : `/create_projet` avec GitHub public de bout en bout.
+- INVALIDE : les écarts de `init_projet.md` étapes 5 et 7 persistent (contournés : `AGENTS.md`/`GEMINI.md` stagés à la main, ligne `DEPLOYMENTS.md` insérée dans le bon tableau).
+- EN ATTENTE : la numérotation de Q1-Q9 de `/init_projet` (Q4 sautée dans l'énoncé) a provoqué une réponse décalée de l'utilisateur ; interprétation faite sans confirmation.
 
 ## Prochaine étape exacte
-Lancer `/start IA_Eco-Responsable` dans `D:\ServOMorph\IA_Eco-Responsable`, définir la stack et cadrer le MVP (2 modèles, filtrage matériel 8 Go RAM / 8 Go VRAM) ; corriger les deux écarts de `init_projet.md` (action P2 ci-dessus).
+Lancer `/start creation_llm` dans `D:\ServOMorph\creation_llm`, définir la stack, pousser le commit du protocole ; corriger les écarts de `init_projet.md` (action P1 ci-dessus).
 
 ## Question bloquante pour la session suivante
-L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
