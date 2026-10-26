@@ -1,6 +1,7 @@
 # Signals — {{ALIAS}}   (MAJ {{DATE}})
 
 ## Actions ouvertes
+<!-- ≤ 20 entrées (ligne « Backlog » exclue) ; dette et findings non urgents -> _contexte/backlog.md -->
 - [P1|ouvert] Démarrer la première session de travail avec /start {{ALIAS}}
   - fait quand: `/start {{ALIAS}}` exécuté depuis une session ouverte sur la racine du projet.
   - réf: `_contexte/contexte.md`.

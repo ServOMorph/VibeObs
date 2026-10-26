@@ -84,6 +84,30 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    - Lire le fichier existant. Reporter tout élément non résolu **appartenant à cette zone**
      (attribution de l'étape 3-bis) ; ne jamais supprimer un élément d'une autre zone sans
      l'avoir transféré selon 3-bis.
+   - **Tri des éléments non résolus** (section des actions ouvertes, quel que soit son titre :
+     « Actions ouvertes », « Questions ouvertes », etc.). Pour chaque élément reporté :
+     - reste dans `signals.md` : ce qui appelle une action ou une décision dans les prochaines
+       sessions (P1 ; P2 avec suite identifiée ; attente de réponse ; décision requise avant
+       déploiement) ;
+     - sinon (dette technique, finding de revue non corrigé, amélioration différée, piste
+       « à juger acceptable ») : `<dossier>/_contexte/backlog.md`, au même format `fait quand:` /
+       `réf:`, ajouté en fin de fichier. Créer le fichier à la première entrée (jamais de fichier
+       vide) ; ne pas ajouter une entrée dont l'objet ou la `réf:` figure déjà dans le fichier.
+   - **Backlog** : `backlog.md` n'est pas chargé par `/start`. Une entrée traitée ou écartée est
+     supprimée du fichier lors du `/close` qui la constate ; le fichier devenu vide est supprimé.
+     Une entrée que la session a rendue urgente est promue : écrire l'action dans `signals.md`,
+     relire pour constater sa présence, puis seulement la retirer du backlog.
+   - **Ligne de renvoi** : tant que `backlog.md` existe, `signals.md` porte, en fin de section des
+     actions ouvertes, une seule ligne « Backlog : N entrées — `_contexte/backlog.md` », N étant
+     recalculé à chaque `/close` qui modifie le fichier. Ce n'est pas une action : ni priorité, ni
+     `fait quand:` / `réf:`, et elle ne compte pas dans le plafond de 20. Fichier supprimé :
+     supprimer la ligne.
+   - **Contrôle de péremption** : pour chaque action reportée, vérifier que son `fait quand:` est
+     encore atteignable et que son contexte est encore vrai. Une action obsolète est proposée au
+     retrait dans le bilan de l'étape 15 ; ne jamais la supprimer silencieusement.
+   - **Garde-fou de taille** : si la section des actions ouvertes dépasse 20 entrées (ligne de
+     renvoi exclue), proposer dans le bilan de l'étape 15 un tri vers `backlog.md` (liste des
+     entrées candidates), sans l'effectuer d'office.
    - **Rotation des sessions :** Si le nombre de blocs `# Session du` dépasse 1 (seuil) :
      - Déplacer toutes les sessions sauf la plus récente vers `<dossier>/_contexte/archive_sessions.md` (append only, préfixer par `---` si le fichier existe déjà).
      - Conserver uniquement la dernière session dans `signals.md`.
@@ -164,8 +188,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    maintenant, avant le commit — jamais après.
 
 13. Effectuer un commit git :
-    - Pour chaque fichier de signal modifié pendant la session (zone fermée et autres zones de
-      l'étape 3-bis), contrôler son statut Git avant toute annonce de commit :
+    - Pour chaque fichier de signal ou `backlog.md` modifié pendant la session (zone fermée et
+      autres zones de l'étape 3-bis), contrôler son statut Git avant toute annonce de commit :
       ```bash
       git check-ignore -v <fichier>             # exit 0 = ignoré
       git ls-files --error-unmatch <fichier>    # exit 1 = non suivi
@@ -208,8 +232,10 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     ```
     S'il reste des fichiers non commités : ajouter à la synthèse finale une ligne
     "résidus non commités : N fichiers". Pas d'action automatique — uniquement rendre visible.
-    Ajouter aussi, si présents : les fichiers de signal ignorés par Git (non commités), les
-    éléments marqués `[à transférer vers <alias>]` et tout écart de zone traité à l'étape 3-bis.
+    Ajouter aussi, si présents : les fichiers de signal ou `backlog.md` ignorés par Git (non
+    commités), les éléments marqués `[à transférer vers <alias>]`, tout écart de zone traité à
+    l'étape 3-bis, les actions obsolètes proposées au retrait et, au-delà de 20 actions ouvertes,
+    les entrées candidates au tri vers `backlog.md` (étape 4).
 
 16. Afficher en fin de réponse en grand format : ✌️😎
 

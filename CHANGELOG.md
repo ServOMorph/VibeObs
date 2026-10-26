@@ -3,6 +3,18 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.22 — 2026-10-26
+
+### Ajouté
+- `_contexte/backlog.md` (fichier de zone, non chargé par `/start`) : reçoit la dette technique, les findings de revue non corrigés et les pistes différées sortis de `signals.md` ; ligne de renvoi « Backlog : N entrées » dans `signals.md` (hors plafond).
+
+### Modifié
+- `/close` (kit + template) : étape 4 (tri des éléments non résolus, retrait des entrées traitées, promotion vers `signals.md`, contrôle de péremption, garde-fou de 20 actions ouvertes), étape 13 (statut Git de `backlog.md`), étape 15 (bilan : actions obsolètes et candidates au tri).
+- `templates/_contexte/signals.md` : commentaire de plafond sous « Actions ouvertes ».
+- `Protocole_start_close_context.md`, `DOCUMENTATION/20_guides/sessions_start_close.md`, `DOCUMENTATION/10_concepts/glossaire.md` : backlog documenté.
+- `scripts/check_kit.py` : `backlog.md` ajouté aux fichiers de sortie connus (créé dans les projets cibles).
+- Aucune migration des `signals.md` existants imposée ; à faire projet par projet.
+
 ## v5.21 — 2026-10-14
 
 ### Modifié

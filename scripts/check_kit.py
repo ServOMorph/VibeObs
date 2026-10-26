@@ -319,7 +319,7 @@ def check_referenced_files_exist():
     """Contrôle 6 : tout fichier cité par un chemin relatif dans .claude/commands/*.md existe.
     
     Ignore les fichiers qui sont des outputs de commandes (créés dans les projets cibles) :
-    - zones.md, statut.md, messages.md, memory.md, agent_role.md
+    - zones.md, statut.md, messages.md, memory.md, backlog.md, agent_role.md
     - DOCUMENTATION/INDEX.md, base_connaissances/ (fichiers de connaissance)
     - DEPLOYMENTS.md, AGENTS_REGISTRY.md (fichiers de bookkeeping du kit)
     """
@@ -336,6 +336,7 @@ def check_referenced_files_exist():
         "statut.md",
         "messages.md",
         "memory.md",
+        "backlog.md",
         "agent_role.md",
         "DOCUMENTATION/INDEX.md",
         "DEPLOYMENTS.md",

@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.21** — Révision du 2026-10-14. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.22** — Révision du 2026-10-26. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -117,6 +117,8 @@ Structure fixe. Taille maximale par section indiquée — à respecter pour cont
 > **Section "Dernière session" :** remplace l'ancien fichier `derniere_session.md` (fusionné en v2.1) — un fichier de moins à lire au `/start` et à réécrire au `/close`. Écrasée intégralement par `/close` avec la synthèse de session ; l'historique des sessions reste consultable via git.
 
 > **Rotation des sessions (Phase 4) :** Pour éviter l'accumulation d'historique mort, `signals.md` ne conserve que la **dernière session** (seuil = 1 bloc `# Session du`). Les sessions précédentes sont automatiquement déplacées vers `_contexte/archive_sessions.md` (format append-only, séparées par `---`). Le fichier `archive_sessions.md` n'est **jamais** chargé par `/start` — il sert uniquement de stockage historique pour consultation manuelle.
+
+> **Backlog (`_contexte/backlog.md`) :** les actions ouvertes de `signals.md` (section « Actions ouvertes » ou « Questions ouvertes ») sont plafonnées à 20 entrées et ne portent que ce qui appelle une action ou une décision dans les prochaines sessions (P1 ; P2 avec suite identifiée ; attente de réponse ; décision requise avant déploiement). Le reste (dette technique, findings de revue non corrigés, améliorations différées, pistes « à juger acceptable ») va dans `backlog.md` : même format `fait quand:` / `réf:`, ajout en fin de fichier, créé à la première entrée, **jamais chargé par `/start`**. Une entrée traitée ou écartée est supprimée par le `/close` qui le constate ; le fichier vide est supprimé ; une entrée devenue urgente est promue dans `signals.md` (écrire, relire, puis retirer). `signals.md` n'en garde qu'une ligne de renvoi « Backlog : N entrées — `_contexte/backlog.md` », qui n'est pas une action et ne compte pas dans le plafond. `/close` contrôle la péremption des actions reportées et propose, sans l'imposer, le retrait des obsolètes et le tri au-delà de 20 entrées.
 
 ---
 
