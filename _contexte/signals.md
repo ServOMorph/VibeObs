@@ -97,6 +97,13 @@
   - fait quand: l'agent `documentation` de SérénIATech_dev est créé, son `INDEX.md` existe, et les trois décisions ci-dessus sont tracées.
   - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\ClaudeCode\roadmap_base_connaissances.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\CLAUDE.md` § Base de connaissances ; `.claude/commands/create_agent.md`.
 
+- Faire appliquer la v5.22 (tri vers `_contexte/backlog.md`) dans les projets suivis, sans `/update` pour `Appli_TSA_SDI_TDAH` : l'agent d'Appli applique à la main les étapes 4 et 13, une puce à l'étape 15 et le commentaire du template ; il s'aligne sur la ligne de renvoi « Backlog : N entrées — `_contexte/backlog.md` ».
+  - fait quand: un `/close` réel d'Appli crée `backlog.md`, écrit la ligne de renvoi et ne compte pas cette ligne dans le plafond de 20 ; les autres projets reçoivent la v5.22 via `/update`.
+  - réf: `CHANGELOG.md` v5.22 ; commit `0f8783b` ; `tests_manuels.md` section « /close v5.22 ».
+- Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
+  - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
+  - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -108,22 +115,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-26
+# Session du 2026-10-26 (2)
 
 ## Décisions prises
-- `DOCUMENTATION/` pour `SérénIATech_dev` : création différée jusqu'à l'évaluation du mécanisme dans `Appli_TSA_SDI_TDAH` (décision utilisateur, tests manuels reportés à plus tard).
+- v5.22 : `/close` trie les actions ouvertes (reste dans `signals.md` ce qui appelle une action ou une décision proche, plafond 20 ; le reste dans `_contexte/backlog.md`, non chargé par `/start`), retire les entrées traitées, promeut les urgentes, contrôle la péremption ; ligne de renvoi hors plafond.
+- Version v5.22 (et non v6.0) : aucune migration imposée. Findings de revue de code : règle gardée en spécifique projet (le kit n'a pas d'étape générique de revue).
+- Appli_TSA_SDI_TDAH applique la v5.22 à la main (pas de `/update`) ; son `close.md` générique est plus ancien (sans 3-bis ni puce étape 13/15) : réalignement complet non engagé.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` : section « Évaluation DOCUMENTATION » (5 questions, seuil 4/5) ajoutée, non commitée dans le dépôt d'Appli.
-- Script d'analyse des sessions (scratchpad, hors dépôt) : mesure des lectures de `DOCUMENTATION/`.
+- `.claude/commands/close.md` et `templates/.claude/commands/close.md` : étapes 4, 13, 15 (commit `0f8783b`).
+- `templates/_contexte/signals.md`, `Protocole_start_close_context.md`, `DOCUMENTATION/` (guide, glossaire), `CHANGELOG.md`, `README.md`, `scripts/check_kit.py` (`backlog.md` en fichier de sortie connu) : commit `0f8783b`, poussé à la clôture.
+- `tests_manuels.md` : section « /close v5.22 » ajoutée.
 
 ## Hypothèses validées / invalidées
-- INVALIDE : la consigne « Base de connaissances » de `CLAUDE.md` suffit à déclencher la consultation (0 cas sur 29 sessions locales d'Appli ; historique partiel).
-- INVALIDE : la doc d'Appli est à jour (3 specs en écart avec le code ; 15 commits `src/` sans mise à jour documentaire depuis le 2026-10-12).
-- EN ATTENTE : les 5 tests actifs ; décision sur les pistes de fiabilisation.
+- VALIDE : `check_kit.py` passe (exit 0). `check_docs.py` échoue sur l'écart ancien (commit `26b9cdd4`), sans lien.
+- EN ATTENTE : comportement réel du nouveau tri sur un `/close` de projet (aucun test exécuté).
+- INVALIDE : `Appli_TSA_SDI_TDAH` possède `_docs/protocole_vibecoding.md` (fichier absent).
 
 ## Prochaine étape exacte
-Faire corriger les specs périmées d'Appli (`/start documentation` dans Appli), passer les 5 tests de `tests_manuels.md` d'Appli, puis trancher les pistes et les décisions SérénIATech_dev (action P1 ci-dessus).
+Faire passer la section « /close v5.22 » de `tests_manuels.md` dans un projet à plus de 20 actions ouvertes, puis trancher l'alignement de `_docs/protocole_vibecoding.md`.
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

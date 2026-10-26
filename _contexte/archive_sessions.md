@@ -1127,3 +1127,25 @@ Lancer `/start creation_llm` dans `D:\ServOMorph\creation_llm`, définir la stac
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-26
+
+## Décisions prises
+- `DOCUMENTATION/` pour `SérénIATech_dev` : création différée jusqu'à l'évaluation du mécanisme dans `Appli_TSA_SDI_TDAH` (décision utilisateur, tests manuels reportés à plus tard).
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` : section « Évaluation DOCUMENTATION » (5 questions, seuil 4/5) ajoutée, non commitée dans le dépôt d'Appli.
+- Script d'analyse des sessions (scratchpad, hors dépôt) : mesure des lectures de `DOCUMENTATION/`.
+
+## Hypothèses validées / invalidées
+- INVALIDE : la consigne « Base de connaissances » de `CLAUDE.md` suffit à déclencher la consultation (0 cas sur 29 sessions locales d'Appli ; historique partiel).
+- INVALIDE : la doc d'Appli est à jour (3 specs en écart avec le code ; 15 commits `src/` sans mise à jour documentaire depuis le 2026-10-12).
+- EN ATTENTE : les 5 tests actifs ; décision sur les pistes de fiabilisation.
+
+## Prochaine étape exacte
+Faire corriger les specs périmées d'Appli (`/start documentation` dans Appli), passer les 5 tests de `tests_manuels.md` d'Appli, puis trancher les pistes et les décisions SérénIATech_dev (action P1 ci-dessus).
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

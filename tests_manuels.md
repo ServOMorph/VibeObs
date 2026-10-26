@@ -55,3 +55,15 @@ Commandes déployées par `/update` le 2026-10-14 (étapes `/close` 3-bis, 4, 13
 - action déjà présente dans sa zone : mise à jour, aucun doublon ;
 - signal ignoré par Git : non annoncé comme commité, signalé au bilan.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
+
+## /close v5.22 — tri vers backlog.md
+
+À rejouer dans un projet dont `signals.md` dépasse 20 actions ouvertes (ex: `Appli_TSA_SDI_TDAH` après application manuelle, ou `SérénIATech_dev` après `/update`) :
+- `/close` : le bilan propose un tri vers `_contexte/backlog.md` avec la liste des candidates, sans le faire d'office ;
+- après accord, `backlog.md` est créé à la première entrée (pas de fichier vide), au format `fait quand:` / `réf:`, et `signals.md` porte une seule ligne « Backlog : N entrées — `_contexte/backlog.md` » sans priorité, hors plafond ;
+- `/start` suivant : `backlog.md` n'est pas chargé ;
+- une action dont le `fait quand:` n'est plus atteignable est proposée au retrait, jamais supprimée en silence ;
+- une entrée traitée est supprimée du backlog par le `/close` qui la constate ; backlog vidé : fichier et ligne de renvoi supprimés ;
+- une entrée du backlog rendue urgente est promue dans `signals.md` (écrite, relue, puis retirée) ;
+- `backlog.md` ignoré par Git : signalé au bilan, non annoncé comme commité.
+Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
