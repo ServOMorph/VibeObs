@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-22)
+# Signals — VibeObs (MAJ 2026-10-26)
 
 ## Actions ouvertes — pilotage
 
@@ -90,6 +90,13 @@
   - fait quand: `/start creation_llm` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\creation_llm status` montre la branche à jour avec `origin/main`.
   - réf: `D:\ServOMorph\creation_llm\_contexte\contexte.md` ; https://github.com/ServOMorph/creation_llm ; `DEPLOYMENTS.md`.
 
+- Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
+  - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
+  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\DOCUMENTATION\40_specs\` ; Appli commits `2d523d8`, `4899430`, `b0a0206`, `101d354`.
+- Créer `DOCUMENTATION/` dans `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev` (`/create_agent`) une fois l'évaluation Appli traitée. Décisions en attente de l'utilisateur : archiver `ClaudeCode/roadmap_base_connaissances.md` (6 phases TODO, base concurrente dans `ClaudeCode/base_connaissances/`) au profit de `DOCUMENTATION/` à la racine ; valider le périmètre proposé (carte du projet et processus d'abord ; exclusions : données sensibles, détail clients, tarification non stabilisée) ; exclure `Interim` et décider de l'inscrire aux données sensibles de `CLAUDE.md`. `AGENTS.md` et `GEMINI.md` de SérénIATech_dev ne mentionnent pas `DOCUMENTATION/` : le paragraphe du template est à ajouter. Migration de la section Spécificités projet vers l'INDEX déconseillée (déclencheurs plus fiables dans `CLAUDE.md`).
+  - fait quand: l'agent `documentation` de SérénIATech_dev est créé, son `INDEX.md` existe, et les trois décisions ci-dessus sont tracées.
+  - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\ClaudeCode\roadmap_base_connaissances.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\CLAUDE.md` § Base de connaissances ; `.claude/commands/create_agent.md`.
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -101,22 +108,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-22
+# Session du 2026-10-26
 
 ## Décisions prises
-- Projet `creation_llm` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/creation_llm`, description « Création d'un LLM from scratch sur mon PC ») puis `/init_projet` : alias = nom du projet, stack « À définir », sensibles « Aucun », `AGENTS.md` et `GEMINI.md` demandés (lecture de la numérotation décalée des réponses), aucun agent, aucun template.
+- `DOCUMENTATION/` pour `SérénIATech_dev` : création différée jusqu'à l'évaluation du mécanisme dans `Appli_TSA_SDI_TDAH` (décision utilisateur, tests manuels reportés à plus tard).
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\creation_llm` : dépôt créé, commits `5df09ec` (init) et `d343b1e` (protocole, kit v5.21). Le commit du protocole n'est pas poussé sur `origin/main`.
-- `DEPLOYMENTS.md` (local, gitignoré) : ligne creation_llm ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
+- `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` : section « Évaluation DOCUMENTATION » (5 questions, seuil 4/5) ajoutée, non commitée dans le dépôt d'Appli.
+- Script d'analyse des sessions (scratchpad, hors dépôt) : mesure des lectures de `DOCUMENTATION/`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/create_projet` avec GitHub public de bout en bout.
-- INVALIDE : les écarts de `init_projet.md` étapes 5 et 7 persistent (contournés : `AGENTS.md`/`GEMINI.md` stagés à la main, ligne `DEPLOYMENTS.md` insérée dans le bon tableau).
-- EN ATTENTE : la numérotation de Q1-Q9 de `/init_projet` (Q4 sautée dans l'énoncé) a provoqué une réponse décalée de l'utilisateur ; interprétation faite sans confirmation.
+- INVALIDE : la consigne « Base de connaissances » de `CLAUDE.md` suffit à déclencher la consultation (0 cas sur 29 sessions locales d'Appli ; historique partiel).
+- INVALIDE : la doc d'Appli est à jour (3 specs en écart avec le code ; 15 commits `src/` sans mise à jour documentaire depuis le 2026-10-12).
+- EN ATTENTE : les 5 tests actifs ; décision sur les pistes de fiabilisation.
 
 ## Prochaine étape exacte
-Lancer `/start creation_llm` dans `D:\ServOMorph\creation_llm`, définir la stack, pousser le commit du protocole ; corriger les écarts de `init_projet.md` (action P1 ci-dessus).
+Faire corriger les specs périmées d'Appli (`/start documentation` dans Appli), passer les 5 tests de `tests_manuels.md` d'Appli, puis trancher les pistes et les décisions SérénIATech_dev (action P1 ci-dessus).
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

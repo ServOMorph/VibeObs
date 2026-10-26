@@ -1105,3 +1105,25 @@ Lancer `/start IA_Eco-Responsable` dans `D:\ServOMorph\IA_Eco-Responsable`, déf
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches) a été mentionné sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-22
+
+## Décisions prises
+- Projet `creation_llm` créé via `/create_projet` (Git local + dépôt GitHub public `ServOMorph/creation_llm`, description « Création d'un LLM from scratch sur mon PC ») puis `/init_projet` : alias = nom du projet, stack « À définir », sensibles « Aucun », `AGENTS.md` et `GEMINI.md` demandés (lecture de la numérotation décalée des réponses), aucun agent, aucun template.
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\creation_llm` : dépôt créé, commits `5df09ec` (init) et `d343b1e` (protocole, kit v5.21). Le commit du protocole n'est pas poussé sur `origin/main`.
+- `DEPLOYMENTS.md` (local, gitignoré) : ligne creation_llm ajoutée au tableau des projets. Aucun fichier du kit versionné modifié hors signaux/contexte, pas de bump `CHANGELOG.md`.
+
+## Hypothèses validées / invalidées
+- VALIDE : `/create_projet` avec GitHub public de bout en bout.
+- INVALIDE : les écarts de `init_projet.md` étapes 5 et 7 persistent (contournés : `AGENTS.md`/`GEMINI.md` stagés à la main, ligne `DEPLOYMENTS.md` insérée dans le bon tableau).
+- EN ATTENTE : la numérotation de Q1-Q9 de `/init_projet` (Q4 sautée dans l'énoncé) a provoqué une réponse décalée de l'utilisateur ; interprétation faite sans confirmation.
+
+## Prochaine étape exacte
+Lancer `/start creation_llm` dans `D:\ServOMorph\creation_llm`, définir la stack, pousser le commit du protocole ; corriger les écarts de `init_projet.md` (action P1 ci-dessus).
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
