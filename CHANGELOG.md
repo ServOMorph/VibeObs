@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.23 — 2026-10-27
+
+### Corrigé
+- `/start` (kit + template) étape 4c : lecture effective du `signals.md` de la zone propriétaire avant de conclure sur le doublon (« non vérifiable » seulement si le fichier n'existe pas, chemin testé indiqué) ; les éléments déjà marqués `[à transférer vers <alias>]` sont résumés en une ligne de comptage au lieu d'être détaillés. Constat : scénario 1 rejoué dans `SérénIATech_dev` le 2026-10-27 (doublon déclaré « non vérifiable » alors que les fichiers existaient).
+- `Protocole_start_close_context.md` : étape 4c précisée.
+
 ## v5.22 — 2026-10-26
 
 ### Ajouté

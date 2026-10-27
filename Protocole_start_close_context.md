@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.22** — Révision du 2026-10-26. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.23** — Révision du 2026-10-27. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -132,7 +132,9 @@ l'afficher intégralement avant `signals.md`. Absent pour une zone racine classi
 
 Étape 4c : après l'affichage intégral de `signals.md`, signale (sans rien déplacer) les éléments
 manifestement mal classés : action d'une autre zone, action métier à la racine, doublon avec le
-`signals.md` de la zone propriétaire.
+`signals.md` de la zone propriétaire (lu effectivement avant de conclure ; « non vérifiable » seulement
+si le fichier n'existe pas). Les éléments déjà marqués `[à transférer vers <alias>]` sont résumés
+en une ligne de comptage, sans détail.
 
 Voir `templates/.claude/commands/start.md`.
 

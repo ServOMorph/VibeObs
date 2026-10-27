@@ -60,10 +60,18 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     - une action dont tous les `réf:` pointent dans le dossier d'une autre zone de `zones.md` ;
     - à la racine, une action métier d'une zone (non transversale) ;
     - une action dont l'objet ou la `réf:` figure aussi dans le `signals.md` de la zone
-      propriétaire (lire seulement ce fichier, pour les cas candidats).
-    Les lister dans un bloc « Éléments possiblement mal classés » : élément, zone probable,
-    doublon constaté oui/non. Ne rien déplacer ni supprimer : le reclassement se fait par
-    `/close` (étape 3-bis) sur décision de l'utilisateur. Aucun candidat : ne pas afficher le bloc.
+      propriétaire.
+    Les éléments déjà marqués `[à transférer vers <alias>]` ne sont pas détaillés : leur transfert
+    est déjà tracé. Les compter dans une seule ligne « N élément(s) en attente de transfert
+    (déjà marqués) ».
+    Pour chaque autre candidat, lire effectivement `<dossier de la zone propriétaire>/_contexte/signals.md`
+    (dossier résolu par `zones.md`) avant de conclure sur le doublon : « oui » si l'objet ou une
+    `réf:` y figure, « non » sinon. Écrire « non vérifiable » seulement si ce fichier n'existe pas
+    après vérification de son chemin ; indiquer alors le chemin testé.
+    Lister les candidats dans un bloc « Éléments possiblement mal classés » : élément, zone
+    probable, doublon constaté oui/non. Ne rien déplacer ni supprimer : le reclassement se fait par
+    `/close` (étape 3-bis) sur décision de l'utilisateur. Aucun candidat ni élément marqué : ne
+    pas afficher le bloc.
 
 5. Afficher en fin de réponse : 🎉🎉🎉
 

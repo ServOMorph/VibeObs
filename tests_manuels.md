@@ -48,7 +48,7 @@ n'a été validé qu'en syntaxe. À exécuter, VS Code ayant le focus au lanceme
 
 Commandes déployées par `/update` le 2026-10-14 (étapes `/close` 3-bis, 4, 13, 15 ; `/start` 4c).
 À rejouer dans une nouvelle session ouverte sur `SérénIATech_dev`, un scénario à la fois :
-- `/start` racine : `signals.md` affiché intégralement ; bloc 4c présent seulement si justifié (sortie reçue le 2026-10-14 : aucun bloc, roadmap Luna laissée à la racine par décision) ;
+- `/start` racine : `signals.md` affiché intégralement ; bloc 4c présent seulement si justifié (sortie reçue le 2026-10-14 : aucun bloc, roadmap Luna laissée à la racine par décision) ; rejoué le 2026-10-27 : signals affiché intégralement, aucune roadmap ni hook, bloc 4c présent avec 2 éléments déjà marqués `[à transférer vers <alias>]` (business, ia-ados), doublon déclaré « non vérifiable : `_contexte/signals.md` introuvable » alors que `Business/_contexte/signals.md` et `Communication/Youtube/L'IA aux ados/_contexte/signals.md` existent et ne contiennent pas l'action (attendu : doublon « non ») — DIVERGENCE à transmettre au kit) ;
 - `/start shorts` : charte puis signaux de la zone, bloc 4c éventuel ;
 - `/close` racine après un travail dans SHORTS : écart zone/travail signalé, éléments dans le signal de SHORTS (ou `[à transférer vers shorts]` si `agent_role.md` l'interdit), rien recopié à la racine ;
 - session touchant plusieurs zones : seules les actions et points d'attention des autres zones sont modifiés, jamais leur « Dernière session » ;
