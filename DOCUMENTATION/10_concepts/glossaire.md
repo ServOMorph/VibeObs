@@ -14,7 +14,7 @@ maj: 2026-10-26
 | Alias | Nom court d'une zone (ex: documentation) |
 | `_contexte/` | Dossier de contexte d'une zone : contexte.md, signals.md, archives |
 | signals.md | Fichier de pilotage : actions ouvertes, blocages, dernière session — lu en premier par /start |
-| backlog.md | Fichier de zone `_contexte/backlog.md` : dette, findings et pistes non urgents sortis de signals.md ; non chargé par /start ; entrées traitées supprimées |
+| backlog.md | Fichier de zone `_contexte/backlog.md` : dette, findings et pistes non urgents sortis de signals.md ; non chargé par /start ; entrées catégorisées avec `réf:` vérifié, croisées avec les fichiers modifiés à chaque /close ; entrées traitées supprimées |
 | contexte.md | Contexte stable : objectif, stack, état actuel, décisions structurantes |
 | Dernière session | Section de signals.md écrasée intégralement par /close (synthèse < 25 lignes) |
 | /compact | Compression de l'historique en cours de session |

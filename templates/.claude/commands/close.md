@@ -91,17 +91,29 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
        déploiement) ;
      - sinon (dette technique, finding de revue non corrigé, amélioration différée, piste
        « à juger acceptable ») : `<dossier>/_contexte/backlog.md`, au même format `fait quand:` /
-       `réf:`, ajouté en fin de fichier. Créer le fichier à la première entrée (jamais de fichier
+       `réf:`, ajouté en fin de fichier. Chaque entrée commence par une catégorie entre crochets :
+       `[dette]`, `[finding]`, `[amélioration]` ou `[piste]`. Son `réf:` cite un fichier ou un
+       dossier précis dont l'existence est vérifiée par une commande (`ls` ou `test -e`) avant
+       l'écriture ; si le `réf:` est `[à préciser]` ou désigne un chemin absent, ne pas écrire
+       l'entrée dans le backlog : la laisser dans `signals.md` avec la mention « réf à préciser »,
+       ou corriger le chemin d'abord. Créer le fichier à la première entrée (jamais de fichier
        vide) ; ne pas ajouter une entrée dont l'objet ou la `réf:` figure déjà dans le fichier.
    - **Backlog** : `backlog.md` n'est pas chargé par `/start`. Une entrée traitée ou écartée est
      supprimée du fichier lors du `/close` qui la constate ; le fichier devenu vide est supprimé.
      Une entrée que la session a rendue urgente est promue : écrire l'action dans `signals.md`,
      relire pour constater sa présence, puis seulement la retirer du backlog.
+   - **Croisement et contrôle des `réf:`** : si `backlog.md` existe, (1) vérifier par une commande
+     (`ls` ou `test -e`) que chaque chemin cité par un `réf:` existe ; une entrée dont le `réf:`
+     est `[à préciser]` ou désigne un chemin absent est dite « sans `réf:` précis » ; (2) comparer
+     les fichiers modifiés pendant la session (`git status --short`, limité au dossier de la zone)
+     aux `réf:` précis : une entrée qui cite un fichier modifié, ou son dossier, est candidate à
+     la promotion et listée dans le bilan de l'étape 15, sans être déplacée d'office ; (3) au-delà
+     de 3 entrées sans `réf:` précis, proposer dans le bilan de les corriger.
    - **Ligne de renvoi** : tant que `backlog.md` existe, `signals.md` porte, en fin de section des
-     actions ouvertes, une seule ligne « Backlog : N entrées — `_contexte/backlog.md` », N étant
-     recalculé à chaque `/close` qui modifie le fichier. Ce n'est pas une action : ni priorité, ni
-     `fait quand:` / `réf:`, et elle ne compte pas dans le plafond de 20. Fichier supprimé :
-     supprimer la ligne.
+     actions ouvertes, une seule ligne « Backlog : N entrées (dette a, finding b, amélioration c,
+     piste d ; dont s sans `réf:` précis) — `_contexte/backlog.md` » (les parties à zéro sont
+     omises), recalculée à chaque `/close`. Ce n'est pas une action : ni priorité, ni `fait quand:`
+     / `réf:`, et elle ne compte pas dans le plafond de 20. Fichier supprimé : supprimer la ligne.
    - **Contrôle de péremption** : pour chaque action reportée, vérifier que son `fait quand:` est
      encore atteignable et que son contexte est encore vrai. Une action obsolète est proposée au
      retrait dans le bilan de l'étape 15 ; ne jamais la supprimer silencieusement.
@@ -234,8 +246,10 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     "résidus non commités : N fichiers". Pas d'action automatique — uniquement rendre visible.
     Ajouter aussi, si présents : les fichiers de signal ou `backlog.md` ignorés par Git (non
     commités), les éléments marqués `[à transférer vers <alias>]`, tout écart de zone traité à
-    l'étape 3-bis, les actions obsolètes proposées au retrait et, au-delà de 20 actions ouvertes,
-    les entrées candidates au tri vers `backlog.md` (étape 4).
+    l'étape 3-bis, les actions obsolètes proposées au retrait, les entrées du backlog croisant un
+    fichier modifié (candidates à la promotion), les entrées du backlog sans `réf:` précis
+    au-delà de 3 et, au-delà de 20 actions ouvertes, les entrées candidates au tri vers
+    `backlog.md` (étape 4).
 
 16. Afficher en fin de réponse en grand format : ✌️😎
 

@@ -3,6 +3,13 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.24 — 2026-10-27
+
+### Modifié
+- `/close` (kit + template) étape 4 : entrées du backlog catégorisées (`[dette]`, `[finding]`, `[amélioration]`, `[piste]`), `réf:` précis vérifié par commande avant écriture (sinon l'entrée reste dans `signals.md`), croisement des `réf:` avec les fichiers modifiés de la session (candidates à la promotion), ligne de renvoi avec catégories et nombre d'entrées sans `réf:` précis ; étape 15 : bilan enrichi.
+- `Protocole_start_close_context.md`, `DOCUMENTATION/20_guides/sessions_start_close.md`, `DOCUMENTATION/10_concepts/glossaire.md` : backlog précisé.
+- Projets déjà en v5.22 (Appli) : reprendre catégories, contrôle des `réf:`, croisement et nouveau format de la ligne de renvoi ; pas de migration automatique des entrées existantes.
+
 ## v5.23 — 2026-10-27
 
 ### Corrigé
