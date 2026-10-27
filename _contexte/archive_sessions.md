@@ -1149,3 +1149,28 @@ Faire corriger les specs périmées d'Appli (`/start documentation` dans Appli),
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-26 (2)
+
+## Décisions prises
+- v5.22 : `/close` trie les actions ouvertes (reste dans `signals.md` ce qui appelle une action ou une décision proche, plafond 20 ; le reste dans `_contexte/backlog.md`, non chargé par `/start`), retire les entrées traitées, promeut les urgentes, contrôle la péremption ; ligne de renvoi hors plafond.
+- Version v5.22 (et non v6.0) : aucune migration imposée. Findings de revue de code : règle gardée en spécifique projet (le kit n'a pas d'étape générique de revue).
+- Appli_TSA_SDI_TDAH applique la v5.22 à la main (pas de `/update`) ; son `close.md` générique est plus ancien (sans 3-bis ni puce étape 13/15) : réalignement complet non engagé.
+
+## Livrables produits ou modifiés
+- `.claude/commands/close.md` et `templates/.claude/commands/close.md` : étapes 4, 13, 15 (commit `0f8783b`).
+- `templates/_contexte/signals.md`, `Protocole_start_close_context.md`, `DOCUMENTATION/` (guide, glossaire), `CHANGELOG.md`, `README.md`, `scripts/check_kit.py` (`backlog.md` en fichier de sortie connu) : commit `0f8783b`, poussé à la clôture.
+- `tests_manuels.md` : section « /close v5.22 » ajoutée.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` passe (exit 0). `check_docs.py` échoue sur l'écart ancien (commit `26b9cdd4`), sans lien.
+- EN ATTENTE : comportement réel du nouveau tri sur un `/close` de projet (aucun test exécuté).
+- INVALIDE : `Appli_TSA_SDI_TDAH` possède `_docs/protocole_vibecoding.md` (fichier absent).
+
+## Prochaine étape exacte
+Faire passer la section « /close v5.22 » de `tests_manuels.md` dans un projet à plus de 20 actions ouvertes, puis trancher l'alignement de `_docs/protocole_vibecoding.md`.
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

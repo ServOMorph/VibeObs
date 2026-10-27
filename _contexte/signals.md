@@ -1,9 +1,9 @@
-# Signals — VibeObs (MAJ 2026-10-26)
+# Signals — VibeObs (MAJ 2026-10-27)
 
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
-- Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués.
+- Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués. 2026-10-27 : `close.md` de `SérénIATech_dev` mis à jour en v5.22 ; le test « /close v5.22 » peut se jouer dans la même session.
   - fait quand: les 6 scénarios de `tests_manuels.md` (section « /start et /close — attribution par zone ») sont rejoués et leurs divergences transmises au kit, traitées ou écartées.
   - réf: `tests_manuels.md` ; `.claude/commands/close.md` étapes 3-bis et 13 ; `.claude/commands/start.md` étape 4c ; `SérénIATech_dev` commit « update: protocole vibecoding — zone racine — kit v5.20 ».
 - Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
@@ -97,9 +97,12 @@
   - fait quand: l'agent `documentation` de SérénIATech_dev est créé, son `INDEX.md` existe, et les trois décisions ci-dessus sont tracées.
   - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\ClaudeCode\roadmap_base_connaissances.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\CLAUDE.md` § Base de connaissances ; `.claude/commands/create_agent.md`.
 
-- Faire appliquer la v5.22 (tri vers `_contexte/backlog.md`) dans les projets suivis, sans `/update` pour `Appli_TSA_SDI_TDAH` : l'agent d'Appli applique à la main les étapes 4 et 13, une puce à l'étape 15 et le commentaire du template ; il s'aligne sur la ligne de renvoi « Backlog : N entrées — `_contexte/backlog.md` ».
-  - fait quand: un `/close` réel d'Appli crée `backlog.md`, écrit la ligne de renvoi et ne compte pas cette ligne dans le plafond de 20 ; les autres projets reçoivent la v5.22 via `/update`.
-  - réf: `CHANGELOG.md` v5.22 ; commit `0f8783b` ; `tests_manuels.md` section « /close v5.22 ».
+- Faire appliquer la v5.22 (tri vers `_contexte/backlog.md`) aux autres projets suivis via `/update`. Fait : `SérénIATech_dev` (commit `61b8e47`, 2026-10-27) ; `Appli_TSA_SDI_TDAH` l'a appliquée à la main (commits `dde7482`, `b1c8636`, contenu non relu).
+  - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.22 ou leur report est tracé, et un `/close` réel crée `backlog.md` avec sa ligne de renvoi hors plafond.
+  - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 ; `tests_manuels.md` section « /close v5.22 ».
+- Décider si `/update` doit préserver les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET`. Constat 2026-10-27 : `SérénIATech_dev` avait `PowerShell(python *menage_zone.py*)` dans `allowed-tools` ; la copie du kit l'aurait supprimée (conservée à la main), et le contrôle « identique hors spécificités » de l'étape 10 signale cet écart.
+  - fait quand: `update.md` (étapes 5 et 10) préserve ou signale explicitement ces ajouts, ou la décision de ne pas le faire est tracée.
+  - réf: `.claude/commands/update.md` étapes 5 et 10 ; `SérénIATech_dev` commit `61b8e47`.
 - Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
   - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
   - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
@@ -115,25 +118,24 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-26 (2)
+# Session du 2026-10-27
 
 ## Décisions prises
-- v5.22 : `/close` trie les actions ouvertes (reste dans `signals.md` ce qui appelle une action ou une décision proche, plafond 20 ; le reste dans `_contexte/backlog.md`, non chargé par `/start`), retire les entrées traitées, promeut les urgentes, contrôle la péremption ; ligne de renvoi hors plafond.
-- Version v5.22 (et non v6.0) : aucune migration imposée. Findings de revue de code : règle gardée en spécifique projet (le kit n'a pas d'étape générique de revue).
-- Appli_TSA_SDI_TDAH applique la v5.22 à la main (pas de `/update`) ; son `close.md` générique est plus ancien (sans 3-bis ni puce étape 13/15) : réalignement complet non engagé.
+- `/update` v5.22 vers `SérénIATech_dev` limité à `close.md` (`start.md`, `create_memory.md`, `ollama_call.py`, `CLAUDE.md` déjà alignés ; `AGENTS.md`/`GEMINI.md` non touchés) ; permission `menage_zone.py` du frontmatter conservée à la main.
+- Le report des ajouts propres à Appli (concision dans `CLAUDE.md`, garde-fou de pause Discord) n'est pas engagé.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md` et `templates/.claude/commands/close.md` : étapes 4, 13, 15 (commit `0f8783b`).
-- `templates/_contexte/signals.md`, `Protocole_start_close_context.md`, `DOCUMENTATION/` (guide, glossaire), `CHANGELOG.md`, `README.md`, `scripts/check_kit.py` (`backlog.md` en fichier de sortie connu) : commit `0f8783b`, poussé à la clôture.
-- `tests_manuels.md` : section « /close v5.22 » ajoutée.
+- `SérénIATech_dev/.claude/commands/close.md` : v5.22, commit `61b8e47` (hors dépôt du kit).
+- `DEPLOYMENTS.md` (gitignoré) : ligne `SérénIATech_dev` passée à v5.22, 2026-10-27.
+- `_contexte/signals.md`, `contexte.md`, archives : mis à jour.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` passe (exit 0). `check_docs.py` échoue sur l'écart ancien (commit `26b9cdd4`), sans lien.
-- EN ATTENTE : comportement réel du nouveau tri sur un `/close` de projet (aucun test exécuté).
-- INVALIDE : `Appli_TSA_SDI_TDAH` possède `_docs/protocole_vibecoding.md` (fichier absent).
+- VALIDE : bloc `SPECIFICITES PROJET` de la cible restauré depuis `HEAD` après écrasement lors de la copie (diff tronqué à 40 lignes non relu) ; une seule paire de marqueurs.
+- INVALIDE : « `/update` copie sans perte » — le frontmatter de `close.md` n'est pas protégé (action P1 ci-dessus).
+- EN ATTENTE : comportement réel du tri backlog dans `SérénIATech_dev` et Appli.
 
 ## Prochaine étape exacte
-Faire passer la section « /close v5.22 » de `tests_manuels.md` dans un projet à plus de 20 actions ouvertes, puis trancher l'alignement de `_docs/protocole_vibecoding.md`.
+Ouvrir une session sur `SérénIATech_dev` : rejouer les scénarios 2 à 6 de `/start` et `/close` puis le test « /close v5.22 » (`tests_manuels.md`).
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
