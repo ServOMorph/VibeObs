@@ -73,9 +73,14 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
      chaque autre zone concernée, ne mettre à jour que ses actions et points d'attention
      (jamais sa section « Dernière session », jamais son `contexte.md` sans demande), et lister
      chaque fichier de signal touché pour l'étape 13.
+   - **Constat sur une autre zone** : un constat, une obsolescence ou un point d'attention observé
+     sur une autre zone (fichier de contexte périmé, incohérence) est écrit dans le `signals.md` de
+     cette zone, en point d'attention ou en action selon le cas, ou marqué `[à transférer vers
+     <alias>]` si les droits d'écriture de l'étape 3-bis l'interdisent. Il peut aussi figurer en
+     une ligne dans la synthèse de la zone fermée, mais n'y reste jamais seul.
    - **Pas de doublon, pas de perte** : avant d'ajouter une action dans le `signals.md` d'une
-     zone, le lire ; si une action de même objet ou de même `réf:` existe, la mettre à jour
-     (`fait quand:`, `réf:`, priorité, état) au lieu d'en ajouter une. Un transfert se fait en
+     zone, le lire ; si une action de même objet existe (une même `réf:` ne suffit pas), la mettre
+     à jour (`fait quand:`, `réf:`, priorité, état) au lieu d'en ajouter une. Un transfert se fait en
      deux temps : écrire à la destination, relire pour constater la présence, puis seulement
      retirer l'élément de la source. Si l'écriture à la destination échoue, l'élément reste à la
      source.
@@ -97,7 +102,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
        l'écriture ; si le `réf:` est `[à préciser]` ou désigne un chemin absent, ne pas écrire
        l'entrée dans le backlog : la laisser dans `signals.md` avec la mention « réf à préciser »,
        ou corriger le chemin d'abord. Créer le fichier à la première entrée (jamais de fichier
-       vide) ; ne pas ajouter une entrée dont l'objet ou la `réf:` figure déjà dans le fichier.
+       vide) ; ne pas ajouter une entrée dont l'objet est identique à celui d'une entrée
+       existante (une même `réf:` ne suffit pas : plusieurs entrées peuvent citer le même fichier).
    - **Backlog** : `backlog.md` n'est pas chargé par `/start`. Une entrée traitée ou écartée est
      supprimée du fichier lors du `/close` qui la constate ; le fichier devenu vide est supprimé.
      Une entrée que la session a rendue urgente est promue : écrire l'action dans `signals.md`,
@@ -111,8 +117,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
      de 3 entrées sans `réf:` précis, proposer dans le bilan de les corriger.
    - **Ligne de renvoi** : tant que `backlog.md` existe, `signals.md` porte, en fin de section des
      actions ouvertes, une seule ligne « Backlog : N entrées (dette a, finding b, amélioration c,
-     piste d ; dont s sans `réf:` précis) — `_contexte/backlog.md` » (les parties à zéro sont
-     omises), recalculée à chaque `/close`. Ce n'est pas une action : ni priorité, ni `fait quand:`
+     piste d, sans catégorie e ; dont s sans `réf:` précis) — `_contexte/backlog.md` » (les parties
+     à zéro sont omises), recalculée à chaque `/close`. Ce n'est pas une action : ni priorité, ni `fait quand:`
      / `réf:`, et elle ne compte pas dans le plafond de 20. Fichier supprimé : supprimer la ligne.
    - **Contrôle de péremption** : pour chaque action reportée, vérifier que son `fait quand:` est
      encore atteignable et que son contexte est encore vrai. Une action obsolète est proposée au
@@ -168,6 +174,9 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    - Lire la dernière entrée de `CHANGELOG.md` pour extraire la version actuelle (ex: `v2.2`).
    - Si `CHANGELOG.md` n'existe pas : le créer avec l'en-tête `# Changelog` et une première entrée
      `## v0.1 — AAAA-MM-JJ` (pas de calcul de bump), puis passer à l'étape 10.
+   - Si la session n'a modifié ni créé aucun fichier hors `_contexte/`, `README.md` et
+     `CHANGELOG.md` (hors fichiers régénérés par les commandes de l'étape 12) : ne pas bumper la
+     version et n'ajouter aucune entrée.
    - Déterminer le type de bump à partir de la synthèse de l'étape 3 :
      - **major** si : structure de `_contexte/` modifiée, placeholder renommé ou supprimé, commande supprimée
      - **minor** dans tous les autres cas

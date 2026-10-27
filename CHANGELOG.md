@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.25 — 2026-10-27
+
+### Corrigé
+- `/close` (kit + template) étape 4 et étape 3-bis : le doublon se reconnaît à un objet identique, une même `réf:` ne suffit plus (constat en projet jetable : le tri de N1 à N3 vers le backlog était bloqué par des `réf:` communes avec E2 et E6).
+
+### Modifié
+- `/close` étape 4 : la ligne de renvoi du backlog ajoute « sans catégorie e » pour que les parties totalisent N ; étape 3-bis : un constat sur une autre zone va dans son `signals.md` (ou `[à transférer vers <alias>]`) ; étape 9 : pas de bump de `CHANGELOG.md` ni d'entrée quand la session n'a modifié aucun fichier hors `_contexte/`, `README.md` et `CHANGELOG.md`.
+- `Protocole_start_close_context.md` : étapes 3-bis et backlog précisées.
+
 ## v5.24 — 2026-10-27
 
 ### Modifié

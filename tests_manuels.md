@@ -52,19 +52,22 @@ Commandes déployées par `/update` le 2026-10-14 (étapes `/close` 3-bis, 4, 13
 - session touchant plusieurs zones : seules les actions et points d'attention des autres zones sont modifiés, jamais leur « Dernière session » ;
 - action déjà présente dans sa zone : mise à jour, aucun doublon ;
 - signal ignoré par Git : non annoncé comme commité, signalé au bilan.
+Observations du 2026-10-27 (`/close` racine sans travail dans SHORTS, v5.22/v5.23, commit `ca0b2c0`) : scénario 3 non couvert (aucun travail réalisé dans SHORTS) ; signals suivis par Git contrôlés (cas « ignoré » non testé) ; session précédente archivée ; 3 actions reportées, backlog non exercé. Divergences à trancher : (a) le constat « `contexte.md` de SHORTS obsolète » est écrit dans la synthèse de la racine mais pas dans le `signals.md` de SHORTS (zone propriétaire, écriture permise par sa charte) ; (b) étape 9 : bump de `CHANGELOG.md` (v1.111) pour une session sans modification de travail.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
 
-## /close v5.22 — tri vers backlog.md
+## /close v5.22 — points non exercés
 
-À rejouer dans un projet dont `signals.md` dépasse 20 actions ouvertes (ex: `Appli_TSA_SDI_TDAH` après application manuelle, ou `SérénIATech_dev` après `/update`) :
-- `/close` : le bilan propose un tri vers `_contexte/backlog.md` avec la liste des candidates, sans le faire d'office ;
-- après accord, `backlog.md` est créé à la première entrée (pas de fichier vide), au format `fait quand:` / `réf:`, et `signals.md` porte une seule ligne « Backlog : N entrées — `_contexte/backlog.md` » sans priorité, hors plafond ;
-- `/start` suivant : `backlog.md` n'est pas chargé ;
-- une action dont le `fait quand:` n'est plus atteignable est proposée au retrait, jamais supprimée en silence ;
-- une entrée traitée est supprimée du backlog par le `/close` qui la constate ; backlog vidé : fichier et ligne de renvoi supprimés ;
-- une entrée du backlog rendue urgente est promue dans `signals.md` (écrite, relue, puis retirée) ;
-- `backlog.md` ignoré par Git : signalé au bilan, non annoncé comme commité ;
-- une entrée au `réf:` inexistant ou `[à préciser]` n'est pas écrite dans le backlog (reste dans `signals.md`, « réf à préciser ») ;
-- une entrée valide dont le `réf:` cite un fichier modifié pendant la session apparaît au bilan comme candidate à la promotion ;
-- la ligne de renvoi indique les catégories et « dont s sans `réf:` précis » ; au-delà de 3 entrées sans `réf:` précis, le bilan propose de les corriger.
+Le jeu d'essai sur projet jetable (2026-10-27) a validé le tri, le plafond, la péremption, la promotion, le retrait, la ligne de renvoi, le non-chargement par `/start` et le cas `backlog.md` ignoré par Git. Restent à exercer dans un projet réel :
+- `backlog.md` créé à la première entrée (aucun fichier vide au préalable) ;
+- backlog vidé : fichier et ligne de renvoi supprimés ;
+- `check_kit.py` présent et passant avant le commit d'un `/close` qui a écrit dans le backlog.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
+
+## /close v5.25 — points à rejouer (projet jetable)
+
+À jouer sur `D:\ServOMorph\test_close_v524` (état initial `04a50e7` ou courant) après mise à jour de son `close.md` :
+- `/close` après une session sans modification de fichier de travail (seulement du chargement de contexte) : aucun bump de `CHANGELOG.md`, aucune entrée ajoutée ;
+- tri de N1 à N3 vers `backlog.md` demandé alors que leur `réf:` (`src/b.txt`) figure déjà dans E2 et E6 : l'ajout n'est plus refusé, car les objets diffèrent ;
+- constat sur une autre zone (ex: fichier de contexte d'une zone devenu périmé) : écrit dans le `signals.md` de cette zone, ou marqué `[à transférer vers <alias>]` si les droits l'interdisent ;
+- ligne de renvoi : les parties totalisent N, avec « sans catégorie e » quand des entrées n'ont pas de catégorie.
+Transmettre chaque divergence au kit (étape, attendu, observé).
