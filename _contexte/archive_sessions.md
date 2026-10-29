@@ -1174,3 +1174,27 @@ Faire passer la section « /close v5.22 » de `tests_manuels.md` dans un projet 
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-27
+
+## Décisions prises
+- `/update` v5.22 vers `SérénIATech_dev` limité à `close.md` (`start.md`, `create_memory.md`, `ollama_call.py`, `CLAUDE.md` déjà alignés ; `AGENTS.md`/`GEMINI.md` non touchés) ; permission `menage_zone.py` du frontmatter conservée à la main.
+- Le report des ajouts propres à Appli (concision dans `CLAUDE.md`, garde-fou de pause Discord) n'est pas engagé.
+
+## Livrables produits ou modifiés
+- `SérénIATech_dev/.claude/commands/close.md` : v5.22, commit `61b8e47` (hors dépôt du kit).
+- `DEPLOYMENTS.md` (gitignoré) : ligne `SérénIATech_dev` passée à v5.22, 2026-10-27.
+- `_contexte/signals.md`, `contexte.md`, archives : mis à jour.
+
+## Hypothèses validées / invalidées
+- VALIDE : bloc `SPECIFICITES PROJET` de la cible restauré depuis `HEAD` après écrasement lors de la copie (diff tronqué à 40 lignes non relu) ; une seule paire de marqueurs.
+- INVALIDE : « `/update` copie sans perte » — le frontmatter de `close.md` n'est pas protégé (action P1 ci-dessus).
+- EN ATTENTE : comportement réel du tri backlog dans `SérénIATech_dev` et Appli.
+
+## Prochaine étape exacte
+Ouvrir une session sur `SérénIATech_dev` : rejouer les scénarios 2 à 6 de `/start` et `/close` puis le test « /close v5.22 » (`tests_manuels.md`).
+
+## Question bloquante pour la session suivante
+L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

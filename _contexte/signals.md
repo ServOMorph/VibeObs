@@ -1,9 +1,9 @@
-# Signals — VibeObs (MAJ 2026-10-27)
+# Signals — VibeObs (MAJ 2026-10-29)
 
 ## Actions ouvertes — pilotage
 
 ### P1 — à traiter avant le backlog
-- Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués. 2026-10-27 : scénarios 1 et 2 validés en v5.23 (correctif 4c, commit `03b5a54`) ; scénarios 3 à 6 restants (dont le `/close` racine après travail dans SHORTS). 2026-10-27 : `/close` racine sans travail dans SHORTS observé (commit `ca0b2c0` de SérénIATech_dev), deux divergences à trancher consignées dans `tests_manuels.md`. 2026-10-27 : `close.md` de `SérénIATech_dev` mis à jour en v5.22 ; le test « /close v5.22 » peut se jouer dans la même session.
+- Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués. 2026-10-27 : scénarios 1 et 2 validés en v5.23 (correctif 4c, commit `03b5a54`) ; scénarios 3 à 6 restants (dont le `/close` racine après travail dans SHORTS). 2026-10-27 : `/close` racine sans travail dans SHORTS observé (commit `ca0b2c0` de SérénIATech_dev), deux divergences à trancher consignées dans `tests_manuels.md`. 2026-10-27 : `close.md` de `SérénIATech_dev` mis à jour en v5.22 ; le test « /close v5.22 » peut se jouer dans la même session. 2026-10-29 : `close.md` en v5.25 et `start.md` en v5.23 dans `SérénIATech_dev` (`/update`, permission `menage_zone.py` conservée à la main) ; scénarios 3 à 6 toujours non rejoués.
   - fait quand: les 6 scénarios de `tests_manuels.md` (section « /start et /close — attribution par zone ») sont rejoués et leurs divergences transmises au kit, traitées ou écartées.
   - réf: `tests_manuels.md` ; `.claude/commands/close.md` étapes 3-bis et 13 ; `.claude/commands/start.md` étape 4c ; `SérénIATech_dev` commit « update: protocole vibecoding — zone racine — kit v5.20 ».
 - Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
@@ -97,15 +97,19 @@
   - fait quand: l'agent `documentation` de SérénIATech_dev est créé, son `INDEX.md` existe, et les trois décisions ci-dessus sont tracées.
   - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\ClaudeCode\roadmap_base_connaissances.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\CLAUDE.md` § Base de connaissances ; `.claude/commands/create_agent.md`.
 
-- Faire appliquer la v5.22 (tri vers `_contexte/backlog.md`) aux autres projets suivis via `/update`. Fait : `SérénIATech_dev` (commit `61b8e47`, 2026-10-27) ; `Appli_TSA_SDI_TDAH` l'a appliquée à la main (commits `89388c3`, `f8b6f8e`) et son `/close` du 2026-10-27 (commit `0a9d8da`) a écrit la ligne de renvoi et trié 2 findings au backlog ; plafond, péremption, promotion et v5.24 non exercés ; scénario préparé écrit dans `tests_manuels.md` (« /close v5.24 »).
-  - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.22 ou leur report est tracé, et un `/close` réel crée `backlog.md` avec sa ligne de renvoi hors plafond.
-  - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 ; `tests_manuels.md` section « /close v5.22 ».
+- Faire appliquer le tri vers `_contexte/backlog.md` (v5.22 à v5.25) aux autres projets suivis. Fait : `SérénIATech_dev` en v5.25 (`/update`, 2026-10-29) ; `Appli_TSA_SDI_TDAH` : `close.md` aligné à la main sur le générique v5.25 (commit `d557510`, 2026-10-29), `start.md` non aligné. Validé sur un projet jetable (supprimé) : tri, plafond, péremption, promotion, croisement des `réf:`, catégories, ligne de renvoi totalisée, pas de bump sans modification de travail, constat rangé chez la zone concernée. Reste à exercer en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e` dans `allowed-tools`, bilan sur ses 49 entrées de backlog sans catégorie, nombre d'entrées sans `réf:` précis), backlog créé à la première entrée, backlog vidé, `check_kit.py` présent avant commit.
+  - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.25 ou leur report est tracé, et un `/close` réel d'Appli en v5.25 a été observé, ses divergences transmises au kit.
+  - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 à v5.25 ; `tests_manuels.md` section « /close v5.22 » ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\.claude\commands\close.md`.
 - Décider si `/update` doit préserver les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET`. Constat 2026-10-27 : `SérénIATech_dev` avait `PowerShell(python *menage_zone.py*)` dans `allowed-tools` ; la copie du kit l'aurait supprimée (conservée à la main), et le contrôle « identique hors spécificités » de l'étape 10 signale cet écart.
   - fait quand: `update.md` (étapes 5 et 10) préserve ou signale explicitement ces ajouts, ou la décision de ne pas le faire est tracée.
   - réf: `.claude/commands/update.md` étapes 5 et 10 ; `SérénIATech_dev` commit `61b8e47`.
 - Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
   - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
   - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
+
+- Trancher la définition du « fichier de travail » de `/close` étape 9 : `tests_manuels.md` et les `roadmap*.md` sont des fichiers de suivi, mais la règle v5.25 les compte comme travail (seuls `_contexte/`, `README.md`, `CHANGELOG.md` sont exclus). Constat 2026-10-29 : le retrait d'une section de `tests_manuels.md` seule imposerait un bump de version du kit. Non bumpé cette fois.
+  - fait quand: la règle exclut explicitement ces fichiers de suivi (kit + template, `check_kit.py` passe), ou la décision de les compter est tracée.
+  - réf: `.claude/commands/close.md` étape 9 ; `templates/.claude/commands/close.md` ; `CHANGELOG.md` v5.25.
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -118,24 +122,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-27
+# Session du 2026-10-29
 
 ## Décisions prises
-- `/update` v5.22 vers `SérénIATech_dev` limité à `close.md` (`start.md`, `create_memory.md`, `ollama_call.py`, `CLAUDE.md` déjà alignés ; `AGENTS.md`/`GEMINI.md` non touchés) ; permission `menage_zone.py` du frontmatter conservée à la main.
-- Le report des ajouts propres à Appli (concision dans `CLAUDE.md`, garde-fou de pause Discord) n'est pas engagé.
+- v5.23 à v5.25 : 4c lit le `signals.md` de la zone propriétaire ; backlog catégorisé, `réf:` vérifié avant écriture et croisé avec les fichiers modifiés ; doublon = objet identique (une même `réf:` ne suffit pas) ; ligne de renvoi totalisée ; constat sur une autre zone écrit chez elle ; pas de bump sans modification de travail (commits `03b5a54`, `6b83c00`, `312329e`).
+- Appli aligne `close.md` à la main sur le générique v5.25 (commit `d557510`) ; ses 49 entrées de backlog ne sont pas migrées.
+- `DEPLOYMENTS.md` : Appli notée « v5.25 (close.md seul, aligné à la main) », `start.md` non aligné.
 
 ## Livrables produits ou modifiés
-- `SérénIATech_dev/.claude/commands/close.md` : v5.22, commit `61b8e47` (hors dépôt du kit).
-- `DEPLOYMENTS.md` (gitignoré) : ligne `SérénIATech_dev` passée à v5.22, 2026-10-27.
-- `_contexte/signals.md`, `contexte.md`, archives : mis à jour.
+- `.claude/commands/close.md`, `start.md` et miroirs `templates/` : v5.23 à v5.25 (commits ci-dessus, poussés).
+- `SérénIATech_dev/.claude/commands/close.md` : v5.25 par `/update` (hors dépôt du kit).
+- `tests_manuels.md` : section « /close v5.25 » retirée après validation sur un projet jetable, supprimé.
+- `DEPLOYMENTS.md` (gitignoré) : lignes `SérénIATech_dev` et Appli mises à jour ; sauvegarde Drive à faire.
 
 ## Hypothèses validées / invalidées
-- VALIDE : bloc `SPECIFICITES PROJET` de la cible restauré depuis `HEAD` après écrasement lors de la copie (diff tronqué à 40 lignes non relu) ; une seule paire de marqueurs.
-- INVALIDE : « `/update` copie sans perte » — le frontmatter de `close.md` n'est pas protégé (action P1 ci-dessus).
-- EN ATTENTE : comportement réel du tri backlog dans `SérénIATech_dev` et Appli.
+- VALIDE : les 4 points de la section v5.25 passent sur le projet jetable (tri N1 à N3, non-bump, constat rangé chez la zone `autre`, ligne de renvoi = 12).
+- VALIDE : `close.md` d'Appli identique au template hors la ligne `allowed-tools` (script de comparaison).
+- EN ATTENTE : premier `/close` réel d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées sans catégorie).
 
 ## Prochaine étape exacte
-Ouvrir une session sur `SérénIATech_dev` : rejouer les scénarios 2 à 6 de `/start` et `/close` puis le test « /close v5.22 » (`tests_manuels.md`).
+Observer le premier `/close` d'Appli en v5.25, puis rejouer les scénarios 3 à 6 dans `SérénIATech_dev`. Sauvegarder `DEPLOYMENTS.md` sur Drive.
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?

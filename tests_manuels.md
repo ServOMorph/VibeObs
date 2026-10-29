@@ -62,12 +62,3 @@ Le jeu d'essai sur projet jetable (2026-10-27) a validé le tri, le plafond, la 
 - backlog vidé : fichier et ligne de renvoi supprimés ;
 - `check_kit.py` présent et passant avant le commit d'un `/close` qui a écrit dans le backlog.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
-
-## /close v5.25 — points à rejouer (projet jetable)
-
-À jouer sur `D:\ServOMorph\test_close_v524` (état initial `04a50e7` ou courant) après mise à jour de son `close.md` :
-- `/close` après une session sans modification de fichier de travail (seulement du chargement de contexte) : aucun bump de `CHANGELOG.md`, aucune entrée ajoutée ;
-- tri de N1 à N3 vers `backlog.md` demandé alors que leur `réf:` (`src/b.txt`) figure déjà dans E2 et E6 : l'ajout n'est plus refusé, car les objets diffèrent ;
-- constat sur une autre zone (ex: fichier de contexte d'une zone devenu périmé) : écrit dans le `signals.md` de cette zone, ou marqué `[à transférer vers <alias>]` si les droits l'interdisent ;
-- ligne de renvoi : les parties totalisent N, avec « sans catégorie e » quand des entrées n'ont pas de catégorie.
-Transmettre chaque divergence au kit (étape, attendu, observé).

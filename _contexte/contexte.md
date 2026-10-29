@@ -12,14 +12,16 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-10-27 : v5.22 appliquée à `SérénIATech_dev` (`close.md`, commit `61b8e47`) ; Appli l'a appliquée à la main ; `/update` ne protège pas le frontmatter de `close.md` (action P1).
-- 2026-10-26 : kit v5.22 — `/close` trie les actions ouvertes vers `_contexte/backlog.md` (plafond 20, retrait des entrées traitées, promotion, péremption) ; Appli l'applique à la main ; comportement réel non testé (`tests_manuels.md`).
-- 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; mécanisme en évaluation dans `Appli_TSA_SDI_TDAH` (0 consultation spontanée mesurée, 3 specs périmées) ; 5 tests actifs en attente dans `tests_manuels.md` d'Appli.
-- 2026-10-22 : projet `creation_llm` créé (Git local + GitHub public, kit v5.21, stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 reproduits, toujours à corriger.
-- 2026-10-17 : projets `IA_Eco-Responsable` et `REA` créés (kit v5.21, stack à définir) ; mêmes écarts de `init_projet.md` étapes 5 et 7.
+- 2026-10-29 : kit v5.25 — backlog `_contexte/backlog.md` catégorisé (`réf:` vérifié, croisé avec les fichiers modifiés), doublon à objet identique, constat rangé chez sa zone, pas de bump sans modification de travail ; validé sur projet jetable (supprimé), déployé dans `SérénIATech_dev`, `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné).
+- Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog créé à la première entrée, backlog vidé.
+- 2026-10-27 : `/update` ne protège pas le frontmatter de `close.md` (action P1) ; `signals.md` du kit à 32 actions, au-dessus du plafond de 20 (tri à proposer).
+- 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; évaluation dans Appli (0 consultation spontanée sur 29 sessions, 3 specs périmées).
+- 2026-10-17 à 2026-10-22 : projets `IA_Eco-Responsable`, `REA`, `creation_llm` créés (kit v5.21, stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 toujours à corriger.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-10-29 : `/close` (v5.23 à v5.25) — doublon reconnu à l'objet identique (une `réf:` commune ne suffit pas), `réf:` de backlog vérifié par commande avant écriture et croisé avec les fichiers modifiés, ligne de renvoi totalisée, constat sur une autre zone écrit dans son `signals.md`, pas de bump de `CHANGELOG.md` sans modification de travail. Validé sur projet jetable avant déploiement.
+- 2026-10-29 : Appli_TSA_SDI_TDAH n'a pas `/update` : son `close.md` est aligné à la main sur le générique (diff comparé au template, bloc `SPECIFICITES PROJET` intact) ; le backlog existant de 49 entrées n'est pas migré.
 - 2026-10-27 : `/update` vers un projet existant : relire le diff complet (jamais tronqué) avant d'écraser `close.md`/`start.md` ; le bloc `SPECIFICITES PROJET` est réinjecté depuis `HEAD`, et toute personnalisation du frontmatter est conservée à la main en attendant la décision sur `update.md`.
 - 2026-10-26 : v5.22 (et non v6.0, aucune migration imposée) — les actions ouvertes de `signals.md` sont plafonnées à 20 ; dette, findings et pistes différées vont dans `_contexte/backlog.md` (non chargé par `/start`, entrées traitées supprimées, ligne de renvoi hors plafond). Les findings de revue de code restent une règle spécifique projet (pas d'étape de revue générique dans le kit).
 - 2026-10-26 : la consigne « Base de connaissances » de `CLAUDE.md` ne déclenche pas la consultation de `DOCUMENTATION/` (0 cas sur 29 sessions d'Appli) ; création de la zone dans `SérénIATech_dev` subordonnée à l'évaluation dans Appli, et migration de la section Spécificités projet vers l'INDEX déconseillée (les déclencheurs restent dans `CLAUDE.md`).
@@ -28,5 +30,3 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-10-13 : les règles « installation sur D: » et « `run.py` à la racine » sont posées dans `CLAUDE.md` § Spécificités projet du kit ET du template (miroir exigé par `check_kit.py`), donc déployées dans les futurs projets.
 - 2026-10-12 : la substitution des placeholders de `/init_projet` se fait par remplacement littéral Python (UTF-8 sans BOM, LF), jamais par regex/`sed`/`-replace` qui interprètent `\` et `$`.
 - 2026-10-12 : `/init_projet` crée ou complète un `.gitignore` de sécurité (motifs ciblés `*token*.json`, `credentials*.json`, jamais `token*` qui masquerait des design tokens). Les données sensibles sont inscrites dans `CLAUDE.md` par remplacement explicite de `Aucun déclaré.`, pas par placeholder : `check_kit.py` retire les lignes à placeholder et un placeholder sans équivalent côté kit décale la comparaison miroir.
-- 2026-10-12 : projet `site_internet_ST_v3` = un seul agent (zone racine `site_st`), sert à la fois de refonte de serenia-tech.fr et de banc d'essai VibeObs ; mise à jour automatique du site uniquement via `site_com.md` par projet suivi + brouillon validé ; `creation_superagent.md` écrit après le MVP.
-- 2026-10-10 : un agent dont le périmètre d'écriture déborde de son dossier le déclare au minimum (ici `run_jeux.py`) ; le code applicatif (`src/`) reste en lecture seule tant que l'utilisateur n'a pas validé l'intégration.
