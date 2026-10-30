@@ -14,9 +14,9 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 ## État actuel
 - 2026-10-29 : kit v5.25 — backlog `_contexte/backlog.md` catégorisé (`réf:` vérifié, croisé avec les fichiers modifiés), doublon à objet identique, constat rangé chez sa zone, pas de bump sans modification de travail ; validé sur projet jetable (supprimé), déployé dans `SérénIATech_dev`, `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné).
 - Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog créé à la première entrée, backlog vidé.
-- 2026-10-27 : `/update` ne protège pas le frontmatter de `close.md` (action P1) ; `signals.md` du kit à 32 actions, au-dessus du plafond de 20 (tri à proposer).
 - 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; évaluation dans Appli (0 consultation spontanée sur 29 sessions, 3 specs périmées).
-- 2026-10-17 à 2026-10-22 : projets `IA_Eco-Responsable`, `REA`, `creation_llm` créés (kit v5.21, stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 toujours à corriger.
+- 2026-10-17 à 2026-10-22 : projets `IA_Eco-Responsable`, `REA`, `creation_llm` créés (stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 toujours à corriger.
+- 2026-10-30 : agent `marion-pargade` créé dans `SérénIATech_dev` par une commande projet (`nouveau_client`), hors `/create_agent` ; 3 propositions de changement de `/create_agent` consignées dans `base_connaissances/ameliorations_create_agent.md`, à trancher.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._

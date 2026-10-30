@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-29)
+# Signals — VibeObs (MAJ 2026-10-30)
 
 ## Actions ouvertes — pilotage
 
@@ -111,6 +111,10 @@
   - fait quand: la règle exclut explicitement ces fichiers de suivi (kit + template, `check_kit.py` passe), ou la décision de les compter est tracée.
   - réf: `.claude/commands/close.md` étape 9 ; `templates/.claude/commands/close.md` ; `CHANGELOG.md` v5.25.
 
+- Trancher les 3 propositions du journal `/create_agent` du 2026-10-30 : (a) mode « agent client » avec création en base préalable, (b) exception à la règle des majuscules quand le dossier est lié à une base, (c) un échec de lecture de `start.md` ne vaut jamais absence de référence.
+  - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
+  - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -122,26 +126,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-29
+# Session du 2026-10-30
 
 ## Décisions prises
-- v5.23 à v5.25 : 4c lit le `signals.md` de la zone propriétaire ; backlog catégorisé, `réf:` vérifié avant écriture et croisé avec les fichiers modifiés ; doublon = objet identique (une même `réf:` ne suffit pas) ; ligne de renvoi totalisée ; constat sur une autre zone écrit chez elle ; pas de bump sans modification de travail (commits `03b5a54`, `6b83c00`, `312329e`).
-- Appli aligne `close.md` à la main sur le générique v5.25 (commit `d557510`) ; ses 49 entrées de backlog ne sont pas migrées.
-- `DEPLOYMENTS.md` : Appli notée « v5.25 (close.md seul, aligné à la main) », `start.md` non aligné.
+- Travail constaté dans `SérénIATech_dev` (zones `gestion-clients` et `marion-pargade`), kit seulement tracé ici : création d'une commande projet `Gestion clients/_commands/nouveau_client.md` + `creer_client.py` (client créé en base via le code de l'app UI, puis dossier, puis zone-agent), au lieu de `/create_agent` pur.
+- Casse du slug du client conservée (pas de majuscules), conformément au précédent `espace_l-invariable` et à `clients.dossier` en base.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md`, `start.md` et miroirs `templates/` : v5.23 à v5.25 (commits ci-dessus, poussés).
-- `SérénIATech_dev/.claude/commands/close.md` : v5.25 par `/update` (hors dépôt du kit).
-- `tests_manuels.md` : section « /close v5.25 » retirée après validation sur un projet jetable, supprimé.
-- `DEPLOYMENTS.md` (gitignoré) : lignes `SérénIATech_dev` et Appli mises à jour ; sauvegarde Drive à faire.
+- `SérénIATech_dev` commit `be6dbf2` : commande, script, agent `marion-pargade` (client id 14), signaux `gestion-clients` (hors dépôt du kit, pas de remote).
+- `base_connaissances/ameliorations_create_agent.md` : entrée 2026-10-30 ; `AGENTS_REGISTRY.md` (gitignoré) : ligne `marion-pargade`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : les 4 points de la section v5.25 passent sur le projet jetable (tri N1 à N3, non-bump, constat rangé chez la zone `autre`, ligne de renvoi = 12).
-- VALIDE : `close.md` d'Appli identique au template hors la ligne `allowed-tools` (script de comparaison).
-- EN ATTENTE : premier `/close` réel d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées sans catégorie).
+- INVALIDE : « le `start.md` de `SérénIATech_dev` ne référence pas `agent_role.md` » (contrôle silencieusement raté, référence présente à l'étape 2b).
+- EN ATTENTE : `/start marion-pargade` non rejoué ; `nouveau_client` non validée sur un second client.
 
 ## Prochaine étape exacte
-Observer le premier `/close` d'Appli en v5.25, puis rejouer les scénarios 3 à 6 dans `SérénIATech_dev`. Sauvegarder `DEPLOYMENTS.md` sur Drive.
+Trancher les 3 propositions du journal `/create_agent` du 2026-10-30, puis rejouer `/start marion-pargade` dans `SérénIATech_dev`.
 
 ## Question bloquante pour la session suivante
-L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
+Aucune

@@ -27,6 +27,15 @@ Sortie concrète de l'étape [ECRITURE] de la commande et des rétrospectives de
 
 ## Historique
 
+## 2026-10-30 — agent marion-pargade (SérénIATech_dev)
+- A bien fonctionné : le précédent `espace_l-invariable` (charte, `_contexte/`) a servi de modèle direct ; parent `gestion-clients` résolu sans ambiguïté ; migration d'actions sans objet (aucune citation du dossier).
+- Détournement de la procédure : l'utilisateur a demandé une commande projet réutilisable (`Gestion clients/_commands/nouveau_client.md` + `creer_client.py`) plutôt qu'une création unique ; la création a été faite par cette commande, pas par `/create_agent`. Étapes registre et journal initialement oubliées, rattrapées sur demande.
+- Friction : la règle « nom de dossier en MAJUSCULES » ([PREFLIGHT]) entre en conflit avec le slug stocké en base (`clients.dossier`, généré par `sereniatech.clients_fs`) ; casse du slug conservée, comme pour `espace_l-invariable`.
+- Friction : l'ordre base puis dossier n'est pas couvert par `/create_agent`. Un dossier créé avant le client en base ferait générer un second slug (`<slug>-2`) par l'app ; création en base + dossier faite d'abord via le code de l'app.
+- Erreur de l'assistant : la vérification [PREFLIGHT] « start.md référence agent_role.md » a échoué en silence (commande sans sortie) et a été interprétée à tort comme une absence ; contrôle refait avec un outil dédié, référence bien présente.
+- Collecte : les informations métier (email, adresse, type de structure) n'ont pas été demandées avant la création ; email et type fournis après coup, adresse toujours vide.
+- Propositions à trancher : (a) prévoir dans `/create_agent` un mode « agent client » avec création en base préalable ; (b) exception documentée à la règle des majuscules quand le dossier est lié à une base ; (c) un échec de lecture de `start.md` ne doit jamais valoir absence de référence.
+
 ## 2026-09-16 — agent documentation (Appli_TSA_SDI_TDAH)
 
 Création de l'agent DOCUMENTATION, mode création simple (alias `documentation` absent de
