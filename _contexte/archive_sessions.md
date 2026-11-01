@@ -1198,3 +1198,25 @@ Ouvrir une session sur `SérénIATech_dev` : rejouer les scénarios 2 à 6 de `/
 
 ## Question bloquante pour la session suivante
 L'élément « df7ee31d — Tableau prévisions » (décider d'une roadmap dédiée : jours ou dates, extension sur plusieurs cases, sous-tâches), mentionné le 2026-10-17 sans être traité : de quel projet ou zone vient-il ?
+
+---
+
+# Session du 2026-10-30
+
+## Décisions prises
+- Travail constaté dans `SérénIATech_dev` (zones `gestion-clients` et `marion-pargade`), kit seulement tracé ici : création d'une commande projet `Gestion clients/_commands/nouveau_client.md` + `creer_client.py` (client créé en base via le code de l'app UI, puis dossier, puis zone-agent), au lieu de `/create_agent` pur.
+- Casse du slug du client conservée (pas de majuscules), conformément au précédent `espace_l-invariable` et à `clients.dossier` en base.
+
+## Livrables produits ou modifiés
+- `SérénIATech_dev` commit `be6dbf2` : commande, script, agent `marion-pargade` (client id 14), signaux `gestion-clients` (hors dépôt du kit, pas de remote).
+- `base_connaissances/ameliorations_create_agent.md` : entrée 2026-10-30 ; `AGENTS_REGISTRY.md` (gitignoré) : ligne `marion-pargade`.
+
+## Hypothèses validées / invalidées
+- INVALIDE : « le `start.md` de `SérénIATech_dev` ne référence pas `agent_role.md` » (contrôle silencieusement raté, référence présente à l'étape 2b).
+- EN ATTENTE : `/start marion-pargade` non rejoué ; `nouveau_client` non validée sur un second client.
+
+## Prochaine étape exacte
+Trancher les 3 propositions du journal `/create_agent` du 2026-10-30, puis rejouer `/start marion-pargade` dans `SérénIATech_dev`.
+
+## Question bloquante pour la session suivante
+Aucune

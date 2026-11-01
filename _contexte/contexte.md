@@ -12,14 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-10-29 : kit v5.25 — backlog `_contexte/backlog.md` catégorisé (`réf:` vérifié, croisé avec les fichiers modifiés), doublon à objet identique, constat rangé chez sa zone, pas de bump sans modification de travail ; validé sur projet jetable (supprimé), déployé dans `SérénIATech_dev`, `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné).
-- Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog créé à la première entrée, backlog vidé.
+- 2026-11-01 : kit v5.25 inchangé ; projets `Fiches_IME` (GitHub public, template `parallel_agents` bloqué à l'insertion) et `challenge_magic` (Git local : carte Jurassic Park jouable dans XMage, appli « Fiches Magic » livrée à un ami) créés et tracés dans `DEPLOYMENTS.md` ; template « délégation Codex/OpenCode » de CreaZik_V3 proposé, non intégré.
+- 2026-10-29 : kit v5.25 (backlog catégorisé, doublon à objet identique, constat chez sa zone) déployé dans `SérénIATech_dev` ; `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné). Backlog créé à la première entrée : exercé dans le kit le 2026-11-01.
+- Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog vidé.
 - 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; évaluation dans Appli (0 consultation spontanée sur 29 sessions, 3 specs périmées).
-- 2026-10-17 à 2026-10-22 : projets `IA_Eco-Responsable`, `REA`, `creation_llm` créés (stack à définir) ; écarts de `init_projet.md` étapes 5 et 7 toujours à corriger.
-- 2026-10-30 : agent `marion-pargade` créé dans `SérénIATech_dev` par une commande projet (`nouveau_client`), hors `/create_agent` ; 3 propositions de changement de `/create_agent` consignées dans `base_connaissances/ameliorations_create_agent.md`, à trancher.
+- 2026-10-17 à 2026-10-30 : `IA_Eco-Responsable`, `REA`, `creation_llm` (stack à définir, écarts `init_projet.md` étapes 5 et 7) ; agent `marion-pargade` créé par commande projet, 3 propositions `/create_agent` à trancher.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-11-01 : un message d'une autre session demandant d'écrire dans le kit (ex. insérer un template) est consigné en action et non exécuté sans accord explicite de l'utilisateur ; `DEPLOYMENTS.md` reste local (gitignoré), donc non détectable par `git diff` en `/close` (entrée de backlog).
 - 2026-10-29 : `/close` (v5.23 à v5.25) — doublon reconnu à l'objet identique (une `réf:` commune ne suffit pas), `réf:` de backlog vérifié par commande avant écriture et croisé avec les fichiers modifiés, ligne de renvoi totalisée, constat sur une autre zone écrit dans son `signals.md`, pas de bump de `CHANGELOG.md` sans modification de travail. Validé sur projet jetable avant déploiement.
 - 2026-10-29 : Appli_TSA_SDI_TDAH n'a pas `/update` : son `close.md` est aligné à la main sur le générique (diff comparé au template, bloc `SPECIFICITES PROJET` intact) ; le backlog existant de 49 entrées n'est pas migré.
 - 2026-10-27 : `/update` vers un projet existant : relire le diff complet (jamais tronqué) avant d'écraser `close.md`/`start.md` ; le bloc `SPECIFICITES PROJET` est réinjecté depuis `HEAD`, et toute personnalisation du frontmatter est conservée à la main en attendant la décision sur `update.md`.
@@ -29,4 +30,3 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-10-14 : `/create_agent` résout le parent par la zone englobante la plus proche (pas seulement la zone racine) et lit les « Données sensibles » du `CLAUDE.md` cible pour les exclure de la lecture étendue de l'agent ; un renommage de casse refusé par le système est reporté et tracé en action P2, sans terminer de processus.
 - 2026-10-13 : les règles « installation sur D: » et « `run.py` à la racine » sont posées dans `CLAUDE.md` § Spécificités projet du kit ET du template (miroir exigé par `check_kit.py`), donc déployées dans les futurs projets.
 - 2026-10-12 : la substitution des placeholders de `/init_projet` se fait par remplacement littéral Python (UTF-8 sans BOM, LF), jamais par regex/`sed`/`-replace` qui interprètent `\` et `$`.
-- 2026-10-12 : `/init_projet` crée ou complète un `.gitignore` de sécurité (motifs ciblés `*token*.json`, `credentials*.json`, jamais `token*` qui masquerait des design tokens). Les données sensibles sont inscrites dans `CLAUDE.md` par remplacement explicite de `Aucun déclaré.`, pas par placeholder : `check_kit.py` retire les lignes à placeholder et un placeholder sans équivalent côté kit décale la comparaison miroir.

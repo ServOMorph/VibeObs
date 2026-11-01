@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-10-30)
+# Signals — VibeObs (MAJ 2026-11-01)
 
 ## Actions ouvertes — pilotage
 
@@ -115,6 +115,14 @@
   - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
   - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
 
+- Décider de l'intégration du template « délégation de tâches à Codex et OpenCode » proposé par la session « CreaZik v3 Orch » (message du 2026-11-01, v1.0.0, non exécuté sans accord de l'utilisateur). Non vérifié côté auteur : aucun appel réel à Codex ou OpenCode depuis une copie installée ; modèle gratuit OpenCode à revalider.
+  - fait quand: le template est copié sous `templates/` du kit (miroir + `check_kit.py` qui passe) ou son refus est tracé, puis l'autre session est informée.
+  - réf: `D:\ServOMorph\CreaZik_V3\_templates\delegation\README.md` ; `templates/`.
+- Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
+  - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
+  - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
+Backlog : 1 entrée (finding 1) — `_contexte/backlog.md`
+
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
 
@@ -126,22 +134,24 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-10-30
+# Session du 2026-11-01
 
 ## Décisions prises
-- Travail constaté dans `SérénIATech_dev` (zones `gestion-clients` et `marion-pargade`), kit seulement tracé ici : création d'une commande projet `Gestion clients/_commands/nouveau_client.md` + `creer_client.py` (client créé en base via le code de l'app UI, puis dossier, puis zone-agent), au lieu de `/create_agent` pur.
-- Casse du slug du client conservée (pas de majuscules), conformément au précédent `espace_l-invariable` et à `clients.dossier` en base.
+- Travail constaté dans `challenge_magic` (créé et livré) et `Fiches_IME` (créé par `/create_projet`) : le kit ne reçoit que la traçabilité (`DEPLOYMENTS.md`) et deux constats sur ses propres commandes.
+- `Fiches_IME` en dépôt GitHub public ; `challenge_magic` en Git local seulement (aucune publication sans accord). Le message d'une autre session demandant d'intégrer un template n'est pas exécuté sans accord de l'utilisateur.
 
 ## Livrables produits ou modifiés
-- `SérénIATech_dev` commit `be6dbf2` : commande, script, agent `marion-pargade` (client id 14), signaux `gestion-clients` (hors dépôt du kit, pas de remote).
-- `base_connaissances/ameliorations_create_agent.md` : entrée 2026-10-30 ; `AGENTS_REGISTRY.md` (gitignoré) : ligne `marion-pargade`.
+- `D:\ServOMorph\challenge_magic` (commit `87ec24c`, local) : carte Jurassic Park jouable dans XMage, générateur web protégé par jeton (port 5000), appli locale « Fiches Magic » (zip 424 Mo), 4 cartes d'un ami intégrées (tests 12/12) ; état consigné dans son `_contexte/`.
+- `D:\ServOMorph\Fiches_IME` : dépôt GitHub public + protocole (`b778bec`), template `parallel_agents` refusé à l'insertion.
+- `DEPLOYMENTS.md` : lignes `Fiches_IME` et `challenge_magic` (fichier gitignoré par conception) ; `_contexte/backlog.md` créé (1 finding).
 
 ## Hypothèses validées / invalidées
-- INVALIDE : « le `start.md` de `SérénIATech_dev` ne référence pas `agent_role.md` » (contrôle silencieusement raté, référence présente à l'étape 2b).
-- EN ATTENTE : `/start marion-pargade` non rejoué ; `nouveau_client` non validée sur un second client.
+- VALIDE : cartes jouées en partie réelle (mana, escape, effet) ; paquet clé en main testé sous Windows 11 en environnement sans PATH.
+- INVALIDE : « DEPLOYMENTS.md est à commiter » (il est ignoré par Git).
+- EN ATTENTE : essai de l'ami sous Windows 10 ; réponse à la session CreaZik non envoyée.
 
 ## Prochaine étape exacte
-Trancher les 3 propositions du journal `/create_agent` du 2026-10-30, puis rejouer `/start marion-pargade` dans `SérénIATech_dev`.
+Décider du template « délégation Codex/OpenCode », puis corriger `parallel_agents` / `/insert_template` ; trancher les 3 propositions `/create_agent` du 2026-10-30.
 
 ## Question bloquante pour la session suivante
 Aucune
