@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-01)
+# Signals — VibeObs (MAJ 2026-11-03)
 
 ## Actions ouvertes — pilotage
 
@@ -78,7 +78,7 @@
 
 - Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
   - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
-  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17) et de `creation_llm` (2026-10-22), contournés à la main.
+  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17) et de `creation_llm` (2026-10-22), contournés à la main. Reproduit une quatrième fois le 2026-11-03 sur `D:\xmage-test` (`AGENTS.md`/`GEMINI.md` non stagés par l'étape 5, ligne `DEPLOYMENTS.md` placée à la main sous la dernière ligne du tableau).
 - Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
   - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
   - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
@@ -115,13 +115,10 @@
   - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
   - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
 
-- Décider de l'intégration du template « délégation de tâches à Codex et OpenCode » proposé par la session « CreaZik v3 Orch » (message du 2026-11-01, v1.0.0, non exécuté sans accord de l'utilisateur). Non vérifié côté auteur : aucun appel réel à Codex ou OpenCode depuis une copie installée ; modèle gratuit OpenCode à revalider.
-  - fait quand: le template est copié sous `templates/` du kit (miroir + `check_kit.py` qui passe) ou son refus est tracé, puis l'autre session est informée.
-  - réf: `D:\ServOMorph\CreaZik_V3\_templates\delegation\README.md` ; `templates/`.
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-Backlog : 1 entrée (finding 1) — `_contexte/backlog.md`
+Backlog : 2 entrées (finding 2) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -134,24 +131,24 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-01
+# Session du 2026-11-03
 
 ## Décisions prises
-- Travail constaté dans `challenge_magic` (créé et livré) et `Fiches_IME` (créé par `/create_projet`) : le kit ne reçoit que la traçabilité (`DEPLOYMENTS.md`) et deux constats sur ses propres commandes.
-- `Fiches_IME` en dépôt GitHub public ; `challenge_magic` en Git local seulement (aucune publication sans accord). Le message d'une autre session demandant d'intégrer un template n'est pas exécuté sans accord de l'utilisateur.
+- `/init_projet D:\xmage-test` exécuté : zone `xmage`, première zone, git initialisé à la demande (dossier sans `.git`), `AGENTS.md` et `GEMINI.md` créés, pas d'agent, pas de backup rclone.
+- Objectif et stack de `xmage-test` déduits du contenu du dossier (non fournis par l'utilisateur) ; à valider.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\challenge_magic` (commit `87ec24c`, local) : carte Jurassic Park jouable dans XMage, générateur web protégé par jeton (port 5000), appli locale « Fiches Magic » (zip 424 Mo), 4 cartes d'un ami intégrées (tests 12/12) ; état consigné dans son `_contexte/`.
-- `D:\ServOMorph\Fiches_IME` : dépôt GitHub public + protocole (`b778bec`), template `parallel_agents` refusé à l'insertion.
-- `DEPLOYMENTS.md` : lignes `Fiches_IME` et `challenge_magic` (fichier gitignoré par conception) ; `_contexte/backlog.md` créé (1 finding).
+- `D:\xmage-test` (commit `40a567c`, local) : protocole vibecoding déployé.
+- `DEPLOYMENTS.md` : ligne `xmage-test` (fichier gitignoré par conception, donc hors commit).
+- Aucun fichier de commande ou de template du kit modifié : pas de bump de `CHANGELOG.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : cartes jouées en partie réelle (mana, escape, effet) ; paquet clé en main testé sous Windows 11 en environnement sans PATH.
-- INVALIDE : « DEPLOYMENTS.md est à commiter » (il est ignoré par Git).
-- EN ATTENTE : essai de l'ami sous Windows 10 ; réponse à la session CreaZik non envoyée.
+- VALIDE : `/init_projet` s'exécute de bout en bout sur un dossier existant sans `.git` ni `.claude/`.
+- INVALIDE : « Q4 = oui implique un dépôt existant » ; l'étape 5 échouerait sans `git init`, non prévu par la commande.
+- EN ATTENTE : relecture par l'utilisateur de l'objectif et de la stack de `xmage-test`.
 
 ## Prochaine étape exacte
-Décider du template « délégation Codex/OpenCode », puis corriger `parallel_agents` / `/insert_template` ; trancher les 3 propositions `/create_agent` du 2026-10-30.
+Corriger `init_projet.md` (étapes 5 et 7 + cas Q4 = oui sans `.git`), puis trancher les 3 propositions `/create_agent` du 2026-10-30.
 
 ## Question bloquante pour la session suivante
 Aucune

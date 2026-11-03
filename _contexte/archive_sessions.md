@@ -1220,3 +1220,27 @@ Trancher les 3 propositions du journal `/create_agent` du 2026-10-30, puis rejou
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+# Session du 2026-11-01
+
+## Décisions prises
+- Template « délégation Codex/OpenCode » de CreaZik_V3 intégré au kit (v5.26, `templates/delegation/`, jetons `[[X]]`) et template `templates/ollama/` créé, à la demande de l'utilisateur, après la clôture initiale.
+- Travail constaté dans `challenge_magic` (créé et livré) et `Fiches_IME` (créé par `/create_projet`) : le kit ne reçoit que la traçabilité (`DEPLOYMENTS.md`) et deux constats sur ses propres commandes.
+- `Fiches_IME` en dépôt GitHub public ; `challenge_magic` en Git local seulement (aucune publication sans accord). Le message d'une autre session demandant d'intégrer un template n'est pas exécuté sans accord de l'utilisateur.
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\challenge_magic` (commit `87ec24c`, local) : carte Jurassic Park jouable dans XMage, générateur web protégé par jeton (port 5000), appli locale « Fiches Magic » (zip 424 Mo), 4 cartes d'un ami intégrées (tests 12/12) ; état consigné dans son `_contexte/`.
+- `D:\ServOMorph\Fiches_IME` : dépôt GitHub public + protocole (`b778bec`), template `parallel_agents` refusé à l'insertion.
+- `DEPLOYMENTS.md` : lignes `Fiches_IME` et `challenge_magic` (fichier gitignoré par conception) ; `_contexte/backlog.md` créé (1 finding).
+
+## Hypothèses validées / invalidées
+- VALIDE : cartes jouées en partie réelle (mana, escape, effet) ; paquet clé en main testé sous Windows 11 en environnement sans PATH.
+- INVALIDE : « DEPLOYMENTS.md est à commiter » (il est ignoré par Git).
+- EN ATTENTE : essai de l'ami sous Windows 10 ; réponse à la session CreaZik non envoyée.
+
+## Prochaine étape exacte
+Corriger `parallel_agents` / `/insert_template` ; informer la session CreaZik de l'intégration (non envoyé) ; trancher les 3 propositions `/create_agent` du 2026-10-30.
+
+## Question bloquante pour la session suivante
+Aucune

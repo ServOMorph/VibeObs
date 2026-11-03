@@ -12,9 +12,9 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-01 : kit v5.25 inchangé ; projets `Fiches_IME` (GitHub public, template `parallel_agents` bloqué à l'insertion) et `challenge_magic` (Git local : carte Jurassic Park jouable dans XMage, appli « Fiches Magic » livrée à un ami) créés et tracés dans `DEPLOYMENTS.md` ; template « délégation Codex/OpenCode » de CreaZik_V3 proposé, non intégré.
-- 2026-10-29 : kit v5.25 (backlog catégorisé, doublon à objet identique, constat chez sa zone) déployé dans `SérénIATech_dev` ; `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné). Backlog créé à la première entrée : exercé dans le kit le 2026-11-01.
-- Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog vidé.
+- 2026-11-03 : `xmage-test` (`D:\xmage-test`, zone `xmage`) initialisé par `/init_projet` ; git créé à la main (la commande ne le prévoit pas, entrée de backlog) ; objectif et stack déduits du dossier, à valider.
+- 2026-11-01 : projets `Fiches_IME` (GitHub public, template `parallel_agents` bloqué à l'insertion) et `challenge_magic` (Git local : carte Jurassic Park jouable dans XMage, appli « Fiches Magic » livrée à un ami) créés et tracés dans `DEPLOYMENTS.md` ; kit v5.26 : templates `delegation` (repris de CreaZik_V3, non vérifié avec Codex/OpenCode réels) et `ollama` ajoutés.
+- 2026-10-29 : kit v5.25 (backlog catégorisé, doublon à objet identique, constat chez sa zone) déployé dans `SérénIATech_dev` ; `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné). Backlog créé à la première entrée : exercé dans le kit le 2026-11-01. Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog vidé.
 - 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; évaluation dans Appli (0 consultation spontanée sur 29 sessions, 3 specs périmées).
 - 2026-10-17 à 2026-10-30 : `IA_Eco-Responsable`, `REA`, `creation_llm` (stack à définir, écarts `init_projet.md` étapes 5 et 7) ; agent `marion-pargade` créé par commande projet, 3 propositions `/create_agent` à trancher.
 
