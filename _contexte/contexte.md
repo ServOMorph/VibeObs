@@ -12,14 +12,14 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-03 : `xmage-test` (`D:\xmage-test`, zone `xmage`) initialisé par `/init_projet` ; git créé à la main (la commande ne le prévoit pas, entrée de backlog) ; objectif et stack déduits du dossier, à valider.
-- 2026-11-01 : projets `Fiches_IME` (GitHub public, template `parallel_agents` bloqué à l'insertion) et `challenge_magic` (Git local : carte Jurassic Park jouable dans XMage, appli « Fiches Magic » livrée à un ami) créés et tracés dans `DEPLOYMENTS.md` ; kit v5.26 : templates `delegation` (repris de CreaZik_V3, non vérifié avec Codex/OpenCode réels) et `ollama` ajoutés.
-- 2026-10-29 : kit v5.25 (backlog catégorisé, doublon à objet identique, constat chez sa zone) déployé dans `SérénIATech_dev` ; `close.md` d'Appli aligné à la main (`d557510`, `start.md` non aligné). Backlog créé à la première entrée : exercé dans le kit le 2026-11-01. Non exercé en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e`, 49 entrées de backlog sans catégorie), backlog vidé.
-- 2026-10-26 : création de `DOCUMENTATION/` pour `SérénIATech_dev` différée ; évaluation dans Appli (0 consultation spontanée sur 29 sessions, 3 specs périmées).
-- 2026-10-17 à 2026-10-30 : `IA_Eco-Responsable`, `REA`, `creation_llm` (stack à définir, écarts `init_projet.md` étapes 5 et 7) ; agent `marion-pargade` créé par commande projet, 3 propositions `/create_agent` à trancher.
+- 2026-11-06 : kit v5.27 — `/maintenance` et `/telephone` créés ; `roadmap_fondations.md` (6 phases) pilote le chantier vitrine SérénIATech (phase 1 Fondations en cours).
+- 2026-11-06 : maintenance exécutée, lots A à F traités ; `comptes_google.json` retiré du suivi Git (historique public non réécrit) ; 34 actions P1 au-dessus du plafond de 20 (tri en phase 2).
+- 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
+- 2026-11-03 : `xmage-test` initialisé ; objectif et stack déduits, à valider.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-11-06 : modification d'un dossier où une session Codex ou Claude Code est ouverte : demande envoyée à la session, reformulation validée depuis VibeObs, application validée par l'utilisateur dans la session de l'agent (mémoire projet). Données personnelles (e-mails, `.env`) archivées hors Git dans `_archives/local/`.
 - 2026-11-01 : un message d'une autre session demandant d'écrire dans le kit (ex. insérer un template) est consigné en action et non exécuté sans accord explicite de l'utilisateur ; `DEPLOYMENTS.md` reste local (gitignoré), donc non détectable par `git diff` en `/close` (entrée de backlog).
 - 2026-10-29 : `/close` (v5.23 à v5.25) — doublon reconnu à l'objet identique (une `réf:` commune ne suffit pas), `réf:` de backlog vérifié par commande avant écriture et croisé avec les fichiers modifiés, ligne de renvoi totalisée, constat sur une autre zone écrit dans son `signals.md`, pas de bump de `CHANGELOG.md` sans modification de travail. Validé sur projet jetable avant déploiement.
 - 2026-10-29 : Appli_TSA_SDI_TDAH n'a pas `/update` : son `close.md` est aligné à la main sur le générique (diff comparé au template, bloc `SPECIFICITES PROJET` intact) ; le backlog existant de 49 entrées n'est pas migré.

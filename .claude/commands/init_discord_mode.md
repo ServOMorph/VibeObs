@@ -32,9 +32,9 @@ placeholder par défaut, résultat booléen uniquement).
 2. Vérifier `<projet_cible>/.claude/zones.md` existe. Absent → s'arrêter, le projet n'a pas
    encore été initialisé via `/init_projet`.
 3. Localiser le dossier `discord_com/` déjà inséré côté cible, le cas échéant (chercher
-   `discord_com/bot.py` sous la destination par défaut `<projet_cible>/ROBERTO/` puis, à
+   `<dossier>/discord_com/bot.py` sous la destination par défaut `<projet_cible>/ROBERTO/` puis, à
    défaut, à la racine du projet — ne jamais supposer un seul emplacement possible).
-4. Si `discord_com/config_bot_discord.json` existe déjà avec `enabled: true` et que
+4. Si `<dossier>/discord_com/config_bot_discord.json` existe déjà avec `enabled: true` et que
    `discord_com/.env` contient une valeur de `DISCORD_BOT_TOKEN` différente du placeholder
    (vérifier par une commande shell qui ne renvoie qu'un booléen, jamais la valeur — ex.
    `grep -q "^DISCORD_BOT_TOKEN=colle_ton_token_ici$" discord_com/.env && echo VIDE || echo

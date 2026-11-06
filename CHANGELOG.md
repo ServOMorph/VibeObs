@@ -3,6 +3,32 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.27 — 2026-11-06
+
+### Ajouté
+- `/maintenance` (kit uniquement) : maintenance régulière du kit en 10 étapes (contrôles mécaniques, Git, reliquats, roadmaps dormantes, documentation, contexte, sécurité, rapport par lots), décision lot par lot une question à la fois, archivage seulement après validation, analyse de la maintenance proposée une fois les lots tranchés.
+- `/telephone [off]` (kit uniquement) : mode téléphone, réponses de 6 lignes au plus, une question à la fois par `AskUserQuestion` (réponse en un clic, proposition recommandée en premier), chaque demande rangée dans la roadmap active, corrections de format écrites en backlog par `/close`. Installé dans `site_internet_ST_v3` et `creation_llm` par leurs sessions, après validation de l'utilisateur dans chacune.
+- `roadmap_fondations.md` : roadmap unique en 6 phases (fondations du pilotage, nettoyage du kit, agent PEDAGOGIE, audit SérénIATech_dev, analyse fonctionnelle, plan d'automatisation).
+
+### Modifié
+- `/init_discord_mode` étapes 3 et 4 : chemins `discord_com/` préfixés par `<dossier>` (fichiers du projet cible, faux positif de `check_kit.py` masqué par l'ancienne copie racine).
+
+### Sécurité
+- `skills/chatgpt-orchestrateur/scripts/comptes_google.json` (13 e-mails) retiré du suivi Git et ignoré ; l'historique public n'est pas réécrit.
+- Archives locales ignorées `_archives/local/` : `roadmap_reprise_multicompte.md` (mêmes e-mails) et l'ancienne copie racine `discord_com/` (contient un `.env`).
+
+### Archivé
+- `list`, `note_conception_pause_agents.md`, roadmaps `agents_paralleles`, `com_agents`, `messages_zones`, 15 fiches de `base_connaissances/` gelées au 2026-07-17 (les 2 fichiers utilisés par `/create_agent` restent en place). `templates/control_PC/analysis/appli_tsa_sdi_tdah/` ignoré (artefacts d'exécution).
+
+## v5.26 — 2026-11-01
+
+### Ajouté
+- `templates/delegation/` : template de délégation de tâches à Codex et OpenCode (lanceurs `run_codex.ps1` / `run_opencode.ps1`, préambule, brief, configuration OpenCode restreinte, installateur idempotent), repris de `CreaZik_V3/_templates/delegation` v1.0.0. Jetons de placeholders à crochets doubles pour que `/insert_template` ne bloque pas l'insertion ; `tests/verify.ps1` passe (syntaxe, installation, idempotence, `-DryRun`). Non vérifié : appels réels à Codex et OpenCode, disponibilité du modèle gratuit.
+- `templates/ollama/` : lanceur `ollama_call.py` (copie de `templates/ollama_call.py`), section « Délégation Ollama » pour le `CLAUDE.md` et notice d'usage. Le déploiement par défaut de `ollama_call.py` par `/init_projet` et `/update` reste inchangé.
+
+### Modifié
+- `README.md` (structure) et `/create_projet` [TEMPLATES] : liste portée à 10 templates.
+
 ## v5.25 — 2026-10-27
 
 ### Corrigé

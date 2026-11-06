@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-03)
+# Signals — VibeObs (MAJ 2026-11-06)
 
 ## Actions ouvertes — pilotage
 
@@ -118,7 +118,7 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-Backlog : 2 entrées (finding 2) — `_contexte/backlog.md`
+Backlog : 4 entrées (finding 2, piste 2) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -131,24 +131,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-03
+# Session du 2026-11-06
 
 ## Décisions prises
-- `/init_projet D:\xmage-test` exécuté : zone `xmage`, première zone, git initialisé à la demande (dossier sans `.git`), `AGENTS.md` et `GEMINI.md` créés, pas d'agent, pas de backup rclone.
-- Objectif et stack de `xmage-test` déduits du contenu du dossier (non fournis par l'utilisateur) ; à valider.
+- Roadmap unique `roadmap_fondations.md` (6 phases) ; chaque demande y est rangée. But : asseoir les bases, pas aller vite.
+- Mode téléphone `/telephone` : questions une par une en un clic ; règle des sessions ouvertes enregistrée en mémoire projet.
+- Archivage jamais suppression ; données personnelles archivées hors Git (`_archives/local/`).
 
 ## Livrables produits ou modifiés
-- `D:\xmage-test` (commit `40a567c`, local) : protocole vibecoding déployé.
-- `DEPLOYMENTS.md` : ligne `xmage-test` (fichier gitignoré par conception, donc hors commit).
-- Aucun fichier de commande ou de template du kit modifié : pas de bump de `CHANGELOG.md`.
+- `.claude/commands/maintenance.md`, `.claude/commands/telephone.md` : créés (v5.27).
+- `roadmap_fondations.md` : créée. `.claude/memory.md` : 2 entrées.
+- Lots de maintenance A à F traités ; `comptes_google.json` retiré du suivi Git.
+- `/telephone` installé dans `site_internet_ST_v3` et `creation_llm` par leurs sessions.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/init_projet` s'exécute de bout en bout sur un dossier existant sans `.git` ni `.claude/`.
-- INVALIDE : « Q4 = oui implique un dépôt existant » ; l'étape 5 échouerait sans `git init`, non prévu par la commande.
-- EN ATTENTE : relecture par l'utilisateur de l'objectif et de la stack de `xmage-test`.
+- VALIDE : `SendMessage` entre sessions Claude Code (2 reformulations reçues, 2 installations confirmées, copies identiques).
+- VALIDE : `/maintenance` exécutée de bout en bout (rapport, lots un par un).
+- EN ATTENTE : détection d'une session Codex ; analyse de la maintenance (étape 10).
 
 ## Prochaine étape exacte
-Corriger `init_projet.md` (étapes 5 et 7 + cas Q4 = oui sans `.git`), puis trancher les 3 propositions `/create_agent` du 2026-10-30.
+Phase 1 de `roadmap_fondations.md` : retex du mode téléphone, puis gate et `/compact` ; ensuite phase 2 (34 actions P1 à trier, `check_docs.py`).
 
 ## Question bloquante pour la session suivante
 Aucune

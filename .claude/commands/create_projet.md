@@ -105,13 +105,15 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     Templates disponibles :
     0. Aucun template
     1. control_PC
-    2. discord_com
-    3. intercom
-    4. netlify
-    5. notification
-    6. overlay
-    7. parallel_agents
-    8. rclone_backup
+    2. delegation
+    3. discord_com
+    4. intercom
+    5. netlify
+    6. notification
+    7. ollama
+    8. overlay
+    9. parallel_agents
+    10. rclone_backup
 
     Répondez uniquement par le ou les numéros souhaités, séparés par des virgules (ex. 2,5).
     ```
