@@ -12,8 +12,8 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-06 : kit v5.27 — `/maintenance` et `/telephone` créés ; `roadmap_fondations.md` (6 phases) pilote le chantier vitrine SérénIATech (phase 1 Fondations en cours).
-- 2026-11-06 : maintenance exécutée, lots A à F traités ; `comptes_google.json` retiré du suivi Git (historique public non réécrit) ; 34 actions P1 au-dessus du plafond de 20 (tri en phase 2).
+- 2026-11-06 : kit v5.28 — phases 1 et 2 de `roadmap_fondations.md` closes ; phase 3 (agent PEDAGOGIE) suivante.
+- 2026-11-06 : `check_kit`, `check_docs` et `pytest` passent ; 20 actions P1 (plafond atteint), backlog à 18 entrées ; `comptes_google.json` retiré du suivi Git (historique public non réécrit).
 - 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
 - 2026-11-03 : `xmage-test` initialisé ; objectif et stack déduits, à valider.
 

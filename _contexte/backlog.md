@@ -12,3 +12,45 @@
 - [piste] Roadmap `com_agents` archivée le 2026-11-05 (phase 2 inachevée) : pilote de `/create_com_agents` sur `D:\ServOMorph\Meuniers` jamais fait (installation, placement 2c/2d au `/start`, écriture de `statut.md` au `/close`, `messages.md` lu puis purgé), puis bilan et propagation dans les templates.
   - fait quand: le pilote est joué et son bilan tranché, ou l'abandon du mécanisme est décidé.
   - réf: `_archives/roadmap_com_agents.md`, `.claude/commands/create_com_agents.md`
+- [amélioration] Pousser le commit d'init de `D:\ServOMorph\CreaZik_V3` et renseigner sa stack (laissée vide à l'init) lors du premier `/start CreaZik_V3`.
+  - fait quand: `git -C D:\ServOMorph\CreaZik_V3 status` montre la branche à jour avec `origin/main`, et `_contexte/contexte.md` de CreaZik_V3 porte une stack.
+  - réf: `D:\ServOMorph\CreaZik_V3` commit `a8b74a8` ; `DEPLOYMENTS.md`.
+- [piste] Démarrer les agents `textes` et `modeles_llm` de `D:\ServOMorph\CreaZik_V3` et valider leurs chartes en conditions réelles.
+  - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
+  - réf: `D:\ServOMorph\CreaZik_V3\TEXTES\agent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLM\agent_role.md`, `AGENTS_REGISTRY.md`.
+- [piste] Démarrer l'agent `jeux` d'`Appli_TSA_SDI_TDAH` et valider sa charte, notamment la faisabilité de `run_jeux.py` (accueil sans onboarding, outils ouverts) sans modifier `src/`.
+  - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
+  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUX\agent_role.md`, `AGENTS_REGISTRY.md`.
+- [piste] Démarrer le projet test `site_internet_ST_v3` (refonte serenia-tech.fr + banc d'essai VibeObs) depuis une session ouverte sur sa racine.
+  - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
+  - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
+- [piste] Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts (charte complétée le 2026-10-14 : zone parente `communication`, écriture partagée `clip_promo/diffusion`).
+  - fait quand: `/start shorts` charge la charte sans warning, l'état des lieux est écrit dans `Communication/SHORTS/` et validé par l'utilisateur, sans lecture des données sensibles.
+  - réf: `Communication/SHORTS/agent_role.md` de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+- [piste] Démarrer l'agent `espace_l-invariable` de `SérénIATech_dev` (`Gestion clients/Clients/Espace_L-Invariable`), puis renommer son dossier en majuscules une fois le verrou levé.
+  - fait quand: `/start espace_l-invariable` charge la charte sans warning ; renommage en `ESPACE_L-INVARIABLE` fait avec mise à jour de `clients.dossier` (id 8) dans `UI/sereniatech.db`, `zones.md` et `upload_short_atelier.py`.
+  - réf: `Gestion clients/Clients/Espace_L-Invariable/_contexte/signals.md` (P2) de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+- [piste] Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
+  - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
+  - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
+- [piste] Démarrer le projet `D:\ServOMorph\IA_Eco-Responsable` (`/start IA_Eco-Responsable`), définir sa stack et cadrer le MVP.
+  - fait quand: `/start IA_Eco-Responsable` charge le contexte sans warning, `contexte.md` porte une stack, une roadmap du MVP est créée ou son report est tracé.
+  - réf: `D:\ServOMorph\IA_Eco-Responsable\_contexte\contexte.md` ; https://github.com/ServOMorph/IA_Eco-Responsable ; `DEPLOYMENTS.md`.
+- [piste] Démarrer le projet `D:\ServOMorph\creation_llm` (`/start creation_llm`), définir sa stack, pousser le commit du protocole et cadrer la démarche (LLM from scratch sur PC local).
+  - fait quand: `/start creation_llm` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\creation_llm status` montre la branche à jour avec `origin/main`.
+  - réf: `D:\ServOMorph\creation_llm\_contexte\contexte.md` ; https://github.com/ServOMorph/creation_llm ; `DEPLOYMENTS.md`.
+- [amélioration] Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
+  - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
+  - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
+- [piste] Valider la généricité de `/create_team` et d’Intercom sur un second projet cible.
+  - fait quand: une seconde installation indépendante échange et accuse réception des messages.
+  - réf: `.claude/commands/create_team.md`, `INTERCOM_AGENT.md`.
+- [finding] Vérifier dans le rendu de l'interface utilisateur que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête). Exécuté le 2026-10-12 (8 templates listés), rendu côté utilisateur non confirmé.
+  - fait quand: l'utilisateur confirme l'affichage `0. Aucun template` suivi de `1.` à `8.` sans renumérotation.
+  - réf: `.claude/commands/create_projet.md` étape [TEMPLATES] 17.
+- [amélioration] Détection d'une session Codex ouverte avant modification d'un dossier (règle « Sessions ouvertes avant modification ») : aucun moyen fiable connu, Intercom du kit à envisager. `ListAgents`/`SendMessage` couvrent seulement Claude Code (validés le 2026-11-06).
+  - fait quand: un moyen de détecter une session Codex est trouvé et ajouté à la règle de `.claude/memory.md`, ou l'impossibilité est actée.
+  - réf: `.claude/memory.md` § Sessions ouvertes avant modification.
+- [amélioration] Retex de `/maintenance` (étape 10) à refaire : les propositions d'amélioration présentées le 2026-11-06 n'ont pas été transcrites avant le compactage de la session (perte de contexte). Rejouer l'analyse (contrôles ratés ou manquants, étapes peu utiles, contrôles à automatiser dans `check_kit.py` / `check_docs.py`, fréquence) sans modifier `maintenance.md` avant accord.
+  - fait quand: l'analyse est refaite et ses propositions sont tranchées (implémentées ou écartées avec motif).
+  - réf: `.claude/commands/maintenance.md` étape 10 ; `scripts/check_kit.py`.

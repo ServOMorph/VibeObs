@@ -22,6 +22,11 @@
 - [P2|ouvert|source=kit] Mettre à jour `20_guides/creer_un_agent.md` après kit v5.20 : [PREFLIGHT] (parent englobant, remontée du projet cible, actions du parent), [COLLECTE] (lecture étendue, données sensibles), [ECRITURE] (migration d'actions, report si renommage refusé), § Après création (« zone racine » -> zone englobante)
   - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
   - réf: .claude/commands/create_agent.md, CHANGELOG.md v5.20
+- [P2|ouvert|source=kit] Comparer les guides de `DOCUMENTATION/20_guides/` aux commandes et versions du kit postérieures à leur date `INDEX.md` (guides datés du 2026-08-21 au 2026-09-04 ; kit en v5.27, dont `/maintenance` et `/telephone` absents de l'INDEX) et décider des mises à jour ; relever aussi les sources canoniques `llms.txt` et `README.md` mises à jour le 2026-11-06
+  - fait quand: chaque guide concerné est mis à jour avec sa ligne `INDEX.md` datée, ou la décision de ne pas le modifier est tracée
+  - réf: DOCUMENTATION/INDEX.md, CHANGELOG.md v5.20 à v5.27, llms.txt
+- [info|source=kit] L'écart `check_docs.py` (journal append-only, commit 26b9cdd4) est résolu le 2026-11-06 : le contrôle ignore le frontmatter ; `python scripts/check_docs.py` passe. L'action « `check_docs.py` échoue » ci-dessus peut être retirée par l'agent documentation.
+  - réf: scripts/check_docs.py
 
 ## Dernière session (2026-09-04)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->

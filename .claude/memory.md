@@ -22,3 +22,7 @@ Avant de modifier un dossier depuis VibeObs, vérifier si une session ChatGPT Co
 - Sans réponse de l'agent (session fermée) : le signaler à l'utilisateur, ne pas modifier.
 - Tracer chaque échange (demande, reformulation, décision) dans le `signals.md` du dossier concerné.
 - Détection : `ListAgents`/`SendMessage` pour Claude Code (non testés) ; aucun moyen fiable connu pour Codex (Intercom du kit à envisager).
+
+## 2026-11-06 — Traçage des échanges entre sessions
+
+Précise la règle « Sessions ouvertes avant modification » (point « Tracer chaque échange »). VibeObs n'écrit jamais dans le dossier d'une session ouverte, pas même dans son `signals.md`. C'est l'agent de cette session qui trace l'échange (demande, reformulation, décision) dans son propre `signals.md`, au `/close`. VibeObs n'en garde pas de copie.

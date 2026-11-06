@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.28 — 2026-11-06
+
+### Corrigé
+- `scripts/check_docs.py` : le contrôle append-only du journal compare le corps seul et ignore le frontmatter (la ligne `maj:` modifiée par le commit `26b9cdd4` n'est plus une violation) ; `check_docs.py` repasse.
+
+### Modifié
+- `llms.txt` : version v5.27, 9 commandes et 2 scripts de contrôle ajoutés, structure complétée (`DOCUMENTATION/`, `skills/`, `_archives/`, templates). `README.md` : § État actuel ramené à la v5.27, l'historique détaillé reste dans ce fichier.
+- `roadmap_fondations.md` : phases 1 et 2 closes. `_contexte/signals.md` ramené à 20 actions P1, 12 actions vers `_contexte/backlog.md`.
+
 ## v5.27 — 2026-11-06
 
 ### Ajouté

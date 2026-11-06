@@ -21,56 +21,23 @@
 - Valider le correctif `templates/discord_com` en conditions réelles : deux notifications consécutives reçues et file finale `idle`.
   - fait quand: le bot local reçoit puis transmet deux notifications réelles sans perte.
   - réf: `templates/discord_com/`, `discord_com/` local (non versionné).
-- Résoudre le vol de focus avant la phase 3 de `roadmap_reprise_multicompte.md`. 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
+- Résoudre le vol de focus avant la phase 3 de `_archives/local/roadmap_reprise_multicompte.md` (archivée hors Git le 2026-11-05). 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
   - fait quand: le test manuel de `tests_manuels.md` (section « vol de focus ») est validé et `roadmap_reprise_multicompte.md` + `SKILL.md` sont mis à jour.
-  - réf: `roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.
-- Rejouer la phase 2 de `create_com_agents` sur `D:\ServOMorph\Meuniers`.
-  - fait quand: installation, échange agent↔racine et purge de message sont validés sur Meuniers.
-  - réf: `roadmap_com_agents.md`.
+  - réf: `_archives/local/roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.
 - Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
   - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
   - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `e4c6e5b`).
 - Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
-  - réf: `roadmap_reprise_multicompte.md`.
-- Valider la généricité de `/create_team` et d’Intercom sur un second projet cible.
-  - fait quand: une seconde installation indépendante échange et accuse réception des messages.
-  - réf: `.claude/commands/create_team.md`, `INTERCOM_AGENT.md`.
-- Piloter l'installation d'une équipe parallèle isolée dans Appli_TSA_SDI_TDAH.
-  - fait quand: les premiers cycles `start`/`close` de `ONBOARD` et `RETOURS` sont validés sans écriture sur `main`.
-  - réf: `roadmap_agents_paralleles.md`, `.claude/commands/create_parallel_team.md`.
-- Vérifier dans le rendu de l'interface utilisateur que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête). Exécuté le 2026-10-12 (8 templates listés), rendu côté utilisateur non confirmé.
-  - fait quand: l'utilisateur confirme l'affichage `0. Aucun template` suivi de `1.` à `8.` sans renumérotation.
-  - réf: `.claude/commands/create_projet.md` étape [TEMPLATES] 17.
+  - réf: `_archives/local/roadmap_reprise_multicompte.md` (réf à préciser : l'action restée en P1 faute de chemin précis au tri du 2026-11-06 ; à reclasser en backlog).
 - Traiter l'écart `check_docs.py` : le commit `26b9cdd4` (2026-09-06) a modifié la ligne `maj:` du frontmatter de `journal.md` en plus d'ajouter une entrée en bas — le script considère cela comme une violation append-only. Décider : assouplir le contrôle pour exclure le frontmatter, ou traiter comme une vraie violation.
   - fait quand: `check_docs.py` passe sans écart, ou l'exception est explicitement documentée dans `40_specs/controle_qualite_base.md`.
   - réf: `scripts/check_docs.py`, `DOCUMENTATION/30_decisions/journal.md`, commit `26b9cdd4`.
-- Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
-  - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
-  - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
-- Pousser le commit d'init de `D:\ServOMorph\CreaZik_V3` et renseigner sa stack (laissée vide à l'init) lors du premier `/start CreaZik_V3`.
-  - fait quand: `git -C D:\ServOMorph\CreaZik_V3 status` montre la branche à jour avec `origin/main`, et `_contexte/contexte.md` de CreaZik_V3 porte une stack.
-  - réf: `D:\ServOMorph\CreaZik_V3` commit `a8b74a8` ; `DEPLOYMENTS.md`.
 
-- Démarrer les agents `textes` et `modeles_llm` de `D:\ServOMorph\CreaZik_V3` et valider leurs chartes en conditions réelles.
-  - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
-  - réf: `D:\ServOMorph\CreaZik_V3\TEXTES\agent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLM\agent_role.md`, `AGENTS_REGISTRY.md`.
 
-- Démarrer l'agent `jeux` d'`Appli_TSA_SDI_TDAH` et valider sa charte, notamment la faisabilité de `run_jeux.py` (accueil sans onboarding, outils ouverts) sans modifier `src/`.
-  - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
-  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUX\agent_role.md`, `AGENTS_REGISTRY.md`.
 
-- Démarrer le projet test `site_internet_ST_v3` (refonte serenia-tech.fr + banc d'essai VibeObs) depuis une session ouverte sur sa racine.
-  - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
-  - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
 
-- Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts (charte complétée le 2026-10-14 : zone parente `communication`, écriture partagée `clip_promo/diffusion`).
-  - fait quand: `/start shorts` charge la charte sans warning, l'état des lieux est écrit dans `Communication/SHORTS/` et validé par l'utilisateur, sans lecture des données sensibles.
-  - réf: `Communication/SHORTS/agent_role.md` de SérénIATech_dev, `AGENTS_REGISTRY.md`.
 
-- Démarrer l'agent `espace_l-invariable` de `SérénIATech_dev` (`Gestion clients/Clients/Espace_L-Invariable`), puis renommer son dossier en majuscules une fois le verrou levé.
-  - fait quand: `/start espace_l-invariable` charge la charte sans warning ; renommage en `ESPACE_L-INVARIABLE` fait avec mise à jour de `clients.dossier` (id 8) dans `UI/sereniatech.db`, `zones.md` et `upload_short_atelier.py`.
-  - réf: `Gestion clients/Clients/Espace_L-Invariable/_contexte/signals.md` (P2) de SérénIATech_dev, `AGENTS_REGISTRY.md`.
 
 - Mettre à jour `DOCUMENTATION/20_guides/initialiser_un_projet.md` (§ Fichiers déployés : ajouter `.gitignore` et `_docs/protocole_vibecoding.md`, retirer `agent_role_TEMPLATE.md` non copié ; § Déroulé : données sensibles inscrites dans `CLAUDE.md`) — propositions en attente de validation utilisateur.
   - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
@@ -79,16 +46,7 @@
 - Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
   - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
   - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17) et de `creation_llm` (2026-10-22), contournés à la main. Reproduit une quatrième fois le 2026-11-03 sur `D:\xmage-test` (`AGENTS.md`/`GEMINI.md` non stagés par l'étape 5, ligne `DEPLOYMENTS.md` placée à la main sous la dernière ligne du tableau).
-- Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
-  - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
-  - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
 
-- Démarrer le projet `D:\ServOMorph\IA_Eco-Responsable` (`/start IA_Eco-Responsable`), définir sa stack et cadrer le MVP.
-  - fait quand: `/start IA_Eco-Responsable` charge le contexte sans warning, `contexte.md` porte une stack, une roadmap du MVP est créée ou son report est tracé.
-  - réf: `D:\ServOMorph\IA_Eco-Responsable\_contexte\contexte.md` ; https://github.com/ServOMorph/IA_Eco-Responsable ; `DEPLOYMENTS.md`.
-- Démarrer le projet `D:\ServOMorph\creation_llm` (`/start creation_llm`), définir sa stack, pousser le commit du protocole et cadrer la démarche (LLM from scratch sur PC local).
-  - fait quand: `/start creation_llm` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\creation_llm status` montre la branche à jour avec `origin/main`.
-  - réf: `D:\ServOMorph\creation_llm\_contexte\contexte.md` ; https://github.com/ServOMorph/creation_llm ; `DEPLOYMENTS.md`.
 
 - Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
   - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
@@ -118,7 +76,7 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-Backlog : 4 entrées (finding 2, piste 2) — `_contexte/backlog.md`
+Backlog : 18 entrées (finding 3, amélioration 4, piste 11) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -131,26 +89,26 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-06
+# Session du 2026-11-06 (suite : phase 2)
 
 ## Décisions prises
-- Roadmap unique `roadmap_fondations.md` (6 phases) ; chaque demande y est rangée. But : asseoir les bases, pas aller vite.
-- Mode téléphone `/telephone` : questions une par une en un clic ; règle des sessions ouvertes enregistrée en mémoire projet.
-- Archivage jamais suppression ; données personnelles archivées hors Git (`_archives/local/`).
+- Phase 1 (fondations) et phase 2 (audit du kit) de `roadmap_fondations.md` closes ; `check_docs.py` ignore désormais le frontmatter dans le contrôle append-only du journal.
+- Tri des actions P1 validé par l'utilisateur : 12 actions vers le backlog, 2 doublons retirés, 1 laissée faute de `réf:` précis ; 20 actions P1 restent (plafond atteint).
+- Guides DOCUMENTATION en retard confiés à l'agent `documentation` (triage dans son `signals.md`, ajouté à ce `/close`).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/maintenance.md`, `.claude/commands/telephone.md` : créés (v5.27).
-- `roadmap_fondations.md` : créée. `.claude/memory.md` : 2 entrées.
-- Lots de maintenance A à F traités ; `comptes_google.json` retiré du suivi Git.
-- `/telephone` installé dans `site_internet_ST_v3` et `creation_llm` par leurs sessions.
+- `scripts/check_docs.py` : contrôle append-only du journal limité au corps (passe, exit 0).
+- `llms.txt` : version v5.27, 9 commandes et 2 scripts de contrôle ajoutés. `README.md` : § État actuel ramené à la v5.27.
+- `_contexte/backlog.md` : 14 entrées ajoutées (12 triées, détection Codex, retex de `/maintenance`).
+- `roadmap_fondations.md`, `.claude/memory.md` (entrée « traçage des échanges »).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `SendMessage` entre sessions Claude Code (2 reformulations reçues, 2 installations confirmées, copies identiques).
-- VALIDE : `/maintenance` exécutée de bout en bout (rapport, lots un par un).
-- EN ATTENTE : détection d'une session Codex ; analyse de la maintenance (étape 10).
+- VALIDE : `check_kit.py`, `check_docs.py` et `pytest` (29 passés, 1 ignoré) passent.
+- INVALIDE : retex de `/maintenance` du 2026-11-06 non transcrit avant le compactage -> refait en backlog.
+- EN ATTENTE : détection d'une session Codex.
 
 ## Prochaine étape exacte
-Phase 1 de `roadmap_fondations.md` : retex du mode téléphone, puis gate et `/compact` ; ensuite phase 2 (34 actions P1 à trier, `check_docs.py`).
+Phase 3 de `roadmap_fondations.md` : création de l'agent PEDAGOGIE par `/create_agent` (périmètre d'écriture limité à `PEDAGOGIE/`, sans publication Netlify), puis choix du parcours.
 
 ## Question bloquante pour la session suivante
 Aucune

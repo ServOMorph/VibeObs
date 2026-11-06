@@ -123,6 +123,15 @@ def check_style():
     return errors
 
 
+def journal_body(content):
+    content = content.replace("\r\n", "\n")
+    if content.startswith("---\n"):
+        end = content.find("\n---\n", 4)
+        if end != -1:
+            content = content[end + 5:]
+    return content.strip()
+
+
 def check_journal_append_only():
     journal = DOCS_DIR / "30_decisions" / "journal.md"
     if not journal.exists():
@@ -135,7 +144,7 @@ def check_journal_append_only():
         current = git_output("show", f"{commit}:DOCUMENTATION/30_decisions/journal.md")
         previous = git_output("show", f"{commit}~1:DOCUMENTATION/30_decisions/journal.md")
         if current is not None and previous is not None:
-            if not current.replace("\r\n", "\n").strip().startswith(previous.replace("\r\n", "\n").strip()):
+            if not journal_body(current).startswith(journal_body(previous)):
                 errors.append(f"Journal non append-only : le commit {commit[:8]} a modifié des lignes existantes")
     return errors
 

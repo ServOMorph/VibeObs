@@ -2,6 +2,8 @@
 
 > Kit de protocole Claude Code pour le vibecoding long : commandes /start, /close, /init_projet, /update, /create_memory qui persistent le contexte entre sessions. Zéro infrastructure, multi-zones, délégation locale Ollama optionnelle.
 
+Version : v5.28 (2026-11-06).
+
 ## Quoi
 
 Protocole destiné aux projets développés avec Claude Code sur de longues périodes. Il résout la perte de contexte entre sessions en matérialisant un contexte stable (`contexte.md`), un journal d'actions ouvertes et de blocages (`signals.md`), une mémoire projet persistante (`memory.md`) et des règles permanentes (`CLAUDE.md`). Toutes ces ressources sont du Markdown pur, lues par l'agent IA au démarrage de chaque session.
@@ -26,18 +28,32 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 - `/create_com_agents <chemin_projet_cible>` : installe une communication hiérarchique avec statuts et messages sans perte à la relève (kit uniquement).
 - `/cherche_meilleure_action [décision]` : aide à la décision basée sur le contexte de la zone (kit uniquement).
 - `/doc_sync` : synchronise la documentation du kit (kit uniquement).
+- `/create_projet <nom_projet>` : crée un projet vierge (Git local ou dépôt GitHub), puis `/init_projet` et templates optionnels (kit uniquement).
+- `/insert_template <chemin_projet_cible> <nom_template> [dossier_destination]` : insère un template de `templates/` dans un projet cible (kit uniquement).
+- `/init_discord_mode <chemin_projet_cible>` : insère et configure le template `discord_com` jusqu'à un bot opérationnel (kit uniquement).
+- `/init_intercom <chemin_projet_cible>` : installe une messagerie inter-projets à file d'attente et gestion d'urgence.
+- `/intercom_inbox` : lit et traite la boîte Intercom.
+- `/intercom_listen` : surveille les messages inter-projets entrants.
+- `/cherche_fonction <description>` : recherche une fonctionnalité déjà codée dans d'anciens projets.
+- `/maintenance` : maintenance régulière du kit (contrôles, reliquats, dérives de documentation, rapport, lots validés un par un).
+- `/telephone` : mode téléphone (réponses très courtes, un choix à la fois en un clic, chaque demande rangée dans le planning).
 - `scripts/backup_file.py` : sauvegarde horodatée d'un fichier vers Google Drive (rclone).
 - `scripts/deploy_create_memory.py` : déploiement massif d'un fichier sur les projets de DEPLOYMENTS.md.
+- `scripts/check_kit.py` : contrôle d'intégrité mécanique du kit, exécuté avant chaque commit de `/close`.
+- `scripts/check_docs.py` : contrôle qualité de `DOCUMENTATION/` (index, liens, doublons, frontmatter, journal append-only).
 - `templates/ollama_call.py` : lanceur Python de délégation vers Ollama (`python ollama_call.py "<prompt>"`).
 
 ## Structure
 
 - `Protocole_start_close_context.md` : documentation complète (stratégie de contexte, modèles, formats canoniques, intégration Ollama).
 - `CHANGELOG.md` : historique des versions.
-- `scripts/` : scripts utilitaires du kit (`backup_file.py`, `deploy_create_memory.py`).
-- `templates/` : patron complet à copier dans un projet cible (`.claude/commands/`, `_contexte/`, `ollama_call.py`, `roadmap_TEMPLATE.md`).
+- `scripts/` : scripts utilitaires du kit (`backup_file.py`, `deploy_create_memory.py`, `check_kit.py`, `check_docs.py`).
+- `templates/` : patron complet à copier dans un projet cible (`.claude/commands/`, `_contexte/`, `ollama_call.py`, `roadmap_TEMPLATE.md`) et templates insérables (`control_PC`, `delegation`, `discord_com`, `intercom`, `netlify`, `notification`, `ollama`, `overlay`, `parallel_agents`, `rclone_backup`).
+- `DOCUMENTATION/` : base de connaissance interne (agent dédié), à consulter via `DOCUMENTATION/INDEX.md`.
 - `base_connaissances/` : audit reproductible des projets déployés (frictions terrain, patterns, propositions d'amélioration).
-- `tests/test_ollama_call.py` : suite unittest du lanceur Ollama.
+- `skills/` : skills du kit (`chatgpt-orchestrateur`).
+- `_archives/` : fichiers archivés (rien n'est supprimé).
+- `tests/` : suites de tests (`check_kit`, lanceur Ollama, équipes parallèles, `rclone_backup`).
 
 ## Concepts clés
 
