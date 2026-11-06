@@ -32,7 +32,7 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
 ## Phase 3 — Agent PEDAGOGIE [EN COURS]
-- Création par `/create_agent` : lecture étendue validée ; périmètre d'écriture à valider.
+- [fait] Création par `/create_agent` (2026-11-06) : lecture étendue et périmètre d'écriture (`PEDAGOGIE/` seul, sans publication) validés ; agent lancé par `/start pedagogie`.
 - Choix du parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin).
 - Livrable : suite de la page de cours (parties 6 et suivantes), fiches PP, `dist/` prêt pour Netlify.
 - Gate : agent lancé par `/start pedagogie`, première partie produite et validée.

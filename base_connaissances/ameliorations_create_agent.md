@@ -526,3 +526,6 @@ Analyse à froid (Opus, 2026-10-13) :
   - P5 [Implémentée le 2026-10-14] Template : placeholder `{{LECTURE_ETENDUE}}` (2 cas : shorts, espace_l-invariable).
   - P6 [Implémentée le 2026-10-14] [PREFLIGHT] : repérer les actions des signals.md du parent qui citent le dossier et proposer leur migration.
 Suite (2026-10-14) : charte espace_l-invariable corrigée (parent gestion-clients, exclusion données sensibles, écriture partagée clip_promo/diffusion avec shorts, aussi déclarée dans la charte shorts) ; 2 actions L'Invariable migrées depuis gestion-clients.
+
+## 2026-11-06 — agent pedagogie (D:\ServOMorph\VibeObs)
+Premier agent créé dans le kit lui-même (parent kit). Bien fonctionné : lecture étendue et périmètre d'écriture validés chacun en une question. Clarifications manuelles : dossier `PEDAGOGIE/` déjà présent mais vide (cas non prévu par la commande : ni création ni conversion, traité en création) ; le rôle fourni mélangeait rôle durable et description du livrable, condensé à la main ; l'interdiction de publier et l'absence de donnée personnelle n'ont pas de placeholder dédié, ajoutées à la ligne des données sensibles ; création découpée par un `/compact`, dont la reprise a exigé de relire l'historique pour retrouver la lecture étendue validée.
