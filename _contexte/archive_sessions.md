@@ -1267,3 +1267,29 @@ Corriger `init_projet.md` (étapes 5 et 7 + cas Q4 = oui sans `.git`), puis tran
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-06 (suite : phase 2)
+
+## Décisions prises
+- Phase 1 (fondations) et phase 2 (audit du kit) de `roadmap_fondations.md` closes ; `check_docs.py` ignore désormais le frontmatter dans le contrôle append-only du journal.
+- Tri des actions P1 validé par l'utilisateur : 12 actions vers le backlog, 2 doublons retirés, 1 laissée faute de `réf:` précis ; 20 actions P1 restent (plafond atteint).
+- Guides DOCUMENTATION en retard confiés à l'agent `documentation` (triage dans son `signals.md`, ajouté à ce `/close`).
+
+## Livrables produits ou modifiés
+- `scripts/check_docs.py` : contrôle append-only du journal limité au corps (passe, exit 0).
+- `llms.txt` : version v5.27, 9 commandes et 2 scripts de contrôle ajoutés. `README.md` : § État actuel ramené à la v5.27.
+- `_contexte/backlog.md` : 14 entrées ajoutées (12 triées, détection Codex, retex de `/maintenance`).
+- `roadmap_fondations.md`, `.claude/memory.md` (entrée « traçage des échanges »).
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py`, `check_docs.py` et `pytest` (29 passés, 1 ignoré) passent.
+- INVALIDE : retex de `/maintenance` du 2026-11-06 non transcrit avant le compactage -> refait en backlog.
+- EN ATTENTE : détection d'une session Codex.
+
+## Prochaine étape exacte
+Phase 3 de `roadmap_fondations.md` : création de l'agent PEDAGOGIE par `/create_agent` (périmètre d'écriture limité à `PEDAGOGIE/`, sans publication Netlify), puis choix du parcours.
+
+## Question bloquante pour la session suivante
+Aucune

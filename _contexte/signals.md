@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-06)
+# Signals — VibeObs (MAJ 2026-11-08)
 
 ## Actions ouvertes — pilotage
 
@@ -30,9 +30,6 @@
 - Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` (réf à préciser : l'action restée en P1 faute de chemin précis au tri du 2026-11-06 ; à reclasser en backlog).
-- Traiter l'écart `check_docs.py` : le commit `26b9cdd4` (2026-09-06) a modifié la ligne `maj:` du frontmatter de `journal.md` en plus d'ajouter une entrée en bas — le script considère cela comme une violation append-only. Décider : assouplir le contrôle pour exclure le frontmatter, ou traiter comme une vraie violation.
-  - fait quand: `check_docs.py` passe sans écart, ou l'exception est explicitement documentée dans `40_specs/controle_qualite_base.md`.
-  - réf: `scripts/check_docs.py`, `DOCUMENTATION/30_decisions/journal.md`, commit `26b9cdd4`.
 
 
 
@@ -76,7 +73,10 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-Backlog : 18 entrées (finding 3, amélioration 4, piste 11) — `_contexte/backlog.md`
+- Clore la phase 4 de `roadmap_fondations.md` (audit de `SérénIATech_dev`). Lots A à F faits le 2026-11-07/08 (commits locaux `3490278` à `9721fba`). Reste : tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser), puis transmettre aux zones de `SérénIATech_dev` les constats de l'audit, ouverture d'une session dans chaque zone : `linkedin` (`contexte.md` ligne 20 périmé : roadmap luna terminée et archivée ; modifications non commitées du 2026-11-07 9h11 d'origine inconnue sur `_contexte/signals.md`, `derniere_session.md`, `workflow_cycle.md`), `roberto` (4 actions de `_contexte/signals.md` sans ligne de titre ; même modification de 9h11), `gestion-clients` (`Familles-Rurales-Gironde/echanges/20261610_1830_reunion.md`, date invalide), 13 zones sauvegardées par commit `sauvegarde(<zone>)` hors `/close` (signals non mis à jour), racine (`.opencode/commands/` : copies de `start.md`/`close.md` antérieures à v5.25 ; `Projets en cours/VertIA` détaché, modifications non commitées dans son propre dépôt).
+  - fait quand: les trois connecteurs sont testés (ou leur report tracé), chaque constat est transmis à sa zone ou écarté, et le rapport de phase est validé par l'utilisateur.
+  - réf: `roadmap_fondations.md` phase 4 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.gitignore`.
+Backlog : 18 entrées (finding 3, amélioration 4, piste 11 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -89,26 +89,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-06 (suite : phase 2)
+# Session du 2026-11-08
 
 ## Décisions prises
-- Phase 1 (fondations) et phase 2 (audit du kit) de `roadmap_fondations.md` closes ; `check_docs.py` ignore désormais le frontmatter dans le contrôle append-only du journal.
-- Tri des actions P1 validé par l'utilisateur : 12 actions vers le backlog, 2 doublons retirés, 1 laissée faute de `réf:` précis ; 20 actions P1 restent (plafond atteint).
-- Guides DOCUMENTATION en retard confiés à l'agent `documentation` (triage dans son `signals.md`, ajouté à ce `/close`).
+- Phase 3 (PEDAGOGIE) mise de côté par l'utilisateur ; phase 4 (audit de `SérénIATech_dev`) ouverte.
+- Codex : aucun canal direct depuis Claude Code (`ListAgents`/`SendMessage` ne voient que les sessions Claude Code) ; sessions Codex closes par l'utilisateur avant toute modification.
+- `SérénIATech_dev` : travail non commité sauvegardé par un commit par zone hors `/close` ; médias de `short3_bloc_note` hors Git ; `VertIA` détaché (dépôt autonome) ; `.opencode/` et `.zcode/` laissés visibles.
+- Modifications du 2026-11-07 9h11 (signals LinkedIn et ROBERTO, `workflow_cycle.md`) laissées en l'état, origine inconnue.
 
 ## Livrables produits ou modifiés
-- `scripts/check_docs.py` : contrôle append-only du journal limité au corps (passe, exit 0).
-- `llms.txt` : version v5.27, 9 commandes et 2 scripts de contrôle ajoutés. `README.md` : § État actuel ramené à la v5.27.
-- `_contexte/backlog.md` : 14 entrées ajoutées (12 triées, détection Codex, retex de `/maintenance`).
-- `roadmap_fondations.md`, `.claude/memory.md` (entrée « traçage des échanges »).
+- `SérénIATech_dev` (commits locaux, aucun remote) : `zones.md` réparé et `.gitignore` complété (`3490278`, `a1ad559`, `aacba1b`) ; 13 commits `sauvegarde(<zone>)` ; racine (`beda64c`) ; 2 roadmaps terminées archivées (`9721fba`).
+- Kit : `roadmap_fondations.md` (phases 3 et 4), `_contexte/signals.md`, `_contexte/contexte.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py`, `check_docs.py` et `pytest` (29 passés, 1 ignoré) passent.
-- INVALIDE : retex de `/maintenance` du 2026-11-06 non transcrit avant le compactage -> refait en backlog.
-- EN ATTENTE : détection d'une session Codex.
+- VALIDE : `check_kit.py` et `check_docs.py` passent ; `config_bot_discord.json` de ROBERTO sans token ; les 21 dossiers de `zones.md` existent.
+- INVALIDE : « 3 `.json` des feuilles SHORTS à committer » -> inexistants, seuls des médias et logs restaient.
+- EN ATTENTE : prise en charge de Gmail, Agenda et Drive (connecteurs claude.ai non autorisés).
 
 ## Prochaine étape exacte
-Phase 3 de `roadmap_fondations.md` : création de l'agent PEDAGOGIE par `/create_agent` (périmètre d'écriture limité à `PEDAGOGIE/`, sans publication Netlify), puis choix du parcours.
+Autoriser les connecteurs Gmail, Agenda et Drive, les tester, puis faire valider le rapport de la phase 4 et transmettre les constats aux zones de `SérénIATech_dev`.
 
 ## Question bloquante pour la session suivante
-Aucune
+Quelle session a modifié les signals LinkedIn et ROBERTO de `SérénIATech_dev` le 2026-11-07 à 9h11 ?

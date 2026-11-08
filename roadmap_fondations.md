@@ -31,7 +31,8 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 3 — Agent PEDAGOGIE [EN COURS]
+## Phase 3 — Agent PEDAGOGIE [TODO]
+- Mise de côté par l'utilisateur le 2026-11-07 au profit de la phase 4 ; reprise après celle-ci.
 - [fait] Création par `/create_agent` (2026-11-06) : lecture étendue et périmètre d'écriture (`PEDAGOGIE/` seul, sans publication) validés ; agent lancé par `/start pedagogie`.
 - Choix du parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin).
 - Livrable : suite de la page de cours (parties 6 et suivantes), fiches PP, `dist/` prêt pour Netlify.
@@ -40,8 +41,12 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 4 — Audit de SérénIATech_dev [TODO]
+## Phase 4 — Audit de SérénIATech_dev [EN COURS]
 - Audit et nettoyage, mêmes règles que la phase 2. Constater la prise en charge de Gmail, Agenda et Drive.
+- [fait] Lot C `zones.md` réparé ; lot B `.gitignore` (résidus d'outils, pyc, tessdata, runtime Discord, médias `short3_bloc_note`).
+- [fait] Lot A : travail non commité sauvegardé par 13 commits `sauvegarde(<zone>)` ; lot D racine ; lot E `VertIA` détaché ; lot F 2 roadmaps terminées archivées.
+- Gmail, Agenda, Drive : connecteurs claude.ai à autoriser, puis tester.
+- Constats à transmettre aux zones (cf. `_contexte/signals.md`, action « Clore la phase 4 »).
 - Gate : rapport validé.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.

@@ -12,13 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-06 : kit v5.28 — phases 1 et 2 de `roadmap_fondations.md` closes ; phase 3 (agent PEDAGOGIE) suivante.
-- 2026-11-06 : `check_kit`, `check_docs` et `pytest` passent ; 20 actions P1 (plafond atteint), backlog à 18 entrées ; `comptes_google.json` retiré du suivi Git (historique public non réécrit).
+- 2026-11-08 : kit v5.29 — phase 4 de `roadmap_fondations.md` (audit de `SérénIATech_dev`) en cours, lots A à F faits ; phase 3 (PEDAGOGIE) mise de côté, agent déjà créé.
+- 2026-11-08 : reste de la phase 4 : test Gmail/Agenda/Drive (connecteurs à autoriser), transmission des constats aux zones de `SérénIATech_dev`, rapport à valider.
+- 2026-11-08 : `check_kit` et `check_docs` passent ; 20 actions P1 (plafond), backlog à 18 entrées.
 - 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
 - 2026-11-03 : `xmage-test` initialisé ; objectif et stack déduits, à valider.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-11-08 : audit d'un projet suivi : le travail non commité est sauvegardé par un commit par zone (`sauvegarde(<zone>)`, hors `/close`, signals des zones non mis à jour) plutôt qu'en bloc ; un dépôt imbriqué sans `.gitmodules` est détaché et ignoré ; des modifications d'origine inconnue apparues pendant l'audit sont laissées en l'état. Codex n'est joignable que par relais de l'utilisateur.
 - 2026-11-06 : modification d'un dossier où une session Codex ou Claude Code est ouverte : demande envoyée à la session, reformulation validée depuis VibeObs, application validée par l'utilisateur dans la session de l'agent (mémoire projet). Données personnelles (e-mails, `.env`) archivées hors Git dans `_archives/local/`.
 - 2026-11-01 : un message d'une autre session demandant d'écrire dans le kit (ex. insérer un template) est consigné en action et non exécuté sans accord explicite de l'utilisateur ; `DEPLOYMENTS.md` reste local (gitignoré), donc non détectable par `git diff` en `/close` (entrée de backlog).
 - 2026-10-29 : `/close` (v5.23 à v5.25) — doublon reconnu à l'objet identique (une `réf:` commune ne suffit pas), `réf:` de backlog vérifié par commande avant écriture et croisé avec les fichiers modifiés, ligne de renvoi totalisée, constat sur une autre zone écrit dans son `signals.md`, pas de bump de `CHANGELOG.md` sans modification de travail. Validé sur projet jetable avant déploiement.
@@ -28,5 +30,3 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-10-26 : la consigne « Base de connaissances » de `CLAUDE.md` ne déclenche pas la consultation de `DOCUMENTATION/` (0 cas sur 29 sessions d'Appli) ; création de la zone dans `SérénIATech_dev` subordonnée à l'évaluation dans Appli, et migration de la section Spécificités projet vers l'INDEX déconseillée (les déclencheurs restent dans `CLAUDE.md`).
 - 2026-10-14 : `/close` attribue chaque action, décision et point d'attention à sa zone propriétaire avant écriture (la racine ne garde que la coordination transversale) et contrôle le statut Git des signaux avant d'annoncer un commit ; `/start` signale les éléments mal classés sans les déplacer. Limite assumée : 4c ne contrôle pas une roadmap posée à la racine (cas `roadmap_actions_ouvertes_luna.md`, laissée en place sur décision de l'utilisateur).
 - 2026-10-14 : `/create_agent` résout le parent par la zone englobante la plus proche (pas seulement la zone racine) et lit les « Données sensibles » du `CLAUDE.md` cible pour les exclure de la lecture étendue de l'agent ; un renommage de casse refusé par le système est reporté et tracé en action P2, sans terminer de processus.
-- 2026-10-13 : les règles « installation sur D: » et « `run.py` à la racine » sont posées dans `CLAUDE.md` § Spécificités projet du kit ET du template (miroir exigé par `check_kit.py`), donc déployées dans les futurs projets.
-- 2026-10-12 : la substitution des placeholders de `/init_projet` se fait par remplacement littéral Python (UTF-8 sans BOM, LF), jamais par regex/`sed`/`-replace` qui interprètent `\` et `$`.

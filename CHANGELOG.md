@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.29 — 2026-11-08
+
+### Modifié
+- `roadmap_fondations.md` : phase 3 (PEDAGOGIE) mise de côté, phase 4 (audit de `SérénIATech_dev`) en cours ; lots A à F réalisés dans `SérénIATech_dev` (commits locaux `3490278` à `9721fba` : `zones.md` réparé, `.gitignore` complété, 13 commits de sauvegarde par zone, racine nettoyée, `VertIA` détaché, 2 roadmaps terminées archivées).
+- `_contexte/signals.md` : action « `check_docs.py` » retirée (contrôle passant), action « Clore la phase 4 » ajoutée avec les constats à transmettre aux zones.
+
 ## v5.28 — 2026-11-06
 
 ### Corrigé
