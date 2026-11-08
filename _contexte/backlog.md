@@ -54,3 +54,6 @@
 - [amélioration] Retex de `/maintenance` (étape 10) à refaire : les propositions d'amélioration présentées le 2026-11-06 n'ont pas été transcrites avant le compactage de la session (perte de contexte). Rejouer l'analyse (contrôles ratés ou manquants, étapes peu utiles, contrôles à automatiser dans `check_kit.py` / `check_docs.py`, fréquence) sans modifier `maintenance.md` avant accord.
   - fait quand: l'analyse est refaite et ses propositions sont tranchées (implémentées ou écartées avec motif).
   - réf: `.claude/commands/maintenance.md` étape 10 ; `scripts/check_kit.py`.
+- [piste] Tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser dans les réglages) : test de la phase 4 reporté le 2026-11-08 sur décision de l'utilisateur, prérequis de la phase 6.
+  - fait quand: les trois connecteurs sont autorisés et testés, ou leur abandon est tracé.
+  - réf: `roadmap_fondations.md` phase 4 et phase 6.

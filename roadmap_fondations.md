@@ -41,13 +41,13 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 4 — Audit de SérénIATech_dev [EN COURS]
+## Phase 4 — Audit de SérénIATech_dev [FAIT]
 - Audit et nettoyage, mêmes règles que la phase 2. Constater la prise en charge de Gmail, Agenda et Drive.
 - [fait] Lot C `zones.md` réparé ; lot B `.gitignore` (résidus d'outils, pyc, tessdata, runtime Discord, médias `short3_bloc_note`).
 - [fait] Lot A : travail non commité sauvegardé par 13 commits `sauvegarde(<zone>)` ; lot D racine ; lot E `VertIA` détaché ; lot F 2 roadmaps terminées archivées.
-- Gmail, Agenda, Drive : connecteurs claude.ai à autoriser, puis tester.
-- Constats à transmettre aux zones (cf. `_contexte/signals.md`, action « Clore la phase 4 »).
-- Gate : rapport validé.
+- [reporté] Gmail, Agenda, Drive : connecteurs claude.ai non autorisés ; test reporté sur décision de l'utilisateur (2026-11-08), entrée de `_contexte/backlog.md`, à lever avant la phase 6.
+- [fait] Constats transmis à la session ouverte « Business SerenIA Tech » (reformulation contrôlée, application validée par l'utilisateur dans sa session) ; suivi dans `_contexte/signals.md`.
+- Gate : rapport validé par l'utilisateur le 2026-11-08.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.

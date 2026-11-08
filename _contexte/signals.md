@@ -73,10 +73,10 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-- Clore la phase 4 de `roadmap_fondations.md` (audit de `SérénIATech_dev`). Lots A à F faits le 2026-11-07/08 (commits locaux `3490278` à `9721fba`). Reste : tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser), puis transmettre aux zones de `SérénIATech_dev` les constats de l'audit, ouverture d'une session dans chaque zone : `linkedin` (`contexte.md` ligne 20 périmé : roadmap luna terminée et archivée ; modifications non commitées du 2026-11-07 9h11 d'origine inconnue sur `_contexte/signals.md`, `derniere_session.md`, `workflow_cycle.md`), `roberto` (4 actions de `_contexte/signals.md` sans ligne de titre ; même modification de 9h11), `gestion-clients` (`Familles-Rurales-Gironde/echanges/20261610_1830_reunion.md`, date invalide), 13 zones sauvegardées par commit `sauvegarde(<zone>)` hors `/close` (signals non mis à jour), racine (`.opencode/commands/` : copies de `start.md`/`close.md` antérieures à v5.25 ; `Projets en cours/VertIA` détaché, modifications non commitées dans son propre dépôt).
-  - fait quand: les trois connecteurs sont testés (ou leur report tracé), chaque constat est transmis à sa zone ou écarté, et le rapport de phase est validé par l'utilisateur.
-  - réf: `roadmap_fondations.md` phase 4 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.gitignore`.
-Backlog : 18 entrées (finding 3, amélioration 4, piste 11 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
+- Suivre l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : bloc « Dernière session 2026-10-20 » de `roberto` (retiré de son `signals.md`, absent de `derniere_session.md`, présent seulement dans HEAD) à garder ou déplacer ; modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement.
+  - fait quand: chaque constat est appliqué ou écarté par l'utilisateur dans la session concernée, et la session Business a tracé l'échange dans son propre `signals.md`.
+  - réf: `roadmap_fondations.md` phase 4 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
+Backlog : 19 entrées (finding 3, amélioration 4, piste 12 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -89,25 +89,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-08
+# Session du 2026-11-08 (suite)
 
 ## Décisions prises
-- Phase 3 (PEDAGOGIE) mise de côté par l'utilisateur ; phase 4 (audit de `SérénIATech_dev`) ouverte.
-- Codex : aucun canal direct depuis Claude Code (`ListAgents`/`SendMessage` ne voient que les sessions Claude Code) ; sessions Codex closes par l'utilisateur avant toute modification.
-- `SérénIATech_dev` : travail non commité sauvegardé par un commit par zone hors `/close` ; médias de `short3_bloc_note` hors Git ; `VertIA` détaché (dépôt autonome) ; `.opencode/` et `.zcode/` laissés visibles.
-- Modifications du 2026-11-07 9h11 (signals LinkedIn et ROBERTO, `workflow_cycle.md`) laissées en l'état, origine inconnue.
+- Phase 4 close sur validation de l'utilisateur ; test Gmail, Agenda et Drive reporté (connecteurs non autorisés), tracé en backlog.
+- Constats de l'audit relayés à la session ouverte « Business SerenIA Tech » par `SendMessage` ; reformulation contrôlée et corrigée (patch du diff avant toute restauration, archivage au lieu de suppression), application validée par l'utilisateur dans sa session.
+- Script de relevé de consommation d'abonnement abandonné par l'utilisateur ; `/usage` reste la source du quota.
 
 ## Livrables produits ou modifiés
-- `SérénIATech_dev` (commits locaux, aucun remote) : `zones.md` réparé et `.gitignore` complété (`3490278`, `a1ad559`, `aacba1b`) ; 13 commits `sauvegarde(<zone>)` ; racine (`beda64c`) ; 2 roadmaps terminées archivées (`9721fba`).
-- Kit : `roadmap_fondations.md` (phases 3 et 4), `_contexte/signals.md`, `_contexte/contexte.md`.
+- `roadmap_fondations.md` : phase 4 [FAIT], test des connecteurs [reporté].
+- `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/backlog.md`, `README.md`, `CHANGELOG.md` (v5.30).
+- `SérénIATech_dev` : aucune modification par cette session (renommage et archivage faits par la session Business, d'après son message).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passent ; `config_bot_discord.json` de ROBERTO sans token ; les 21 dossiers de `zones.md` existent.
-- INVALIDE : « 3 `.json` des feuilles SHORTS à committer » -> inexistants, seuls des médias et logs restaient.
-- EN ATTENTE : prise en charge de Gmail, Agenda et Drive (connecteurs claude.ai non autorisés).
+- VALIDE : la session « Business SerenIA Tech » n'est pas l'origine de la modification du 2026-11-07 9h11 (déclaration de cette session, non recoupée).
+- INVALIDE : « perte de contenu » dans linkedin et roberto -> rangement, sauf le bloc roberto du 2026-10-20 présent seulement dans HEAD.
+- EN ATTENTE : origine de la modification de 9h11 ; décision sur le bloc roberto ; test des connecteurs.
 
 ## Prochaine étape exacte
-Autoriser les connecteurs Gmail, Agenda et Drive, les tester, puis faire valider le rapport de la phase 4 et transmettre les constats aux zones de `SérénIATech_dev`.
+Faire `/compact`, puis choisir la phase suivante : phase 3 (PEDAGOGIE, mise de côté) ou phase 5 (analyse fonctionnelle). Aucune phase n'est commencée sans confirmation écrite.
 
 ## Question bloquante pour la session suivante
-Quelle session a modifié les signals LinkedIn et ROBERTO de `SérénIATech_dev` le 2026-11-07 à 9h11 ?
+Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?

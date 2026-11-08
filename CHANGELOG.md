@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.30 — 2026-11-08
+
+### Modifié
+- `roadmap_fondations.md` : phase 4 (audit de `SérénIATech_dev`) [FAIT] ; test Gmail, Agenda et Drive [reporté] (connecteurs claude.ai non autorisés, entrée de `_contexte/backlog.md`) ; constats relayés à la session ouverte « Business SerenIA Tech », reformulation contrôlée, application validée par l'utilisateur dans sa session.
+- `_contexte/signals.md` : action « Clore la phase 4 » remplacée par le suivi de l'application des constats ; backlog à 19 entrées.
+
 ## v5.29 — 2026-11-08
 
 ### Modifié
