@@ -1293,3 +1293,26 @@ Phase 3 de `roadmap_fondations.md` : création de l'agent PEDAGOGIE par `/create
 
 ## Question bloquante pour la session suivante
 Aucune
+---
+# Session du 2026-11-08 (suite)
+
+## Décisions prises
+- Phase 4 close sur validation de l'utilisateur ; test Gmail, Agenda et Drive reporté (connecteurs non autorisés), tracé en backlog.
+- Constats de l'audit relayés à la session ouverte « Business SerenIA Tech » par `SendMessage` ; reformulation contrôlée et corrigée (patch du diff avant toute restauration, archivage au lieu de suppression), application validée par l'utilisateur dans sa session.
+- Script de relevé de consommation d'abonnement abandonné par l'utilisateur ; `/usage` reste la source du quota.
+
+## Livrables produits ou modifiés
+- `roadmap_fondations.md` : phase 4 [FAIT], test des connecteurs [reporté].
+- `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/backlog.md`, `README.md`, `CHANGELOG.md` (v5.30).
+- `SérénIATech_dev` : aucune modification par cette session (renommage et archivage faits par la session Business, d'après son message).
+
+## Hypothèses validées / invalidées
+- VALIDE : la session « Business SerenIA Tech » n'est pas l'origine de la modification du 2026-11-07 9h11 (déclaration de cette session, non recoupée).
+- INVALIDE : « perte de contenu » dans linkedin et roberto -> rangement, sauf le bloc roberto du 2026-10-20 présent seulement dans HEAD.
+- EN ATTENTE : origine de la modification de 9h11 ; décision sur le bloc roberto ; test des connecteurs.
+
+## Prochaine étape exacte
+Faire `/compact`, puis choisir la phase suivante : phase 3 (PEDAGOGIE, mise de côté) ou phase 5 (analyse fonctionnelle). Aucune phase n'est commencée sans confirmation écrite.
+
+## Question bloquante pour la session suivante
+Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?

@@ -52,9 +52,20 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 5 — Analyse fonctionnelle [TODO]
+## Phase 5 — Analyse fonctionnelle [FAIT]
 - Fonctionnalités manquantes à ajouter, puis nouvelles à créer dans SérénIATech_dev.
-- Gate : rapport validé.
+- [fait] Inventaire du code (2026-11-09, lecture seule) : devis utilisés (13, dernier le 2026-11-03 ; 7 envoyés, 0 « validé ») ; 3 factures UI pour une facturation officielle dans Indy ; prospection mail jamais utilisée (4 725 entreprises, 0 prospect, 0 e-mail, scanner IMAP coupé) ; comptabilité absente de l'UI ; Agenda branché pour l'Intérim seul, Gmail par IMAP, Drive par rclone ; `/veille_app_asso` mensuelle (rapports 06, 07, 08, 10 ; septembre manquant).
+- [fait] Décisions de l'utilisateur : Indy reste le seul outil de facturation, l'UI ne fait que le suivi ; l'e-mail à froid n'est pas le canal d'acquisition, module gardé et recentré (rien supprimé).
+- Rapport validé, dans l'ordre de réalisation :
+  1. Devis : date de validité, statuts refusé/expiré, alerte de relance dans Orga.
+  2. Suivi des paiements Indy dans l'UI : numéro Indy, échéance, alerte d'impayé.
+  3. Tableau de bord du chiffre d'affaires mensuel (devis envoyés, signés, encaissés), appuyé sur 1 et 2.
+  4. Totaux SAP / hors SAP par client et par an (attestations fiscales, déclaration NOVA).
+  5. Provenance des contacts dans `pipeline_contacts` (canal ou post d'origine).
+  6. Prospection : Sirène et base entreprises gardées pour qualifier le pipeline, campagnes masquées.
+  7. `/veille_app_asso` rendue régulière avant toute extension.
+- Hors liste : finding sur `Gestion clients/_contexte/signals.md` (lignes `fait quand:` orphelines) à transmettre à la session du projet ; Gmail (IMAP) et Agenda déjà branchés en local, piste pour la phase 6.
+- Gate : rapport validé par l'utilisateur le 2026-11-09. Implémentation à confier à la session du projet (suivi dans `_contexte/signals.md`).
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.

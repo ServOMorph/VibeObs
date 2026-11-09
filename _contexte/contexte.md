@@ -12,8 +12,8 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-08 : kit v5.30 — phase 4 de `roadmap_fondations.md` (audit de `SérénIATech_dev`) close ; test Gmail/Agenda/Drive reporté (backlog), constats suivis dans `signals.md`.
-- 2026-11-08 : phase 3 (PEDAGOGIE) mise de côté, phase 5 (analyse fonctionnelle) à venir ; aucune phase commencée avant `/compact` et confirmation.
+- 2026-11-09 : kit v5.31 — phase 5 de `roadmap_fondations.md` (analyse fonctionnelle de `SérénIATech_dev`) close, rapport de 7 fonctionnalités inscrit dans la roadmap, transmission à la session du projet en attente d'accord.
+- 2026-11-09 : phases 3 (PEDAGOGIE) et 6 (plan d'automatisation) restantes ; aucune commencée avant `/compact` et confirmation.
 - 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
 - 2026-11-03 : `xmage-test` initialisé ; objectif et stack déduits, à valider.
 
@@ -28,4 +28,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-10-27 : `/update` vers un projet existant : relire le diff complet (jamais tronqué) avant d'écraser `close.md`/`start.md` ; le bloc `SPECIFICITES PROJET` est réinjecté depuis `HEAD`, et toute personnalisation du frontmatter est conservée à la main en attendant la décision sur `update.md`.
 - 2026-10-26 : v5.22 (et non v6.0, aucune migration imposée) — les actions ouvertes de `signals.md` sont plafonnées à 20 ; dette, findings et pistes différées vont dans `_contexte/backlog.md` (non chargé par `/start`, entrées traitées supprimées, ligne de renvoi hors plafond). Les findings de revue de code restent une règle spécifique projet (pas d'étape de revue générique dans le kit).
 - 2026-10-26 : la consigne « Base de connaissances » de `CLAUDE.md` ne déclenche pas la consultation de `DOCUMENTATION/` (0 cas sur 29 sessions d'Appli) ; création de la zone dans `SérénIATech_dev` subordonnée à l'évaluation dans Appli, et migration de la section Spécificités projet vers l'INDEX déconseillée (les déclencheurs restent dans `CLAUDE.md`).
-- 2026-10-14 : `/close` attribue chaque action, décision et point d'attention à sa zone propriétaire avant écriture (la racine ne garde que la coordination transversale) et contrôle le statut Git des signaux avant d'annoncer un commit ; `/start` signale les éléments mal classés sans les déplacer. Limite assumée : 4c ne contrôle pas une roadmap posée à la racine (cas `roadmap_actions_ouvertes_luna.md`, laissée en place sur décision de l'utilisateur).
+- 2026-11-09 : analyse fonctionnelle d'un projet suivi menée par inventaire du code en lecture seule (volumes SQLite en mode `ro`, aucune donnée lue), puis tri processus par processus avec l'utilisateur. `SérénIATech_dev` : Indy seul outil de facturation, l'UI ne fait que le suivi ; prospection mail recentrée sur la qualification du pipeline ; une fonctionnalité dite absente est vérifiée dans le code avant d'être classée nouvelle.

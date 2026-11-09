@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.31 — 2026-11-09
+
+### Modifié
+- `roadmap_fondations.md` : phase 5 (analyse fonctionnelle de `SérénIATech_dev`) [FAIT] ; inventaire du code en lecture seule et rapport validé de 7 fonctionnalités (validité et relance des devis, suivi des paiements Indy, tableau de bord du CA, totaux SAP/NOVA, provenance des contacts, prospection recentrée, veille associations fiabilisée).
+- `_contexte/signals.md` : action de relais étendue au rapport de phase 5 et au finding sur `Gestion clients/_contexte/signals.md`.
+
 ## v5.30 — 2026-11-08
 
 ### Modifié
