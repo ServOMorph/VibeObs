@@ -65,7 +65,8 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
   6. Prospection : Sirène et base entreprises gardées pour qualifier le pipeline, campagnes masquées.
   7. `/veille_app_asso` rendue régulière avant toute extension.
 - Hors liste : finding sur `Gestion clients/_contexte/signals.md` (lignes `fait quand:` orphelines) à transmettre à la session du projet ; Gmail (IMAP) et Agenda déjà branchés en local, piste pour la phase 6.
-- Gate : rapport validé par l'utilisateur le 2026-11-09. Implémentation à confier à la session du projet (suivi dans `_contexte/signals.md`).
+- [fait] Rapport relayé à la session « Business SerenIA Tech » (2026-11-09) ; reformulation contrôlée et validée. Ordre révisé, accepté par l'utilisateur : 1 > 2 > 5 > 3 ; 7 en parallèle (un rapport par mois, décision explicite sur septembre) ; 4 bloquée jusqu'à la décision CAE / NOVA n°4317140. Risques retenus : recréation de la table `devis` (contrainte CHECK) avec sauvegarde de `sereniatech.db` et test sur copie ; saisie manuelle des données Indy. Fonctionnalités 1, 2, 3, 5, 6 à implémenter par les zones ui et gestion-clients, 7 par la zone business.
+- Gate : rapport validé par l'utilisateur le 2026-11-09.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.

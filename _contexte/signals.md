@@ -73,8 +73,8 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-- Relayer à la session de `SérénIATech_dev` le rapport de phase 5 (7 fonctionnalités, `roadmap_fondations.md` phase 5) et le finding sur `Gestion clients/_contexte/signals.md` (lignes `fait quand:` orphelines), après accord de l'utilisateur ; implémentation par cette session. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : bloc « Dernière session 2026-10-20 » de `roberto` (retiré de son `signals.md`, absent de `derniere_session.md`, présent seulement dans HEAD) à garder ou déplacer ; modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement.
-  - fait quand: le rapport de phase 5 est reçu et reformulé par la session du projet, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`.
+- Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : bloc « Dernière session 2026-10-20 » de `roberto` (retiré de son `signals.md`, absent de `derniere_session.md`, présent seulement dans HEAD) à garder ou déplacer ; modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement.
+  - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`.
   - réf: `roadmap_fondations.md` phases 4 et 5 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
 Backlog : 19 entrées (finding 3, amélioration 4, piste 12 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
@@ -85,28 +85,24 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Secrets Discord uniquement dans `.env` gitignoré ; vérifier `git check-ignore` et `git status` avant un commit qui touche `discord_com/`.
 - Écriture dans `control_pc.sqlite` via Python `sqlite3` paramétré, jamais par `INSERT` shell.
 - rclone : un remote = un projet, compte Google dédié par projet. Partage entre projets seulement s'il est déclaré explicitement à l'insertion du template et tracé `partagé: A + B` dans `DEPLOYMENTS.md` § Remotes rclone. Remotes actifs : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33), `rayonne_toi_drive` (rayonnetoi — partagé Rayonne_Toi + Appli_TSA_SDI_TDAH).
-- Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
+- Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.e## Dernière session
 
-## Dernière session
-
-# Session du 2026-11-09
+# Session du 2026-11-09 (suite)
 
 ## Décisions prises
-- Phase 5 de `roadmap_fondations.md` (analyse fonctionnelle de `SérénIATech_dev`) close : rapport de 7 fonctionnalités validé par l'utilisateur, inscrit dans la roadmap.
-- Indy reste le seul outil de facturation ; l'UI de `SérénIATech_dev` ne fait que le suivi.
-- Prospection mail : l'e-mail à froid n'est pas le canal d'acquisition ; Sirène et la base gardées pour qualifier le pipeline, campagnes masquées, rien supprimé.
+- Rapport de phase 5 relayé à la session « Business SerenIA Tech » ; sa reformulation (constats confirmés par lecture) validée depuis VibeObs.
+- Ordre révisé accepté par l'utilisateur : 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE / NOVA.
 
 ## Livrables produits ou modifiés
-- `roadmap_fondations.md` : phase 5 [FAIT] avec le rapport.
-- `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_sessions.md`, `_contexte/archive_decisions.md`, `README.md`, `CHANGELOG.md` (v5.31), `Protocole_start_close_context.md`.
-- `SérénIATech_dev` : lecture seule (code, base SQLite en lecture seule pour les volumes).
+- `roadmap_fondations.md` : relais et ordre révisé ajoutés à la phase 5.
+- `_contexte/signals.md`, `_contexte/archive_sessions.md`, `_contexte/contexte.md`, `README.md`, `CHANGELOG.md` (v5.32), `Protocole_start_close_context.md`.
 
 ## Hypothèses validées / invalidées
-- INVALIDE : « veille des appels à projets absente » -> `/veille_app_asso` existe (associations, mensuelle, septembre manquant) ; à fiabiliser.
-- EN ATTENTE : transmission du rapport et du finding `Gestion clients` à la session du projet ; décision sur le bloc roberto.
+- VALIDE : contrainte CHECK de `devis`, veille de septembre manquante, lignes orphelines de Gestion clients (lecture par la session Business).
+- EN ATTENTE : traçage par la session Business ; reprise par les zones ui et gestion-clients ; décision CAE.
 
 ## Prochaine étape exacte
-Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), sur confirmation écrite. Transmettre le rapport de phase 5 à la session du projet avec l'accord de l'utilisateur.
+Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), sur confirmation écrite.
 
 ## Question bloquante pour la session suivante
-Transmettre le rapport de phase 5 à la session « Business SerenIA Tech » ou à une autre session de `SérénIATech_dev` ?
+Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?

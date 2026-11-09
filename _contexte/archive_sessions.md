@@ -1316,3 +1316,25 @@ Faire `/compact`, puis choisir la phase suivante : phase 3 (PEDAGOGIE, mise de c
 
 ## Question bloquante pour la session suivante
 Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?
+---
+# Session du 2026-11-09
+
+## Décisions prises
+- Phase 5 de `roadmap_fondations.md` (analyse fonctionnelle de `SérénIATech_dev`) close : rapport de 7 fonctionnalités validé par l'utilisateur, inscrit dans la roadmap.
+- Indy reste le seul outil de facturation ; l'UI de `SérénIATech_dev` ne fait que le suivi.
+- Prospection mail : l'e-mail à froid n'est pas le canal d'acquisition ; Sirène et la base gardées pour qualifier le pipeline, campagnes masquées, rien supprimé.
+
+## Livrables produits ou modifiés
+- `roadmap_fondations.md` : phase 5 [FAIT] avec le rapport.
+- `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_sessions.md`, `_contexte/archive_decisions.md`, `README.md`, `CHANGELOG.md` (v5.31), `Protocole_start_close_context.md`.
+- `SérénIATech_dev` : lecture seule (code, base SQLite en lecture seule pour les volumes).
+
+## Hypothèses validées / invalidées
+- INVALIDE : « veille des appels à projets absente » -> `/veille_app_asso` existe (associations, mensuelle, septembre manquant) ; à fiabiliser.
+- EN ATTENTE : transmission du rapport et du finding `Gestion clients` à la session du projet ; décision sur le bloc roberto.
+
+## Prochaine étape exacte
+Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), sur confirmation écrite. Transmettre le rapport de phase 5 à la session du projet avec l'accord de l'utilisateur.
+
+## Question bloquante pour la session suivante
+Transmettre le rapport de phase 5 à la session « Business SerenIA Tech » ou à une autre session de `SérénIATech_dev` ?

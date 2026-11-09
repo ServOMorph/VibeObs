@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.32 — 2026-11-09
+
+### Modifié
+- `roadmap_fondations.md` : phase 5, rapport relayé à la session « Business SerenIA Tech », reformulation validée ; ordre révisé (1 > 2 > 5 > 3, veille en parallèle, totaux SAP après la décision CAE / NOVA).
+- `_contexte/signals.md` : action de relais transformée en suivi de l'implémentation par les zones ui, gestion-clients et business.
+
 ## v5.31 — 2026-11-09
 
 ### Modifié
