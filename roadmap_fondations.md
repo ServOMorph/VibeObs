@@ -8,6 +8,7 @@ Toute nouvelle demande de l'utilisateur est rangée ici (cf. `/telephone`, § Ch
 - Archivage, jamais de suppression. Préparation seule : toute action sortante validée par l'utilisateur.
 - Données sensibles : lecture autorisée, traitement local (Ollama), rien vers un service externe.
 - Un rapport par phase, validation de l'utilisateur entre chaque phase.
+- Phase 3 (agent PEDAGOGIE) retirée le 2026-11-09 sur décision de l'utilisateur ; conservée dans `_contexte/backlog.md`.
 
 ## Phase 1 — Fondations du pilotage [FAIT]
 - [fait] Questions une par une (mémoire projet).
@@ -27,16 +28,6 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 - [fait] `llms.txt`, README, CHANGELOG. Guides DOCUMENTATION en retard : triage confié à l'agent `documentation` (`DOCUMENTATION/_contexte/signals.md`).
 - [fait] Retex de `/maintenance` : à refaire, propositions perdues au compactage ; en backlog.
 - Gate : `check_kit.py` et `check_docs.py` passent, rapport de phase validé.
-
-**⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
-Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
-
-## Phase 3 — Agent PEDAGOGIE [TODO]
-- Mise de côté par l'utilisateur le 2026-11-07 au profit de la phase 4 ; reprise après celle-ci.
-- [fait] Création par `/create_agent` (2026-11-06) : lecture étendue et périmètre d'écriture (`PEDAGOGIE/` seul, sans publication) validés ; agent lancé par `/start pedagogie`.
-- Choix du parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin).
-- Livrable : suite de la page de cours (parties 6 et suivantes), fiches PP, `dist/` prêt pour Netlify.
-- Gate : agent lancé par `/start pedagogie`, première partie produite et validée.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
@@ -71,7 +62,8 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 6 — Plan d'automatisation [TODO]
+## Phase 6 — Plan d'automatisation [EN COURS]
+- [en cours] Menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) ; le kit ne lance rien. Le test des connecteurs claude.ai (phase 4) reste en backlog.
 - Clients, facturation et comptabilité, communication, pilotage. Outils : Gmail, Agenda, Drive, Discord, réseaux sociaux, YouTube.
 - Gate : plan validé.
 

@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.33 — 2026-11-09
+
+### Modifié
+- `roadmap_fondations.md` : phase 3 (agent PEDAGOGIE) retirée sur décision de l'utilisateur, conservée dans `_contexte/backlog.md` ; phase 6 [EN COURS], menée par l'utilisateur dans la session `SérénIATech_dev`.
+- `_contexte/signals.md` : bloc roberto du 2026-10-20 clos (déjà présent dans `derniere_session.md` de roberto), action de suivi étendue à la phase 6.
+
+### Corrigé
+- `_contexte/signals.md` : ligne des garde-fous « Sous auto-mode » tronquée par la clôture du commit `99edf4f`, restaurée depuis `32bcb96`.
+
 ## v5.32 — 2026-11-09
 
 ### Modifié

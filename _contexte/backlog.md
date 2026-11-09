@@ -57,3 +57,6 @@
 - [piste] Tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser dans les réglages) : test de la phase 4 reporté le 2026-11-08 sur décision de l'utilisateur, prérequis de la phase 6.
   - fait quand: les trois connecteurs sont autorisés et testés, ou leur abandon est tracé.
   - réf: `roadmap_fondations.md` phase 4 et phase 6.
+- [piste] Phase 3 de `roadmap_fondations.md` (agent PEDAGOGIE) retirée de la roadmap le 2026-11-09 sur décision de l'utilisateur (« je verrai ça plus tard »). Agent créé le 2026-11-06 par `/create_agent` (écriture limitée à `PEDAGOGIE/`, sans publication). Reste : choisir le parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin) puis produire la suite de la page de cours (parties 6 et suivantes), les fiches PP et un `dist/` prêt pour Netlify.
+  - fait quand: l'agent est lancé par `/start pedagogie` et une première partie est produite et validée, ou l'abandon est tracé.
+  - réf: `PEDAGOGIE/agent_role.md` ; `PEDAGOGIE/_contexte/`.

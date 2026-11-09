@@ -1338,3 +1338,25 @@ Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), s
 
 ## Question bloquante pour la session suivante
 Transmettre le rapport de phase 5 à la session « Business SerenIA Tech » ou à une autre session de `SérénIATech_dev` ?
+
+---
+
+# Session du 2026-11-09 (suite)
+
+## Décisions prises
+- Rapport de phase 5 relayé à la session « Business SerenIA Tech » ; sa reformulation (constats confirmés par lecture) validée depuis VibeObs.
+- Ordre révisé accepté par l'utilisateur : 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE / NOVA.
+
+## Livrables produits ou modifiés
+- `roadmap_fondations.md` : relais et ordre révisé ajoutés à la phase 5.
+- `_contexte/signals.md`, `_contexte/archive_sessions.md`, `_contexte/contexte.md`, `README.md`, `CHANGELOG.md` (v5.32), `Protocole_start_close_context.md`.
+
+## Hypothèses validées / invalidées
+- VALIDE : contrainte CHECK de `devis`, veille de septembre manquante, lignes orphelines de Gestion clients (lecture par la session Business).
+- EN ATTENTE : traçage par la session Business ; reprise par les zones ui et gestion-clients ; décision CAE.
+
+## Prochaine étape exacte
+Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), sur confirmation écrite.
+
+## Question bloquante pour la session suivante
+Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?

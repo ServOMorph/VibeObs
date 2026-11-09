@@ -12,8 +12,8 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-09 : kit v5.31 — phase 5 de `roadmap_fondations.md` (analyse fonctionnelle de `SérénIATech_dev`) close, rapport de 7 fonctionnalités relayé à la session Business et reformulé ; ordre révisé (1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE).
-- 2026-11-09 : phases 3 (PEDAGOGIE) et 6 (plan d'automatisation) restantes ; aucune commencée avant `/compact` et confirmation.
+- 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`.
+- 2026-11-09 : rapport de phase 5 relayé à la session Business ; ordre 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE ; implémentation par les zones ui, gestion-clients et business.
 - 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
 - 2026-11-03 : `xmage-test` initialisé ; objectif et stack déduits, à valider.
 

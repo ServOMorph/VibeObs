@@ -73,10 +73,10 @@
 - Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
   - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
   - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
-- Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : bloc « Dernière session 2026-10-20 » de `roberto` (retiré de son `signals.md`, absent de `derniere_session.md`, présent seulement dans HEAD) à garder ou déplacer ; modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement.
-  - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`.
-  - réf: `roadmap_fondations.md` phases 4 et 5 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-Backlog : 19 entrées (finding 3, amélioration 4, piste 12 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
+- Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
+  - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
+  - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
+Backlog : 20 entrées (finding 3, amélioration 4, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -85,24 +85,28 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 - Secrets Discord uniquement dans `.env` gitignoré ; vérifier `git check-ignore` et `git status` avant un commit qui touche `discord_com/`.
 - Écriture dans `control_pc.sqlite` via Python `sqlite3` paramétré, jamais par `INSERT` shell.
 - rclone : un remote = un projet, compte Google dédié par projet. Partage entre projets seulement s'il est déclaré explicitement à l'insertion du template et tracé `partagé: A + B` dans `DEPLOYMENTS.md` § Remotes rclone. Remotes actifs : `vibeobs_drive` (servomorph14), `sereniatech_drive` (sereniatech33), `rayonne_toi_drive` (rayonnetoi — partagé Rayonne_Toi + Appli_TSA_SDI_TDAH).
-- Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.e## Dernière session
+- Sous auto-mode, le classifieur bloque tout upload cloud de secrets (`rclone copy` de `.env` et assimilés). Un hook `/close` « Fin » ne peut faire que `--refresh-list` ; l'upload Drive est manuel, hors session. Le classifieur n'est pas désactivable par `permissions.allow`.
 
-# Session du 2026-11-09 (suite)
+## Dernière session
+
+# Session du 2026-11-09 (fin)
 
 ## Décisions prises
-- Rapport de phase 5 relayé à la session « Business SerenIA Tech » ; sa reformulation (constats confirmés par lecture) validée depuis VibeObs.
-- Ordre révisé accepté par l'utilisateur : 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE / NOVA.
+- Phase 6 (plan d'automatisation) menée par l'utilisateur dans la session SérénIATech_dev ; le kit ne lance rien.
+- Phase 3 (PEDAGOGIE) retirée de la roadmap, conservée au backlog.
+- Demande d'archivage du bloc roberto du 2026-10-20 retirée : le bloc est déjà dans `derniere_session.md` de roberto.
 
 ## Livrables produits ou modifiés
-- `roadmap_fondations.md` : relais et ordre révisé ajoutés à la phase 5.
-- `_contexte/signals.md`, `_contexte/archive_sessions.md`, `_contexte/contexte.md`, `README.md`, `CHANGELOG.md` (v5.32), `Protocole_start_close_context.md`.
+- `roadmap_fondations.md` : phase 3 retirée, phase 6 [EN COURS] dans la session SérénIATech_dev.
+- `_contexte/backlog.md` (entrée PEDAGOGIE), `_contexte/signals.md` (action de suivi, ligne des garde-fous réparée), `_contexte/contexte.md`, `README.md`, `CHANGELOG.md` (v5.33), `Protocole_start_close_context.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : contrainte CHECK de `devis`, veille de septembre manquante, lignes orphelines de Gestion clients (lecture par la session Business).
-- EN ATTENTE : traçage par la session Business ; reprise par les zones ui et gestion-clients ; décision CAE.
+- INVALIDE : bloc roberto « présent seulement dans HEAD » (information périmée de ce fichier) -> relu le 2026-11-09, il est en ligne 1 de `derniere_session.md` de roberto.
+- VALIDE : la ligne des garde-fous « Sous auto-mode » était tronquée depuis le commit `99edf4f` ; restaurée depuis `32bcb96`.
+- EN ATTENTE : traçage de l'échange roberto par la session Business ; plan de la phase 6.
 
 ## Prochaine étape exacte
-Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), sur confirmation écrite.
+Attendre le plan de la phase 6 produit dans la session SérénIATech_dev ; suivre l'implémentation de la phase 5 par les zones ui, gestion-clients et business.
 
 ## Question bloquante pour la session suivante
-Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?
+Aucune
