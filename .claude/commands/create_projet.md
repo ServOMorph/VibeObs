@@ -100,7 +100,9 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
 ## [TEMPLATES] — après /init_projet
 
 17. Une fois `/init_projet` terminé, lister les sous-dossiers installables de `<kit>/templates/`
-    (exclure les dossiers techniques `_contexte`, `.claude` et `__pycache__`) dans cet ordre, avec une numérotation :
+    (exclure les dossiers techniques `_contexte`, `.claude` et `__pycache__`, ainsi que
+    `parallel_agents`, modèles par agent consommés par `/create_parallel_team` et non insérables)
+    dans cet ordre, avec une numérotation :
     ```text
     Templates disponibles :
     0. Aucun template
@@ -112,16 +114,16 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     6. notification
     7. ollama
     8. overlay
-    9. parallel_agents
-    10. rclone_backup
+    9. rclone_backup
 
     Répondez uniquement par le ou les numéros souhaités, séparés par des virgules (ex. 2,5).
+    Équipe d'agents en worktrees parallèles : utiliser ensuite /create_parallel_team.
     ```
     `0` en tête (jamais en dernier) : certains rendus Markdown renumérotent une liste ordonnée en
     ignorant les valeurs explicites suivant le premier élément — placer `0` en premier fige le
     numéro de départ et évite que `0. Aucun template` s'affiche sous un autre chiffre.
     Construire cette liste dynamiquement à partir des dossiers réellement présents ; ne jamais
-    proposer de dossier technique ou généré. Une réponse doit être `0` seul ou une liste de numéros valides,
+    proposer de dossier technique, généré ou exclu ci-dessus. Une réponse doit être `0` seul ou une liste de numéros valides,
     sans doublon. Sinon, réafficher la question. Pour chaque sélection, enchaîner
     `/insert_template <cible> <nom_template>` selon `.claude/commands/insert_template.md`.
 

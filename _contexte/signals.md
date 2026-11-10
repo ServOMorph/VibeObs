@@ -65,9 +65,6 @@
   - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
   - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
 
-- Corriger l'incompatibilité `templates/parallel_agents` / `/insert_template` : ses deux fichiers contiennent des placeholders hors de la liste reconnue (`{{ROLE}}`, `{{WORKTREE}}`, `{{BRANCHE}}`, `{{ALIAS_PARENT}}`, `{{MEMBRES}}`...), donc l'insertion est toujours bloquée alors que `/create_projet` le propose (constat à la création de `Fiches_IME`, 2026-10-31).
-  - fait quand: le template s'insère sans blocage (placeholders pris en charge ou template retiré de la liste de `/create_projet`) et `check_kit.py` passe.
-  - réf: `templates/parallel_agents/` ; `.claude/commands/insert_template.md` étape 7 ; `.claude/commands/create_projet.md` [TEMPLATES].
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
@@ -84,22 +81,24 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-10
+# Session du 2026-11-10 (suite)
 
 ## Décisions prises
-- `/telephone` devient commande par défaut de tout projet créé ou mis à jour par le kit : copie par `/init_projet` (et donc `/create_projet`) et par `/update`, contrôle d'identité à l'étape 10 de `/update`.
-- Projet `creation_videos` créé via `/create_projet` (dépôt GitHub public, zone `creation_videos`, stack à définir) ; `telephone.md` copié à la main à la demande de l'utilisateur.
+- Phase 6 : on attend le plan de l'utilisateur dans la session SérénIATech_dev (aucun plan constaté, aucun commit depuis le 2026-11-08).
+- `parallel_agents` n'est pas un template insérable : modèles par agent consommés par `/create_parallel_team` ; retiré de la liste de `/create_projet`.
 
 ## Livrables produits ou modifiés
-- `templates/.claude/commands/telephone.md` (nouveau), `init_projet.md` et `update.md` (kit + template), `README.md`, `llms.txt`, `CHANGELOG.md` (v5.34), `tests_manuels.md`, `_contexte/`.
-- `init_projet.md` étapes 5 et 7 (AGENTS.md/GEMINI.md stagés, ligne `DEPLOYMENTS.md` dans le tableau « Projets ») : correction déjà présente dans l'arbre de travail, action de signals retirée ; `check_kit.py` passe.
+- `.claude/commands/create_projet.md` [TEMPLATES] 17 : `parallel_agents` exclu, renvoi vers `/create_parallel_team`.
+- `llms.txt` : `parallel_agents` sorti des templates insérables.
+- `init_projet.md` étapes 5 et 7 (kit + template) : correctif fait ici, commité par la session parallèle (`179d65e`).
+- `_contexte/signals.md` (action `parallel_agents` retirée), `CHANGELOG.md` (v5.35), `README.md`, `_contexte/contexte.md`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passent après les modifications.
-- EN ATTENTE : `/init_projet` et `/update` jamais exercés avec la copie de `telephone.md` (test manuel consigné).
+- VALIDE : `check_kit.py` passe après les deux correctifs.
+- EN ATTENTE : affichage réel de la liste des templates de `/create_projet` (9 entrées désormais).
 
 ## Prochaine étape exacte
-Jouer le test manuel de copie de `telephone.md` ; suivre la phase 5 et la phase 6 de `roadmap_fondations.md`.
+Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 9 de `/close`, frontmatter de `update.md`).
 
 ## Question bloquante pour la session suivante
 Aucune

@@ -48,7 +48,7 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 - `Protocole_start_close_context.md` : documentation complète (stratégie de contexte, modèles, formats canoniques, intégration Ollama).
 - `CHANGELOG.md` : historique des versions.
 - `scripts/` : scripts utilitaires du kit (`backup_file.py`, `deploy_create_memory.py`, `check_kit.py`, `check_docs.py`).
-- `templates/` : patron complet à copier dans un projet cible (`.claude/commands/`, `_contexte/`, `ollama_call.py`, `roadmap_TEMPLATE.md`) et templates insérables (`control_PC`, `delegation`, `discord_com`, `intercom`, `netlify`, `notification`, `ollama`, `overlay`, `parallel_agents`, `rclone_backup`).
+- `templates/` : patron complet à copier dans un projet cible (`.claude/commands/`, `_contexte/`, `ollama_call.py`, `roadmap_TEMPLATE.md`) et templates insérables (`control_PC`, `delegation`, `discord_com`, `intercom`, `netlify`, `notification`, `ollama`, `overlay`, `rclone_backup`) ; `parallel_agents` : modèles consommés par `/create_parallel_team`, non insérable.
 - `DOCUMENTATION/` : base de connaissance interne (agent dédié), à consulter via `DOCUMENTATION/INDEX.md`.
 - `base_connaissances/` : audit reproductible des projets déployés (frictions terrain, patterns, propositions d'amélioration).
 - `skills/` : skills du kit (`chatgpt-orchestrateur`).

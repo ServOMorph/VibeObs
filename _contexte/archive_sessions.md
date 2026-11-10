@@ -1360,3 +1360,25 @@ Faire `/compact`, puis phase 6 (plan d'automatisation) ou phase 3 (PEDAGOGIE), s
 
 ## Question bloquante pour la session suivante
 Garder ou déplacer vers `derniere_session.md` de `roberto` le bloc « Dernière session 2026-10-20 » présent seulement dans HEAD ?
+
+---
+
+# Session du 2026-11-10
+
+## Décisions prises
+- `/telephone` devient commande par défaut de tout projet créé ou mis à jour par le kit : copie par `/init_projet` (et donc `/create_projet`) et par `/update`, contrôle d'identité à l'étape 10 de `/update`.
+- Projet `creation_videos` créé via `/create_projet` (dépôt GitHub public, zone `creation_videos`, stack à définir) ; `telephone.md` copié à la main à la demande de l'utilisateur.
+
+## Livrables produits ou modifiés
+- `templates/.claude/commands/telephone.md` (nouveau), `init_projet.md` et `update.md` (kit + template), `README.md`, `llms.txt`, `CHANGELOG.md` (v5.34), `tests_manuels.md`, `_contexte/`.
+- `init_projet.md` étapes 5 et 7 (AGENTS.md/GEMINI.md stagés, ligne `DEPLOYMENTS.md` dans le tableau « Projets ») : correction déjà présente dans l'arbre de travail, action de signals retirée ; `check_kit.py` passe.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` et `check_docs.py` passent après les modifications.
+- EN ATTENTE : `/init_projet` et `/update` jamais exercés avec la copie de `telephone.md` (test manuel consigné).
+
+## Prochaine étape exacte
+Jouer le test manuel de copie de `telephone.md` ; suivre la phase 5 et la phase 6 de `roadmap_fondations.md`.
+
+## Question bloquante pour la session suivante
+Aucune

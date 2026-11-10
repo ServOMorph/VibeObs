@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.35 — 2026-11-10
+
+### Corrigé
+- `create_projet.md` [TEMPLATES] 17 : `parallel_agents` exclu de la liste (modèles consommés par `/create_parallel_team`, insertion toujours bloquée par `/insert_template`) ; renvoi vers `/create_parallel_team`.
+- `llms.txt` : `parallel_agents` sorti des templates insérables.
+
 ## v5.34 — 2026-11-10
 
 ### Ajouté
