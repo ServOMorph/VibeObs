@@ -8,7 +8,7 @@ model: sonnet
 
 ## Objectif
 
-Mettre à jour les fichiers de protocole (`start.md`, `close.md`, `create_memory.md`, `ollama_call.py`, `CLAUDE.md`, et `AGENTS.md`/`GEMINI.md` sur confirmation) d'un projet cible à partir de la dernière version du kit. Se lance depuis le repo du kit. Ne touche pas aux fichiers spécifiques au projet cible (`_contexte/`, `zones.md`, la section "Données sensibles" et la section "Spécificités projet" de `CLAUDE.md`, le bloc `SPECIFICITES PROJET` de `start.md`/`close.md`, un `AGENTS.md` déjà présent). Cela inclut les zones-agents créées par `/create_agent` : `/update` ne cible que `<cible>/.claude/` et `<cible>/_contexte/` racine, donc `<dossier_agent>/agent_role.md` et `<dossier_agent>/_contexte/` (ex. `COM/_contexte/`, `MEMORY/_contexte/`) ne sont jamais lus ni modifiés.
+Mettre à jour les fichiers de protocole (`start.md`, `close.md`, `create_memory.md`, `telephone.md`, `ollama_call.py`, `CLAUDE.md`, et `AGENTS.md`/`GEMINI.md` sur confirmation) d'un projet cible à partir de la dernière version du kit. Se lance depuis le repo du kit. Ne touche pas aux fichiers spécifiques au projet cible (`_contexte/`, `zones.md`, la section "Données sensibles" et la section "Spécificités projet" de `CLAUDE.md`, le bloc `SPECIFICITES PROJET` de `start.md`/`close.md`, un `AGENTS.md` déjà présent). Cela inclut les zones-agents créées par `/create_agent` : `/update` ne cible que `<cible>/.claude/` et `<cible>/_contexte/` racine, donc `<dossier_agent>/agent_role.md` et `<dossier_agent>/_contexte/` (ex. `COM/_contexte/`, `MEMORY/_contexte/`) ne sont jamais lus ni modifiés.
 
 ## Procédure
 
@@ -62,6 +62,7 @@ Vérifier que `<cible>/.claude/commands/start.md` et `<cible>/.claude/commands/c
      - `templates/.claude/commands/start.md` → `<cible>/.claude/commands/start.md`
      - `templates/.claude/commands/close.md` → `<cible>/.claude/commands/close.md`
      - `templates/.claude/commands/create_memory.md` → `<cible>/.claude/commands/create_memory.md`
+     - `templates/.claude/commands/telephone.md` → `<cible>/.claude/commands/telephone.md`
      - `templates/.claude/zones.md` → `<cible>/.claude/zones.md`
      - `templates/ollama_call.py` → `<cible>/ollama_call.py`
   6. Pour `<cible>/.claude/CLAUDE.md` :
@@ -113,6 +114,7 @@ Pour chacun des fichiers suivants, copier tel quel depuis le kit (aucune substit
 | `templates/.claude/commands/start.md` | `<cible>/.claude/commands/start.md` |
 | `templates/.claude/commands/close.md` | `<cible>/.claude/commands/close.md` |
 | `templates/.claude/commands/create_memory.md` | `<cible>/.claude/commands/create_memory.md` |
+| `templates/.claude/commands/telephone.md` | `<cible>/.claude/commands/telephone.md` |
 | `templates/ollama_call.py` | `<cible>/ollama_call.py` |
 
 Pour `start.md` et `close.md`, une fois le fichier copié : réinjecter le contenu retenu ci-dessus
@@ -205,7 +207,7 @@ Si `GEMINI.md` a été créé à l'étape 7 : l'ajouter aussi à ce commit (`git
 
 Avant de confirmer, exécuter ces contrôles sur `<cible>` et collecter les échecs éventuels :
 
-1. **Fichiers présents et à jour** : `start.md`, `close.md`, `create_memory.md`, `ollama_call.py` sont
+1. **Fichiers présents et à jour** : `start.md`, `close.md`, `create_memory.md`, `telephone.md`, `ollama_call.py` sont
    strictement identiques à leur version dans `templates/` (hors zones `SPECIFICITES PROJET`, qui
    diffèrent normalement).
 2. **Marqueurs intacts** : `start.md` et `close.md` contiennent chacun exactement une paire
@@ -231,6 +233,6 @@ projet de "✅" à "⚠️" dans le résumé final, avec le détail du contrôle
 ### 11. Confirmer
 
 Répondre uniquement :
-"✅ Update <alias> terminé (kit <ancienne version> → <version>). Fichiers mis à jour : start.md, close.md, create_memory.md, CLAUDE.md, ollama_call.py. Sections/blocs "Spécificités projet" préservés."
+"✅ Update <alias> terminé (kit <ancienne version> → <version>). Fichiers mis à jour : start.md, close.md, create_memory.md, telephone.md, CLAUDE.md, ollama_call.py. Sections/blocs "Spécificités projet" préservés."
 Si `AGENTS.md` et/ou `GEMINI.md` ont été créés à l'étape 7, les ajouter à la liste des fichiers mis à jour.
 Si l'étape 10 a détecté un ou plusieurs échecs : remplacer "✅" par "⚠️" et lister chaque échec sur une ligne dédiée après la confirmation.

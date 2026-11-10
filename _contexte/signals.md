@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-09)
+# Signals — VibeObs (MAJ 2026-11-10)
 
 ## Actions ouvertes — pilotage
 
@@ -39,11 +39,6 @@
 - Mettre à jour `DOCUMENTATION/20_guides/initialiser_un_projet.md` (§ Fichiers déployés : ajouter `.gitignore` et `_docs/protocole_vibecoding.md`, retirer `agent_role_TEMPLATE.md` non copié ; § Déroulé : données sensibles inscrites dans `CLAUDE.md`) — propositions en attente de validation utilisateur.
   - fait quand: guide corrigé et ligne `INDEX.md` datée, ou refus tracé.
   - réf: `.claude/commands/init_projet.md` étapes 3-4, `DOCUMENTATION/_contexte/signals.md`.
-
-- Corriger `init_projet.md` : étape 7 (préciser le tableau « Projets » de `DEPLOYMENTS.md` pour l'insertion de la ligne, pas la fin de fichier) et étape 5 (stager `AGENTS.md`/`GEMINI.md` quand Q7/Q8 sont « oui »), kit + template.
-  - fait quand: les deux étapes sont corrigées dans `.claude/commands/init_projet.md` et son template, `check_kit.py` passe.
-  - réf: `.claude/commands/init_projet.md` étapes 5 et 7 ; `D:\ServOMorph\REA` (`AGENTS.md`, `GEMINI.md` non commités). Écarts reproduits à l'identique lors de la création de `IA_Eco-Responsable` (2026-10-17) et de `creation_llm` (2026-10-22), contournés à la main. Reproduit une quatrième fois le 2026-11-03 sur `D:\xmage-test` (`AGENTS.md`/`GEMINI.md` non stagés par l'étape 5, ligne `DEPLOYMENTS.md` placée à la main sous la dernière ligne du tableau).
-
 
 - Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
   - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
@@ -89,24 +84,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-09 (fin)
+# Session du 2026-11-10
 
 ## Décisions prises
-- Phase 6 (plan d'automatisation) menée par l'utilisateur dans la session SérénIATech_dev ; le kit ne lance rien.
-- Phase 3 (PEDAGOGIE) retirée de la roadmap, conservée au backlog.
-- Demande d'archivage du bloc roberto du 2026-10-20 retirée : le bloc est déjà dans `derniere_session.md` de roberto.
+- `/telephone` devient commande par défaut de tout projet créé ou mis à jour par le kit : copie par `/init_projet` (et donc `/create_projet`) et par `/update`, contrôle d'identité à l'étape 10 de `/update`.
+- Projet `creation_videos` créé via `/create_projet` (dépôt GitHub public, zone `creation_videos`, stack à définir) ; `telephone.md` copié à la main à la demande de l'utilisateur.
 
 ## Livrables produits ou modifiés
-- `roadmap_fondations.md` : phase 3 retirée, phase 6 [EN COURS] dans la session SérénIATech_dev.
-- `_contexte/backlog.md` (entrée PEDAGOGIE), `_contexte/signals.md` (action de suivi, ligne des garde-fous réparée), `_contexte/contexte.md`, `README.md`, `CHANGELOG.md` (v5.33), `Protocole_start_close_context.md`.
+- `templates/.claude/commands/telephone.md` (nouveau), `init_projet.md` et `update.md` (kit + template), `README.md`, `llms.txt`, `CHANGELOG.md` (v5.34), `tests_manuels.md`, `_contexte/`.
+- `init_projet.md` étapes 5 et 7 (AGENTS.md/GEMINI.md stagés, ligne `DEPLOYMENTS.md` dans le tableau « Projets ») : correction déjà présente dans l'arbre de travail, action de signals retirée ; `check_kit.py` passe.
 
 ## Hypothèses validées / invalidées
-- INVALIDE : bloc roberto « présent seulement dans HEAD » (information périmée de ce fichier) -> relu le 2026-11-09, il est en ligne 1 de `derniere_session.md` de roberto.
-- VALIDE : la ligne des garde-fous « Sous auto-mode » était tronquée depuis le commit `99edf4f` ; restaurée depuis `32bcb96`.
-- EN ATTENTE : traçage de l'échange roberto par la session Business ; plan de la phase 6.
+- VALIDE : `check_kit.py` et `check_docs.py` passent après les modifications.
+- EN ATTENTE : `/init_projet` et `/update` jamais exercés avec la copie de `telephone.md` (test manuel consigné).
 
 ## Prochaine étape exacte
-Attendre le plan de la phase 6 produit dans la session SérénIATech_dev ; suivre l'implémentation de la phase 5 par les zones ui, gestion-clients et business.
+Jouer le test manuel de copie de `telephone.md` ; suivre la phase 5 et la phase 6 de `roadmap_fondations.md`.
 
 ## Question bloquante pour la session suivante
 Aucune

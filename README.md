@@ -6,7 +6,7 @@ Stack : **Claude Code** (agent IA), **Markdown** (fichiers de contexte), **Pytho
 
 Résout le problème structurel du vibecoding : **le contexte est perdu à chaque nouvelle conversation**. Sans protocole, chaque session repart de zéro, les décisions prises ne sont pas tracées, et l'IA ne sait pas où en est le projet.
 
-État actuel : le kit v5.33 conserve une mémoire projet (`.claude/memory.md`, alimentée par `/create_memory`) pour les décisions et pistes non encore implémentées — dont un skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` à expérimenter d'abord dans un projet tiers avant toute généralisation. Il trace aussi les templates insérés dans chaque projet (section « Templates installés » de `DEPLOYMENTS.md`, alimentée par `/insert_template`, `/init_discord_mode`, `/create_projet` et `/init_intercom`) ; le template `rclone_backup` impose un dossier Drive canonique configuré, exclut les secrets et permet un contrôle `--check` ; il offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) — l'upload cloud d'un hook « Fin » étant bloqué sous auto-mode par le classifieur, le hook s'y limite à rafraîchir le manifeste et l'envoi vers Drive reste manuel. `agent_role_TEMPLATE.md` répercute désormais automatiquement un périmètre d'écriture étendu dans ses Invariants.
+État actuel : le kit v5.34 conserve une mémoire projet (`.claude/memory.md`, alimentée par `/create_memory`) pour les décisions et pistes non encore implémentées — dont un skill de cohérence `CLAUDE.md`/`AGENTS.md`/`GEMINI.md` à expérimenter d'abord dans un projet tiers avant toute généralisation. Il trace aussi les templates insérés dans chaque projet (section « Templates installés » de `DEPLOYMENTS.md`, alimentée par `/insert_template`, `/init_discord_mode`, `/create_projet` et `/init_intercom`) ; le template `rclone_backup` impose un dossier Drive canonique configuré, exclut les secrets et permet un contrôle `--check` ; il offre des hooks de zone opt-in à `/start` et `/close` (`<dossier_zone>/_contexte/on_start.md` / `on_close.md`) — l'upload cloud d'un hook « Fin » étant bloqué sous auto-mode par le classifieur, le hook s'y limite à rafraîchir le manifeste et l'envoi vers Drive reste manuel. `agent_role_TEMPLATE.md` répercute désormais automatiquement un périmètre d'écriture étendu dans ses Invariants.
 
 ## Ce que ça fait
 
@@ -27,7 +27,7 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/intercom_listen` — surveille la boîte Intercom dans un terminal persistant ; disponible dans le kit et copiée par `/init_intercom` dans le projet cible
 - `/cherche_meilleure_action [décision]` — commande d'aide à la décision (kit uniquement) : analyse le contexte réel de la zone, évalue les options selon des critères explicites, recommande une action et demande confirmation ; à invoquer quand on ne sait pas quoi faire ensuite
 - `/doc_sync` — synchronise toute la documentation du kit (commandes, templates, structure) après une modification
-- `/telephone [off]` — mode téléphone : réponses de 6 lignes au plus, un choix numéroté à la fois avec la proposition en avant, chaque demande rangée dans le planning actif ; les corrections de format alimentent l'évolution du mode (kit uniquement)
+- `/telephone [off]` — mode téléphone : réponses de 6 lignes au plus, un choix numéroté à la fois avec la proposition en avant, chaque demande rangée dans le planning actif ; les corrections de format alimentent l'évolution du mode (copiée par défaut dans tout projet créé par `/init_projet` ou `/create_projet` et réalignée par `/update`)
 - `/maintenance` — maintenance régulière du kit : contrôles mécaniques, reliquats, roadmaps dormantes, dérives de documentation, sécurité ; rapport par lots, archivage seulement après validation, puis proposition d'analyse de la maintenance (kit uniquement)
 - `/cherche_fonction <description>` — recherche une fonctionnalité déjà codée dans d'anciens projets à partir d'une description ; les dossiers cibles sont toujours redemandés à chaque appel (kit uniquement)
 - `CLAUDE.md` — règles permanentes appliquées à toutes les conversations
@@ -79,7 +79,7 @@ VibeObs/
 │
 ├── .claude/                              # instance du protocole appliquée au kit lui-même
 │   ├── CLAUDE.md                         # règles permanentes
-│   └── commands/                         # /start /close /update /init_projet /create_memory
+│   └── commands/                         # /start /close /update /init_projet /create_memory /telephone
 │       │                                 #   + kit uniquement : /create_agent /create_team
 │       │                                 #                     /create_parallel_team /create_com_agents
 │       └───────────────────────────────  #                     /cherche_meilleure_action /doc_sync
@@ -104,7 +104,8 @@ VibeObs/
     │       ├── start.md                  # commande /start
     │       ├── close.md                  # commande /close
     │       ├── update.md                 # commande /update
-    │       └── create_memory.md          # commande /create_memory
+    │       ├── create_memory.md          # commande /create_memory
+    │       └── telephone.md              # commande /telephone (copiée par défaut)
     ├── _contexte/
     │   ├── contexte.md                   # contexte stable du projet
     │   └── signals.md                    # actions ouvertes, blocages, dernière session
@@ -147,7 +148,7 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## État actuel
 
-Kit **v5.33** (2026-11-09) : phase 5 de `roadmap_fondations.md` close (analyse fonctionnelle de `SérénIATech_dev`, rapport de 7 fonctionnalités validé, relayé à la session du projet, ordre révisé) ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`. Précédemment, kit v5.30 : phase 4 close (audit de `SérénIATech_dev`, test Gmail/Agenda/Drive reporté) ; kit v5.29 : phase 4 ouverte, lots A à F faits ; kit v5.28 : `check_docs.py` ignore le frontmatter du journal, `llms.txt` et ce README sont alignés ; kit v5.27 : deux commandes kit s'ajoutent, `/maintenance` (maintenance régulière, décision lot par lot) et `/telephone` (mode téléphone, réponse en un clic). Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique des versions précédentes.
+Kit **v5.34** (2026-11-10) : `/telephone` copié par défaut dans tout projet créé ou mis à jour (`/init_projet`, `/create_projet`, `/update`). Précédemment, kit v5.33 (2026-11-09) : phase 5 de `roadmap_fondations.md` close (analyse fonctionnelle de `SérénIATech_dev`, rapport de 7 fonctionnalités validé, relayé à la session du projet, ordre révisé) ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`. Précédemment, kit v5.30 : phase 4 close (audit de `SérénIATech_dev`, test Gmail/Agenda/Drive reporté) ; kit v5.29 : phase 4 ouverte, lots A à F faits ; kit v5.28 : `check_docs.py` ignore le frontmatter du journal, `llms.txt` et ce README sont alignés ; kit v5.27 : deux commandes kit s'ajoutent, `/maintenance` (maintenance régulière, décision lot par lot) et `/telephone` (mode téléphone, réponse en un clic). Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique des versions précédentes.
 
 ## Vérifier le lanceur Ollama
 

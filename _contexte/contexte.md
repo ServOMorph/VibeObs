@@ -12,6 +12,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-10 : kit v5.34 — `/telephone` copié par défaut dans tout projet créé (`/init_projet`, `/create_projet`) ou mis à jour (`/update`) ; projet `creation_videos` créé.
 - 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`.
 - 2026-11-09 : rapport de phase 5 relayé à la session Business ; ordre 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE ; implémentation par les zones ui, gestion-clients et business.
 - 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
@@ -19,6 +20,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
+- 2026-11-10 : `/telephone` fait partie du socle par défaut des projets cibles (copie à l'init, réalignement à `/update`) ; auparavant installée à la main projet par projet.
 - 2026-11-08 : constats d'audit relayés à une session ouverte par `SendMessage` : reformulation contrôlée avant application (patch du diff hors Git avant toute restauration, archivage au lieu de suppression), application validée par l'utilisateur dans la session de l'agent. Phase 4 close avec le test des connecteurs reporté (backlog) ; script de relevé du quota d'abonnement abandonné (`/usage`).
 - 2026-11-08 : audit d'un projet suivi : le travail non commité est sauvegardé par un commit par zone (`sauvegarde(<zone>)`, hors `/close`, signals des zones non mis à jour) plutôt qu'en bloc ; un dépôt imbriqué sans `.gitmodules` est détaché et ignoré ; des modifications d'origine inconnue apparues pendant l'audit sont laissées en l'état. Codex n'est joignable que par relais de l'utilisateur.
 - 2026-11-06 : modification d'un dossier où une session Codex ou Claude Code est ouverte : demande envoyée à la session, reformulation validée depuis VibeObs, application validée par l'utilisateur dans la session de l'agent (mémoire projet). Données personnelles (e-mails, `.env`) archivées hors Git dans `_archives/local/`.

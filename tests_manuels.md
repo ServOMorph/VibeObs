@@ -62,3 +62,10 @@ Le jeu d'essai sur projet jetable (2026-10-27) a validé le tri, le plafond, la 
 - backlog vidé : fichier et ligne de renvoi supprimés ;
 - `check_kit.py` présent et passant avant le commit d'un `/close` qui a écrit dans le backlog.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
+
+## /telephone par défaut — init et update
+
+Jamais exercé en réel :
+- `/init_projet <projet jetable>` : `.claude/commands/telephone.md` est présent dans la cible et commité avec `.claude/` ;
+- `/update <projet existant sans telephone.md>` : le fichier est copié, listé dans le message final, et le contrôle d'identité de l'étape 10 passe ;
+- `/update` d'un projet où `telephone.md` a été personnalisé : l'écart est signalé, pas silencieux.

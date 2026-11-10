@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.34 — 2026-11-10
+
+### Ajouté
+- `templates/.claude/commands/telephone.md` : `/telephone` devient commande par défaut des projets cibles.
+
+### Modifié
+- `init_projet.md` (kit + template) : copie de `telephone.md` à l'étape 3 ; étape 5 stage `AGENTS.md` / `GEMINI.md`, étape 7 place la ligne dans le tableau « Projets » de `DEPLOYMENTS.md`.
+- `update.md` (kit + template) : `telephone.md` ajouté au mode initialisation, à la table de copie, au contrôle d'identité de l'étape 10 et au message final.
+- `README.md`, `llms.txt` : `/telephone` n'est plus « kit uniquement ».
+
 ## v5.33 — 2026-11-09
 
 ### Modifié

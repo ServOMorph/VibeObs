@@ -71,6 +71,7 @@ La racine du projet cible ne doit jamais être demandée si $ARGUMENTS est fourn
 - `templates/.claude/commands/close.md` → `$ARGUMENTS/.claude/commands/close.md`
   (sauf zone supplémentaire, voir Q5)
 - `templates/.claude/commands/create_memory.md` → `$ARGUMENTS/.claude/commands/create_memory.md`
+- `templates/.claude/commands/telephone.md` → `$ARGUMENTS/.claude/commands/telephone.md`
 - `templates/.claude/zones.md` → `$ARGUMENTS/.claude/zones.md`
   (sauf zone supplémentaire : ajouter une ligne `| alias | dossier |` à la table existante)
 - `templates/ollama_call.py` → `$ARGUMENTS/ollama_call.py`
@@ -172,6 +173,8 @@ Dans le dépôt du projet cible ($ARGUMENTS) :
 
 ```bash
 git -C "$ARGUMENTS" add .gitignore .claude/ _contexte/ ollama_call.py _docs/
+git -C "$ARGUMENTS" add AGENTS.md    # seulement si "oui" à Q7
+git -C "$ARGUMENTS" add GEMINI.md    # seulement si "oui" à Q8
 git -C "$ARGUMENTS" commit -m "init: protocole vibecoding — zone <alias>"
 ```
 
@@ -184,7 +187,9 @@ git -C "$ARGUMENTS" commit -m "init: protocole vibecoding — zone <alias>"
 
 ### 7. Enregistrer le déploiement dans le kit
 
-Ajouter une ligne dans `<kit>/DEPLOYMENTS.md` :
+Ajouter une ligne dans le tableau « Projets » de `<kit>/DEPLOYMENTS.md` (premier tableau, en-tête
+`| Projet | Chemin / repo | Zone(s) | Version kit | Date init |`), juste après sa dernière ligne,
+avant `## Remotes rclone` — jamais en fin de fichier :
 
 ```
 | <nom du projet> | $ARGUMENTS | <alias> | <version du kit> | {{DATE}} |
