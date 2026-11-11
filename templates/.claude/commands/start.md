@@ -14,7 +14,7 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 ## Procédure
 
 1. Lire l'argument fourni ($ARGUMENTS).
-   - Si `--complet` y figure : le retirer de l'argument et activer le mode complet (étapes 4 et 4b).
+   - Si `--complet` y figure : le retirer de l'argument et activer le mode complet (étape 4).
    - Si absent : utiliser le working directory courant comme dossier cible (zone implicite).
    - Si présent mais non reconnu dans la table ci-dessus :
      répondre "Erreur : zone inconnue. Zones valides : <liste des alias>"
@@ -59,7 +59,7 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    Le reste du fichier est donné sur demande de l'utilisateur.
 
 4b. Lire les fichiers `réf:` des seules actions dont l'objet est cité dans « Prochaine étape
-    exacte » (en mode complet ou en affichage intégral : de toutes les actions). Les autres `réf:`
+    exacte », y compris en mode complet ou en affichage intégral. Les autres `réf:`
     sont lues quand l'utilisateur ou la tâche en cours en a besoin. Si une action semble ambiguë
     mais qu'une `réf:` existe, lire la référence en priorité plutôt que de demander des précisions.
 

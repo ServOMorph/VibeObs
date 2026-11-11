@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.39 — 2026-11-11
+
+### Modifié
+- `start.md` (kit + template) : étape 4b limitée aux `réf:` des actions citées par la prochaine étape y compris en mode complet ou en affichage intégral (la lecture de toutes les `réf:` est retirée) ; étape 1 : `--complet` ne porte plus que sur l'étape 4.
+- `tests_manuels.md` : cas « `/start` racine », « bloc 4c hors partie affichée » et « `/start --complet` » validés et retirés.
+
 ## v5.38 — 2026-11-11
 
 ### Modifié
