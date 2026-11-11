@@ -53,10 +53,6 @@
   - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
   - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
 
-- Trancher la définition du « fichier de travail » de `/close` étape 9 : `tests_manuels.md` et les `roadmap*.md` sont des fichiers de suivi, mais la règle v5.25 les compte comme travail (seuls `_contexte/`, `README.md`, `CHANGELOG.md` sont exclus). Constat 2026-10-29 : le retrait d'une section de `tests_manuels.md` seule imposerait un bump de version du kit. Non bumpé cette fois.
-  - fait quand: la règle exclut explicitement ces fichiers de suivi (kit + template, `check_kit.py` passe), ou la décision de les compter est tracée.
-  - réf: `.claude/commands/close.md` étape 9 ; `templates/.claude/commands/close.md` ; `CHANGELOG.md` v5.25.
-
 - Trancher les 3 propositions du journal `/create_agent` du 2026-10-30 : (a) mode « agent client » avec création en base préalable, (b) exception à la règle des majuscules quand le dossier est lié à une base, (c) un échec de lecture de `start.md` ne vaut jamais absence de référence.
   - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
   - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
@@ -80,25 +76,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-11 (suite 4)
+# Session du 2026-11-11 (suite 5)
 
 ## Décisions prises
-- `/start` étape 4 (v5.40) : la ligne de compteurs s'affiche dans tous les modes ; une partie sans objet est retirée de la ligne, jamais remplacée par « omis » ou « aucune ».
-- Action « Mettre à jour `initialiser_un_projet.md` » transférée de la racine vers la zone `documentation` (doublon).
-- Plan d'avancement : étape 2 (« fichier de travail » de `/close` étape 9), étape 3 (frontmatter de `close.md` et `/update`), étape 4 (propagation par `/update`), `/compact` à chaque fin d'étape.
+- `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi ; les modifier seuls ne déclenche pas de bump de version (comme `_contexte/`, `README.md`, `CHANGELOG.md`).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/start.md` et miroir template : étape 4.
-- `Protocole_start_close_context.md`, `CHANGELOG.md` (v5.40), `README.md`, `llms.txt`.
-- `tests_manuels.md` : section « /start — affichage réduit » soldée et retirée.
-- `DOCUMENTATION/_contexte/signals.md` : action `sessions_start_close.md` complétée (v5.40).
+- `.claude/commands/close.md` et miroir template : étape 9, liste des fichiers exclus du bump étendue ; `check_kit.py` passe.
+- `CHANGELOG.md` (v5.41), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : version alignée.
+- `_contexte/signals.md` : action « fichier de travail » retirée (traitée).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/start documentation --complet` et le repli sans « Prochaine étape exacte » conformes (zone jetable `_test_repli` créée puis supprimée).
+- VALIDE : le reste de la documentation ne reprend pas la règle de l'étape 9 (aucun autre alignement requis).
 - EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
-Étape 2 du plan : trancher la définition du « fichier de travail » de `/close` étape 9 (`tests_manuels.md` et `roadmap*.md` comptés ou non comme travail), puis modifier `close.md` (kit + template) et lancer `check_kit.py`. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+Étape 3 du plan : décider si `/update` (`update.md` étapes 5 et 10) préserve les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET` (cas `allowed-tools` de SérénIATech_dev, commit `61b8e47`), puis modifier `update.md` si oui. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
 
 ## Question bloquante pour la session suivante
 Aucune

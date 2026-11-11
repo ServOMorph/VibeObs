@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.41 — 2026-11-11
+
+### Modifié
+- `close.md` (kit + template) : étape 9, `tests_manuels.md` et `roadmap*.md` rejoignent `_contexte/`, `README.md` et `CHANGELOG.md` dans les fichiers dont la seule modification ne déclenche pas de bump de version (fichiers de suivi). Constat d'origine : le retrait d'une section de `tests_manuels.md` imposait une version.
+
 ## v5.40 — 2026-11-11
 
 ### Modifié
