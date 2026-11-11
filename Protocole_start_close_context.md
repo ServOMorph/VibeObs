@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.36** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.37** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -141,7 +141,7 @@ Voir `templates/.claude/commands/start.md`.
 
 # /close [zone]
 
-> **Frontmatter :** le fichier `.claude/commands/close.md` porte `model: sonnet` et `allowed-tools` autorisant `git status/diff/add/commit/push` — plus de prompts de permission au commit ni au push de clôture.
+> **Frontmatter :** le fichier `.claude/commands/close.md` porte `model: sonnet` et `allowed-tools` autorisant `git status/diff/add/commit/remote/push` — plus de prompts de permission au commit ni au push de clôture. L'étape 14 est conditionnelle : pas de push si une règle projet l'interdit ou si `git remote` est vide.
 
 Étape 3-bis : chaque action, décision et point d'attention est attribué à sa zone propriétaire avant
 écriture ; la racine ne garde que la coordination transversale ; un écart entre la zone fermée et le

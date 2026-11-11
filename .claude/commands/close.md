@@ -2,7 +2,7 @@
 description: Clôture la session d'une zone — synthèse, mise à jour du contexte, commit
 argument-hint: <zone>
 model: sonnet
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git check-ignore:*), Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git show:*), PowerShell(python *backup_file.py*)
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git remote:*), Bash(git check-ignore:*), Bash(git ls-files:*), Bash(git rev-parse:*), Bash(git show:*), PowerShell(python *backup_file.py*)
 ---
 
 # /close <zone>
@@ -234,18 +234,20 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
       survenir avec l'étape 12, mais à vérifier via `git status` après coup) : les inclure dans
       ce même commit, jamais dans un commit séparé.
 
-14. Exécuter `git push` :
+14. Push conditionnel. Si une règle du bloc `SPECIFICITES PROJET` de ce fichier ou de
+    `.claude/memory.md` interdit le push : ne pas exécuter `git push`, ne pas le proposer, ne pas
+    le mentionner dans le bilan. Sinon, lister d'abord les remotes :
     ```bash
-    git push
+    git remote
     ```
-    Si le projet n'a pas de remote configuré, ignorer cette étape silencieusement. Si le push
-    échoue (pas de remote tracking, conflit, réseau, etc.) : afficher l'erreur telle quelle dans
-    le bilan de l'étape 15, ne pas tenter de résolution automatique (pas de force push, pas de
-    pull/rebase automatique).
+    Sortie vide (aucun remote) : passer l'étape sans exécuter `git push` et sans la mentionner
+    dans le bilan. Au moins un remote : exécuter `git push`. Si le push échoue (pas de remote
+    tracking, conflit, réseau, etc.) : afficher l'erreur telle quelle dans le bilan de l'étape 15,
+    ne pas tenter de résolution automatique (pas de force push, pas de pull/rebase automatique).
 
 14-ter. **Hook de zone — Fin.** Si `<dossier>/_contexte/on_close.md` existe et contient une section
-    « Fin » : l'exécuter maintenant. Rien à faire sinon. Non bloquant. S'exécute même si le `git
-    push` de l'étape 14 a échoué : une sauvegarde de fin de session ne dépend pas du push.
+    « Fin » : l'exécuter maintenant. Rien à faire sinon. Non bloquant. S'exécute après le commit
+    de l'étape 13, que le push de l'étape 14 ait eu lieu, ait été sauté ou ait échoué.
 
 15. Afficher un bilan des résidus non commités :
     ```bash

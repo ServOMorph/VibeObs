@@ -69,3 +69,12 @@ Jamais exercé en réel :
 - `/init_projet <projet jetable>` : `.claude/commands/telephone.md` est présent dans la cible et commité avec `.claude/` ;
 - `/update <projet existant sans telephone.md>` : le fichier est copié, listé dans le message final, et le contrôle d'identité de l'étape 10 passe ;
 - `/update` d'un projet où `telephone.md` a été personnalisé : l'écart est signalé, pas silencieux.
+
+## /close — push conditionnel (étape 14)
+
+Jamais exercé en réel :
+- projet sans remote (`git remote` vide) : aucun `git push` exécuté, rien mentionné au bilan ;
+- projet dont le bloc `SPECIFICITES PROJET` de `close.md` ou `.claude/memory.md` interdit le push (ex. `SérénIATech_dev`) : aucun `git push`, rien proposé ni mentionné ;
+- projet avec remote : `git push` exécuté ; en cas d'échec, erreur affichée telle quelle au bilan ;
+- dans les trois cas : le hook « Fin » (14-ter) s'exécute après le commit.
+Transmettre chaque divergence au kit (scénario, étape, attendu, observé).

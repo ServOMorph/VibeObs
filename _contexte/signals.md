@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-10)
+# Signals — VibeObs (MAJ 2026-11-11)
 
 ## Actions ouvertes — pilotage
 
@@ -50,7 +50,7 @@
 - Faire appliquer le tri vers `_contexte/backlog.md` (v5.22 à v5.25) aux autres projets suivis. Fait : `SérénIATech_dev` en v5.25 (`/update`, 2026-10-29) ; `Appli_TSA_SDI_TDAH` : `close.md` aligné à la main sur le générique v5.25 (commit `d557510`, 2026-10-29), `start.md` non aligné. Validé sur un projet jetable (supprimé) : tri, plafond, péremption, promotion, croisement des `réf:`, catégories, ligne de renvoi totalisée, pas de bump sans modification de travail, constat rangé chez la zone concernée. Reste à exercer en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e` dans `allowed-tools`, bilan sur ses 49 entrées de backlog sans catégorie, nombre d'entrées sans `réf:` précis), backlog créé à la première entrée, backlog vidé, `check_kit.py` présent avant commit.
   - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.25 ou leur report est tracé, et un `/close` réel d'Appli en v5.25 a été observé, ses divergences transmises au kit.
   - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 à v5.25 ; `tests_manuels.md` section « /close v5.22 » ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\.claude\commands\close.md`.
-- Décider si `/update` doit préserver les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET`. Constat 2026-10-27 : `SérénIATech_dev` avait `PowerShell(python *menage_zone.py*)` dans `allowed-tools` ; la copie du kit l'aurait supprimée (conservée à la main), et le contrôle « identique hors spécificités » de l'étape 10 signale cet écart.
+- Décider si `/update` doit préserver les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET`. Constat 2026-10-27 : `SérénIATech_dev` avait `PowerShell(python *menage_zone.py*)` dans `allowed-tools` ; la copie du kit l'aurait supprimée (conservée à la main), et le contrôle « identique hors spécificités » de l'étape 10 signale cet écart. 2026-11-11 : SérénIATech_dev a retiré `git push` de `allowed-tools` et ajouté une ligne d'étape 14 dans son bloc `SPECIFICITES PROJET` ; le push conditionnel du kit (v5.37) rend le retrait inutile, mais le prochain `/update` de ce projet doit être contrôlé (ligne de spécificités intacte, `allowed-tools` du kit).
   - fait quand: `update.md` (étapes 5 et 10) préserve ou signale explicitement ces ajouts, ou la décision de ne pas le faire est tracée.
   - réf: `.claude/commands/update.md` étapes 5 et 10 ; `SérénIATech_dev` commit `61b8e47`.
 - Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
@@ -81,19 +81,21 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-11
+# Session du 2026-11-11 (suite)
 
 ## Décisions prises
-- `llms.txt` aligné sur la version courante du kit (v5.35 au lieu de v5.28), commit `b392ff5`.
-- Entrée du backlog sur la liste des templates de `/create_projet` laissée en l'état (arrêt demandé).
+- `/close` étape 14 : push conditionnel (aucun push si une règle projet l'interdit ou si `git remote` est vide) ; origine : message de SérénIATech_dev (dépôt local sans remote, `git push` exécuté puis échec présenté comme incident).
+- Étape 14-ter : s'exécute après le commit, que le push ait eu lieu, ait été sauté ou ait échoué.
 
 ## Livrables produits ou modifiés
-- `llms.txt` ligne 5 : version corrigée.
-- `CHANGELOG.md` (v5.36), `README.md`, `Protocole_start_close_context.md`, `_contexte/`.
+- `.claude/commands/close.md` et miroir template : étapes 14 et 14-ter, `allowed-tools` (+ `git remote`).
+- `Protocole_start_close_context.md`, `templates/on_close_TEMPLATE.md` : alignés sur l'étape 14.
+- `tests_manuels.md` : section « /close : push conditionnel » ; `CHANGELOG.md` (v5.37), `README.md`, `llms.txt`, `_contexte/`.
+- `DOCUMENTATION/_contexte/signals.md` : action de triage ajoutée (`sessions_start_close.md` lignes 33 et 36 périmées).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` passe (exit 0) après la correction.
-- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+- VALIDE : `check_kit.py` et `check_docs.py` passent (exit 0) après les modifications.
+- EN ATTENTE : comportement réel de l'étape 14 (`tests_manuels.md`) ; plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
 Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 9 de `/close`, frontmatter de `update.md`).

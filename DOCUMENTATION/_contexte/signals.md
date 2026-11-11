@@ -25,6 +25,9 @@
 - [P2|ouvert|source=kit] Comparer les guides de `DOCUMENTATION/20_guides/` aux commandes et versions du kit postérieures à leur date `INDEX.md` (guides datés du 2026-08-21 au 2026-09-04 ; kit en v5.27, dont `/maintenance` et `/telephone` absents de l'INDEX) et décider des mises à jour ; relever aussi les sources canoniques `llms.txt` et `README.md` mises à jour le 2026-11-06
   - fait quand: chaque guide concerné est mis à jour avec sa ligne `INDEX.md` datée, ou la décision de ne pas le modifier est tracée
   - réf: DOCUMENTATION/INDEX.md, CHANGELOG.md v5.20 à v5.27, llms.txt
+- [P2|ouvert|source=kit] Mettre à jour `20_guides/sessions_start_close.md` après kit v5.37 : tableau des hooks (ligne 33 : `## Fin` « après `git push` » -> après le push conditionnel de l'étape 14) et contrat (ligne 36 : « même après un échec du push » -> après le commit, que le push ait eu lieu, ait été sauté ou ait échoué)
+  - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
+  - réf: .claude/commands/close.md étapes 14 et 14-ter, CHANGELOG.md v5.37
 - [info|source=kit] L'écart `check_docs.py` (journal append-only, commit 26b9cdd4) est résolu le 2026-11-06 : le contrôle ignore le frontmatter ; `python scripts/check_docs.py` passe. L'action « `check_docs.py` échoue » ci-dessus peut être retirée par l'agent documentation.
   - réf: scripts/check_docs.py
 

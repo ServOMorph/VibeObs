@@ -1406,3 +1406,25 @@ Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-11
+
+## Décisions prises
+- `llms.txt` aligné sur la version courante du kit (v5.35 au lieu de v5.28), commit `b392ff5`.
+- Entrée du backlog sur la liste des templates de `/create_projet` laissée en l'état (arrêt demandé).
+
+## Livrables produits ou modifiés
+- `llms.txt` ligne 5 : version corrigée.
+- `CHANGELOG.md` (v5.36), `README.md`, `Protocole_start_close_context.md`, `_contexte/`.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` passe (exit 0) après la correction.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 9 de `/close`, frontmatter de `update.md`).
+
+## Question bloquante pour la session suivante
+Aucune

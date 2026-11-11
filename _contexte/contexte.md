@@ -12,12 +12,12 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-11 : kit v5.37 — `/close` étape 14 conditionnelle (pas de push sans remote ni si une règle projet l'interdit) ; phase 6 toujours en attente du plan de l'utilisateur.
 - 2026-11-11 : kit v5.36 — `llms.txt` aligné sur la version du kit ; phase 6 toujours en attente du plan de l'utilisateur.
 - 2026-11-10 : kit v5.35 — `parallel_agents` retiré de la liste de `/create_projet` (non insérable) ; phase 6 toujours en attente du plan de l'utilisateur.
 - 2026-11-10 : kit v5.34 — `/telephone` copié par défaut dans tout projet créé (`/init_projet`, `/create_projet`) ou mis à jour (`/update`) ; projet `creation_videos` créé.
 - 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`.
 - 2026-11-09 : rapport de phase 5 relayé à la session Business ; ordre 1 > 2 > 5 > 3, 7 en parallèle, 4 après la décision CAE ; implémentation par les zones ui, gestion-clients et business.
-- 2026-11-06 : `/telephone` installé par leurs sessions dans `site_internet_ST_v3` et `creation_llm`.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
@@ -28,6 +28,6 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-01 : un message d'une autre session demandant d'écrire dans le kit (ex. insérer un template) est consigné en action et non exécuté sans accord explicite de l'utilisateur ; `DEPLOYMENTS.md` reste local (gitignoré), donc non détectable par `git diff` en `/close` (entrée de backlog).
 - 2026-10-29 : `/close` (v5.23 à v5.25) — doublon reconnu à l'objet identique (une `réf:` commune ne suffit pas), `réf:` de backlog vérifié par commande avant écriture et croisé avec les fichiers modifiés, ligne de renvoi totalisée, constat sur une autre zone écrit dans son `signals.md`, pas de bump de `CHANGELOG.md` sans modification de travail. Validé sur projet jetable avant déploiement.
 - 2026-10-29 : Appli_TSA_SDI_TDAH n'a pas `/update` : son `close.md` est aligné à la main sur le générique (diff comparé au template, bloc `SPECIFICITES PROJET` intact) ; le backlog existant de 49 entrées n'est pas migré.
-- 2026-10-27 : `/update` vers un projet existant : relire le diff complet (jamais tronqué) avant d'écraser `close.md`/`start.md` ; le bloc `SPECIFICITES PROJET` est réinjecté depuis `HEAD`, et toute personnalisation du frontmatter est conservée à la main en attendant la décision sur `update.md`.
 - 2026-11-09 : analyse fonctionnelle d'un projet suivi menée par inventaire du code en lecture seule (volumes SQLite en mode `ro`, aucune donnée lue), puis tri processus par processus avec l'utilisateur. `SérénIATech_dev` : Indy seul outil de facturation, l'UI ne fait que le suivi ; prospection mail recentrée sur la qualification du pipeline ; une fonctionnalité dite absente est vérifiée dans le code avant d'être classée nouvelle.
 - 2026-11-10 : `templates/parallel_agents` n'est pas un template insérable (modèles par agent remplis par `/create_parallel_team`) : exclu de la liste de `/create_projet` plutôt que d'étendre les placeholders d'`/insert_template`.
+- 2026-11-11 : `/close` ne pousse jamais sans condition : `git remote` vide ou règle projet (`SPECIFICITES PROJET`, `.claude/memory.md`) = pas de push, rien au bilan ; un projet sans remote voulu n'a pas à personnaliser le corps de `close.md`.

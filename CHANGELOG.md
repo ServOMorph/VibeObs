@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.37 — 2026-11-11
+
+### Modifié
+- `close.md` (kit + template) : étape 14 conditionnelle (aucun `git push` si une règle projet l'interdit ou si `git remote` est vide ; échec affiché tel quel) ; étape 14-ter exécutée après le commit dans tous les cas ; `allowed-tools` : ajout de `git remote`.
+- `Protocole_start_close_context.md`, `templates/on_close_TEMPLATE.md` : alignés sur l'étape 14.
+
 ## v5.36 — 2026-11-11
 
 ### Corrigé
