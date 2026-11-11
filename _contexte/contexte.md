@@ -12,6 +12,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-11 : kit v5.36 — `llms.txt` aligné sur la version du kit ; phase 6 toujours en attente du plan de l'utilisateur.
 - 2026-11-10 : kit v5.35 — `parallel_agents` retiré de la liste de `/create_projet` (non insérable) ; phase 6 toujours en attente du plan de l'utilisateur.
 - 2026-11-10 : kit v5.34 — `/telephone` copié par défaut dans tout projet créé (`/init_projet`, `/create_projet`) ou mis à jour (`/update`) ; projet `creation_videos` créé.
 - 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 (PEDAGOGIE) retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans la session `SérénIATech_dev`.

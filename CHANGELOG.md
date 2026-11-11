@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.36 — 2026-11-11
+
+### Corrigé
+- `llms.txt` : version affichée alignée sur le kit (v5.28 → v5.36).
+
 ## v5.35 — 2026-11-10
 
 ### Corrigé
