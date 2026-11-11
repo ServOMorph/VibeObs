@@ -2,7 +2,7 @@
 
 > Kit de protocole Claude Code pour le vibecoding long : commandes /start, /close, /init_projet, /update, /create_memory qui persistent le contexte entre sessions. Zéro infrastructure, multi-zones, délégation locale Ollama optionnelle.
 
-Version : v5.41 (2026-11-11).
+Version : v5.42 (2026-11-11).
 
 ## Quoi
 

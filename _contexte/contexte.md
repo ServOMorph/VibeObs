@@ -12,7 +12,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-11 : kit v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
+- 2026-11-11 : kit v5.42 — `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
 - 2026-11-11 : kit v5.37 — `/close` étape 14 conditionnelle (pas de push sans remote ni si une règle projet l'interdit) ; v5.36 : `llms.txt` aligné sur la version du kit.
 - 2026-11-10 : kit v5.34 à v5.35 — `/telephone` copié par défaut dans tout projet créé ou mis à jour ; `parallel_agents` retiré de `/create_projet`.
 - 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans `SérénIATech_dev`, en attente du plan.
@@ -20,7 +20,6 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
-- 2026-11-08 : constats d'audit relayés à une session ouverte par `SendMessage` : reformulation contrôlée avant application (patch du diff hors Git avant toute restauration, archivage au lieu de suppression), application validée par l'utilisateur dans la session de l'agent. Phase 4 close avec le test des connecteurs reporté (backlog) ; script de relevé du quota d'abonnement abandonné (`/usage`).
 - 2026-11-08 : audit d'un projet suivi : le travail non commité est sauvegardé par un commit par zone (`sauvegarde(<zone>)`, hors `/close`, signals des zones non mis à jour) plutôt qu'en bloc ; un dépôt imbriqué sans `.gitmodules` est détaché et ignoré ; des modifications d'origine inconnue apparues pendant l'audit sont laissées en l'état. Codex n'est joignable que par relais de l'utilisateur.
 - 2026-11-06 : modification d'un dossier où une session Codex ou Claude Code est ouverte : demande envoyée à la session, reformulation validée depuis VibeObs, application validée par l'utilisateur dans la session de l'agent (mémoire projet). Données personnelles (e-mails, `.env`) archivées hors Git dans `_archives/local/`.
 - 2026-11-09 : analyse fonctionnelle d'un projet suivi menée par inventaire du code en lecture seule (volumes SQLite en mode `ro`, aucune donnée lue), puis tri processus par processus avec l'utilisateur. `SérénIATech_dev` : Indy seul outil de facturation, l'UI ne fait que le suivi ; prospection mail recentrée sur la qualification du pipeline ; une fonctionnalité dite absente est vérifiée dans le code avant d'être classée nouvelle.
@@ -31,3 +30,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-11 : `/start` étape 4b (v5.39) : lecture des `réf:` limitée aux actions citées par la prochaine étape, même en `--complet` (lire toutes les `réf:` d'un fichier de 19 actions était trop coûteux en tokens).
 - 2026-11-11 : `/start` étape 4 (v5.40) : la ligne de compteurs termine l'affichage dans tous les modes ; une partie sans objet est retirée de la ligne, jamais écrite « omis » (écart constaté au test du repli).
 - 2026-11-11 : `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi, exclus du déclencheur de bump de version (le statut de roadmap est mis à jour par `/close` lui-même).
+- 2026-11-11 : `/update` (v5.42) : `allowed-tools` de `start.md`/`close.md` = liste du kit + ajouts du projet (signalés) ; retraits du projet non conservés ; étape 10 tolère les ajouts en fin de ligne.

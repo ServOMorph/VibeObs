@@ -117,8 +117,14 @@ Pour chacun des fichiers suivants, copier tel quel depuis le kit (aucune substit
 | `templates/.claude/commands/telephone.md` | `<cible>/.claude/commands/telephone.md` |
 | `templates/ollama_call.py` | `<cible>/ollama_call.py` |
 
+Pour `start.md` et `close.md`, relever aussi, avant d'écraser, les permissions de la ligne
+`allowed-tools` du frontmatter existant absentes de celle du fichier kit (ajouts du projet). Les
+permissions du kit absentes du fichier existant (retraits du projet) ne sont pas conservées.
+
 Pour `start.md` et `close.md`, une fois le fichier copié : réinjecter le contenu retenu ci-dessus
-entre les marqueurs `SPECIFICITES PROJET` du fichier nouvellement copié.
+entre les marqueurs `SPECIFICITES PROJET` du fichier nouvellement copié, puis ajouter en fin de
+ligne `allowed-tools` les permissions relevées (dans leur ordre d'origine). Signaler dans la
+réponse finale les permissions ainsi conservées, pour information.
 
 `init_projet.md`, `update.md` et `create_agent.md` ne sont pas copiés dans les projets — ils restent dans le kit. `create_agent.md` s'exécute toujours depuis le kit et prend le projet cible en argument (chemin absolu).
 
@@ -209,7 +215,8 @@ Avant de confirmer, exécuter ces contrôles sur `<cible>` et collecter les éch
 
 1. **Fichiers présents et à jour** : `start.md`, `close.md`, `create_memory.md`, `telephone.md`, `ollama_call.py` sont
    strictement identiques à leur version dans `templates/` (hors zones `SPECIFICITES PROJET`, qui
-   diffèrent normalement).
+   diffèrent normalement, et hors permissions ajoutées en fin de ligne `allowed-tools` à l'étape 5 :
+   la ligne commence par la liste du kit, intégrale et dans le même ordre).
 2. **Marqueurs intacts** : `start.md` et `close.md` contiennent chacun exactement une paire
    `<!-- SPECIFICITES PROJET : DEBUT -->` / `<!-- SPECIFICITES PROJET : FIN -->`.
 3. **CLAUDE.md cohérent** :

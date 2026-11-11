@@ -3,6 +3,11 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.42 — 2026-11-11
+
+### Modifié
+- `update.md` (kit + template) : étape 5, relevé des permissions `allowed-tools` ajoutées par le projet dans `start.md` et `close.md`, réinjectées en fin de ligne après la copie du kit et signalées au rapport ; les retraits du projet ne sont pas conservés. Étape 10 : le contrôle « identique au kit » tolère ces ajouts. Cas d'origine : `PowerShell(python *menage_zone.py*)` de `SérénIATech_dev`.
+
 ## v5.41 — 2026-11-11
 
 ### Modifié

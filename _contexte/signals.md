@@ -46,9 +46,6 @@
 - Faire appliquer le tri vers `_contexte/backlog.md` (v5.22 à v5.25) aux autres projets suivis. Fait : `SérénIATech_dev` en v5.25 (`/update`, 2026-10-29) ; `Appli_TSA_SDI_TDAH` : `close.md` aligné à la main sur le générique v5.25 (commit `d557510`, 2026-10-29), `start.md` non aligné. Validé sur un projet jetable (supprimé) : tri, plafond, péremption, promotion, croisement des `réf:`, catégories, ligne de renvoi totalisée, pas de bump sans modification de travail, constat rangé chez la zone concernée. Reste à exercer en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e` dans `allowed-tools`, bilan sur ses 49 entrées de backlog sans catégorie, nombre d'entrées sans `réf:` précis), backlog créé à la première entrée, backlog vidé, `check_kit.py` présent avant commit.
   - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.25 ou leur report est tracé, et un `/close` réel d'Appli en v5.25 a été observé, ses divergences transmises au kit.
   - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 à v5.25 ; `tests_manuels.md` section « /close v5.22 » ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\.claude\commands\close.md`.
-- Décider si `/update` doit préserver les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET`. Constat 2026-10-27 : `SérénIATech_dev` avait `PowerShell(python *menage_zone.py*)` dans `allowed-tools` ; la copie du kit l'aurait supprimée (conservée à la main), et le contrôle « identique hors spécificités » de l'étape 10 signale cet écart. 2026-11-11 : SérénIATech_dev a retiré `git push` de `allowed-tools` et ajouté une ligne d'étape 14 dans son bloc `SPECIFICITES PROJET` ; le push conditionnel du kit (v5.37) rend le retrait inutile, mais le prochain `/update` de ce projet doit être contrôlé (ligne de spécificités intacte, `allowed-tools` du kit).
-  - fait quand: `update.md` (étapes 5 et 10) préserve ou signale explicitement ces ajouts, ou la décision de ne pas le faire est tracée.
-  - réf: `.claude/commands/update.md` étapes 5 et 10 ; `SérénIATech_dev` commit `61b8e47`.
 - Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
   - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
   - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
@@ -60,7 +57,7 @@
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées).
+- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; au `/update` de `SérénIATech_dev`, contrôler que `PowerShell(python *menage_zone.py*)` reste en place, que `allowed-tools` reprend `git push` et `git remote` du kit et que sa ligne d'étape 14 (bloc `SPECIFICITES PROJET`) est intacte.
   - fait quand: les projets de `DEPLOYMENTS.md` sont mis à jour par `/update` (ou leur report est tracé) et le `/start` de l'un d'eux a été observé en réel.
   - réf: `DEPLOYMENTS.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `.claude/commands/update.md`.
 Backlog : 20 entrées (finding 3, amélioration 4, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
@@ -76,22 +73,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-11 (suite 5)
+# Session du 2026-11-11 (suite 6)
 
 ## Décisions prises
-- `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi ; les modifier seuls ne déclenche pas de bump de version (comme `_contexte/`, `README.md`, `CHANGELOG.md`).
+- `/update` fusionne l'`allowed-tools` : liste du kit, plus les permissions ajoutées par le projet (signalées au rapport) ; les retraits du projet ne sont pas conservés.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md` et miroir template : étape 9, liste des fichiers exclus du bump étendue ; `check_kit.py` passe.
-- `CHANGELOG.md` (v5.41), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : version alignée.
-- `_contexte/signals.md` : action « fichier de travail » retirée (traitée).
+- `.claude/commands/update.md` et miroir template : étape 5 (relevé et réinjection des permissions ajoutées) et étape 10 (contrôle tolérant aux ajouts en fin de ligne) ; `check_kit.py` passe.
+- `CHANGELOG.md` (v5.42), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : version alignée.
+- `_contexte/signals.md` : action « frontmatter de `close.md` » retirée (traitée) ; contrôle de `SérénIATech_dev` ajouté à l'action de propagation.
 
 ## Hypothèses validées / invalidées
-- VALIDE : le reste de la documentation ne reprend pas la règle de l'étape 9 (aucun autre alignement requis).
+- EN ATTENTE : fusion jamais exercée en réel, première occasion au `/update` de `SérénIATech_dev`.
 - EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
-Étape 3 du plan : décider si `/update` (`update.md` étapes 5 et 10) préserve les personnalisations du frontmatter de `close.md` hors bloc `SPECIFICITES PROJET` (cas `allowed-tools` de SérénIATech_dev, commit `61b8e47`), puis modifier `update.md` si oui. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+Étape 4 du plan : propager le kit v5.42 aux projets suivis via `/update` (action « Propager le `/start` v5.40 »), en commençant par contrôler `SérénIATech_dev`. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
 
 ## Question bloquante pour la session suivante
 Aucune
