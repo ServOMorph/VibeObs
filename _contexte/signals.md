@@ -68,6 +68,9 @@
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
+- Exercer le nouveau `/start` (v5.38) en réel : affichage réduit par défaut, `--complet`, repli si une section manque, bloc 4c sur tout le fichier ; puis le propager aux projets suivis par `/update`.
+  - fait quand: les cas de `tests_manuels.md` (section « /start — affichage réduit ») sont joués et leurs divergences transmises au kit, traitées ou écartées.
+  - réf: `tests_manuels.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `DEPLOYMENTS.md`.
 Backlog : 20 entrées (finding 3, amélioration 4, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -81,24 +84,23 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-11 (suite)
+# Session du 2026-11-11 (suite 2)
 
 ## Décisions prises
-- `/close` étape 14 : push conditionnel (aucun push si une règle projet l'interdit ou si `git remote` est vide) ; origine : message de SérénIATech_dev (dépôt local sans remote, `git push` exécuté puis échec présenté comme incident).
-- Étape 14-ter : s'exécute après le commit, que le push ait eu lieu, ait été sauté ou ait échoué.
+- `/start` (v5.38) : affichage réduit par défaut (« Prochaine étape exacte », « Question bloquante », ligne de compteurs, toujours mot pour mot) ; `--complet` ou section manquante : `signals.md` en entier. Origine : l'utilisateur ne lit que la fin de l'affichage.
+- Étape 4b limitée aux `réf:` des actions citées par la prochaine étape ; étape 4c toujours menée sur tout le fichier.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md` et miroir template : étapes 14 et 14-ter, `allowed-tools` (+ `git remote`).
-- `Protocole_start_close_context.md`, `templates/on_close_TEMPLATE.md` : alignés sur l'étape 14.
-- `tests_manuels.md` : section « /close : push conditionnel » ; `CHANGELOG.md` (v5.37), `README.md`, `llms.txt`, `_contexte/`.
-- `DOCUMENTATION/_contexte/signals.md` : action de triage ajoutée (`sessions_start_close.md` lignes 33 et 36 périmées).
+- `.claude/commands/start.md` et miroir template : étapes 1, 4, 4b, 4c ; `argument-hint`.
+- `Protocole_start_close_context.md`, `CHANGELOG.md` (v5.38), `README.md`, `llms.txt`, `tests_manuels.md` (section « /start — affichage réduit »).
+- `DOCUMENTATION/_contexte/signals.md` : action de triage pour `sessions_start_close.md` (affichage de `/start`).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passent (exit 0) après les modifications.
-- EN ATTENTE : comportement réel de l'étape 14 (`tests_manuels.md`) ; plan de la phase 6 de SérénIATech_dev.
+- VALIDE : `check_kit.py` et `check_docs.py` passent après les modifications.
+- EN ATTENTE : comportement réel du `/start` v5.38 (`tests_manuels.md`) ; plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
-Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 9 de `/close`, frontmatter de `update.md`).
+Attendre le plan de la phase 6 (menée dans SérénIATech_dev). En attendant : jouer `/start` puis `/start --complet` (cas de `tests_manuels.md`, section « /start — affichage réduit »), ou traiter une P1 du kit : définition du « fichier de travail » de `/close` étape 9, ou frontmatter de `close.md` préservé par `/update`.
 
 ## Question bloquante pour la session suivante
 Aucune

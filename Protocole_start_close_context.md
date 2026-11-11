@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.37** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.38** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -130,7 +130,12 @@ Charge `signals.md`, `contexte.md`, et `roadmap*.md` si présente — sans fichi
 Étape 2b : si `<dossier>/agent_role.md` existe (zone-agent créée via `/create_agent`), la charger et
 l'afficher intégralement avant `signals.md`. Absent pour une zone racine classique.
 
-Étape 4c : après l'affichage intégral de `signals.md`, signale (sans rien déplacer) les éléments
+Étape 4 : par défaut, recopie mot pour mot « Prochaine étape exacte » et « Question bloquante » de la
+dernière session, plus une ligne de compteurs (actions ouvertes, P1, backlog, phase en cours) ;
+`--complet`, ou l'absence de l'une des deux sections, affiche `signals.md` en entier. Étape 4b : seules
+les `réf:` des actions citées par la prochaine étape sont lues d'office.
+
+Étape 4c : sur l'intégralité de `signals.md` (pas seulement la partie affichée), signale (sans rien déplacer) les éléments
 manifestement mal classés : action d'une autre zone, action métier à la racine, doublon avec le
 `signals.md` de la zone propriétaire (lu effectivement avant de conclure ; « non vérifiable » seulement
 si le fichier n'existe pas). Les éléments déjà marqués `[à transférer vers <alias>]` sont résumés

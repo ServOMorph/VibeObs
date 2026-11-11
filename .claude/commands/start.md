@@ -1,10 +1,10 @@
 ---
 description: Charge le contexte d'une zone en début de session
-argument-hint: [zone]
+argument-hint: [zone] [--complet]
 model: haiku
 ---
 
-# /start [zone]
+# /start [zone] [--complet]
 
 ## Zones valides et dossiers réels
 
@@ -14,6 +14,7 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 ## Procédure
 
 1. Lire l'argument fourni ($ARGUMENTS).
+   - Si `--complet` y figure : le retirer de l'argument et activer le mode complet (étapes 4 et 4b).
    - Si absent : utiliser le working directory courant comme dossier cible (zone implicite).
    - Si présent mais non reconnu dans la table ci-dessus :
      répondre "Erreur : zone inconnue. Zones valides : <liste des alias>"
@@ -46,17 +47,27 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    commande du hook, le signaler en une ligne et poursuivre `/start`. Contrat des sections :
    `on_start_TEMPLATE.md` du kit.
 
-4. Afficher le contenu intégral de `signals.md` (sans résumé ni reformulation).
+4. Afficher `signals.md`, toujours mot pour mot (sans résumé ni reformulation) :
+   - **Par défaut** : recopier les sections « Prochaine étape exacte » et « Question bloquante pour
+     la session suivante » de la dernière session, puis une ligne de compteurs :
+     `Actions ouvertes : N (dont P1 : x) · Backlog : B · Phase en cours : <titre>`.
+     N = actions de premier niveau des sections d'actions ouvertes (la ligne de renvoi du backlog
+     n'est pas une action) ; « dont P1 » seulement si une section P1 existe ; B = nombre de la
+     ligne de renvoi du backlog, omis sans elle ; phase omise sans roadmap active.
+     Si l'une des deux sections est absente : afficher le contenu intégral, comme en mode complet.
+   - **Mode complet** (`--complet`) : afficher le contenu intégral de `signals.md`.
+   Le reste du fichier est donné sur demande de l'utilisateur.
 
-4b. Pour chaque action listée dans `signals.md` qui contient un champ `réf:`, lire les fichiers
-    référencés avant d'afficher la synthèse. Si une action semble ambiguë mais qu'une `réf:` existe,
-    lire la référence en priorité plutôt que de demander des précisions.
+4b. Lire les fichiers `réf:` des seules actions dont l'objet est cité dans « Prochaine étape
+    exacte » (en mode complet ou en affichage intégral : de toutes les actions). Les autres `réf:`
+    sont lues quand l'utilisateur ou la tâche en cours en a besoin. Si une action semble ambiguë
+    mais qu'une `réf:` existe, lire la référence en priorité plutôt que de demander des précisions.
 
-    Ajouter ensuite, à partir des autres fichiers chargés : la phase en cours si roadmap active,
-    et le point d'attention immédiat.
+    Ajouter ensuite, en une ligne chacun : la phase en cours si roadmap active, et le point
+    d'attention immédiat.
 
-4c. **Contrôle de classement.** Après l'affichage intégral de l'étape 4 (qui n'est jamais filtré
-    ni réduit), repérer les éléments manifestement mal classés dans `signals.md` :
+4c. **Contrôle de classement.** Après l'affichage de l'étape 4, analyser l'intégralité de
+    `signals.md` (jamais la seule partie affichée) et repérer les éléments manifestement mal classés :
     - une action dont tous les `réf:` pointent dans le dossier d'une autre zone de `zones.md` ;
     - à la racine, une action métier d'une zone (non transversale) ;
     - une action dont l'objet ou la `réf:` figure aussi dans le `signals.md` de la zone

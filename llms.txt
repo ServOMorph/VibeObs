@@ -2,7 +2,7 @@
 
 > Kit de protocole Claude Code pour le vibecoding long : commandes /start, /close, /init_projet, /update, /create_memory qui persistent le contexte entre sessions. Zéro infrastructure, multi-zones, délégation locale Ollama optionnelle.
 
-Version : v5.37 (2026-11-11).
+Version : v5.38 (2026-11-11).
 
 ## Quoi
 
@@ -18,7 +18,7 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 ## Points d'entrée
 
 - `/init_projet <chemin>` : initialise le protocole dans un nouveau projet (5 questions, copie des templates, commit initial).
-- `/start [zone]` : charge le contexte d'une zone en début de session.
+- `/start [zone] [--complet]` : charge le contexte d'une zone en début de session (affiche la prochaine étape et des compteurs ; `--complet` pour tout `signals.md`).
 - `/close [zone]` : sauvegarde l'état en fin de session, met à jour les fichiers de contexte, committe.
 - `/update` : met à jour les fichiers du protocole dans un projet déjà initialisé, sans toucher aux données projet.
 - `/create_memory` : ajoute une entrée dans la mémoire projet persistante.

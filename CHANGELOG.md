@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.38 — 2026-11-11
+
+### Modifié
+- `start.md` (kit + template) : étape 4 réduite par défaut à « Prochaine étape exacte » et « Question bloquante » (mot pour mot) plus une ligne de compteurs ; `signals.md` complet avec `--complet` ou si l'une des deux sections manque ; étape 4b limitée aux `réf:` des actions citées par la prochaine étape ; étape 4c toujours menée sur tout le fichier.
+- `Protocole_start_close_context.md` : aligné sur les étapes 4, 4b et 4c.
+
 ## v5.37 — 2026-11-11
 
 ### Modifié
