@@ -49,14 +49,17 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 
 4. Afficher `signals.md`, toujours mot pour mot (sans résumé ni reformulation) :
    - **Par défaut** : recopier les sections « Prochaine étape exacte » et « Question bloquante pour
-     la session suivante » de la dernière session, puis une ligne de compteurs :
-     `Actions ouvertes : N (dont P1 : x) · Backlog : B · Phase en cours : <titre>`.
-     N = actions de premier niveau des sections d'actions ouvertes (la ligne de renvoi du backlog
-     n'est pas une action) ; « dont P1 » seulement si une section P1 existe ; B = nombre de la
-     ligne de renvoi du backlog, omis sans elle ; phase omise sans roadmap active.
-     Si l'une des deux sections est absente : afficher le contenu intégral, comme en mode complet.
+     la session suivante » de la dernière session. Le reste du fichier est donné sur demande de
+     l'utilisateur. Si l'une des deux sections est absente : afficher le contenu intégral, comme en
+     mode complet.
    - **Mode complet** (`--complet`) : afficher le contenu intégral de `signals.md`.
-   Le reste du fichier est donné sur demande de l'utilisateur.
+   Dans tous les cas, terminer par une ligne de compteurs :
+   `Actions ouvertes : N (dont P1 : x) · Backlog : B · Phase en cours : <titre>`.
+   N = actions de premier niveau des sections d'actions ouvertes (la ligne de renvoi du backlog
+   n'est pas une action) ; « dont P1 » seulement si une section P1 existe ; « Backlog : B » (B =
+   nombre de la ligne de renvoi du backlog) seulement si cette ligne existe ; « Phase en cours »
+   seulement si une roadmap est active. Une partie sans objet est retirée de la ligne avec son
+   séparateur, jamais remplacée par « omis » ou « aucune ».
 
 4b. Lire les fichiers `réf:` des seules actions dont l'objet est cité dans « Prochaine étape
     exacte », y compris en mode complet ou en affichage intégral. Les autres `réf:`

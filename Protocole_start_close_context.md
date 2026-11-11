@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.39** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.40** — Révision du 2026-11-11. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -131,8 +131,9 @@ Charge `signals.md`, `contexte.md`, et `roadmap*.md` si présente — sans fichi
 l'afficher intégralement avant `signals.md`. Absent pour une zone racine classique.
 
 Étape 4 : par défaut, recopie mot pour mot « Prochaine étape exacte » et « Question bloquante » de la
-dernière session, plus une ligne de compteurs (actions ouvertes, P1, backlog, phase en cours) ;
-`--complet`, ou l'absence de l'une des deux sections, affiche `signals.md` en entier. Étape 4b : seules
+dernière session ; `--complet`, ou l'absence de l'une des deux sections, affiche `signals.md` en
+entier. Dans tous les cas, une ligne de compteurs (actions ouvertes, P1, backlog, phase en cours)
+termine l'affichage, les parties sans objet retirées. Étape 4b : seules
 les `réf:` des actions citées par la prochaine étape sont lues d'office.
 
 Étape 4c : sur l'intégralité de `signals.md` (pas seulement la partie affichée), signale (sans rien déplacer) les éléments

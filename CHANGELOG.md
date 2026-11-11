@@ -3,6 +3,13 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.40 — 2026-11-11
+
+### Modifié
+- `start.md` (kit + template) : étape 4, la ligne de compteurs s'affiche dans tous les modes (défaut, `--complet`, repli) ; une partie sans objet (Backlog, Phase en cours, « dont P1 ») est retirée de la ligne avec son séparateur, jamais remplacée par « omis » ou « aucune ».
+- `Protocole_start_close_context.md` : étape 4 alignée.
+- `tests_manuels.md` : section « /start — affichage réduit » soldée (cas `<zone> --complet` et repli joués) et retirée.
+
 ## v5.39 — 2026-11-11
 
 ### Modifié

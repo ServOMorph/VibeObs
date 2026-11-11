@@ -28,9 +28,9 @@
 - [P2|ouvert|source=kit] Mettre à jour `20_guides/sessions_start_close.md` après kit v5.37 : tableau des hooks (ligne 33 : `## Fin` « après `git push` » -> après le push conditionnel de l'étape 14) et contrat (ligne 36 : « même après un échec du push » -> après le commit, que le push ait eu lieu, ait été sauté ou ait échoué)
   - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
   - réf: .claude/commands/close.md étapes 14 et 14-ter, CHANGELOG.md v5.37
-- [P2|ouvert|source=kit] Mettre à jour `20_guides/sessions_start_close.md` après kit v5.38 : ligne 14 (`/start` charge `signals.md`) -> affichage réduit par défaut (« Prochaine étape exacte », « Question bloquante », ligne de compteurs), `--complet` pour le fichier entier, étape 4b limitée aux `réf:` de la prochaine étape, y compris en `--complet` (v5.39)
+- [P2|ouvert|source=kit] Mettre à jour `20_guides/sessions_start_close.md` après kit v5.38 : ligne 14 (`/start` charge `signals.md`) -> affichage réduit par défaut (« Prochaine étape exacte », « Question bloquante », ligne de compteurs), `--complet` pour le fichier entier, étape 4b limitée aux `réf:` de la prochaine étape, y compris en `--complet` (v5.39), ligne de compteurs affichée dans tous les modes (v5.40)
   - fait quand: guide corrigé et date MAJ de sa ligne `INDEX.md` actualisée, ou décision explicite de ne pas le modifier
-  - réf: .claude/commands/start.md étapes 4, 4b et 4c, CHANGELOG.md v5.38 et v5.39
+  - réf: .claude/commands/start.md étapes 4, 4b et 4c, CHANGELOG.md v5.38 à v5.40
 - [info|source=kit] L'écart `check_docs.py` (journal append-only, commit 26b9cdd4) est résolu le 2026-11-06 : le contrôle ignore le frontmatter ; `python scripts/check_docs.py` passe. L'action « `check_docs.py` échoue » ci-dessus peut être retirée par l'agent documentation.
   - réf: scripts/check_docs.py
 

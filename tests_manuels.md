@@ -78,10 +78,3 @@ Jamais exercé en réel :
 - projet avec remote : `git push` exécuté ; en cas d'échec, erreur affichée telle quelle au bilan ;
 - dans les trois cas : le hook « Fin » (14-ter) s'exécute après le commit.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
-
-## /start — affichage réduit (v5.38)
-
-Restent à exercer en réel :
-- `/start <zone> --complet` : zone résolue et affichage intégral ;
-- `signals.md` sans « Prochaine étape exacte » : affichage intégral en repli.
-Transmettre chaque divergence au kit (scénario, étape, attendu, observé).

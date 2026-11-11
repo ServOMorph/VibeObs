@@ -64,9 +64,9 @@
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-- Exercer le nouveau `/start` (v5.38, 4b corrigée en v5.39) en réel : affichage réduit par défaut, `--complet`, repli si une section manque, bloc 4c sur tout le fichier ; puis le propager aux projets suivis par `/update`. 2026-11-11 : cas racine, `--complet` et bloc 4c conformes ; restent `/start <zone> --complet` et le repli sans « Prochaine étape exacte ».
-  - fait quand: les cas de `tests_manuels.md` (section « /start — affichage réduit ») sont joués et leurs divergences transmises au kit, traitées ou écartées.
-  - réf: `tests_manuels.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `DEPLOYMENTS.md`.
+- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées).
+  - fait quand: les projets de `DEPLOYMENTS.md` sont mis à jour par `/update` (ou leur report est tracé) et le `/start` de l'un d'eux a été observé en réel.
+  - réf: `DEPLOYMENTS.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `.claude/commands/update.md`.
 Backlog : 20 entrées (finding 3, amélioration 4, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -80,23 +80,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-11 (suite 3)
+# Session du 2026-11-11 (suite 4)
 
 ## Décisions prises
-- `/start` étape 4b (v5.39) : `réf:` lues d'office seulement pour les actions citées par la prochaine étape, même en `--complet` (lire celles des 19 actions était trop coûteux en tokens).
-- Cas `/start` racine, `--complet` et bloc 4c jugés conformes par l'utilisateur ; sections retirées de `tests_manuels.md`.
+- `/start` étape 4 (v5.40) : la ligne de compteurs s'affiche dans tous les modes ; une partie sans objet est retirée de la ligne, jamais remplacée par « omis » ou « aucune ».
+- Action « Mettre à jour `initialiser_un_projet.md` » transférée de la racine vers la zone `documentation` (doublon).
+- Plan d'avancement : étape 2 (« fichier de travail » de `/close` étape 9), étape 3 (frontmatter de `close.md` et `/update`), étape 4 (propagation par `/update`), `/compact` à chaque fin d'étape.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/start.md` et miroir template : étapes 1 et 4b.
-- `CHANGELOG.md` (v5.39), `README.md`, `llms.txt`, `Protocole_start_close_context.md` (en-tête), `tests_manuels.md`.
-- `DOCUMENTATION/_contexte/signals.md` : action `sessions_start_close.md` complétée (4b, v5.39).
+- `.claude/commands/start.md` et miroir template : étape 4.
+- `Protocole_start_close_context.md`, `CHANGELOG.md` (v5.40), `README.md`, `llms.txt`.
+- `tests_manuels.md` : section « /start — affichage réduit » soldée et retirée.
+- `DOCUMENTATION/_contexte/signals.md` : action `sessions_start_close.md` complétée (v5.40).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passaient après la correction de l'étape 4b (avant bump de version).
-- EN ATTENTE : `/start <zone> --complet` et repli sans « Prochaine étape exacte » ; plan de la phase 6 de SérénIATech_dev.
+- VALIDE : `/start documentation --complet` et le repli sans « Prochaine étape exacte » conformes (zone jetable `_test_repli` créée puis supprimée).
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
-Attendre le plan de la phase 6 (menée dans SérénIATech_dev). En attendant : jouer `/start documentation --complet` et le repli sans « Prochaine étape exacte » (`tests_manuels.md`, section « /start — affichage réduit »), ou traiter une P1 du kit : définition du « fichier de travail » de `/close` étape 9, ou frontmatter de `close.md` préservé par `/update`.
+Étape 2 du plan : trancher la définition du « fichier de travail » de `/close` étape 9 (`tests_manuels.md` et `roadmap*.md` comptés ou non comme travail), puis modifier `close.md` (kit + template) et lancer `check_kit.py`. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
 
 ## Question bloquante pour la session suivante
 Aucune
