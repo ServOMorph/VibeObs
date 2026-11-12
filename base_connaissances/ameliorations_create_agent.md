@@ -35,6 +35,7 @@ Sortie concrète de l'étape [ECRITURE] de la commande et des rétrospectives de
 - Erreur de l'assistant : la vérification [PREFLIGHT] « start.md référence agent_role.md » a échoué en silence (commande sans sortie) et a été interprétée à tort comme une absence ; contrôle refait avec un outil dédié, référence bien présente.
 - Collecte : les informations métier (email, adresse, type de structure) n'ont pas été demandées avant la création ; email et type fournis après coup, adresse toujours vide.
 - Propositions à trancher : (a) prévoir dans `/create_agent` un mode « agent client » avec création en base préalable ; (b) exception documentée à la règle des majuscules quand le dossier est lié à une base ; (c) un échec de lecture de `start.md` ne doit jamais valoir absence de référence.
+- Arbitrage du 2026-11-12 : (a) écartée, besoin propre à SérénIATech_dev, déjà couvert par sa commande projet `nouveau_client.md` ; (b) écartée, règle des MAJUSCULES conservée stricte, cas traités au cas par cas en [COLLECTE] ; (c) implémentée à l'étape 3 de `create_agent.md`.
 
 ## 2026-09-16 — agent documentation (Appli_TSA_SDI_TDAH)
 

@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v5.43 — 2026-11-12
+
+### Modifié
+- `create_agent.md` : étape 3, une lecture en échec ou une commande sans sortie ne vaut jamais absence de référence à `agent_role.md` ; contrôle refait avec l'outil de recherche dédié. Propositions (a) mode « agent client » et (b) exception aux MAJUSCULES écartées (journal `ameliorations_create_agent.md`).
+- `_docs/protocole_vibecoding.md` : copie du kit réalignée sur `Protocole_start_close_context.md` (elle était restée en v5.0).
+
 ## v5.42 — 2026-11-11
 
 ### Modifié

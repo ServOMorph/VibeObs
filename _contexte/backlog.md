@@ -60,3 +60,6 @@
 - [piste] Phase 3 de `roadmap_fondations.md` (agent PEDAGOGIE) retirée de la roadmap le 2026-11-09 sur décision de l'utilisateur (« je verrai ça plus tard »). Agent créé le 2026-11-06 par `/create_agent` (écriture limitée à `PEDAGOGIE/`, sans publication). Reste : choisir le parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin) puis produire la suite de la page de cours (parties 6 et suivantes), les fiches PP et un `dist/` prêt pour Netlify.
   - fait quand: l'agent est lancé par `/start pedagogie` et une première partie est produite et validée, ou l'abandon est tracé.
   - réf: `PEDAGOGIE/agent_role.md` ; `PEDAGOGIE/_contexte/`.
+- [finding] `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` dans les projets : chaque copie reste à la version de son `/init_projet` (constaté le 2026-11-12 ; la copie du kit, restée en v5.0, a été réalignée à la main).
+  - fait quand: `update.md` (kit + template) recopie `Protocole_start_close_context.md` vers `_docs/protocole_vibecoding.md`, ou le non-rafraîchissement est acté avec motif.
+  - réf: `.claude/commands/update.md` ; `.claude/commands/init_projet.md` étape 3.

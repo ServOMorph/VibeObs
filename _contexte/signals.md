@@ -9,9 +9,9 @@
 - Committer `Appli_TSA_SDI_TDAH/_contexte/on_close.md` (hook « Fin » réduit à `--refresh-list`) et effectuer l'upload Drive d'Appli resté en attente.
   - fait quand: `on_close.md` d'Appli est commité via `/close` de sa zone, et un `python claude-vibecoding-kit/backup_project.py . --upload` réel a réussi.
   - réf: `Appli_TSA_SDI_TDAH/_contexte/on_close.md` § Fin ; Appli commit `0f6c1f5` (correctifs `backup_project.py`).
-- Décider si les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) doivent être portés aux copies vendored lignée `rclone sync`.
-  - fait quand: port effectué sur chaque copie, ou décision de non-port tracée.
-  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `Rayonne_Toi/claude-vibecoding-kit/rclone_backup/backup_project.py` ; `Meuniers/backup_project.py`.
+- Porter les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) à la copie vendored de `Rayonne_Toi`. 2026-11-12 : `Meuniers` archivé, non-port décidé ; pour `Rayonne_Toi`, port reporté : la copie a divergé (fonction `load_config` absente du template) et porte des modifications non commitées d'origine inconnue. À fusionner à la main une fois ces modifications commitées par une session de `Rayonne_Toi`.
+  - fait quand: les modifications locales de la copie `Rayonne_Toi` sont commitées, puis les 2 correctifs y sont fusionnés sans perdre `load_config`.
+  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `D:\ServOMorph\Rayonne_Toi\claude-vibecoding-kit\rclone_backup\backup_project.py`.
 - Exercer `/insert_template` en réel et vérifier l'écriture de la ligne dans `DEPLOYMENTS.md` § Templates installés (couple absent → ajout, couple présent → pas de doublon).
   - fait quand: une insertion réelle a créé une ligne correcte, une ré-insertion n'a pas dupliqué.
   - réf: `.claude/commands/insert_template.md` étape `[SORTIE]` 9 ; `DEPLOYMENTS.md` § Templates installés.
@@ -46,21 +46,14 @@
 - Faire appliquer le tri vers `_contexte/backlog.md` (v5.22 à v5.25) aux autres projets suivis. Fait : `SérénIATech_dev` en v5.25 (`/update`, 2026-10-29) ; `Appli_TSA_SDI_TDAH` : `close.md` aligné à la main sur le générique v5.25 (commit `d557510`, 2026-10-29), `start.md` non aligné. Validé sur un projet jetable (supprimé) : tri, plafond, péremption, promotion, croisement des `réf:`, catégories, ligne de renvoi totalisée, pas de bump sans modification de travail, constat rangé chez la zone concernée. Reste à exercer en réel : premier `/close` d'Appli en v5.25 (permissions `ls` / `test -e` dans `allowed-tools`, bilan sur ses 49 entrées de backlog sans catégorie, nombre d'entrées sans `réf:` précis), backlog créé à la première entrée, backlog vidé, `check_kit.py` présent avant commit.
   - fait quand: les autres projets de `DEPLOYMENTS.md` sont à v5.25 ou leur report est tracé, et un `/close` réel d'Appli en v5.25 a été observé, ses divergences transmises au kit.
   - réf: `DEPLOYMENTS.md` ; `CHANGELOG.md` v5.22 à v5.25 ; `tests_manuels.md` section « /close v5.22 » ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\.claude\commands\close.md`.
-- Décider si la copie `_docs/protocole_vibecoding.md` du kit (en-tête v5.0, non alignée sur le protocole actuel) doit être réalignée, et vérifier la version recopiée par `/init_projet` étape 3. `Appli_TSA_SDI_TDAH/_docs/` ne contient pas ce fichier.
-  - fait quand: copie du kit réalignée ou décision de non-alignement tracée, et la copie déployée par `/init_projet` est constatée à la version courante.
-  - réf: `.claude/commands/init_projet.md` ligne 77 ; `_docs/protocole_vibecoding.md` ; `Protocole_start_close_context.md`.
-
-- Trancher les 3 propositions du journal `/create_agent` du 2026-10-30 : (a) mode « agent client » avec création en base préalable, (b) exception à la règle des majuscules quand le dossier est lié à une base, (c) un échec de lecture de `start.md` ne vaut jamais absence de référence.
-  - fait quand: chaque proposition est implémentée dans `create_agent.md` (kit + template, `check_kit.py` passe) ou écartée avec motif tracé.
-  - réf: `base_connaissances/ameliorations_create_agent.md` entrée 2026-10-30 ; `.claude/commands/create_agent.md` [PREFLIGHT].
 
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet. 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (commit 61b0a06 de son dépôt), contrôles OK : `menage_zone.py` conservé, `git push` et `git remote` repris du kit, étape 14 du bloc `SPECIFICITES PROJET` intacte, `telephone.md` ajouté. 2026-11-12 (suite) : 22 des 29 projets non archivés sont en v5.42 (commits `update: protocole vibecoding` dans chaque dépôt). Restent 7 projets dont une session Claude Code était ouverte : `Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos` (report décidé par l'utilisateur, aucun message envoyé aux sessions) ; relever les sessions ouvertes avant de reprendre. Reste aussi l'observation d'un `/start` en réel dans un projet suivi.
+- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet. 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (commit 61b0a06 de son dépôt), contrôles OK : `menage_zone.py` conservé, `git push` et `git remote` repris du kit, étape 14 du bloc `SPECIFICITES PROJET` intacte, `telephone.md` ajouté. 2026-11-12 (suite) : 22 des 29 projets non archivés sont en v5.42 (commits `update: protocole vibecoding` dans chaque dépôt). Restent 7 projets dont une session Claude Code était ouverte : `Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos` (report décidé par l'utilisateur, aucun message envoyé aux sessions) ; relever les sessions ouvertes avant de reprendre (nouveau relevé le 2026-11-12, session suivante : les 7 sessions toujours ouvertes). Reste aussi l'observation d'un `/start` en réel dans un projet suivi.
   - fait quand: les 7 projets restants sont mis à jour par `/update` (ou leur report est tracé) et le `/start` de l'un des projets suivis a été observé en réel.
   - réf: `DEPLOYMENTS.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `.claude/commands/update.md`.
-Backlog : 20 entrées (finding 3, amélioration 4, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
+Backlog : 21 entrées (finding 4, amélioration 4, piste 13) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -73,25 +66,25 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-12
+# Session du 2026-11-12 (suite)
 
 ## Décisions prises
-- Archivage avant propagation : 11 projets déplacés dans `D:\ServOMorph\archives` (La Rev, jeux_vibecoder, Projet_de_reve, jeu_espace, Participation_GitHub, cliker, Meuniers, VertIA_v2, PromptGuard, REA, IA_Eco-Responsable), déplacés tels quels y compris leurs fichiers non commités ; notés « archivé, exclu de /update » dans `DEPLOYMENTS.md`.
-- `crea_zik` : à archiver, mais dossier verrouillé (cause inconnue) ; déplacement manuel par l'utilisateur après redémarrage, exclu de `/update`. 3 lignes retirées de `DEPLOYMENTS.md` (projets absents du disque : Open_Code_Apprentissage, claude-vibecoding-kit, creazik_v2). Les 5 projets hors `D:\ServOMorph` sont tous gardés.
-- `/update` : `AGENTS.md` et `GEMINI.md` absents ne sont pas créés (« non pour tous les projets ») ; section « Données sensibles » vide = « Aucun déclaré. » ; `Appli_TSA_SDI_TDAH` garde `scripts/ollama_call.py` (règle du projet) ; étapes `synthese_agents` de `jeu_zombies` déplacées dans ses blocs `SPECIFICITES PROJET` ; retrait du bridge ROBERTO d'`IA_Life` (modification du 2026-09-13) sauvegardé puis conservé.
-- Les 7 projets dont une session est ouverte sont reportés (aucun message envoyé aux sessions).
+- `/create_agent`, propositions du 2026-10-30 : (a) mode « agent client » écarté (besoin propre à SérénIATech_dev, couvert par sa commande `nouveau_client.md`) ; (b) exception aux MAJUSCULES écartée (règle stricte, cas par cas en [COLLECTE]) ; (c) implémentée.
+- `_docs/protocole_vibecoding.md` du kit réaligné par copie de `Protocole_start_close_context.md` (v5.0 → v5.42) ; `/init_projet` copie déjà la version courante.
+- `backup_project.py` : non-port pour `Meuniers` (archivé) ; port vers `Rayonne_Toi` reporté (copie divergente, modifications non commitées).
+- Constat « `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` » rangé en backlog.
 
 ## Livrables produits ou modifiés
-- 22 projets en v5.42 par `/update` (un commit par dépôt, fichiers de protocole seulement) ; `Moulin du Sud` commité dans le dépôt parent `Lieux_Hybrides`.
-- `DEPLOYMENTS.md` : 22 projets en v5.42, 11 archivés, `crea_zik` à archiver (fichier ignoré par Git, non commité).
+- `.claude/commands/create_agent.md` étape 3 : échec ou sortie vide ≠ absence, contrôle refait avec l'outil dédié.
+- `_docs/protocole_vibecoding.md` : réaligné (empreinte identique à la source).
+- `_contexte/backlog.md` : 1 finding ajouté.
 
 ## Hypothèses validées / invalidées
-- VALIDE : le relevé des sessions ouvertes par le dossier de travail des processus `claude.exe` fonctionne (7 projets concernés).
-- EN ATTENTE : `/start` v5.40 pas encore observé dans un projet suivi.
+- VALIDE : relevé des sessions par l'identifiant `--resume` des processus `claude.exe` → dossier de `~/.claude/projects/` : les 7 projets restants ont toujours une session ouverte.
 - EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte
-Mettre à jour les 7 projets restants (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`) une fois leurs sessions fermées ou leur close fait (relever les sessions avant), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
 
 ## Question bloquante pour la session suivante
 Aucune

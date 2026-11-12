@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.0** — Révision du 2026-09-04. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v5.43** — Révision du 2026-11-12. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -118,6 +118,8 @@ Structure fixe. Taille maximale par section indiquée — à respecter pour cont
 
 > **Rotation des sessions (Phase 4) :** Pour éviter l'accumulation d'historique mort, `signals.md` ne conserve que la **dernière session** (seuil = 1 bloc `# Session du`). Les sessions précédentes sont automatiquement déplacées vers `_contexte/archive_sessions.md` (format append-only, séparées par `---`). Le fichier `archive_sessions.md` n'est **jamais** chargé par `/start` — il sert uniquement de stockage historique pour consultation manuelle.
 
+> **Backlog (`_contexte/backlog.md`) :** les actions ouvertes de `signals.md` (section « Actions ouvertes » ou « Questions ouvertes ») sont plafonnées à 20 entrées et ne portent que ce qui appelle une action ou une décision dans les prochaines sessions (P1 ; P2 avec suite identifiée ; attente de réponse ; décision requise avant déploiement). Le reste (dette technique, findings de revue non corrigés, améliorations différées, pistes « à juger acceptable ») va dans `backlog.md` : même format `fait quand:` / `réf:`, ajout en fin de fichier, créé à la première entrée, **jamais chargé par `/start`**. Une entrée n'est écartée comme doublon que si son objet est identique à celui d'une entrée existante (une même `réf:` ne suffit pas). Une entrée traitée ou écartée est supprimée par le `/close` qui le constate ; le fichier vide est supprimé ; une entrée devenue urgente est promue dans `signals.md` (écrire, relire, puis retirer). Chaque entrée porte une catégorie (`[dette]`, `[finding]`, `[amélioration]`, `[piste]`) et un `réf:` précis dont l'existence est vérifiée avant écriture ; sans `réf:` valide, elle reste dans `signals.md`. `signals.md` n'en garde qu'une ligne de renvoi « Backlog : N entrées (dette a, finding b… , sans catégorie e ; dont s sans `réf:` précis) — `_contexte/backlog.md` », qui n'est pas une action et ne compte pas dans le plafond. À chaque `/close`, les entrées dont le `réf:` cite un fichier modifié pendant la session sont proposées à la promotion dans le bilan. `/close` contrôle la péremption des actions reportées et propose, sans l'imposer, le retrait des obsolètes et le tri au-delà de 20 entrées.
+
 ---
 
 # /start [zone]
@@ -128,12 +130,30 @@ Charge `signals.md`, `contexte.md`, et `roadmap*.md` si présente — sans fichi
 Étape 2b : si `<dossier>/agent_role.md` existe (zone-agent créée via `/create_agent`), la charger et
 l'afficher intégralement avant `signals.md`. Absent pour une zone racine classique.
 
+Étape 4 : par défaut, recopie mot pour mot « Prochaine étape exacte » et « Question bloquante » de la
+dernière session ; `--complet`, ou l'absence de l'une des deux sections, affiche `signals.md` en
+entier. Dans tous les cas, une ligne de compteurs (actions ouvertes, P1, backlog, phase en cours)
+termine l'affichage, les parties sans objet retirées. Étape 4b : seules
+les `réf:` des actions citées par la prochaine étape sont lues d'office.
+
+Étape 4c : sur l'intégralité de `signals.md` (pas seulement la partie affichée), signale (sans rien déplacer) les éléments
+manifestement mal classés : action d'une autre zone, action métier à la racine, doublon avec le
+`signals.md` de la zone propriétaire (lu effectivement avant de conclure ; « non vérifiable » seulement
+si le fichier n'existe pas). Les éléments déjà marqués `[à transférer vers <alias>]` sont résumés
+en une ligne de comptage, sans détail.
+
 Voir `templates/.claude/commands/start.md`.
 
 
 # /close [zone]
 
-> **Frontmatter :** le fichier `.claude/commands/close.md` porte `model: sonnet` et `allowed-tools` autorisant `git status/diff/add/commit/push` — plus de prompts de permission au commit ni au push de clôture.
+> **Frontmatter :** le fichier `.claude/commands/close.md` porte `model: sonnet` et `allowed-tools` autorisant `git status/diff/add/commit/remote/push` — plus de prompts de permission au commit ni au push de clôture. L'étape 14 est conditionnelle : pas de push si une règle projet l'interdit ou si `git remote` est vide.
+
+Étape 3-bis : chaque action, décision et point d'attention est attribué à sa zone propriétaire avant
+écriture ; la racine ne garde que la coordination transversale ; un écart entre la zone fermée et le
+travail réalisé est signalé ; les droits d'écriture suivent `agent_role.md` ; une action déjà présente
+dans sa zone (même objet ; une même `réf:` ne suffit pas) est mise à jour, jamais dupliquée ; un constat sur une autre zone va dans son `signals.md` (ou `[à transférer vers <alias>]`) ; un transfert écrit à la destination avant de retirer
+de la source. Étape 13 : statut Git (suivi/ignoré) de chaque fichier de signal contrôlé avant d'annoncer un commit.
 
 Voir `templates/.claude/commands/close.md`.
 

@@ -48,7 +48,9 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
    automatiquement la charte des agents — l'agent créé n'aura aucun effet
    visible tant que `/update` n'aura pas été lancé sur ce projet." et demander
    confirmation ("Continuer quand même (o/n) ?"). Ne jamais créer l'agent
-   silencieusement dans ce cas.
+   silencieusement dans ce cas. Une lecture en échec ou une commande sans
+   sortie ne vaut jamais absence : refaire le contrôle avec l'outil de
+   recherche dédié avant de conclure.
 
 4. Résoudre la zone parente : sans `parent=<alias>`, utiliser la zone englobante la plus proche,
    c'est-à-dire la ligne de `zones.md` dont le dossier (relatif ou absolu, normalisé par rapport à

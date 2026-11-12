@@ -1450,3 +1450,28 @@ Aucune
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-12
+
+## Décisions prises
+- Archivage avant propagation : 11 projets déplacés dans `D:\ServOMorph\archives` (La Rev, jeux_vibecoder, Projet_de_reve, jeu_espace, Participation_GitHub, cliker, Meuniers, VertIA_v2, PromptGuard, REA, IA_Eco-Responsable), déplacés tels quels y compris leurs fichiers non commités ; notés « archivé, exclu de /update » dans `DEPLOYMENTS.md`.
+- `crea_zik` : à archiver, mais dossier verrouillé (cause inconnue) ; déplacement manuel par l'utilisateur après redémarrage, exclu de `/update`. 3 lignes retirées de `DEPLOYMENTS.md` (projets absents du disque : Open_Code_Apprentissage, claude-vibecoding-kit, creazik_v2). Les 5 projets hors `D:\ServOMorph` sont tous gardés.
+- `/update` : `AGENTS.md` et `GEMINI.md` absents ne sont pas créés (« non pour tous les projets ») ; section « Données sensibles » vide = « Aucun déclaré. » ; `Appli_TSA_SDI_TDAH` garde `scripts/ollama_call.py` (règle du projet) ; étapes `synthese_agents` de `jeu_zombies` déplacées dans ses blocs `SPECIFICITES PROJET` ; retrait du bridge ROBERTO d'`IA_Life` (modification du 2026-09-13) sauvegardé puis conservé.
+- Les 7 projets dont une session est ouverte sont reportés (aucun message envoyé aux sessions).
+
+## Livrables produits ou modifiés
+- 22 projets en v5.42 par `/update` (un commit par dépôt, fichiers de protocole seulement) ; `Moulin du Sud` commité dans le dépôt parent `Lieux_Hybrides`.
+- `DEPLOYMENTS.md` : 22 projets en v5.42, 11 archivés, `crea_zik` à archiver (fichier ignoré par Git, non commité).
+
+## Hypothèses validées / invalidées
+- VALIDE : le relevé des sessions ouvertes par le dossier de travail des processus `claude.exe` fonctionne (7 projets concernés).
+- EN ATTENTE : `/start` v5.40 pas encore observé dans un projet suivi.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Mettre à jour les 7 projets restants (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`) une fois leurs sessions fermées ou leur close fait (relever les sessions avant), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Aucune
