@@ -12,7 +12,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-11 : kit v5.42 — `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
+- 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (première propagation, fusion de `allowed-tools` exercée en réel) ; kit v5.42 — `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
 - 2026-11-11 : kit v5.37 — `/close` étape 14 conditionnelle (pas de push sans remote ni si une règle projet l'interdit) ; v5.36 : `llms.txt` aligné sur la version du kit.
 - 2026-11-10 : kit v5.34 à v5.35 — `/telephone` copié par défaut dans tout projet créé ou mis à jour ; `parallel_agents` retiré de `/create_projet`.
 - 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans `SérénIATech_dev`, en attente du plan.

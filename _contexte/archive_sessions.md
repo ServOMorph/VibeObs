@@ -1428,3 +1428,25 @@ Attendre le plan de la phase 6 ; sinon une action P1 du kit (règle de l'étape 
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-11 (suite 6)
+
+## Décisions prises
+- `/update` fusionne l'`allowed-tools` : liste du kit, plus les permissions ajoutées par le projet (signalées au rapport) ; les retraits du projet ne sont pas conservés.
+
+## Livrables produits ou modifiés
+- `.claude/commands/update.md` et miroir template : étape 5 (relevé et réinjection des permissions ajoutées) et étape 10 (contrôle tolérant aux ajouts en fin de ligne) ; `check_kit.py` passe.
+- `CHANGELOG.md` (v5.42), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : version alignée.
+- `_contexte/signals.md` : action « frontmatter de `close.md` » retirée (traitée) ; contrôle de `SérénIATech_dev` ajouté à l'action de propagation.
+
+## Hypothèses validées / invalidées
+- EN ATTENTE : fusion jamais exercée en réel, première occasion au `/update` de `SérénIATech_dev`.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Étape 4 du plan : propager le kit v5.42 aux projets suivis via `/update` (action « Propager le `/start` v5.40 »), en commençant par contrôler `SérénIATech_dev`. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Aucune
