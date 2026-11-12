@@ -12,11 +12,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-13 : kit v5.43 inchangé — `/insert_template` (registre sans doublon) et `/create_memory` scopé validés en réel sur cibles jetables ; reste la conversion de `/create_agent` ; 7 projets toujours en attente de `/update`.
 - 2026-11-12 (suite) : kit v5.43 — `/create_agent` étape 3 : une lecture en échec ne vaut jamais absence ; `_docs/protocole_vibecoding.md` du kit réaligné sur v5.42 ; 7 projets toujours en attente de `/update` (sessions ouvertes).
 - 2026-11-12 : 11 projets archivés dans `D:\ServOMorph\archives` (`crea_zik` à archiver à la main) ; 22 des 29 projets non archivés en v5.42 (`SérénIATech_dev` l'était déjà), 7 en attente (sessions ouvertes) ; fusion de `allowed-tools` exercée en réel ; kit v5.42 — `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
 - 2026-11-11 : kit v5.37 — `/close` étape 14 conditionnelle (pas de push sans remote ni si une règle projet l'interdit) ; v5.36 : `llms.txt` aligné sur la version du kit.
 - 2026-11-10 : kit v5.34 à v5.35 — `/telephone` copié par défaut dans tout projet créé ou mis à jour ; `parallel_agents` retiré de `/create_projet`.
-- 2026-11-09 : kit v5.33 — `roadmap_fondations.md` : phases 1, 2, 4 et 5 closes ; phase 3 retirée (backlog) ; phase 6 (plan d'automatisation) menée par l'utilisateur dans `SérénIATech_dev`, en attente du plan.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._

@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-12)
+# Signals — VibeObs (MAJ 2026-11-13)
 
 ## Actions ouvertes — pilotage
 
@@ -12,9 +12,6 @@
 - Porter les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) à la copie vendored de `Rayonne_Toi`. 2026-11-12 : `Meuniers` archivé, non-port décidé ; pour `Rayonne_Toi`, port reporté : la copie a divergé (fonction `load_config` absente du template) et porte des modifications non commitées d'origine inconnue. À fusionner à la main une fois ces modifications commitées par une session de `Rayonne_Toi`.
   - fait quand: les modifications locales de la copie `Rayonne_Toi` sont commitées, puis les 2 correctifs y sont fusionnés sans perdre `load_config`.
   - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `D:\ServOMorph\Rayonne_Toi\claude-vibecoding-kit\rclone_backup\backup_project.py`.
-- Exercer `/insert_template` en réel et vérifier l'écriture de la ligne dans `DEPLOYMENTS.md` § Templates installés (couple absent → ajout, couple présent → pas de doublon).
-  - fait quand: une insertion réelle a créé une ligne correcte, une ré-insertion n'a pas dupliqué.
-  - réf: `.claude/commands/insert_template.md` étape `[SORTIE]` 9 ; `DEPLOYMENTS.md` § Templates installés.
 - Exécuter le backup réel de `SérénIATech_dev` vers `sereniatech_drive` et vérifier les `/close` des projets partageant `rayonne_toi_drive`.
   - fait quand: `tests_manuels.md` sections « rclone multicompte » toutes validées et retirées.
   - réf: `tests_manuels.md`.
@@ -24,18 +21,9 @@
 - Résoudre le vol de focus avant la phase 3 de `_archives/local/roadmap_reprise_multicompte.md` (archivée hors Git le 2026-11-05). 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
   - fait quand: le test manuel de `tests_manuels.md` (section « vol de focus ») est validé et `roadmap_reprise_multicompte.md` + `SKILL.md` sont mis à jour.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.
-- Exercer `/create_memory <alias_zone> <contenu>` en exécution réelle (routage vers `<zone>/_contexte/memory.md`, en-tête créé si absent), et valider `/insert_template` + la conversion de `/create_agent`.
-  - fait quand: chaque flux est exercé au moins une fois avec son résultat attendu.
-  - réf: `_contexte/signals_backlog_2026-09-04.md` ; `create_memory.md` scopé déployé dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` (commit `e4c6e5b`).
-- Poursuivre la conception du skill générique d’orchestration multi-agents avec ChatGPT.
-  - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
-  - réf: `_archives/local/roadmap_reprise_multicompte.md` (réf à préciser : l'action restée en P1 faute de chemin précis au tri du 2026-11-06 ; à reclasser en backlog).
-
-
-
-
-
-
+- Valider la conversion de `/create_agent` en exécution réelle. 2026-11-13 : `/create_memory <alias_zone>` (routage, en-tête créé) et `/insert_template` (ligne de registre, pas de doublon à la ré-insertion) validés sur zone et projet jetables, supprimés après test.
+  - fait quand: `/create_agent` est exercé au moins une fois avec son résultat attendu.
+  - réf: `_contexte/signals_backlog_2026-09-04.md` ; `.claude/commands/create_agent.md`.
 - Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
   - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
   - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\DOCUMENTATION\40_specs\` ; Appli commits `3255b46`, `c970820`, `f6a6428`, `be4a1f0`.
@@ -53,7 +41,7 @@
 - Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet. 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (commit 61b0a06 de son dépôt), contrôles OK : `menage_zone.py` conservé, `git push` et `git remote` repris du kit, étape 14 du bloc `SPECIFICITES PROJET` intacte, `telephone.md` ajouté. 2026-11-12 (suite) : 22 des 29 projets non archivés sont en v5.42 (commits `update: protocole vibecoding` dans chaque dépôt). Restent 7 projets dont une session Claude Code était ouverte : `Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos` (report décidé par l'utilisateur, aucun message envoyé aux sessions) ; relever les sessions ouvertes avant de reprendre (nouveau relevé le 2026-11-12, session suivante : les 7 sessions toujours ouvertes). Reste aussi l'observation d'un `/start` en réel dans un projet suivi.
   - fait quand: les 7 projets restants sont mis à jour par `/update` (ou leur report est tracé) et le `/start` de l'un des projets suivis a été observé en réel.
   - réf: `DEPLOYMENTS.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `.claude/commands/update.md`.
-Backlog : 21 entrées (finding 4, amélioration 4, piste 13) — `_contexte/backlog.md`
+Backlog : 22 entrées (finding 4, amélioration 4, piste 14 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -66,21 +54,19 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-12 (suite)
+# Session du 2026-11-13
 
 ## Décisions prises
-- `/create_agent`, propositions du 2026-10-30 : (a) mode « agent client » écarté (besoin propre à SérénIATech_dev, couvert par sa commande `nouveau_client.md`) ; (b) exception aux MAJUSCULES écartée (règle stricte, cas par cas en [COLLECTE]) ; (c) implémentée.
-- `_docs/protocole_vibecoding.md` du kit réaligné par copie de `Protocole_start_close_context.md` (v5.0 → v5.42) ; `/init_projet` copie déjà la version courante.
-- `backup_project.py` : non-port pour `Meuniers` (archivé) ; port vers `Rayonne_Toi` reporté (copie divergente, modifications non commitées).
-- Constat « `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` » rangé en backlog.
+- Action « skill d'orchestration multi-agents avec ChatGPT » passée de P1 au backlog (`[piste]`).
+- Tests réels faits sur un projet et une zone jetables, supprimés après le test (registre et `zones.md` restaurés).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/create_agent.md` étape 3 : échec ou sortie vide ≠ absence, contrôle refait avec l'outil dédié.
-- `_docs/protocole_vibecoding.md` : réaligné (empreinte identique à la source).
-- `_contexte/backlog.md` : 1 finding ajouté.
+- `_contexte/signals.md` : action `/insert_template` close ; action `/create_memory` réduite à la conversion de `/create_agent`.
+- `_contexte/backlog.md` : 1 piste ajoutée (skill ChatGPT).
 
 ## Hypothèses validées / invalidées
-- VALIDE : relevé des sessions par l'identifiant `--resume` des processus `claude.exe` → dossier de `~/.claude/projects/` : les 7 projets restants ont toujours une session ouverte.
+- VALIDE : `/insert_template` ajoute la ligne au registre « Templates installés », sans doublon à la ré-insertion complète (arrêt étape 5) ni partielle (couple présent). Procédure suivie à la main, pas via la skill.
+- VALIDE : `/create_memory <alias_zone>` écrit dans `<zone>/_contexte/memory.md`, crée l'en-tête, ne touche pas `.claude/memory.md`.
 - EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
 
 ## Prochaine étape exacte

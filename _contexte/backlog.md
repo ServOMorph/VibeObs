@@ -63,3 +63,6 @@
 - [finding] `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` dans les projets : chaque copie reste à la version de son `/init_projet` (constaté le 2026-11-12 ; la copie du kit, restée en v5.0, a été réalignée à la main).
   - fait quand: `update.md` (kit + template) recopie `Protocole_start_close_context.md` vers `_docs/protocole_vibecoding.md`, ou le non-rafraîchissement est acté avec motif.
   - réf: `.claude/commands/update.md` ; `.claude/commands/init_projet.md` étape 3.
+- [piste] Poursuivre la conception du skill générique d'orchestration multi-agents avec ChatGPT (passé de P1 au backlog le 2026-11-13 sur décision de l'utilisateur).
+  - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
+  - réf: `_archives/local/roadmap_reprise_multicompte.md` (local, hors Git).

@@ -1475,3 +1475,28 @@ Mettre à jour les 7 projets restants (`Nettoyage_PC`, `site_internet_ST_v3`, `c
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-12 (suite)
+
+## Décisions prises
+- `/create_agent`, propositions du 2026-10-30 : (a) mode « agent client » écarté (besoin propre à SérénIATech_dev, couvert par sa commande `nouveau_client.md`) ; (b) exception aux MAJUSCULES écartée (règle stricte, cas par cas en [COLLECTE]) ; (c) implémentée.
+- `_docs/protocole_vibecoding.md` du kit réaligné par copie de `Protocole_start_close_context.md` (v5.0 → v5.42) ; `/init_projet` copie déjà la version courante.
+- `backup_project.py` : non-port pour `Meuniers` (archivé) ; port vers `Rayonne_Toi` reporté (copie divergente, modifications non commitées).
+- Constat « `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` » rangé en backlog.
+
+## Livrables produits ou modifiés
+- `.claude/commands/create_agent.md` étape 3 : échec ou sortie vide ≠ absence, contrôle refait avec l'outil dédié.
+- `_docs/protocole_vibecoding.md` : réaligné (empreinte identique à la source).
+- `_contexte/backlog.md` : 1 finding ajouté.
+
+## Hypothèses validées / invalidées
+- VALIDE : relevé des sessions par l'identifiant `--resume` des processus `claude.exe` → dossier de `~/.claude/projects/` : les 7 projets restants ont toujours une session ouverte.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Aucune
