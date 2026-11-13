@@ -1500,3 +1500,26 @@ Relever les sessions ouvertes ; mettre à jour par `/update` les projets restant
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-13
+
+## Décisions prises
+- Action « skill d'orchestration multi-agents avec ChatGPT » passée de P1 au backlog (`[piste]`).
+- Tests réels faits sur un projet et une zone jetables, supprimés après le test (registre et `zones.md` restaurés).
+
+## Livrables produits ou modifiés
+- `_contexte/signals.md` : action `/insert_template` close ; action `/create_memory` réduite à la conversion de `/create_agent`.
+- `_contexte/backlog.md` : 1 piste ajoutée (skill ChatGPT).
+
+## Hypothèses validées / invalidées
+- VALIDE : `/insert_template` ajoute la ligne au registre « Templates installés », sans doublon à la ré-insertion complète (arrêt étape 5) ni partielle (couple présent). Procédure suivie à la main, pas via la skill.
+- VALIDE : `/create_memory <alias_zone>` écrit dans `<zone>/_contexte/memory.md`, crée l'en-tête, ne touche pas `.claude/memory.md`.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Aucune

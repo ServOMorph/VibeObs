@@ -38,7 +38,7 @@
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet. 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (commit 61b0a06 de son dépôt), contrôles OK : `menage_zone.py` conservé, `git push` et `git remote` repris du kit, étape 14 du bloc `SPECIFICITES PROJET` intacte, `telephone.md` ajouté. 2026-11-12 (suite) : 22 des 29 projets non archivés sont en v5.42 (commits `update: protocole vibecoding` dans chaque dépôt). Restent 7 projets dont une session Claude Code était ouverte : `Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos` (report décidé par l'utilisateur, aucun message envoyé aux sessions) ; relever les sessions ouvertes avant de reprendre (nouveau relevé le 2026-11-12, session suivante : les 7 sessions toujours ouvertes). Reste aussi l'observation d'un `/start` en réel dans un projet suivi.
+- Propager le `/start` v5.40 (affichage réduit, `--complet`, ligne de compteurs, 4b limitée) aux projets suivis par `/update`, après les étapes 2 et 3 du plan. 2026-11-11 : tous les cas de `tests_manuels.md` joués en réel dans le kit et conformes ; deux écarts corrigés en v5.40 (ligne de compteurs dans tous les modes, parties sans objet retirées). Kit v5.42 : `/update` conserve les permissions `allowed-tools` ajoutées par un projet. 2026-11-12 : `SérénIATech_dev` mis à jour en v5.42 (commit 61b0a06 de son dépôt), contrôles OK : `menage_zone.py` conservé, `git push` et `git remote` repris du kit, étape 14 du bloc `SPECIFICITES PROJET` intacte, `telephone.md` ajouté. 2026-11-12 (suite) : 22 des 29 projets non archivés sont en v5.42 (commits `update: protocole vibecoding` dans chaque dépôt). Restent 7 projets dont une session Claude Code était ouverte : `Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos` (report décidé par l'utilisateur, aucun message envoyé aux sessions) ; relever les sessions ouvertes avant de reprendre (nouveau relevé le 2026-11-12, session suivante : les 7 sessions toujours ouvertes). Reste aussi l'observation d'un `/start` en réel dans un projet suivi. 2026-11-13 : `telephone.md` copié dans `VertIA_v3` à la demande du kit (session ouverte : reformulation contrôlée, accord de l'utilisateur dans sa session, empreinte identique à `templates/.claude/commands/telephone.md`) ; la version du projet reste v5.25 dans `DEPLOYMENTS.md`, `/update` toujours à faire. `Nettoyage_PC` (v3.10) n'a pas `telephone.md` ; `/update` le copiera.
   - fait quand: les 7 projets restants sont mis à jour par `/update` (ou leur report est tracé) et le `/start` de l'un des projets suivis a été observé en réel.
   - réf: `DEPLOYMENTS.md` ; `.claude/commands/start.md` étapes 4, 4b et 4c ; `.claude/commands/update.md`.
 Backlog : 22 entrées (finding 4, amélioration 4, piste 14 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
@@ -54,23 +54,22 @@ Voir [`signals_backlog_2026-09-04.md`](_contexte/signals_backlog_2026-09-04.md) 
 
 ## Dernière session
 
-# Session du 2026-11-13
+# Session du 2026-11-13 (suite)
 
 ## Décisions prises
-- Action « skill d'orchestration multi-agents avec ChatGPT » passée de P1 au backlog (`[piste]`).
-- Tests réels faits sur un projet et une zone jetables, supprimés après le test (registre et `zones.md` restaurés).
+- `telephone.md` installé dans les seules sessions ouvertes qui ne l'avaient pas : `VertIA_v3` ; la session « Sécurité » est exclue (décision de l'utilisateur).
 
 ## Livrables produits ou modifiés
-- `_contexte/signals.md` : action `/insert_template` close ; action `/create_memory` réduite à la conversion de `/create_agent`.
-- `_contexte/backlog.md` : 1 piste ajoutée (skill ChatGPT).
+- `D:\ServOMorph\VertIA_v3\.claude\commands\telephone.md` : créé par la session VertIA_v3, empreinte identique à celle du kit (contrôlée dans cette session).
+- Aucun fichier du kit modifié hors `_contexte/`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `/insert_template` ajoute la ligne au registre « Templates installés », sans doublon à la ré-insertion complète (arrêt étape 5) ni partielle (couple présent). Procédure suivie à la main, pas via la skill.
-- VALIDE : `/create_memory <alias_zone>` écrit dans `<zone>/_contexte/memory.md`, crée l'en-tête, ne touche pas `.claude/memory.md`.
-- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+- VALIDE : procédure « session ouverte » exercée de bout en bout (demande, reformulation contrôlée, validation, accord de l'utilisateur, exécution par la session), via `ListAgents` et `SendMessage`.
+- NON VERIFIE : l'association nom de session / dossier a été supposée pour les 6 autres projets testés (`telephone.md` présent dans chacun) ; seule `VertIA_v3` a confirmé son dossier.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev ; dossier de la session « pilote-74 ».
 
 ## Prochaine étape exacte
 Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
 
 ## Question bloquante pour la session suivante
-Aucune
+Dans quel dossier tourne la session « pilote-74 » (`telephone.md` à y installer s'il est absent) ?
