@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.2 — 2026-11-14
+
+### Ajouté
+- `/migration_canva` (kit uniquement) : copie guidée de dossiers Canva entre deux comptes, pour un novice ; faits vérifiés sur l'aide Canva, 5 points marqués « à vérifier pendant le test ».
+
+### Modifié
+- Commandes à lancement manuel seulement (`cherche_fonction`, `cherche_meilleure_action`, `maintenance`, `migration_canva`) : frontmatter `disable-model-invocation: true` — description retirée du contexte du modèle, lancement par `/nom` conservé (doc Claude Code, skills). Remplace le déplacement hors de `.claude/`.
+
 ## v6.1 — 2026-11-14
 
 ### Ajouté

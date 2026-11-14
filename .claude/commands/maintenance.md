@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 description: Maintenance régulière du kit VibeObs — contrôles, détection des reliquats, dérives de documentation, rapport et propositions
 model: sonnet
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(python scripts/check_kit.py), Bash(python scripts/check_docs.py), Bash(python -m pytest:*), Bash(ls:*), Bash(wc:*), Bash(diff:*)

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 description: Analyse la situation du projet et recommande la meilleure action quand on hésite
 argument-hint: [décision ou dilemme, optionnel]
 model: opus

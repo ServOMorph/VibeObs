@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 description: Recherche une fonction/fonctionnalité déjà codée dans d'anciens projets, à partir d'une description
 argument-hint: "<description de la fonction recherchée>"
 model: sonnet
