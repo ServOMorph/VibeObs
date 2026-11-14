@@ -2,7 +2,7 @@
 type: guide
 description: Initialiser le protocole vibecoding dans un projet avec /init_projet
 tags: guide, init, init_projet
-maj: 2026-08-21
+maj: 2026-11-14
 ---
 
 # Initialiser un projet
@@ -11,10 +11,12 @@ Commande : `/init_projet <chemin vers le projet>` — s'exécute depuis le kit. 
 
 ## Déroulé
 
-1. Claude pose les questions d'initialisation : alias, objectif, stack, git, première zone ou zone
-   supplémentaire, données sensibles, AGENTS.md, GEMINI.md, puis ajout éventuel d'agents
+1. Claude pose les questions d'initialisation : alias (le nom du dossier projet est proposé par
+   défaut), objectif, git, première zone ou zone supplémentaire, données sensibles, AGENTS.md,
+   GEMINI.md, puis ajout éventuel d'agents. La stack n'est plus demandée (v6.0) : le champ « Stack »
+   de `contexte.md` s'initialise à « Non définie à la création » et se complète au fil du projet
 2. Projet sans git : question complémentaire sur le backup miroir Google Drive (rclone) à chaque /close
-3. Copie les templates, remplace les placeholders, committe dans le projet cible
+3. Copie les templates, crée ou complète le `.gitignore` de sécurité, remplace les placeholders, committe dans le projet cible
 4. Si l'utilisateur le demande, enchaîne dans la même exécution sur `/create_agent` ou
    `/create_team`, après l'initialisation complète du projet
 5. Enregistre le déploiement dans `DEPLOYMENTS.md` (registre hors git)
@@ -28,12 +30,13 @@ La racine du projet cible est l'argument — jamais demandée.
 | `{{ALIAS}}` | Alias court de la zone |
 | `{{RACINE}}` | Chemin absolu de la racine du projet |
 | `{{OBJECTIF}}` | Objectif du projet, 1-2 phrases |
-| `{{STACK}}` | Stack technique, liste courte |
 | `{{DATE}}` | Date du jour, AAAA-MM-JJ |
 
 ## Fichiers déployés
 
-Depuis `templates/` : `.claude/CLAUDE.md`, `zones.md`, commands/ (start, close, create_memory), `_contexte/` (contexte.md, signals.md), `ollama_call.py`, `agent_role_TEMPLATE.md`. Sur confirmation : `AGENTS.md`, `GEMINI.md` (agents non-Claude). `roadmap_TEMPLATE.md` n'est pas copié à l'init.
+Depuis `templates/` : `.claude/CLAUDE.md`, `zones.md`, commands/ (start, close, create_memory, telephone), `_contexte/` (contexte.md, signals.md), `ollama_call.py`. Depuis le kit : `Protocole_start_close_context.md` → `_docs/protocole_vibecoding.md`. Sur confirmation : `AGENTS.md`, `GEMINI.md` (agents non-Claude). `.gitignore` créé ou complété (`.env*`, clés, `credentials*.json`, `*token*.json`, `settings.local.json`, `**/_contexte/journal_session.md`). `roadmap_TEMPLATE.md` et `agent_role_TEMPLATE.md` ne sont pas copiés à l'init.
+
+La réponse sur les données sensibles remplace `Aucun déclaré.` dans `CLAUDE.md` § Données sensibles ; si elle est négative, la ligne reste.
 
 ## Cas particuliers
 

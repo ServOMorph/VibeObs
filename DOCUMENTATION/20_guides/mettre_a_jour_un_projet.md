@@ -2,7 +2,7 @@
 type: guide
 description: /update : réaligner les fichiers de protocole d'un projet déployé sur le kit
 tags: guide, update, protocole, spécificités
-maj: 2026-09-06
+maj: 2026-11-14
 ---
 
 # Mettre à jour un projet déployé
@@ -13,8 +13,15 @@ Se lance **depuis le repo du kit**. Source canonique : `.claude/commands/update.
 ## Ce que `/update` touche
 
 Réaligne sur la dernière version du kit : `start.md`, `close.md`, `create_memory.md`,
-`ollama_call.py`, et fusionne partiellement `CLAUDE.md`. Fait deux commits dans le repo cible
-(`backup:` puis `update:`), puis estampille la ligne du projet dans `DEPLOYMENTS.md` (kit).
+`telephone.md`, `ollama_call.py`, et fusionne partiellement `CLAUDE.md`. Fait deux commits dans le repo
+cible (`backup:` puis `update:`), puis estampille la ligne du projet dans `DEPLOYMENTS.md` (kit).
+
+Étape 8bis (v5.44) : si la cible est un dépôt Git, ajoute `**/_contexte/journal_session.md` à son
+`.gitignore` (fichier créé si absent, existant jamais réordonné) et l'inclut au commit `update:`. Un
+journal déjà suivi par Git est signalé au rapport, sans être désuivi. Cible sans dépôt : rien.
+
+Les permissions `allowed-tools` ajoutées par le projet dans `start.md`/`close.md` sont relevées
+puis réinjectées en fin de ligne (v5.42) et signalées ; les retraits du projet ne sont pas conservés.
 
 Ne touche jamais : `_contexte/`, `zones.md`, la section « Données sensibles » et la section
 « Spécificités projet » de `CLAUDE.md`, le bloc `SPECIFICITES PROJET` de `start.md`/`close.md`, un
