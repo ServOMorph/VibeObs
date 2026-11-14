@@ -21,6 +21,8 @@ Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier)
 - `start.md` (kit + template) : étape 3 charge le journal, étape 4 l'affiche s'il est non vide (session précédente non close).
 - `init_projet.md` (kit + template) : `.gitignore` du projet créé avec `**/_contexte/journal_session.md`.
 - `update.md` (kit + template) : étape 8bis, ligne `.gitignore` ajoutée dans les projets cibles.
+- `scripts/check_kit.py` : `journal_session.md` classé fichier de sortie de commande (contrôle 6, fichier créé dans les projets cibles).
+- `tests_manuels.md` : section « Journal de session (v5.44) » ajoutée.
 
 ## v5.43 — 2026-11-12
 

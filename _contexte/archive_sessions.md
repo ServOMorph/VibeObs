@@ -1545,3 +1545,27 @@ Relever les sessions ouvertes ; mettre à jour par `/update` les projets restant
 
 ## Question bloquante pour la session suivante
 Dans quel dossier tourne la session « pilote-74 » (`telephone.md` à y installer s'il est absent) ?
+
+---
+
+# Session du 2026-11-14
+
+## Décisions prises
+- `/init_projet` (kit + template) : l'alias de zone est proposé par défaut avec le nom du dossier projet ; la question sur la stack est supprimée (placeholder `{{STACK}}` retiré, section « Stack » de `contexte.md` initialisée à « Non définie à la création »). `/create_projet` étape 16 le reprend. Version majeure v6.0 (placeholder supprimé, règle de l'étape 9).
+
+## Livrables produits ou modifiés
+- Projet `Agent_Trader` créé par `/create_projet` : `D:\ServOMorph\Agent_Trader`, dépôt GitHub privé `ServOMorph/Agent_Trader`, protocole installé (zone `Agent_Trader`, aucun template ni agent), ligne ajoutée dans `DEPLOYMENTS.md` (gitignoré).
+- `.claude/commands/init_projet.md`, `templates/.claude/commands/init_projet.md`, `.claude/commands/create_projet.md`, `templates/_contexte/contexte.md` : modifiés.
+- `Protocole_start_close_context.md`, `_docs/protocole_vibecoding.md`, `README.md`, `llms.txt`, `CHANGELOG.md` (v6.0) : alignés. Contrôles `check_kit.py` et `check_docs.py` passants.
+- Le travail v5.44 (journal de session) laissé non commité par la session précédente est inclus dans le même commit.
+
+## Hypothèses validées / invalidées
+- VALIDE : `/create_projet` exercé de bout en bout en réel (dépôt privé, init, aucun template).
+- EN ATTENTE : le nouveau flux (alias par défaut, sans stack) n'a pas été rejoué ; test ajouté à `tests_manuels.md`.
+- NON FAIT : le journal de session n'a pas été tenu pendant cette session.
+
+## Prochaine étape exacte
+Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Dans quel dossier tourne la session « pilote-74 » (`telephone.md` à y installer s'il est absent) ?

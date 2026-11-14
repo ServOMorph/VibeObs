@@ -66,3 +66,9 @@
 - [piste] Poursuivre la conception du skill générique d'orchestration multi-agents avec ChatGPT (passé de P1 au backlog le 2026-11-13 sur décision de l'utilisateur).
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` (local, hors Git).
+- [piste] Hook avant compact (PreCompact) qui force l'écriture d'un dump d'état dans le journal de session : la règle « relire après chaque `/compact` » repose sur la discipline de l'agent, un `/compact` n'étant pas détectable sans hook (limite signalée par XMage et Creation video).
+  - fait quand: un hook avant compact est testé en réel sur un projet suivi, ou son abandon est tracé.
+  - réf: `.claude/CLAUDE.md` § Journal de session.
+- [piste] Système d'avis de changement pour modifier des sessions ouvertes sans les perturber (message unique contrôlé aujourd'hui, validation dans chaque session) : avis déposé par le kit et lu au prochain `/start`, ou via l'intercom du kit.
+  - fait quand: un mécanisme est choisi et exercé, ou le mécanisme actuel (`SendMessage` + validation par session) est acté comme suffisant.
+  - réf: `.claude/memory.md` § Sessions ouvertes avant modification ; `templates/intercom/`.
