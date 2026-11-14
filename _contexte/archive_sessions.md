@@ -1569,3 +1569,29 @@ Relever les sessions ouvertes ; mettre à jour par `/update` les projets restant
 
 ## Question bloquante pour la session suivante
 Dans quel dossier tourne la session « pilote-74 » (`telephone.md` à y installer s'il est absent) ?
+
+---
+
+# Session du 2026-11-14
+
+## Décisions prises
+- Journal de session `_contexte/journal_session.md` (gitignoré, ajout seul) adopté contre les pertes dues aux `/compact` ; `signals.md`, `contexte.md` et roadmaps restent écrits par `/close` seul, qui l'intègre puis le vide.
+- Diffusion aux 9 sessions ouvertes par une version unique contrôlée, appliquée après accord de l'utilisateur dans chaque session ; correctif « gitignoré » envoyé dans un second temps.
+- `/update` v5.44 sur les projets sans session ouverte, un par un avec contrôles.
+- Constat : une autre session du kit (création d'`Agent_Trader`, v6.0 : `/init_projet` sans question de stack) a clos le kit à 09:45 (commit `7bcd433`) en y incluant le travail v5.44 de cette session ; son bloc « Dernière session » est archivé dans `_contexte/archive_sessions.md`.
+
+## Livrables produits ou modifiés
+- Kit v5.44 (`start.md`, `close.md`, `init_projet.md`, `update.md` en kit + template ; `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` ; `.gitignore` ; `check_kit.py` ; `CHANGELOG.md` ; `README.md` ; `llms.txt` ; docs de protocole ; `tests_manuels.md`) : commités dans `7bcd433` (autre session du kit) ; ce `/close` ajoute `_contexte/` et `CHANGELOG.md`.
+- 21 projets mis à jour en v5.44 ; règle appliquée dans les blocs projet de 8 sessions ouvertes sur 9.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` et `check_docs.py` passent ; 7 contrôles du `/update` passés sur les 21 projets.
+- INVALIDE : journal versionné (résidu à chaque `/close`) -> pivot vers gitignoré.
+- NON VERIFIE : association nom de session / dossier ; cycle réel du journal ; correctif `.gitignore` chez Creation llm et World Model ; application chez Sécurité.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev.
+
+## Prochaine étape exacte
+Relever les sessions ouvertes ; `/update` v5.44 de `SérénIATech_dev`, puis des projets dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`, `xmage-test`) ; observer un cycle réel du journal. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Dans quels dossiers tournent les sessions « pilote-74 » (absente de la liste actuelle) et « agent-trader-f8 » (nouvelle) ?

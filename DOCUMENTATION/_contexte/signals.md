@@ -5,6 +5,10 @@
   - fait quand: un `/close <zone>` ajoute une action dédupliquée dans `DOCUMENTATION/_contexte/signals.md`, puis l'agent Documentation la traite
   - réf: .claude/commands/close.md, DOCUMENTATION/_contexte/signals.md
 
+- [P2|ouvert|source=kit] Décider si `/delegation` (routage Codex / OpenCode / Ollama / sous-agents Haiku, journal `_codex/journal_delegation.md`) et la règle `disable-model-invocation` des commandes manuelles méritent un guide et une ligne d'INDEX
+  - fait quand: guide créé ou mis à jour dans `DOCUMENTATION/`, ou décision explicite de ne pas documenter.
+  - réf: .claude/commands/delegation.md, _codex/journal_delegation.md, CHANGELOG.md v6.1 et v6.2
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14

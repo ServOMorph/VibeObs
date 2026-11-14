@@ -12,16 +12,13 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-14 : kit v6.0 — `/init_projet` propose l'alias par défaut avec le nom du projet et ne demande plus la stack ; `Agent_Trader` créé par `/create_projet` (autre session du kit, commit `7bcd433`) ; v5.44 — journal de session `_contexte/journal_session.md` (gitignoré) écrit au fil de l'eau, intégré puis vidé par `/close`, signalé par `/start` ; 21 projets en v5.44, `SérénIATech_dev` et les projets à session ouverte en attente de `/update`.
-- 2026-11-13 (suite) : `telephone.md` copié dans `VertIA_v3` via sa session ouverte ; session « Sécurité » exclue de cette copie.
-- 2026-11-13 : kit v5.43 — `/insert_template` (registre sans doublon) et `/create_memory` scopé validés en réel ; reste la conversion de `/create_agent`.
-- 2026-11-12 (suite) : kit v5.43 — `/create_agent` étape 3 : une lecture en échec ne vaut jamais absence ; `_docs/protocole_vibecoding.md` du kit réaligné.
-- 2026-11-12 : 11 projets archivés dans `D:\ServOMorph\archives` (`crea_zik` à archiver à la main) ; kit v5.38 à v5.42 (`/start` réduit, `allowed-tools` conservés par `/update`).
+- 2026-11-14 (suite) : kit v6.2 — `/migration_canva` (manuelle) et `disable-model-invocation` sur les 4 commandes manuelles ; v6.1 — `/delegation` (Codex, OpenCode, Ollama, sous-agents Haiku) avec journal `_codex/journal_delegation.md`, 3 findings du backlog corrigés ; `DOCUMENTATION/` alignée sur v6.0.
+- 2026-11-14 : kit v6.0 — `/init_projet` sans question de stack, alias par défaut = nom du projet ; v5.44 — journal de session gitignoré ; 21 projets en v5.44, `SérénIATech_dev` et les projets à session ouverte en attente de `/update`.
+- 2026-11-13 : kit v5.43 — `/insert_template` et `/create_memory` scopé validés en réel ; reste la conversion de `/create_agent`.
+- 2026-11-12 : 11 projets archivés dans `D:\ServOMorph\archives` (`crea_zik` à archiver à la main) ; kit v5.38 à v5.42.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
-- 2026-11-10 : `templates/parallel_agents` n'est pas un template insérable (modèles par agent remplis par `/create_parallel_team`) : exclu de la liste de `/create_projet` plutôt que d'étendre les placeholders d'`/insert_template`.
-- 2026-11-11 : `/close` ne pousse jamais sans condition : `git remote` vide ou règle projet (`SPECIFICITES PROJET`, `.claude/memory.md`) = pas de push, rien au bilan ; un projet sans remote voulu n'a pas à personnaliser le corps de `close.md`.
 
 - 2026-11-11 : `/start` (v5.38) n'affiche par défaut que la prochaine étape, la question bloquante et des compteurs (mot pour mot) ; `signals.md` complet sur `--complet` ou si une section manque ; le bloc 4c analyse toujours tout le fichier. La qualité de « Prochaine étape exacte » devient critique.
 - 2026-11-11 : `/start` étape 4b (v5.39) : lecture des `réf:` limitée aux actions citées par la prochaine étape, même en `--complet` (lire toutes les `réf:` d'un fichier de 19 actions était trop coûteux en tokens).
@@ -31,3 +28,5 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-12 : `/create_agent` reste générique : pas de mode « agent client » (besoin couvert par une commande projet), pas d'exception à la règle des MAJUSCULES ; un contrôle en échec ou sans sortie est refait avant toute conclusion d'absence (v5.43).
 - 2026-11-14 : `/init_projet` (v6.0) ne demande plus la stack et propose l'alias par défaut avec le nom du projet ; le champ « Stack » du `contexte.md` d'un projet créé se remplit au fil du travail.
 - 2026-11-14 : journal de session (v5.44) gitignoré (un fichier versionné vidé par `/close` laisserait un résidu à chaque clôture et risquerait des données sensibles en dépôt public) ; seul `/close` écrit `signals.md` / `contexte.md`. Règle diffusée aux sessions ouvertes par message unique contrôlé, application validée dans chaque session. Limites assumées : perdu avec le disque, écriture dépendante de la discipline de l'agent (un `/compact` n'est pas détectable sans hook).
+- 2026-11-14 : `/delegation` — Claude orchestre et délègue selon la tâche : Ollama (texte mécanique fourni, local), OpenCode gratuit (lecture et petite édition dans le dépôt), Codex (correctif multi-fichiers, revue), sous-agent Haiku (web, doc). Écriture dans le kit en worktree, aucun secret vers un exécutant cloud, journal de chaque délégation pour améliorer le routage.
+- 2026-11-14 : commandes à lancement manuel marquées `disable-model-invocation: true` (description retirée du contexte, `/nom` conservé) au lieu d'être sorties de `.claude/` ; critère : lancement manuel seulement, appelée par aucune autre commande.

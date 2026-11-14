@@ -1,11 +1,5 @@
 # Backlog — VibeObs
 
-- [finding] `/close` étape 14bis : la détection « DEPLOYMENTS.md modifié » s'appuie sur `git diff --name-only`, or ce fichier est gitignoré ; la proposition de sauvegarde Drive ne peut donc jamais se déclencher.
-  - fait quand: l'étape 14bis détecte la modification par un autre moyen (date ou empreinte), ou la décision de la laisser manuelle est tracée.
-  - réf: `.claude/commands/close.md` (bloc SPECIFICITES PROJET, étape 14bis) ; `.gitignore` ligne 17.
-- [finding] `/init_projet` étape 5 : si Q4 = oui mais que le dossier cible n'est pas un dépôt Git (cas `D:\xmage-test`, 2026-11-03), la commande ne prévoit ni `git init` ni question ; le `git add` échouerait. Fait à la main.
-  - fait quand: l'étape 5 initialise le dépôt (ou pose la question) quand `.git` est absent.
-  - réf: `.claude/commands/init_projet.md` étape 5.
 - [piste] Roadmap `agents_paralleles` archivée le 2026-11-05 (phase 2 inachevée) : faire exécuter et vérifier un cycle `/start`/`/close` par agent (`ONBOARD`, `RETOURS`) dans son worktree d'Appli_TSA_SDI_TDAH ; phase 3 (évolutions produit) non commencée.
   - fait quand: un cycle par agent est exécuté et vérifié, ou l'abandon du pilote est décidé.
   - réf: `_archives/roadmap_agents_paralleles.md`
@@ -26,10 +20,10 @@
   - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
 - [piste] Démarrer l'agent `shorts` de `SérénIATech_dev` (`Communication/SHORTS`) et réaliser l'état des lieux du dépôt sur les Shorts (charte complétée le 2026-10-14 : zone parente `communication`, écriture partagée `clip_promo/diffusion`).
   - fait quand: `/start shorts` charge la charte sans warning, l'état des lieux est écrit dans `Communication/SHORTS/` et validé par l'utilisateur, sans lecture des données sensibles.
-  - réf: `Communication/SHORTS/agent_role.md` de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+  - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\Communication\SHORTS\agent_role.md`, `AGENTS_REGISTRY.md`.
 - [piste] Démarrer l'agent `espace_l-invariable` de `SérénIATech_dev` (`Gestion clients/Clients/Espace_L-Invariable`), puis renommer son dossier en majuscules une fois le verrou levé.
   - fait quand: `/start espace_l-invariable` charge la charte sans warning ; renommage en `ESPACE_L-INVARIABLE` fait avec mise à jour de `clients.dossier` (id 8) dans `UI/sereniatech.db`, `zones.md` et `upload_short_atelier.py`.
-  - réf: `Gestion clients/Clients/Espace_L-Invariable/_contexte/signals.md` (P2) de SérénIATech_dev, `AGENTS_REGISTRY.md`.
+  - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\Gestion clients\Clients\Espace_L-Invariable\_contexte\signals.md` (P2), `AGENTS_REGISTRY.md`.
 - [piste] Démarrer le projet `D:\ServOMorph\REA` (`/start REA`), renseigner sa stack et commiter `AGENTS.md`/`GEMINI.md`.
   - fait quand: `/start REA` charge le contexte sans warning, `contexte.md` porte une stack, `git -C D:\ServOMorph\REA status` est propre.
   - réf: `D:\ServOMorph\REA\_contexte\contexte.md` ; `DEPLOYMENTS.md`.
@@ -60,9 +54,6 @@
 - [piste] Phase 3 de `roadmap_fondations.md` (agent PEDAGOGIE) retirée de la roadmap le 2026-11-09 sur décision de l'utilisateur (« je verrai ça plus tard »). Agent créé le 2026-11-06 par `/create_agent` (écriture limitée à `PEDAGOGIE/`, sans publication). Reste : choisir le parcours (hybride recommandé : projet plaisir comme véhicule, bases au rythme du besoin) puis produire la suite de la page de cours (parties 6 et suivantes), les fiches PP et un `dist/` prêt pour Netlify.
   - fait quand: l'agent est lancé par `/start pedagogie` et une première partie est produite et validée, ou l'abandon est tracé.
   - réf: `PEDAGOGIE/agent_role.md` ; `PEDAGOGIE/_contexte/`.
-- [finding] `/update` ne rafraîchit pas `_docs/protocole_vibecoding.md` dans les projets : chaque copie reste à la version de son `/init_projet` (constaté le 2026-11-12 ; la copie du kit, restée en v5.0, a été réalignée à la main).
-  - fait quand: `update.md` (kit + template) recopie `Protocole_start_close_context.md` vers `_docs/protocole_vibecoding.md`, ou le non-rafraîchissement est acté avec motif.
-  - réf: `.claude/commands/update.md` ; `.claude/commands/init_projet.md` étape 3.
 - [piste] Poursuivre la conception du skill générique d'orchestration multi-agents avec ChatGPT (passé de P1 au backlog le 2026-11-13 sur décision de l'utilisateur).
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` (local, hors Git).
@@ -72,3 +63,6 @@
 - [piste] Système d'avis de changement pour modifier des sessions ouvertes sans les perturber (message unique contrôlé aujourd'hui, validation dans chaque session) : avis déposé par le kit et lu au prochain `/start`, ou via l'intercom du kit.
   - fait quand: un mécanisme est choisi et exercé, ou le mécanisme actuel (`SendMessage` + validation par session) est acté comme suffisant.
   - réf: `.claude/memory.md` § Sessions ouvertes avant modification ; `templates/intercom/`.
+- [amélioration] Délégation : `ollama_call.py` a un délai fixe de 60 s, inférieur au chargement à froid de `qwen2.5:7b` (82 s mesurés) ; `run_opencode.ps1` ne garde dans `rapport.md` que le premier bloc du message final (liste d'anomalies restée dans `log.txt`).
+  - fait quand: délai Ollama paramétrable (ou préchauffage documenté) et rapport OpenCode complet constatés sur un lancement réel.
+  - réf: `ollama_call.py` ; `templates/delegation/scripts/run_opencode.ps1` ; `_codex/journal_delegation.md`.
