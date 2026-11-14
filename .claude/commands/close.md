@@ -28,7 +28,10 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    Non bloquant : en cas d'échec d'une commande du hook, le signaler en une ligne et poursuivre la
    clôture. Contrat des sections : `on_close_TEMPLATE.md` du kit.
 
-3. Produire une synthèse de session (< 25 lignes) au format suivant :
+3. Lire d'abord `<dossier>/_contexte/journal_session.md` s'il existe : chaque ligne est un élément à
+   intégrer (décision, livrable, action) et complète la mémoire de la conversation, que `/compact` a pu
+   amputer ; signaler toute contradiction entre le journal et la conversation.
+   Produire ensuite une synthèse de session (< 25 lignes) au format suivant :
 
 ```
 # Session du AAAA-MM-JJ
@@ -205,7 +208,8 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    - Ne pas committer tant que des écarts non consignés persistent
 
 12. Relire les étapes 3 à 9 une par une et confirmer explicitement que chacune
-   a été exécutée (pas seulement planifiée). Si une étape a une commande associée (script de build,
+   a été exécutée (pas seulement planifiée). Vérifier aussi que chaque ligne du journal de session est reportée
+   dans la synthèse, `signals.md` ou `contexte.md`. Si une étape a une commande associée (script de build,
    régénération de vue, etc.) et qu'elle n'a pas encore été lancée dans cette session, l'exécuter
    maintenant, avant le commit — jamais après.
 
@@ -234,6 +238,10 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
     - Si une commande de génération a modifié des fichiers après le commit (cas non censé
       survenir avec l'étape 12, mais à vérifier via `git status` après coup) : les inclure dans
       ce même commit, jamais dans un commit séparé.
+    - Journal de session : une fois le commit constaté dans `git show --name-only HEAD` (sans dépôt git :
+      une fois l'étape 12 terminée), vider `<dossier>/_contexte/journal_session.md` de la zone fermée
+      (fichier conservé, contenu vide). Jamais avant. En cas d'échec du commit, le journal reste intact.
+      Le fichier est gitignoré : il n'est ni commité ni signalé comme fichier ignoré à l'étape 15.
 
 14. Push conditionnel. Si une règle du bloc `SPECIFICITES PROJET` de ce fichier ou de
     `.claude/memory.md` interdit le push : ne pas exécuter `git push`, ne pas le proposer, ne pas

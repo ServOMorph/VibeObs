@@ -23,9 +23,9 @@ Initialiser le protocole vibecoding dans le projet cible à partir de ce kit de 
 
 ### 2. Poser ces questions avant toute action
 
-1. Alias de la zone (nom court, sans espace) ?
+1. Alias de la zone (nom court, sans espace) ? Proposer par défaut le nom du dossier projet
+   (nom de `$ARGUMENTS`) ; une réponse vide ou confirmant ce nom retient ce nom.
 2. Objectif du projet (1-2 phrases) ?
-3. Stack technique (liste courte) ?
 4. Projet sous git ? (oui/non)
    - Si "non" : proposer "Automatiser un backup du dossier projet vers Google Drive à chaque
      /close (miroir via rclone, dans BackUps/<nom_du_dossier>/) ? (oui/non)" (Q4bis). Un projet
@@ -100,6 +100,7 @@ credentials*.json
 *token*.json
 *.token
 .claude/settings.local.json
+**/_contexte/journal_session.md
 ```
 
 ### 4. Remplacer les placeholders
@@ -111,7 +112,6 @@ Dans tous les fichiers copiés sous `_contexte/`, `.claude/commands/` et `.claud
 | `{{ALIAS}}` | Alias de la zone (réponse Q1) |
 | `{{RACINE}}` | Chemin absolu de la racine du projet ($ARGUMENTS) |
 | `{{OBJECTIF}}` | Objectif du projet (réponse Q2) |
-| `{{STACK}}` | Stack technique (réponse Q3) |
 | `{{DATE}}` | Date du jour (AAAA-MM-JJ) |
 | `{{RCLONE_REMOTE}}` | Remote rclone retenu à Q4bis, seulement dans `rclone_backup.json` |
 | `{{NOM_PROJET}}` | Nom du dossier racine du projet, seulement dans `rclone_backup.json` |
@@ -125,7 +125,7 @@ Lecture et écriture en UTF-8 sans BOM, fins de ligne conservées (LF des templa
 ```python
 import pathlib
 valeurs = {"{{ALIAS}}": "...", "{{RACINE}}": r"C:\chemin\projet", "{{OBJECTIF}}": "...",
-           "{{STACK}}": "...", "{{DATE}}": "AAAA-MM-JJ"}
+           "{{DATE}}": "AAAA-MM-JJ"}
 racine = pathlib.Path(r"C:\chemin\projet")
 cibles = [*racine.glob("_contexte/**/*.md"), *racine.glob(".claude/commands/*.md"), racine / ".claude/zones.md"]
 for f in cibles:

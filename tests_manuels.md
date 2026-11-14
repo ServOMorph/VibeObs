@@ -78,3 +78,19 @@ Jamais exercé en réel :
 - projet avec remote : `git push` exécuté ; en cas d'échec, erreur affichée telle quelle au bilan ;
 - dans les trois cas : le hook « Fin » (14-ter) s'exécute après le commit.
 Transmettre chaque divergence au kit (scénario, étape, attendu, observé).
+
+## Journal de session (v5.44) — cycle réel dans un projet suivi
+
+Dans un projet ayant le journal (ex: `creation_3d`, `XMage`) :
+- vérifier que `_contexte/journal_session.md` reçoit des lignes au format `AAAA-MM-JJ HH:MM | décision|fichier|action | texte` pendant la session et après un `/compact` ;
+- lancer `/close` : chaque ligne est reportée dans la synthèse, `signals.md` ou `contexte.md`, puis le journal est vidé après le commit ;
+- `git status` ne montre ni le journal ni de résidu lié à son vidage ;
+- rouvrir avec `/start` après un `/close` sauté : le journal non vide s'affiche sous « Journal non intégré ».
+
+## /create_projet et /init_projet v6.0 — alias par défaut, plus de question stack
+
+Au prochain `/create_projet <nom>` réel :
+- l'alias de zone est proposé avec `<nom>` comme valeur par défaut ; une réponse vide ou confirmant retient `<nom>` ;
+- aucune question sur la stack technique n'est posée ;
+- `_contexte/contexte.md` du projet créé contient « Non définie à la création : à compléter au fil du projet. » dans la section Stack, sans `{{` résiduel.
+Transmettre toute divergence au kit.

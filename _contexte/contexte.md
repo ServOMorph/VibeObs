@@ -12,11 +12,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-14 : kit v6.0 — `/init_projet` propose l'alias par défaut avec le nom du projet et ne demande plus la stack (`{{STACK}}` supprimé) ; `Agent_Trader` créé par `/create_projet` (dépôt privé, protocole installé, sans template) ; v5.44 (journal de session) commité avec ; 7 projets toujours en attente de `/update`.
 - 2026-11-13 (suite) : `telephone.md` copié dans `VertIA_v3` via sa session ouverte (version du projet toujours v5.25) ; session « Sécurité » exclue ; dossier de « pilote-74 » à préciser ; 7 projets toujours en attente de `/update`.
 - 2026-11-13 : kit v5.43 inchangé — `/insert_template` (registre sans doublon) et `/create_memory` scopé validés en réel sur cibles jetables ; reste la conversion de `/create_agent` ; 7 projets toujours en attente de `/update`.
 - 2026-11-12 (suite) : kit v5.43 — `/create_agent` étape 3 : une lecture en échec ne vaut jamais absence ; `_docs/protocole_vibecoding.md` du kit réaligné sur v5.42 ; 7 projets toujours en attente de `/update` (sessions ouvertes).
 - 2026-11-12 : 11 projets archivés dans `D:\ServOMorph\archives` (`crea_zik` à archiver à la main) ; 22 des 29 projets non archivés en v5.42 (`SérénIATech_dev` l'était déjà), 7 en attente (sessions ouvertes) ; fusion de `allowed-tools` exercée en réel ; kit v5.42 — `/update` conserve les permissions `allowed-tools` ajoutées par un projet ; v5.41 — `/close` étape 9 : `tests_manuels.md` et `roadmap*.md` exclus du bump ; v5.40 — `/start` : ligne de compteurs dans tous les modes, parties sans objet retirées ; v5.39 : 4b limitée aux `réf:` citées, y compris en `--complet` ; v5.38 : affichage réduit exercé en réel, tous les cas de `tests_manuels.md` conformes.
-- 2026-11-10 à 11 : kit v5.34 à v5.37 — `/telephone` copié par défaut dans tout projet créé ou mis à jour ; `parallel_agents` retiré de `/create_projet` ; `/close` étape 14 conditionnelle (pas de push sans remote ni règle projet contraire) ; `llms.txt` aligné.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
@@ -31,3 +31,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-11 : `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi, exclus du déclencheur de bump de version (le statut de roadmap est mis à jour par `/close` lui-même).
 - 2026-11-11 : `/update` (v5.42) : `allowed-tools` de `start.md`/`close.md` = liste du kit + ajouts du projet (signalés) ; retraits du projet non conservés ; étape 10 tolère les ajouts en fin de ligne.
 - 2026-11-12 : `/create_agent` reste générique : pas de mode « agent client » (besoin couvert par une commande projet), pas d'exception à la règle des MAJUSCULES ; un contrôle en échec ou sans sortie est refait avant toute conclusion d'absence (v5.43).
+- 2026-11-14 : `/init_projet` (v6.0) ne demande plus la stack et propose l'alias par défaut avec le nom du projet ; le champ « Stack » du `contexte.md` d'un projet créé se remplit au fil du travail.

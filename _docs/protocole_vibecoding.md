@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v5.43** — Révision du 2026-11-12. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v6.0** — Révision du 2026-11-14. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
@@ -334,7 +334,6 @@ VibeObs/
 | `{{ALIAS}}` | Alias court de la zone (ex: backend) |
 | `{{RACINE}}` | Chemin absolu de la racine du projet (argument fourni à `/init_projet`) |
 | `{{OBJECTIF}}` | Objectif du projet, 1-2 phrases |
-| `{{STACK}}` | Stack technique, liste courte |
 | `{{DATE}}` | Date du jour, AAAA-MM-JJ |
 
 Les placeholders apparaissent dans `templates/_contexte/*.md`, `templates/.claude/commands/*.md` et `templates/.claude/zones.md`. `CLAUDE.md`, `ollama_call.py` et `roadmap_TEMPLATE.md` sont génériques, copiés tels quels.

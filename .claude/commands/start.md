@@ -36,6 +36,7 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    1. `_contexte/signals.md` — actions ouvertes, blocages, dernière session (priorité absolue)
    2. `_contexte/contexte.md` — contexte stable
    3. `roadmap*.md` — si un fichier correspondant existe dans `<dossier>`, le charger
+   4. `_contexte/journal_session.md` — si présent et non vide, le charger (session précédente non close)
 
    > **Économie tokens :** si `signals.md` suffit à répondre à la question immédiate,
    > `contexte.md` peut être chargé à la demande plutôt que systématiquement.
@@ -53,6 +54,9 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
      l'utilisateur. Si l'une des deux sections est absente : afficher le contenu intégral, comme en
      mode complet.
    - **Mode complet** (`--complet`) : afficher le contenu intégral de `signals.md`.
+   Si `_contexte/journal_session.md` est non vide : l'afficher mot pour mot sous le titre « Journal non
+   intégré », avant la ligne de compteurs, et signaler en une ligne que le `/close` précédent n'a pas eu
+   lieu ou n'a pas intégré le journal.
    Dans tous les cas, terminer par une ligne de compteurs :
    `Actions ouvertes : N (dont P1 : x) · Backlog : B · Phase en cours : <titre>`.
    N = actions de premier niveau des sections d'actions ouvertes (la ligne de renvoi du backlog

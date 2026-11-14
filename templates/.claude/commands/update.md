@@ -199,6 +199,14 @@ réponse finale les permissions ainsi conservées, pour information.
   ```
 - Si présente : réécrire ses colonnes "Version kit" et "Date init" avec la nouvelle version et la date du jour (conserver les autres colonnes telles quelles). Noter l'ancienne version pour l'étape 10 / le résumé batch.
 
+### 8bis. Ignorer le journal de session
+
+- Si `<cible>` est un dépôt Git : vérifier que `<cible>/.gitignore` contient la ligne
+  `**/_contexte/journal_session.md` ; sinon l'ajouter (créer le fichier si absent), sans réordonner ni
+  supprimer l'existant. Si le journal est déjà suivi par Git (`git -C <cible> ls-files --error-unmatch`
+  sur un `journal_session.md`), le signaler au rapport sans le désuivre.
+- Cible sans dépôt Git : ne rien faire.
+
 ### 9. Commit
 
 ```bash
@@ -208,6 +216,7 @@ git -C <cible> commit -m "update: protocole vibecoding — zone <alias> — kit 
 
 Si `AGENTS.md` a été créé à l'étape 7 : l'ajouter aussi à ce commit (`git -C <cible> add AGENTS.md`).
 Si `GEMINI.md` a été créé à l'étape 7 : l'ajouter aussi à ce commit (`git -C <cible> add GEMINI.md`).
+Si `.gitignore` a été modifié à l'étape 8bis : l'ajouter aussi à ce commit (`git -C <cible> add .gitignore`).
 
 ### 10. Vérification post-update
 

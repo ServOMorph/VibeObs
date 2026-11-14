@@ -84,6 +84,14 @@ Ne jamais écrire dans le dossier `memory/` ni dans aucun système de mémoire p
 ### Mémoire projet
 Lire `.claude/memory.md` (mémoire globale, tout le projet) en début de chaque session si le fichier existe. Pour une zone donnée, `<dossier_zone>/_contexte/memory.md` (mémoire propre à cette zone) est chargé à l'étape 2c de `/start`. Ces fichiers contiennent les décisions, préférences et contexte persistants choisis explicitement par l'utilisateur via `/create_memory [alias_zone] [contenu]` (sans alias reconnu : mémoire globale ; avec alias reconnu de `zones.md` : mémoire de cette zone). Ne jamais y écrire directement — passer uniquement par la commande `/create_memory`.
 
+### Journal de session
+Tenir `<dossier_zone>/_contexte/journal_session.md` (gitignoré, jamais de donnée sensible) en ajout
+seul : une ligne par événement, `AAAA-MM-JJ HH:MM | décision|fichier|action | texte`, écrite au moment
+de l'événement (décision actée, fichier créé ou modifié, action ouverte ou close) et relue juste après
+chaque `/compact`. Aucune ligne n'est réécrite ni supprimée en cours de session, et le journal ne
+modifie jamais une `roadmap*.md`. `signals.md`, `contexte.md` et les roadmaps restent écrits par
+`/close` seul, qui intègre le journal puis le vide.
+
 ## Base de connaissances
 
 Si le projet dispose d'une zone `DOCUMENTATION/` (agent dédié, cf. `agent_role.md`), elle centralise

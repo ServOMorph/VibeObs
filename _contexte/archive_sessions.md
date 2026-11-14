@@ -1523,3 +1523,25 @@ Relever les sessions ouvertes ; mettre à jour par `/update` les projets restant
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-13 (suite)
+
+## Décisions prises
+- `telephone.md` installé dans les seules sessions ouvertes qui ne l'avaient pas : `VertIA_v3` ; la session « Sécurité » est exclue (décision de l'utilisateur).
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\VertIA_v3\.claude\commands\telephone.md` : créé par la session VertIA_v3, empreinte identique à celle du kit (contrôlée dans cette session).
+- Aucun fichier du kit modifié hors `_contexte/`.
+
+## Hypothèses validées / invalidées
+- VALIDE : procédure « session ouverte » exercée de bout en bout (demande, reformulation contrôlée, validation, accord de l'utilisateur, exécution par la session), via `ListAgents` et `SendMessage`.
+- NON VERIFIE : l'association nom de session / dossier a été supposée pour les 6 autres projets testés (`telephone.md` présent dans chacun) ; seule `VertIA_v3` a confirmé son dossier.
+- EN ATTENTE : plan de la phase 6 de SérénIATech_dev ; dossier de la session « pilote-74 ».
+
+## Prochaine étape exacte
+Relever les sessions ouvertes ; mettre à jour par `/update` les projets restants dont la session est fermée (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`), puis observer un `/start` en réel dans un projet suivi. La phase 6 de SérénIATech_dev passe avant dès que son plan est prêt.
+
+## Question bloquante pour la session suivante
+Dans quel dossier tourne la session « pilote-74 » (`telephone.md` à y installer s'il est absent) ?

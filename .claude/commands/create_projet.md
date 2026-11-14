@@ -94,6 +94,8 @@ toujours depuis le kit, nom du projet en argument. `<kit>` = dossier de travail 
     par défaut à la question "Objectif du projet" (Q2) de `/init_projet` si GitHub a été choisi ;
     sinon, laisser `/init_projet` poser cette question normalement. Laisser `/init_projet` poser
     ses autres questions normalement.
+    Pour l'alias de zone (Q1 de `/init_projet`), proposer `<nom_projet>` comme réponse par défaut.
+    `/init_projet` ne pose pas de question sur la stack technique : ne pas la demander.
     `/init_projet` fait lui-même le commit initial du protocole (son étape 5, projet sous git)
     et enregistre le déploiement dans `<kit>/DEPLOYMENTS.md`.
 

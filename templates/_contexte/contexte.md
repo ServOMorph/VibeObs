@@ -4,7 +4,7 @@
 {{OBJECTIF}}
 
 ## Stack / contraintes techniques (stable, rarement modifié)
-{{STACK}}
+Non définie à la création : à compléter au fil du projet.
 
 ## État actuel (réécrit intégralement à chaque /close)
 Projet initialisé. Aucun livrable produit.

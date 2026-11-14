@@ -39,3 +39,6 @@ skills/chatgpt-orchestrateur/scripts/comptes_google.json
 
 # Archives locales contenant des données personnelles, jamais commitées
 _archives/local/
+
+# Journal de session — local, jamais commité
+**/_contexte/journal_session.md

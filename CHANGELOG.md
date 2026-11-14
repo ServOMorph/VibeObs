@@ -3,6 +3,25 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.0 — 2026-11-14
+
+### Modifié
+- `init_projet.md` (kit + template) : l'alias de zone (Q1) est proposé par défaut avec le nom du dossier projet ; la question sur la stack technique (Q3) est supprimée, ainsi que le placeholder `{{STACK}}` (tableau et script de remplacement). Numérotation Q4 à Q9 conservée.
+- `templates/_contexte/contexte.md` : section « Stack » initialisée à « Non définie à la création : à compléter au fil du projet. ».
+- `create_projet.md` : étape 16, alias proposé par défaut avec `<nom_projet>`, aucune question sur la stack.
+- `Protocole_start_close_context.md`, `_docs/protocole_vibecoding.md`, `README.md` : placeholder `{{STACK}}` retiré, question d'alias documentée.
+
+## v5.44 — 2026-11-13
+
+### Ajouté
+- Journal de session `_contexte/journal_session.md` (gitignoré, ajout seul) : règle dans `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (kit + template), écriture au fil de l'eau et relecture après chaque `/compact`. Cas d'origine : informations perdues par les `/compact` d'une session longue, écarts dans les fichiers mis à jour par `/close`.
+
+### Modifié
+- `close.md` (kit + template) : étape 3 lit le journal avant la synthèse, étape 12 vérifie que chaque ligne est reportée, étape 13 vide le journal après un commit constaté (jamais avant).
+- `start.md` (kit + template) : étape 3 charge le journal, étape 4 l'affiche s'il est non vide (session précédente non close).
+- `init_projet.md` (kit + template) : `.gitignore` du projet créé avec `**/_contexte/journal_session.md`.
+- `update.md` (kit + template) : étape 8bis, ligne `.gitignore` ajoutée dans les projets cibles.
+
 ## v5.43 — 2026-11-12
 
 ### Modifié
