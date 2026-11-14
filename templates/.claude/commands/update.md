@@ -116,6 +116,9 @@ Pour chacun des fichiers suivants, copier tel quel depuis le kit (aucune substit
 | `templates/.claude/commands/create_memory.md` | `<cible>/.claude/commands/create_memory.md` |
 | `templates/.claude/commands/telephone.md` | `<cible>/.claude/commands/telephone.md` |
 | `templates/ollama_call.py` | `<cible>/ollama_call.py` |
+| `<kit>/Protocole_start_close_context.md` | `<cible>/_docs/protocole_vibecoding.md` |
+
+Créer `<cible>/_docs/` si absent avant la copie.
 
 Pour `start.md` et `close.md`, relever aussi, avant d'écraser, les permissions de la ligne
 `allowed-tools` du frontmatter existant absentes de celle du fichier kit (ajouts du projet). Les
@@ -210,7 +213,7 @@ réponse finale les permissions ainsi conservées, pour information.
 ### 9. Commit
 
 ```bash
-git -C <cible> add .claude/commands/ .claude/CLAUDE.md ollama_call.py
+git -C <cible> add .claude/commands/ .claude/CLAUDE.md ollama_call.py _docs/protocole_vibecoding.md
 git -C <cible> commit -m "update: protocole vibecoding — zone <alias> — kit <version>"
 ```
 
@@ -226,6 +229,8 @@ Avant de confirmer, exécuter ces contrôles sur `<cible>` et collecter les éch
    strictement identiques à leur version dans `templates/` (hors zones `SPECIFICITES PROJET`, qui
    diffèrent normalement, et hors permissions ajoutées en fin de ligne `allowed-tools` à l'étape 5 :
    la ligne commence par la liste du kit, intégrale et dans le même ordre).
+   `<cible>/_docs/protocole_vibecoding.md` est présent et strictement identique à
+   `<kit>/Protocole_start_close_context.md`.
 2. **Marqueurs intacts** : `start.md` et `close.md` contiennent chacun exactement une paire
    `<!-- SPECIFICITES PROJET : DEBUT -->` / `<!-- SPECIFICITES PROJET : FIN -->`.
 3. **CLAUDE.md cohérent** :
@@ -238,7 +243,7 @@ Avant de confirmer, exécuter ces contrôles sur `<cible>` et collecter les éch
    l'update (`git diff` vide sur ces chemins par rapport au commit de sauvegarde de l'étape 3).
 5. **`ollama_call.py` tracké** : `git -C <cible> ls-files ollama_call.py` retourne bien le fichier.
 6. **Commit propre** : `git -C <cible> show --stat HEAD` ne contient que des fichiers du protocole
-   (`.claude/commands/`, `.claude/CLAUDE.md`, `ollama_call.py`) — aucun fichier de projet non lié
+   (`.claude/commands/`, `.claude/CLAUDE.md`, `ollama_call.py`, `_docs/protocole_vibecoding.md`, `.gitignore`) — aucun fichier de projet non lié
    n'a été inclus par erreur.
 7. **DEPLOYMENTS.md** : la ligne de `<cible>` porte bien la nouvelle version et la date du jour.
 
@@ -249,6 +254,6 @@ projet de "✅" à "⚠️" dans le résumé final, avec le détail du contrôle
 ### 11. Confirmer
 
 Répondre uniquement :
-"✅ Update <alias> terminé (kit <ancienne version> → <version>). Fichiers mis à jour : start.md, close.md, create_memory.md, telephone.md, CLAUDE.md, ollama_call.py. Sections/blocs "Spécificités projet" préservés."
+"✅ Update <alias> terminé (kit <ancienne version> → <version>). Fichiers mis à jour : start.md, close.md, create_memory.md, telephone.md, CLAUDE.md, ollama_call.py, _docs/protocole_vibecoding.md. Sections/blocs "Spécificités projet" préservés."
 Si `AGENTS.md` et/ou `GEMINI.md` ont été créés à l'étape 7, les ajouter à la liste des fichiers mis à jour.
 Si l'étape 10 a détecté un ou plusieurs échecs : remplacer "✅" par "⚠️" et lister chaque échec sur une ligne dédiée après la confirmation.

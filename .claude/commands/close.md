@@ -283,7 +283,7 @@ documentation du kit avant le commit.
 
 Étape 14bis (entre l'étape 14 et l'étape 15, kit uniquement) : Sauvegarde du fichier `DEPLOYMENTS.md` vers Google Drive :
     - Vérifier si ce `/close` concerne la zone racine du kit lui-même.
-    - Vérifier si `DEPLOYMENTS.md` fait partie des fichiers modifiés de cette session (voir `git diff --name-only` de l'étape 13). Si non : passer cette étape silencieusement, sans la proposer.
+    - Comparer la date de dernière modification de `DEPLOYMENTS.md` (`(Get-Item DEPLOYMENTS.md).LastWriteTime`) à la date du commit précédant celui de l'étape 13 (`git log -1 --skip=1 --format=%cI`). Si elle est plus récente : le fichier a été modifié pendant la session. Sinon : passer cette étape silencieusement, sans la proposer.
     - Si oui (zone racine + fichier modifié) : proposer "Sauvegarder DEPLOYMENTS.md sur Google Drive ?" (confirmation utilisateur).
     - Si confirmation : exécuter :
       ```powershell

@@ -169,6 +169,9 @@ cette exécution (pas en cas de zone supplémentaire, Q5) :
 
 ### 5. Commit initial (si réponse "oui" à Q4)
 
+Si `$ARGUMENTS/.git` est absent, exécuter d'abord `git -C "$ARGUMENTS" init` avant les `git add`
+et signaler cette initialisation dans le bilan.
+
 Dans le dépôt du projet cible ($ARGUMENTS) :
 
 ```bash
