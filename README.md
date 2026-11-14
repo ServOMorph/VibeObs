@@ -30,6 +30,7 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `/telephone [off]` — mode téléphone : réponses de 6 lignes au plus, un choix numéroté à la fois avec la proposition en avant, chaque demande rangée dans le planning actif ; les corrections de format alimentent l'évolution du mode (copiée par défaut dans tout projet créé par `/init_projet` ou `/create_projet` et réalignée par `/update`)
 - `/maintenance` — maintenance régulière du kit : contrôles mécaniques, reliquats, roadmaps dormantes, dérives de documentation, sécurité ; rapport par lots, archivage seulement après validation, puis proposition d'analyse de la maintenance (kit uniquement)
 - `/cherche_fonction <description>` — recherche une fonctionnalité déjà codée dans d'anciens projets à partir d'une description ; les dossiers cibles sont toujours redemandés à chaque appel (kit uniquement)
+- `/delegation [projet]` — active la délégation à Codex, OpenCode et Ollama comme sous-agents (template `delegation`), avec routage par type de tâche et journal `_codex/journal_delegation.md` pour mesurer l'économie de tokens Claude (kit uniquement)
 - `CLAUDE.md` — règles permanentes appliquées à toutes les conversations
 - `AGENTS.md` / `GEMINI.md` (optionnels, sur confirmation) — équivalents `CLAUDE.md` pour les agents non-Claude (Codex, ChatGPT, Gemini...)
 - Base de connaissances `DOCUMENTATION/` (optionnelle, via agent dédié créé par `/create_agent`) — documentation métier du projet en `.md`, consultée par tous les agents (`INDEX.md` catalogue + progressive disclosure)
@@ -83,7 +84,7 @@ VibeObs/
 │       │                                 #   + kit uniquement : /create_agent /create_team
 │       │                                 #                     /create_parallel_team /create_com_agents
 │       └───────────────────────────────  #                     /cherche_meilleure_action /doc_sync
-│                                          #                     /cherche_fonction
+│                                          #                     /cherche_fonction /delegation
 ├── _contexte/                            # contexte du kit (contexte, signals, archive_decisions)
 ├── skills/
 │   └── chatgpt-orchestrateur/            # skill : boucle orchestrateur IA gratuite ↔ Claude Code

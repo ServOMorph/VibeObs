@@ -3,6 +3,17 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.1 — 2026-11-14
+
+### Ajouté
+- `/delegation` (kit uniquement) : active la délégation à Codex, OpenCode et Ollama comme sous-agents (template `delegation` installé dans le projet), routage par type de tâche, sollicitations limitées, journal `_codex/journal_delegation.md`. Premier lot exécuté sur le kit (5 délégations).
+
+### Corrigé
+- `close.md` étape 14bis (bloc projet) : modification de `DEPLOYMENTS.md` détectée par date (fichier gitignoré, `git diff` ne la voyait jamais).
+- `init_projet.md` (kit + template) étape 5 : `git init` si `.git` absent.
+- `update.md` (kit + template) : copie de `Protocole_start_close_context.md` vers `_docs/protocole_vibecoding.md`, incluse au commit et aux contrôles 1 et 6.
+- `templates/delegation/scripts/run_*.ps1` : `$Root` par défaut calculé dans le corps (`$PSScriptRoot` vide en valeur par défaut de paramètre sous PowerShell 5.1).
+
 ## v6.0 — 2026-11-14
 
 ### Modifié

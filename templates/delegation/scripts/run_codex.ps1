@@ -1,12 +1,13 @@
 param(
     [Parameter(Mandatory = $true)][string]$Brief,
     [Parameter(Mandatory = $true)][ValidatePattern('^[A-Za-z0-9][A-Za-z0-9_-]*$')][string]$Name,
-    [string]$Root = (Split-Path -Parent $PSScriptRoot),
+    [string]$Root,
     [ValidateSet('read-only', 'workspace-write')][string]$Sandbox = 'workspace-write',
     [switch]$DryRun
 )
 
 $ErrorActionPreference = 'Stop'
+if (-not $Root) { $Root = Split-Path -Parent $MyInvocation.MyCommand.Path | Split-Path -Parent }
 $Root = (Resolve-Path -LiteralPath $Root).ProviderPath
 $utf8 = New-Object Text.UTF8Encoding $false
 $briefText = if (Test-Path -LiteralPath $Brief -PathType Leaf) {
