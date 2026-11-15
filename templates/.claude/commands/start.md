@@ -32,6 +32,9 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
 2c. Si `<dossier>/_contexte/memory.md` existe : le charger (mémoire propre à cette
     zone, écrite via `/create_memory <alias_zone> <contenu>`).
 
+2d. Si `<dossier>/_contexte/artifacts.md` existe : le charger (liens et sources des artifacts du
+    projet ; à lire avant de créer ou de modifier un artifact, qui se republie au même lien après relecture).
+
 3. Charger dans l'ordre :
    1. `_contexte/signals.md` — actions ouvertes, blocages, dernière session (priorité absolue)
    2. `_contexte/contexte.md` — contexte stable

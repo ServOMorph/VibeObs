@@ -1,0 +1,1 @@
+{"title": "Commits par semaine", "description": "Nombre de commits du dépôt du kit par semaine (lundi), tiré de l'historique Git.", "source": {"kind": "file", "url": "/_blob/0129688c374fd05b38fba850a34e65bd", "name": "commits.json", "format": "json"}, "updated": {"at": "2026-11-14T23:36:08Z", "by": "Claude"}, "fixed": true, "edit": {"via": "claude", "at": "2026-11-14T23:36:08Z"}}

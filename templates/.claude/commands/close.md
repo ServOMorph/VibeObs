@@ -152,6 +152,15 @@ Lire `.claude/zones.md` pour obtenir la table des alias → dossiers réels.
    session (statuts des tâches et phases). Mettre à jour si périmée.
    Invariant : ce que lira le prochain `/start` doit être vrai.
 
+6-bis. **Registre des artifacts.** Pour chaque artifact claude.ai créé ou modifié pendant la session et
+   absent de `<dossier>/_contexte/artifacts.md` : demander à l'utilisateur s'il veut le conserver (une
+   question, réponse en un clic ; la lister par nom et lien). Oui : l'inscrire dans ce fichier (créé à la
+   première entrée), une ligne `nom | lien | rôle | source | MAJ AAAA-MM-JJ`, `source` = chemin,
+   versionné dans le dépôt, du fichier ou du script qui produit la page (ou « aucune »). Non : ne rien
+   écrire. Un artifact déjà inscrit est mis à jour sans question (même lien : pas de doublon). Une source
+   située dans un dossier temporaire (scratchpad) est copiée dans le dépôt pour un artifact conservé,
+   sinon signalée dans le bilan de l'étape 15. Le fichier est commité avec `_contexte/` à l'étape 13.
+
 7. Base de connaissances (`DOCUMENTATION/`), si la zone fermée n'est pas `documentation` elle-même :
    - Si `<racine du projet>/DOCUMENTATION/INDEX.md` n'existe pas (pas d'agent documentaire sur ce
      projet) : ignorer cette étape.

@@ -3,6 +3,13 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.5 — 2026-11-15
+
+### Ajouté
+- `/close` (kit + template) étape 6-bis : registre `_contexte/artifacts.md` (nom, lien, rôle, source versionnée, date) l'utilisateur est interrogé sur chaque nouvel artifact claude.ai créé ou modifié et choisit de le conserver ou non ; un artifact conservé est inscrit, sa source en dossier temporaire copiée dans le dépôt.
+- `/start` (kit + template) étape 2d : chargement du registre des artifacts du projet, pour republier un artifact au même lien après relecture.
+- `dashboard/` : sources du dashboard « VibeObs Dev » (`gen_dash.py`, `ds_*.json`).
+
 ## v6.4 — 2026-11-15
 
 ### Ajouté

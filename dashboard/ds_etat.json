@@ -1,0 +1,1 @@
+{"title": "État du suivi", "description": "Nombre de commandes, d'actions ouvertes et d'entrées du backlog du kit.", "source": {"kind": "file", "url": "/_blob/d67bb30db692154eb883702c93933d6d", "name": "etat.json", "format": "json"}, "updated": {"at": "2026-11-14T23:36:08Z", "by": "Claude"}, "fixed": true, "edit": {"via": "claude", "at": "2026-11-14T23:36:08Z"}}
