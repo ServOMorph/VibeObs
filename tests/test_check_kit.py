@@ -85,6 +85,28 @@ class TestVersionExtraction(unittest.TestCase):
                 shutil.copy(backup_path, original_readme)
 
 
+class TestVersionConsistency(unittest.TestCase):
+    """Tests pour check_version_consistency."""
+
+    def _verifier(self, changelog, readme, protocole):
+        from unittest import mock
+        with mock.patch("check_kit.get_version_from_changelog", return_value=changelog), \
+             mock.patch("check_kit.get_version_from_readme", return_value=readme), \
+             mock.patch("check_kit.get_version_from_protocole", return_value=protocole):
+            return check_version_consistency()
+
+    def test_versions_identiques(self):
+        self.assertEqual(self._verifier("v6.5", "v6.5", "v6.5"), [])
+
+    def test_version_introuvable(self):
+        erreurs = self._verifier("v6.5", None, "v6.5")
+        self.assertEqual(erreurs, ["Version introuvable dans README.md"])
+
+    def test_versions_incoherentes(self):
+        erreurs = self._verifier("v6.5", "v6.4", "v6.5")
+        self.assertTrue(any("incohérente" in e for e in erreurs))
+
+
 class TestContentNormalization(unittest.TestCase):
     """Tests pour la normalisation de contenu."""
     

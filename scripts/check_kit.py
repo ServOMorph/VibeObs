@@ -94,7 +94,10 @@ def check_version_consistency():
         "Protocole_start_close_context.md": protocole_ver,
     }
     
-    # Trouver toutes les versions distinctes
+    for path, ver in versions.items():
+        if ver is None:
+            errors.append(f"Version introuvable dans {path}")
+
     unique_versions = set(v for v in versions.values() if v is not None)
     if len(unique_versions) > 1:
         for path, ver in versions.items():
