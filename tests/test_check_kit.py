@@ -137,6 +137,26 @@ class TestCommandsInLlms(unittest.TestCase):
                          ["Commande absente de llms.txt : /delegation"])
 
 
+class TestSensitiveNames(unittest.TestCase):
+    """Tests pour le motif de noms sensibles du contrôle 7."""
+
+    def test_noms_signales(self):
+        from check_kit import SENSITIVE_NAME
+        for path in [".env", "discord_com/.env", "app/.env.local",
+                     "skills/x/scripts/comptes_google.json", "config/api_token.txt",
+                     "certs/server.pem", "id.key", "data/base.sqlite", "UI/app.db", "bot.pid"]:
+            with self.subTest(path=path):
+                self.assertIsNotNone(SENSITIVE_NAME.search(path))
+
+    def test_noms_autorises(self):
+        from check_kit import SENSITIVE_NAME
+        for path in [".env.example", "templates/netlify/.env.netlify.example",
+                     "skills/x/scripts/definir_compte_actif.ps1",
+                     "_archives/roadmap_rclone_multicompte.md", "docs/tokens.md"]:
+            with self.subTest(path=path):
+                self.assertIsNone(SENSITIVE_NAME.search(path))
+
+
 class TestContentNormalization(unittest.TestCase):
     """Tests pour la normalisation de contenu."""
     

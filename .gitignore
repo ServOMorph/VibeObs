@@ -45,3 +45,4 @@ _archives/local/
 _codex/runs/
 _codex/wt/
 _contexte/artifacts.md
+*.pid

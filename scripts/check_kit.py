@@ -209,6 +209,38 @@ def check_crlf_files():
     return errors
 
 
+SENSITIVE_NAME = re.compile(
+    r"(^|/)\.env(?![^/]*\.example$)[^/]*$"
+    r"|(credential|token|secret|comptes?)[^/]*\.(json|txt|csv|ya?ml|ini|cfg|toml)$"
+    r"|\.(pem|key|sqlite|db|pid)$",
+    re.IGNORECASE,
+)
+SENSITIVE_NAME_EXCEPTIONS = set()
+IGNORE_PROBES = [".env", "discord_com/.env", "exemple.pid", "DEPLOYMENTS.md", "AGENTS_REGISTRY.md"]
+
+
+def check_sensitive_files():
+    """Contrôle 7 : aucun fichier au nom sensible suivi par Git ; exclusions obligatoires actives (noms seuls)."""
+    try:
+        tracked = subprocess.run(
+            ["git", "-C", str(KIT_ROOT), "ls-files"], capture_output=True, text=True, check=True
+        ).stdout.splitlines()
+    except (OSError, subprocess.CalledProcessError):
+        return ["Contrôle sécurité impossible : git ls-files a échoué"]
+    errors = [
+        f"Fichier au nom sensible suivi par Git : {path}"
+        for path in tracked
+        if SENSITIVE_NAME.search(path) and path not in SENSITIVE_NAME_EXCEPTIONS
+    ]
+    for probe in IGNORE_PROBES:
+        result = subprocess.run(
+            ["git", "-C", str(KIT_ROOT), "check-ignore", "-q", "--no-index", probe], capture_output=True
+        )
+        if result.returncode != 0:
+            errors.append(f"Exclusion manquante dans .gitignore : {probe}")
+    return errors
+
+
 def check_commands_in_llms():
     """Contrôle 3b : chaque commande de .claude/commands/ est citée dans llms.txt (« `/nom »)."""
     if not LLMS_PATH.exists():
@@ -422,7 +454,10 @@ def main():
     
     # Contrôle 6 : Fichiers référencés
     all_errors.extend(check_referenced_files_exist())
-    
+
+    # Contrôle 7 : Fichiers sensibles et exclusions
+    all_errors.extend(check_sensitive_files())
+
     # Afficher les résultats
     if all_errors:
         print("ECARTS DETECTES :")
