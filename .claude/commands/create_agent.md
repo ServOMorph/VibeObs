@@ -102,11 +102,12 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      à jour avec le renommage (o/n). Base de données : sauvegarde du fichier
      avant toute mise à jour.
 
-5b. Lire la section « Données sensibles » du `CLAUDE.md` (ou `AGENTS.md`) du
-    projet cible → `{{DONNEES_SENSIBLES}}` = `- Ne jamais lire ni écrire les
-    données sensibles déclarées dans .claude/CLAUDE.md (section « Données
-    sensibles ») : <liste>, ainsi que tout fichier .env`. Section absente ou
-    vide : `- Ne jamais lire ni écrire de fichier .env`.
+5b. Lire la section « Données sensibles » du premier fichier existant du projet
+    cible, dans cet ordre : `.claude/CLAUDE.md`, `CLAUDE.md` (racine),
+    `AGENTS.md` (racine) → `{{DONNEES_SENSIBLES}}` = `- Ne jamais lire ni écrire
+    les données sensibles déclarées dans <fichier lu> (section « Données
+    sensibles ») : <liste>, ainsi que tout fichier .env`. Aucun de ces fichiers,
+    section absente ou vide : `- Ne jamais lire ni écrire de fichier .env`.
    - **Agent Discord** (dossier nommé `DISCORD` ou rôle mentionnant Discord/bot) :
      demander si l'utilisateur veut insérer le template `templates/discord_com/`
      dans le dossier de l'agent (`<dossier>/discord_com/`). Par défaut oui.
@@ -150,8 +151,13 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
      parente incorrecte.
    - Créer `<projet_cible>/<dossier>/_contexte/signals.md` et `contexte.md`
      depuis `templates/_contexte/`, placeholders `{{ALIAS}}`/`{{DATE}}` avec
-     l'alias de l'agent, `{{OBJECTIF}}` = rôle collecté, `{{STACK}}` = bloc
-     produit en [COLLECTE].
+     l'alias de l'agent, `{{OBJECTIF}}` = rôle collecté. Le template étant
+     rédigé pour un projet, adapter ensuite `contexte.md` :
+     - section « Stack / contraintes techniques » : remplacer son contenu par
+       le bloc produit à l'étape 6 ;
+     - section « État actuel » : `Agent créé. Aucun livrable produit.` ;
+     - section « Décisions structurantes » : remplacer la ligne d'initialisation
+       par `- <date> : Création de l'agent <alias> (rôle : <rôle collecté>).`
    - Ajouter à `<projet_cible>/.claude/zones.md` :
      `| <alias> | <chemin absolu du dossier de l'agent> |`
    - Si le parent est une équipe : ajouter une ligne du membre dans son `team.md` (alias, type
