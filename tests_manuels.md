@@ -101,3 +101,11 @@ Vérifier dans une session réelle du kit que :
 - une commande GPU (ex. appel Ollama) est bloquée sans jeton, puis passe après `vram_lock.py acquire vibeobs --wait` ;
 - l'alerte `/compact` s'affiche en début de réponse au-delà de 600 000 tokens de contexte ;
 - `python scripts/console_distante.py lire <pid>` restitue l'écran d'une session `claude` et `touche <pid> ENTREE` répond à une validation, PC verrouillé.
+
+## Registre des artifacts (v6.5)
+
+Vérifier dans un projet mis à jour en v6.5 et ayant un artifact que :
+- `/close` pose une question en un clic sur chaque artifact créé ou modifié et absent du registre ;
+- « Oui » inscrit une ligne `nom | lien | rôle | source | MAJ` dans `_contexte/artifacts.md`, « Non » n'écrit rien ;
+- un artifact déjà inscrit est mis à jour sans question ;
+- `/start` charge le registre au démarrage suivant.

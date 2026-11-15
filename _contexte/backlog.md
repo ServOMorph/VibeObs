@@ -72,3 +72,6 @@
 - [piste] Intégrer le garde VRAM (`scripts/garde_vram.py` + hook `PreToolUse`) aux autres projets suivis, après observation en conditions réelles dans le kit.
   - fait quand: le garde a bloqué puis laissé passer une commande GPU réelle dans le kit, et une décision de diffusion est prise.
   - réf: `scripts/garde_vram.py` ; `.claude/settings.json`.
+- [amélioration] Registre des artifacts : l'étape 6-bis de `/close` dit « commité avec `_contexte/` » alors que le registre du kit est gitignoré (dépôt public, titres de clients) ; décider si le registre est versionné par défaut, ignoré par défaut, ou si `/close` contrôle la visibilité du dépôt.
+  - fait quand: la formulation de l'étape 6-bis et le `.gitignore` des projets sont cohérents, ou le choix actuel est acté comme suffisant.
+  - réf: `.claude/commands/close.md`.

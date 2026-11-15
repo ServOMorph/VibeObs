@@ -1620,3 +1620,29 @@ Tester `/migration_canva` avec les deux comptes Canva ; au `/start` suivant, con
 
 ## Question bloquante pour la session suivante
 Dans quels dossiers tournent les sessions « pilote-74 » et « agent-trader-f8 » ?
+
+---
+
+# Session du 2026-11-15
+
+## Décisions prises
+- Garde GPU : jeton VRAM obligatoire auprès de VertIA_v3 ; hook `PreToolUse` dans le kit ; alerte `/compact` au seuil de 600 000 tokens.
+- Accès à SérénIATech_dev uniquement par demande à la session `sereniatech_dev` (gardienne), sauf zones shorts et jean-luc-dariol pour leur travail.
+- Règle des trois validations avant toute écriture dans un `CLAUDE.md`, `AGENTS.md` ou `GEMINI.md` (v6.3).
+- `/update` : étape 0bis, classement des actions ouvertes du projet cible avant toute mise à jour.
+- Jeu TopiGzme demandé, livré, testé « ok » par l'utilisateur puis supprimé à sa demande, avec toute mention (fichiers, artifact, journaux). Aucun bilan de ce lot conservé.
+
+## Livrables produits ou modifiés
+- Kit v6.4 : `scripts/garde_vram.py`, `alerte_compact.py`, `console_distante.py`, `compact_euros.py`, `.claude/settings.json` ; `/update` et `/telephone` (kit + template) ; `/delegation` ; `DOCUMENTATION/` (protocole de test, système d'apprentissage, prises de contrôle) ; `roadmap_apprentissage.md`, `tests/apprentissage/`.
+- Dashboard « VibeObs Dev » publié ; sa mise à jour avec v6.4 reste à faire.
+
+## Hypothèses validées / invalidées
+- VALIDE : `check_kit.py` et `check_docs.py` passent, miroirs kit/template identiques.
+- EN ATTENTE : garde VRAM, alerte compact et `console_distante.py` non vus en conditions réelles ; cause des deux redémarrages du PC non établie ; session shorts relancée mais non vue en Remote Control.
+- INVALIDE : « coupure de 27 minutes » déduite de l'heure de l'événement 6008 (approximative) -> derniers événements réels à 10:27 et 15:11.
+
+## Prochaine étape exacte
+Coller la ligne `prises_de_controle` dans `.claude/CLAUDE.md` (trois validations déjà données), relancer les sessions Remote Control tombées, puis mettre à jour le dashboard avec v6.4.
+
+## Question bloquante pour la session suivante
+Aucune

@@ -12,15 +12,14 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-15 : kit v6.4 — garde VRAM et alerte `/compact` par hooks (`.claude/settings.json`), `console_distante.py`, `/update` étape 0bis (classement des actions ouvertes), `/telephone` avec lancement Remote Control ; v6.3 — trois validations avant écriture dans un `CLAUDE.md`.
-- Système d'apprentissage des sollicitations et protocole de test créés (`roadmap_apprentissage.md`, phase 1 v0 en cours, session gardienne `sereniatech_dev`).
-- 2026-11-14 : v6.2 `/migration_canva` ; v6.1 `/delegation` ; v6.0 `/init_projet` sans question de stack ; v5.44 journal de session gitignoré.
+- 2026-11-15 (suite) : kit v6.5 — `/close` demande à l'utilisateur s'il garde chaque artifact (registre `_contexte/artifacts.md`, relu par `/start`) ; v6.4 — garde VRAM et alerte `/compact` par hooks, `console_distante.py`, `/update` étape 0bis ; v6.3 — trois validations avant écriture dans un `CLAUDE.md`.
+- `/update` v6.5 refusé par VertIA_v3, Moulin du Sud et World Model (travail en cours) ; à reproposer après leur `/close`. Le kit v6.5 est commité en local, non poussé.
+- Système d'apprentissage et protocole de test créés (`roadmap_apprentissage.md`, phase 1 v0 en cours, session gardienne `sereniatech_dev`).
 - `SérénIATech_dev` et les projets à session ouverte restent à mettre à jour par `/update`, après classement des actions ouvertes.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
 
-- 2026-11-11 : `/start` étape 4 (v5.40) : la ligne de compteurs termine l'affichage dans tous les modes ; une partie sans objet est retirée de la ligne, jamais écrite « omis » (écart constaté au test du repli).
 - 2026-11-11 : `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi, exclus du déclencheur de bump de version (le statut de roadmap est mis à jour par `/close` lui-même).
 - 2026-11-11 : `/update` (v5.42) : `allowed-tools` de `start.md`/`close.md` = liste du kit + ajouts du projet (signalés) ; retraits du projet non conservés ; étape 10 tolère les ajouts en fin de ligne.
 - 2026-11-12 : `/create_agent` reste générique : pas de mode « agent client » (besoin couvert par une commande projet), pas d'exception à la règle des MAJUSCULES ; un contrôle en échec ou sans sortie est refait avant toute conclusion d'absence (v5.43).
@@ -30,3 +29,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-14 : commandes à lancement manuel marquées `disable-model-invocation: true` (description retirée du contexte, `/nom` conservé) au lieu d'être sorties de `.claude/` ; critère : lancement manuel seulement, appelée par aucune autre commande.
 - 2026-11-15 : GPU — jeton VRAM obligatoire auprès de VertIA_v3 avant tout usage ; hook `PreToolUse` (`scripts/garde_vram.py`) bloque la commande sans jeton ; alerte `/compact` à 600 000 tokens (fenêtre 1 M).
 - 2026-11-15 : accès à `SérénIATech_dev` uniquement par demande à la session gardienne `sereniatech_dev` (ni lecture ni écriture directe) ; `/update` classe les actions ouvertes du projet cible avant toute mise à jour (étape 0bis, obligatoire en batch).
+- 2026-11-15 : une session ouverte valide ou refuse toute modification de son projet (refus : ne rien toucher, la recontacter après sa clôture) ; registre des artifacts du kit gitignoré car le dépôt est public et les titres citent des clients.

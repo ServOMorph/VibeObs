@@ -26,3 +26,7 @@ Avant de modifier un dossier depuis VibeObs, vérifier si une session ChatGPT Co
 ## 2026-11-06 — Traçage des échanges entre sessions
 
 Précise la règle « Sessions ouvertes avant modification » (point « Tracer chaque échange »). VibeObs n'écrit jamais dans le dossier d'une session ouverte, pas même dans son `signals.md`. C'est l'agent de cette session qui trace l'échange (demande, reformulation, décision) dans son propre `signals.md`, au `/close`. VibeObs n'en garde pas de copie.
+
+## 2026-11-15 — Validation par la session ouverte
+
+Précise « Sessions ouvertes avant modification » : avant de modifier un projet qui a une session ouverte (update, règle, fichier du protocole), demander à cette session de valider ou de refuser la modification, puis attendre sa réponse. Refus (travail en cours, écriture de CLAUDE.md sans les trois validations dans cette session) : ne rien toucher, la recontacter après la clôture de son travail en cours ; ne jamais passer outre. Constaté le 2026-11-15 : VertIA_v3 et Moulin du Sud ont refusé un /update pour ces raisons.

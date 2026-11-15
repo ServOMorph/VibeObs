@@ -243,3 +243,4 @@
 
 - 2026-11-11 : `/start` (v5.38) n'affiche par défaut que la prochaine étape, la question bloquante et des compteurs (mot pour mot) ; `signals.md` complet sur `--complet` ou si une section manque ; le bloc 4c analyse toujours tout le fichier. La qualité de « Prochaine étape exacte » devient critique.
 - 2026-11-11 : `/start` étape 4b (v5.39) : lecture des `réf:` limitée aux actions citées par la prochaine étape, même en `--complet` (lire toutes les `réf:` d'un fichier de 19 actions était trop coûteux en tokens).
+- 2026-11-11 : `/start` étape 4 (v5.40) : la ligne de compteurs termine l'affichage dans tous les modes ; une partie sans objet est retirée de la ligne, jamais écrite « omis » (écart constaté au test du repli).
