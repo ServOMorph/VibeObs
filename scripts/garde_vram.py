@@ -13,7 +13,7 @@ from pathlib import Path
 SESSION = os.environ.get("VRAM_SESSION", "vibeobs")
 LOCK = Path(os.environ.get("VERTIA_ORCH_DIR", r"D:\ServOMorph\VertIA_v3\_orchestration")) / "state" / "lock.json"
 MOTIFS_GPU = [
-    r"ollama_call\.py",
+    r"(?<![\w.])py(thon[0-9.]*)?(\.exe)?\s+(\S*[\\/])?ollama_call\.py",
     r"\bollama(\.exe)?\s+(run|serve)\b",
     r"11434/api/(generate|chat|embed)",
     r"\bcomfyui\b",
