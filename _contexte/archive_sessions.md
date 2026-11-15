@@ -1595,3 +1595,28 @@ Relever les sessions ouvertes ; `/update` v5.44 de `SérénIATech_dev`, puis des
 
 ## Question bloquante pour la session suivante
 Dans quels dossiers tournent les sessions « pilote-74 » (absente de la liste actuelle) et « agent-trader-f8 » (nouvelle) ?
+
+---
+
+# Session du 2026-11-14 (suite)
+
+## Décisions prises
+- `/delegation` (kit) : Codex, OpenCode gratuit, Ollama et sous-agents Haiku comme exécutants ; Claude orchestre ; sollicitations limitées (commit/push main, écriture hors projet, exécutant bloqué, irréversible) ; journal `_codex/journal_delegation.md` versionné.
+- Commandes à lancement manuel : `disable-model-invocation: true` (description hors contexte du modèle, `/nom` conservé) plutôt qu'un déplacement hors de `.claude/`.
+- Corrections de l'audit OpenCode appliquées par `/close` (règle « seul `/close` écrit `signals.md` »).
+
+## Livrables produits ou modifiés
+- `DOCUMENTATION/` : 4 guides alignés, 3 guides créés (`f325480`).
+- Kit v6.1 (`dee116d`, `45f4f09`, `3eb5736`) : `/delegation`, lanceurs PS 5.1 corrigés, 3 findings du backlog corrigés par Codex ; v6.2 (`dfd802b`) : `/migration_canva`, `disable-model-invocation` sur 4 commandes.
+- `_contexte/` : signals, backlog (3 findings retirés), contexte mis à jour par ce `/close`.
+
+## Hypothèses validées / invalidées
+- VALIDE : Codex (correctif cadré, 88 s) et OpenCode gratuit (audit, 13 anomalies exactes) utilisables ; `check_kit.py` et `check_docs.py` passent.
+- INVALIDE : Ollama pour une synthèse demandant du jugement (bilan superficiel, refait) -> réservé aux textes mécaniques.
+- EN ATTENTE : effet réel de `disable-model-invocation` sur `.claude/commands/` ; 5 points Canva « à vérifier ».
+
+## Prochaine étape exacte
+Tester `/migration_canva` avec les deux comptes Canva ; au `/start` suivant, constater l'absence des 4 commandes manuelles de la liste des skills. Ensuite : `/update` v5.44 de `SérénIATech_dev` et des projets à session fermée.
+
+## Question bloquante pour la session suivante
+Dans quels dossiers tournent les sessions « pilote-74 » et « agent-trader-f8 » ?

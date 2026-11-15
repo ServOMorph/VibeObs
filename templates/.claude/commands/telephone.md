@@ -19,6 +19,22 @@ session.
   ligne dans sa description. Le texte qui précède la question tient en une ligne d'état.
 - Repli si l'outil est indisponible : choix numérotés en texte, proposition en premier et en gras.
 - Le détail n'est donné que sur demande (« détail », « pourquoi »).
+- Lancer une session ou un CLI (Claude, Codex, etc.) : toujours dans une nouvelle fenêtre PowerShell
+  (`Start-Process powershell -ArgumentList '-NoExit', '-Command', "Set-Location '<dossier>'; <commande>"`),
+  jamais Windows Terminal ni l'éditeur.
+  Avant la commande, effacer les variables `CLAUDE*` héritées de la session qui lance, puis recharger
+  celles de l'utilisateur et de la machine : sinon la session lancée n'enregistre pas son historique et
+  n'est pas joignable par les autres sessions :
+  `Get-ChildItem Env: | ? { $_.Name -like 'CLAUDE*' } | % { Remove-Item ('Env:' + $_.Name) };
+  foreach ($sc in 'Machine','User') { [Environment]::GetEnvironmentVariables($sc).GetEnumerator() |
+  ? { $_.Key -like 'CLAUDE*' } | % { Set-Item ('Env:' + $_.Key) $_.Value } }`.
+  Session Claude à piloter depuis le téléphone : `claude --remote-control '<nom>' '<commande>'`, puis
+  constater sa présence sous `<nom>` dans `ListAgents`.
+- Fenêtre bloquée sur une validation à l'écran (confiance du dossier, permission, choix au démarrage) :
+  lire son écran (`python D:\ServOMorph\VibeObs\scripts\console_distante.py lire <pid>`, pid du processus
+  `claude.exe`), résumer la question et ses enjeux en une ligne, puis demander la validation au format
+  ci-dessus. Les touches (`touche <pid> BAS|HAUT|ENTREE|ECHAP|<texte>`) ne sont envoyées qu'après l'accord,
+  puis l'écran est relu pour constater le résultat.
 - Les règles de vérification de `CLAUDE.md` restent entières : une réponse courte n'autorise aucune
   affirmation non vérifiée.
 

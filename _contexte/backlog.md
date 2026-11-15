@@ -66,3 +66,9 @@
 - [amélioration] Délégation : `ollama_call.py` a un délai fixe de 60 s, inférieur au chargement à froid de `qwen2.5:7b` (82 s mesurés) ; `run_opencode.ps1` ne garde dans `rapport.md` que le premier bloc du message final (liste d'anomalies restée dans `log.txt`).
   - fait quand: délai Ollama paramétrable (ou préchauffage documenté) et rapport OpenCode complet constatés sur un lancement réel.
   - réf: `ollama_call.py` ; `templates/delegation/scripts/run_opencode.ps1` ; `_codex/journal_delegation.md`.
+- [piste] Persistance de l'historique des sessions lancées à distance : commande de lancement unique (nettoyage `CLAUDE*`, `--remote-control`, nom, `/start`) au lieu de la procédure décrite dans `telephone.md`.
+  - fait quand: la procédure de lancement est une commande ou un script unique exercé, ou le texte de `telephone.md` est acté comme suffisant.
+  - réf: `.claude/commands/telephone.md`.
+- [piste] Intégrer le garde VRAM (`scripts/garde_vram.py` + hook `PreToolUse`) aux autres projets suivis, après observation en conditions réelles dans le kit.
+  - fait quand: le garde a bloqué puis laissé passer une commande GPU réelle dans le kit, et une décision de diffusion est prise.
+  - réf: `scripts/garde_vram.py` ; `.claude/settings.json`.

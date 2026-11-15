@@ -3,6 +3,25 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.4 — 2026-11-15
+
+### Ajouté
+- `scripts/garde_vram.py` et hook `PreToolUse` (`.claude/settings.json`) : une commande GPU est bloquée sans jeton VRAM obtenu auprès de VertIA_v3.
+- `scripts/alerte_compact.py` et hook `UserPromptSubmit` : alerte `/compact` au-delà de 600 000 tokens de contexte.
+- `scripts/console_distante.py` : lecture de l'écran d'une console et envoi de touches à distance, PC verrouillé.
+- `DOCUMENTATION/40_specs/protocole_de_test.md`, `DOCUMENTATION/40_specs/systeme_apprentissage.md`, `DOCUMENTATION/30_decisions/prises_de_controle.md` ; `roadmap_apprentissage.md` (système d'apprentissage des sollicitations, v0 en cours).
+
+### Modifié
+- `/update` (kit + template) étape 0bis : classement des actions ouvertes du projet cible avant toute mise à jour ; en mode batch, classement obligatoire par projet.
+- `/telephone` (kit + template) : lancement de session dans une fenêtre PowerShell, variables `CLAUDE*` nettoyées, option `--remote-control` ; validation à distance par `console_distante.py`, touches envoyées après accord.
+- `/delegation` : règle du jeton VRAM, chemin absolu du protocole VertIA.
+
+## v6.3 — 2026-11-15
+
+### Ajouté
+- `CLAUDE.md` (kit + template), `AGENTS.md`, `GEMINI.md` § Comportement : toute écriture dans un `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` exige trois validations successives de l'utilisateur (novice, vibecoder, technique) ; propagation d'une modification du kit par `/update` sans nouvelle validation.
+- `scripts/compact_euros.py` : équivalent API indicatif, en euros, des tokens libérés par `/compact`.
+
 ## v6.2 — 2026-11-14
 
 ### Ajouté

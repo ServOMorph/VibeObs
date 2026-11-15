@@ -94,3 +94,10 @@ Au prochain `/create_projet <nom>` réel :
 - aucune question sur la stack technique n'est posée ;
 - `_contexte/contexte.md` du projet créé contient « Non définie à la création : à compléter au fil du projet. » dans la section Stack, sans `{{` résiduel.
 Transmettre toute divergence au kit.
+
+## Garde VRAM, alerte compact, console distante (v6.4)
+
+Vérifier dans une session réelle du kit que :
+- une commande GPU (ex. appel Ollama) est bloquée sans jeton, puis passe après `vram_lock.py acquire vibeobs --wait` ;
+- l'alerte `/compact` s'affiche en début de réponse au-delà de 600 000 tokens de contexte ;
+- `python scripts/console_distante.py lire <pid>` restitue l'écran d'une session `claude` et `touche <pid> ENTREE` répond à une validation, PC verrouillé.

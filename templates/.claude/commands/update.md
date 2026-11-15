@@ -25,7 +25,8 @@ Si `$ARGUMENTS` vaut `all` (comparaison insensible à la casse) : basculer en mo
    b. Exécuter silencieusement les étapes 1 à 10 de la procédure standard ci-dessous, avec :
       - projet cible = chemin de la ligne
       - kit = working directory courant (celui de l'étape 0)
-      - Pas de confirmation intermédiaire, pas d'exécution de l'étape 11 individuelle.
+      - Pas de confirmation intermédiaire (sauf le classement des actions de l'étape 0bis, qui reste
+        obligatoire), pas d'exécution de l'étape 11 individuelle.
       - Si l'étape 5 ou 6 détecte des lignes ou sections candidates "spécificités projet" non
         migrées, elles sont migrées automatiquement sans interrompre le batch (voir étapes 5 et 6).
       - Étape 7 (AGENTS.md et GEMINI.md) : ne jamais poser les questions, voir étape 7.
@@ -39,6 +40,22 @@ Si `$ARGUMENTS` vaut `all` (comparaison insensible à la casse) : basculer en mo
 
 **Ne pas exécuter les étapes 1 à 11 décrites plus bas telles quelles en mode batch** — elles restent
 la procédure standard, appelée en interne pour chaque projet à l'étape 0.3.b.
+
+### 0bis. Classer les actions ouvertes du projet cible (avant tout update)
+
+Pour la cible (en mode batch : chaque projet, avant son étape 0.3.b) :
+
+1. Lire, sans l'écrire, la section des actions ouvertes de `<cible>/_contexte/signals.md` (`/update` n'écrit jamais `signals.md` : seul `/close` l'écrit). Fichier absent ou aucune action : passer à l'étape 1.
+2. Pour chaque action, poser une question à l'utilisateur (`AskUserQuestion`, 4 questions au plus par appel, lots successifs) avec ces trois choix :
+   - « Urgente, à faire » : bloque l'update ;
+   - « Urgente, déjà faite » : ne bloque plus, `/close` du projet devra la retirer de `signals.md` ;
+   - « Plus tard » : ne bloque pas.
+   Libellé de la question : le titre de l'action et sa `réf:`, en une ligne.
+3. Si au moins une action est « Urgente, à faire » : ne rien exécuter (ni commit de sauvegarde, ni écriture, ni `DEPLOYMENTS.md`), afficher la liste de ces actions et s'arrêter. Relancer `/update` une fois ces actions faites.
+   - En mode batch : noter "⏸ <alias> — update reporté : N action(s) urgente(s) à faire", puis passer au projet suivant.
+4. Sinon : continuer à l'étape 1 et rappeler dans le résumé les actions classées « Plus tard » et « Urgente, déjà faite » (à traiter par `/close` du projet).
+
+Le classement n'est pas persisté par `/update` : il n'existe que pour cette exécution.
 
 ### 1. Résoudre les chemins
 

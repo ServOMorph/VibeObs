@@ -19,7 +19,10 @@ Base de connaissance interne de l'équipe d'agents, progressive disclosure. Touj
 | [20_guides/maintenance_du_kit.md](20_guides/maintenance_du_kit.md) | /maintenance : contrôler le kit, rapport par lots validés un à un | guide, maintenance, qualité | 2026-11-14 |
 | [20_guides/mode_telephone.md](20_guides/mode_telephone.md) | /telephone : réponses courtes, un choix à la fois, demandes rangées dans le planning | guide, telephone, session | 2026-11-14 |
 | [30_decisions/journal.md](30_decisions/journal.md) | Journal append-only des décisions structurantes de la base | decisions | 2026-09-06 |
+| [30_decisions/prises_de_controle.md](30_decisions/prises_de_controle.md) | Registre des cas où l'utilisateur autorise VibeObs à agir sur une autre session (/telephone, diffusion /delegation) et des limites non dépassables | decisions, sessions, dérogation | 2026-11-14 |
 | [40_specs/controle_qualite_base.md](40_specs/controle_qualite_base.md) | Spec : contrôle qualité de la base (check_docs.py + phase doc_sync) | spec, qualité | 2026-08-21 |
+| [40_specs/protocole_de_test.md](40_specs/protocole_de_test.md) | Spec : protocole obligatoire de test (v0, v1 testeurs, import) pour toute nouvelle fonction | spec, tests | 2026-11-15 |
+| [40_specs/systeme_apprentissage.md](40_specs/systeme_apprentissage.md) | Spec : apprentissage des sollicitations (journal, règles validées, jamais par règle) | spec, apprentissage | 2026-11-15 |
 
 ## Sources canoniques
 

@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-14)
+# Signals — VibeObs (MAJ 2026-11-15)
 
 ## Actions ouvertes — pilotage
 
@@ -47,7 +47,19 @@
 - Exercer `/delegation` sur un second lot et mesurer l'économie de tokens Claude (usage des sous-agents disponible, Codex et OpenCode non mesurés).
   - fait quand: un second lot est tracé dans `_codex/journal_delegation.md` avec son bilan, et une règle de routage est ajustée ou confirmée.
   - réf: `.claude/commands/delegation.md` ; `_codex/journal_delegation.md`.
-Backlog : 22 entrées (finding 1, amélioration 5, piste 16) — `_contexte/backlog.md`
+- Coller dans `.claude/CLAUDE.md` la ligne de renvoi vers `DOCUMENTATION/30_decisions/prises_de_controle.md` (écriture refusée par le classifieur auto-mode à VibeObs ; trois validations déjà données pour la règle).
+  - fait quand: la ligne figure dans `.claude/CLAUDE.md` et dans `templates/.claude/CLAUDE.md`, miroir identique, `check_kit.py` passant.
+  - réf: `DOCUMENTATION/30_decisions/prises_de_controle.md` ; `.claude/CLAUDE.md` § Comportement.
+- Suivre la phase 1 (v0) du système d'apprentissage : la session gardienne `sereniatech_dev` implémente le journal et les règles ; VibeObs les applique à ses propres sollicitations.
+  - fait quand: les critères 1 à 5 de la fiche sont exercés sur des cas réels, journalisés, et le bilan v0 est écrit.
+  - réf: `roadmap_apprentissage.md` ; `tests/apprentissage/fiche.md` ; `DOCUMENTATION/40_specs/systeme_apprentissage.md`.
+- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; session `shorts` relancée en CLI le 2026-11-15, non encore vue en Remote Control (`shorts-c2` dans `ListAgents`, anciennes entrées hors ligne) ; brief « Rayonne toi » de Moulin du Sud à lui adresser.
+  - fait quand: la modification est commitée dans SérénIATech_dev et la session shorts est visible en Remote Control.
+  - réf: `C:/Users/raph6/Documents/SerenIATech/SérénIATech_dev/Communication/SHORTS/agent_role.md`.
+- Relancer les sessions Remote Control tombées au redémarrage du PC (2026-11-15, deux redémarrages sans cause établie : dernier événement journalisé 10:27 et 15:11, aucun code d'arrêt, aucune erreur matérielle) ; surveiller une récidive.
+  - fait quand: les sessions voulues sont visibles en Remote Control, ou la cause des redémarrages est identifiée.
+  - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement).
+Backlog : 24 entrées (finding 1, amélioration 5, piste 18) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -60,25 +72,26 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-14 (suite)
+# Session du 2026-11-15
 
 ## Décisions prises
-- `/delegation` (kit) : Codex, OpenCode gratuit, Ollama et sous-agents Haiku comme exécutants ; Claude orchestre ; sollicitations limitées (commit/push main, écriture hors projet, exécutant bloqué, irréversible) ; journal `_codex/journal_delegation.md` versionné.
-- Commandes à lancement manuel : `disable-model-invocation: true` (description hors contexte du modèle, `/nom` conservé) plutôt qu'un déplacement hors de `.claude/`.
-- Corrections de l'audit OpenCode appliquées par `/close` (règle « seul `/close` écrit `signals.md` »).
+- Garde GPU : jeton VRAM obligatoire auprès de VertIA_v3 ; hook `PreToolUse` dans le kit ; alerte `/compact` au seuil de 600 000 tokens.
+- Accès à SérénIATech_dev uniquement par demande à la session `sereniatech_dev` (gardienne), sauf zones shorts et jean-luc-dariol pour leur travail.
+- Règle des trois validations avant toute écriture dans un `CLAUDE.md`, `AGENTS.md` ou `GEMINI.md` (v6.3).
+- `/update` : étape 0bis, classement des actions ouvertes du projet cible avant toute mise à jour.
+- Jeu TopiGzme demandé, livré, testé « ok » par l'utilisateur puis supprimé à sa demande, avec toute mention (fichiers, artifact, journaux). Aucun bilan de ce lot conservé.
 
 ## Livrables produits ou modifiés
-- `DOCUMENTATION/` : 4 guides alignés, 3 guides créés (`f325480`).
-- Kit v6.1 (`dee116d`, `45f4f09`, `3eb5736`) : `/delegation`, lanceurs PS 5.1 corrigés, 3 findings du backlog corrigés par Codex ; v6.2 (`dfd802b`) : `/migration_canva`, `disable-model-invocation` sur 4 commandes.
-- `_contexte/` : signals, backlog (3 findings retirés), contexte mis à jour par ce `/close`.
+- Kit v6.4 : `scripts/garde_vram.py`, `alerte_compact.py`, `console_distante.py`, `compact_euros.py`, `.claude/settings.json` ; `/update` et `/telephone` (kit + template) ; `/delegation` ; `DOCUMENTATION/` (protocole de test, système d'apprentissage, prises de contrôle) ; `roadmap_apprentissage.md`, `tests/apprentissage/`.
+- Dashboard « VibeObs Dev » publié ; sa mise à jour avec v6.4 reste à faire.
 
 ## Hypothèses validées / invalidées
-- VALIDE : Codex (correctif cadré, 88 s) et OpenCode gratuit (audit, 13 anomalies exactes) utilisables ; `check_kit.py` et `check_docs.py` passent.
-- INVALIDE : Ollama pour une synthèse demandant du jugement (bilan superficiel, refait) -> réservé aux textes mécaniques.
-- EN ATTENTE : effet réel de `disable-model-invocation` sur `.claude/commands/` ; 5 points Canva « à vérifier ».
+- VALIDE : `check_kit.py` et `check_docs.py` passent, miroirs kit/template identiques.
+- EN ATTENTE : garde VRAM, alerte compact et `console_distante.py` non vus en conditions réelles ; cause des deux redémarrages du PC non établie ; session shorts relancée mais non vue en Remote Control.
+- INVALIDE : « coupure de 27 minutes » déduite de l'heure de l'événement 6008 (approximative) -> derniers événements réels à 10:27 et 15:11.
 
 ## Prochaine étape exacte
-Tester `/migration_canva` avec les deux comptes Canva ; au `/start` suivant, constater l'absence des 4 commandes manuelles de la liste des skills. Ensuite : `/update` v5.44 de `SérénIATech_dev` et des projets à session fermée.
+Coller la ligne `prises_de_controle` dans `.claude/CLAUDE.md` (trois validations déjà données), relancer les sessions Remote Control tombées, puis mettre à jour le dashboard avec v6.4.
 
 ## Question bloquante pour la session suivante
-Dans quels dossiers tournent les sessions « pilote-74 » et « agent-trader-f8 » ?
+Aucune

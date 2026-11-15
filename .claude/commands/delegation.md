@@ -35,6 +35,7 @@ il rédige le brief, lit le rapport (15 lignes), relit le diff, décide et commi
 | Décision, arbitrage, échange avec l'utilisateur, commit | Claude principal | Responsabilité |
 
 Règles :
+- GPU (Ollama ou tout modèle local) : jeton VRAM obligatoire, géré par la session VertIA_v3 (`D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire <session> --gb <Go> --minutes <min> --wait` en arrière-plan, `release` après déchargement ; protocole `D:ServOMorphVertIA_v3_orchestrationprotocole.md` § GPU). Session absente de la liste autorisée du script : demander l'accès à VertIA_v3 par message, et router la tâche hors Ollama en attendant.
 - Brief autonome au format `templates/delegation/BRIEF_TEMPLATE.md`, périmètre de fichiers explicite.
 - Jamais deux exécutants sur les mêmes fichiers. Une tâche qui écrit dans le kit tourne dans un
   worktree Git (`git worktree add`), jamais dans l'arbre principal.

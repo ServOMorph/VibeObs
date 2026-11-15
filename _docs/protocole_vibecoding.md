@@ -1,5 +1,5 @@
 # Protocole de vibecoding — Documentation générique
-> **v6.2** — Révision du 2026-11-14. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
+> **v6.4** — Révision du 2026-11-15. Voir [`CHANGELOG.md`](CHANGELOG.md) pour l'historique complet des versions.
 
 ## Pourquoi ce fichier
 
