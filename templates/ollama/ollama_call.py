@@ -1,6 +1,7 @@
 """Envoie un prompt unique au modèle Ollama local."""
 
 import json
+import math
 import os
 import sys
 import urllib.error
@@ -12,6 +13,17 @@ def main() -> int:
         print('ERREUR: prompt manquant. Usage : python ollama_call.py "prompt"', file=sys.stderr)
         return 1
 
+    try:
+        timeout = float(os.environ.get("OLLAMA_TIMEOUT", "180"))
+        if not math.isfinite(timeout) or timeout <= 0:
+            raise ValueError
+    except ValueError:
+        print("ERREUR: OLLAMA_TIMEOUT doit être un nombre positif fini (secondes)", file=sys.stderr)
+        return 1
+
+    timeout_message = (
+        f"ERREUR: délai d’attente Ollama dépassé ({timeout:g} s ; OLLAMA_TIMEOUT)"
+    )
     payload = json.dumps(
         {
             "model": os.environ.get("OLLAMA_MODEL", "gemma4:e4b"),
@@ -26,7 +38,7 @@ def main() -> int:
     )
 
     try:
-        with urllib.request.urlopen(request, timeout=60) as response:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
             data = json.load(response)
     except urllib.error.HTTPError as error:
         body = error.read().decode("utf-8", "replace")
@@ -37,10 +49,13 @@ def main() -> int:
         print(f"ERREUR Ollama (HTTP {error.code}): {detail}", file=sys.stderr)
         return 1
     except urllib.error.URLError as error:
-        print(f"ERREUR: connexion à Ollama impossible: {error.reason}", file=sys.stderr)
+        if isinstance(error.reason, TimeoutError):
+            print(timeout_message, file=sys.stderr)
+        else:
+            print(f"ERREUR: connexion à Ollama impossible: {error.reason}", file=sys.stderr)
         return 1
     except TimeoutError:
-        print("ERREUR: délai d’attente Ollama dépassé", file=sys.stderr)
+        print(timeout_message, file=sys.stderr)
         return 1
     except json.JSONDecodeError:
         print("ERREUR: réponse JSON invalide d’Ollama", file=sys.stderr)

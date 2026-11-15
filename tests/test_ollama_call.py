@@ -92,13 +92,35 @@ class OllamaCallTests(unittest.TestCase):
         self.assertEqual(stdout, "OK\n")
         self.assertEqual(stderr, "")
         request = urlopen.call_args.args[0]
-        self.assertEqual(urlopen.call_args.kwargs["timeout"], 60)
+        self.assertEqual(urlopen.call_args.kwargs["timeout"], 180)
         self.assertEqual(request.full_url, "http://localhost:11434/api/generate")
         self.assertEqual(request.get_header("Content-type"), "application/json")
         self.assertEqual(
             json.loads(request.data),
             {"model": "gemma4:e4b", "prompt": prompt, "stream": False},
         )
+
+    def test_timeout_can_be_selected_with_environment_variable(self):
+        code, _, stderr, urlopen = self.invoke(
+            ["Bonjour"],
+            response=JsonResponse({"response": "Salut"}),
+            environment={"OLLAMA_TIMEOUT": "240.5"},
+        )
+        self.assertEqual(code, 0)
+        self.assertEqual(stderr, "")
+        self.assertEqual(urlopen.call_args.kwargs["timeout"], 240.5)
+
+    def test_invalid_timeout_is_rejected_without_network_call(self):
+        for value in ("abc", "", "0", "-1", "nan", "inf", "-inf", "1e999"):
+            with self.subTest(value=value):
+                code, stdout, stderr, urlopen = self.invoke(
+                    ["Bonjour"], environment={"OLLAMA_TIMEOUT": value}
+                )
+                self.assertEqual(code, 1)
+                self.assertEqual(stdout, "")
+                self.assertTrue(stderr.startswith("ERREUR:"))
+                self.assertIn("OLLAMA_TIMEOUT", stderr)
+                urlopen.assert_not_called()
 
     def test_model_can_be_selected_with_environment_variable(self):
         code, _, _, urlopen = self.invoke(
@@ -148,6 +170,18 @@ class OllamaCallTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual(stdout, "")
         self.assertIn("délai d’attente", stderr)
+        self.assertIn("180 s", stderr)
+        self.assertIn("OLLAMA_TIMEOUT", stderr)
+
+    def test_wrapped_timeout_reports_selected_value(self):
+        code, stdout, stderr, _ = self.invoke(
+            ["Bonjour"], error=URLError(TimeoutError()),
+            environment={"OLLAMA_TIMEOUT": "240.5"},
+        )
+        self.assertEqual(code, 1)
+        self.assertEqual(stdout, "")
+        self.assertIn("240.5 s", stderr)
+        self.assertIn("OLLAMA_TIMEOUT", stderr)
 
     def test_invalid_json_response_is_reported(self):
         code, stdout, stderr, _ = self.invoke(["Bonjour"], response=RawResponse(b"pas du json"))

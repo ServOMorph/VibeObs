@@ -30,7 +30,7 @@ $env:OLLAMA_MODEL = "qwen2.5-coder:7b"; python ollama_call.py "..."
 
 ## Limites constatées
 
-- Le délai d'attente du lanceur est de 60 secondes. Sur ce PC, le premier appel après un moment sans usage a pris plus de 60 secondes (chargement du modèle en mémoire) et un essai a échoué par dépassement du délai ; l'appel suivant a répondu en environ 3 secondes. Relancer la commande si le premier appel échoue par délai.
+- Le délai d'attente du lanceur est de 180 secondes par défaut, paramétrable par `OLLAMA_TIMEOUT` (nombre positif de secondes). Sur ce PC, le premier appel après un moment sans usage a pris plus de 60 secondes (chargement du modèle en mémoire) et un essai a échoué par dépassement de l'ancien délai de 60 secondes ; l'appel suivant a répondu en environ 3 secondes. Augmenter `OLLAMA_TIMEOUT` si le chargement du modèle dépasse le délai.
 - Les modèles locaux se trompent : relire la sortie avant de l'utiliser, surtout pour du code. Réserver Ollama aux tâches répétitives et cadrées (messages de commit, brouillons de posts, changelogs, données de test, digest de logs).
 
 ## Vérifier l'installation

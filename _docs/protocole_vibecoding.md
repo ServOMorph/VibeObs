@@ -246,7 +246,7 @@ Script : voir `templates/ollama_call.py`.
 > $env:OLLAMA_LIVE_TEST = "1"
 > python -m unittest tests.test_ollama_call.OllamaCallTests.test_live_ollama_returns_a_response -v
 > ```
-> Le lanceur impose un délai maximal de 60 secondes et affiche une erreur lisible si l’API renvoie un JSON invalide ou une réponse inattendue.
+> Le lanceur utilise un délai de 180 secondes par défaut, paramétrable par `OLLAMA_TIMEOUT` (nombre positif de secondes), et affiche une erreur lisible si l’API renvoie un JSON invalide ou une réponse inattendue.
 
 ## Appel depuis Claude
 
