@@ -137,6 +137,23 @@ class TestCommandsInLlms(unittest.TestCase):
                          ["Commande absente de llms.txt : /delegation"])
 
 
+class TestContextHygiene(unittest.TestCase):
+    """Tests pour le contrôle 5b."""
+
+    def test_compte_actions(self):
+        from check_kit import count_open_actions
+        contenu = ("## Actions ouvertes — pilotage\n### P1\n- a\n  - fait quand: x\n- b\n"
+                   "Backlog : 3 entrées\n## Garde-fous permanents\n- g\n")
+        self.assertEqual(count_open_actions(contenu), 2)
+
+    def test_refs_locales(self):
+        from check_kit import extract_local_refs
+        ligne = ("  - réf: `tests_manuels.md` ; `.claude/commands/close.md` étape 6 ; `D:\\X\\y.md` ; "
+                 "`<projet>/a.md` ; `ListAgents` ; https://x.y ; `templates/discord_com/`\n")
+        self.assertEqual(extract_local_refs(ligne),
+                         ["tests_manuels.md", ".claude/commands/close.md", "templates/discord_com/"])
+
+
 class TestSensitiveNames(unittest.TestCase):
     """Tests pour le motif de noms sensibles du contrôle 7."""
 

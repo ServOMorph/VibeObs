@@ -335,6 +335,59 @@ def check_signals_threshold():
     return errors
 
 
+MAX_OPEN_ACTIONS = 20
+
+
+def count_open_actions(content):
+    """Compte les actions de premier niveau des sections « ## Actions ouvertes »."""
+    count = 0
+    in_section = False
+    for line in content.splitlines():
+        if line.startswith("## "):
+            in_section = line.startswith("## Actions ouvertes")
+        elif in_section and line.startswith("- "):
+            count += 1
+    return count
+
+
+def extract_local_refs(content):
+    """Chemins relatifs entre backticks des lignes « réf: » (chemins absolus, URL et placeholders exclus)."""
+    refs = []
+    for line in content.splitlines():
+        if not re.match(r"^\s*-\s*réf\s*:", line):
+            continue
+        for token in re.findall(r"`([^`]+)`", line):
+            if re.search(r"[\s<>{}*$]", token) or re.match(r"^([A-Za-z]:|/|~|https?:)", token):
+                continue
+            if "/" in token or re.search(r"\.\w{1,5}$", token):
+                refs.append(token)
+    return refs
+
+
+def check_context_hygiene():
+    """Contrôle 5b : plafond d'actions de signals.md, catégories du backlog, réf: locales existantes."""
+    errors = []
+    sources = []
+    if SIGNALS_PATH.exists():
+        signals = SIGNALS_PATH.read_text(encoding="utf-8")
+        sources.append((SIGNALS_PATH, signals))
+        count = count_open_actions(signals)
+        if count > MAX_OPEN_ACTIONS:
+            errors.append(f"signals.md : {count} actions ouvertes (plafond {MAX_OPEN_ACTIONS})")
+    backlog_path = KIT_ROOT / "_contexte" / "backlog.md"
+    if backlog_path.exists():
+        backlog = backlog_path.read_text(encoding="utf-8")
+        sources.append((backlog_path, backlog))
+        for number, line in enumerate(backlog.splitlines(), 1):
+            if line.startswith("- ") and not re.match(r"^- \[[^\]]+\]", line):
+                errors.append(f"backlog.md:{number} : entrée sans catégorie")
+    for path, content in sources:
+        for ref in extract_local_refs(content):
+            if not (KIT_ROOT / ref).exists() and not (path.parent / ref).exists():
+                errors.append(f"{path.name} : réf introuvable {ref}")
+    return errors
+
+
 def extract_relative_paths_from_markdown(content, base_dir):
     """Extrait tous les chemins relatifs cités dans un contenu markdown.
     
@@ -451,7 +504,8 @@ def main():
     
     # Contrôle 5 : Seuil signals.md
     all_errors.extend(check_signals_threshold())
-    
+    all_errors.extend(check_context_hygiene())
+
     # Contrôle 6 : Fichiers référencés
     all_errors.extend(check_referenced_files_exist())
 
