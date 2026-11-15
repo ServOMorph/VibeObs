@@ -28,6 +28,7 @@ CONTEXTE_DIR = KIT_ROOT / "_contexte"
 README_PATH = KIT_ROOT / "README.md"
 CHANGELOG_PATH = KIT_ROOT / "CHANGELOG.md"
 PROTOCOLE_PATH = KIT_ROOT / "Protocole_start_close_context.md"
+LLMS_PATH = KIT_ROOT / "llms.txt"
 SIGNALS_PATH = CONTEXTE_DIR / "signals.md"
 
 # Seuil pour signals.md (Phase 4 : conserver seulement la dernière session)
@@ -81,17 +82,23 @@ def get_version_from_protocole():
     return matches[-1] if matches else None
 
 
+def get_version_from_llms():
+    """Extrait la version annoncée par llms.txt (ligne « Version : vX.Y »)."""
+    if not LLMS_PATH.exists():
+        return None
+    content = LLMS_PATH.read_text(encoding="utf-8")
+    match = re.search(r"^Version\s*:\s*(v\d+\.\d+)", content, re.MULTILINE)
+    return match.group(1) if match else None
+
+
 def check_version_consistency():
-    """Contrôle 4 : version en tête de CHANGELOG.md = README.md = Protocole_start_close_context.md."""
+    """Contrôle 4 : version identique dans CHANGELOG.md, README.md, Protocole_start_close_context.md et llms.txt."""
     errors = []
-    changelog_ver = get_version_from_changelog()
-    readme_ver = get_version_from_readme()
-    protocole_ver = get_version_from_protocole()
-    
     versions = {
-        "CHANGELOG.md": changelog_ver,
-        "README.md": readme_ver,
-        "Protocole_start_close_context.md": protocole_ver,
+        "CHANGELOG.md": get_version_from_changelog(),
+        "README.md": get_version_from_readme(),
+        "Protocole_start_close_context.md": get_version_from_protocole(),
+        "llms.txt": get_version_from_llms(),
     }
     
     for path, ver in versions.items():
@@ -200,6 +207,22 @@ def check_crlf_files():
             continue
 
     return errors
+
+
+def check_commands_in_llms():
+    """Contrôle 3b : chaque commande de .claude/commands/ est citée dans llms.txt (« `/nom »)."""
+    if not LLMS_PATH.exists():
+        return ["llms.txt introuvable"]
+    content = LLMS_PATH.read_text(encoding="utf-8")
+    cited = set(re.findall(r"`/([A-Za-z0-9_-]+)", content))
+    commands_dir = CLAUDE_DIR / "commands"
+    if not commands_dir.exists():
+        return []
+    return [
+        f"Commande absente de llms.txt : /{f.stem}"
+        for f in sorted(commands_dir.iterdir())
+        if f.is_file() and f.suffix == ".md" and f.stem not in cited
+    ]
 
 
 def check_commands_in_readme():
@@ -389,7 +412,8 @@ def main():
     
     # Contrôle 3 : Commandes dans README
     all_errors.extend(check_commands_in_readme())
-    
+    all_errors.extend(check_commands_in_llms())
+
     # Contrôle 4 : Cohérence des versions
     all_errors.extend(check_version_consistency())
     

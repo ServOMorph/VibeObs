@@ -88,11 +88,12 @@ class TestVersionExtraction(unittest.TestCase):
 class TestVersionConsistency(unittest.TestCase):
     """Tests pour check_version_consistency."""
 
-    def _verifier(self, changelog, readme, protocole):
+    def _verifier(self, changelog, readme, protocole, llms="v6.5"):
         from unittest import mock
         with mock.patch("check_kit.get_version_from_changelog", return_value=changelog), \
              mock.patch("check_kit.get_version_from_readme", return_value=readme), \
-             mock.patch("check_kit.get_version_from_protocole", return_value=protocole):
+             mock.patch("check_kit.get_version_from_protocole", return_value=protocole), \
+             mock.patch("check_kit.get_version_from_llms", return_value=llms):
             return check_version_consistency()
 
     def test_versions_identiques(self):
@@ -105,6 +106,35 @@ class TestVersionConsistency(unittest.TestCase):
     def test_versions_incoherentes(self):
         erreurs = self._verifier("v6.5", "v6.4", "v6.5")
         self.assertTrue(any("incohérente" in e for e in erreurs))
+
+    def test_version_llms_incoherente(self):
+        erreurs = self._verifier("v6.5", "v6.5", "v6.5", llms="v5.36")
+        self.assertTrue(any("llms.txt annonce v5.36" in e for e in erreurs))
+
+
+class TestCommandsInLlms(unittest.TestCase):
+    """Tests pour check_commands_in_llms."""
+
+    def _verifier(self, contenu_llms, commandes):
+        from unittest import mock
+        import check_kit
+        with tempfile.TemporaryDirectory() as dossier:
+            racine = Path(dossier)
+            (racine / "commands").mkdir()
+            for nom in commandes:
+                (racine / "commands" / f"{nom}.md").write_text("x", encoding="utf-8")
+            llms = racine / "llms.txt"
+            llms.write_text(contenu_llms, encoding="utf-8")
+            with mock.patch.object(check_kit, "CLAUDE_DIR", racine), \
+                 mock.patch.object(check_kit, "LLMS_PATH", llms):
+                return check_kit.check_commands_in_llms()
+
+    def test_toutes_citees(self):
+        self.assertEqual(self._verifier("- `/start` : x\n- `/close [zone]` : y\n", ["start", "close"]), [])
+
+    def test_commande_absente(self):
+        self.assertEqual(self._verifier("- `/start` : x\n", ["start", "delegation"]),
+                         ["Commande absente de llms.txt : /delegation"])
 
 
 class TestContentNormalization(unittest.TestCase):
