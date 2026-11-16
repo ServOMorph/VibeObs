@@ -18,6 +18,8 @@ MOTIFS_GPU = [
     r"11434/api/(generate|chat|embed)",
     r"\bcomfyui\b",
     r"torch\.cuda",
+    r"(?<![\w.])py(thon[0-9.]*)?(\.exe)?\s+(\S*[\\/])?(gen_images(_qwen)?|gen_musique)\.py",
+    r"blender(\.exe)?[\"']?\s+(-b|--background|-P|--python)\b",
 ]
 ACQUIRE = (
     r"D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire " + SESSION + " --wait (sans --long pour Ollama)"
