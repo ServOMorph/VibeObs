@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-15)
+# Signals — VibeObs (MAJ 2026-11-16)
 
 ## Actions ouvertes — pilotage
 
@@ -17,12 +17,12 @@
   - réf: `tests_manuels.md`.
 - Valider le correctif `templates/discord_com` en conditions réelles : deux notifications consécutives reçues et file finale `idle`.
   - fait quand: le bot local reçoit puis transmet deux notifications réelles sans perte.
-  - réf: `templates/discord_com/`, `discord_com/` local (non versionné).
+  - réf: `templates/discord_com/` ; le dossier local du bot (non versionné) n'existe plus sur le disque au 2026-11-16, à retrouver ou recréer avant le test.
 - Résoudre le vol de focus avant la phase 3 de `_archives/local/roadmap_reprise_multicompte.md` (archivée hors Git le 2026-11-05). 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
   - fait quand: le test manuel de `tests_manuels.md` (section « vol de focus ») est validé et `roadmap_reprise_multicompte.md` + `SKILL.md` sont mis à jour.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.
-- Valider la conversion de `/create_agent` en exécution réelle. 2026-11-13 : `/create_memory <alias_zone>` (routage, en-tête créé) et `/insert_template` (ligne de registre, pas de doublon à la ré-insertion) validés sur zone et projet jetables, supprimés après test.
-  - fait quand: `/create_agent` est exercé au moins une fois avec son résultat attendu.
+- Valider la conversion de `/create_agent` en exécution réelle. 2026-11-13 : `/create_memory <alias_zone>` (routage, en-tête créé) et `/insert_template` (ligne de registre, pas de doublon à la ré-insertion) validés sur zone et projet jetables, supprimés après test. 2026-11-15 : `/create_agent` exercé sur un projet jetable (supprimé) : cœur correct, étapes 8-9 (écriture dans le kit) sautées ; écarts corrigés (`contexte.md` propre à l'agent, étape 5b, étape 4c, récapitulatif des fichiers non commités de la cible).
+  - fait quand: `/create_agent` est exercé de bout en bout, étapes 8-9 comprises, avec son résultat attendu.
   - réf: `_contexte/signals_backlog_2026-09-04.md` ; `.claude/commands/create_agent.md`.
 - Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
   - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
@@ -38,22 +38,19 @@
 - Suivre l'implémentation du rapport de phase 5 (`roadmap_fondations.md` phase 5) : relayé le 2026-11-09 à « Business SerenIA Tech », reformulation validée, ordre révisé ; implémentation par les zones ui et gestion-clients (1, 2, 5, 3, 6) et business (7), la 4 attendant la décision CAE ; lignes orphelines de `Gestion clients/_contexte/signals.md` à reclasser par cette zone. Suivre aussi l'application, par la session ouverte « Business SerenIA Tech », des constats de l'audit de `SérénIATech_dev` (phase 4 close, constats transmis le 2026-11-08, reformulation contrôlée). Annoncé par cette session : renommage indexé non commité de `20261016_1830_reunion.md` (gestion-clients) et copies `.opencode/commands/` archivées dans `_archives/racine_2026-11-08/opencode_commands/`, avec l'accord de l'utilisateur. Restent : modification du 2026-11-07 9h11 (linkedin, roberto) qualifiée de rangement par la session Business, origine toujours inconnue (ce n'est pas elle) ; `contexte.md` de `linkedin` ligne 20 périmée ; 13 zones sauvegardées hors `/close` (signals non mis à jour) ; `VertIA` signalé seulement. Suivre aussi la phase 6 (plan d'automatisation), menée par l'utilisateur dans la session SérénIATech_dev (décision du 2026-11-09) : plan à relire à son retour pour la validation de la phase. Le bloc « Dernière session 2026-10-20 » de `roberto` est clos : il figure dans `derniere_session.md` de roberto (relu le 2026-11-09).
   - fait quand: la session Business a tracé l'échange de phase 5 dans son `signals.md` et les zones ui / gestion-clients ont repris les fonctionnalités dans leurs signaux, chaque constat de phase 4 est appliqué ou écarté par l'utilisateur dans la session concernée, et la session a tracé l'échange dans son propre `signals.md`, et le plan de la phase 6 est présenté à l'utilisateur et validé.
   - réf: `roadmap_fondations.md` phases 4, 5 et 6 ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\zones.md`.
-- Propager le journal de session (kit v5.44) et les `/start` récents aux projets suivis. 2026-11-14 : v5.44 écrite dans le kit (journal gitignoré ; `/start` l'affiche s'il est non vide ; `/close` l'intègre puis le vide ; `/update` étape 8bis). 9 sessions Claude Code ouvertes ont reçu une version unique (reformulation contrôlée, accord de l'utilisateur dans chaque session) ; application confirmée par creation_3d, XMage, zone UI SérénIa Tech, VertIA_v3, World Model, Creation video, Creation llm et Site Internet v3 ; correctif `.gitignore` confirmé par creation_3d, VertIA_v3, zone UI, Creation video, XMage et Site Internet v3 (appliqué d'emblée), non confirmé par Creation llm et World Model ; Sécurité (nettoyage_pc, hors Git) sans retour d'application. `/update` v5.44 sur 21 projets sans session ouverte, un par un, 7 contrôles passés (commits `update: protocole vibecoding` dans chaque dépôt ; Moulin du Sud commité à la main : son dépôt est `Lieux_Hybrides`, dossier suivi sous `lieux/`). Restent : `SérénIATech_dev` (v5.42) ; les projets à session ouverte (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`, `xmage-test`), dont les blocs projet portent la règle mais dont le `/update` complet reste à faire à la fermeture des sessions (relever les sessions ouvertes avant). L'association nom de session / dossier est supposée, non vérifiée (hors VertIA_v3). `telephone.md` : `Nettoyage_PC` (v3.10) ne l'a pas, `/update` le copiera. Reste aussi l'observation d'un `/start` en réel dans un projet suivi. 2026-11-15 : `/update` v6.5 proposé aux sessions ouvertes VertIA_v3, Moulin du Sud et World Model : refus des trois (travail en cours, `CLAUDE.md` sans les trois validations dans leur session) ; à reproposer après leur `/close` (VertIA_v3 doit me recontacter). Règle ajoutée à `.claude/memory.md` : la session ouverte valide ou refuse, jamais de passage en force.
+- Propager le journal de session (kit v5.44) et les `/start` récents aux projets suivis. 2026-11-14 : v5.44 écrite dans le kit (journal gitignoré ; `/start` l'affiche s'il est non vide ; `/close` l'intègre puis le vide ; `/update` étape 8bis). 9 sessions Claude Code ouvertes ont reçu une version unique (reformulation contrôlée, accord de l'utilisateur dans chaque session) ; application confirmée par creation_3d, XMage, zone UI SérénIa Tech, VertIA_v3, World Model, Creation video, Creation llm et Site Internet v3 ; correctif `.gitignore` confirmé par creation_3d, VertIA_v3, zone UI, Creation video, XMage et Site Internet v3 (appliqué d'emblée), non confirmé par Creation llm et World Model ; Sécurité (nettoyage_pc, hors Git) sans retour d'application. `/update` v5.44 sur 21 projets sans session ouverte, un par un, 7 contrôles passés (commits `update: protocole vibecoding` dans chaque dépôt ; Moulin du Sud commité à la main : son dépôt est `Lieux_Hybrides`, dossier suivi sous `lieux/`). Restent : `SérénIATech_dev` (v5.42) ; les projets à session ouverte (`Nettoyage_PC`, `site_internet_ST_v3`, `creation_llm`, `VertIA_v3`, `creation_3d`, `WorldModel`, `creation_videos`, `xmage-test`), dont les blocs projet portent la règle mais dont le `/update` complet reste à faire à la fermeture des sessions (relever les sessions ouvertes avant). L'association nom de session / dossier est supposée, non vérifiée (hors VertIA_v3). `telephone.md` : `Nettoyage_PC` (v3.10) ne l'a pas, `/update` le copiera. Reste aussi l'observation d'un `/start` en réel dans un projet suivi. 2026-11-15 : `/update` v6.5 proposé aux sessions ouvertes VertIA_v3, Moulin du Sud et World Model : refus des trois (travail en cours, `CLAUDE.md` sans les trois validations dans leur session) ; à reproposer après leur `/close`. 2026-11-16 : `/update` de VertIA_v3 v5.25 → v6.5 terminé (commit `b7230f6`, CLAUDE.md après trois validations, 7 contrôles passés, ses 7 actions classées « Plus tard »), `DEPLOYMENTS.md` à v6.5 ; restent Moulin du Sud et World Model, puis `SérénIATech_dev` (via la session gardienne). Règle ajoutée à `.claude/memory.md` : la session ouverte valide ou refuse, jamais de passage en force.
   - fait quand: les projets restants sont mis à jour par `/update` en v5.44 (ou leur report est tracé), un cycle réel du journal a été observé dans un projet suivi (`tests_manuels.md`) et le `/start` de l'un des projets suivis a été observé en réel.
   - réf: `DEPLOYMENTS.md` ; `tests_manuels.md` section « Journal de session (v5.44) » ; `.claude/commands/update.md` étape 8bis ; `.claude/commands/start.md` étapes 3 et 4.
 - Tester `/migration_canva` avec deux comptes Canva réels (kit v6.2, lancement manuel) et confirmer au prochain `/start` que les commandes en `disable-model-invocation` (`cherche_fonction`, `cherche_meilleure_action`, `maintenance`, `migration_canva`) ne figurent plus dans la liste des skills du modèle.
   - fait quand: une migration d'au moins un dossier est menée jusqu'à l'étape 6 (preuve finale), les 5 points « à vérifier » du fichier sont tranchés, et l'absence des 4 commandes de la liste est constatée.
   - réf: `.claude/commands/migration_canva.md` ; `CHANGELOG.md` v6.2.
-- Exercer `/delegation` sur un second lot et mesurer l'économie de tokens Claude (usage des sous-agents disponible, Codex et OpenCode non mesurés).
-  - fait quand: un second lot est tracé dans `_codex/journal_delegation.md` avec son bilan, et une règle de routage est ajustée ou confirmée.
+- Exercer `/delegation` sur un second lot et mesurer l'économie de tokens Claude (usage des sous-agents disponible, Codex et OpenCode non mesurés). 2026-11-15 : second lot tracé avec son bilan dans `_codex/journal_delegation.md` (correctif délai/rapport validé par essai réel, retex `/maintenance`, exercice `/create_agent`) ; la règle de routage proposée (exiger un essai réel dans le brief Codex quand le correctif dépend du format de sortie d'un outil externe gratuit) n'est pas encore écrite dans `delegation.md` ; économie de tokens toujours non mesurée.
+  - fait quand: la règle de routage est ajustée dans `delegation.md` (ou écartée avec motif) et l'économie de tokens Claude est mesurée sur au moins un lot.
   - réf: `.claude/commands/delegation.md` ; `_codex/journal_delegation.md`.
-- Coller dans `.claude/CLAUDE.md` la ligne de renvoi vers `DOCUMENTATION/30_decisions/prises_de_controle.md` (écriture refusée par le classifieur auto-mode à VibeObs ; trois validations déjà données pour la règle).
-  - fait quand: la ligne figure dans `.claude/CLAUDE.md` et dans `templates/.claude/CLAUDE.md`, miroir identique, `check_kit.py` passant.
-  - réf: `DOCUMENTATION/30_decisions/prises_de_controle.md` ; `.claude/CLAUDE.md` § Comportement.
 - Suivre la phase 1 (v0) du système d'apprentissage : la session gardienne `sereniatech_dev` implémente le journal et les règles ; VibeObs les applique à ses propres sollicitations.
   - fait quand: les critères 1 à 5 de la fiche sont exercés sur des cas réels, journalisés, et le bilan v0 est écrit.
   - réf: `roadmap_apprentissage.md` ; `tests/apprentissage/fiche.md` ; `DOCUMENTATION/40_specs/systeme_apprentissage.md`.
-- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; une seule session shorts vivante : `shorts-c2` [c0088b] (relancée en CLI le 2026-11-15, adresse transmise à Moulin du Sud), entrées Remote Control `shorts` hors ligne ; consigne VRAM (jeton VertIA_v3) envoyée à `shorts-c2`, accusé non reçu ; brief « Rayonne toi » de Moulin du Sud à lui adresser ; contexte de l'ancienne session `shorts [b7470d]` perdu au redémarrage du PC.
+- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; une seule session shorts vivante : `shorts-c2` [c0088b] (relancée en CLI le 2026-11-15, adresse transmise à Moulin du Sud), entrées Remote Control `shorts` hors ligne ; consigne VRAM (jeton VertIA_v3) appliquée par `shorts-c2` le 2026-11-16 après accord de l'utilisateur (commit `2169a1a` de SérénIATech_dev : règle dans `shorts.md` étape 3, hook `garde_vram.py` dans `SHORTS/.claude/settings.json`, session `shorts`), le hook ne s'active qu'au prochain lancement de la session depuis `SHORTS` ; brief « Rayonne toi » de Moulin du Sud à lui adresser ; contexte de l'ancienne session `shorts [b7470d]` perdu au redémarrage du PC.
   - fait quand: la modification est commitée dans SérénIATech_dev et la session shorts est visible en Remote Control.
   - réf: `C:/Users/raph6/Documents/SerenIATech/SérénIATech_dev/Communication/SHORTS/agent_role.md`.
 - Relancer les sessions Remote Control tombées au redémarrage du PC (2026-11-15, deux redémarrages sans cause établie : dernier événement journalisé 10:27 et 15:11, aucun code d'arrêt, aucune erreur matérielle) ; surveiller une récidive.
@@ -62,6 +59,9 @@
 - Valider en réel le registre des artifacts (kit v6.5) : `/close` demande à l'utilisateur s'il garde chaque artifact créé ou modifié, `/start` relit `_contexte/artifacts.md`.
   - fait quand: un `/close` réel dans un projet à `/update` v6.5 a posé la question sur un artifact, inscrit la ligne attendue (nom, lien, source versionnée) et le `/start` suivant a relu le registre.
   - réf: `.claude/commands/close.md` étape 6-bis ; `.claude/commands/start.md` étape 2d ; `tests_manuels.md`.
+- Mesurer le gain de RAM et de VRAM d'un passage des sessions de VS Code en CLI, quand plus aucune session ne tourne (décision de l'utilisateur du 2026-11-16 : pas maintenant). Relevé du 2026-11-15 : VS Code 69 processus pour environ 17,8 Go de RAM, 9 processus `claude` pour environ 2,6 Go, GPU RTX 4060 à 7485 sur 8188 Mio ; la part de VRAM de VS Code n'est pas mesurable par `nvidia-smi` seul. Méthode : relever `nvidia-smi` et la RAM avant et après la fermeture de VS Code.
+  - fait quand: les relevés avant et après fermeture de VS Code sont consignés avec le gain mesuré, et une décision de passage en CLI est prise.
+  - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement en CLI).
 Backlog : 25 entrées (finding 1, amélioration 6, piste 18) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -75,24 +75,27 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-15 (suite)
+# Session du 2026-11-16
 
 ## Décisions prises
-- Registre des artifacts (v6.5) : `/close` demande à l'utilisateur s'il garde chaque artifact créé ou modifié ; `/start` relit `_contexte/artifacts.md`. Registre du kit gitignoré (dépôt public, titres de clients), 22 artifacts du compte inscrits, propriétaire « à confirmer ».
-- Une session ouverte valide ou refuse toute modification de son projet ; refus : ne rien toucher, la recontacter après sa clôture (`.claude/memory.md`).
-- Consigne VRAM (jeton VertIA_v3 avant tout GPU) transmise à `shorts-c2`.
+- Retex `/maintenance` : 7 propositions appliquées (contrôles de `check_kit.py`, renvois de `maintenance.md`, test append-only de `check_docs.py`, propositions consignées au journal), 2 écartées, la 6 reportée au backlog.
+- Ligne de renvoi vers `prises_de_controle.md` écrite dans `.claude/CLAUDE.md` § Spécificités projet (kit seul), après trois validations.
+- `/update` de VertIA_v3 v5.25 → v6.5 mené à bien (commit `b7230f6`) ; Moulin du Sud et World Model à reproposer après leur `/close`.
+- Garde VRAM étendu à `gen_images*.py`, `gen_musique.py` et Blender ; diffusé à la zone SHORTS par hook de zone, appliqué par `shorts-c2` après accord de l'utilisateur.
+- Mesure RAM/VRAM du passage en CLI différée (sessions en cours).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/close.md`, `start.md` (kit + template), `dashboard/` (sources du dashboard), `.gitignore`, kit v6.5 (`3094062`, local).
-- `_contexte/artifacts.md` : 22 lignes, hors dépôt. `.claude/memory.md` : une entrée.
+- `scripts/check_kit.py`, `scripts/garde_vram.py`, `ollama_call.py` et ses miroirs, `_codex/run_opencode.ps1` et son miroir, `.claude/commands/create_agent.md`, `maintenance.md`, `llms.txt`, `.gitignore`, `.claude/CLAUDE.md`, tests associés : commités en local.
+- `_codex/journal_delegation.md`, briefs E et F, `DEPLOYMENTS.md` : commités à cette clôture.
+- Hors kit : VertIA_v3 `b7230f6` ; SérénIATech_dev `2169a1a` (zone SHORTS, par `shorts-c2`).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_kit.py` et `check_docs.py` passent ; miroirs kit/template identiques.
-- INVALIDE : `/update` v6.5 sur une session ouverte (VertIA_v3, Moulin du Sud, World Model refusent) -> reproposer après leur `/close`.
-- EN ATTENTE : fonction « registre des artifacts » jamais exercée en réel ; accusé de `shorts-c2` sur la consigne VRAM.
+- VALIDE : essai réel OpenCode `--format json` (13 s) ; contrôles 1 à 7 du `/update` de VertIA_v3 ; blocage à blanc de `gen_images_qwen.py` par le hook de SHORTS (code 2).
+- INVALIDE : motif du garde VRAM trop large (faux positifs sur `.py` et `.env.*.example`), corrigé.
+- EN ATTENTE : activation réelle du hook de SHORTS (prochain lancement de la session depuis `SHORTS`) ; règle de routage de `/delegation` non écrite ; registre des artifacts toujours non exercé en réel.
 
 ## Prochaine étape exacte
-Reproposer `/update` v6.5 à VertIA_v3 puis à Moulin du Sud et World Model après leur `/close` ; exercer un `/close` réel avec artifact ; coller la ligne `prises_de_controle` dans `.claude/CLAUDE.md`.
+Reproposer `/update` v6.5 à Moulin du Sud et World Model après leur `/close` ; relancer la session `shorts-c2` depuis `SHORTS` pour constater que le hook du garde est actif.
 
 ## Question bloquante pour la session suivante
 Aucune

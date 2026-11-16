@@ -45,9 +45,9 @@
 - [amélioration] Détection d'une session Codex ouverte avant modification d'un dossier (règle « Sessions ouvertes avant modification ») : aucun moyen fiable connu, Intercom du kit à envisager. `ListAgents`/`SendMessage` couvrent seulement Claude Code (validés le 2026-11-06).
   - fait quand: un moyen de détecter une session Codex est trouvé et ajouté à la règle de `.claude/memory.md`, ou l'impossibilité est actée.
   - réf: `.claude/memory.md` § Sessions ouvertes avant modification.
-- [amélioration] Retex de `/maintenance` (étape 10) à refaire : les propositions d'amélioration présentées le 2026-11-06 n'ont pas été transcrites avant le compactage de la session (perte de contexte). Rejouer l'analyse (contrôles ratés ou manquants, étapes peu utiles, contrôles à automatiser dans `check_kit.py` / `check_docs.py`, fréquence) sans modifier `maintenance.md` avant accord.
-  - fait quand: l'analyse est refaite et ses propositions sont tranchées (implémentées ou écartées avec motif).
-  - réf: `.claude/commands/maintenance.md` étape 10 ; `scripts/check_kit.py`.
+- [amélioration] Guides de `DOCUMENTATION/` en retard sur le code : concevoir un avertissement non bloquant dans `check_docs.py` (l'heuristique de détection est bruyante, reportée le 2026-11-16 lors du retex de `/maintenance`).
+  - fait quand: un avertissement non bloquant sur les guides périmés est implémenté sans bruit excessif, ou l'idée est écartée avec motif.
+  - réf: `scripts/check_docs.py`.
 - [piste] Tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser dans les réglages) : test de la phase 4 reporté le 2026-11-08 sur décision de l'utilisateur, prérequis de la phase 6.
   - fait quand: les trois connecteurs sont autorisés et testés, ou leur abandon est tracé.
   - réf: `roadmap_fondations.md` phase 4 et phase 6.
@@ -69,7 +69,7 @@
 - [piste] Persistance de l'historique des sessions lancées à distance : commande de lancement unique (nettoyage `CLAUDE*`, `--remote-control`, nom, `/start`) au lieu de la procédure décrite dans `telephone.md`.
   - fait quand: la procédure de lancement est une commande ou un script unique exercé, ou le texte de `telephone.md` est acté comme suffisant.
   - réf: `.claude/commands/telephone.md`.
-- [piste] Intégrer le garde VRAM (`scripts/garde_vram.py` + hook `PreToolUse`) aux autres projets suivis, après observation en conditions réelles dans le kit.
+- [piste] Intégrer le garde VRAM (`scripts/garde_vram.py` + hook `PreToolUse`) aux autres projets suivis, après observation en conditions réelles dans le kit. 2026-11-16 : motif étendu à `gen_images*.py`, `gen_musique.py` et Blender en ligne de commande (commit `a1dbe21`) ; première diffusion à la zone SHORTS de `SérénIATech_dev` par hook de zone, session `shorts` (commit `2169a1a`, appliquée par `shorts-c2`), actif au prochain lancement de cette session ; blocage constaté à blanc sur `gen_images_qwen.py`.
   - fait quand: le garde a bloqué puis laissé passer une commande GPU réelle dans le kit, et une décision de diffusion est prise.
   - réf: `scripts/garde_vram.py` ; `.claude/settings.json`.
 - [amélioration] Registre des artifacts : l'étape 6-bis de `/close` dit « commité avec `_contexte/` » alors que le registre du kit est gitignoré (dépôt public, titres de clients) ; décider si le registre est versionné par défaut, ignoré par défaut, ou si `/close` contrôle la visibilité du dépôt.

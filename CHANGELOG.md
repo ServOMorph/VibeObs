@@ -3,6 +3,22 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.6 — 2026-11-16
+
+### Ajouté
+- `scripts/check_kit.py` : contrôle de la version de `llms.txt` et de ses commandes, des fichiers sensibles suivis par Git, de l'hygiène du contexte (plafond de `signals.md`, catégories du backlog, `réf:` locales) ; une version introuvable est une erreur.
+- `tests/test_garde_vram.py`, `tests/test_check_docs.py` (append-only du journal), tests des nouveaux contrôles de `check_kit.py`.
+- `/create_agent` : récapitulatif signalant les fichiers non commités du projet cible.
+
+### Modifié
+- `ollama_call.py` (kit + templates) : délai lu dans `OLLAMA_TIMEOUT`, 180 s par défaut.
+- `_codex/run_opencode.ps1` (kit + template) : sortie JSON, le rapport contient le message final complet.
+- `scripts/garde_vram.py` : motif restreint à l'exécution du lanceur Ollama, étendu aux générateurs d'images et de musique locaux et à Blender en ligne de commande.
+- `/create_agent` : `contexte.md` propre à l'agent, ordre de recherche du `CLAUDE.md`, étape 4c limitée à un dossier existant sous une autre casse.
+- `/maintenance` : renvoie à `check_kit.py` pour les contrôles automatisés, consigne ses propositions au journal de session.
+- `llms.txt` : `/delegation` et `/migration_canva` ajoutées ; `.gitignore` : `*.pid`.
+- `.claude/CLAUDE.md` du kit : ligne de renvoi vers `prises_de_controle.md` (Spécificités projet, non diffusée).
+
 ## v6.5 — 2026-11-15
 
 ### Ajouté
