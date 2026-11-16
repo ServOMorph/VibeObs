@@ -66,8 +66,10 @@ sans l'accord de l'utilisateur (règle Roadmap § Clôture de `CLAUDE.md`).
 
 ### 5. Documentation
 
-- `README.md` : version annoncée égale à la dernière entrée de `CHANGELOG.md` ; liste des commandes
-  cohérente avec `.claude/commands/` ; paragraphes d'historique qui répètent d'anciennes versions.
+- Couverts par `check_kit.py` (étape 1), reprendre son résultat sans refaire la comparaison : version
+  identique dans `CHANGELOG.md`, `README.md`, le protocole et `llms.txt` ; commandes de
+  `.claude/commands/` présentes dans `README.md` et `llms.txt`.
+- `README.md` : paragraphes d'historique qui répètent d'anciennes versions.
 - `CHANGELOG.md` : taille ; proposer une archive des versions anciennes si le fichier dépasse un
   volume pénalisant pour la lecture.
 - `DOCUMENTATION/` : date de mise à jour de `DOCUMENTATION/_contexte/signals.md` et actions ouvertes
@@ -77,14 +79,14 @@ sans l'accord de l'utilisateur (règle Roadmap § Clôture de `CLAUDE.md`).
   `DOCUMENTATION/`, références entrantes (`grep` du nom du dossier dans les `.md` et commandes). Un
   dossier gelé, périmé et sans référence entrante est candidat à l'archivage.
 - `tests_manuels.md` : tests en attente et ancienneté.
-- `llms.txt` : cohérence avec la version et la liste des commandes.
 
 ### 6. Contexte de session
 
-- `_contexte/signals.md` : nombre d'actions ouvertes (plafond 20), actions P1 sans mouvement depuis
-  plus de 30 jours, existence des fichiers cités en `réf:`.
-- `_contexte/backlog.md` : nombre d'entrées, entrées sans catégorie, entrées dont la `réf:` n'existe
-  plus.
+- Couverts par `check_kit.py` (étape 1) : plafond de 20 actions ouvertes, entrées du backlog sans
+  catégorie, `réf:` relatives du kit introuvables (dans `signals.md` et `backlog.md`).
+- `_contexte/signals.md` : actions P1 sans mouvement depuis plus de 30 jours ; `réf:` en chemin absolu
+  vers un autre projet (existence seulement, sans écrire dans ce projet).
+- `_contexte/backlog.md` : nombre d'entrées.
 - Doublons entre `_contexte/signals.md` et `DOCUMENTATION/_contexte/signals.md`.
 - `.claude/zones.md` : chaque dossier de zone existe.
 - `DEPLOYMENTS.md` : projets dont le dossier n'existe plus, versions du kit en retard sur la version
@@ -92,10 +94,10 @@ sans l'accord de l'utilisateur (règle Roadmap § Clôture de `CLAUDE.md`).
 
 ### 7. Sécurité
 
-- `.gitignore` : `.env`, fichiers de configuration de bots, `*.pid`, bases locales et registres de
-  chemins absolus (`DEPLOYMENTS.md`, `AGENTS_REGISTRY.md`) y figurent.
-- `git ls-files` : aucun fichier de credentials, de comptes ou de jetons suivi par Git. Le nom d'un
-  fichier suffit à le signaler ; ne pas ouvrir son contenu.
+- Couverts par `check_kit.py` (étape 1) : exclusion de `.env`, `*.pid`, `DEPLOYMENTS.md`,
+  `AGENTS_REGISTRY.md` ; aucun fichier suivi au nom sensible (credentials, comptes, jetons, secrets,
+  `.pem`, `.key`, bases locales), sur les noms seuls.
+- `.gitignore` : fichiers de configuration de bots et bases locales hors motifs de `check_kit.py`.
 - Signaler tout secret dont la présence en clair dans un fichier suivi serait déduite d'un nom ou
   d'une règle, sans reproduire sa valeur.
 
