@@ -123,7 +123,8 @@ def remove_specificites_projet(content):
     """Supprime le bloc SPECIFICITES PROJET d'un contenu markdown."""
     # Pattern pour capturer le bloc entre les marqueurs
     pattern = r"<!-- SPECIFICITES PROJET : DEBUT.*?-->.*?<!-- SPECIFICITES PROJET : FIN -->"
-    return re.sub(pattern, "", content, flags=re.DOTALL)
+    content = re.sub(pattern, "", content, flags=re.DOTALL)
+    return re.sub(r"^## Spécificités projet\b.*\Z", "", content, flags=re.DOTALL | re.MULTILINE)
 
 
 def remove_placeholders(content):

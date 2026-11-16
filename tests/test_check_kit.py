@@ -137,6 +137,19 @@ class TestCommandsInLlms(unittest.TestCase):
                          ["Commande absente de llms.txt : /delegation"])
 
 
+class TestSpecificitesSection(unittest.TestCase):
+    """La section « ## Spécificités projet » (fin de CLAUDE.md) est ignorée dans la comparaison miroir."""
+
+    def test_section_ignoree(self):
+        base = "# Instructions\n\n## Code\n- a\n\n## Spécificités projet\n\n- x\n"
+        variante = base + "- ligne propre au kit\n"
+        self.assertEqual(normalize_content(base), normalize_content(variante))
+
+    def test_tronc_commun_compare(self):
+        base = "# Instructions\n\n## Code\n- a\n\n## Spécificités projet\n\n- x\n"
+        self.assertNotEqual(normalize_content(base), normalize_content(base.replace("- a", "- b")))
+
+
 class TestContextHygiene(unittest.TestCase):
     """Tests pour le contrôle 5b."""
 

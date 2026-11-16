@@ -123,3 +123,4 @@ Section réservée aux règles propres à ce projet, hors périmètre du kit. Ce
 
 - Installation : installer sur le lecteur D: quand c'est possible.
 - Lancement : créer un `run.py` à la racine pour lancer le projet si besoin. Si plusieurs `run.py` sont nécessaires, les nommer `run_<nom>.py`.
+- Prises de contrôle (section Comportement) : avant toute action sur une autre session ou dans un projet où une session est ouverte, lire `DOCUMENTATION/30_decisions/prises_de_controle.md`. Seuls les cas qui y sont listés lèvent les restrictions, dans leur périmètre exact ; hors de ces cas, la règle « Sessions ouvertes avant modification » de `.claude/memory.md` s'applique.
