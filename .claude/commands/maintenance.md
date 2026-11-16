@@ -146,4 +146,5 @@ Seulement une fois tous les lots de l'étape 9 tranchés, demander à l'utilisat
 
 Ne pas lancer cette analyse sans sa réponse. Si l'utilisateur accepte, présenter les propositions sans
 modifier `maintenance.md` : la mise à jour de cette commande est une modification du kit qui passe par
-son accord explicite.
+son accord explicite. Consigner chaque proposition dans `_contexte/journal_session.md` (type `action`)
+dès sa présentation, puis sa décision une fois tranchée, pour qu'un `/compact` ne la perde pas.
