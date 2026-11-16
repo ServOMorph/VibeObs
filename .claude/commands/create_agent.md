@@ -75,7 +75,9 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
     ignorée). Les lister pour la question groupée de [COLLECTE] (migration
     proposée).
 
-4c. Renommage nécessaire (casse) : rechercher dans le projet les références au
+4c. Seulement si le dossier cible existe déjà sous une autre casse (ex. `testeur`
+    à renommer en `TESTEUR`) ; dossier inexistant : étape sans objet.
+    Renommage nécessaire (casse) : rechercher dans le projet les références au
     nom du dossier (casse ignorée, hors `.git/`, logs et archives) et les
     classer en fonctionnelles (code, configs, bases de données — chercher le
     nom dans les colonnes texte des bases présentes) ou documentaires.
