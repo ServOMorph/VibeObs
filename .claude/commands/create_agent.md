@@ -234,6 +234,8 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
 
 11. Un seul récapitulatif :
     - Fichiers créés / laissés intacts (liens cliquables, chemin absolu).
+    - Fichiers non commités dans le projet cible : aucun commit n'y est fait, ils
+      sont à commiter par le `/close` de ce projet ou par l'utilisateur.
     - Rappel : le périmètre défini dans `agent_role.md` est déclaratif, pas
       une isolation technique — `/close` en vérifie a posteriori le respect
       (`git status`/`git diff --name-only` limité au dossier de la zone),
