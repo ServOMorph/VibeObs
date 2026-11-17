@@ -9,9 +9,9 @@
 - Effectuer l'upload Drive d'Appli resté en attente. 2026-11-14 : `on_close.md` d'Appli est commité (dernier commit `b78f73a`) ; son § Fin ne se limite plus à `--refresh-list` : il demande le passage en mode manuel (`Shift+Tab`) et attend la confirmation écrite avant les copies claire et chiffrée.
   - fait quand: un `/close` réel d'Appli a exécuté son § Fin en mode manuel et `backup_project.py . --check` passe.
   - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\_contexte\on_close.md` § Fin ; `DOCUMENTATION/20_guides/sauvegarde_rclone.md`.
-- Porter les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) à la copie vendored de `Rayonne_Toi`. 2026-11-12 : `Meuniers` archivé, non-port décidé ; pour `Rayonne_Toi`, port reporté : la copie a divergé (fonction `load_config` absente du template) et porte des modifications non commitées d'origine inconnue. À fusionner à la main une fois ces modifications commitées par une session de `Rayonne_Toi`.
+- Porter les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) à la copie vendored de `Rayonne_Toi`. 2026-11-12 : `Meuniers` archivé, non-port décidé ; pour `Rayonne_Toi`, port reporté : la copie a divergé (fonction `load_config` absente du template) et porte des modifications non commitées d'origine inconnue. À fusionner à la main une fois ces modifications commitées par une session de `Rayonne_Toi`. 2026-11-17 : diff de fusion préparé par Codex en lecture seule (`git apply --check` passant en LF, `load_config` conservé), non appliqué.
   - fait quand: les modifications locales de la copie `Rayonne_Toi` sont commitées, puis les 2 correctifs y sont fusionnés sans perdre `load_config`.
-  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `D:\ServOMorph\Rayonne_Toi\claude-vibecoding-kit\rclone_backup\backup_project.py`.
+  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `D:\ServOMorph\Rayonne_Toi\claude-vibecoding-kit\rclone_backup\backup_project.py` ; diff proposé dans `_codex/runs/20261117_141544_316_J_fusion_backup_f77a48e3/rapport.md` (local, gitignoré).
 - Exécuter le backup réel de `SérénIATech_dev` vers `sereniatech_drive` et vérifier les `/close` des projets partageant `rayonne_toi_drive`.
   - fait quand: `tests_manuels.md` sections « rclone multicompte » toutes validées et retirées.
   - réf: `tests_manuels.md`.
@@ -41,13 +41,13 @@
 - Tester `/migration_canva` avec deux comptes Canva réels (kit v6.2, lancement manuel). 2026-11-17 : absence des 4 commandes en `disable-model-invocation` de la liste des skills constatée.
   - fait quand: une migration d'au moins un dossier est menée jusqu'à l'étape 6 (preuve finale) et les 5 points « à vérifier » du fichier sont tranchés.
   - réf: `.claude/commands/migration_canva.md` ; `CHANGELOG.md` v6.2.
-- Exercer `/delegation` sur un second lot et mesurer l'économie de tokens Claude (usage des sous-agents disponible, Codex et OpenCode non mesurés). 2026-11-15 : second lot tracé avec son bilan dans `_codex/journal_delegation.md` (correctif délai/rapport validé par essai réel, retex `/maintenance`, exercice `/create_agent`) ; 2026-11-17 : règle de routage écrite dans `delegation.md` § Règles (essai réel exigé pour tout outil externe) ; économie de tokens toujours non mesurée.
+- Exercer `/delegation` sur un second lot et mesurer l'économie de tokens Claude (usage des sous-agents disponible, Codex et OpenCode non mesurés). 2026-11-15 : second lot tracé avec son bilan dans `_codex/journal_delegation.md` (correctif délai/rapport validé par essai réel, retex `/maintenance`, exercice `/create_agent`) ; 2026-11-17 : règle de routage écrite dans `delegation.md` § Règles (essai réel exigé pour tout outil externe) ; lot du 2026-11-17 (5 tâches H à L, OpenCode et Codex en parallèle, aucune relance) tracé avec son bilan ; économie de tokens toujours non mesurée (relever `/cost` avant et après le prochain lot).
   - fait quand: l'économie de tokens Claude est mesurée sur au moins un lot.
   - réf: `.claude/commands/delegation.md` ; `_codex/journal_delegation.md`.
 - Suivre la phase 1 (v0) du système d'apprentissage : la session gardienne `sereniatech_dev` implémente le journal et les règles ; VibeObs les applique à ses propres sollicitations.
   - fait quand: les critères 1 à 5 de la fiche sont exercés sur des cas réels, journalisés, et le bilan v0 est écrit.
   - réf: `roadmap_apprentissage.md` ; `tests/apprentissage/fiche.md` ; `DOCUMENTATION/40_specs/systeme_apprentissage.md`.
-- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; une seule session shorts vivante : `shorts-c2` [c0088b] (relancée en CLI le 2026-11-15, adresse transmise à Moulin du Sud), entrées Remote Control `shorts` hors ligne ; consigne VRAM (jeton VertIA_v3) appliquée par `shorts-c2` le 2026-11-16 après accord de l'utilisateur (commit `2169a1a` de SérénIATech_dev : règle dans `shorts.md` étape 3, hook `garde_vram.py` dans `SHORTS/.claude/settings.json`, session `shorts`), hook constaté actif dans `shorts-c2` le 2026-11-17 (test à blanc bloqué) ; brief « Rayonne toi » de Moulin du Sud à lui adresser ; contexte de l'ancienne session `shorts [b7470d]` perdu au redémarrage du PC.
+- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; une seule session shorts vivante : `shorts-c2` [c0088b] (relancée en CLI le 2026-11-15, adresse transmise à Moulin du Sud), entrées Remote Control `shorts` hors ligne ; consigne VRAM (jeton VertIA_v3) appliquée par `shorts-c2` le 2026-11-16 après accord de l'utilisateur (commit `2169a1a` de SérénIATech_dev : règle dans `shorts.md` étape 3, hook `garde_vram.py` dans `SHORTS/.claude/settings.json`, session `shorts`), hook constaté actif dans `shorts-c2` le 2026-11-17 (test à blanc bloqué) ; brief « Rayonne toi » de Moulin du Sud à lui adresser ; contexte de l'ancienne session `shorts [b7470d]` perdu au redémarrage du PC. 2026-11-17 : `shorts-c2` arrêtée à la demande de l'utilisateur après son `/close` (lancé par l'utilisateur) ; commit de `agent_role.md` non vérifié par VibeObs.
   - fait quand: la modification est commitée dans SérénIATech_dev et la session shorts est visible en Remote Control.
   - réf: `C:/Users/raph6/Documents/SerenIATech/SérénIATech_dev/Communication/SHORTS/agent_role.md`.
 - Relancer les sessions Remote Control tombées au redémarrage du PC (2026-11-15, deux redémarrages sans cause établie : dernier événement journalisé 10:27 et 15:11, aucun code d'arrêt, aucune erreur matérielle) ; surveiller une récidive.
@@ -59,7 +59,13 @@
 - Mesurer le gain de RAM et de VRAM d'un passage des sessions de VS Code en CLI, quand plus aucune session ne tourne (décision de l'utilisateur du 2026-11-16 : pas maintenant). Relevé du 2026-11-15 : VS Code 69 processus pour environ 17,8 Go de RAM, 9 processus `claude` pour environ 2,6 Go, GPU RTX 4060 à 7485 sur 8188 Mio ; la part de VRAM de VS Code n'est pas mesurable par `nvidia-smi` seul. Méthode : relever `nvidia-smi` et la RAM avant et après la fermeture de VS Code.
   - fait quand: les relevés avant et après fermeture de VS Code sont consignés avec le gain mesuré, et une décision de passage en CLI est prise.
   - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement en CLI).
-Backlog : 25 entrées (finding 1, amélioration 6, piste 18) — `_contexte/backlog.md`
+- Concevoir avec l'utilisateur le relais des sessions par téléphone : bridge `com_telephone` hébergé par Roberto, l'utilisateur en voiture, voix seule. 2026-11-17 : relais Roberto ↔ VibeObs par `SendMessage` constaté dans les deux sens ; modèle B recommandé par VibeObs (VibeObs collecte et trie les demandes des sessions, Roberto reste l'interface vocale, secours en lecture seule par Roberto) ; manques : file persistante (SendMessage perdu au redémarrage), cas du registre des prises de contrôle pour répondre aux sessions au nom de l'utilisateur, détection d'un message retenu pour validation ; plus petit test proposé : synthèse de 2 sessions inactives relayée, réponse « plus tard » renvoyée.
+  - fait quand: le modèle est choisi par l'utilisateur, le cas de prise de contrôle correspondant est tracé dans `prises_de_controle.md`, et le plus petit test est joué.
+  - réf: `D:\ServOMorph\Roberto\com_telephone` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` ; `templates/intercom/`.
+- Pousser les commits en avance des projets suivis (audit du 2026-11-17 : une vingtaine de dépôts à 1 à 4 commits devant leur amont connu localement, souvent le commit `/update`), projet par projet après `git fetch`, avec confirmation de l'utilisateur à chaque push, jamais automatique ; `SérénIATech_dev` exclu (session gardienne).
+  - fait quand: chaque projet de la liste est poussé ou son report est décidé par l'utilisateur.
+  - réf: `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré) ; `DEPLOYMENTS.md`.
+Backlog : 24 entrées (finding 1, amélioration 5, piste 18 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -72,25 +78,25 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-17
+# Session du 2026-11-17 (soir)
 
 ## Décisions prises
-- Garde VRAM : un texte cité entre guillemets après echo/printf/Write-Host/Write-Output n'est plus analysé (substitutions `$(...)` et backticks conservées) ; faux positif constaté en session.
-- `/delegation` : essai réel de l'outil exigé dans le brief quand un correctif dépend de son format de sortie (tout outil externe).
-- `/create_agent` étape 10 : repli sur affichage du message si `Set-Clipboard` échoue (constaté depuis la session).
-- `/update` v6.6 appliqué à World Model et Moulin du Sud, `CLAUDE.md` écrit par chaque session après trois validations.
+- Lot de délégation H à L (OpenCode + Codex en parallèle) : avertissement « guide périmé » de `check_docs.py` et hook PreCompact fusionnés dans le kit.
+- Poussée des commits en avance des projets suivis : action ouverte, push projet par projet après `git fetch`, confirmation de l'utilisateur à chaque push.
+- Relais téléphone des sessions (bridge de Roberto) : modèle B recommandé (VibeObs trie, Roberto interface vocale) ; conception avec l'utilisateur à la session suivante.
+- Sessions `shorts-c2` et VS Code « Moulin du Sud » arrêtées à la demande de l'utilisateur, après leur `/close`.
 
 ## Livrables produits ou modifiés
-- `scripts/garde_vram.py`, `tests/test_garde_vram.py` (9 cas), `.claude/commands/delegation.md` (règle + chemin VertIA réparé), `.claude/commands/create_agent.md`, `base_connaissances/ameliorations_create_agent.md` : commités.
-- Hors kit : WorldModel `ba4d382`, Lieux_Hybrides `ed28cb8` ; `DEPLOYMENTS.md` et `AGENTS_REGISTRY.md` (locaux, gitignorés).
+- `scripts/check_docs.py`, `tests/test_check_docs.py`, `scripts/hook_precompact.py`, `tests/test_hook_precompact.py`, `.claude/settings.json` : commités (`3c432e2`).
+- `_codex/briefs/H` à `L`, `_codex/journal_delegation.md` (lot + bilan), `tests_manuels.md` (section Hook PreCompact) : commités avec ce `/close`.
 
 ## Hypothèses validées / invalidées
-- VALIDE : hook VRAM actif dans `shorts-c2` ; `/create_agent` de bout en bout sur projet jetable (supprimé) ; 4 commandes manuelles absentes de la liste des skills.
-- INVALIDE : « session shorts introuvable » : elle est listée sous `shorts-c2`.
-- EN ATTENTE : repli presse-papier de `/create_agent` non exercé ; la copie du garde VRAM utilisée par SHORTS (copie ou script du kit) n'a pas été vérifiée.
+- VALIDE : relais VibeObs ↔ Roberto par `SendMessage` dans les deux sens ; 91 `réf:` contrôlées, 3 du backlog hors kit absentes ; `check_kit` en worktree échoue seulement par absence des fichiers gitignorés.
+- INVALIDE : « `shorts-c2` sans `/close` », affirmé d'après `signals.md` : l'utilisateur l'avait lancé -> relire la source avant d'énoncer un état présent.
+- EN ATTENTE : hook PreCompact sur un vrai `/compact` ; économie de tokens non mesurée ; non-poussée des commits à confirmer par `git fetch`.
 
 ## Prochaine étape exacte
-Analyser les actions ouvertes et déléguer celles qui s'y prêtent à des sous-agents ou à Codex (`/delegation`), en mesurant l'économie de tokens.
+Concevoir avec l'utilisateur le relais des sessions par téléphone (modèle B) : file persistante, cas du registre des prises de contrôle, puis plus petit test sans risque.
 
 ## Question bloquante pour la session suivante
-Aucune
+Quel périmètre l'utilisateur accorde-t-il à VibeObs pour répondre aux sessions en son nom (nouveau cas du registre des prises de contrôle) ?

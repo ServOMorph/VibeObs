@@ -109,3 +109,11 @@ Vérifier dans un projet mis à jour en v6.5 et ayant un artifact que :
 - « Oui » inscrit une ligne `nom | lien | rôle | source | MAJ` dans `_contexte/artifacts.md`, « Non » n'écrit rien ;
 - un artifact déjà inscrit est mis à jour sans question ;
 - `/start` charge le registre au démarrage suivant.
+
+## Hook PreCompact (`scripts/hook_precompact.py`)
+
+Vérifier dans une session réelle du kit que :
+- un `/compact` manuel ajoute à `_contexte/journal_session.md` la ligne `| action | compactage manual : relire ce journal` ;
+- le résumé produit conserve la tâche en cours, les fichiers modifiés non commités et la prochaine étape ;
+- un compactage automatique écrit la ligne avec `auto` ;
+- le compactage n'échoue jamais à cause du hook.

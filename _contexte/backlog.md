@@ -45,9 +45,6 @@
 - [amélioration] Détection d'une session Codex ouverte avant modification d'un dossier (règle « Sessions ouvertes avant modification ») : aucun moyen fiable connu, Intercom du kit à envisager. `ListAgents`/`SendMessage` couvrent seulement Claude Code (validés le 2026-11-06).
   - fait quand: un moyen de détecter une session Codex est trouvé et ajouté à la règle de `.claude/memory.md`, ou l'impossibilité est actée.
   - réf: `.claude/memory.md` § Sessions ouvertes avant modification.
-- [amélioration] Guides de `DOCUMENTATION/` en retard sur le code : concevoir un avertissement non bloquant dans `check_docs.py` (l'heuristique de détection est bruyante, reportée le 2026-11-16 lors du retex de `/maintenance`).
-  - fait quand: un avertissement non bloquant sur les guides périmés est implémenté sans bruit excessif, ou l'idée est écartée avec motif.
-  - réf: `scripts/check_docs.py`.
 - [piste] Tester Gmail, Agenda et Drive (connecteurs claude.ai à autoriser dans les réglages) : test de la phase 4 reporté le 2026-11-08 sur décision de l'utilisateur, prérequis de la phase 6.
   - fait quand: les trois connecteurs sont autorisés et testés, ou leur abandon est tracé.
   - réf: `roadmap_fondations.md` phase 4 et phase 6.
@@ -57,13 +54,13 @@
 - [piste] Poursuivre la conception du skill générique d'orchestration multi-agents avec ChatGPT (passé de P1 au backlog le 2026-11-13 sur décision de l'utilisateur).
   - fait quand: le périmètre et le protocole minimal du skill sont formalisés.
   - réf: `_archives/local/roadmap_reprise_multicompte.md` (local, hors Git).
-- [piste] Hook avant compact (PreCompact) qui force l'écriture d'un dump d'état dans le journal de session : la règle « relire après chaque `/compact` » repose sur la discipline de l'agent, un `/compact` n'étant pas détectable sans hook (limite signalée par XMage et Creation video).
+- [piste] Hook avant compact (PreCompact) qui force l'écriture d'un dump d'état dans le journal de session : la règle « relire après chaque `/compact` » repose sur la discipline de l'agent, un `/compact` n'étant pas détectable sans hook (limite signalée par XMage et Creation video). 2026-11-17 : prototype `scripts/hook_precompact.py` actif dans le kit (commit `3c432e2`), essai réel en attente dans `tests_manuels.md`.
   - fait quand: un hook avant compact est testé en réel sur un projet suivi, ou son abandon est tracé.
-  - réf: `.claude/CLAUDE.md` § Journal de session.
+  - réf: `.claude/CLAUDE.md` § Journal de session ; `scripts/hook_precompact.py` ; `tests_manuels.md`.
 - [piste] Système d'avis de changement pour modifier des sessions ouvertes sans les perturber (message unique contrôlé aujourd'hui, validation dans chaque session) : avis déposé par le kit et lu au prochain `/start`, ou via l'intercom du kit.
   - fait quand: un mécanisme est choisi et exercé, ou le mécanisme actuel (`SendMessage` + validation par session) est acté comme suffisant.
   - réf: `.claude/memory.md` § Sessions ouvertes avant modification ; `templates/intercom/`.
-- [amélioration] Délégation : `ollama_call.py` a un délai fixe de 60 s, inférieur au chargement à froid de `qwen2.5:7b` (82 s mesurés) ; `run_opencode.ps1` ne garde dans `rapport.md` que le premier bloc du message final (liste d'anomalies restée dans `log.txt`).
+- [amélioration] Délégation : `ollama_call.py` a un délai fixe de 60 s, inférieur au chargement à froid de `qwen2.5:7b` (82 s mesurés) ; `run_opencode.ps1` ne garde dans `rapport.md` que le premier bloc du message final (liste d'anomalies restée dans `log.txt`). 2026-11-17 : `OLLAMA_TIMEOUT` (180 s par défaut) présent dans `ollama_call.py` ; rapport OpenCode complet constaté sur le lot H ; reste un lancement Ollama réel à froid.
   - fait quand: délai Ollama paramétrable (ou préchauffage documenté) et rapport OpenCode complet constatés sur un lancement réel.
   - réf: `ollama_call.py` ; `templates/delegation/scripts/run_opencode.ps1` ; `_codex/journal_delegation.md`.
 - [piste] Persistance de l'historique des sessions lancées à distance : commande de lancement unique (nettoyage `CLAUDE*`, `--remote-control`, nom, `/start`) au lieu de la procédure décrite dans `telephone.md`.

@@ -31,3 +31,19 @@
 - Routage à changer : exiger dans le brief Codex un essai réel quand le correctif dépend du format de sortie d'un outil externe gratuit.
 - Bloquant transverse : le garde VRAM bloque toute commande contenant le nom du runtime local (lecture, diff, copie, pytest ciblé), faux positif à corriger.
 - Coût Claude : briefs ~7 700 car., rapports lus ~7 000 car., diff relu hors miroirs (estimation, non mesurée).
+
+## Lot 2026-11-17
+
+| Date heure | Tâche | Exécutant / modèle | Durée | Brief (car.) | Rapport (car.) | Statut | Retouche Claude | Note |
+|---|---|---|---|---|---|---|---|---|
+| 2026-11-17 14:15 | H audit des réf: signals + backlog | OpenCode / deepseek-v4.1-flash-free | 265 s | 1870 | 890 | OK | aucune | 96 réf., 0 morte ; 1 entrée backlog probablement faite (délai Ollama : essai à froid non tracé). Liste bien dans rapport.md (correctif E confirmé). |
+| 2026-11-17 14:15 | I audit DEPLOYMENTS vs projets | Codex / read-only | 332 s | 2250 | 6530 | PARTIEL | aucune | 41 projets lus ; 5 versions indéterminables ; nombreux dépôts en avance sur l'amont (commits d'update non poussés). Lecture hors dépôt : seul Codex convient. |
+| 2026-11-17 14:15 | J fusion backup_project.py Rayonne_Toi (préparation) | Codex / read-only | 96 s | 2360 | 2630 | OK | aucune | Diff testé par git apply --check (LF), load_config conservé ; non appliqué (modifs non commitées de Rayonne_Toi). |
+| 2026-11-17 14:15 | K avertissement guides périmés check_docs | Codex / workspace-write, worktree codex/check-docs-avert | 233 s | 2220 | 1000 | OK | aucune | 3 avertissements mesurés, code de sortie inchangé, 21 tests. Échec check_kit en worktree = fichiers gitignorés absents (non-régression). |
+| 2026-11-17 14:15 | L hook PreCompact (prototype kit) | Codex / workspace-write, worktree codex/precompact-hook | 128 s | 2650 | 640 | OK | aucune | 11 tests ; essai réel de compactage non fait. Même faux échec check_kit en worktree. |
+
+## Bilan du lot 2026-11-17 (rédigé par Claude)
+- Marché : 5 tâches en parallèle en environ 5,5 min, aucune relance ; rapports exploitables sans ouvrir log.txt.
+- Échoué : rien côté exécutants ; check_kit en worktree signale à tort les fichiers gitignorés (à documenter dans le brief type).
+- Routage à changer : préciser dans les briefs en worktree que check_kit échoue sur DEPLOYMENTS.md / AGENTS_REGISTRY.md / _archives/local absents.
+- Coût Claude : briefs ~11 350 car. écrits, rapports ~11 700 car. lus, 2 diffs relus (~270 lignes) ; lecture évitée : 41 projets, 2 historiques git, implémentation et tests. Économie non mesurée en tokens (pas de relevé /cost avant/après).

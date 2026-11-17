@@ -247,3 +247,4 @@
 - 2026-11-11 : `/close` étape 9 (v5.41) : `tests_manuels.md` et `roadmap*.md` sont des fichiers de suivi, exclus du déclencheur de bump de version (le statut de roadmap est mis à jour par `/close` lui-même).
 - 2026-11-11 : `/update` (v5.42) : `allowed-tools` de `start.md`/`close.md` = liste du kit + ajouts du projet (signalés) ; retraits du projet non conservés ; étape 10 tolère les ajouts en fin de ligne.
 - 2026-11-12 : `/create_agent` reste générique : pas de mode « agent client » (besoin couvert par une commande projet), pas d'exception à la règle des MAJUSCULES ; un contrôle en échec ou sans sortie est refait avant toute conclusion d'absence (v5.43).
+- 2026-11-14 : `/init_projet` (v6.0) ne demande plus la stack et propose l'alias par défaut avec le nom du projet ; le champ « Stack » du `contexte.md` d'un projet créé se remplit au fil du travail.

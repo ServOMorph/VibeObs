@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.8 — 2026-11-17
+
+### Ajouté
+- `scripts/check_docs.py` : avertissement non bloquant sur les guides de `DOCUMENTATION/20_guides/` dont une source citée a un commit utile postérieur à leur `maj` (les commits `close(` et `update:` sont ignorés) ; le code de sortie est inchangé. Tests dans `tests/test_check_docs.py`.
+- `scripts/hook_precompact.py` (hook `PreCompact` de `.claude/settings.json`) : ajoute au journal de session une ligne « compactage manual|auto : relire ce journal » et rappelle au résumé de conserver la tâche en cours, les fichiers non commités et la prochaine étape ; n'échoue jamais. Tests dans `tests/test_hook_precompact.py`.
+
 ## v6.7 — 2026-11-17
 
 ### Corrigé

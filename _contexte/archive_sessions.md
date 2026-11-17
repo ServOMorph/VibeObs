@@ -1673,3 +1673,28 @@ Reproposer `/update` v6.5 à Moulin du Sud et World Model après leur `/close` ;
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-17
+
+## Décisions prises
+- Garde VRAM : un texte cité entre guillemets après echo/printf/Write-Host/Write-Output n'est plus analysé (substitutions `$(...)` et backticks conservées) ; faux positif constaté en session.
+- `/delegation` : essai réel de l'outil exigé dans le brief quand un correctif dépend de son format de sortie (tout outil externe).
+- `/create_agent` étape 10 : repli sur affichage du message si `Set-Clipboard` échoue (constaté depuis la session).
+- `/update` v6.6 appliqué à World Model et Moulin du Sud, `CLAUDE.md` écrit par chaque session après trois validations.
+
+## Livrables produits ou modifiés
+- `scripts/garde_vram.py`, `tests/test_garde_vram.py` (9 cas), `.claude/commands/delegation.md` (règle + chemin VertIA réparé), `.claude/commands/create_agent.md`, `base_connaissances/ameliorations_create_agent.md` : commités.
+- Hors kit : WorldModel `ba4d382`, Lieux_Hybrides `ed28cb8` ; `DEPLOYMENTS.md` et `AGENTS_REGISTRY.md` (locaux, gitignorés).
+
+## Hypothèses validées / invalidées
+- VALIDE : hook VRAM actif dans `shorts-c2` ; `/create_agent` de bout en bout sur projet jetable (supprimé) ; 4 commandes manuelles absentes de la liste des skills.
+- INVALIDE : « session shorts introuvable » : elle est listée sous `shorts-c2`.
+- EN ATTENTE : repli presse-papier de `/create_agent` non exercé ; la copie du garde VRAM utilisée par SHORTS (copie ou script du kit) n'a pas été vérifiée.
+
+## Prochaine étape exacte
+Analyser les actions ouvertes et déléguer celles qui s'y prêtent à des sous-agents ou à Codex (`/delegation`), en mesurant l'économie de tokens.
+
+## Question bloquante pour la session suivante
+Aucune
