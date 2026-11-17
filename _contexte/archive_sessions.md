@@ -1646,3 +1646,30 @@ Coller la ligne `prises_de_controle` dans `.claude/CLAUDE.md` (trois validations
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-16
+
+## Décisions prises
+- Retex `/maintenance` : 7 propositions appliquées (contrôles de `check_kit.py`, renvois de `maintenance.md`, test append-only de `check_docs.py`, propositions consignées au journal), 2 écartées, la 6 reportée au backlog.
+- Ligne de renvoi vers `prises_de_controle.md` écrite dans `.claude/CLAUDE.md` § Spécificités projet (kit seul), après trois validations.
+- `/update` de VertIA_v3 v5.25 → v6.5 mené à bien (commit `b7230f6`) ; Moulin du Sud et World Model à reproposer après leur `/close`.
+- Garde VRAM étendu à `gen_images*.py`, `gen_musique.py` et Blender ; diffusé à la zone SHORTS par hook de zone, appliqué par `shorts-c2` après accord de l'utilisateur.
+- Mesure RAM/VRAM du passage en CLI différée (sessions en cours).
+
+## Livrables produits ou modifiés
+- `scripts/check_kit.py`, `scripts/garde_vram.py`, `ollama_call.py` et ses miroirs, `_codex/run_opencode.ps1` et son miroir, `.claude/commands/create_agent.md`, `maintenance.md`, `llms.txt`, `.gitignore`, `.claude/CLAUDE.md`, tests associés : commités en local.
+- `_codex/journal_delegation.md`, briefs E et F, `DEPLOYMENTS.md` : commités à cette clôture.
+- Hors kit : VertIA_v3 `b7230f6` ; SérénIATech_dev `2169a1a` (zone SHORTS, par `shorts-c2`).
+
+## Hypothèses validées / invalidées
+- VALIDE : essai réel OpenCode `--format json` (13 s) ; contrôles 1 à 7 du `/update` de VertIA_v3 ; blocage à blanc de `gen_images_qwen.py` par le hook de SHORTS (code 2).
+- INVALIDE : motif du garde VRAM trop large (faux positifs sur `.py` et `.env.*.example`), corrigé.
+- EN ATTENTE : activation réelle du hook de SHORTS (prochain lancement de la session depuis `SHORTS`) ; règle de routage de `/delegation` non écrite ; registre des artifacts toujours non exercé en réel.
+
+## Prochaine étape exacte
+Reproposer `/update` v6.5 à Moulin du Sud et World Model après leur `/close` ; relancer la session `shorts-c2` depuis `SHORTS` pour constater que le hook du garde est actif.
+
+## Question bloquante pour la session suivante
+Aucune

@@ -229,6 +229,8 @@ elle s'exécute toujours depuis le kit, projet cible en premier argument.
     max, optimisé tokens — liste des agents créés, alias, rôle en une ligne,
     périmètre étendu le cas échéant) et le copier dans le presse-papier
     (`Set-Clipboard`) — ne rien écrire dans les fichiers du projet cible.
+    `Set-Clipboard` en échec (presse-papier indisponible depuis la session) : afficher le
+    message dans un bloc de code, prêt à copier, et le signaler en une ligne.
     `{{ALIAS_PARENT}}` non déterminable : poser la question sans résoudre automatiquement la
     cible, demander le nom de la zone parente à mentionner dans le message.
 

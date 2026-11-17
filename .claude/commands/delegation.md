@@ -35,8 +35,11 @@ il rédige le brief, lit le rapport (15 lignes), relit le diff, décide et commi
 | Décision, arbitrage, échange avec l'utilisateur, commit | Claude principal | Responsabilité |
 
 Règles :
-- GPU (Ollama ou tout modèle local) : jeton VRAM obligatoire, géré par la session VertIA_v3 (`D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire <session> --gb <Go> --minutes <min> --wait` en arrière-plan, `release` après déchargement ; protocole `D:ServOMorphVertIA_v3_orchestrationprotocole.md` § GPU). Session absente de la liste autorisée du script : demander l'accès à VertIA_v3 par message, et router la tâche hors Ollama en attendant.
+- GPU (Ollama ou tout modèle local) : jeton VRAM obligatoire, géré par la session VertIA_v3 (`D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire <session> --gb <Go> --minutes <min> --wait` en arrière-plan, `release` après déchargement ; protocole `D:\ServOMorph\VertIA_v3\_orchestration\protocole.md` § GPU). Session absente de la liste autorisée du script : demander l'accès à VertIA_v3 par message, et router la tâche hors Ollama en attendant.
 - Brief autonome au format `templates/delegation/BRIEF_TEMPLATE.md`, périmètre de fichiers explicite.
+- Correctif qui dépend du format de sortie d'un outil externe (CLI, API) : le brief exige un essai
+  réel de l'outil et la citation de sa sortie dans le rapport ; à défaut, Claude fait l'essai avant
+  d'accepter le diff.
 - Jamais deux exécutants sur les mêmes fichiers. Une tâche qui écrit dans le kit tourne dans un
   worktree Git (`git worktree add`), jamais dans l'arbre principal.
 - Aucun secret ni donnée sensible dans un brief envoyé à Codex ou OpenCode.

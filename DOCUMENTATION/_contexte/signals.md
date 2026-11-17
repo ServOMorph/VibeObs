@@ -9,6 +9,10 @@
   - fait quand: guide créé ou mis à jour dans `DOCUMENTATION/`, ou décision explicite de ne pas documenter.
   - réf: .claude/commands/delegation.md, _codex/journal_delegation.md, CHANGELOG.md v6.1 et v6.2
 
+- [P2|ouvert|source=kit] Mentionner dans le guide le repli de `/create_agent` [SORTIE] : message affiché dans un bloc de code si `Set-Clipboard` échoue (kit v6.7)
+  - fait quand: `20_guides/creer_un_agent.md` ligne [SORTIE] mise à jour, ou décision explicite de ne pas le documenter.
+  - réf: DOCUMENTATION/20_guides/creer_un_agent.md, .claude/commands/create_agent.md étape 10
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14

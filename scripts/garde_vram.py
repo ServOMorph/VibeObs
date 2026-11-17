@@ -21,6 +21,11 @@ MOTIFS_GPU = [
     r"(?<![\w.])py(thon[0-9.]*)?(\.exe)?\s+(\S*[\\/])?(gen_images(_qwen)?|gen_musique)\.py",
     r"blender(\.exe)?[\"']?\s+(-b|--background|-P|--python)\b",
 ]
+TEXTE_AFFICHE = re.compile(
+    r"\b(echo|printf|Write-Host|Write-Output)\b((?:\s+-\w+)*)\s+(\"(?:[^\"\\]|\\.)*\"|'[^']*')",
+    re.IGNORECASE,
+)
+SUBSTITUTION = re.compile(r"\$\([^)]*\)|`[^`]*`")
 ACQUIRE = (
     r"D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire " + SESSION + " --wait (sans --long pour Ollama)"
 )
@@ -35,6 +40,16 @@ def jeton_detenu() -> bool:
     return lock.get("holder") == SESSION and lock.get("expires", 0) > time.time()
 
 
+def _texte_neutralise(m: re.Match) -> str:
+    texte = m.group(3)
+    gardes = " ".join(SUBSTITUTION.findall(texte)) if texte.startswith('"') else ""
+    return f"{m.group(1)}{m.group(2)} {gardes}"
+
+
+def neutraliser_textes(commande: str) -> str:
+    return TEXTE_AFFICHE.sub(_texte_neutralise, commande)
+
+
 def main() -> int:
     try:
         donnees = json.load(sys.stdin)
@@ -43,7 +58,8 @@ def main() -> int:
     commande = str((donnees.get("tool_input") or {}).get("command", ""))
     if "vram_lock.py" in commande:
         return 0
-    if not any(re.search(m, commande, re.IGNORECASE) for m in MOTIFS_GPU):
+    analysee = neutraliser_textes(commande)
+    if not any(re.search(m, analysee, re.IGNORECASE) for m in MOTIFS_GPU):
         return 0
     if jeton_detenu():
         return 0

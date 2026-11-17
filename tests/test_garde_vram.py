@@ -35,6 +35,11 @@ class GardeVramTests(unittest.TestCase):
             "python gen_images.py",
             r'"C:\Program Files\Blender Foundation\Blender 4.2\blender.exe" -b scene.blend -a',
             "blender --background scene.blend --python rendu.py",
+            'echo "$(python gen_images.py)"',
+            'echo "x `python gen_musique.py`"',
+            'echo python gen_images.py',
+            'echo "ok" && python gen_images.py',
+            'bash -c "python gen_images.py"',
         ]:
             with self.subTest(commande=commande):
                 self.assertEqual(lancer(commande), 2)
@@ -50,6 +55,10 @@ class GardeVramTests(unittest.TestCase):
             "cat outils/production/gen_images_qwen.py",
             "python -m pytest tests/test_gen_musique.py -q",
             "grep -rn blender projets/",
+            'echo "$(date \'+%Y-%m-%d %H:%M\') | action | test python NUL/gen_images.py" >> journal.md',
+            "echo 'python gen_musique.py bloque' >> journal.md",
+            'Write-Output "python ollama_call.py x"',
+            'printf -n "python gen_images.py"',
         ]:
             with self.subTest(commande=commande):
                 self.assertEqual(lancer(commande), 0)

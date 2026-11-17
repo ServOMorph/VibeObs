@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.7 — 2026-11-17
+
+### Corrigé
+- `scripts/garde_vram.py` : un texte cité entre guillemets après `echo`, `printf`, `Write-Host` ou `Write-Output` n'est plus analysé (faux positif) ; les substitutions `$(...)` et backticks qu'il contient restent contrôlées. 9 cas ajoutés à `tests/test_garde_vram.py`.
+- `/delegation` : chemin du protocole VertIA_v3 rétabli (antislashs manquants).
+
+### Modifié
+- `/delegation` § Règles : essai réel de l'outil exigé dans le brief quand un correctif dépend de son format de sortie.
+- `/create_agent` étape 10 : si `Set-Clipboard` échoue, le message est affiché dans un bloc de code.
+
 ## v6.6 — 2026-11-16
 
 ### Ajouté
