@@ -1,4 +1,12 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(py -3.11 \"D:\\ServOMorph\\Roberto\\com_telephone\\_commands\\com_manager.py\":*)",
+      "Bash(netstat -ano:*)",
+      "Bash(py -3.11 \"D:/ServOMorph/Roberto/com_telephone/_commands/send_message.py\":*)",
+      "Bash(tail -f --retry -n 0 \"D:/ServOMorph/Roberto/com_telephone/voice-code-bridge/server/logs/messages_vibeobs.log\")"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {

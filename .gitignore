@@ -45,4 +45,6 @@ _archives/local/
 _codex/runs/
 _codex/wt/
 _contexte/artifacts.md
+_contexte/relais_telephone.lock
+_contexte/relais_file.md
 *.pid

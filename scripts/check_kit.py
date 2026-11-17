@@ -450,6 +450,7 @@ def check_referenced_files_exist():
         "memory.md",
         "backlog.md",
         "journal_session.md",
+        "relais_file.md",
         "agent_role.md",
         "DOCUMENTATION/INDEX.md",
         "DEPLOYMENTS.md",

@@ -3,6 +3,17 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.9 — 2026-11-17
+
+### Ajouté
+- `.claude/commands/relais_telephone.md` (kit uniquement, lancement manuel) : démarre le pont `com_telephone` de Roberto si besoin, met VibeObs à l'écoute de son onglet, tient une file des questions des sessions (`_contexte/relais_file.md`, gitignoré), relit à l'utilisateur sa réponse avant de la transmettre mot pour mot, n'ouvre jamais le tunnel. Envoi au téléphone par `send_message.py` de Roberto (UTF-8), jamais `curl`. Permissions du relais dans `.claude/settings.json`.
+- `/telephone roberto` (kit et `templates/.claude/commands/telephone.md`) : mode vocal sans clic ; la session envoie ses questions à la session `VibeObs` par `SendMessage`, n'accepte comme validation que la réponse de `VibeObs` portant la mention « validée par téléphone », garde au clavier les validations de `CLAUDE.md`.
+- `DOCUMENTATION/30_decisions/prises_de_controle.md` : cas 3 (relais par téléphone des réponses de l'utilisateur) et cas 4 (mise en place du relais dans Roberto).
+
+### Modifié
+- `scripts/check_kit.py` : `relais_file.md` reconnu comme fichier produit par une commande.
+- Essai réel avec VertIA_v3 (2026-11-17) : relais dans les deux sens, questions spontanées de la session, arrêt complet.
+
 ## v6.8 — 2026-11-17
 
 ### Ajouté

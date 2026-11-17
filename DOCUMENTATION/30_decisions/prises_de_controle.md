@@ -2,7 +2,7 @@
 type: decision
 description: Registre des cas où l'utilisateur autorise VibeObs à dépasser les restrictions et à prendre le contrôle d'une autre session
 tags: decisions, sessions, dérogation, contrôle
-maj: 2026-11-14
+maj: 2026-11-17
 ---
 
 # Prises de contrôle sur les sessions — registre
@@ -52,6 +52,40 @@ Ces limites viennent du harnais Claude Code, pas des règles du kit : aucune dé
   propres à chaque projet cible restent les siennes.
 - Trace : `_codex/rollout_delegation/plan.md`, `_codex/rollout_delegation/journal_echanges.md`.
 - État : en pause depuis le 2026-11-14 23:45 (« Pause et traite les urgences »).
+
+## Cas 3 — Relais par téléphone des réponses de l'utilisateur
+
+- Date : 2026-11-17. Décisions : VibeObs est raccordé directement au pont `com_telephone` de
+  Roberto (projet dédié dans `projects.json`, au lieu d'un relais par Roberto) ; il transmet aux
+  autres sessions les réponses que l'utilisateur dicte au téléphone, mot pour mot.
+- Règle levée pour ce cas : validation de l'utilisateur dans la session cible. La réponse dictée en
+  tient lieu si elle est transmise sans reformulation, avec la mention « validé par l'utilisateur
+  par téléphone ».
+- Règles maintenues : VibeObs ne décide rien seul ; sans réponse de l'utilisateur, rien n'est
+  transmis (ou « plus tard » s'il le dit) ; VibeObs n'écrit pas dans les autres projets ; les trois
+  validations d'une écriture dans `CLAUDE.md`, `AGENTS.md` ou `GEMINI.md` restent hors du relais.
+- Procédure :
+  1. Lire la demande en attente de la session (`ListAgents`, `SendMessage`).
+  2. La résumer à l'utilisateur par `POST /send`, avec le nom de la session et la question exacte.
+  3. Transmettre sa réponse verbatim à la session, avec la mention ci-dessus.
+  4. Renvoyer au téléphone la réponse de la session (appliqué, refusé, en attente d'approbation).
+- Reste impossible : voir « Ce qui ne se dépasse jamais ».
+- Trace : `_contexte/journal_session.md` (question, réponse verbatim, résultat).
+
+## Cas 4 — Mise en place du relais téléphone dans Roberto
+
+- Date : 2026-11-17. Décision (verbatim) : « je veux qu'elle démarre tout d'elle-même ok pour le
+  reste, on doit tou noter dans roberto pour que je puisse avoir le process d'initialisation facile
+  si je ne m'en souvns plus plus tard dans roberto. Demande lui de faire les modifssans me demander
+  validation ».
+- Règles levées pour ce cas : validation de l'utilisateur dans la session Roberto, pour les seules
+  modifications suivantes : `/roberto` démarre lui-même les 3 processus du pont ; entrée `vibeobs`
+  dans `projects.json` ; ligne dans `DEPLOYMENTS.md` ; procédure d'initialisation du relais
+  documentée dans Roberto ; commit de ces fichiers.
+- Règles maintenues : la session Roberto peut refuser ; ses permissions s'appliquent ; aucune
+  écriture dans `CLAUDE.md`, `AGENTS.md` ou `GEMINI.md` ; VibeObs n'écrit pas lui-même dans Roberto.
+- Reste impossible : voir « Ce qui ne se dépasse jamais ».
+- Trace : `_contexte/journal_session.md`.
 
 ## Juger un cas
 

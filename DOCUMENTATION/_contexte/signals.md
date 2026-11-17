@@ -17,6 +17,10 @@
   - fait quand: `python scripts/check_docs.py` n'affiche plus d'avertissement pour ces guides (mis à jour ou `maj` revue), et décision tracée pour le hook PreCompact.
   - réf: scripts/check_docs.py, scripts/hook_precompact.py, DOCUMENTATION/20_guides/
 
+- [P2|ouvert|source=kit] Mettre à jour la ligne d'`INDEX.md` de `30_decisions/prises_de_controle.md` (cas 3 relais par téléphone et cas 4 mise en place du relais dans Roberto ajoutés le 2026-11-17, date `maj` du fichier passée à 2026-11-17) et décider si `20_guides/mode_telephone.md` documente `/telephone roberto` et `/relais_telephone` (kit v6.9)
+  - fait quand: ligne d'INDEX et date alignées sur le fichier, et `20_guides/mode_telephone.md` mis à jour ou décision explicite de ne pas documenter le mode roberto.
+  - réf: DOCUMENTATION/30_decisions/prises_de_controle.md, DOCUMENTATION/20_guides/mode_telephone.md, .claude/commands/telephone.md, .claude/commands/relais_telephone.md
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14

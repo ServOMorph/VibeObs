@@ -59,10 +59,10 @@
 - Mesurer le gain de RAM et de VRAM d'un passage des sessions de VS Code en CLI, quand plus aucune session ne tourne (décision de l'utilisateur du 2026-11-16 : pas maintenant). Relevé du 2026-11-15 : VS Code 69 processus pour environ 17,8 Go de RAM, 9 processus `claude` pour environ 2,6 Go, GPU RTX 4060 à 7485 sur 8188 Mio ; la part de VRAM de VS Code n'est pas mesurable par `nvidia-smi` seul. Méthode : relever `nvidia-smi` et la RAM avant et après la fermeture de VS Code.
   - fait quand: les relevés avant et après fermeture de VS Code sont consignés avec le gain mesuré, et une décision de passage en CLI est prise.
   - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement en CLI).
-- Concevoir avec l'utilisateur le relais des sessions par téléphone : bridge `com_telephone` hébergé par Roberto, l'utilisateur en voiture, voix seule. 2026-11-17 : relais Roberto ↔ VibeObs par `SendMessage` constaté dans les deux sens ; modèle B recommandé par VibeObs (VibeObs collecte et trie les demandes des sessions, Roberto reste l'interface vocale, secours en lecture seule par Roberto) ; manques : file persistante (SendMessage perdu au redémarrage), cas du registre des prises de contrôle pour répondre aux sessions au nom de l'utilisateur, détection d'un message retenu pour validation ; plus petit test proposé : synthèse de 2 sessions inactives relayée, réponse « plus tard » renvoyée.
-  - fait quand: le modèle est choisi par l'utilisateur, le cas de prise de contrôle correspondant est tracé dans `prises_de_controle.md`, et le plus petit test est joué.
-  - réf: `D:\ServOMorph\Roberto\com_telephone` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` ; `templates/intercom/`.
-- Pousser les commits en avance des projets suivis (audit du 2026-11-17 : une vingtaine de dépôts à 1 à 4 commits devant leur amont connu localement, souvent le commit `/update`), projet par projet après `git fetch`, avec confirmation de l'utilisateur à chaque push, jamais automatique ; `SérénIATech_dev` exclu (session gardienne).
+- Terminer le relais téléphone des sessions (kit v6.9). 2026-11-17 : raccordement direct de VibeObs au pont de Roberto (cas 3 et 4 du registre), `/relais_telephone` et `/telephone roberto` écrits, essai réel avec VertIA_v3 réussi dans les deux sens (question spontanée de la session comprise), arrêt complet testé ; pont arrêté par Roberto, tunnel laissé à l'utilisateur. Restent, chacun à valider par l'utilisateur avant écriture : (1) intégrer à `relais_telephone.md` les corrections constatées : phrase d'arrêt « fin du relais » (4 étapes : sessions repassées en mode habituel, arrêt du pont par Roberto, dernier message, arrêt de l'écoute ; l'utilisateur n'a choisi que l'arrêt immédiat), phrases parasites de la reconnaissance vocale à ignorer (« Sous-titres réalisés par… »), « oui » net exigé pour une réponse qui engage, état d'une session lu dans son fil de conversation (`~/.claude/projects/`), cas d'une réponse tapée au clavier ; (2) demander à la session Roberto de commiter `send_message.py` (non versionné, le relais en dépend) ; (3) diffuser `/telephone roberto` : `/update` pour les projets fermés, accord de chaque session pour les ouvertes (VertIA_v3 l'a déjà, commit `20cfa11`) ; (4) confirmation de VertIA_v3 d'avoir appliqué `/telephone off`.
+  - fait quand: les corrections (1) sont écrites ou écartées par l'utilisateur, `send_message.py` est commité côté Roberto, `/telephone roberto` est diffusé ou son report tracé, et la section « Relais téléphone » de `tests_manuels.md` est validée.
+  - réf: `.claude/commands/relais_telephone.md` ; `.claude/commands/telephone.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` cas 3 et 4 ; `tests_manuels.md` ; `D:\ServOMorph\Roberto\com_telephone\README.md` § Relais des sessions par VibeObs.
+- Pousser les commits en avance des projets suivis (audit du 2026-11-17 : une vingtaine de dépôts à 1 à 4 commits devant leur amont connu localement, souvent le commit `/update`), projet par projet après `git fetch`, avec confirmation de l'utilisateur à chaque push, jamais automatique ; `SérénIATech_dev` exclu (session gardienne). 2026-11-17 : s'y ajoutent `VertIA_v3` (commit `20cfa11`, `telephone.md`), `Roberto` (commits `df08ff1`, `a37f0c0`, `ec1601c`) et le commit de branchement fait par VertIA_v3 dans `CreaZik` (hash non relevé par VibeObs).
   - fait quand: chaque projet de la liste est poussé ou son report est décidé par l'utilisateur.
   - réf: `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré) ; `DEPLOYMENTS.md`.
 Backlog : 24 entrées (finding 1, amélioration 5, piste 18 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
@@ -78,25 +78,26 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-17 (soir)
+# Session du 2026-11-17 (nuit)
 
 ## Décisions prises
-- Lot de délégation H à L (OpenCode + Codex en parallèle) : avertissement « guide périmé » de `check_docs.py` et hook PreCompact fusionnés dans le kit.
-- Poussée des commits en avance des projets suivis : action ouverte, push projet par projet après `git fetch`, confirmation de l'utilisateur à chaque push.
-- Relais téléphone des sessions (bridge de Roberto) : modèle B recommandé (VibeObs trie, Roberto interface vocale) ; conception avec l'utilisateur à la session suivante.
-- Sessions `shorts-c2` et VS Code « Moulin du Sud » arrêtées à la demande de l'utilisateur, après leur `/close`.
+- Relais téléphone : VibeObs raccordé directement au pont de Roberto (option 1, au lieu du modèle B) ; il transmet les réponses de l'utilisateur mot pour mot et ne décide jamais seul (cas 3 du registre), après relecture à l'utilisateur.
+- Mise en place chez Roberto par sa session sur dérogation (cas 4, verbatim) ; trois modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul).
+- Tunnel du pont : ouvert par l'utilisateur seul, ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; après redémarrage du PC, relance manuelle.
+- Envoi au téléphone par `send_message.py` de Roberto (UTF-8), jamais `curl` (accents corrompus sous Windows).
+- Arrêt complet du relais choisi au clavier (« fin du relais » : sessions repassées en mode habituel, pont arrêté par Roberto, écoute coupée).
 
 ## Livrables produits ou modifiés
-- `scripts/check_docs.py`, `tests/test_check_docs.py`, `scripts/hook_precompact.py`, `tests/test_hook_precompact.py`, `.claude/settings.json` : commités (`3c432e2`).
-- `_codex/briefs/H` à `L`, `_codex/journal_delegation.md` (lot + bilan), `tests_manuels.md` (section Hook PreCompact) : commités avec ce `/close`.
+- `.claude/commands/relais_telephone.md` (nouveau), `.claude/commands/telephone.md` + `templates/.claude/commands/telephone.md` (mode roberto), `.claude/settings.json`, `.gitignore`, `scripts/check_kit.py`, `README.md`, `llms.txt`, `Protocole_start_close_context.md`, `CHANGELOG.md` (v6.9), `tests_manuels.md`, `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 3 et 4) : commités avec ce `/close`.
+- Hors VibeObs : `telephone.md` installé dans VertIA_v3 (`20cfa11`, cas 1) ; 3 commits de Roberto (`df08ff1`, `a37f0c0`, `ec1601c`), non poussés.
 
 ## Hypothèses validées / invalidées
-- VALIDE : relais VibeObs ↔ Roberto par `SendMessage` dans les deux sens ; 91 `réf:` contrôlées, 3 du backlog hors kit absentes ; `check_kit` en worktree échoue seulement par absence des fichiers gitignorés.
-- INVALIDE : « `shorts-c2` sans `/close` », affirmé d'après `signals.md` : l'utilisateur l'avait lancé -> relire la source avant d'énoncer un état présent.
-- EN ATTENTE : hook PreCompact sur un vrai `/compact` ; économie de tokens non mesurée ; non-poussée des commits à confirmer par `git fetch`.
+- VALIDE : relais dans les deux sens avec VertIA_v3 ; question spontanée de la session arrivée sans retenue malgré un autre mode d'autorisation ; accents corrects via `send_message.py` ; mode Manuel de l'appli coupe le micro.
+- INVALIDE : écoute « persistante » (expire au bout de 30 min, à relancer) ; `curl` pour l'envoi ; transcription fiable (« Sous-titres réalisés par l'Amara.org », « wap »).
+- EN ATTENTE : `/telephone off` appliqué par VertIA_v3 ; tenue hors du PC sur réseau mobile ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
 
 ## Prochaine étape exacte
-Concevoir avec l'utilisateur le relais des sessions par téléphone (modèle B) : file persistante, cas du registre des prises de contrôle, puis plus petit test sans risque.
+Faire valider à l'utilisateur les corrections de `/relais_telephone` listées dans l'action « Terminer le relais téléphone », puis diffuser `/telephone roberto` aux autres projets.
 
 ## Question bloquante pour la session suivante
-Quel périmètre l'utilisateur accorde-t-il à VibeObs pour répondre aux sessions en son nom (nouveau cas du registre des prises de contrôle) ?
+Quelles corrections de `/relais_telephone` l'utilisateur valide-t-il (phrase « fin du relais », phrases parasites, « oui » net, état lu dans le fil de conversation, réponse tapée au clavier) ?
