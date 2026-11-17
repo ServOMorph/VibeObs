@@ -1698,3 +1698,29 @@ Analyser les actions ouvertes et déléguer celles qui s'y prêtent à des sous-
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-17 (nuit)
+
+## Décisions prises
+- Relais téléphone : VibeObs raccordé directement au pont de Roberto (option 1, au lieu du modèle B) ; il transmet les réponses de l'utilisateur mot pour mot et ne décide jamais seul (cas 3 du registre), après relecture à l'utilisateur.
+- Mise en place chez Roberto par sa session sur dérogation (cas 4, verbatim) ; trois modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul).
+- Tunnel du pont : ouvert par l'utilisateur seul, ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; après redémarrage du PC, relance manuelle.
+- Envoi au téléphone par `send_message.py` de Roberto (UTF-8), jamais `curl` (accents corrompus sous Windows).
+- Arrêt complet du relais choisi au clavier (« fin du relais » : sessions repassées en mode habituel, pont arrêté par Roberto, écoute coupée).
+
+## Livrables produits ou modifiés
+- `.claude/commands/relais_telephone.md` (nouveau), `.claude/commands/telephone.md` + `templates/.claude/commands/telephone.md` (mode roberto), `.claude/settings.json`, `.gitignore`, `scripts/check_kit.py`, `README.md`, `llms.txt`, `Protocole_start_close_context.md`, `CHANGELOG.md` (v6.9), `tests_manuels.md`, `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 3 et 4) : commités avec ce `/close`.
+- Hors VibeObs : `telephone.md` installé dans VertIA_v3 (`20cfa11`, cas 1) ; 3 commits de Roberto (`df08ff1`, `a37f0c0`, `ec1601c`), non poussés.
+
+## Hypothèses validées / invalidées
+- VALIDE : relais dans les deux sens avec VertIA_v3 ; question spontanée de la session arrivée sans retenue malgré un autre mode d'autorisation ; accents corrects via `send_message.py` ; mode Manuel de l'appli coupe le micro.
+- INVALIDE : écoute « persistante » (expire au bout de 30 min, à relancer) ; `curl` pour l'envoi ; transcription fiable (« Sous-titres réalisés par l'Amara.org », « wap »).
+- EN ATTENTE : `/telephone off` appliqué par VertIA_v3 ; tenue hors du PC sur réseau mobile ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
+
+## Prochaine étape exacte
+Faire valider à l'utilisateur les corrections de `/relais_telephone` listées dans l'action « Terminer le relais téléphone », puis diffuser `/telephone roberto` aux autres projets.
+
+## Question bloquante pour la session suivante
+Quelles corrections de `/relais_telephone` l'utilisateur valide-t-il (phrase « fin du relais », phrases parasites, « oui » net, état lu dans le fil de conversation, réponse tapée au clavier) ?

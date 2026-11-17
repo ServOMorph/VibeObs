@@ -62,18 +62,24 @@ dire « vérifiez le tunnel », rien de plus.
 ## Relais
 
 Deux canaux distincts : toute réponse à un message venu du log part aussi par `POST /send`, même
-déjà écrite dans le terminal. Une ligne `[DEBUG]` est ignorée.
+déjà écrite dans le terminal. Une ligne `[DEBUG]` est ignorée, de même qu'une phrase parasite de la
+reconnaissance vocale (« Sous-titres réalisés par… », « wap ») : ni réponse ni envoi.
 
 1. **Question reçue d'une session** (message de session portant « Question pour l'utilisateur ») :
    l'ajouter à la file (`AAAA-MM-JJ HH:MM | <session> | <question> | en attente`) et l'envoyer au
    téléphone : « <session> demande : <question> ».
 2. **« point »** (ou équivalent) : lire les questions `en attente` de la file, une phrase chacune,
    avec le nom de la session. File vide : le dire. Ajouter les sessions `waiting` de `ListAgents`
-   qui n'y figurent pas : « <session> attend un clic au PC ».
+   qui n'y figurent pas : « <session> attend un clic au PC ». L'état d'une session se lit aussi dans
+   son fil de conversation (`~/.claude/projects/`, lecture seule).
 3. **Réponse de l'utilisateur** : la relire avant tout envoi (« Je transmets "<réponse>" à
-   <session>, je confirme ? »), sauf « plus tard ». Après confirmation, la transmettre par
+   <session>, je confirme ? »), sauf « plus tard ». Pour une réponse qui engage (modification,
+   envoi, suppression), seul un « oui » net vaut confirmation : tout autre mot ou « oui » ambigu =
+   pas de transmission, redemander. Après confirmation, la transmettre par
    `SendMessage` sans reformulation, précédée de « Réponse de l'utilisateur, validée par
-   téléphone : ». Session ambiguë : redemander laquelle. Passer la ligne de la file à `transmise`.
+   téléphone : ». Réponse tapée au clavier du PC : réponse directe, sans relecture ni confirmation
+   vocale ; la transmettre avec la même mention, puis en informer le téléphone. Session ambiguë :
+   redemander laquelle. Passer la ligne de la file à `transmise`.
 4. **Retour** : renvoyer au téléphone la réaction de la session (appliqué, refusé, en attente
    d'approbation, pas de réponse).
 5. **Interdits** : décider ou répondre à la place de l'utilisateur ; transmettre une validation
@@ -83,3 +89,7 @@ déjà écrite dans le terminal. Une ligne `[DEBUG]` est ignorée.
    (`AAAA-MM-JJ HH:MM | action | relais <session> : question / réponse verbatim / résultat`).
 7. Message commençant par `!<nom>` : appliquer `.claude/commands/<nom>.md` de VibeObs ; commande
    inconnue : le signaler par `POST /send`.
+8. **« fin du relais »** (arrêt immédiat) : (a) repasser en mode habituel (`/telephone off`) les
+   sessions en mode `/telephone roberto` ; (b) demander à la session Roberto d'arrêter le pont ;
+   (c) envoyer au téléphone un dernier message ; (d) arrêter l'écoute (équivalent de l'argument
+   `stop`).

@@ -3,6 +3,12 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v6.10 — 2026-11-17
+
+### Modifié
+- `.claude/commands/relais_telephone.md` : arrêt immédiat « fin du relais » (sessions repassées en mode habituel, pont arrêté par Roberto, dernier message, écoute coupée) ; phrases parasites de la reconnaissance vocale ignorées ; « oui » net exigé pour une réponse qui engage ; état d'une session lu aussi dans son fil de conversation ; réponse tapée au clavier traitée comme réponse directe.
+- `telephone.md` (mode roberto) diffusé aux projets suivis par le cas 1 de `prises_de_controle.md` ; `send_message.py` versionné côté Roberto (`0f1d4c7`) ; VertIA_v3 confirme `/telephone off`.
+
 ## v6.9 — 2026-11-17
 
 ### Ajouté

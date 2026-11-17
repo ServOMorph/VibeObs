@@ -118,10 +118,9 @@ Vérifier dans une session réelle du kit que :
 - un compactage automatique écrit la ligne avec `auto` ;
 - le compactage n'échoue jamais à cause du hook.
 
-## Relais téléphone (`/relais_telephone`, `/telephone roberto`, v6.9)
+## Relais téléphone (`/relais_telephone`, `/telephone roberto`, v6.10)
 
 Vérifier en conditions réelles que :
-- VertIA_v3 a bien appliqué `/telephone off` après « fin du relais » (non confirmé par la session le 2026-11-17) ;
 - une écoute de plus de 30 minutes est relancée à son expiration, sans écoute en double (verrou) ;
 - une seconde session en mode `/telephone roberto` (autre que VertIA_v3) envoie sa question à VibeObs et reçoit la réponse validée ;
 - le relais tient hors du PC (téléphone sur réseau mobile, tunnel ouvert par l'utilisateur) ;

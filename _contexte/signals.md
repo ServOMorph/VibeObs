@@ -59,12 +59,12 @@
 - Mesurer le gain de RAM et de VRAM d'un passage des sessions de VS Code en CLI, quand plus aucune session ne tourne (décision de l'utilisateur du 2026-11-16 : pas maintenant). Relevé du 2026-11-15 : VS Code 69 processus pour environ 17,8 Go de RAM, 9 processus `claude` pour environ 2,6 Go, GPU RTX 4060 à 7485 sur 8188 Mio ; la part de VRAM de VS Code n'est pas mesurable par `nvidia-smi` seul. Méthode : relever `nvidia-smi` et la RAM avant et après la fermeture de VS Code.
   - fait quand: les relevés avant et après fermeture de VS Code sont consignés avec le gain mesuré, et une décision de passage en CLI est prise.
   - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement en CLI).
-- Terminer le relais téléphone des sessions (kit v6.9). 2026-11-17 : raccordement direct de VibeObs au pont de Roberto (cas 3 et 4 du registre), `/relais_telephone` et `/telephone roberto` écrits, essai réel avec VertIA_v3 réussi dans les deux sens (question spontanée de la session comprise), arrêt complet testé ; pont arrêté par Roberto, tunnel laissé à l'utilisateur. Restent, chacun à valider par l'utilisateur avant écriture : (1) intégrer à `relais_telephone.md` les corrections constatées : phrase d'arrêt « fin du relais » (4 étapes : sessions repassées en mode habituel, arrêt du pont par Roberto, dernier message, arrêt de l'écoute ; l'utilisateur n'a choisi que l'arrêt immédiat), phrases parasites de la reconnaissance vocale à ignorer (« Sous-titres réalisés par… »), « oui » net exigé pour une réponse qui engage, état d'une session lu dans son fil de conversation (`~/.claude/projects/`), cas d'une réponse tapée au clavier ; (2) demander à la session Roberto de commiter `send_message.py` (non versionné, le relais en dépend) ; (3) diffuser `/telephone roberto` : `/update` pour les projets fermés, accord de chaque session pour les ouvertes (VertIA_v3 l'a déjà, commit `20cfa11`) ; (4) confirmation de VertIA_v3 d'avoir appliqué `/telephone off`.
-  - fait quand: les corrections (1) sont écrites ou écartées par l'utilisateur, `send_message.py` est commité côté Roberto, `/telephone roberto` est diffusé ou son report tracé, et la section « Relais téléphone » de `tests_manuels.md` est validée.
-  - réf: `.claude/commands/relais_telephone.md` ; `.claude/commands/telephone.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` cas 3 et 4 ; `tests_manuels.md` ; `D:\ServOMorph\Roberto\com_telephone\README.md` § Relais des sessions par VibeObs.
-- Pousser les commits en avance des projets suivis (audit du 2026-11-17 : une vingtaine de dépôts à 1 à 4 commits devant leur amont connu localement, souvent le commit `/update`), projet par projet après `git fetch`, avec confirmation de l'utilisateur à chaque push, jamais automatique ; `SérénIATech_dev` exclu (session gardienne). 2026-11-17 : s'y ajoutent `VertIA_v3` (commit `20cfa11`, `telephone.md`), `Roberto` (commits `df08ff1`, `a37f0c0`, `ec1601c`) et le commit de branchement fait par VertIA_v3 dans `CreaZik` (hash non relevé par VibeObs).
-  - fait quand: chaque projet de la liste est poussé ou son report est décidé par l'utilisateur.
-  - réf: `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré) ; `DEPLOYMENTS.md`.
+- Terminer le relais téléphone des sessions (kit v6.10). 2026-11-17 : VibeObs raccordé au pont de Roberto (cas 3 et 4), `/relais_telephone` et `/telephone roberto` écrits, essai réel avec VertIA_v3 réussi, arrêt complet testé. Soir : 5 corrections de `relais_telephone.md` écrites après validation une à une, `send_message.py` commité par Roberto (`0f1d4c7`, contrôlé), `telephone.md` diffusé à 29 projets (28 commits locaux ; Nettoyage_PC sans git ; VertIA_v3 déjà à jour), VertIA_v3 déclare avoir appliqué `/telephone off`. Restent : validation en réel de la section « Relais téléphone » de `tests_manuels.md` (écoute de plus de 30 minutes, seconde session en mode roberto, tenue hors du PC, `/close` d'une session en mode roberto) ; diffusion de `telephone.md` à `SérénIATech_dev` par sa session gardienne.
+  - fait quand: la section « Relais téléphone » de `tests_manuels.md` est validée et retirée, et `telephone.md` est diffusé à `SérénIATech_dev` (ou son report tracé).
+  - réf: `.claude/commands/relais_telephone.md` ; `.claude/commands/telephone.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` cas 1, 3 et 4 ; `tests_manuels.md` ; `D:\ServOMorph\Roberto\com_telephone\README.md` § Relais des sessions par VibeObs.
+- Pousser les commits en avance des projets suivis. 2026-11-17 soir : 24 dépôts poussés sur ordre explicite de l'utilisateur (fast-forward après `git fetch`, aucun force). Restent : `AutoClaude` (diverge, 3 commits en avance et 1 en retard, `git pull --rebase` à décider), `Rayonne_Toi` et `challenge_magic` (aucun remote), `Moulin du Sud` (dépôt `Lieux_Hybrides`, pas de branche amont, commit `6108874`), `Nettoyage_PC` (pas de dépôt git), `VibeObs`, `SérénIATech_dev` (session gardienne) ; `jeu_zombies` poussé sur la branche `feat/insertion-designs`.
+  - fait quand: chaque projet de la liste restante est poussé ou son report est décidé par l'utilisateur.
+  - réf: `DEPLOYMENTS.md` ; `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré).
 Backlog : 24 entrées (finding 1, amélioration 5, piste 18 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -78,26 +78,24 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-17 (nuit)
+
+# Session du 2026-11-17 (soir)
 
 ## Décisions prises
-- Relais téléphone : VibeObs raccordé directement au pont de Roberto (option 1, au lieu du modèle B) ; il transmet les réponses de l'utilisateur mot pour mot et ne décide jamais seul (cas 3 du registre), après relecture à l'utilisateur.
-- Mise en place chez Roberto par sa session sur dérogation (cas 4, verbatim) ; trois modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul).
-- Tunnel du pont : ouvert par l'utilisateur seul, ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; après redémarrage du PC, relance manuelle.
-- Envoi au téléphone par `send_message.py` de Roberto (UTF-8), jamais `curl` (accents corrompus sous Windows).
-- Arrêt complet du relais choisi au clavier (« fin du relais » : sessions repassées en mode habituel, pont arrêté par Roberto, écoute coupée).
+- Corrections 1 à 5 de `/relais_telephone` validées une à une par l'utilisateur et écrites : arrêt « fin du relais », phrases parasites ignorées, « oui » net pour une réponse qui engage, état d'une session lu dans son fil, réponse tapée au clavier traitée comme directe (même mention).
+- `telephone.md` (mode roberto) diffusé aux projets suivis non archivés par le cas 1 (copie directe, commits locaux) sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (gardienne hors ligne).
+- Push de tous les projets sur ordre explicite de l'utilisateur : fast-forward après `git fetch`, jamais de force.
 
 ## Livrables produits ou modifiés
-- `.claude/commands/relais_telephone.md` (nouveau), `.claude/commands/telephone.md` + `templates/.claude/commands/telephone.md` (mode roberto), `.claude/settings.json`, `.gitignore`, `scripts/check_kit.py`, `README.md`, `llms.txt`, `Protocole_start_close_context.md`, `CHANGELOG.md` (v6.9), `tests_manuels.md`, `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 3 et 4) : commités avec ce `/close`.
-- Hors VibeObs : `telephone.md` installé dans VertIA_v3 (`20cfa11`, cas 1) ; 3 commits de Roberto (`df08ff1`, `a37f0c0`, `ec1601c`), non poussés.
+- `.claude/commands/relais_telephone.md` (5 corrections), `tests_manuels.md`, `CHANGELOG.md` (v6.10), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : commités avec ce `/close`.
+- Hors VibeObs : `telephone.md` installé dans 29 projets (28 commits locaux ; Moulin du Sud `6108874`) ; 24 dépôts poussés ; Roberto : `send_message.py` commité (`0f1d4c7`).
 
 ## Hypothèses validées / invalidées
-- VALIDE : relais dans les deux sens avec VertIA_v3 ; question spontanée de la session arrivée sans retenue malgré un autre mode d'autorisation ; accents corrects via `send_message.py` ; mode Manuel de l'appli coupe le micro.
-- INVALIDE : écoute « persistante » (expire au bout de 30 min, à relancer) ; `curl` pour l'envoi ; transcription fiable (« Sous-titres réalisés par l'Amara.org », « wap »).
-- EN ATTENTE : `/telephone off` appliqué par VertIA_v3 ; tenue hors du PC sur réseau mobile ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
+- VALIDE : Roberto a commité `send_message.py` seul (contrôlé par `git show --stat`) ; VertIA_v3 déclare `/telephone off` appliqué (déclaration, fil non relu).
+- EN ATTENTE : essais réels de la section « Relais téléphone » ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
 
 ## Prochaine étape exacte
-Faire valider à l'utilisateur les corrections de `/relais_telephone` listées dans l'action « Terminer le relais téléphone », puis diffuser `/telephone roberto` aux autres projets.
+Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; intégrer le commit distant d'`AutoClaude` (`git pull --rebase`) sur accord de l'utilisateur ; diffuser `telephone.md` à `SérénIATech_dev` via sa gardienne.
 
 ## Question bloquante pour la session suivante
-Quelles corrections de `/relais_telephone` l'utilisateur valide-t-il (phrase « fin du relais », phrases parasites, « oui » net, état lu dans le fil de conversation, réponse tapée au clavier) ?
+Faut-il intégrer le commit distant d'`AutoClaude` par `git pull --rebase` (réécrit ses 3 commits locaux) ?
