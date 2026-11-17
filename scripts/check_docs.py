@@ -4,6 +4,7 @@
 import re
 import subprocess
 import sys
+from datetime import date
 from itertools import combinations
 from pathlib import Path
 
@@ -174,9 +175,82 @@ def check_invariants():
     return errors
 
 
+def cited_files(path, content):
+    """Résout les citations exactes, sans deviner les chemins ni développer les motifs."""
+    tokens = re.findall(r"(?<!`)`([^`\n]+)`(?!`)", content)
+    sources = re.search(r"^#{1,6} Sources[^\n]*\n(.*?)(?=^#{1,6} |\Z)", content, re.MULTILINE | re.DOTALL)
+    if sources:
+        tokens.extend(re.findall(r"\[[^\]]*\]\(([^)\s]+)\)", sources.group(1)))
+    found = set()
+    for token in tokens:
+        token = token.split("#", 1)[0].replace("\\", "/")
+        if not token or re.search(r"[\s*?<>${}:]", token) or token.startswith(("/", "~")):
+            continue
+        bases = (path.parent,) if token.startswith(("./", "../")) else (KIT_ROOT, path.parent)
+        for base in bases:
+            candidate = (base / token).resolve()
+            if candidate.is_relative_to(KIT_ROOT) and candidate.is_file():
+                if candidate != path:
+                    found.add(candidate.relative_to(KIT_ROOT).as_posix())
+                break
+    return sorted(found)
+
+
+def check_stale_guides():
+    """Alerte indicative : une source citée a un commit utile postérieur à la date maj."""
+    warnings = []
+    history = {}
+    for path in documents():
+        if path.relative_to(DOCS_DIR).parts[0] != "20_guides":
+            continue
+        content = path.read_text(encoding="utf-8")
+        frontmatter = re.match(r"\A---\n(.*?)\n---(?:\n|$)", content, re.DOTALL)
+        if not frontmatter:
+            continue
+        match = re.search(r"^maj:\s*['\"]?(\d{4}-\d{2}-\d{2})['\"]?\s*$", frontmatter.group(1), re.MULTILINE)
+        if not match:
+            continue
+        try:
+            updated = date.fromisoformat(match.group(1))
+        except ValueError:
+            continue
+        changes = []
+        for source in cited_files(path, content):
+            source_path = Path(source)
+            if source_path.suffix in {".md", ".txt"} and not (
+                source.startswith((".claude/", "templates/"))
+                or source_path.name in {"AGENTS.md", "CLAUDE.md", "GEMINI.md"}
+            ):
+                continue
+            if source not in history:
+                history[source] = git_output("--literal-pathspecs", "log", "--format=%cs%x00%h%x00%s", "--", source)
+            for line in (history[source] or "").splitlines():
+                fields = line.split("\x00", 2)
+                if len(fields) != 3:
+                    continue
+                committed, commit, subject = fields
+                if re.match(r"^(?:close\(|update:)", subject, re.IGNORECASE):
+                    continue
+                try:
+                    newer = date.fromisoformat(committed) > updated
+                except ValueError:
+                    continue
+                if newer:
+                    changes.append(f"{source} ({committed}, {commit} : {subject})")
+                break
+        if changes:
+            warnings.append(
+                f"AVERTISSEMENT : {path.relative_to(DOCS_DIR).as_posix()} "
+                f"probablement en retard (maj {updated}) ; source(s) : {' ; '.join(changes)}"
+            )
+    return warnings
+
+
 def main():
     checks = (check_index, check_links, check_doublons, check_style, check_journal_append_only, check_invariants)
     errors = [error for check in checks for error in check()]
+    for warning in check_stale_guides():
+        print(warning)
     if errors:
         print("ECARTS DETECTES :")
         print("\n".join(f"  - {error}" for error in errors))
