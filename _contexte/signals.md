@@ -44,9 +44,6 @@
 - Suivre la phase 1 (v0) du système d'apprentissage : la session gardienne `sereniatech_dev` implémente le journal et les règles ; VibeObs les applique à ses propres sollicitations.
   - fait quand: les critères 1 à 5 de la fiche sont exercés sur des cas réels, journalisés, et le bilan v0 est écrit.
   - réf: `roadmap_apprentissage.md` ; `tests/apprentissage/fiche.md` ; `DOCUMENTATION/40_specs/systeme_apprentissage.md`.
-- [à transférer vers shorts (SérénIATech_dev)] `SHORTS/agent_role.md` modifié non commité (livraison des shorts dans le dossier du demandeur) ; une seule session shorts vivante : `shorts-c2` [c0088b] (relancée en CLI le 2026-11-15, adresse transmise à Moulin du Sud), entrées Remote Control `shorts` hors ligne ; consigne VRAM (jeton VertIA_v3) appliquée par `shorts-c2` le 2026-11-16 après accord de l'utilisateur (commit `2169a1a` de SérénIATech_dev : règle dans `shorts.md` étape 3, hook `garde_vram.py` dans `SHORTS/.claude/settings.json`, session `shorts`), hook constaté actif dans `shorts-c2` le 2026-11-17 (test à blanc bloqué) ; brief « Rayonne toi » de Moulin du Sud à lui adresser ; contexte de l'ancienne session `shorts [b7470d]` perdu au redémarrage du PC. 2026-11-17 : `shorts-c2` arrêtée à la demande de l'utilisateur après son `/close` (lancé par l'utilisateur) ; commit de `agent_role.md` non vérifié par VibeObs.
-  - fait quand: la modification est commitée dans SérénIATech_dev et la session shorts est visible en Remote Control.
-  - réf: `C:/Users/raph6/Documents/SerenIATech/SérénIATech_dev/Communication/SHORTS/agent_role.md`.
 - Relancer les sessions Remote Control tombées au redémarrage du PC (2026-11-15, deux redémarrages sans cause établie : dernier événement journalisé 10:27 et 15:11, aucun code d'arrêt, aucune erreur matérielle) ; surveiller une récidive.
   - fait quand: les sessions voulues sont visibles en Remote Control, ou la cause des redémarrages est identifiée.
   - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement).
@@ -62,7 +59,10 @@
 - Pousser les commits en avance des projets suivis. 2026-11-18 : tous poussés sur ordre explicite de l'utilisateur (fast-forward après `git fetch`, aucun force ; `pre_push_check.py` à 0 pour `creation_videos` et les 5 projets mis à jour), `AutoClaude` après `git pull --rebase` sans conflit. Restent : `Rayonne_Toi` et `challenge_magic` (aucun remote), `Moulin du Sud` (dépôt `Lieux_Hybrides`, pas de branche amont, commit `6108874`), `Nettoyage_PC` (pas de dépôt git), `SérénIATech_dev` (session gardienne) ; `jeu_zombies` poussé sur la branche `feat/insertion-designs`.
   - fait quand: chaque projet de la liste restante est poussé ou son report est décidé par l'utilisateur.
   - réf: `DEPLOYMENTS.md` ; `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré).
-Backlog : 24 entrées (finding 1, amélioration 5, piste 18 ; dont 3 sans `réf:` précis) — `_contexte/backlog.md`
+- Suivre l'extraction de `SHORTS` vers le projet `D:\ServOMorph\Shorts` (2026-11-18, sur ordre de l'utilisateur) : message envoyé à la session `sereniatech_dev` (accusé non reçu) pour supprimer `Communication/SHORTS` après validation dans sa session ; session `shorts-4c` lancée en CLI (premier `/start` non relu par VibeObs) ; `ecoute_commentaires.md` du nouveau projet dépend encore de `Communication/Youtube/Outils/yt_commentaires.py` de SérénIATech_dev ; la déclaration des secrets YouTube dans le `CLAUDE.md` de Shorts reste à valider (trois validations).
+  - fait quand: la session sereniatech_dev a répondu (suppression faite ou refusée), le `/start` de `shorts-4c` est observé sans erreur et le sort de `ecoute_commentaires.md` est décidé.
+  - réf: `DEPLOYMENTS.md` (ligne Shorts) ; `D:\ServOMorph\Shorts\_contexte\signals.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md`.
+Backlog : 19 entrées (finding 1, amélioration 5, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -75,24 +75,25 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-18
+# Session du 2026-11-18 (suite)
 
 ## Décisions prises
-- `/update` v6.10 des projets à session ouverte inactive : VibeObs arrête la session à la demande de l'utilisateur puis met à jour ; 58 actions classées « Plus tard » en bloc sur son choix ; session active ou en attente laissée de côté.
-- Test de `/migration_canva` abandonné (automatisation impossible, `playwright` hors service) puis commande supprimée du kit à la demande de l'utilisateur ; historique du `CHANGELOG.md` conservé.
-- Push de `creation_videos`, des 5 projets mis à jour et d'`AutoClaude` (`git pull --rebase` sans conflit) sur accord de l'utilisateur.
+- Projet Shorts extrait de `SérénIATech_dev/Communication/SHORTS` vers `D:\ServOMorph\Shorts` sur ordre de l'utilisateur : copie en lecture seule, rôle de l'agent généralisé à tout demandeur, git local, hook `garde_vram.py` conservé.
+- Aucun agent autonome lancé sur les actions ouvertes : aucune n'est réalisable sans l'utilisateur, une session tierce ou une condition externe.
+- 5 entrées périmées ou faites retirées du backlog (`com_agents`/Meuniers, REA, IA_Eco-Responsable, creation_llm, agent shorts de SérénIATech_dev).
 
 ## Livrables produits ou modifiés
-- `.claude/commands/migration_canva.md` supprimé ; `README.md`, `llms.txt`, `CHANGELOG.md` (v7.0), `Protocole_start_close_context.md` : commités avec ce `/close`.
-- Hors VibeObs : `/update` v6.10 commités et poussés pour `creation_videos` (`e58efa0`), `WorldModel` (`fe1d6c8`), `creation_llm` (`f2f898a`), `VertIA_v3` (`3058d0b`), `Appli_TSA_SDI_TDAH` (`e97c3ce`), `Roberto` (`7aea4ec`) ; `AutoClaude` poussé (`c644815`).
+- `D:\ServOMorph\Shorts` : créé, commit `5b5e77f` (hors VibeObs) ; `.claude/commands/shorts.md` : chemin du jeton VRAM corrigé (un caractère de contrôle remplaçait `\v`).
+- `DEPLOYMENTS.md` : ligne Shorts ; `_contexte/backlog.md` : 5 entrées retirées.
+- Message envoyé à `sereniatech_dev` ; session `shorts-4c` lancée en CLI (confiance du dossier validée par l'utilisateur).
 
 ## Hypothèses validées / invalidées
-- VALIDE : les 6 `/update` passent les 7 contrôles (Appli : seul écart la permission `Bash(git log:*)` conservée) ; `pre_push_check.py` à 0 ; l'entraînement GPU de `creation_llm` a survécu à l'arrêt de sa session.
-- INVALIDE : automatiser la migration Canva par navigateur piloté -> migration faite à la main par l'utilisateur.
-- EN ATTENTE : essais réels de la section « Relais téléphone » ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
+- VALIDE : `garde_vram.py` bloque 4 commandes GPU sans jeton et laisse passer `echo` (test par entrée JSON simulée, aucune commande GPU réelle).
+- INVALIDE : « les actions ouvertes se délèguent à des agents autonomes » -> toutes exigent l'utilisateur, une session tierce ou une condition externe.
+- EN ATTENTE : réponse de `sereniatech_dev` ; cycle réel d'acquisition et de libération du jeton VRAM par `shorts` ; `/start` de `shorts-4c` ; essais réels « Relais téléphone ».
 
 ## Prochaine étape exacte
-Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; `/update` v6.10 de `creation_3d` et `site_internet_ST_v3` à la fermeture de leurs sessions ; diffuser l'update à `SérénIATech_dev` via sa gardienne.
+Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; suivre la réponse de `sereniatech_dev` sur l'extraction de SHORTS et le `/start` de `shorts-4c` ; `/update` v6.10 de `creation_3d` et `site_internet_ST_v3` à la fermeture de leurs sessions ; diffuser l'update à `SérénIATech_dev` via sa gardienne.
 
 ## Question bloquante pour la session suivante
 Aucune

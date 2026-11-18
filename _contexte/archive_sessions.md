@@ -1747,3 +1747,27 @@ Valider en conditions réelles la section « Relais téléphone » de `tests_man
 
 ## Question bloquante pour la session suivante
 Faut-il intégrer le commit distant d'`AutoClaude` par `git pull --rebase` (réécrit ses 3 commits locaux) ?
+
+---
+
+# Session du 2026-11-18
+
+## Décisions prises
+- `/update` v6.10 des projets à session ouverte inactive : VibeObs arrête la session à la demande de l'utilisateur puis met à jour ; 58 actions classées « Plus tard » en bloc sur son choix ; session active ou en attente laissée de côté.
+- Test de `/migration_canva` abandonné (automatisation impossible, `playwright` hors service) puis commande supprimée du kit à la demande de l'utilisateur ; historique du `CHANGELOG.md` conservé.
+- Push de `creation_videos`, des 5 projets mis à jour et d'`AutoClaude` (`git pull --rebase` sans conflit) sur accord de l'utilisateur.
+
+## Livrables produits ou modifiés
+- `.claude/commands/migration_canva.md` supprimé ; `README.md`, `llms.txt`, `CHANGELOG.md` (v7.0), `Protocole_start_close_context.md` : commités avec ce `/close`.
+- Hors VibeObs : `/update` v6.10 commités et poussés pour `creation_videos` (`e58efa0`), `WorldModel` (`fe1d6c8`), `creation_llm` (`f2f898a`), `VertIA_v3` (`3058d0b`), `Appli_TSA_SDI_TDAH` (`e97c3ce`), `Roberto` (`7aea4ec`) ; `AutoClaude` poussé (`c644815`).
+
+## Hypothèses validées / invalidées
+- VALIDE : les 6 `/update` passent les 7 contrôles (Appli : seul écart la permission `Bash(git log:*)` conservée) ; `pre_push_check.py` à 0 ; l'entraînement GPU de `creation_llm` a survécu à l'arrêt de sa session.
+- INVALIDE : automatiser la migration Canva par navigateur piloté -> migration faite à la main par l'utilisateur.
+- EN ATTENTE : essais réels de la section « Relais téléphone » ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
+
+## Prochaine étape exacte
+Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; `/update` v6.10 de `creation_3d` et `site_internet_ST_v3` à la fermeture de leurs sessions ; diffuser l'update à `SérénIATech_dev` via sa gardienne.
+
+## Question bloquante pour la session suivante
+Aucune
