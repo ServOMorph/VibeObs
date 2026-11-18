@@ -12,16 +12,14 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-17 : kit v6.10 — corrections de `/relais_telephone` écrites (fin du relais, phrases parasites, « oui » net, état lu dans le fil, réponse au clavier) ; `send_message.py` commité côté Roberto ; `telephone.md` (mode roberto) diffusé à 29 projets ; VertIA_v3 confirme `/telephone off`.
+- 2026-11-18 : kit v7.0 — `/migration_canva` supprimé du kit (test abandonné, migration faite à la main) ; v6.10 diffusé : `/update` fait pour creation_videos, World Model, creation_llm, VertIA_v3, Appli et Roberto, tous poussés.
 - Kit v6.8 : `check_docs.py` signale les guides en retard sur leurs sources ; hook PreCompact qui trace le compactage dans le journal de session (essai réel en attente).
-- `/update` v6.6 : VertIA_v3, World Model et Moulin du Sud faits ; reste `SérénIATech_dev` via sa session gardienne. 24 dépôts poussés le 2026-11-17 ; restent AutoClaude (diverge), sans remote ou sans git, VibeObs et `SérénIATech_dev`.
+- Restent à mettre à jour : creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne. Non poussés : Rayonne_Toi et challenge_magic (sans remote), Moulin du Sud (sans amont), Nettoyage_PC.
 - Système d'apprentissage : phase 1 (v0) en cours, session gardienne `sereniatech_dev` (`roadmap_apprentissage.md`).
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
 
-- 2026-11-15 : accès à `SérénIATech_dev` uniquement par demande à la session gardienne `sereniatech_dev` (ni lecture ni écriture directe) ; `/update` classe les actions ouvertes du projet cible avant toute mise à jour (étape 0bis, obligatoire en batch).
-- 2026-11-15 : une session ouverte valide ou refuse toute modification de son projet (refus : ne rien toucher, la recontacter après sa clôture) ; registre des artifacts du kit gitignoré car le dépôt est public et les titres citent des clients.
 - 2026-11-16 : garde VRAM (`scripts/garde_vram.py`) étendu aux générateurs d'images et de musique locaux et à Blender ; diffusion aux autres projets par hook de zone, session nommée (`VRAM_SESSION`), appliqué par la session propriétaire après son accord (première : SHORTS de `SérénIATech_dev`, commit `2169a1a`).
 - 2026-11-16 : `.claude/CLAUDE.md` du kit porte la ligne de renvoi vers `prises_de_controle.md` dans § Spécificités projet (kit seul, non diffusée) ; `check_kit.py` ignore cette section en miroir.
 - 2026-11-17 : `/update` d'un projet à session ouverte : VibeObs écrit les fichiers de protocole et prépare le `CLAUDE.md` fusionné ; la session cible l'écrit après les trois validations de l'utilisateur, puis VibeObs commite et lance les 7 contrôles.
@@ -30,3 +28,5 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-17 : le tunnel du pont est ouvert par l'utilisateur seul ; ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul pour l'instant).
 - 2026-11-17 : `telephone.md` du kit diffusé aux projets suivis par le cas 1 (copie directe, commits locaux), sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (session gardienne).
 - 2026-11-17 : push de tous les projets suivis sur ordre explicite de l'utilisateur, en fast-forward après `git fetch`, jamais de force ; un projet qui diverge est laissé à sa décision.
+- 2026-11-18 : `/migration_canva` supprimé du kit (test abandonné, migration Canva faite à la main ; automatisation impossible, `playwright` hors service) ; historique du `CHANGELOG.md` conservé.
+- 2026-11-18 : `/update` d'un projet à session ouverte inactive : VibeObs arrête la session (processus `claude`) à la demande de l'utilisateur puis met à jour ; actions classées « Plus tard » en bloc sur son choix ; session active ou en attente de clic laissée de côté.

@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.0 — 2026-11-18
+
+### Supprimé
+- `/migration_canva` (kit uniquement) : commande retirée, ainsi que ses lignes dans `llms.txt` et `README.md`, à la demande de l'utilisateur après l'abandon du test (migration Canva faite à la main). Les entrées antérieures de ce changelog sont conservées.
+
+### Modifié
+- `/update` v6.10 diffusé à `creation_videos`, `WorldModel`, `creation_llm`, `VertIA_v3`, `Appli_TSA_SDI_TDAH` et `Roberto` ; `/update` d'un projet à session ouverte inactive : la session est arrêtée par VibeObs à la demande de l'utilisateur avant la mise à jour.
+
 ## v6.10 — 2026-11-17
 
 ### Modifié

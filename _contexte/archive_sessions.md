@@ -1724,3 +1724,26 @@ Faire valider à l'utilisateur les corrections de `/relais_telephone` listées d
 
 ## Question bloquante pour la session suivante
 Quelles corrections de `/relais_telephone` l'utilisateur valide-t-il (phrase « fin du relais », phrases parasites, « oui » net, état lu dans le fil de conversation, réponse tapée au clavier) ?
+
+---
+
+# Session du 2026-11-17 (soir)
+
+## Décisions prises
+- Corrections 1 à 5 de `/relais_telephone` validées une à une par l'utilisateur et écrites : arrêt « fin du relais », phrases parasites ignorées, « oui » net pour une réponse qui engage, état d'une session lu dans son fil, réponse tapée au clavier traitée comme directe (même mention).
+- `telephone.md` (mode roberto) diffusé aux projets suivis non archivés par le cas 1 (copie directe, commits locaux) sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (gardienne hors ligne).
+- Push de tous les projets sur ordre explicite de l'utilisateur : fast-forward après `git fetch`, jamais de force.
+
+## Livrables produits ou modifiés
+- `.claude/commands/relais_telephone.md` (5 corrections), `tests_manuels.md`, `CHANGELOG.md` (v6.10), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : commités avec ce `/close`.
+- Hors VibeObs : `telephone.md` installé dans 29 projets (28 commits locaux ; Moulin du Sud `6108874`) ; 24 dépôts poussés ; Roberto : `send_message.py` commité (`0f1d4c7`).
+
+## Hypothèses validées / invalidées
+- VALIDE : Roberto a commité `send_message.py` seul (contrôlé par `git show --stat`) ; VertIA_v3 déclare `/telephone off` appliqué (déclaration, fil non relu).
+- EN ATTENTE : essais réels de la section « Relais téléphone » ; hook PreCompact sur un vrai `/compact` ; économie de tokens de `/delegation` non mesurée.
+
+## Prochaine étape exacte
+Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; intégrer le commit distant d'`AutoClaude` (`git pull --rebase`) sur accord de l'utilisateur ; diffuser `telephone.md` à `SérénIATech_dev` via sa gardienne.
+
+## Question bloquante pour la session suivante
+Faut-il intégrer le commit distant d'`AutoClaude` par `git pull --rebase` (réécrit ses 3 commits locaux) ?
