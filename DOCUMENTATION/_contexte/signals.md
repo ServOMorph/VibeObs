@@ -21,6 +21,10 @@
   - fait quand: ligne d'INDEX et date alignées sur le fichier, et `20_guides/mode_telephone.md` mis à jour ou décision explicite de ne pas documenter le mode roberto.
   - réf: DOCUMENTATION/30_decisions/prises_de_controle.md, DOCUMENTATION/20_guides/mode_telephone.md, .claude/commands/telephone.md, .claude/commands/relais_telephone.md
 
+- [P2|ouvert|source=kit] Décider si le blocage de la délégation à Codex (interrupteur `~/.codex/delegation_bloquee.flag`, 2026-11-19), la délégation à VibeObs des téléchargements de modèles de 20 Go ou moins (jamais licences ni installations) et les règles du relais téléphone (jamais de silence, réponses courtes, points toutes les minutes) méritent une entrée dans `30_decisions/prises_de_controle.md`, `20_guides/mode_telephone.md` ou `20_guides/` (guide de la délégation)
+  - fait quand: les entrées sont ajoutées à `DOCUMENTATION/` et à `INDEX.md`, ou décision explicite de ne pas les documenter.
+  - réf: .claude/commands/delegation.md, .claude/commands/relais_telephone.md, DOCUMENTATION/30_decisions/prises_de_controle.md, CHANGELOG.md v7.1
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14

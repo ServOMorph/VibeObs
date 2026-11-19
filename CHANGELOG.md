@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.1 — 2026-11-19
+
+### Ajouté
+- Interrupteur de blocage de la délégation à Codex : `~/.codex/delegation_bloquee.flag` ; `run_codex.ps1` (`_codex/` et `templates/delegation/scripts/`) sort en code 3 si le fichier existe (hors `-DryRun`) ; ligne Codex de `delegation.md` marquée suspendue.
+- `templates/AGENTS.md` : section « Modèle Codex » ; `delegation.md` et le README de la délégation : consigne de modèle et de binaire (l'application, pas le Codex npm 0.154).
+
+### Modifié
+- `.claude/commands/relais_telephone.md` (kit uniquement) : « Jamais de silence » (accusé immédiat, résumé après une minute de fragments), « Réponses courtes » (deux phrases, le micro est fermé pendant la réponse vocale), « Points réguliers » (une phrase par minute pendant une action longue, Monitor de cadence de 60 s).
+- Consigne « modèle Codex » commitée dans 31 `AGENTS.md` de projets suivis (commits locaux) ; texte final non validé.
+
 ## v7.0 — 2026-11-18
 
 ### Supprimé

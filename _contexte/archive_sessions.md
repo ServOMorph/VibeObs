@@ -1771,3 +1771,28 @@ Valider en conditions réelles la section « Relais téléphone » de `tests_man
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-18 (suite)
+
+## Décisions prises
+- Projet Shorts extrait de `SérénIATech_dev/Communication/SHORTS` vers `D:\ServOMorph\Shorts` sur ordre de l'utilisateur : copie en lecture seule, rôle de l'agent généralisé à tout demandeur, git local, hook `garde_vram.py` conservé.
+- Aucun agent autonome lancé sur les actions ouvertes : aucune n'est réalisable sans l'utilisateur, une session tierce ou une condition externe.
+- 5 entrées périmées ou faites retirées du backlog (`com_agents`/Meuniers, REA, IA_Eco-Responsable, creation_llm, agent shorts de SérénIATech_dev).
+
+## Livrables produits ou modifiés
+- `D:\ServOMorph\Shorts` : créé, commit `5b5e77f` (hors VibeObs) ; `.claude/commands/shorts.md` : chemin du jeton VRAM corrigé (un caractère de contrôle remplaçait `\v`).
+- `DEPLOYMENTS.md` : ligne Shorts ; `_contexte/backlog.md` : 5 entrées retirées.
+- Message envoyé à `sereniatech_dev` ; session `shorts-4c` lancée en CLI (confiance du dossier validée par l'utilisateur).
+
+## Hypothèses validées / invalidées
+- VALIDE : `garde_vram.py` bloque 4 commandes GPU sans jeton et laisse passer `echo` (test par entrée JSON simulée, aucune commande GPU réelle).
+- INVALIDE : « les actions ouvertes se délèguent à des agents autonomes » -> toutes exigent l'utilisateur, une session tierce ou une condition externe.
+- EN ATTENTE : réponse de `sereniatech_dev` ; cycle réel d'acquisition et de libération du jeton VRAM par `shorts` ; `/start` de `shorts-4c` ; essais réels « Relais téléphone ».
+
+## Prochaine étape exacte
+Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; suivre la réponse de `sereniatech_dev` sur l'extraction de SHORTS et le `/start` de `shorts-4c` ; `/update` v6.10 de `creation_3d` et `site_internet_ST_v3` à la fermeture de leurs sessions ; diffuser l'update à `SérénIATech_dev` via sa gardienne.
+
+## Question bloquante pour la session suivante
+Aucune

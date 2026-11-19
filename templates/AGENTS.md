@@ -11,3 +11,10 @@ centralise la documentation métier du projet, consultable par tout agent quel q
 utilisé. Avant d'affirmer un fait métier non disponible dans le contexte immédiat, consulter
 `DOCUMENTATION/INDEX.md` (catalogue, une ligne par document) puis n'ouvrir que le(s) document(s)
 pertinent(s) — jamais tout le dossier. Absence de `DOCUMENTATION/` : rien à consulter.
+
+## Modèle Codex
+
+Quand l'agent est Codex : modèle `gpt-6.1-sol` uniquement, jamais `astra`. Le modèle est
+affiché en tête de la sortie (ligne `model:`) ; le vérifier au démarrage. En cas de refus du
+modèle (« not supported with a ChatGPT account »), s'arrêter et le signaler, ne pas choisir un
+autre modèle.

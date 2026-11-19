@@ -30,7 +30,7 @@ il rédige le brief, lit le rapport (15 lignes), relit le diff, décide et commi
 |---|---|---|
 | Texte fourni en entrée : résumé, digest de logs, message de commit, reformulation, classement | Ollama (`python ollama_call.py`, `OLLAMA_MODEL=qwen2.5:7b`, ou `gemma4:12b-32k` pour un texte long) | Local, gratuit, aucune donnée sortante ; pas d'outils |
 | Lecture ou recherche dans le dépôt, audit de cohérence, petite édition délimitée | OpenCode gratuit (`_codex/run_opencode.ps1`) | Gratuit ; ni web, ni bash hors liste, ni accès hors dépôt |
-| Correctif multi-fichiers, revue de code, analyse lourde | Codex (`_codex/run_codex.ps1`, `-Sandbox read-only` pour une revue) | Quota ChatGPT, pas Claude ; sandbox |
+| Correctif multi-fichiers, revue de code, analyse lourde | Codex (`_codex/run_codex.ps1`, `-Sandbox read-only` pour une revue) — **SUSPENDU tant que `~/.codex/delegation_bloquee.flag` existe** : router vers OpenCode ou un sous-agent Claude | Quota ChatGPT (formule Plus, quota à ménager), pas Claude ; sandbox |
 | Web, documentation Claude Code, navigateur, contexte de la conversation | Sous-agent Claude, modèle `haiku` sauf besoin | Seul à avoir ces outils |
 | Décision, arbitrage, échange avec l'utilisateur, commit | Claude principal | Responsabilité |
 
@@ -43,6 +43,8 @@ Règles :
 - Jamais deux exécutants sur les mêmes fichiers. Une tâche qui écrit dans le kit tourne dans un
   worktree Git (`git worktree add`), jamais dans l'arbre principal.
 - Aucun secret ni donnée sensible dans un brief envoyé à Codex ou OpenCode.
+- Blocage Codex (décision de l'utilisateur du 2026-11-19) : tant que le fichier `~/.codex/delegation_bloquee.flag` existe, aucune délégation à Codex, y compris par appel direct de `codex exec` ; `run_codex.ps1` sort en code 3. Ne lever le blocage (supprimer le fichier) que sur demande de l'utilisateur.
+- Modèle Codex : `gpt-6.1-sol` uniquement, jamais `astra`. Une session qui utilise Codex vérifie le modèle affiché en tête de `log.txt` (ligne `model:`) ; le changement se fait par `-m <modèle>` (testé le 2026-11-18, Codex 0.167 : `gpt-6.1-sol` accepté, `gpt-6.1-astra` refusé par le compte ChatGPT).
 - Lire seulement `rapport.md` ; ouvrir `log.txt` uniquement en cas d'échec. Un code de sortie nul ne
   prouve rien : contrôler STATUT, OUVERT et le diff.
 - Échec d'un exécutant : une seule relance avec brief corrigé, puis bascule vers l'exécutant suivant

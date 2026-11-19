@@ -65,6 +65,28 @@ Deux canaux distincts : toute réponse à un message venu du log part aussi par 
 déjà écrite dans le terminal. Une ligne `[DEBUG]` est ignorée, de même qu'une phrase parasite de la
 reconnaissance vocale (« Sous-titres réalisés par… », « wap ») : ni réponse ni envoi.
 
+**Jamais de silence.** L'utilisateur conduit et ne voit pas le terminal : il prend un silence pour
+une panne. Chaque message `[canal:vocal]` ou `[canal:texte]` reçoit une réponse au téléphone dans la
+minute, sans exception. La reconnaissance vocale découpe une phrase en plusieurs messages : une
+phrase qui semble incomplète reçoit un accusé court (« Reçu, je vous écoute ») et jamais un silence
+d'attente ; la réponse complète part dès que le sens est clair. Un message peu clair : demander de
+répéter, par `POST /send`. Après une suite de fragments sans conclusion, envoyer au plus tard au bout
+d'une minute un résumé de ce qui a été compris et demander si c'est complet. Seules les lignes
+`[DEBUG]` restent sans réponse ; une phrase parasite est signalée au téléphone (« phrase non comprise »).
+
+**Réponses courtes.** L'appli ferme le micro pendant la réponse vocale et perd ce que l'utilisateur dit
+alors : chaque message envoyé au téléphone fait deux phrases courtes au plus (une seule question à la
+fois), le détail va dans le terminal ou un fichier. Un accusé tient en une phrase.
+
+**Points réguliers (décision de l'utilisateur du 2026-11-19).** Pendant toute action longue lancée par
+le relais (veille, travail confié à une autre session, tâche de VibeObs), envoyer au téléphone un
+point d'une phrase toutes les minutes, jusqu'à la fin. Mécanisme : au lancement de l'action,
+démarrer un Monitor de cadence (`while true; do sleep 60; echo tick; done`, `timeout_ms` de 1800000)
+et noter son `task_id` dans la ligne de la file ; à chaque `tick`, lire l'état réel (`ListAgents`,
+fichier de rapport, sortie en cours) puis envoyer « toujours en cours : <étape> » ou « bloqué : <raison> » ;
+à la fin, `TaskStop` sur la cadence et annoncer le résultat. Un point ne répète pas le précédent sans
+fait nouveau : dire « pas de changement depuis une minute » plutôt qu'inventer.
+
 1. **Question reçue d'une session** (message de session portant « Question pour l'utilisateur ») :
    l'ajouter à la file (`AAAA-MM-JJ HH:MM | <session> | <question> | en attente`) et l'envoyer au
    téléphone : « <session> demande : <question> ».

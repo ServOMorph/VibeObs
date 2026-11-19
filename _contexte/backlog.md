@@ -57,3 +57,6 @@
 - [amélioration] Registre des artifacts : l'étape 6-bis de `/close` dit « commité avec `_contexte/` » alors que le registre du kit est gitignoré (dépôt public, titres de clients) ; décider si le registre est versionné par défaut, ignoré par défaut, ou si `/close` contrôle la visibilité du dépôt.
   - fait quand: la formulation de l'étape 6-bis et le `.gitignore` des projets sont cohérents, ou le choix actuel est acté comme suffisant.
   - réf: `.claude/commands/close.md`.
+- [finding] `garde_vram.py` bloque les commandes Bash dont le simple texte contient un nom de modèle ou d'outil GPU (messages envoyés au téléphone, notes de journal), même sans lancer de GPU ; contourné trois fois le 2026-11-19 en reformulant.
+  - fait quand: le hook ne bloque plus une commande qui ne fait que citer un nom, ou la règle est actée comme suffisante.
+  - réf: `scripts/garde_vram.py`.

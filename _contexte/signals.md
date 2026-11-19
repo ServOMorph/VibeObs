@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-18)
+# Signals — VibeObs (MAJ 2026-11-19)
 
 ## Actions ouvertes — pilotage
 
@@ -53,16 +53,22 @@
 - Mesurer le gain de RAM et de VRAM d'un passage des sessions de VS Code en CLI, quand plus aucune session ne tourne (décision de l'utilisateur du 2026-11-16 : pas maintenant). Relevé du 2026-11-15 : VS Code 69 processus pour environ 17,8 Go de RAM, 9 processus `claude` pour environ 2,6 Go, GPU RTX 4060 à 7485 sur 8188 Mio ; la part de VRAM de VS Code n'est pas mesurable par `nvidia-smi` seul. Méthode : relever `nvidia-smi` et la RAM avant et après la fermeture de VS Code.
   - fait quand: les relevés avant et après fermeture de VS Code sont consignés avec le gain mesuré, et une décision de passage en CLI est prise.
   - réf: `ListAgents` ; `.claude/commands/telephone.md` (lancement en CLI).
-- Terminer le relais téléphone des sessions (kit v6.10). 2026-11-17 : VibeObs raccordé au pont de Roberto (cas 3 et 4), `/relais_telephone` et `/telephone roberto` écrits, essai réel avec VertIA_v3 réussi, arrêt complet testé. Soir : 5 corrections de `relais_telephone.md` écrites après validation une à une, `send_message.py` commité par Roberto (`0f1d4c7`, contrôlé), `telephone.md` diffusé à 29 projets (28 commits locaux ; Nettoyage_PC sans git ; VertIA_v3 déjà à jour), VertIA_v3 déclare avoir appliqué `/telephone off`. Restent : validation en réel de la section « Relais téléphone » de `tests_manuels.md` (écoute de plus de 30 minutes, seconde session en mode roberto, tenue hors du PC, `/close` d'une session en mode roberto) ; diffusion de `telephone.md` à `SérénIATech_dev` par sa session gardienne.
+- Terminer le relais téléphone des sessions (kit v6.10, v7.1). 2026-11-17 : VibeObs raccordé au pont de Roberto (cas 3 et 4), `/relais_telephone` et `/telephone roberto` écrits, essai réel avec VertIA_v3 réussi, arrêt complet testé ; `telephone.md` diffusé à 29 projets. 2026-11-19 : relais exercé plusieurs heures (écoute relancée à chaque expiration de 30 minutes, veille et essais de VertIA_v3 pilotés à la voix, arrêt par `/relais_telephone stop`). Défauts trouvés et corrigés par Roberto : coupures de la parole à 15 s (commit `d1112a6`, silence 1,8 s, durée max 90 s), voix qui change (commit `c10e454`), accusé et regroupement des fragments (commit `eec9f87`), alerte « VibeObs n'a pas répondu » ; non poussés, non testés sur un vrai iPhone. Règles ajoutées à `relais_telephone.md` : jamais de silence, réponses courtes, points d'une phrase toutes les minutes. Constat : l'appli iPhone est restée sans connexion active dès 07:40 UTC (envoi `sent: 0`). Restent : rejouer en réel la section « Relais téléphone » de `tests_manuels.md` (appli rechargée), diffusion de `telephone.md` à `SérénIATech_dev` par sa gardienne.
   - fait quand: la section « Relais téléphone » de `tests_manuels.md` est validée et retirée, et `telephone.md` est diffusé à `SérénIATech_dev` (ou son report tracé).
   - réf: `.claude/commands/relais_telephone.md` ; `.claude/commands/telephone.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` cas 1, 3 et 4 ; `tests_manuels.md` ; `D:\ServOMorph\Roberto\com_telephone\README.md` § Relais des sessions par VibeObs.
 - Pousser les commits en avance des projets suivis. 2026-11-18 : tous poussés sur ordre explicite de l'utilisateur (fast-forward après `git fetch`, aucun force ; `pre_push_check.py` à 0 pour `creation_videos` et les 5 projets mis à jour), `AutoClaude` après `git pull --rebase` sans conflit. Restent : `Rayonne_Toi` et `challenge_magic` (aucun remote), `Moulin du Sud` (dépôt `Lieux_Hybrides`, pas de branche amont, commit `6108874`), `Nettoyage_PC` (pas de dépôt git), `SérénIATech_dev` (session gardienne) ; `jeu_zombies` poussé sur la branche `feat/insertion-designs`.
   - fait quand: chaque projet de la liste restante est poussé ou son report est décidé par l'utilisateur.
   - réf: `DEPLOYMENTS.md` ; `_codex/runs/20261117_141543_595_I_audit_deployments_f01fd4a9/rapport.md` (local, gitignoré).
-- Suivre l'extraction de `SHORTS` vers le projet `D:\ServOMorph\Shorts` (2026-11-18, sur ordre de l'utilisateur) : message envoyé à la session `sereniatech_dev` (accusé non reçu) pour supprimer `Communication/SHORTS` après validation dans sa session ; session `shorts-4c` lancée en CLI (premier `/start` non relu par VibeObs) ; `ecoute_commentaires.md` du nouveau projet dépend encore de `Communication/Youtube/Outils/yt_commentaires.py` de SérénIATech_dev ; la déclaration des secrets YouTube dans le `CLAUDE.md` de Shorts reste à valider (trois validations).
-  - fait quand: la session sereniatech_dev a répondu (suppression faite ou refusée), le `/start` de `shorts-4c` est observé sans erreur et le sort de `ecoute_commentaires.md` est décidé.
+- Suivre l'extraction de `SHORTS` vers le projet `D:\ServOMorph\Shorts` (2026-11-18). 2026-11-18/19 : `sereniatech_dev` a supprimé `Communication/SHORTS` (commit `d6d08c8`) après comparaison, sans renvoi vers le nouveau dossier ; la session `shorts-4c` est arrêtée à la demande de l'utilisateur. Restent : sort de `ecoute_commentaires.md` du nouveau projet (dépend encore de `Communication/Youtube/Outils/yt_commentaires.py` de SérénIATech_dev), déclaration des secrets YouTube dans le `CLAUDE.md` de Shorts (trois validations), `/update` v5.37 de `SérénIATech_dev` demandé par sa gardienne (à lancer depuis VibeObs sur accord de l'utilisateur ; garder la ligne « Étape 14 » du bloc projet de son `close.md`, ne pas restaurer le bloc « zone shorts »).
+  - fait quand: le sort de `ecoute_commentaires.md` est décidé, les secrets YouTube sont déclarés ou écartés, et l'`/update` de `SérénIATech_dev` est fait ou son report tracé.
   - réf: `DEPLOYMENTS.md` (ligne Shorts) ; `D:\ServOMorph\Shorts\_contexte\signals.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md`.
-Backlog : 19 entrées (finding 1, amélioration 5, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
+- Décider du blocage de la délégation à Codex (2026-11-19, par l'utilisateur) : abonnement ChatGPT Plus, 26 % de la fenêtre de 7 jours déjà utilisés ce jour, aucun crédit supplémentaire ; l'utilisateur veut trouver un moyen de limiter l'usage. Interrupteur `~/.codex/delegation_bloquee.flag` (supprimer le fichier pour lever) ; `run_codex.ps1` du kit et du template sort en code 3 s'il existe. Non couverts : copies de `CreaZik_V3` et `VertIA_v3`, scripts de `creation_llm` (`rd/agents_codex/modele.sh`), appel direct de `codex`. Consigne « modèle Codex » ajoutée aux `AGENTS.md` de 31 projets (commits locaux, `Nettoyage_PC` sans git) avec `gpt-6.1-sol` ; texte final NON validé : candidat `gpt-6.2-sol` (repli `gpt-6.1-sol`), jamais `gpt-6-astra` ni `gpt-6.2-astra`, binaire de l'application (le Codex npm 0.154 refuse ces modèles). Tarifs lus sur la page officielle : Astra environ 4 fois plus coûteux que Sol.
+  - fait quand: l'utilisateur a tranché (lever le blocage, ou le garder avec un mécanisme de limite), la consigne des `AGENTS.md` est corrigée ou retirée en conséquence, et le blocage est propagé ou levé partout.
+  - réf: `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `templates/AGENTS.md` ; `~/.codex/delegation_bloquee.flag` ; `https://learn.chatgpt.com/docs/pricing`.
+- [à transférer vers VertIA_v3] Décisions de l'utilisateur après la veille IA du 2026-11-19 (rapports `veille/2026-11-19*.md` et `benchmarks/veille/rapport_resultats.md` chez VertIA_v3) : (1) accepter ou non la licence Hugging Face de FLUX 3 Klein pour l'essayer ; (2) installer ou mettre à jour un ComfyUI pour tester MOSS-Image (environ 13 Go + environnement torch ; le ComfyUI actuel est en v0.38.0, avant son support) ; (3) modèle de chat par défaut : `gemma4:e4b` (5 à 6 fois plus rapide, qualité comparable sur 5 cas courts) ou `gemma4:12b` ; (4) lire la licence de Qwen-Image 2.1 (Qwen Research License) avant tout usage commercial. VibeObs a autorisé, dans la délégation de l'utilisateur, les téléchargements de modèles de 20 Go ou moins pour les essais, jamais l'acceptation d'une licence ni l'installation de logiciel.
+  - fait quand: les quatre décisions sont prises par l'utilisateur et tracées dans le `signals.md` de VertIA_v3.
+  - réf: `D:\ServOMorph\VertIA_v3\benchmarks\veille\rapport_resultats.md` ; `D:\ServOMorph\VertIA_v3\veille\` ; `_contexte/relais_idees_veille.md` ; `_contexte/veille_sources_fiables.md`.
+Backlog : 20 entrées (finding 2, amélioration 5, piste 13 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -75,25 +81,24 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-18 (suite)
+# Session du 2026-11-19 (suite du 2026-11-18)
 
 ## Décisions prises
-- Projet Shorts extrait de `SérénIATech_dev/Communication/SHORTS` vers `D:\ServOMorph\Shorts` sur ordre de l'utilisateur : copie en lecture seule, rôle de l'agent généralisé à tout demandeur, git local, hook `garde_vram.py` conservé.
-- Aucun agent autonome lancé sur les actions ouvertes : aucune n'est réalisable sans l'utilisateur, une session tierce ou une condition externe.
-- 5 entrées périmées ou faites retirées du backlog (`com_agents`/Meuniers, REA, IA_Eco-Responsable, creation_llm, agent shorts de SérénIATech_dev).
+- Délégation à Codex bloquée par l'utilisateur (quota Plus à ménager) : interrupteur `~/.codex/delegation_bloquee.flag`, contrôle dans `run_codex.ps1` ; consigne « modèle Codex » (31 `AGENTS.md` commités) en suspens, texte final non validé.
+- Relais téléphone exercé plusieurs heures : règles « jamais de silence », « réponses courtes », « points toutes les minutes » ajoutées à `relais_telephone.md` ; pont de Roberto corrigé (regroupement, coupures de 15 à 90 s, voix).
+- Veille IA (chat, image, vidéo) lancée à la voix et exécutée par VertIA_v3, puis essais comparatifs sous jeton GPU ; VibeObs décide des téléchargements de 20 Go ou moins, jamais des licences ni des installations.
 
 ## Livrables produits ou modifiés
-- `D:\ServOMorph\Shorts` : créé, commit `5b5e77f` (hors VibeObs) ; `.claude/commands/shorts.md` : chemin du jeton VRAM corrigé (un caractère de contrôle remplaçait `\v`).
-- `DEPLOYMENTS.md` : ligne Shorts ; `_contexte/backlog.md` : 5 entrées retirées.
-- Message envoyé à `sereniatech_dev` ; session `shorts-4c` lancée en CLI (confiance du dossier validée par l'utilisateur).
+- Kit v7.1 : `delegation.md`, `relais_telephone.md`, `run_codex.ps1` (kit et template), `templates/AGENTS.md`, README de la délégation ; `_contexte/relais_idees_veille.md` et `veille_sources_fiables.md` (nouveaux).
+- Hors kit : consigne dans 31 `AGENTS.md` (commits locaux) ; rapports de VertIA_v3 (`veille/`, `benchmarks/veille/rapport_resultats.md`).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `garde_vram.py` bloque 4 commandes GPU sans jeton et laisse passer `echo` (test par entrée JSON simulée, aucune commande GPU réelle).
-- INVALIDE : « les actions ouvertes se délèguent à des agents autonomes » -> toutes exigent l'utilisateur, une session tierce ou une condition externe.
-- EN ATTENTE : réponse de `sereniatech_dev` ; cycle réel d'acquisition et de libération du jeton VRAM par `shorts` ; `/start` de `shorts-4c` ; essais réels « Relais téléphone ».
+- VALIDE : `gpt-6.1-sol`, `gpt-6.2-sol` et `gpt-6-astra` acceptés par le binaire de l'application (0.167), `gpt-6.1-sol` refusé par le Codex npm 0.154 ; VertIA_v3 préempte `creation_llm` par le jeton (liste d'urgences, tâche interruptible).
+- INVALIDE : « jeton de `creation_llm` jusqu'à 13:54 » (périmé : renouvelé, dernier relevé jusqu'au 2026-11-20 08:46).
+- EN ATTENTE : correctifs de Roberto non testés sur un vrai iPhone ; décisions de l'utilisateur sur la veille et le blocage Codex.
 
 ## Prochaine étape exacte
-Valider en conditions réelles la section « Relais téléphone » de `tests_manuels.md` ; suivre la réponse de `sereniatech_dev` sur l'extraction de SHORTS et le `/start` de `shorts-4c` ; `/update` v6.10 de `creation_3d` et `site_internet_ST_v3` à la fermeture de leurs sessions ; diffuser l'update à `SérénIATech_dev` via sa gardienne.
+Faire trancher le blocage Codex et les quatre décisions de la veille VertIA_v3 ; recharger l'appli iPhone et rejouer la section « Relais téléphone » de `tests_manuels.md` ; `/update` v5.37 de `SérénIATech_dev` sur accord.
 
 ## Question bloquante pour la session suivante
-Aucune
+Lever ou garder le blocage de la délégation à Codex, et avec quel mécanisme de limite ?

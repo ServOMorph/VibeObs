@@ -7,6 +7,11 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+$blocage = Join-Path $env:USERPROFILE '.codex\delegation_bloquee.flag'
+if ((Test-Path -LiteralPath $blocage) -and -not $DryRun) {
+    [Console]::Error.WriteLine("Delegation a Codex bloquee par l'utilisateur ($blocage). Ne pas contourner : router vers Ollama, OpenCode ou un sous-agent Claude.")
+    exit 3
+}
 if (-not $Root) { $Root = Split-Path -Parent $MyInvocation.MyCommand.Path | Split-Path -Parent }
 $Root = (Resolve-Path -LiteralPath $Root).ProviderPath
 $utf8 = New-Object Text.UTF8Encoding $false

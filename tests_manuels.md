@@ -125,3 +125,7 @@ Vérifier en conditions réelles que :
 - une seconde session en mode `/telephone roberto` (autre que VertIA_v3) envoie sa question à VibeObs et reçoit la réponse validée ;
 - le relais tient hors du PC (téléphone sur réseau mobile, tunnel ouvert par l'utilisateur) ;
 - `/close` prochain d'une session en mode roberto ne laisse pas d'écoute ni de verrou résiduels.
+- (corrections du 2026-11-19, appli iPhone rechargée) un message vocal reçoit un accusé immédiat et un bip « reçu » ; une phrase de plus de 15 secondes (jusqu'à 90 s) arrive en un seul message ;
+- la voix reste la même d'un message à l'autre (plus d'annonce « Compris, j'envoie… » avec la voix système de l'iPhone) ; en cas de changement, lire `server/logs/tts_fallback.log` ;
+- l'alerte « VibeObs n'a pas répondu » apparaît après 60 s sans réponse ; un envoi avec l'appli connectée renvoie `sent: 1` ;
+- pendant une action longue, VibeObs envoie un point d'une phrase toutes les minutes, et reste silencieux quand l'appli est déconnectée.
