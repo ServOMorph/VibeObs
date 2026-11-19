@@ -3,6 +3,17 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.2 — 2026-11-19
+
+### Ajouté
+- `run_codex.ps1` (`_codex/` et `templates/delegation/scripts/`) : politique centrale `~/.codex/politique_delegation.json` (modèle, binaire, seuils 50 % sur 5 h et 60 % sur 7 jours lus dans `~/.codex/sessions`, attente du verrou, comportement si le quota est illisible), verrou exclusif `~/.codex/delegation.lock` (code de sortie 4), blocage par seuil (code 5), mode `-Statut`, mode `-Passe` (arguments transmis, `-m` remplacé par le modèle de la politique).
+- `_codex/garde_codex.sh` (kit et `templates/delegation/scripts/`, copié par `install.ps1`) : appel gardé de Codex pour les scripts shell (prompt par tube, `--search`).
+- Zone `MAINTENANCE/` (alias `maintenance`, agent créé par `/create_agent`) : maintenance du kit et conception du template « maintenance », à faire.
+
+### Modifié
+- `.claude/commands/delegation.md` : règle « Politique Codex » ; `templates/delegation/install.ps1` copie aussi `garde_codex.sh`.
+- Hors kit : `creation_llm` — `lancer.sh`, `sujet.sh` et `veille.sh` passent par `garde_codex.sh`, `modele.sh` supprimé (commit local `7f71e65`).
+
 ## v7.1 — 2026-11-19
 
 ### Ajouté

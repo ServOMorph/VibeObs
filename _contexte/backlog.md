@@ -60,3 +60,9 @@
 - [finding] `garde_vram.py` bloque les commandes Bash dont le simple texte contient un nom de modèle ou d'outil GPU (messages envoyés au téléphone, notes de journal), même sans lancer de GPU ; contourné trois fois le 2026-11-19 en reformulant.
   - fait quand: le hook ne bloque plus une commande qui ne fait que citer un nom, ou la règle est actée comme suffisante.
   - réf: `scripts/garde_vram.py`.
+- [piste] Valider le correctif `templates/discord_com` en conditions réelles : deux notifications consécutives reçues et file finale `idle`.
+  - fait quand: le bot local reçoit puis transmet deux notifications réelles sans perte.
+  - réf: `templates/discord_com/` ; le dossier local du bot (non versionné) n'existe plus sur le disque au 2026-11-16, à retrouver ou recréer avant le test.
+- [dette] Résoudre le vol de focus avant la phase 3 de `_archives/local/roadmap_reprise_multicompte.md` (archivée hors Git le 2026-11-05). 2026-10-12 : correctif `focus_fiable.ps1` codé et branché dans 4 scripts, validé en syntaxe seulement.
+  - fait quand: le test manuel de `tests_manuels.md` (section « vol de focus ») est validé et `roadmap_reprise_multicompte.md` + `SKILL.md` sont mis à jour.
+  - réf: `_archives/local/roadmap_reprise_multicompte.md` ; `skills/chatgpt-orchestrateur/scripts/focus_fiable.ps1` ; `tests_manuels.md`.

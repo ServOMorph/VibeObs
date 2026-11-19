@@ -12,18 +12,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-19 : délégation à Codex bloquée par l'utilisateur (interrupteur `~/.codex/delegation_bloquee.flag`, abonnement Plus à ménager) ; consigne « modèle Codex » commitée dans 31 `AGENTS.md`, texte final non validé.
-- 2026-11-19 : relais téléphone exercé plusieurs heures (pont de Roberto corrigé) ; veille IA et essais comparatifs exécutés par VertIA_v3 ; quatre décisions de l'utilisateur en attente.
-- Kit v7.1 : consigne Codex, interrupteur de blocage, règles « jamais de silence », « réponses courtes », « points toutes les minutes » du relais ; `/update` v6.10 diffusé le 2026-11-18 à six projets, Shorts créé (`D:\ServOMorph\Shorts`).
-- Kit v6.8 : `check_docs.py` signale les guides en retard sur leurs sources ; hook PreCompact qui trace le compactage dans le journal de session (essai réel en attente).
-- Restent à mettre à jour : creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne. Non poussés : Rayonne_Toi et challenge_magic (sans remote), Moulin du Sud (sans amont), Nettoyage_PC.
+- 2026-11-19 : délégation à Codex régie par une politique centrale (`~/.codex/politique_delegation.json` : modèle, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou par appel, `_codex/garde_codex.sh`) ; flag manuel toujours en place ; `creation_llm` branché (commit local `7f71e65`) ; wrapper à diffuser à `CreaZik_V3` et `VertIA_v3`, consigne des 31 `AGENTS.md` à corriger.
+- 2026-11-19 : zone `MAINTENANCE/` créée (alias `maintenance`), template « maintenance » à concevoir ; relais téléphone exercé, quatre décisions de la veille VertIA_v3 en attente de l'utilisateur.
+- Kit v7.2 (v6.8 : `check_docs.py` signale les guides en retard, hook PreCompact en essai réel en attente) ; `/update` v6.10 diffusé le 2026-11-18 à six projets, Shorts créé (`D:\ServOMorph\Shorts`).
+- Restent à mettre à jour : creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne. Non poussés : Rayonne_Toi et challenge_magic (sans remote), Moulin du Sud (sans amont), Nettoyage_PC, `creation_llm` (2 commits).
 - Système d'apprentissage : phase 1 (v0) en cours, session gardienne `sereniatech_dev` (`roadmap_apprentissage.md`).
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
 
-- 2026-11-17 : la poussée des commits d'un projet suivi se fait projet par projet, après `git fetch`, avec la confirmation de l'utilisateur à chaque push, jamais automatiquement.
-- 2026-11-17 : relais téléphone — VibeObs raccordé directement au pont de Roberto, transmet les réponses de l'utilisateur mot pour mot après relecture, ne décide jamais seul (cas 3 du registre) ; mise en place chez Roberto sur dérogation (cas 4) ; envoi UTF-8 par `send_message.py`, jamais `curl`.
 - 2026-11-17 : le tunnel du pont est ouvert par l'utilisateur seul ; ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul pour l'instant).
 - 2026-11-17 : `telephone.md` du kit diffusé aux projets suivis par le cas 1 (copie directe, commits locaux), sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (session gardienne).
 - 2026-11-17 : push de tous les projets suivis sur ordre explicite de l'utilisateur, en fast-forward après `git fetch`, jamais de force ; un projet qui diverge est laissé à sa décision.
@@ -32,3 +29,5 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-18 : projet Shorts extrait de `SérénIATech_dev/Communication/SHORTS` vers `D:\ServOMorph\Shorts` (copie, rôle généralisé à tout demandeur, git local, jeton VRAM `shorts` conservé) ; `SérénIATech_dev` supprime son dossier après validation dans sa session.
 - 2026-11-19 : délégation à Codex bloquée par l'utilisateur le temps de limiter l'usage de l'abonnement Plus ; l'interrupteur est un fichier (`~/.codex/delegation_bloquee.flag`), le lever se fait par l'utilisateur seul.
 - 2026-11-19 : veille IA lancée à la voix, exécutée par VertIA_v3 sans accord préalable à chaque lancement (périmètre : sources officielles, aucun Codex) ; VibeObs décide des téléchargements de modèles de 20 Go ou moins pour les essais, jamais de l'acceptation d'une licence ni de l'installation d'un logiciel.
+- 2026-11-19 : délégation à Codex régie par une politique centrale (`~/.codex/politique_delegation.json`) : modèle et binaire imposés, seuils 50 % (5 h) et 60 % (7 jours) lus dans les rollout, verrou exclusif par appel, blocage par défaut si le quota est illisible ; wrapper déterministe, pas de session LLM gardienne ; flag manuel conservé comme interrupteur d'urgence.
+- 2026-11-19 : zone `MAINTENANCE/` créée (rôle sans nom de projet suivi ; écriture sur tout le dépôt du kit, lecture des projets de `DEPLOYMENTS.md`) ; template « maintenance » à concevoir plus tard.

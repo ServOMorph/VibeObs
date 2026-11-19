@@ -1796,3 +1796,27 @@ Valider en conditions réelles la section « Relais téléphone » de `tests_man
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-19 (suite du 2026-11-18)
+
+## Décisions prises
+- Délégation à Codex bloquée par l'utilisateur (quota Plus à ménager) : interrupteur `~/.codex/delegation_bloquee.flag`, contrôle dans `run_codex.ps1` ; consigne « modèle Codex » (31 `AGENTS.md` commités) en suspens, texte final non validé.
+- Relais téléphone exercé plusieurs heures : règles « jamais de silence », « réponses courtes », « points toutes les minutes » ajoutées à `relais_telephone.md` ; pont de Roberto corrigé (regroupement, coupures de 15 à 90 s, voix).
+- Veille IA (chat, image, vidéo) lancée à la voix et exécutée par VertIA_v3, puis essais comparatifs sous jeton GPU ; VibeObs décide des téléchargements de 20 Go ou moins, jamais des licences ni des installations.
+
+## Livrables produits ou modifiés
+- Kit v7.1 : `delegation.md`, `relais_telephone.md`, `run_codex.ps1` (kit et template), `templates/AGENTS.md`, README de la délégation ; `_contexte/relais_idees_veille.md` et `veille_sources_fiables.md` (nouveaux).
+- Hors kit : consigne dans 31 `AGENTS.md` (commits locaux) ; rapports de VertIA_v3 (`veille/`, `benchmarks/veille/rapport_resultats.md`).
+
+## Hypothèses validées / invalidées
+- VALIDE : `gpt-6.1-sol`, `gpt-6.2-sol` et `gpt-6-astra` acceptés par le binaire de l'application (0.167), `gpt-6.1-sol` refusé par le Codex npm 0.154 ; VertIA_v3 préempte `creation_llm` par le jeton (liste d'urgences, tâche interruptible).
+- INVALIDE : « jeton de `creation_llm` jusqu'à 13:54 » (périmé : renouvelé, dernier relevé jusqu'au 2026-11-20 08:46).
+- EN ATTENTE : correctifs de Roberto non testés sur un vrai iPhone ; décisions de l'utilisateur sur la veille et le blocage Codex.
+
+## Prochaine étape exacte
+Faire trancher le blocage Codex et les quatre décisions de la veille VertIA_v3 ; recharger l'appli iPhone et rejouer la section « Relais téléphone » de `tests_manuels.md` ; `/update` v5.37 de `SérénIATech_dev` sur accord.
+
+## Question bloquante pour la session suivante
+Lever ou garder le blocage de la délégation à Codex, et avec quel mécanisme de limite ?

@@ -13,7 +13,7 @@ $Projet = (Resolve-Path -LiteralPath $Projet).ProviderPath
 if (-not $NomProjet) { $NomProjet = Split-Path -Leaf $Projet }
 $destination = Join-Path $Projet '_codex'
 New-Item -ItemType Directory -Path $destination -Force | Out-Null
-foreach ($name in @('run_codex.ps1', 'run_opencode.ps1')) {
+foreach ($name in @('run_codex.ps1', 'run_opencode.ps1', 'garde_codex.sh')) {
     $target = Join-Path $destination $name
     if (-not (Test-Path -LiteralPath $target)) {
         $sourceText = [IO.File]::ReadAllText((Join-Path $PSScriptRoot "scripts\$name"))
