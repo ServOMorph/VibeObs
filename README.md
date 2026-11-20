@@ -152,11 +152,11 @@ L'historique des versions est consigné dans `CHANGELOG.md`.
 
 ## Dépendances
 
-**Aucune dépendance externe Python.** Le lanceur Ollama utilise uniquement la bibliothèque standard (`urllib`, `json`, `os`, `sys`). Aucun `requirements.txt` nécessaire.
+**Aucune dépendance externe Python.** Le lanceur Ollama utilise uniquement la bibliothèque standard (`urllib`, `json`, `os`, `sys`). Aucun `requirements.txt` nécessaire. Seule exception : `MAINTENANCE/scripts/lancer_sur_bureau.py` (placement de fenêtres sur un bureau virtuel Windows) exige `pyvda`, installé dans un venv hors dépôt.
 
 ## État actuel
 
-Kit **v7.2** (2026-11-19) : politique centrale de la délégation à Codex (`~/.codex/politique_delegation.json` : modèle et binaire imposés, seuils 50 % sur 5 h et 60 % sur 7 jours lus dans les sessions de Codex, verrou exclusif par appel ; `run_codex.ps1 -Statut` et `-Passe`, `_codex/garde_codex.sh` pour les scripts shell) en plus de l'interrupteur `~/.codex/delegation_bloquee.flag` ; zone `MAINTENANCE/` (template « maintenance » à concevoir) ; de la v7.1 : section « Modèle Codex » du modèle `AGENTS.md` et règles du relais téléphone (jamais de silence, réponses courtes, points toutes les minutes).
+Kit **v7.3** (2026-11-20) : scripts de la zone `MAINTENANCE/` (`migrer_projet.py` : migration d'un projet d'un lecteur à l'autre avec copie vérifiée, correction des chemins et quarantaine ; `lancer_sur_bureau.py` ; `balayer_chemins.py`) ; de la v7.2 (2026-11-19) : politique centrale de la délégation à Codex (`~/.codex/politique_delegation.json` : modèle et binaire imposés, seuils 50 % sur 5 h et 60 % sur 7 jours lus dans les sessions de Codex, verrou exclusif par appel ; `run_codex.ps1 -Statut` et `-Passe`, `_codex/garde_codex.sh` pour les scripts shell) en plus de l'interrupteur `~/.codex/delegation_bloquee.flag` ; zone `MAINTENANCE/` (template « maintenance » à concevoir) ; de la v7.1 : section « Modèle Codex » du modèle `AGENTS.md` et règles du relais téléphone (jamais de silence, réponses courtes, points toutes les minutes).
 
 ## Vérifier le lanceur Ollama
 

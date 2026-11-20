@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.3 — 2026-11-20
+
+### Ajouté
+- `MAINTENANCE/scripts/migrer_projet.py` : migration d'un dossier de projet vers un autre emplacement en cinq étapes (`analyser`, `copier`, `verifier`, `chemins`, `quarantaine`) ; comparaison SHA-256, détection des processus actifs, option `--sans-lecture`, `.env*` jamais lus, `CLAUDE.md`, `AGENTS.md` et `GEMINI.md` jamais modifiés, quarantaine datée avec `manifeste.md` (exige `--confirmer`) ; 12 tests dans `MAINTENANCE/tests/test_migrer_projet.py`.
+- `MAINTENANCE/scripts/lancer_sur_bureau.py` : lance un `.bat` et place ses fenêtres sur un bureau virtuel Windows nommé (dépendance `pyvda`, venv hors dépôt).
+- `MAINTENANCE/scripts/balayer_chemins.py` : balayage en lecture seule des chemins vers un ancien dossier racine.
+- `MAINTENANCE/_contexte/backlog.md` : dette et pistes de la zone.
+
 ## v7.2 — 2026-11-19
 
 ### Ajouté
