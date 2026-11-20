@@ -45,7 +45,7 @@ Depuis le projet cible, copier `BRIEF_TEMPLATE.md` dans un fichier de travail et
 | OpenCode gratuit | Tâches simples et bien délimitées ; brief entièrement autonome. |
 | Agents Claude | Travail nécessitant un navigateur ou un contexte long. |
 
-Modèle Codex : `gpt-6.1-sol` uniquement, jamais `astra` (`-m <modèle>` change le modèle ; `gpt-6.1-astra` est refusé par un compte ChatGPT, essai du 2026-11-18). Le lanceur ne passe pas `-m` : le modèle vient de `~/.codex/config.toml`, à garder sur `gpt-6.1-sol`.
+Modèle Codex : `gpt-6.2-sol` uniquement, jamais `astra` (`-m <modèle>` change le modèle ; `gpt-6.1-astra` est refusé par un compte ChatGPT, essai du 2026-11-18). Le lanceur ne passe pas `-m` : le modèle vient de `~/.codex/config.toml`, à garder sur `gpt-6.2-sol`.
 
 ## Sécurité et économie
 

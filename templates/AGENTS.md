@@ -14,7 +14,8 @@ pertinent(s) — jamais tout le dossier. Absence de `DOCUMENTATION/` : rien à c
 
 ## Modèle Codex
 
-Quand l'agent est Codex : modèle `gpt-6.1-sol` uniquement, jamais `astra`. Le modèle est
-affiché en tête de la sortie (ligne `model:`) ; le vérifier au démarrage. En cas de refus du
-modèle (« not supported with a ChatGPT account »), s'arrêter et le signaler, ne pas choisir un
-autre modèle.
+Quand l'agent est Codex : le modèle est imposé par la politique centrale
+`~/.codex/politique_delegation.json` (champ `modele`) ; ne jamais le choisir ni le changer à la
+main. Il est affiché en tête de la sortie (ligne `model:`) ; le vérifier au démarrage. En cas de
+refus du modèle (« not supported with a ChatGPT account »), s'arrêter et le signaler, ne pas choisir
+un autre modèle.

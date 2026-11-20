@@ -17,7 +17,7 @@ $politiqueFile = Join-Path $codexHome 'politique_delegation.json'
 $verrouFile = Join-Path $codexHome 'delegation.lock'
 
 $politique = [ordered]@{
-    modele = 'gpt-6.1-sol'
+    modele = 'gpt-6.2-sol'
     binaire = ''
     seuil_5h = 50
     seuil_7j = 60
@@ -107,8 +107,12 @@ function Test-QuotaCodex {
 if ($Statut) {
     $etat = Test-QuotaCodex
     Write-Output ("modele={0} seuil_5h={1} seuil_7j={2} attente_verrou_s={3}" -f $politique.modele, $politique.seuil_5h, $politique.seuil_7j, $politique.attente_verrou_s)
-    Write-Output ("flag_blocage={0}" -f (Test-Path -LiteralPath $blocage))
-    Write-Output ("releve={0} p5h={1} p7j={2} verdict={3}" -f $etat.releve, $etat.p5, $etat.p7, $etat.message)
+    $bloque = Test-Path -LiteralPath $blocage
+    Write-Output ("flag_blocage={0}" -f $bloque)
+    Write-Output ("releve={0} p5h={1} p7j={2} verdict_quota={3}" -f $etat.releve, $etat.p5, $etat.p7, $etat.message)
+    if ($bloque) { Write-Output "DELEGATION BLOQUEE par l'utilisateur ($blocage) : ne pas lancer Codex, le flag prime sur le quota." }
+    elseif ($etat.ok) { Write-Output 'DELEGATION AUTORISEE : flag absent, quota sous les seuils.' }
+    else { Write-Output 'DELEGATION REFUSEE : seuil de quota atteint.' }
     exit 0
 }
 
@@ -188,13 +192,13 @@ try {
         $arguments = @('exec', '-m', [string]$politique.modele, '--sandbox', $Sandbox, '-C', $Root, '-o', $report, $message)
         if ($DryRun) {
             $quoted = @($cx) + $arguments | ForEach-Object { "'" + $_.Replace("'", "''") + "'" }
-            Write-Output ('& ' + ($quoted -join ' ') + " *> '$($log.Replace("'", "''"))'")
-            return
+            Write-Output ('& ' + ($quoted -join ' ') + " 2>&1 | ForEach-Object { `$_.ToString() } | Out-File -LiteralPath '$($log.Replace("'", "''"))' -Encoding utf8")
+            exit 0
         }
         $previousPreference = $ErrorActionPreference
         try {
             $ErrorActionPreference = 'Continue'
-            & $cx @arguments *> $log
+            & $cx @arguments 2>&1 | ForEach-Object { $_.ToString() } | Out-File -LiteralPath $log -Encoding utf8
             $code = $LASTEXITCODE
         } finally { $ErrorActionPreference = $previousPreference }
         if (Test-Path -LiteralPath $log) {
