@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.4 — 2026-11-20
+
+### Modifié
+- Délégation à Codex : modèle imposé `gpt-6.2-sol` par la politique centrale (essais réels du 2026-11-19 et du 2026-11-20, 0 NativeCommandError) ; section « Modèle Codex » de `templates/AGENTS.md` réécrite (renvoi à la politique, aucun nom de modèle), appliquée à 26 `AGENTS.md` de projets et à celui de `VertIA_v3` et de `SérénIATech_dev` après leurs validations.
+- `run_codex.ps1` (`_codex/` et `templates/delegation/scripts/`) : stderr de Codex redirigé sans NativeCommandError ; `-DryRun` sort en code 0 et affiche la commande réelle ; `-Statut` se termine par un verdict explicite (BLOQUEE, AUTORISEE ou REFUSEE), le flag primant sur le quota ; wrapper diffusé à `CreaZik_V3` et `VertIA_v3`.
+- `delegation.md` et `templates/delegation/README.md` : modèle `gpt-6.2-sol`, verdict de `-Statut`.
+
+### Corrigé
+- Deux appels simultanés testés : verrou exclusif sérialisé (codes 0 et 0), flag d'urgence rétabli puis levé sur ordre de l'utilisateur à la clôture.
+
 ## v7.3 — 2026-11-20
 
 ### Ajouté

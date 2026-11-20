@@ -1820,3 +1820,27 @@ Faire trancher le blocage Codex et les quatre décisions de la veille VertIA_v3 
 
 ## Question bloquante pour la session suivante
 Lever ou garder le blocage de la délégation à Codex, et avec quel mécanisme de limite ?
+
+---
+
+# Session du 2026-11-19 (soir)
+
+## Décisions prises
+- Blocage Codex : politique centrale `~/.codex/politique_delegation.json` (modèle, binaire), seuils 50 % sur 5 h et 60 % sur 7 jours lus dans les rollout de Codex, verrou exclusif par appel ; wrapper déterministe plutôt qu'une session LLM gardienne.
+- Mode passe-plat (`-Passe`, `_codex/garde_codex.sh`) pour les scripts shell (prompt par tube, `--search`) ; `creation_llm` branché, `modele.sh` supprimé.
+- Zone `MAINTENANCE/` créée (rôle sans nom de projet suivi ; écriture sur tout le dépôt, lecture des projets de `DEPLOYMENTS.md`) pour concevoir le template « maintenance », à faire plus tard.
+
+## Livrables produits ou modifiés
+- Kit v7.2 : `_codex/run_codex.ps1`, `_codex/garde_codex.sh`, `templates/delegation/` (script, `install.ps1`), `delegation.md`, zone `MAINTENANCE/`, `zones.md`, `base_connaissances/ameliorations_create_agent.md`.
+- Hors kit : `~/.codex/politique_delegation.json` ; `creation_llm` commit local `7f71e65`.
+
+## Hypothèses validées / invalidées
+- VALIDE : lecture du quota (`rate_limits`) dans les rollout ; verrou (code 4) et seuils (code 5) en profil isolé ; essais réels (tâche en lecture seule, tube avec `--search`, modèle imposé `gpt-6.1-sol`).
+- INVALIDE : brancher `creation_llm` sur le wrapper existant (ni `--search` ni tube) -> mode passe-plat.
+- EN ATTENTE : diffusion à `CreaZik_V3` et `VertIA_v3` ; deux appels réels simultanés ; consigne des `AGENTS.md`.
+
+## Prochaine étape exacte
+Diffuser le wrapper à `VertIA_v3` et `CreaZik_V3` (accord de chaque session), corriger la consigne « modèle Codex » des `AGENTS.md` (trois validations), puis trancher le flag ; faire trancher les quatre décisions de la veille `VertIA_v3` ; `/start maintenance` pour le template.
+
+## Question bloquante pour la session suivante
+Lever le flag de blocage de la délégation à Codex une fois le wrapper diffusé, ou le garder ?
