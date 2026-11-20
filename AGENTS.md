@@ -117,6 +117,14 @@ Aucun déclaré.
 ## Délégation Ollama
 Pour les tâches répétitives et templated (commits, posts, changelogs, données de test, digest de logs), déléguer à Ollama via `python ollama_call.py "<prompt>"` plutôt que de traiter en cloud. Ne jamais envoyer de données sensibles à un modèle cloud.
 
+## Modèle Codex
+
+Quand l'agent est Codex : le modèle est imposé par la politique centrale
+`~/.codex/politique_delegation.json` (champ `modele`) ; ne jamais le choisir ni le changer à la
+main. Il est affiché en tête de la sortie (ligne `model:`) ; le vérifier au démarrage. En cas de
+refus du modèle (« not supported with a ChatGPT account »), s'arrêter et le signaler, ne pas choisir
+un autre modèle.
+
 ## Spécificités projet
 
 Section réservée aux règles propres à ce projet, hors périmètre du kit. Cette section est préservée intégralement par `/update` (jamais écrasée ni fusionnée avec le contenu du kit). Convention : toute règle liée à une section précise du fichier doit la référencer explicitement par son titre (ex: "Section Roadmap : ..."), plutôt que compter sur la position physique de cette section (toujours en fin de fichier).
