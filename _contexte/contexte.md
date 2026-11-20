@@ -12,10 +12,10 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-20 : délégation à Codex en service (flag levé par l'utilisateur, il reste l'interrupteur d'urgence) : modèle `gpt-6.2-sol` imposé par `~/.codex/politique_delegation.json`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou par appel, `-Statut` à verdict explicite ; wrapper diffusé à `CreaZik_V3` et `VertIA_v3`, consigne « Modèle Codex » appliquée à 26 `AGENTS.md`, `VertIA_v3` et `SérénIATech_dev`. Reste : premier appel réel flag levé, recomptage des `AGENTS.md`, `.gitattributes` de `creation_llm`.
+- 2026-11-20 : délégation à Codex en service (flag levé par l'utilisateur, il reste l'interrupteur d'urgence) : modèle `gpt-6.2-sol` imposé par `~/.codex/politique_delegation.json`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou par appel, `-Statut` à verdict explicite ; wrapper diffusé à `CreaZik_V3` et `VertIA_v3`, consigne « Modèle Codex » appliquée à 26 `AGENTS.md`, `VertIA_v3` et `SérénIATech_dev`. Premier appel réel flag levé réussi, plus aucun `AGENTS.md` en `gpt-6.1-sol`. Reste : `.gitattributes` de `creation_llm`, section absente de `VibeObs/AGENTS.md`.
 - 2026-11-19 : zone `MAINTENANCE/` créée (alias `maintenance`), template « maintenance » à concevoir ; relais téléphone exercé, quatre décisions de la veille VertIA_v3 en attente de l'utilisateur.
 - Kit v7.4 (v6.8 : `check_docs.py` signale les guides en retard, hook PreCompact en essai réel en attente) ; `/update` v6.10 diffusé le 2026-11-18 à six projets, Shorts créé (`D:\ServOMorph\Shorts`).
-- Restent à mettre à jour : creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne. Non poussés : Rayonne_Toi et challenge_magic (sans remote), Moulin du Sud (sans amont), Nettoyage_PC, `creation_llm` (2 commits), 24 projets (commit `AGENTS.md` du 2026-11-20).
+- Restent à mettre à jour : creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne. Non poussés : Rayonne_Toi et challenge_magic (sans remote), Moulin du Sud (sans amont), Nettoyage_PC, `creation_llm` (2 commits), (commits `AGENTS.md` du 2026-11-20 poussés pour 22 projets).
 - Système d'apprentissage : phase 1 (v0) en cours, session gardienne `sereniatech_dev` (`roadmap_apprentissage.md`).
 
 ## Décisions structurantes
