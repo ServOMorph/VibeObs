@@ -260,3 +260,5 @@
 - 2026-11-17 : la poussée des commits d'un projet suivi se fait projet par projet, après `git fetch`, avec la confirmation de l'utilisateur à chaque push, jamais automatiquement.
 - 2026-11-17 : relais téléphone — VibeObs raccordé directement au pont de Roberto, transmet les réponses de l'utilisateur mot pour mot après relecture, ne décide jamais seul (cas 3 du registre) ; mise en place chez Roberto sur dérogation (cas 4) ; envoi UTF-8 par `send_message.py`, jamais `curl`.
 - 2026-11-17 : le tunnel du pont est ouvert par l'utilisateur seul ; ni VibeObs ni aucune session ne le connaît ni ne l'ouvre ; modes de session : PC (`/telephone off`), écran (`/telephone`), voix (`/telephone roberto`, activé par l'utilisateur seul pour l'instant).
+- 2026-11-17 : `telephone.md` du kit diffusé aux projets suivis par le cas 1 (copie directe, commits locaux), sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (session gardienne).
+- 2026-11-17 : push de tous les projets suivis sur ordre explicite de l'utilisateur, en fast-forward après `git fetch`, jamais de force ; un projet qui diverge est laissé à sa décision.

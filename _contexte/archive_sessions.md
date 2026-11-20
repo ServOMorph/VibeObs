@@ -1844,3 +1844,25 @@ Diffuser le wrapper à `VertIA_v3` et `CreaZik_V3` (accord de chaque session), c
 
 ## Question bloquante pour la session suivante
 Lever le flag de blocage de la délégation à Codex une fois le wrapper diffusé, ou le garder ?
+---
+# Session du 2026-11-20
+
+## Décisions prises
+- Modèle Codex imposé `gpt-6.2-sol` ; consigne « Modèle Codex » diffusée aux `AGENTS.md` (écriture directe par lot sur les projets sans session ouverte, proposition par message à `VertIA_v3` et `SérénIATech_dev`).
+- `run_codex.ps1` : `-DryRun` en code 0 et verdict explicite de `-Statut` (le flag prime sur le quota), après le blocage constaté par `VertIA_v3`.
+- Flag de blocage levé par l'utilisateur après le commit du kit ; il reste l'interrupteur d'urgence ; aucune notification aux autres sessions (elles le découvriront).
+- Push en fast-forward des commits `AGENTS.md` et wrapper de 22 projets, sur ordre de l'utilisateur.
+
+## Livrables produits ou modifiés
+- Kit v7.4 : `_codex/run_codex.ps1`, `templates/delegation/scripts/run_codex.ps1`, `templates/AGENTS.md`, `templates/delegation/README.md`, `.claude/commands/delegation.md`, `CHANGELOG.md`, `README.md` (commits `c4882e3`, `4c805ce`, poussés).
+- Hors kit : `AGENTS.md` de 28 projets plus `VertIA_v3` et `SérénIATech_dev` ; wrapper de `CreaZik_V3` et `VertIA_v3`.
+
+## Hypothèses validées / invalidées
+- VALIDE : deux appels simultanés sérialisés par le verrou ; `-DryRun` code 0 ; `-Statut` BLOQUEE puis AUTORISEE ; appel réel flag levé réussi (code 0, `gpt-6.2-sol`, 0 NativeCommandError) ; plus aucun `AGENTS.md` en `gpt-6.1-sol` dans `D:\ServOMorph` (parcours à 5 niveaux).
+- EN ATTENTE : `.gitattributes` de `creation_llm` ; `VibeObs/AGENTS.md` sans la section.
+
+## Prochaine étape exacte
+Trancher le `.gitattributes` de `creation_llm` et la section « Modèle Codex » de `VibeObs/AGENTS.md` ; faire trancher les quatre décisions de la veille `VertIA_v3` ; `/start maintenance` pour le template.
+
+## Question bloquante pour la session suivante
+Aucune

@@ -56,16 +56,16 @@
 - Suivre l'extraction de `SHORTS` vers le projet `D:\ServOMorph\Shorts` (2026-11-18). 2026-11-18/19 : `sereniatech_dev` a supprimé `Communication/SHORTS` (commit `d6d08c8`) après comparaison, sans renvoi vers le nouveau dossier ; la session `shorts-4c` est arrêtée à la demande de l'utilisateur. Restent : sort de `ecoute_commentaires.md` du nouveau projet (dépend encore de `Communication/Youtube/Outils/yt_commentaires.py` de SérénIATech_dev), déclaration des secrets YouTube dans le `CLAUDE.md` de Shorts (trois validations), `/update` v5.37 de `SérénIATech_dev` demandé par sa gardienne (à lancer depuis VibeObs sur accord de l'utilisateur ; garder la ligne « Étape 14 » du bloc projet de son `close.md`, ne pas restaurer le bloc « zone shorts »).
   - fait quand: le sort de `ecoute_commentaires.md` est décidé, les secrets YouTube sont déclarés ou écartés, et l'`/update` de `SérénIATech_dev` est fait ou son report tracé.
   - réf: `DEPLOYMENTS.md` (ligne Shorts) ; `D:\ServOMorph\Shorts\_contexte\signals.md` ; `DOCUMENTATION/30_decisions/prises_de_controle.md`.
-- Terminer la délégation à Codex (2026-11-19, 2026-11-20). Fait : politique centrale `~/.codex/politique_delegation.json` (modèle `gpt-6.2-sol`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou exclusif), `run_codex.ps1` corrigé (stderr, `-DryRun` code 0, verdict explicite de `-Statut`) diffusé à `CreaZik_V3` et `VertIA_v3`, consigne « Modèle Codex » appliquée à tous les `AGENTS.md` de `D:\ServOMorph` qui l'avaient (recomptage du 2026-11-20 sur 5 niveaux : 62 fichiers, plus aucun en `gpt-6.1-sol`) et à `SérénIATech_dev` (commit `eb4e962`), deux appels simultanés testés, premier appel réel flag levé réussi (`model: gpt-6.2-sol`), kit commité (`4c805ce`), flag levé par l'utilisateur le 2026-11-20 (reste l'interrupteur d'urgence : lui seul le repose ou le retire ; les sessions le découvriront au premier appel, décision de l'utilisateur). Restent : `.gitattributes` `* text=auto eol=lf` dans `creation_llm` (`core.autocrlf` à true, décision de l'utilisateur) ; section « Modèle Codex » absente de `VibeObs/AGENTS.md` (trois validations) ; `AGENTS.md` de `Nettoyage_PC` (sans git) et de `Moulin du Sud` (non suivi par git) écrits sans commit ; l'action P2 de `creation_llm` sur le binaire 0.154 est probablement obsolète (à clore par sa session).
-  - fait quand: le `.gitattributes` de `creation_llm` est tranché et la section « Modèle Codex » de `VibeObs/AGENTS.md` est ajoutée ou écartée par l'utilisateur.
+- Terminer la délégation à Codex (2026-11-19, 2026-11-20). Fait : politique centrale `~/.codex/politique_delegation.json` (modèle `gpt-6.2-sol`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou exclusif), `run_codex.ps1` corrigé (stderr, `-DryRun` code 0, verdict explicite de `-Statut`) diffusé à `CreaZik_V3` et `VertIA_v3`, consigne « Modèle Codex » appliquée à tous les `AGENTS.md` de `D:\ServOMorph` qui l'avaient (recomptage du 2026-11-20 sur 5 niveaux : 62 fichiers, plus aucun en `gpt-6.1-sol`) et à `SérénIATech_dev` (commit `eb4e962`), deux appels simultanés testés, premier appel réel flag levé réussi (`model: gpt-6.2-sol`), kit commité (`4c805ce`), flag levé par l'utilisateur le 2026-11-20 (reste l'interrupteur d'urgence : lui seul le repose ou le retire ; les sessions le découvriront au premier appel, décision de l'utilisateur). 2026-11-20 (soir) : section « Modèle Codex » ajoutée à `VibeObs/AGENTS.md` (trois validations, commit `28bd2a1`). Restent : `.gitattributes` `* text=auto eol=lf` dans `creation_llm` (`core.autocrlf` à true, décision de l'utilisateur ; le fichier n'existe pas au relevé du 2026-11-20) ; `AGENTS.md` de `Nettoyage_PC` (sans git) et de `Moulin du Sud` (non suivi par git) écrits sans commit ; l'action P2 de `creation_llm` sur le binaire 0.154 est probablement obsolète (à clore par sa session).
+  - fait quand: le `.gitattributes` de `creation_llm` est tranché par l'utilisateur.
   - réf: `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `templates/AGENTS.md` ; `~/.codex/politique_delegation.json` ; `D:\ServOMorph\creation_llm\.gitattributes` ; `AGENTS.md`.
-- [à transférer vers VertIA_v3] Décisions de l'utilisateur après la veille IA du 2026-11-19 (rapports `veille/2026-11-19*.md` et `benchmarks/veille/rapport_resultats.md` chez VertIA_v3) : (1) accepter ou non la licence Hugging Face de FLUX 3 Klein pour l'essayer ; (2) installer ou mettre à jour un ComfyUI pour tester MOSS-Image (environ 13 Go + environnement torch ; le ComfyUI actuel est en v0.38.0, avant son support) ; (3) modèle de chat par défaut : `gemma4:e4b` (5 à 6 fois plus rapide, qualité comparable sur 5 cas courts) ou `gemma4:12b` ; (4) lire la licence de Qwen-Image 2.1 (Qwen Research License) avant tout usage commercial. VibeObs a autorisé, dans la délégation de l'utilisateur, les téléchargements de modèles de 20 Go ou moins pour les essais, jamais l'acceptation d'une licence ni l'installation de logiciel.
-  - fait quand: les quatre décisions sont prises par l'utilisateur et tracées dans le `signals.md` de VertIA_v3.
-  - réf: `D:\ServOMorph\VertIA_v3\benchmarks\veille\rapport_resultats.md` ; `D:\ServOMorph\VertIA_v3\veille\` ; `_contexte/relais_idees_veille.md` ; `_contexte/veille_sources_fiables.md`.
 - Créer le template « maintenance » (demande de l'utilisateur du 2026-11-19) : maintenance complète d'un projet, fichiers et code, kit sans oubli pour des projets propres, à insérer dans les projets suivis (`creation_llm`, `sereniatech_dev`, `vertia`, VibeObs, d'autres ensuite). Zone `MAINTENANCE/` créée (alias `maintenance`, écriture sur tout le dépôt, lecture des projets de `DEPLOYMENTS.md`). À relever d'abord : la commande `/maintenance` du kit et les maintenances déjà en place dans ces projets. Aucun travail de conception commencé.
   - fait quand: le template de base est défini (périmètre complet de la maintenance) et inséré dans au moins un projet suivi, avec ses contrôles exercés.
   - réf: `MAINTENANCE/agent_role.md` ; `.claude/commands/maintenance.md` ; `DOCUMENTATION/20_guides/maintenance_du_kit.md` ; `DEPLOYMENTS.md`.
-Backlog : 22 entrées (dette 1, finding 2, amélioration 5, piste 14 ; dont 1 sans `réf:` précis) — `_contexte/backlog.md`
+- Appliquer le périmètre de VibeObs (décision du 2026-11-20) aux actions ouvertes de ce fichier : pour chacune, la conserver, la transférer à la session ou zone propriétaire, ou l'écarter, une par une, avec l'accord de l'utilisateur.
+  - fait quand: chaque action ouverte est conservée, transférée (écriture chez le propriétaire constatée) ou écartée par l'utilisateur.
+  - réf: `_contexte/contexte.md` § Périmètre ; `_contexte/signals.md`.
+Backlog : 22 entrées (dette 1, finding 2, amélioration 5, piste 14) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -78,24 +78,23 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-20
+# Session du 2026-11-20 (soir)
 
 ## Décisions prises
-- Modèle Codex imposé `gpt-6.2-sol` ; consigne « Modèle Codex » diffusée aux `AGENTS.md` (écriture directe par lot sur les projets sans session ouverte, proposition par message à `VertIA_v3` et `SérénIATech_dev`).
-- `run_codex.ps1` : `-DryRun` en code 0 et verdict explicite de `-Statut` (le flag prime sur le quota), après le blocage constaté par `VertIA_v3`.
-- Flag de blocage levé par l'utilisateur après le commit du kit ; il reste l'interrupteur d'urgence ; aucune notification aux autres sessions (elles le découvriront).
-- Push en fast-forward des commits `AGENTS.md` et wrapper de 22 projets, sur ordre de l'utilisateur.
+- Section « Modèle Codex » ajoutée à `VibeObs/AGENTS.md` après les trois validations (insérée avant « Spécificités projet »).
+- Veille IA traitée par `VertIA_v3` seule ; en relais Roberto, VibeObs relaie sans garder en mémoire le contenu des sessions, sauf impact sur le kit ou template réutilisable.
+- Périmètre de VibeObs validé comme base : kit de protocole (commandes, templates, `/update`, `DEPLOYMENTS.md`), zones documentation, pedagogie, maintenance, relais téléphone/Roberto et Intercom, délégation Codex/OpenCode/Ollama ; hors périmètre : travail et décisions métier des projets suivis.
 
 ## Livrables produits ou modifiés
-- Kit v7.4 : `_codex/run_codex.ps1`, `templates/delegation/scripts/run_codex.ps1`, `templates/AGENTS.md`, `templates/delegation/README.md`, `.claude/commands/delegation.md`, `CHANGELOG.md`, `README.md` (commits `c4882e3`, `4c805ce`, poussés).
-- Hors kit : `AGENTS.md` de 28 projets plus `VertIA_v3` et `SérénIATech_dev` ; wrapper de `CreaZik_V3` et `VertIA_v3`.
+- `AGENTS.md` : section « Modèle Codex » ajoutée (commit `28bd2a1`).
+- `_contexte/contexte.md` (§ Périmètre), `_contexte/signals.md`, `CHANGELOG.md` (v7.5), `README.md`, `DOCUMENTATION/_contexte/signals.md` (action de triage) : mis à jour à la clôture.
 
 ## Hypothèses validées / invalidées
-- VALIDE : deux appels simultanés sérialisés par le verrou ; `-DryRun` code 0 ; `-Statut` BLOQUEE puis AUTORISEE ; appel réel flag levé réussi (code 0, `gpt-6.2-sol`, 0 NativeCommandError) ; plus aucun `AGENTS.md` en `gpt-6.1-sol` dans `D:\ServOMorph` (parcours à 5 niveaux).
-- EN ATTENTE : `.gitattributes` de `creation_llm` ; `VibeObs/AGENTS.md` sans la section.
+- VALIDE : `D:\ServOMorph\creation_llm\.gitattributes` n'existe pas (liste du dossier).
+- EN ATTENTE : `.gitattributes` de `creation_llm` ; tri des actions ouvertes selon le périmètre ; les quatre décisions de la veille VertIA ne figurent pas dans le `signals.md` de `VertIA_v3` (session ouverte, aucune écriture) mais dans son rapport `benchmarks/veille/rapport_resultats.md`.
 
 ## Prochaine étape exacte
-Trancher le `.gitattributes` de `creation_llm` et la section « Modèle Codex » de `VibeObs/AGENTS.md` ; faire trancher les quatre décisions de la veille `VertIA_v3` ; `/start maintenance` pour le template.
+Trier les actions ouvertes de `signals.md` selon le périmètre (conserver, transférer, écarter), une par une ; trancher le `.gitattributes` de `creation_llm` ; `/start maintenance` pour le template.
 
 ## Question bloquante pour la session suivante
 Aucune

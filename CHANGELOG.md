@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.5 — 2026-11-20
+
+### Modifié
+- `AGENTS.md` du kit : section « Modèle Codex » ajoutée (renvoi à la politique centrale, aucun nom de modèle), après les trois validations.
+
+### Ajouté
+- Périmètre de VibeObs défini dans `_contexte/contexte.md` (dedans, dehors, règles gardées) ; veille IA exclue du périmètre, traitée par `VertIA_v3`.
+
 ## v7.4 — 2026-11-20
 
 ### Modifié

@@ -29,6 +29,10 @@
   - fait quand: guide créé et ligne d'INDEX ajoutée, ou décision explicite de ne pas documenter.
   - réf: MAINTENANCE/scripts/migrer_projet.py, MAINTENANCE/_contexte/contexte.md
 
+- [P2|ouvert|source=kit] Décider si le périmètre de VibeObs (décision du 2026-11-20 : dedans, dehors, règles gardées) mérite un document dans `10_concepts/` et une ligne d'`INDEX.md`
+  - fait quand: document créé et ligne d'INDEX ajoutée, ou décision explicite de ne pas le documenter.
+  - réf: `_contexte/contexte.md` § Périmètre (racine du kit)
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14
