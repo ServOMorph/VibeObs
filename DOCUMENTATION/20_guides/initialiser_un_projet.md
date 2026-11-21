@@ -17,8 +17,8 @@ Commande : `/init_projet <chemin vers le projet>` — s'exécute depuis le kit. 
    de `contexte.md` s'initialise à « Non définie à la création » et se complète au fil du projet
 2. Projet sans git : question complémentaire sur le backup miroir Google Drive (rclone) à chaque /close
 3. Copie les templates, crée ou complète le `.gitignore` de sécurité, remplace les placeholders, committe dans le projet cible
-4. Si l'utilisateur le demande, enchaîne dans la même exécution sur `/create_agent` ou
-   `/create_team`, après l'initialisation complète du projet
+4. Si l'utilisateur le demande, enchaîne dans la même exécution sur `/create_agent`, après
+   l'initialisation complète du projet
 5. Enregistre le déploiement dans `DEPLOYMENTS.md` (registre hors git)
 
 La racine du projet cible est l'argument — jamais demandée.

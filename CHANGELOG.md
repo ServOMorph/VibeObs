@@ -3,6 +3,16 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v8.0 — 2026-11-21
+
+### Supprimé
+- `INTERCOM_AGENT.md` : protocole de l'Intercom agent abandonné (décision de l'utilisateur du 2026-11-21 ; la messagerie `intercom/` est conservée, Codex n'ayant pas de remplacement testé). Référence retirée de `_contexte/backlog.md`.
+- `/create_team` (`.claude/commands/create_team.md`) et son guide `DOCUMENTATION/20_guides/creer_une_equipe.md` : commande abandonnée sur décision de l'utilisateur (2026-11-21). `init_projet.md` (kit et template) : la question Q9 ne propose plus que `/create_agent`, l'étape 6 est réécrite. `create_parallel_team.md` : renvois à `/create_team` remplacés. Références retirées de `README.md`, `llms.txt`, `DOCUMENTATION/INDEX.md`, `protocole_vibecoding.md`, `initialiser_un_projet.md`, `equipes_paralleles.md`, `scripts/check_kit.py` (`KIT_ONLY_COMMANDS`) et de la piste du backlog. Le template `init_projet.md` modifié reste à diffuser aux projets par `/update`.
+- `templates/team_TEMPLATE.md` : orphelin depuis la suppression de `/create_team`, mis en quarantaine (`D:\_quarantaine\2026-11-21\VibeObs\templates\`, avec manifeste).
+
+### Modifié
+- `_contexte/signals.md`, `_contexte/backlog.md`, `tests_manuels.md` : tri selon le périmètre de VibeObs (actions et entrées de backlog écartées, transférées ou clôturées) ; sections de `tests_manuels.md` validées par l'utilisateur retirées (relais téléphone, registre des artifacts).
+
 ## v7.7 — 2026-11-21
 
 ### Modifié

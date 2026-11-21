@@ -1889,3 +1889,25 @@ Trier les actions ouvertes de `signals.md` selon le périmètre (conserver, tran
 
 ## Question bloquante pour la session suivante
 Aucune
+---
+# Session du 2026-11-21
+
+## Décisions prises
+- `/maintenance` définie (quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, purge à 30 jours, refacto en analyse seule, retours et journal versionné) puis exercée pour la première fois sur le kit : lots A (chemins de `DEPLOYMENTS.md`) et B (`relais_idees_veille.md`, veille hors périmètre) exécutés ; C et D reportés en session de travail ; E noté comme écart voulu (section « Modèle Codex » propre à `AGENTS.md`) ; F transmis ; G laissé.
+- Intercom agent abandonné (décision de l'utilisateur : les sessions communiquent déjà par `ListAgents` et `SendMessage`) ; `VibeObs Général` prévenu.
+- Cinq améliorations de `/maintenance` retenues par l'utilisateur et appliquées (kit v7.7) ; registre des artifacts clôturé par l'utilisateur.
+- Tri des actions selon le périmètre : écartées (tri du backlog v5.22 à v5.25, relance des sessions Remote Control, upload Drive d'Appli) ; relais portail IA refusé ; création de `DOCUMENTATION/` chez `SérénIATech_dev` et port `backup_project.py` transférés ; backup rclone de `SérénIATech_dev` conservé.
+
+## Livrables produits ou modifiés
+- `.claude/commands/maintenance.md`, `CHANGELOG.md`, `README.md`, `llms.txt`, `Protocole_start_close_context.md` : kit v7.7 (5 améliorations issues du premier essai réel).
+- `_contexte/maintenance_historique.md` et `_contexte/maintenance_retours.md` : créés ; `_contexte/relais_idees_veille.md` : en quarantaine (`D:\_quarantaine\2026-11-21\VibeObs\`) ; `DEPLOYMENTS.md` (local, ignoré) : 2 chemins corrigés ; `MAINTENANCE/_contexte/signals.md`, `DOCUMENTATION/_contexte/signals.md` et `tests_manuels.md` : mis à jour.
+
+## Hypothèses validées / invalidées
+- VALIDE : premier essai réel de `/maintenance` : étape 0 sans erreur sans historique, quarantaine avec manifeste et origine disparue, historique créé, étape 11 posée (réponse « oui »).
+- EN ATTENTE : étape 11 avec réponse « non » ; refacto à étudier non inscrit au backlog faute de validation : `CHANGELOG.md` de 98 Ko.
+
+## Prochaine étape exacte
+Confirmer le périmètre de l'abandon d'Intercom puis le retirer ; traiter les écarts reportés par la maintenance ; poursuivre le tri des actions selon le périmètre ; relever les maintenances des projets suivis puis tirer le template (`/start maintenance`).
+
+## Question bloquante pour la session suivante
+L'abandon d'Intercom couvre-t-il `INTERCOM_AGENT.md` seulement, ou aussi la messagerie `intercom/` ?

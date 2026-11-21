@@ -12,7 +12,6 @@ Base de connaissance interne de l'équipe d'agents, progressive disclosure. Touj
 | [20_guides/mettre_a_jour_un_projet.md](20_guides/mettre_a_jour_un_projet.md) | /update : réaligner un projet déployé sur le kit, préalable repo propre, déviation sur choix structurant | guide, update, spécificités | 2026-11-14 |
 | [20_guides/sessions_start_close.md](20_guides/sessions_start_close.md) | Travailler en session : /start, /close, /compact, journal de session, roadmap et archivage proposé | guide, session, roadmap, journal | 2026-11-14 |
 | [20_guides/creer_un_agent.md](20_guides/creer_un_agent.md) | /create_agent : créer un agent (zone à rôle) | guide, agent | 2026-11-14 |
-| [20_guides/creer_une_equipe.md](20_guides/creer_une_equipe.md) | /create_team : créer une équipe hiérarchique d'agents | guide, équipe, communication | 2026-08-23 |
 | [20_guides/equipes_paralleles.md](20_guides/equipes_paralleles.md) | /create_parallel_team : créer une équipe Git isolée par worktree | guide, équipe, worktree, git | 2026-09-04 |
 | [20_guides/messagerie_interprojets.md](20_guides/messagerie_interprojets.md) | Installer et utiliser Intercom entre projets locaux | guide, communication, urgence | 2026-08-23 |
 | [20_guides/sauvegarde_rclone.md](20_guides/sauvegarde_rclone.md) | Sauvegarde Google Drive par rclone : un remote par projet, limite de l'auto-mode sur l'upload | guide, backup, rclone, sécurité | 2026-11-14 |

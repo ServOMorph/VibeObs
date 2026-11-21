@@ -10,15 +10,14 @@ model: sonnet
 
 Créer une équipe hiérarchique dont chaque membre travaille dans son propre worktree Git et sa
 branche dédiée. Cette commande est réservée aux chantiers où des agents peuvent écrire du code en
-parallèle : elle complète `/create_team`, qui reste adapté aux zones documentaires ou aux tâches
-sans écriture concurrente.
+parallèle.
 
 La commande vit uniquement dans le kit. Elle ne crée jamais de worktree dans le checkout principal
 du projet cible.
 
 ## [PREFLIGHT] — aucune écriture
 
-1. Résoudre le projet cible, le dossier d'équipe et la description comme `/create_team`. Vérifier
+1. Résoudre le projet cible, le dossier d'équipe et la description comme `/create_agent`. Vérifier
    `.git/`, `.claude/zones.md`, `start.md` et `close.md`. Le dossier d'équipe est normalisé en
    MAJUSCULES ; son alias est en minuscules.
 2. Lire `git status --short` et le signaler. Préserver tout résidu existant : ne jamais le stager,

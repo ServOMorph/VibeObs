@@ -102,14 +102,6 @@ Vérifier dans une session réelle du kit que :
 - l'alerte `/compact` s'affiche en début de réponse au-delà de 600 000 tokens de contexte ;
 - `python scripts/console_distante.py lire <pid>` restitue l'écran d'une session `claude` et `touche <pid> ENTREE` répond à une validation, PC verrouillé.
 
-## Registre des artifacts (v6.5)
-
-Vérifier dans un projet mis à jour en v6.5 et ayant un artifact que :
-- `/close` pose une question en un clic sur chaque artifact créé ou modifié et absent du registre ;
-- « Oui » inscrit une ligne `nom | lien | rôle | source | MAJ` dans `_contexte/artifacts.md`, « Non » n'écrit rien ;
-- un artifact déjà inscrit est mis à jour sans question ;
-- `/start` charge le registre au démarrage suivant.
-
 ## Hook PreCompact (`scripts/hook_precompact.py`)
 
 Vérifier dans une session réelle du kit que :
@@ -117,18 +109,6 @@ Vérifier dans une session réelle du kit que :
 - le résumé produit conserve la tâche en cours, les fichiers modifiés non commités et la prochaine étape ;
 - un compactage automatique écrit la ligne avec `auto` ;
 - le compactage n'échoue jamais à cause du hook.
-
-## Relais téléphone (`/relais_telephone`, `/telephone roberto`, v6.10)
-
-Vérifier en conditions réelles que :
-- une écoute de plus de 30 minutes est relancée à son expiration, sans écoute en double (verrou) ;
-- une seconde session en mode `/telephone roberto` (autre que VertIA_v3) envoie sa question à VibeObs et reçoit la réponse validée ;
-- le relais tient hors du PC (téléphone sur réseau mobile, tunnel ouvert par l'utilisateur) ;
-- `/close` prochain d'une session en mode roberto ne laisse pas d'écoute ni de verrou résiduels.
-- (corrections du 2026-11-19, appli iPhone rechargée) un message vocal reçoit un accusé immédiat et un bip « reçu » ; une phrase de plus de 15 secondes (jusqu'à 90 s) arrive en un seul message ;
-- la voix reste la même d'un message à l'autre (plus d'annonce « Compris, j'envoie… » avec la voix système de l'iPhone) ; en cas de changement, lire `server/logs/tts_fallback.log` ;
-- l'alerte « VibeObs n'a pas répondu » apparaît après 60 s sans réponse ; un envoi avec l'appli connectée renvoie `sent: 1` ;
-- pendant une action longue, VibeObs envoie un point d'une phrase toutes les minutes, et reste silencieux quand l'appli est déconnectée.
 
 ## /maintenance v7.7 — étape 11 avec réponse « non »
 

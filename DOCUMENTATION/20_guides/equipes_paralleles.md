@@ -8,7 +8,7 @@ maj: 2026-09-04
 # Équipes d'agents parallèles
 
 Commande : `/create_parallel_team <chemin_projet_cible> <dossier_equipe> [description ou fichier]`.
-Elle complète `/create_team` quand au moins un agent doit modifier du code en parallèle.
+Elle sert quand au moins un agent doit modifier du code en parallèle.
 
 ## Modèle
 

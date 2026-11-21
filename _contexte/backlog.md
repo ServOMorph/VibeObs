@@ -1,29 +1,8 @@
 # Backlog — VibeObs
 
-- [piste] Roadmap `agents_paralleles` archivée le 2026-11-05 (phase 2 inachevée) : faire exécuter et vérifier un cycle `/start`/`/close` par agent (`ONBOARD`, `RETOURS`) dans son worktree d'Appli_TSA_SDI_TDAH ; phase 3 (évolutions produit) non commencée.
-  - fait quand: un cycle par agent est exécuté et vérifié, ou l'abandon du pilote est décidé.
-  - réf: `_archives/roadmap_agents_paralleles.md`
-- [amélioration] Pousser le commit d'init de `D:\ServOMorph\CreaZik_V3` et renseigner sa stack (laissée vide à l'init) lors du premier `/start CreaZik_V3`.
-  - fait quand: `git -C D:\ServOMorph\CreaZik_V3 status` montre la branche à jour avec `origin/main`, et `_contexte/contexte.md` de CreaZik_V3 porte une stack.
-  - réf: `D:\ServOMorph\CreaZik_V3` commit `a8b74a8` ; `DEPLOYMENTS.md`.
-- [piste] Démarrer les agents `textes` et `modeles_llm` de `D:\ServOMorph\CreaZik_V3` et valider leurs chartes en conditions réelles.
-  - fait quand: `/start textes` et `/start modeles_llm` chargent leur charte sans warning, et `modeles_llm` crée `D:\AI\Musique\` sans écrire dans `webradio/tests_ace/`.
-  - réf: `D:\ServOMorph\CreaZik_V3\TEXTES\agent_role.md`, `D:\ServOMorph\CreaZik_V3\MODELES_LLM\agent_role.md`, `AGENTS_REGISTRY.md`.
-- [piste] Démarrer l'agent `jeux` d'`Appli_TSA_SDI_TDAH` et valider sa charte, notamment la faisabilité de `run_jeux.py` (accueil sans onboarding, outils ouverts) sans modifier `src/`.
-  - fait quand: `/start jeux` charge la charte sans warning, `run_jeux.py` ouvre l'accueil avec jeux cliquables sans écrire dans `src/`, ou l'arbitrage nécessaire est tracé.
-  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\JEUX\agent_role.md`, `AGENTS_REGISTRY.md`.
-- [piste] Démarrer le projet test `site_internet_ST_v3` (refonte serenia-tech.fr + banc d'essai VibeObs) depuis une session ouverte sur sa racine.
-  - fait quand: `/start site_st` charge le contexte sans warning et la phase 1 de la roadmap est engagée.
-  - réf: `D:\ServOMorph\site_internet_ST_v3\roadmap_site_v3.md`, `DEPLOYMENTS.md`.
-- [piste] Démarrer l'agent `espace_l-invariable` de `SérénIATech_dev` (`Gestion clients/Clients/Espace_L-Invariable`), puis renommer son dossier en majuscules une fois le verrou levé.
-  - fait quand: `/start espace_l-invariable` charge la charte sans warning ; renommage en `ESPACE_L-INVARIABLE` fait avec mise à jour de `clients.dossier` (id 8) dans `UI/sereniatech.db`, `zones.md` et `upload_short_atelier.py`.
-  - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\Gestion clients\Clients\Espace_L-Invariable\_contexte\signals.md` (P2), `AGENTS_REGISTRY.md`.
 - [amélioration] Mettre en œuvre l'harmonisation automatique `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (source unique `INSTRUCTIONS.md` + 3 wrappers, portée générique/spécifique demandée avant chaque écriture, prise en contexte insistée) — reportée à plus tard sur ordre utilisateur.
   - fait quand: source + wrappers déployés, `/update` propage sans écraser les blocs spécifiques, `check_kit.py` contrôle l'écart.
   - réf: `templates/AGENTS.md` ; `.claude/commands/update.md` étape 7 ; `CHANGELOG.md` v5.3 ; `_contexte/archive_sessions.md` session 2026-09-04.
-- [piste] Valider la généricité de `/create_team` et d’Intercom sur un second projet cible.
-  - fait quand: une seconde installation indépendante échange et accuse réception des messages.
-  - réf: `.claude/commands/create_team.md`, `INTERCOM_AGENT.md`.
 - [finding] Vérifier dans le rendu de l'interface utilisateur que la liste des templates de `/create_projet` s'affiche sans décalage de numérotation (0 en tête). Exécuté le 2026-10-12 (8 templates listés), rendu côté utilisateur non confirmé.
   - fait quand: l'utilisateur confirme l'affichage `0. Aucun template` suivi de `1.` à `8.` sans renumérotation.
   - réf: `.claude/commands/create_projet.md` étape [TEMPLATES] 17.

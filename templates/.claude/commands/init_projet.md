@@ -48,16 +48,12 @@ Initialiser le protocole vibecoding dans le projet cible à partir de ce kit de 
    intervient aussi sur ce projet. Jamais créé automatiquement, toujours demandé. (oui/non)
 9. Voulez-vous ajouter des agents ? (oui/non)
    - Si "non" : poursuivre normalement.
-   - Si "oui" : demander "Un agent seul ou une équipe ?"
-     - **Agent seul** : après l'initialisation, enchaîner immédiatement sur la collecte et
-       l'exécution de `/create_agent` pour ce projet.
-     - **Équipe** : après l'initialisation, demander une description collée ou le chemin d'un
-       fichier de description, puis enchaîner immédiatement sur `/create_team`.
+   - Si "oui" : après l'initialisation, enchaîner immédiatement sur la collecte et l'exécution de
+     `/create_agent` pour ce projet.
 
-Ne jamais créer d'agent ou d'équipe avant que l'initialisation soit terminée : les commandes
-ont besoin de `.claude/zones.md`, `start.md` et `close.md`. La création choisie fait partie de la
-même exécution, mais reste soumise à sa confirmation explicite avant les écritures propres aux
-agents/équipes.
+Ne jamais créer d'agent avant que l'initialisation soit terminée : la commande a besoin de
+`.claude/zones.md`, `start.md` et `close.md`. La création fait partie de la même exécution, mais
+reste soumise à sa confirmation explicite avant les écritures propres aux agents.
 
 La racine du projet cible ne doit jamais être demandée si $ARGUMENTS est fourni.
 
@@ -181,10 +177,9 @@ git -C "$ARGUMENTS" add GEMINI.md    # seulement si "oui" à Q8
 git -C "$ARGUMENTS" commit -m "init: protocole vibecoding — zone <alias>"
 ```
 
-### 6. Créer les agents ou l'équipe demandée (si Q9 = "oui")
+### 6. Créer les agents demandés (si Q9 = "oui")
 
-- Une fois les étapes 3 à 5 terminées, exécuter dans le même flux `/create_agent` ou
-  `/create_team` selon le choix de Q9.
+- Une fois les étapes 3 à 5 terminées, exécuter dans le même flux `/create_agent`.
 - Ne pas redemander le chemin du projet cible : utiliser `$ARGUMENTS` résolu.
 - Conserver les listes de fichiers produites par la sous-commande pour le bilan final.
 
