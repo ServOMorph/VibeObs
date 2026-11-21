@@ -9,10 +9,9 @@ Centraliser la documentation métier du kit en fichiers Markdown (base de connai
 - Stack du projet parent : Claude Code, Markdown, Python stdlib, PowerShell/Bash ; zéro dépendance externe
 
 ## État actuel (réécrit intégralement à chaque /close)
-Base : INDEX.md + 7 documents ; `scripts/check_docs.py` et `check_kit.py` passent sur la base réelle.
-Le contrôle est intégré à `/doc_sync` ; les CRLF non suivis sont exclus conformément au contrat « fichiers versionnés ».
+Guides d'initialisation, de mise à jour et de maintenance alignés sur le kit v8.0 (commit 56fa3cc, 2026-11-21) ; `check_docs.py` et `check_kit.py` passent.
 `/close` met les informations durables d'une autre zone en file de triage Documentation, sans publication automatique.
-Livraison v4.5 commitée et poussée ; prochaine étape : valider le signal sur une clôture réelle.
+9 actions P2 ouvertes dans `signals.md` (dont la validation du signal `/close` sur une clôture réelle d'une autre zone).
 
 ## Décisions structurantes (append only — 10 entrées max, 5 lignes max/entrée, archiver au-delà)
 - 2026-08-21 : Initialisation du protocole vibecoding.
@@ -20,3 +19,4 @@ Livraison v4.5 commitée et poussée ; prochaine étape : valider le signal sur 
 - 2026-08-21 : Bootstrap réalisé (INDEX.md + 10_concepts/ + 20_guides/ + 30_decisions/, lint OK).
 - 2026-08-21 : Contrôle qualité de la base spécifié (check_docs.py mécanique + phase doc_sync sémantique), portage en session kit, pas de commande dédiée.
 - 2026-09-04 : `check_docs.py` est intégré à `/doc_sync` et le signal `/close` → Documentation est livré ; la publication d'une information reste soumise à validation utilisateur.
+- 2026-11-21 : demande d'une autre zone (Maintenance) traitée par message ; écriture limitée à DOCUMENTATION/, commit après accord explicite de l'utilisateur.

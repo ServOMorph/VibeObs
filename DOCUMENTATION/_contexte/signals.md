@@ -1,4 +1,4 @@
-# Signals — documentation   (MAJ 2026-11-20)
+# Signals — documentation   (MAJ 2026-11-21)
 
 ## Actions ouvertes
 - [P2|ouvert|zone kit] Valider le signal `/close` → Documentation sur une clôture réelle d'une autre zone
@@ -13,9 +13,9 @@
   - fait quand: `20_guides/creer_un_agent.md` ligne [SORTIE] mise à jour, ou décision explicite de ne pas le documenter.
   - réf: DOCUMENTATION/20_guides/creer_un_agent.md, .claude/commands/create_agent.md étape 10
 
-- [P2|ouvert|source=kit] Traiter les 2 guides signalés « probablement en retard » par l'avertissement de `check_docs.py` (kit v6.8) : `initialiser_un_projet.md`, `mettre_a_jour_un_projet.md` (`maintenance_du_kit.md` mis à jour le 2026-11-20, kit v7.6) ; décider aussi si le hook PreCompact (`scripts/hook_precompact.py`) entre dans un guide.
-  - fait quand: `python scripts/check_docs.py` n'affiche plus d'avertissement pour ces guides (mis à jour ou `maj` revue), et décision tracée pour le hook PreCompact.
-  - réf: scripts/check_docs.py, scripts/hook_precompact.py, DOCUMENTATION/20_guides/
+- [P2|ouvert|source=kit] Décider si le hook PreCompact (`scripts/hook_precompact.py`) entre dans un guide (les 3 guides en retard ont été mis à jour le 2026-11-21, commit 56fa3cc, `check_docs.py` sans avertissement)
+  - fait quand: guide créé ou mis à jour, ou décision explicite de ne pas documenter le hook.
+  - réf: scripts/hook_precompact.py, DOCUMENTATION/20_guides/
 
 - [P2|ouvert|source=kit] Mettre à jour la ligne d'`INDEX.md` de `30_decisions/prises_de_controle.md` (cas 3 relais par téléphone et cas 4 mise en place du relais dans Roberto ajoutés le 2026-11-17, date `maj` du fichier passée à 2026-11-17) et décider si `20_guides/mode_telephone.md` documente `/telephone roberto` et `/relais_telephone` (kit v6.9)
   - fait quand: ligne d'INDEX et date alignées sur le fichier, et `20_guides/mode_telephone.md` mis à jour ou décision explicite de ne pas documenter le mode roberto.
@@ -37,21 +37,20 @@
   - fait quand: le guide est mis à jour ou retiré selon le périmètre confirmé, ou décision explicite de le conserver.
   - réf: `DOCUMENTATION/20_guides/messagerie_interprojets.md` ; `_contexte/signals.md` (racine du kit)
 
-## Dernière session (2026-11-14)
+## Dernière session (2026-11-21)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
-# Session du 2026-11-14
+# Session du 2026-11-21
 
 ## Décisions prises
-- Guides alignés sur le kit v6.0 : journal de session (v5.44), `/start` réduit (v5.38 à v5.40), `## Fin` après le push conditionnel (v5.37), `/init_projet` sans question de stack (v6.0), `/update` étape 8bis.
+- Demande de Maintenance VibeObs (sur instruction de l'utilisateur) acceptée : mise à jour de 3 guides sans toucher au kit ; commit autorisé par l'utilisateur, VibeObs Général prévenu.
 
 ## Livrables produits ou modifiés
-- `20_guides/sessions_start_close.md`, `20_guides/mettre_a_jour_un_projet.md`, `20_guides/initialiser_un_projet.md` : mis à jour, lignes `INDEX.md` datées 2026-11-14.
-- `20_guides/creer_un_agent.md` aligné sur v5.20 ; `20_guides/sauvegarde_rclone.md`, `maintenance_du_kit.md`, `mode_telephone.md` créés ; sous-section « Hooks de zone » relue face aux templates `on_*_TEMPLATE.md` (fidèle).
-- `30_decisions/journal.md` : deux entrées ajoutées.
+- `20_guides/initialiser_un_projet.md`, `mettre_a_jour_un_projet.md`, `maintenance_du_kit.md` et `INDEX.md` (dates 2026-11-21) : mis à jour, commités (56fa3cc).
 
 ## Hypothèses validées / invalidées
-- VALIDE : `python scripts/check_docs.py` passe après les modifications.
-- EN ATTENTE : relecture des modifications par l'utilisateur ; commit non fait.
+- VALIDE : `check_docs.py` et `check_kit.py` passent après modification.
+- INVALIDE : les changements v8.0 (`/create_team`, `init_projet.md`) étaient annoncés non commités ; ils l'étaient déjà (66bc9e0), rien écrasé.
+- EN ATTENTE : décision sur le hook PreCompact ; guide `messagerie_interprojets.md` à relire après l'abandon de l'Intercom agent.
 
 ## Prochaine étape exacte
 Valider le signal `/close` → Documentation sur une clôture réelle d'une autre zone.
