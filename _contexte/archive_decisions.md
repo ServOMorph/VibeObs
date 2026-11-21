@@ -263,3 +263,4 @@
 - 2026-11-17 : `telephone.md` du kit diffusé aux projets suivis par le cas 1 (copie directe, commits locaux), sans activer le mode roberto (activé par l'utilisateur seul) ; `SérénIATech_dev` exclu (session gardienne).
 - 2026-11-17 : push de tous les projets suivis sur ordre explicite de l'utilisateur, en fast-forward après `git fetch`, jamais de force ; un projet qui diverge est laissé à sa décision.
 - 2026-11-18 : `/migration_canva` supprimé du kit (test abandonné, migration Canva faite à la main ; automatisation impossible, `playwright` hors service) ; historique du `CHANGELOG.md` conservé.
+- 2026-11-18 : `/update` d'un projet à session ouverte inactive : VibeObs arrête la session (processus `claude`) à la demande de l'utilisateur puis met à jour ; actions classées « Plus tard » en bloc sur son choix ; session active ou en attente de clic laissée de côté.

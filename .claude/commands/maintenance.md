@@ -2,7 +2,7 @@
 disable-model-invocation: true
 description: Maintenance d'un projet — contrôles, nettoyage, suppression par quarantaine, analyse de refacto, rapport par lots, amélioration de la commande
 model: sonnet
-allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git mv:*), Bash(git check-ignore:*), Bash(python scripts/check_kit.py), Bash(python scripts/check_docs.py), Bash(python -m pytest:*), Bash(ls:*), Bash(wc:*), Bash(diff:*), Bash(mkdir:*), Bash(mv:*)
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git ls-files:*), Bash(git mv:*), Bash(git check-ignore:*), Bash(python scripts/check_kit.py), Bash(python scripts/check_docs.py), Bash(python -m pytest:*), Bash(ls:*), Bash(wc:*), Bash(diff:*), Bash(mkdir:*), Bash(mv:*), Bash(du:*), Bash(grep:*)
 ---
 
 # /maintenance
@@ -68,7 +68,10 @@ Lister la racine et chaque dossier de premier niveau, puis repérer :
   `.md`) et sans modification récente ;
 - les copies divergentes d'un modèle ou d'un template placées ailleurs que dans leur dossier d'origine ;
 - les notes de conception qui n'implémentent rien et dont le sujet est tranché ;
-- les fichiers identiques entre eux : vérifier si l'identité est voulue avant de la signaler.
+- les fichiers identiques entre eux : vérifier si l'identité est voulue avant de la signaler ;
+- les éléments volumineux ignorés par Git : `git status --short --ignored` et `du -sh` des dossiers de
+  premier niveau et des éléments ignorés ; signaler les plus lourds avec leur origine probable, sans
+  les ouvrir (un état actif est possible).
 
 Un candidat à la suppression est classé « quarantaine » avec sa raison et sa référence entrante
 éventuelle.
@@ -146,8 +149,13 @@ Pour chaque lot validé, et seulement lui :
 - supprimer : quarantaine. Créer `D:\_quarantaine\<AAAA-MM-JJ>\<projet>\`, y déplacer l'élément en
   conservant son arborescence relative, puis ajouter une ligne à `manifeste.md` du même dossier :
   chemin d'origine, destination, raison, suivi par Git oui/non, date. Vérifier que l'origine a
-  disparu et que la destination existe. Une référence entrante trouvée à l'étape 3 est corrigée dans le
-  même lot, ou le lot est refusé ;
+  disparu et que la destination existe. L'en-tête de `manifeste.md` est
+  `| origine | destination | raison | suivi Git | date |`. Un fichier suivi déplacé laisse une
+  suppression non commitée (`git status` : `D`) : la dire au rapport, `/close` la commitera. Une
+  référence entrante trouvée à l'étape 3 est corrigée dans le même lot, ou le lot est refusé ;
+- transférer à la session propriétaire : quand la décision revient à une autre session (projet suivi,
+  zone), l'envoyer par `SendMessage` (information ou demande, jamais d'écriture dans son dossier) et
+  noter le lot comme transféré au journal ;
 - purge définitive : lot distinct, présenté seulement pour une quarantaine plus ancienne que le délai du
   bloc projet, validé élément par élément ;
 - relancer les contrôles de l'étape 1 après chaque lot et signaler tout nouvel écart ;
@@ -207,7 +215,10 @@ Projet : kit VibeObs (`D:\ServOMorph\VibeObs`).
   refaire la comparaison. Contrôler en plus : `DOCUMENTATION/INDEX.md` (guides en retard sur le
   `CHANGELOG.md`), `base_connaissances/` (date de gel, version décrite, recouvrement avec
   `DOCUMENTATION/`, références entrantes), `DEPLOYMENTS.md` (projets dont le dossier n'existe plus,
-  versions en retard, information sans action automatique).
+  versions en retard, information sans action automatique). Pour les chemins : prendre le texte
+  avant « (github.com/ » ; ne tester que les tableaux de projets, pas les lignes rclone, netlify,
+  discord ni intercom ; quand un chemin est absent, chercher un dossier de même nom sous
+  `D:\ServOMorph` avant de conclure à sa disparition.
 - Étape 6 : `check_kit.py` couvre l'exclusion de `.env`, `*.pid`, `DEPLOYMENTS.md`, `AGENTS_REGISTRY.md`
   et les noms sensibles suivis ; contrôler en plus les fichiers de bots et bases locales hors de ses
   motifs.

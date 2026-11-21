@@ -33,6 +33,10 @@
   - fait quand: document créé et ligne d'INDEX ajoutée, ou décision explicite de ne pas le documenter.
   - réf: `_contexte/contexte.md` § Périmètre (racine du kit)
 
+- [P2|ouvert|source=kit] Relire `20_guides/messagerie_interprojets.md` et `INDEX.md` après l'abandon de l'Intercom agent (décision de l'utilisateur du 2026-11-21 : les sessions communiquent déjà par `ListAgents` et `SendMessage`) ; périmètre exact (`INTERCOM_AGENT.md` seul ou aussi la messagerie `intercom/`) à confirmer par la racine
+  - fait quand: le guide est mis à jour ou retiré selon le périmètre confirmé, ou décision explicite de le conserver.
+  - réf: `DOCUMENTATION/20_guides/messagerie_interprojets.md` ; `_contexte/signals.md` (racine du kit)
+
 ## Dernière session (2026-11-14)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
 # Session du 2026-11-14

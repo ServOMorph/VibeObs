@@ -130,11 +130,7 @@ Vérifier en conditions réelles que :
 - l'alerte « VibeObs n'a pas répondu » apparaît après 60 s sans réponse ; un envoi avec l'appli connectée renvoie `sent: 1` ;
 - pendant une action longue, VibeObs envoie un point d'une phrase toutes les minutes, et reste silencieux quand l'appli est déconnectée.
 
-## /maintenance v7.6 — premier essai réel
+## /maintenance v7.7 — étape 11 avec réponse « non »
 
-Lancer `/maintenance` sur le kit et vérifier que :
-- l'étape 0 lit le bloc projet et signale l'absence de `maintenance_historique.md` sans erreur ;
-- un lot « quarantaine » déplace un élément vers `D:\_quarantaine\<date>\VibeObs\` avec une ligne dans `manifeste.md`, et l'origine a disparu ;
-- l'étape 10 crée `_contexte/maintenance_historique.md` (une ligne) ;
-- l'étape 11 pose la question d'amélioration, et un « non » termine sans rien écrire.
+Au prochain `/maintenance` (essai du 2026-11-21 : étapes 0, 9, 10 et 11 avec « oui » observées) : répondre « non » à l'étape 11 et vérifier que la maintenance se termine sans rien écrire dans `maintenance_retours.md` ni `journal_session.md`.
 

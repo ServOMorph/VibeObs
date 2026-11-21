@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.7 — 2026-11-21
+
+### Modifié
+- `.claude/commands/maintenance.md` : retours du premier essai réel (5 propositions de `_contexte/maintenance_retours.md`, acceptées par l'utilisateur). `allowed-tools` : `du` et `grep` ajoutés. Étape 3 : repérage des éléments volumineux ignorés par Git. Étape 9 : en-tête de `manifeste.md` fixé, suppression non commitée d'un fichier suivi signalée (commitée par `/close`), action « transférer à la session propriétaire ». Bloc projet, étape 4 : lecture des chemins de `DEPLOYMENTS.md` (suffixe `(github.com/`, tableaux de projets seulement, recherche sous `D:\ServOMorph` avant de conclure à une disparition).
+
+### Ajouté
+- `_contexte/maintenance_historique.md` : première ligne (2026-11-21, premier essai réel du kit).
+
 ## v7.6 — 2026-11-20
 
 ### Modifié
