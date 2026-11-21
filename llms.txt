@@ -2,7 +2,7 @@
 
 > Kit de protocole Claude Code pour le vibecoding long : commandes /start, /close, /init_projet, /update, /create_memory qui persistent le contexte entre sessions. Zéro infrastructure, multi-zones, délégation locale Ollama optionnelle.
 
-Version : v7.5 (2026-11-20).
+Version : v7.6 (2026-11-20).
 
 ## Quoi
 
@@ -35,7 +35,7 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 - `/intercom_inbox` : lit et traite la boîte Intercom.
 - `/intercom_listen` : surveille les messages inter-projets entrants.
 - `/cherche_fonction <description>` : recherche une fonctionnalité déjà codée dans d'anciens projets.
-- `/maintenance` : maintenance régulière du kit (contrôles, reliquats, dérives de documentation, rapport, lots validés un par un).
+- `/maintenance` : maintenance d'un projet (contrôles, nettoyage, quarantaine, analyse de refacto, dérives de documentation, rapport, lots validés un par un, amélioration de la commande).
 - `/telephone` : mode téléphone (réponses très courtes, un choix à la fois en un clic, chaque demande rangée dans le planning) ; copiée par défaut dans les projets par `/init_projet` et `/update`.
 - `/delegation [chemin]` : active la délégation à Codex, OpenCode et Ollama comme sous-agents pour économiser les tokens de Claude, avec journal de chaque délégation.
 - `/relais_telephone` : relais téléphone des sessions via le pont de Roberto, réponses de l'utilisateur transmises mot pour mot (lancement manuel).

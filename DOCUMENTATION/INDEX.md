@@ -16,7 +16,7 @@ Base de connaissance interne de l'équipe d'agents, progressive disclosure. Touj
 | [20_guides/equipes_paralleles.md](20_guides/equipes_paralleles.md) | /create_parallel_team : créer une équipe Git isolée par worktree | guide, équipe, worktree, git | 2026-09-04 |
 | [20_guides/messagerie_interprojets.md](20_guides/messagerie_interprojets.md) | Installer et utiliser Intercom entre projets locaux | guide, communication, urgence | 2026-08-23 |
 | [20_guides/sauvegarde_rclone.md](20_guides/sauvegarde_rclone.md) | Sauvegarde Google Drive par rclone : un remote par projet, limite de l'auto-mode sur l'upload | guide, backup, rclone, sécurité | 2026-11-14 |
-| [20_guides/maintenance_du_kit.md](20_guides/maintenance_du_kit.md) | /maintenance : contrôler le kit, rapport par lots validés un à un | guide, maintenance, qualité | 2026-11-14 |
+| [20_guides/maintenance_du_kit.md](20_guides/maintenance_du_kit.md) | /maintenance : maintenance d'un projet, quarantaine, rapport par lots validés un à un, amélioration de la commande | guide, maintenance, qualité | 2026-11-20 |
 | [20_guides/mode_telephone.md](20_guides/mode_telephone.md) | /telephone : réponses courtes, un choix à la fois, demandes rangées dans le planning | guide, telephone, session | 2026-11-14 |
 | [30_decisions/journal.md](30_decisions/journal.md) | Journal append-only des décisions structurantes de la base | decisions | 2026-09-06 |
 | [30_decisions/prises_de_controle.md](30_decisions/prises_de_controle.md) | Registre des cas où l'utilisateur autorise VibeObs à agir sur une autre session (/telephone, diffusion /delegation) et des limites non dépassables | decisions, sessions, dérogation | 2026-11-14 |

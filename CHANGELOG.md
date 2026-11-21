@@ -3,6 +3,15 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v7.6 — 2026-11-20
+
+### Modifié
+- `.claude/commands/maintenance.md` réécrite : socle générique pour tout projet (étapes 0 à 11 : cadrage, contrôles mécaniques, fichiers et Git, racine et dossiers inutiles, documentation et contexte, code et tests, sécurité, analyse pour refacto, rapport par lots, exécution par lot, journal, amélioration de la commande) et bloc « SPÉCIFICITÉS PROJET » préservé par `/update` ; suppression par quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, purge validée à part ; refacto en analyse seule ; `git mv`, `mkdir` et `mv` ajoutés aux outils autorisés.
+- `scripts/check_kit.py` : `maintenance_historique.md` et `maintenance_retours.md` ajoutés aux fichiers de sortie des commandes.
+
+### Ajouté
+- Fichiers de projet créés par `/maintenance` : `_contexte/maintenance_historique.md` (une ligne par maintenance) et `_contexte/maintenance_retours.md` (frictions et propositions d'amélioration, lus par la maintenance du kit).
+
 ## v7.5 — 2026-11-20
 
 ### Modifié

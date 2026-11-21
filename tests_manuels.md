@@ -129,3 +129,12 @@ Vérifier en conditions réelles que :
 - la voix reste la même d'un message à l'autre (plus d'annonce « Compris, j'envoie… » avec la voix système de l'iPhone) ; en cas de changement, lire `server/logs/tts_fallback.log` ;
 - l'alerte « VibeObs n'a pas répondu » apparaît après 60 s sans réponse ; un envoi avec l'appli connectée renvoie `sent: 1` ;
 - pendant une action longue, VibeObs envoie un point d'une phrase toutes les minutes, et reste silencieux quand l'appli est déconnectée.
+
+## /maintenance v7.6 — premier essai réel
+
+Lancer `/maintenance` sur le kit et vérifier que :
+- l'étape 0 lit le bloc projet et signale l'absence de `maintenance_historique.md` sans erreur ;
+- un lot « quarantaine » déplace un élément vers `D:\_quarantaine\<date>\VibeObs\` avec une ligne dans `manifeste.md`, et l'origine a disparu ;
+- l'étape 10 crée `_contexte/maintenance_historique.md` (une ligne) ;
+- l'étape 11 pose la question d'amélioration, et un « non » termine sans rien écrire.
+

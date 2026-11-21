@@ -456,6 +456,8 @@ def check_referenced_files_exist():
         "DEPLOYMENTS.md",
         "AGENTS_REGISTRY.md",
         "politique_delegation.json",
+        "maintenance_historique.md",
+        "maintenance_retours.md",
     }
     
     for cmd_file in commands_dir.glob("*.md"):

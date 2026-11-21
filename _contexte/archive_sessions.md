@@ -1866,3 +1866,26 @@ Trancher le `.gitattributes` de `creation_llm` et la section « Modèle Codex »
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-20 (soir)
+
+## Décisions prises
+- Section « Modèle Codex » ajoutée à `VibeObs/AGENTS.md` après les trois validations (insérée avant « Spécificités projet »).
+- Veille IA traitée par `VertIA_v3` seule ; en relais Roberto, VibeObs relaie sans garder en mémoire le contenu des sessions, sauf impact sur le kit ou template réutilisable.
+- Périmètre de VibeObs validé comme base : kit de protocole (commandes, templates, `/update`, `DEPLOYMENTS.md`), zones documentation, pedagogie, maintenance, relais téléphone/Roberto et Intercom, délégation Codex/OpenCode/Ollama ; hors périmètre : travail et décisions métier des projets suivis.
+
+## Livrables produits ou modifiés
+- `AGENTS.md` : section « Modèle Codex » ajoutée (commit `28bd2a1`).
+- `_contexte/contexte.md` (§ Périmètre), `_contexte/signals.md`, `CHANGELOG.md` (v7.5), `README.md`, `DOCUMENTATION/_contexte/signals.md` (action de triage) : mis à jour à la clôture.
+
+## Hypothèses validées / invalidées
+- VALIDE : `D:\ServOMorph\creation_llm\.gitattributes` n'existe pas (liste du dossier).
+- EN ATTENTE : `.gitattributes` de `creation_llm` ; tri des actions ouvertes selon le périmètre ; les quatre décisions de la veille VertIA ne figurent pas dans le `signals.md` de `VertIA_v3` (session ouverte, aucune écriture) mais dans son rapport `benchmarks/veille/rapport_resultats.md`.
+
+## Prochaine étape exacte
+Trier les actions ouvertes de `signals.md` selon le périmètre (conserver, transférer, écarter), une par une ; trancher le `.gitattributes` de `creation_llm` ; `/start maintenance` pour le template.
+
+## Question bloquante pour la session suivante
+Aucune

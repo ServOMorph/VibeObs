@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-20)
+# Signals — VibeObs (MAJ 2026-11-21)
 
 ## Actions ouvertes — pilotage
 
@@ -6,18 +6,9 @@
 - Valider en conditions réelles les nouveaux `/start` (étape 4c) et `/close` (étapes 3-bis, 13, 15) déployés dans `SérénIATech_dev` par `/update` le 2026-10-14. Scénario 1 (`/start` racine) : sortie reçue, aucun bloc 4c affiché, `roadmap_actions_ouvertes_luna.md` laissée à la racine sur décision de l'utilisateur ; scénarios 2 à 6 non rejoués. 2026-10-27 : scénarios 1 et 2 validés en v5.23 (correctif 4c, commit `03b5a54`) ; scénarios 3 à 6 restants (dont le `/close` racine après travail dans SHORTS). 2026-10-27 : `/close` racine sans travail dans SHORTS observé (commit `ca0b2c0` de SérénIATech_dev), deux divergences à trancher consignées dans `tests_manuels.md`. 2026-10-27 : `close.md` de `SérénIATech_dev` mis à jour en v5.22 ; le test « /close v5.22 » peut se jouer dans la même session. 2026-10-29 : `close.md` en v5.25 et `start.md` en v5.23 dans `SérénIATech_dev` (`/update`, permission `menage_zone.py` conservée à la main) ; scénarios 3 à 6 toujours non rejoués.
   - fait quand: les 6 scénarios de `tests_manuels.md` (section « /start et /close — attribution par zone ») sont rejoués et leurs divergences transmises au kit, traitées ou écartées.
   - réf: `tests_manuels.md` ; `.claude/commands/close.md` étapes 3-bis et 13 ; `.claude/commands/start.md` étape 4c ; `SérénIATech_dev` commit « update: protocole vibecoding — zone racine — kit v5.20 ».
-- Effectuer l'upload Drive d'Appli resté en attente. 2026-11-14 : `on_close.md` d'Appli est commité (dernier commit `b78f73a`) ; son § Fin ne se limite plus à `--refresh-list` : il demande le passage en mode manuel (`Shift+Tab`) et attend la confirmation écrite avant les copies claire et chiffrée.
-  - fait quand: un `/close` réel d'Appli a exécuté son § Fin en mode manuel et `backup_project.py . --check` passe.
-  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\_contexte\on_close.md` § Fin ; `DOCUMENTATION/20_guides/sauvegarde_rclone.md`.
-- Porter les 2 correctifs `backup_project.py` (exclusion des artefacts régénérables + sorties tolérantes à l'encodage) à la copie vendored de `Rayonne_Toi`. 2026-11-12 : `Meuniers` archivé, non-port décidé ; pour `Rayonne_Toi`, port reporté : la copie a divergé (fonction `load_config` absente du template) et porte des modifications non commitées d'origine inconnue. À fusionner à la main une fois ces modifications commitées par une session de `Rayonne_Toi`. 2026-11-17 : diff de fusion préparé par Codex en lecture seule (`git apply --check` passant en LF, `load_config` conservé), non appliqué.
-  - fait quand: les modifications locales de la copie `Rayonne_Toi` sont commitées, puis les 2 correctifs y sont fusionnés sans perdre `load_config`.
-  - réf: `templates/rclone_backup/backup_project.py` (corrigé) ; `D:\ServOMorph\Rayonne_Toi\claude-vibecoding-kit\rclone_backup\backup_project.py` ; diff proposé dans `_codex/runs/20261117_141544_316_J_fusion_backup_f77a48e3/rapport.md` (local, gitignoré).
 - Exécuter le backup réel de `SérénIATech_dev` vers `sereniatech_drive` et vérifier les `/close` des projets partageant `rayonne_toi_drive`.
   - fait quand: `tests_manuels.md` sections « rclone multicompte » toutes validées et retirées.
   - réf: `tests_manuels.md`.
-- Évaluer le mécanisme `DOCUMENTATION/` dans `D:\ServOMorph\Appli_TSA_SDI_TDAH` avant de le créer dans `SérénIATech_dev`. Mesures du 2026-10-24 : 0 consultation de la doc déclenchée par la seule consigne de `CLAUDE.md` sur 29 sessions locales ; 3 specs périmées (image de retour facultative, refus de consentement conservant le partage sans données de santé, exclusivité SDI/Avec DI) et dossiers imbriqués / durée de routine par jour non documentés.
-  - fait quand: les 5 tests de la section « Évaluation DOCUMENTATION » de `tests_manuels.md` d'Appli sont passés (seuil 4/5 en autonomie dans le bon document), les specs périmées corrigées via `/start documentation` d'Appli, et une décision tracée sur les pistes (ligne « spec à mettre à jour » en fin de phase de roadmap, contrôle des « Sources » des specs dans `/close` étape 7, citation des documents clés dans les chartes d'agents).
-  - réf: `D:\ServOMorph\Appli_TSA_SDI_TDAH\tests_manuels.md` ; `D:\ServOMorph\Appli_TSA_SDI_TDAH\DOCUMENTATION\40_specs\` ; Appli commits `3255b46`, `c970820`, `f6a6428`, `be4a1f0`.
 - Créer `DOCUMENTATION/` dans `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev` (`/create_agent`) une fois l'évaluation Appli traitée. Décisions en attente de l'utilisateur : archiver `ClaudeCode/roadmap_base_connaissances.md` (6 phases TODO, base concurrente dans `ClaudeCode/base_connaissances/`) au profit de `DOCUMENTATION/` à la racine ; valider le périmètre proposé (carte du projet et processus d'abord ; exclusions : données sensibles, détail clients, tarification non stabilisée) ; exclure `Interim` et décider de l'inscrire aux données sensibles de `CLAUDE.md`. `AGENTS.md` et `GEMINI.md` de SérénIATech_dev ne mentionnent pas `DOCUMENTATION/` : le paragraphe du template est à ajouter. Migration de la section Spécificités projet vers l'INDEX déconseillée (déclencheurs plus fiables dans `CLAUDE.md`).
   - fait quand: l'agent `documentation` de SérénIATech_dev est créé, son `INDEX.md` existe, et les trois décisions ci-dessus sont tracées.
   - réf: `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\ClaudeCode\roadmap_base_connaissances.md` ; `C:\Users\raph6\Documents\SerenIATech\SérénIATech_dev\.claude\CLAUDE.md` § Base de connaissances ; `.claude/commands/create_agent.md`.
@@ -62,6 +53,9 @@
 - Appliquer le périmètre de VibeObs (décision du 2026-11-20) aux actions ouvertes de ce fichier : pour chacune, la conserver, la transférer à la session ou zone propriétaire, ou l'écarter, une par une, avec l'accord de l'utilisateur.
   - fait quand: chaque action ouverte est conservée, transférée (écriture chez le propriétaire constatée) ou écartée par l'utilisateur.
   - réf: `_contexte/contexte.md` § Périmètre ; `_contexte/signals.md`.
+- Exercer en réel `/maintenance` (v7.6) sur le kit. 2026-11-21 : commande réécrite en socle générique (quarantaine `D:\_quarantaine\` avec purge à 30 jours, refacto en analyse seule, journal `_contexte/maintenance_historique.md`, étape 11 d'amélioration de la commande), jamais exécutée ; l'ancienne version n'a laissé aucun historique d'usage.
+  - fait quand: une exécution réelle a produit un rapport, une ligne de `_contexte/maintenance_historique.md`, un lot mis en quarantaine avec `manifeste.md`, et l'étape 11 a été posée ; les frictions sont dans `_contexte/maintenance_retours.md`.
+  - réf: `.claude/commands/maintenance.md` ; `DOCUMENTATION/20_guides/maintenance_du_kit.md` ; `tests_manuels.md`.
 Backlog : 22 entrées (dette 1, finding 2, amélioration 5, piste 14) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -75,23 +69,25 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-20 (soir)
+# Session du 2026-11-21
 
 ## Décisions prises
-- Section « Modèle Codex » ajoutée à `VibeObs/AGENTS.md` après les trois validations (insérée avant « Spécificités projet »).
-- Veille IA traitée par `VertIA_v3` seule ; en relais Roberto, VibeObs relaie sans garder en mémoire le contenu des sessions, sauf impact sur le kit ou template réutilisable.
-- Périmètre de VibeObs validé comme base : kit de protocole (commandes, templates, `/update`, `DEPLOYMENTS.md`), zones documentation, pedagogie, maintenance, relais téléphone/Roberto et Intercom, délégation Codex/OpenCode/Ollama ; hors périmètre : travail et décisions métier des projets suivis.
+- Maintenance définie avec l'utilisateur : fichiers et Git, documentation et contexte, code et tests, sécurité et secrets, suppression des obsolètes, analyse pour refacto, nettoyage de la racine ; limite avec l'évolution fixée par projet.
+- Suppression par quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, purge validée à part après 30 jours ; refacto en analyse seule.
+- Retours collectés par le kit (`maintenance_retours.md` des projets, lus par la maintenance du kit) puis diffusés par `/update` ; journal court versionné `maintenance_historique.md` ; étape 11 : proposer d'améliorer la commande (non : maintenance terminée).
+- « Créer le template maintenance » fusionnée au P1 de `MAINTENANCE/_contexte/signals.md` (demande de VibeObs Général acceptée par l'utilisateur).
+- Tri selon le périmètre (autre session, journal) : upload Drive d'Appli écarté, port `backup_project.py` à `Rayonne_Toi` transféré (inscription relue), backup rclone de `SérénIATech_dev` conservé.
 
 ## Livrables produits ou modifiés
-- `AGENTS.md` : section « Modèle Codex » ajoutée (commit `28bd2a1`).
-- `_contexte/contexte.md` (§ Périmètre), `_contexte/signals.md`, `CHANGELOG.md` (v7.5), `README.md`, `DOCUMENTATION/_contexte/signals.md` (action de triage) : mis à jour à la clôture.
+- `.claude/commands/maintenance.md` : réécrit (socle de 12 étapes + bloc projet du kit), kit v7.6.
+- `scripts/check_kit.py`, `README.md`, `llms.txt`, `CHANGELOG.md`, `Protocole_start_close_context.md` : synchronisés (v7.6) ; `DOCUMENTATION/20_guides/maintenance_du_kit.md` et `INDEX.md` : mis à jour ; `tests_manuels.md` : section d'essai.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `D:\ServOMorph\creation_llm\.gitattributes` n'existe pas (liste du dossier).
-- EN ATTENTE : `.gitattributes` de `creation_llm` ; tri des actions ouvertes selon le périmètre ; les quatre décisions de la veille VertIA ne figurent pas dans le `signals.md` de `VertIA_v3` (session ouverte, aucune écriture) mais dans son rapport `benchmarks/veille/rapport_resultats.md`.
+- VALIDE : `check_kit.py` passe après correction de 4 références introuvables ; `check_docs.py` ne signale plus le guide.
+- EN ATTENTE : premier essai réel de `/maintenance` ; quarantaine d'un fichier jamais exercée par la commande.
 
 ## Prochaine étape exacte
-Trier les actions ouvertes de `signals.md` selon le périmètre (conserver, transférer, écarter), une par une ; trancher le `.gitattributes` de `creation_llm` ; `/start maintenance` pour le template.
+Lancer `/maintenance` sur le kit (essai réel : historique, quarantaine, étape 11) ; poursuivre le tri des actions selon le périmètre ; relever les maintenances des projets suivis puis tirer le template (`/start maintenance`).
 
 ## Question bloquante pour la session suivante
 Aucune

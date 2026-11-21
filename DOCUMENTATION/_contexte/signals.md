@@ -13,7 +13,7 @@
   - fait quand: `20_guides/creer_un_agent.md` ligne [SORTIE] mise à jour, ou décision explicite de ne pas le documenter.
   - réf: DOCUMENTATION/20_guides/creer_un_agent.md, .claude/commands/create_agent.md étape 10
 
-- [P2|ouvert|source=kit] Traiter les 3 guides signalés « probablement en retard » par le nouvel avertissement de `check_docs.py` (kit v6.8) : `initialiser_un_projet.md`, `maintenance_du_kit.md`, `mettre_a_jour_un_projet.md` ; décider aussi si le hook PreCompact (`scripts/hook_precompact.py`) entre dans un guide.
+- [P2|ouvert|source=kit] Traiter les 2 guides signalés « probablement en retard » par l'avertissement de `check_docs.py` (kit v6.8) : `initialiser_un_projet.md`, `mettre_a_jour_un_projet.md` (`maintenance_du_kit.md` mis à jour le 2026-11-20, kit v7.6) ; décider aussi si le hook PreCompact (`scripts/hook_precompact.py`) entre dans un guide.
   - fait quand: `python scripts/check_docs.py` n'affiche plus d'avertissement pour ces guides (mis à jour ou `maj` revue), et décision tracée pour le hook PreCompact.
   - réf: scripts/check_docs.py, scripts/hook_precompact.py, DOCUMENTATION/20_guides/
 
