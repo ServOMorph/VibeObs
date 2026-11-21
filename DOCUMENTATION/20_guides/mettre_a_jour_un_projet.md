@@ -2,7 +2,7 @@
 type: guide
 description: /update : réaligner les fichiers de protocole d'un projet déployé sur le kit
 tags: guide, update, protocole, spécificités
-maj: 2026-11-14
+maj: 2026-11-21
 ---
 
 # Mettre à jour un projet déployé
@@ -13,8 +13,22 @@ Se lance **depuis le repo du kit**. Source canonique : `.claude/commands/update.
 ## Ce que `/update` touche
 
 Réaligne sur la dernière version du kit : `start.md`, `close.md`, `create_memory.md`,
-`telephone.md`, `ollama_call.py`, et fusionne partiellement `CLAUDE.md`. Fait deux commits dans le repo
-cible (`backup:` puis `update:`), puis estampille la ligne du projet dans `DEPLOYMENTS.md` (kit).
+`telephone.md`, `ollama_call.py`, `_docs/protocole_vibecoding.md`, et fusionne partiellement
+`CLAUDE.md`. Fait deux commits dans le repo cible (`backup:` seulement si la cible a des changements à
+sauvegarder, puis `update:`), puis estampille la ligne du projet dans `DEPLOYMENTS.md` (kit).
+
+Étape 0bis : avant tout update, les actions ouvertes de `<cible>/_contexte/signals.md` sont lues (jamais
+écrites) et classées une à une par l'utilisateur : « Urgente, à faire » (bloque l'update),
+« Urgente, déjà faite » ou « Plus tard » (ne bloquent pas ; à traiter par le `/close` du projet).
+
+Mode batch (`all`) : une ligne de résumé par projet de `DEPLOYMENTS.md` (✅, ⚠️ avec réserves, ❌ échec,
+⏸ reporté). Aucune question posée, sauf le classement de l'étape 0bis ; `AGENTS.md` et `GEMINI.md`
+absents ne sont pas créés (signalé au résumé).
+
+Cible sans `start.md` ni `close.md` : mode initialisation, copie des seuls fichiers absents, sans
+écraser l'existant.
+
+`AGENTS.md` et `GEMINI.md` absents : création proposée (hors batch) ; déjà présents : jamais modifiés.
 
 Étape 8bis (v5.44) : si la cible est un dépôt Git, ajoute `**/_contexte/journal_session.md` à son
 `.gitignore` (fichier créé si absent, existant jamais réordonné) et l'inclut au commit `update:`. Un
@@ -26,6 +40,13 @@ puis réinjectées en fin de ligne (v5.42) et signalées ; les retraits du proje
 Ne touche jamais : `_contexte/`, `zones.md`, la section « Données sensibles » et la section
 « Spécificités projet » de `CLAUDE.md`, le bloc `SPECIFICITES PROJET` de `start.md`/`close.md`, un
 `AGENTS.md` ou `GEMINI.md` déjà présents, et aucun dossier de zone-agent.
+
+## Vérification post-update (étape 10)
+
+Sept contrôles avant confirmation : fichiers identiques aux templates (hors blocs `SPECIFICITES
+PROJET`), marqueurs intacts, `CLAUDE.md` cohérent, `_contexte/` et `zones.md` inchangés, `ollama_call.py`
+suivi par Git, commit limité aux fichiers du protocole, ligne `DEPLOYMENTS.md` à jour. Un échec est
+consigné sans correction silencieuse et fait passer le statut de ✅ à ⚠️.
 
 ## Préalable : repo cible propre
 

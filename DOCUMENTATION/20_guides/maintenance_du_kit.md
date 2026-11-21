@@ -2,14 +2,14 @@
 type: guide
 description: /maintenance : maintenance d'un projet, nettoyage par quarantaine, rapport par lots validés un à un, amélioration de la commande
 tags: guide, maintenance, qualité
-maj: 2026-11-20
+maj: 2026-11-21
 ---
 
 # Maintenance d'un projet
 
 Commande : `/maintenance`. Source canonique : `.claude/commands/maintenance.md` (socle générique, plus un
 bloc « SPÉCIFICITÉS PROJET » préservé par `/update` ; le bloc du kit porte `check_kit.py`,
-`check_docs.py`, `DEPLOYMENTS.md` et `base_connaissances/`).
+`check_docs.py`, `DEPLOYMENTS.md` et `base_connaissances/`). Dernière révision de la commande : v7.7 (kit).
 
 ## Définition
 
@@ -33,18 +33,27 @@ raison, suivi par Git, date). La purge définitive est un lot distinct, présent
 délai du bloc projet et validé élément par élément. Un fichier suivi voulu dans le dépôt peut
 être archivé par `git mv` vers `_archives/`.
 
+`manifeste.md` porte l'en-tête fixe `| origine | destination | raison | suivi Git | date |`. Un fichier
+suivi déplacé laisse une suppression non commitée (`D` dans `git status`) : elle est signalée au rapport
+et `/close` la commitera.
+
 ## Procédure
 
 0. Cadrage : bloc projet, historique des maintenances (lots refusés), retours.
 1. Contrôles mécaniques du projet.
 2. Fichiers et Git.
-3. Racine et dossiers inutiles.
+3. Racine et dossiers inutiles, dont les éléments volumineux ignorés par Git (`git status --short
+   --ignored` et `du -sh` : signalés avec leur origine probable, jamais ouverts, un état actif étant
+   possible).
 4. Documentation et contexte.
 5. Code et tests.
 6. Sécurité et secrets.
 7. Analyse pour refacto.
 8. Rapport en lots classés par risque croissant.
-9. Décision et exécution, un lot par question.
+9. Décision et exécution, un lot par question. Actions possibles : suivre ou ignorer, archiver
+   (`git mv`), quarantaine, purge (lot distinct), ou transférer à la session propriétaire quand la
+   décision revient à une autre session (projet suivi, zone) : envoi par `SendMessage`, sans écriture
+   dans son dossier, lot noté comme transféré au journal.
 10. Une ligne dans `_contexte/maintenance_historique.md`.
 11. Proposition d'améliorer la commande à partir des frictions rencontrées.
 
@@ -61,6 +70,17 @@ Oui : les propositions sont consignées dans `maintenance_retours.md` ; `mainten
 qu'avec son accord. Le kit lit les `maintenance_retours.md` des projets suivis (étape 0 de son bloc),
 généralise ce qui vaut pour tous dans le template, et `/update` le diffuse sans toucher au bloc
 spécifique de chaque projet.
+
+## Bloc propre au kit
+
+- Étape 0 : lecture, en lecture seule, des `_contexte/maintenance_retours.md` des projets de
+  `DEPLOYMENTS.md` (existence testée avant lecture).
+- Étape 1 : `check_kit.py`, `check_docs.py`, `python -m pytest -q tests`, `git status --short`.
+- Étape 4 : lecture des chemins de `DEPLOYMENTS.md` pour repérer les projets disparus ou en retard : texte
+  avant `(github.com/`, tableaux de projets seulement (pas les lignes rclone, netlify, discord ni
+  intercom), recherche d'un dossier de même nom sous `D:\ServOMorph` avant de conclure à une disparition.
+- Limite maintenance / évolution : la maintenance ne modifie ni commandes, ni templates, ni scripts du
+  kit ; elle les contrôle et propose.
 
 ## Sortie
 
