@@ -2,7 +2,7 @@
 type: guide
 description: /maintenance : maintenance d'un projet, nettoyage par quarantaine, rapport par lots validés un à un, amélioration de la commande
 tags: guide, maintenance, qualité
-maj: 2026-11-21
+maj: 2026-11-22
 ---
 
 # Maintenance d'un projet
@@ -70,6 +70,35 @@ Oui : les propositions sont consignées dans `maintenance_retours.md` ; `mainten
 qu'avec son accord. Le kit lit les `maintenance_retours.md` des projets suivis (étape 0 de son bloc),
 généralise ce qui vaut pour tous dans le template, et `/update` le diffuse sans toucher au bloc
 spécifique de chaque projet.
+
+## Template « maintenance » et règles de validation
+
+Le template `templates/maintenance/` (commit 238ac84) s'insère dans un projet cible avec
+`/insert_template <projet_cible> maintenance`. Il livre :
+
+- `maintenance.md` -> `.claude/commands/maintenance.md` du projet : socle de la commande plus un bloc
+  « SPÉCIFICITÉS PROJET » à renseigner (préservé par `/update`).
+- `regles_validation.md` -> racine de la zone maintenance ou `DOCUMENTATION/` du projet.
+- `_contexte/maintenance_retours.md` : une ligne par amélioration proposée
+  (`AAAA-MM-JJ | étape | friction | proposition`).
+
+Après insertion : renseigner le bloc « SPÉCIFICITÉS PROJET », puis lancer `/maintenance`.
+
+Règles de validation (validées le 2026-11-22, `MAINTENANCE/regles_validation.md`) :
+
+- Périmètre : le projet où la maintenance est lancée, et lui seul ; hors de ce projet, rien sans
+  demande explicite (`MAINTENANCE/agent_role.md`).
+- Sans validation : contrôles, lecture, rapport. Après validation d'un lot : quarantaine, correction ou
+  archivage d'un document, correction d'un chemin cassé par script. Refacto : analyse seule. Commit :
+  jamais par la commande. GitHub : l'agent guide, l'utilisateur supprime.
+- Exclusions absolues : `.env*`, configuration de bot, comptes et credentials ; `CLAUDE.md`,
+  `AGENTS.md`, `GEMINI.md` (trois validations) ; dossier `.git` ; projet avec session ouverte
+  (passer par cette session).
+- Quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md` ; purge d'une quarantaine de plus de
+  30 jours, en lot distinct validé à part.
+- Fréquence : à la demande ; recommandée après une grosse session de refacto ou de migration, puis une
+  fois par mois.
+- Ollama : analyse déléguée seulement après contrôle que VertIA est ouvert, jamais de donnée sensible.
 
 ## Bloc propre au kit
 

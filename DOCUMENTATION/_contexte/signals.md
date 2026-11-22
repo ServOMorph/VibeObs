@@ -1,4 +1,4 @@
-# Signals — documentation   (MAJ 2026-11-21)
+# Signals — documentation   (MAJ 2026-11-22)
 
 ## Actions ouvertes
 - [P2|ouvert|zone kit] Valider le signal `/close` → Documentation sur une clôture réelle d'une autre zone
@@ -37,20 +37,24 @@
   - fait quand: le guide est mis à jour ou retiré selon le périmètre confirmé, ou décision explicite de le conserver.
   - réf: `DOCUMENTATION/20_guides/messagerie_interprojets.md` ; `_contexte/signals.md` (racine du kit)
 
-## Dernière session (2026-11-21)
+- [P2|ouvert|source=maintenance] Décider si `/insert_template` (insertion d'un template du kit dans un projet cible, placeholders, jamais d'écrasement silencieux) mérite un guide `20_guides/` et une ligne d'`INDEX.md` (aucun guide n'existe ; le template « maintenance » est décrit dans `maintenance_du_kit.md`)
+  - fait quand: guide créé et ligne d'INDEX ajoutée, ou décision explicite de ne pas documenter.
+  - réf: .claude/commands/insert_template.md, DOCUMENTATION/20_guides/maintenance_du_kit.md
+
+## Dernière session (2026-11-22)
 <!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
-# Session du 2026-11-21
+# Session du 2026-11-22
 
 ## Décisions prises
-- Demande de Maintenance VibeObs (sur instruction de l'utilisateur) acceptée : mise à jour de 3 guides sans toucher au kit ; commit autorisé par l'utilisateur, VibeObs Général prévenu.
+- Demande de Maintenance VibeObs (message de session) acceptée : documenter le template « maintenance » (commit 238ac84) ; écriture limitée à DOCUMENTATION/, ni README.md, ni CHANGELOG.md, ni llms.txt.
 
 ## Livrables produits ou modifiés
-- `20_guides/initialiser_un_projet.md`, `mettre_a_jour_un_projet.md`, `maintenance_du_kit.md` et `INDEX.md` (dates 2026-11-21) : mis à jour, commités (56fa3cc).
+- `20_guides/maintenance_du_kit.md` (section template et règles de validation) et `INDEX.md` (ligne et date 2026-11-22) : mis à jour.
 
 ## Hypothèses validées / invalidées
-- VALIDE : `check_docs.py` et `check_kit.py` passent après modification.
-- INVALIDE : les changements v8.0 (`/create_team`, `init_projet.md`) étaient annoncés non commités ; ils l'étaient déjà (66bc9e0), rien écrasé.
-- EN ATTENTE : décision sur le hook PreCompact ; guide `messagerie_interprojets.md` à relire après l'abandon de l'Intercom agent.
+- VALIDE : `check_docs.py` et `check_kit.py` passent.
+- INVALIDE : un guide d'insertion de templates existait ; il n'existe pas, action P2 ouverte.
+- EN ATTENTE : bump CHANGELOG et /doc_sync non faits (hors périmètre d'écriture de la zone).
 
 ## Prochaine étape exacte
 Valider le signal `/close` → Documentation sur une clôture réelle d'une autre zone.
