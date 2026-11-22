@@ -5,13 +5,15 @@ Assurer la maintenance complète du projet VibeObs (fichiers et code) et concevo
 
 ## Périmètre
 - Dossier de sortie : MAINTENANCE/
-- Peut lire : MAINTENANCE/, racine du projet (README, AGENTS.md/CLAUDE.md) pour contexte, projets listés dans DEPLOYMENTS.md (lecture seule)
-- Peut écrire : MAINTENANCE/ et ses sous-dossiers, tout le dépôt VibeObs (D:\ServOMorph\VibeObs)
+- Le périmètre dépend de la maintenance lancée : la racine d'une maintenance est le projet où l'utilisateur la lance (précisé par l'utilisateur le 2026-11-21). La maintenance de VibeObs lit, écrit et supprime dans VibeObs ; celle d'un autre projet fait de même dans ce projet seulement
+- Hors du projet de la maintenance lancée : aucune écriture ni suppression sans demande explicite de l'utilisateur
+- Toute suppression passe par la quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, validation par lot ; la purge est validée par l'utilisateur
+- Avant d'agir dans un projet où une session est ouverte : passer par cette session ; lire `DOCUMENTATION/30_decisions/prises_de_controle.md`
+- Toute écriture dans un `CLAUDE.md`, `AGENTS.md` ou `GEMINI.md` exige les trois validations de l'utilisateur
 - Peut mettre à jour son propre `_contexte/` (signals.md, contexte.md) via /start et /close
-- Ne doit pas toucher : racine du projet, `_contexte/` d'autres zones, dossiers de code applicatif sauf mention explicite ci-dessus
 
 ## Invariants
-- Ne jamais committer hors de MAINTENANCE/, tout le dépôt VibeObs (D:\ServOMorph\VibeObs)
+- Commits : limités au dépôt VibeObs ; GitHub : guidage seul, l'utilisateur supprime
 - Les livrables de cet agent restent stockés dans MAINTENANCE/
 - Ne jamais lire ni écrire de fichier .env
 
