@@ -1911,3 +1911,28 @@ Confirmer le périmètre de l'abandon d'Intercom puis le retirer ; traiter les �
 
 ## Question bloquante pour la session suivante
 L'abandon d'Intercom couvre-t-il `INTERCOM_AGENT.md` seulement, ou aussi la messagerie `intercom/` ?
+
+---
+
+# Session du 2026-11-21 (soir)
+
+## Décisions prises
+- Tri des actions ouvertes selon le périmètre : écartées (upload Drive d'Appli, évaluation DOCUMENTATION d'Appli, tri du backlog v5.22 à v5.25, relance des sessions Remote Control, pousser les restes sans remote, extraction de SHORTS) ; clôturées par l'utilisateur (relais téléphone, registre des artifacts) ; transférées (port `backup_project.py` à Rayonne_Toi, `DOCUMENTATION/` de SérénIATech_dev à `sereniatech_dev`).
+- Règle d'IA locale de VertIA_v3 : relais refusé, puis proposée comme règle du `CLAUDE.md` du kit (action P2, trois validations à lancer sur accord).
+- Codex : `.gitattributes` `* text=auto eol=lf` créé dans `creation_llm` (non commité), `AGENTS.md` de Moulin du Sud commité (`3b41aac`), push de `Lieux_Hybrides` refusé (pas de `main` distant) et question posée dans la zone Moulin du Sud.
+- Kit v8.0 : `/create_team`, son guide, `INTERCOM_AGENT.md` et `templates/team_TEMPLATE.md` supprimés (modifications d'une session de la zone kit lancée par erreur, relues et validées ici) ; backlog trié de 21 à 15 entrées.
+
+## Livrables produits ou modifiés
+- `_contexte/signals.md`, `_contexte/backlog.md`, `_contexte/contexte.md`, `tests_manuels.md`, `CHANGELOG.md` (v8.0), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : mis à jour.
+- `init_projet.md` (kit et template), `create_parallel_team.md`, `DOCUMENTATION/`, `scripts/check_kit.py` : modifiés par la session de la zone kit lancée par erreur, contrôlés (`check_kit.py` passe, miroir identique).
+- Hors dépôt : `creation_llm/.gitattributes`, `Rayonne_Toi/_contexte/signals.md`, `Moulin du Sud/_contexte/signals.md` : écrits, non commités.
+
+## Hypothèses validées / invalidées
+- VALIDE : l'`AGENTS.md` de Moulin du Sud était suivi par Git (sous `lieux/`), contrairement au signal ; `CreaZik_V3` est à jour avec `origin/main` et sa stack est renseignée.
+- EN ATTENTE : décision de l'utilisateur sur l'action de la Maintenance (écarts reportés, droits sur `DOCUMENTATION/20_guides/`) ; entrée de backlog « harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` » et 14 suivantes ; fin de maintenance : la session Maintenance dit ne rien faire dans le dossier du kit.
+
+## Prochaine étape exacte
+Poursuivre le tri du backlog (15 entrées) à partir de l'harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` ; instruire la règle d'IA locale de VertIA_v3 pour le `CLAUDE.md` du kit (trois validations) ; diffuser `init_projet` par `/update`.
+
+## Question bloquante pour la session suivante
+Aucune

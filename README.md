@@ -34,7 +34,6 @@ Résout le problème structurel du vibecoding : **le contexte est perdu à chaqu
 - `CLAUDE.md` — règles permanentes appliquées à toutes les conversations
 - `AGENTS.md` / `GEMINI.md` (optionnels, sur confirmation) — équivalents `CLAUDE.md` pour les agents non-Claude (Codex, ChatGPT, Gemini...)
 - Base de connaissances `DOCUMENTATION/` (optionnelle, via agent dédié créé par `/create_agent`) — documentation métier du projet en `.md`, consultée par tous les agents (`INDEX.md` catalogue + progressive disclosure)
-- `skills/chatgpt-orchestrateur/` — skill Claude Code (déclenché automatiquement, pas une commande) : pilote une boucle où une IA en session web gratuite (ChatGPT, généricisé pour en accueillir d'autres) sert d'orchestrateur donnant des instructions à Claude Code ; persistance de l'état par fichiers Markdown, journal des échanges, envoi automatique presse-papier (clic + collage + Entrée) vers la fenêtre de l'orchestrateur
 - Support multi-zones (plusieurs sous-projets dans un même repo)
 - Intégration Ollama pour les tâches répétitives sans envoyer de données en cloud
 
@@ -86,9 +85,6 @@ VibeObs/
 │       └───────────────────────────────  #                     /cherche_meilleure_action /doc_sync
 │                                          #                     /cherche_fonction /delegation /relais_telephone
 ├── _contexte/                            # contexte du kit (contexte, signals, archive_decisions)
-├── skills/
-│   └── chatgpt-orchestrateur/            # skill : boucle orchestrateur IA gratuite ↔ Claude Code
-│       └── scripts/                      # init_agent, maj_etat, log_echange, generer_reprise, coller_et_envoyer (.ps1)
 ├── scripts/
 │   ├── backup_file.py                    # sauvegarde horodatée d'un fichier vers Google Drive (rclone)
 │   ├── deploy_create_memory.py           # déploiement massif d'un fichier sur les projets de DEPLOYMENTS.md

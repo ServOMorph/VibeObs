@@ -1,4 +1,4 @@
-# Signals — VibeObs (MAJ 2026-11-21)
+# Signals — VibeObs (MAJ 2026-11-22)
 
 ## Actions ouvertes — pilotage
 
@@ -27,19 +27,13 @@
 - Terminer la délégation à Codex (2026-11-19 à 2026-11-21). Fait : politique centrale `~/.codex/politique_delegation.json` (modèle `gpt-6.2-sol`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou exclusif), `run_codex.ps1` corrigé, consigne « Modèle Codex » dans les `AGENTS.md` de `D:\ServOMorph` et de `SérénIATech_dev`, flag levé le 2026-11-20 (interrupteur d'urgence : lui seul le repose ou le retire), section ajoutée à `VibeObs/AGENTS.md` (`28bd2a1`). 2026-11-21 : `.gitattributes` `* text=auto eol=lf` créé dans `creation_llm` (non commité, sa session informée par message) ; `AGENTS.md` de `Moulin du Sud` commité dans `Lieux_Hybrides` (`3b41aac`), non poussé sur décision de l'utilisateur (le dépôt distant n'a pas de branche `main`, le push publierait tout l'historique) ; `Nettoyage_PC` sans dépôt git, rien à commiter. Reste : `creation_llm` commite son `.gitattributes` et clôt son action P2 sur le binaire 0.154 (probablement obsolète).
   - fait quand: `creation_llm` a commité son `.gitattributes`, ou l'utilisateur écarte ce commit.
   - réf: `D:\ServOMorph\creation_llm\.gitattributes` ; `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `~/.codex/politique_delegation.json`.
-- Traiter les écarts reportés par la maintenance du 2026-11-21 : copie `_docs/protocole_vibecoding.md` en v6.6 contre v7.6, guides `initialiser_un_projet.md` et `mettre_a_jour_un_projet.md` en retard (`check_docs.py`), guide `maintenance_du_kit.md` à compléter des changements v7.7 (en-tête de `manifeste.md`, suppression non commitée, transfert à la session propriétaire, éléments ignorés volumineux), éléments ignorés `templates/control_PC/analysis/session_02` et `session_active` (255 Mo, laissés, contenu non ouvert). 2026-11-21 (soir) : action proposée à la session Maintenance ; elle ne l'accepte ni ne la refuse, la décision revient à l'utilisateur (1 : en entier, 2 : `_docs` et `control_PC` seulement, 3 : refus) ; son `agent_role.md` se contredit sur `DOCUMENTATION/20_guides/` (« tout le dépôt » contre « ne pas toucher la racine »), à trancher par l'utilisateur.
-  - fait quand: la copie `_docs` est réalignée, `check_docs.py` ne signale plus les deux guides, et le sort de `control_PC/analysis` est décidé.
-  - réf: `_contexte/maintenance_historique.md` ; `_docs/protocole_vibecoding.md` ; `DOCUMENTATION/20_guides/initialiser_un_projet.md`.
 - [P2] Décider d'ajouter au `CLAUDE.md` du kit (trois validations, puis `/update`) la règle d'IA locale proposée par VertIA_v3 le 2026-11-21 : image, musique, voix, vidéo et texte (moins de 20 appels) via le portail `python D:\ServOMorph\VertIA_v3\vertia_gen.py <capacité> --session <nom vram_lock> --prompt "<texte>"` ; texte de 20 appels ou plus : un seul jeton GPU pour le lot (`vram_lock.py acquire ... --wait`, puis `release`) ; aucun moteur GPU hors portail ou jeton. Remplace la ligne proposée plus tôt le même jour. Réserve : le portail n'accepte que les sessions déclarées dans `vram_lock.py` (compta-asso et sereniatech : code 8) ; seuil de 20 appels de prudence, non mesuré comme point d'équilibre.
   - fait quand: la règle est ajoutée au `CLAUDE.md` du kit après les trois validations, ou refusée par l'utilisateur.
   - réf: `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md` ; `.claude/CLAUDE.md` ; `templates/.claude/CLAUDE.md`.
-- Terminer le tri du backlog selon le périmètre de VibeObs (décision du 2026-11-20) : conserver, transférer ou écarter chaque entrée, une par une, avec l'accord de l'utilisateur. 2026-11-21 : tri des actions ouvertes terminé ; backlog trié jusqu'à l'entrée « harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` » (non tranchée), 6 entrées retirées.
-  - fait quand: chaque entrée du backlog est conservée, transférée (écriture chez le propriétaire constatée) ou écartée par l'utilisateur.
-  - réf: `_contexte/backlog.md` ; `_contexte/contexte.md` § Périmètre.
 - Diffuser par `/update` le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite) aux projets déployés ; la commande `/create_team` n'était pas déployée (kit seul), seul `init_projet` l'est.
   - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur.
   - réf: `templates/.claude/commands/init_projet.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0.
-Backlog : 15 entrées (dette 1, finding 2, amélioration 4, piste 8) — `_contexte/backlog.md`
+Backlog : 6 entrées (finding 1, amélioration 4, piste 1) — `_contexte/backlog.md`
 
 ### Backlog P2
 Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validations secondaires, décisions de conception, maintenance et contexte historique.
@@ -52,25 +46,22 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-21 (soir)
+# Session du 2026-11-22
 
 ## Décisions prises
-- Tri des actions ouvertes selon le périmètre : écartées (upload Drive d'Appli, évaluation DOCUMENTATION d'Appli, tri du backlog v5.22 à v5.25, relance des sessions Remote Control, pousser les restes sans remote, extraction de SHORTS) ; clôturées par l'utilisateur (relais téléphone, registre des artifacts) ; transférées (port `backup_project.py` à Rayonne_Toi, `DOCUMENTATION/` de SérénIATech_dev à `sereniatech_dev`).
-- Règle d'IA locale de VertIA_v3 : relais refusé, puis proposée comme règle du `CLAUDE.md` du kit (action P2, trois validations à lancer sur accord).
-- Codex : `.gitattributes` `* text=auto eol=lf` créé dans `creation_llm` (non commité), `AGENTS.md` de Moulin du Sud commité (`3b41aac`), push de `Lieux_Hybrides` refusé (pas de `main` distant) et question posée dans la zone Moulin du Sud.
-- Kit v8.0 : `/create_team`, son guide, `INTERCOM_AGENT.md` et `templates/team_TEMPLATE.md` supprimés (modifications d'une session de la zone kit lancée par erreur, relues et validées ici) ; backlog trié de 21 à 15 entrées.
+- Tri du backlog terminé (15 à 6 entrées) : écartées (phase 3 agent PEDAGOGIE, test Gmail/Agenda/Drive, hook PreCompact, système d'avis de changement, lancement distant unique, correctif discord_com) ; conservées (harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md`, détection Codex, délégation Ollama/OpenCode, diffusion du garde VRAM, registre des artifacts, faux positif `garde_vram`) ; « rendu liste templates `/create_projet` » déplacée dans `tests_manuels.md`.
+- Skill `chatgpt-orchestrateur` abandonné et mis en quarantaine (`D:\_quarantaine\2026-11-21\VibeObs\`, purge à valider à partir du 2026-12-21) ; références retirées (README, llms.txt, `.gitignore`, CHANGELOG v8.0).
+- Hook PreCompact : cas manuel validé en réel (ligne `compactage manual` au journal, résumé conforme).
 
 ## Livrables produits ou modifiés
-- `_contexte/signals.md`, `_contexte/backlog.md`, `_contexte/contexte.md`, `tests_manuels.md`, `CHANGELOG.md` (v8.0), `README.md`, `llms.txt`, `Protocole_start_close_context.md` : mis à jour.
-- `init_projet.md` (kit et template), `create_parallel_team.md`, `DOCUMENTATION/`, `scripts/check_kit.py` : modifiés par la session de la zone kit lancée par erreur, contrôlés (`check_kit.py` passe, miroir identique).
-- Hors dépôt : `creation_llm/.gitattributes`, `Rayonne_Toi/_contexte/signals.md`, `Moulin du Sud/_contexte/signals.md` : écrits, non commités.
+- `_contexte/backlog.md`, `_contexte/signals.md`, `_contexte/contexte.md`, `tests_manuels.md`, `CHANGELOG.md`, `README.md`, `llms.txt`, `.gitignore`, suppression de `skills/chatgpt-orchestrateur/` : mis à jour, commités.
 
 ## Hypothèses validées / invalidées
-- VALIDE : l'`AGENTS.md` de Moulin du Sud était suivi par Git (sous `lieux/`), contrairement au signal ; `CreaZik_V3` est à jour avec `origin/main` et sa stack est renseignée.
-- EN ATTENTE : décision de l'utilisateur sur l'action de la Maintenance (écarts reportés, droits sur `DOCUMENTATION/20_guides/`) ; entrée de backlog « harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` » et 14 suivantes ; fin de maintenance : la session Maintenance dit ne rien faire dans le dossier du kit.
+- VALIDE : le hook PreCompact écrit la ligne du journal et la consigne de résumé sur `/compact` manuel.
+- EN ATTENTE : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux à la clôture, sans décision consignée de l'utilisateur sur `control_PC`.
 
 ## Prochaine étape exacte
-Poursuivre le tri du backlog (15 entrées) à partir de l'harmonisation `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` ; instruire la règle d'IA locale de VertIA_v3 pour le `CLAUDE.md` du kit (trois validations) ; diffuser `init_projet` par `/update`.
+Instruire la règle d'IA locale de VertIA_v3 pour le `CLAUDE.md` du kit (trois validations, aussi `templates/.claude/CLAUDE.md`) ; diffuser `init_projet` par `/update` ; purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
 
 ## Question bloquante pour la session suivante
 Aucune

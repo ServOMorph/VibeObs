@@ -29,21 +29,6 @@ Pour `Rayonne_Toi` et `Appli_TSA_SDI_TDAH` (partage assumé de `rayonne_toi_driv
 au prochain `/close` de chacun, vérifier via `rclone lsf rayonne_toi_drive:BackUps`
 que le backup atterrit dans le bon sous-dossier de projet.
 
-## chatgpt-orchestrateur — correctif vol de focus (`focus_fiable.ps1`)
-
-Le correctif (activation avec nouvelles tentatives + contrôle du focus avant chaque
-clic, dans `cliquer_fenetre`, `coller_et_envoyer`, `copier_reponse`, `defiler_fenetre`)
-n'a été validé qu'en syntaxe. À exécuter, VS Code ayant le focus au lancement :
-- lancer `cliquer_fenetre.ps1` sur une fenêtre Chrome ChatGPT : le clic doit atterrir
-  dans Chrome, pas dans VS Code ;
-- répéter 5 fois de suite, y compris avec une autre application au premier plan ;
-- simuler un échec (fenêtre cible minimisée ou bloquée) : le script doit s'arrêter
-  avec le code 2 et le message « Focus non obtenu », sans aucun clic ;
-- contrôler qu'aucun effet parasite de la touche Alt (barre de menus Chrome activée) ne
-  gêne le clic ou la saisie qui suit ;
-- si validé : mettre à jour `roadmap_reprise_multicompte.md` (blocage Phase 3) et la
-  section dédiée de `skills/chatgpt-orchestrateur/SKILL.md`.
-
 ## /start et /close — attribution par zone (SérénIATech_dev)
 
 Commandes déployées par `/update` le 2026-10-14 (étapes `/close` 3-bis, 4, 13, 15 ; `/start` 4c).
@@ -104,9 +89,7 @@ Vérifier dans une session réelle du kit que :
 
 ## Hook PreCompact (`scripts/hook_precompact.py`)
 
-Vérifier dans une session réelle du kit que :
-- un `/compact` manuel ajoute à `_contexte/journal_session.md` la ligne `| action | compactage manual : relire ce journal` ;
-- le résumé produit conserve la tâche en cours, les fichiers modifiés non commités et la prochaine étape ;
+Cas manuel validé le 2026-11-21 (ligne `compactage manual` au journal, résumé conforme). Reste à observer :
 - un compactage automatique écrit la ligne avec `auto` ;
 - le compactage n'échoue jamais à cause du hook.
 
@@ -114,3 +97,7 @@ Vérifier dans une session réelle du kit que :
 
 Au prochain `/maintenance` (essai du 2026-11-21 : étapes 0, 9, 10 et 11 avec « oui » observées) : répondre « non » à l'étape 11 et vérifier que la maintenance se termine sans rien écrire dans `maintenance_retours.md` ni `journal_session.md`.
 
+
+## /create_projet — numérotation de la liste des templates
+
+Au prochain `/create_projet` réel (exécuté le 2026-10-12 : 8 templates listés, rendu côté utilisateur non confirmé) : vérifier que la liste s'affiche `0. Aucun template` suivi de `1.` à `8.`, sans décalage de numérotation. Réf : `.claude/commands/create_projet.md` étape [TEMPLATES] 17. Transmettre toute divergence au kit.

@@ -52,7 +52,6 @@ Protocole destiné aux projets développés avec Claude Code sur de longues pér
 - `templates/` : patron complet à copier dans un projet cible (`.claude/commands/`, `_contexte/`, `ollama_call.py`, `roadmap_TEMPLATE.md`) et templates insérables (`control_PC`, `delegation`, `discord_com`, `intercom`, `netlify`, `notification`, `ollama`, `overlay`, `rclone_backup`) ; `parallel_agents` : modèles consommés par `/create_parallel_team`, non insérable.
 - `DOCUMENTATION/` : base de connaissance interne (agent dédié), à consulter via `DOCUMENTATION/INDEX.md`.
 - `base_connaissances/` : audit reproductible des projets déployés (frictions terrain, patterns, propositions d'amélioration).
-- `skills/` : skills du kit (`chatgpt-orchestrateur`).
 - `_archives/` : fichiers archivés (rien n'est supprimé).
 - `tests/` : suites de tests (`check_kit`, lanceur Ollama, équipes parallèles, `rclone_backup`).
 

@@ -266,3 +266,7 @@
 - 2026-11-18 : `/update` d'un projet à session ouverte inactive : VibeObs arrête la session (processus `claude`) à la demande de l'utilisateur puis met à jour ; actions classées « Plus tard » en bloc sur son choix ; session active ou en attente de clic laissée de côté.
 - 2026-11-18 : projet Shorts extrait de `SérénIATech_dev/Communication/SHORTS` vers `D:\ServOMorph\Shorts` (copie, rôle généralisé à tout demandeur, git local, jeton VRAM `shorts` conservé) ; `SérénIATech_dev` supprime son dossier après validation dans sa session.
 - 2026-11-19 : délégation à Codex bloquée par l'utilisateur le temps de limiter l'usage de l'abonnement Plus ; l'interrupteur est un fichier (`~/.codex/delegation_bloquee.flag`), le lever se fait par l'utilisateur seul.
+
+## Décisions archivées le 2026-11-22 (rotation contexte.md > 10 entrées)
+
+- 2026-11-19 : veille IA lancée à la voix, exécutée par VertIA_v3 sans accord préalable à chaque lancement (périmètre : sources officielles, aucun Codex) ; VibeObs décide des téléchargements de modèles de 20 Go ou moins pour les essais, jamais de l'acceptation d'une licence ni de l'installation d'un logiciel.

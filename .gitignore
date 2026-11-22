@@ -34,8 +34,6 @@ templates/control_PC/database/*.sqlite
 discord_com/config_bot_discord.json
 discord_com/bot.pid
 
-# Comptes Google locaux (e-mails), jamais commités
-skills/chatgpt-orchestrateur/scripts/comptes_google.json
 
 # Archives locales contenant des données personnelles, jamais commitées
 _archives/local/
