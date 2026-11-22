@@ -11,10 +11,11 @@ Assurer la maintenance complète du projet VibeObs (fichiers et code) et concevo
 - Scripts de `MAINTENANCE/scripts/` : bibliothèque standard, sauf `lancer_sur_bureau.py` qui exige `pyvda` (venv hors dépôt `D:\_outils\venv_bureaux`). Dépôt VibeObs public : pas de secret ni d'identifiant dans les fichiers commités.
 
 ## État actuel (réécrit intégralement à chaque /close)
-Migration des projets de C: vers D: presque terminée : 11 projets et 1 doublon en quarantaine, `TableauDeBord` et `ffmpeg` copiés sur D: (originaux gardés jusqu'au prochain redémarrage), site `site_internet_Sereniatech_V2` laissé sur C: sur ordre de l'utilisateur.
-Scripts livrés : `migrer_projet.py` (12 tests), `lancer_sur_bureau.py`, `balayer_chemins.py`. Périmètre de la maintenance et règles de validation : à définir (action P1).
+Migration C: vers D: presque terminée (originaux `TableauDeBord` et `ffmpeg` gardés jusqu'au redémarrage du PC) ; site `site_internet_Sereniatech_V2` laissé sur C:.
+Périmètre et règles de validation de la maintenance validés ; template `/maintenance` créé, documenté, inséré dans VertIA_v3 (non commité) ; `/maintenance` pas encore exercé de bout en bout.
 
 ## Décisions structurantes (append only — 10 entrées max, 5 lignes max/entrée, archiver au-delà)
 - 2026-11-19 : Création de l'agent maintenance (rôle : assurer la maintenance complète du projet VibeObs et concevoir puis maintenir le template « maintenance » inséré dans les projets suivis). Écriture : tout le dépôt VibeObs ; lecture étendue : projets de `DEPLOYMENTS.md` (lecture seule). Aucun projet suivi n'est nommé dans le rôle, pour pouvoir en ajouter.
 - 2026-11-20 : Droits élargis décidés par l'utilisateur : lecture, écriture et suppression dans les autres projets et sur le PC (`agent_role.md` encore en lecture seule, à aligner). Toute suppression passe par la quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, validation par lot ; GitHub : l'agent guide, l'utilisateur supprime ; scripts Python au maximum ; analyse déléguée à Ollama après contrôle que VertIA est ouvert ; session VS Code gardée ouverte, maintenance relancée après un redémarrage.
 - 2026-11-20 : Migration par `scripts/migrer_projet.py` (copier, verifier, chemins, quarantaine `--confirmer`) : comparaison SHA-256, `--sans-lecture` pour les dossiers sensibles, `.env*` jamais lus, `CLAUDE.md`, `AGENTS.md` et `GEMINI.md` jamais modifiés par le script (trois validations).
+- 2026-11-22 : Règles de validation validées (`regles_validation.md`) : périmètre = projet où la maintenance est lancée, quarantaine D: avec purge à 30 jours en lot distinct, fréquence mensuelle ou après gros refacto, Ollama après contrôle de VertIA. Template `/maintenance` placé selon son README (commande dans `.claude/commands/`).

@@ -1,17 +1,16 @@
-# Signals — maintenance   (MAJ 2026-11-20)
+# Signals — maintenance   (MAJ 2026-11-22)
 
 ## Actions ouvertes
 <!-- ≤ 20 entrées (ligne « Backlog » exclue) ; dette et findings non urgents -> _contexte/backlog.md -->
-- [P1|ouvert] Définir le périmètre de la maintenance et les règles de validation (sécurité d'abord) avant toute roadmap : racines concernées, types d'éléments, exclusions absolues, actions autorisées par type, fréquence, purge de la quarantaine, contrôle de VertIA avant tout appel Ollama. Aligner `agent_role.md`, resté en lecture seule sur les autres projets alors que l'utilisateur a décidé le 2026-11-19 d'élargir à la lecture, l'écriture et la suppression (projets et PC).
-  - Fusionnée le 2026-11-20 avec « Créer le template maintenance » (demande de VibeObs Général, confiée à cette zone) : maintenance complète d'un projet, fichiers et code, kit sans oubli pour des projets propres, à insérer dans les projets suivis (`creation_llm`, `sereniatech_dev`, `vertia`, VibeObs, d'autres ensuite). `/maintenance` du kit réécrite en socle générique v7.6 (12 étapes, quarantaine, refacto en analyse seule, journal, amélioration de la commande), non commitée. Restent : relever les maintenances déjà en place dans les projets suivis, trancher le délai de purge de la quarantaine (fixé à 30 jours pour le kit), tirer le template de la commande. 2026-11-21 (racine) : premier essai réel de `/maintenance` sur le kit ; la commande passe en v7.7 avec cinq améliorations (`allowed-tools` `du` et `grep`, étape 3 éléments ignorés volumineux, étape 9 en-tête de `manifeste.md`, suppression non commitée signalée et action « transférer à la session propriétaire », bloc kit étape 4 lecture des chemins de `DEPLOYMENTS.md`), à généraliser dans le template ; détail dans `_contexte/maintenance_retours.md` de la racine.
-  - fait quand: les règles sont écrites et validées par l'utilisateur, `agent_role.md` reflète les droits décidés, le template de base est défini (périmètre complet de la maintenance) et inséré dans au moins un projet suivi, avec ses contrôles exercés.
-  - réf: `MAINTENANCE/agent_role.md`, `_contexte/contexte.md` (décisions 2026-11-19 et 2026-11-20), `.claude/commands/maintenance.md`, `DOCUMENTATION/20_guides/maintenance_du_kit.md`, `DEPLOYMENTS.md`
+- [P1|ouvert] Exercer le template `/maintenance` : l'insérer dans les projets suivis et lancer la maintenance de chacun.
+  - Fait au 2026-11-22 : `agent_role.md` aligné (périmètre = projet où la maintenance est lancée), `MAINTENANCE/regles_validation.md` validé par l'utilisateur, `templates/maintenance/` créé (commit `238ac84`) et documenté (commit `60c631e`), template inséré dans `D:\ServOMorph\VertIA_v3` (`.claude/commands/maintenance.md`, `regles_validation.md`, `_contexte/maintenance_retours.md`, non commité), bloc « SPÉCIFICITÉS PROJET » renseigné, limite maintenance/évolution et chemins sensibles à confirmer. La session CLI `Maintenance VertIA_v3` a été fermée avant la confiance du dossier : `/maintenance` n'a pas tourné.
+  - Restent : lancer `/maintenance` sur VertIA_v3 (session CLI, écran lu par `console_distante.py`, frictions notées dans `maintenance_retours.md`), insérer ensuite dans `creation_llm` (session ouverte), `sereniatech_dev`, VibeObs ; relever les maintenances déjà en place dans les projets suivis ; `README.md`, `llms.txt`, `CHANGELOG.md` du kit à compléter pour le template (VibeObs Général) ; guide d'insertion de templates absent (action P2 chez Documentation).
+  - fait quand: `/maintenance` a tourné de bout en bout dans au moins un projet suivi, ses frictions sont consignées et les améliorations proposées au kit.
+  - réf: `templates/maintenance/`, `MAINTENANCE/regles_validation.md`, `D:\ServOMorph\VertIA_v3\.claude\commands\maintenance.md`, `DEPLOYMENTS.md` (ligne VertIA_v3, fichier ignoré par Git)
 - [P1|ouvert] Après un redémarrage du PC : contrôler que le Tableau de bord démarre seul depuis D: et que `ffmpeg` répond avec le nouveau PATH ; puis mettre en quarantaine les originaux C: de `TableauDeBord` et de `ffmpeg` avec `migrer_projet.py quarantaine --confirmer`.
+  - Chemin `ffmpeg` de `VertIA_v3\_codex\reference\ace_worker_reference.py` corrigé le 2026-11-22 (session VertIA_v3 hors ligne), non commité.
   - fait quand: `C:\Users\raph6\Documents\ServOMorph` ne contient plus que `site_internet_Sereniatech_V2` et `manifeste.md` est complété.
   - réf: `MAINTENANCE/scripts/migrer_projet.py`, `D:\_quarantaine\2026-11-20\manifeste.md`
-- [P1|ouvert] Corriger le chemin `ffmpeg` C: de `ace_worker_reference.py` de VertIA_v3 en passant par sa session (ouverte, validation dans sa session) ; bloque la quarantaine de l'original `ffmpeg`.
-  - fait quand: le fichier pointe vers `D:\ServOMorph\ffmpeg`, accord de la session VertIA_v3 tracé.
-  - réf: `D:\ServOMorph\VertIA_v3\_codex\reference\ace_worker_reference.py`
 - [P2|ouvert] Tester `idle_game_auto_claude` depuis D: (branche Godot, 6 modifications non commitées, aucun remote) ; original en quarantaine.
   - fait quand: l'utilisateur confirme que le jeu démarre, ou décide de le supprimer (purge de la quarantaine validée).
   - réf: `D:\ServOMorph\idle_game_auto_claude`, `D:\_quarantaine\2026-11-20\manifeste.md`
@@ -26,26 +25,24 @@
   - réf: `D:\ServOMorph\PROJETS.md`
 - Backlog : 6 entrées (dette 4, piste 2) — `_contexte/backlog.md`
 
-## Dernière session (2026-11-20)
-<!-- Écrasé intégralement par /close. Synthèse < 25 lignes. -->
-# Session du 2026-11-20
+## Dernière session (2026-11-22)
+# Session du 2026-11-22
 
 ## Décisions prises
-- Droits élargis par l'utilisateur (lecture, écriture, suppression dans les autres projets et sur le PC) ; toute suppression passe par la quarantaine `D:\_quarantaine\<date>\` avec `manifeste.md`, validation par lot ; GitHub : guidage seul ; scripts Python au maximum ; Ollama après contrôle de VertIA.
-- Migration des projets de `C:\...\ServOMorph` vers `D:\ServOMorph` : copie vérifiée par SHA-256, chemins corrigés, original en quarantaine. Ordre du 2026-11-20 : ne pas toucher au site `site_internet_Sereniatech_V2`.
+- Périmètre : la racine d'une maintenance est le projet où elle est lancée. Règles de validation validées (fréquence mensuelle, purge à 30 jours, quarantaine D:).
+- Template inséré dans VertIA_v3 selon le README du template (commande dans `.claude/commands/`), l'insertion standard ne convenant pas.
 
 ## Livrables produits ou modifiés
-- `MAINTENANCE/scripts/migrer_projet.py` (+ `tests/test_migrer_projet.py`, 12 tests passés), `lancer_sur_bureau.py`, `balayer_chemins.py` : créés.
-- 11 projets et 1 doublon (`whisper`) en quarantaine ; `Schumfl.txt` déplacé ; `nul` supprimé ; `TableauDeBord` et `ffmpeg` copiés sur D: (originaux gardés) ; PATH utilisateur, raccourci Démarrage et `PROJETS.md` mis à jour ; chemin `ffmpeg` corrigé dans CreaZik_V3 et Shorts.
-- Outil `D:\_outils\venv_bureaux` (pyvda) : Tableau de bord relancé sur le bureau « Accueil », interface dans Chrome (profil ServO Morph).
+- `MAINTENANCE/agent_role.md`, `MAINTENANCE/regles_validation.md`, `templates/maintenance/` : commités (`238ac84`).
+- `VertIA_v3` : template maintenance et chemin `ffmpeg` corrigé, non commités ; `DEPLOYMENTS.md` : ligne ajoutée (fichier ignoré par Git).
 
 ## Hypothèses validées / invalidées
-- VALIDE : la chaîne copier, vérifier, corriger les chemins, quarantaine a traité 12 éléments sans écart ; `nul` supprimé via `[IO.File]::Delete` sur chemin `\\?\`.
-- INVALIDE : `Remove-Item` suffit pour `nul` ; `run.py` ouvrait l'interface dans Chrome (navigateur par défaut : Firefox, corrigé) ; les dépendances de `pifpafpof` étaient connues avant son déplacement (Lieux_Hybrides et password_manager_pro pointaient vers son `.env`, corrigé après coup).
-- EN ATTENTE : démarrage automatique du Tableau de bord et `ffmpeg` après redémarrage ; test de `idle_game_auto_claude` sur D:.
+- VALIDE : l'insertion du template exige un placement manuel (commande, règles, retours) ; `/insert_template` copie tout sous `VibeObs/`.
+- INVALIDE : `/exit` envoyé par `console_distante.py` ferme une session (elle y répond comme à un message).
+- EN ATTENTE : exercice réel de `/maintenance` sur VertIA_v3 ; redémarrage du PC pour `TableauDeBord` et `ffmpeg`.
 
 ## Prochaine étape exacte
-Redémarrer le PC, contrôler le Tableau de bord et `ffmpeg`, mettre leurs originaux en quarantaine (actions P1), puis définir le périmètre et les règles de validation.
+Relancer la session CLI `Maintenance VertIA_v3` (`/maintenance`), valider la confiance du dossier, suivre l'écran, noter les frictions.
 
 ## Question bloquante pour la session suivante
-Quelles racines, en plus de `D:\ServOMorph`, entrent dans le périmètre de la maintenance ?
+Quelle limite maintenance/évolution et quels chemins sensibles déclarer pour VertIA_v3 ?
