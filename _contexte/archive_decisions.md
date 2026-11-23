@@ -270,3 +270,7 @@
 ## Décisions archivées le 2026-11-22 (rotation contexte.md > 10 entrées)
 
 - 2026-11-19 : veille IA lancée à la voix, exécutée par VertIA_v3 sans accord préalable à chaque lancement (périmètre : sources officielles, aucun Codex) ; VibeObs décide des téléchargements de modèles de 20 Go ou moins pour les essais, jamais de l'acceptation d'une licence ni de l'installation d'un logiciel.
+
+## Décisions archivées le 2026-11-23 (rotation contexte.md > 10 entrées)
+
+- 2026-11-19 : délégation à Codex régie par une politique centrale (`~/.codex/politique_delegation.json`) : modèle et binaire imposés, seuils 50 % (5 h) et 60 % (7 jours) lus dans les rollout, verrou exclusif par appel, blocage par défaut si le quota est illisible ; wrapper déterministe, pas de session LLM gardienne ; flag manuel conservé comme interrupteur d'urgence.

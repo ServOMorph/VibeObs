@@ -117,6 +117,9 @@ Aucun déclaré.
 ## Délégation Ollama
 Pour les tâches répétitives et templated (commits, posts, changelogs, données de test, digest de logs), déléguer à Ollama via `python ollama_call.py "<prompt>"` plutôt que de traiter en cloud. Ne jamais envoyer de données sensibles à un modèle cloud.
 
+## IA locale et GPU
+Toute génération par IA locale (image, musique, voix, vidéo) passe par le portail : `python D:\ServOMorph\VertIA_v3\vertia_gen.py <capacité> --session <nom déclaré dans vram_lock.py> --prompt "<texte>"`. Texte : même voie sous 20 appels ; à 20 appels ou plus, un seul jeton GPU pour tout le lot (`python D:\ServOMorph\VertIA_v3\_orchestration\vram_lock.py acquire <session> --wait`, puis `release <session>`), jamais un jeton par appel. Aucun moteur GPU lancé hors portail ou jeton. Le portail refuse les sessions non déclarées dans `vram_lock.py`.
+
 ## Spécificités projet
 
 Section réservée aux règles propres à ce projet, hors périmètre du kit. Cette section est préservée intégralement par `/update` (jamais écrasée ni fusionnée avec le contenu du kit). Convention : toute règle liée à une section précise du fichier doit la référencer explicitement par son titre (ex: "Section Roadmap : ..."), plutôt que compter sur la position physique de cette section (toujours en fin de fichier).

@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v8.1 — 2026-11-23
+
+### Ajouté
+- `.claude/CLAUDE.md` et `templates/.claude/CLAUDE.md` : section `## IA locale et GPU` (règle proposée par VertIA_v3, acceptée après les trois validations de l'utilisateur) : génération image, musique, voix, vidéo et texte (moins de 20 appels) par le portail `vertia_gen.py` ; texte de 20 appels ou plus : un seul jeton GPU pour le lot, jamais un jeton par appel ; aucun moteur GPU hors portail ou jeton. À diffuser aux projets par `/update`.
+
+### Modifié
+- `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_decisions.md` : action de décision close, action de diffusion étendue, décision archivée par rotation.
+
 ## v8.0 — 2026-11-21
 
 ### Supprimé

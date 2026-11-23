@@ -27,12 +27,12 @@
 - Terminer la délégation à Codex (2026-11-19 à 2026-11-21). Fait : politique centrale `~/.codex/politique_delegation.json` (modèle `gpt-6.2-sol`, seuils 50 % sur 5 h et 60 % sur 7 jours, verrou exclusif), `run_codex.ps1` corrigé, consigne « Modèle Codex » dans les `AGENTS.md` de `D:\ServOMorph` et de `SérénIATech_dev`, flag levé le 2026-11-20 (interrupteur d'urgence : lui seul le repose ou le retire), section ajoutée à `VibeObs/AGENTS.md` (`28bd2a1`). 2026-11-21 : `.gitattributes` `* text=auto eol=lf` créé dans `creation_llm` (non commité, sa session informée par message) ; `AGENTS.md` de `Moulin du Sud` commité dans `Lieux_Hybrides` (`3b41aac`), non poussé sur décision de l'utilisateur (le dépôt distant n'a pas de branche `main`, le push publierait tout l'historique) ; `Nettoyage_PC` sans dépôt git, rien à commiter. Reste : `creation_llm` commite son `.gitattributes` et clôt son action P2 sur le binaire 0.154 (probablement obsolète).
   - fait quand: `creation_llm` a commité son `.gitattributes`, ou l'utilisateur écarte ce commit.
   - réf: `D:\ServOMorph\creation_llm\.gitattributes` ; `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `~/.codex/politique_delegation.json`.
-- [P2] Décider d'ajouter au `CLAUDE.md` du kit (trois validations, puis `/update`) la règle d'IA locale proposée par VertIA_v3 le 2026-11-21 : image, musique, voix, vidéo et texte (moins de 20 appels) via le portail `python D:\ServOMorph\VertIA_v3\vertia_gen.py <capacité> --session <nom vram_lock> --prompt "<texte>"` ; texte de 20 appels ou plus : un seul jeton GPU pour le lot (`vram_lock.py acquire ... --wait`, puis `release`) ; aucun moteur GPU hors portail ou jeton. Remplace la ligne proposée plus tôt le même jour. Réserve : le portail n'accepte que les sessions déclarées dans `vram_lock.py` (compta-asso et sereniatech : code 8) ; seuil de 20 appels de prudence, non mesuré comme point d'équilibre. 2026-11-22 : validation 1 sur 3 (explication novice) présentée, accord de l'utilisateur en attente ; benchmark relu (`benchmark_texte_methodes.md`, une passe, une machine, indicatif).
-  - fait quand: la règle est ajoutée au `CLAUDE.md` du kit après les trois validations, ou refusée par l'utilisateur.
-  - réf: `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md` ; `.claude/CLAUDE.md` ; `templates/.claude/CLAUDE.md`.
-- Diffuser par `/update` le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite) aux projets déployés ; la commande `/create_team` n'était pas déployée (kit seul), seul `init_projet` l'est.
-  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur.
-  - réf: `templates/.claude/commands/init_projet.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0.
+- Diffuser par `/update` aux projets déployés : le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite ; `/create_team` n'était pas déployée, seul `init_projet` l'est) et la section `## IA locale et GPU` ajoutée le 2026-11-23, après les trois validations, aux `CLAUDE.md` du kit et du template. Réserves de la règle : le portail refuse les sessions non déclarées dans `vram_lock.py`, seuil de 20 appels non mesuré, chemins propres à cette machine, fonctionnement de `vertia_gen.py` non relu.
+  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur.
+  - réf: `templates/.claude/commands/init_projet.md` ; `templates/.claude/CLAUDE.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0 et v8.1 ; `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md`.
+- [à transférer vers maintenance] `MAINTENANCE/_contexte/contexte.md` et `signals.md` sont en CRLF dans la copie de travail (index Git en LF, `.gitattributes` `eol=lf`) : `check_kit.py` sort en code 1 depuis le 2026-11-23 sur ces deux fichiers ; non modifiés par cette session (zone MAINTENANCE, `journal_session.md` modifié le 2026-11-23 04:32).
+  - fait quand: `python scripts/check_kit.py` sort en code 0, après conversion en LF décidée par la zone `maintenance`.
+  - réf: `MAINTENANCE/_contexte/signals.md` ; `MAINTENANCE/_contexte/contexte.md` ; `scripts/check_kit.py`.
 Backlog : 6 entrées (finding 1, amélioration 4, piste 1) — `_contexte/backlog.md`
 
 ### Backlog P2
@@ -46,20 +46,20 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-22
+# Session du 2026-11-23
 
 ## Décisions prises
-- Règle d'IA locale de VertIA_v3 choisie comme prochaine étape ; première des trois validations (explication novice) présentée, aucune écriture dans un `CLAUDE.md`.
+- Règle d'IA locale de VertIA_v3 acceptée après les trois validations (session commencée le 2026-11-22) et écrite dans `.claude/CLAUDE.md` et `templates/.claude/CLAUDE.md`, section `## IA locale et GPU`.
 
 ## Livrables produits ou modifiés
-- `_contexte/signals.md` : action P2 de la règle d'IA locale mise à jour ; aucun autre fichier modifié (arbre de travail propre au départ).
+- `.claude/CLAUDE.md`, `templates/.claude/CLAUDE.md` : section ajoutée ; `CHANGELOG.md` v8.1, `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_decisions.md` : mis à jour, commités.
 
 ## Hypothèses validées / invalidées
-- EN ATTENTE : accord de l'utilisateur à la validation 1 sur 3 de la règle d'IA locale.
-- EN ATTENTE (reporté du bloc précédent) : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux sans décision consignée de l'utilisateur sur `control_PC`.
+- EN ATTENTE : diffusion de la règle par `/update` ; fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
+- EN ATTENTE (reporté) : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux sans décision consignée de l'utilisateur sur `control_PC`.
 
 ## Prochaine étape exacte
-Reprendre la règle d'IA locale de VertIA_v3 à la validation 1 sur 3, puis 2 et 3 (aussi `templates/.claude/CLAUDE.md`) ; diffuser `init_projet` par `/update` ; purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
+Diffuser par `/update` le template `init_projet` et la section `IA locale et GPU` aux projets déployés ; purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
 
 ## Question bloquante pour la session suivante
-Accord pour passer à l'étape 2 (version synthétique) de la règle d'IA locale de VertIA_v3 ?
+Aucune
