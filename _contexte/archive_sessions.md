@@ -1936,3 +1936,16 @@ Poursuivre le tri du backlog (15 entrées) à partir de l'harmonisation `CLAUDE.
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+# Session du 2026-11-23
+
+## Décisions prises
+- Règle d'IA locale de VertIA_v3 acceptée après les trois validations (session commencée le 2026-11-22) et écrite dans `.claude/CLAUDE.md` et `templates/.claude/CLAUDE.md`, section `## IA locale et GPU`.
+
+## Livrables produits ou modifiés
+- `.claude/CLAUDE.md`, `templates/.claude/CLAUDE.md` : section ajoutée ; `CHANGELOG.md` v8.1, `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_decisions.md` : mis à jour, commités.
+
+## Hypothèses validées / invalidées
+- EN ATTENTE : diffusion de la règle par `/update` ; fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
+- EN ATTENTE (reporté) : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux sans décision consignée de l'utilisateur sur `control_PC`.

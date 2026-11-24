@@ -17,10 +17,11 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
+- 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse.
 - 2026-11-23 : kit v8.1 ; tri des actions et du backlog terminé (backlog à 6 entrées : harmonisation `CLAUDE.md`/`AGENTS.md`/`GEMINI.md`, détection Codex, délégation Ollama/OpenCode, garde VRAM, registre des artifacts) ; skill `chatgpt-orchestrateur` en quarantaine (purge à partir du 2026-12-21).
 - Attentes : règle d'IA locale de VertIA_v3 écrite dans les `CLAUDE.md` du kit et du template (2026-11-23), à diffuser par `/update` avec `init_projet` ; hook PreCompact validé en manuel, cas automatique à observer.
 - Délégation à Codex en service (modèle `gpt-6.2-sol` par la politique centrale, flag levé, interrupteur d'urgence) ; `.gitattributes` créé dans `creation_llm` (à commiter par sa session) ; `AGENTS.md` de Moulin du Sud commité `3b41aac`, non poussé.
-- `/update` v6.10 diffusé le 2026-11-18 ; restent creation_3d et site_internet_ST_v3 (sessions ouvertes), Nettoyage_PC (sans git), `SérénIATech_dev` via sa gardienne.
+- Restent à diffuser (`/update` v8.1) : VertIA_v3, Creation llm, sessions ouvertes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) ; Nettoyage_PC sans git.
 - Non poussés : Rayonne_Toi, challenge_magic et Shorts (sans remote), Moulin du Sud (sans amont), Nettoyage_PC. Système d'apprentissage : phase 1 (v0) en cours, session gardienne `sereniatech_dev`.
 
 ## Décisions structurantes
@@ -36,3 +37,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-21 : tri des actions et du backlog selon le périmètre : travaux de projets suivis écartés ou transférés à leur propriétaire ; action de la Maintenance (`_docs`, `control_PC`) en attente de la décision de l'utilisateur ; règle d'IA locale de VertIA_v3 à instruire pour le `CLAUDE.md` du kit (trois validations).
 - 2026-11-22 : skill `chatgpt-orchestrateur` abandonné (quarantaine, purge validée à part après 30 jours) ; hook PreCompact validé en manuel ; backlog réduit à 6 entrées.
 - 2026-11-23 : règle d'IA locale de VertIA_v3 ajoutée aux `CLAUDE.md` du kit et du template (section `## IA locale et GPU`, trois validations) : portail `vertia_gen.py` pour image, musique, voix, vidéo et texte sous 20 appels ; un seul jeton GPU pour un lot de texte de 20 appels ou plus, jamais un jeton par appel ; diffusion par `/update` en attente.
+- 2026-11-24 : `/update` v8.1 reconnu par VertIA_v3 (section ajoutée à son `CLAUDE.md` par elle-même) ; `/update` complet à reproposer après son `/close`, sans écriture dans VertIA.

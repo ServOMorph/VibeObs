@@ -28,7 +28,7 @@
   - fait quand: `creation_llm` a commité son `.gitattributes`, ou l'utilisateur écarte ce commit.
   - réf: `D:\ServOMorph\creation_llm\.gitattributes` ; `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `~/.codex/politique_delegation.json`.
 - Diffuser par `/update` aux projets déployés : le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite ; `/create_team` n'était pas déployée, seul `init_projet` l'est) et la section `## IA locale et GPU` ajoutée le 2026-11-23, après les trois validations, aux `CLAUDE.md` du kit et du template. Réserves de la règle : le portail refuse les sessions non déclarées dans `vram_lock.py`, seuil de 20 appels non mesuré, chemins propres à cette machine, fonctionnement de `vertia_gen.py` non relu.
-  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur.
+  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur. 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session (actions classées « Plus tard ») ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse ; restent les projets à session ouverte et Nettoyage_PC (sans git).
   - réf: `templates/.claude/commands/init_projet.md` ; `templates/.claude/CLAUDE.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0 et v8.1 ; `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md`.
 - [à transférer vers maintenance] `MAINTENANCE/_contexte/contexte.md` et `signals.md` sont en CRLF dans la copie de travail (index Git en LF, `.gitattributes` `eol=lf`) : `check_kit.py` sort en code 1 depuis le 2026-11-23 sur ces deux fichiers ; non modifiés par cette session (zone MAINTENANCE, `journal_session.md` modifié le 2026-11-23 04:32).
   - fait quand: `python scripts/check_kit.py` sort en code 0, après conversion en LF décidée par la zone `maintenance`.
@@ -46,20 +46,22 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 
 ## Dernière session
 
-# Session du 2026-11-23
+# Session du 2026-11-24
 
 ## Décisions prises
-- Règle d'IA locale de VertIA_v3 acceptée après les trois validations (session commencée le 2026-11-22) et écrite dans `.claude/CLAUDE.md` et `templates/.claude/CLAUDE.md`, section `## IA locale et GPU`.
+- `/update` v8.1 diffusé à 23 projets sans session ouverte ; actions classées « Plus tard ».
+- VertIA_v3 refuse provisoirement le `/update` v8.1 (trois validations de `CLAUDE.md` requises, travail GPU en cours) ; à recontacter après son `/close`. Elle a ajouté elle-même la section `IA locale et GPU` à son `CLAUDE.md` (trois validations obtenues chez elle). Ne pas écrire dans VertIA.
+- Creation llm sans réponse.
 
 ## Livrables produits ou modifiés
-- `.claude/CLAUDE.md`, `templates/.claude/CLAUDE.md` : section ajoutée ; `CHANGELOG.md` v8.1, `_contexte/signals.md`, `_contexte/contexte.md`, `_contexte/archive_decisions.md` : mis à jour, commités.
+- Aucun fichier du dépôt VibeObs hors `_contexte/` ; les `/update` ont été commités dans chaque projet cible.
 
 ## Hypothèses validées / invalidées
-- EN ATTENTE : diffusion de la règle par `/update` ; fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
-- EN ATTENTE (reporté) : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux sans décision consignée de l'utilisateur sur `control_PC`.
+- EN ATTENTE : `/update` v8.1 à VertIA_v3 (après son `/close`), à Creation llm (sans réponse), aux sessions ouvertes restantes.
+- EN ATTENTE : fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
 
 ## Prochaine étape exacte
-Diffuser par `/update` le template `init_projet` et la section `IA locale et GPU` aux projets déployés ; purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
+Reproposer `/update` v8.1 à VertIA_v3 après son `/close`, relancer Creation llm, puis traiter les sessions ouvertes restantes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) ; Nettoyage_PC (sans git) à traiter à part. Purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
 
 ## Question bloquante pour la session suivante
 Aucune
