@@ -11,9 +11,9 @@ Assurer la maintenance complète du projet VibeObs (fichiers et code) et concevo
 - Scripts de `MAINTENANCE/scripts/` : bibliothèque standard, sauf `lancer_sur_bureau.py` qui exige `pyvda` (venv hors dépôt `D:\_outils\venv_bureaux`). Dépôt VibeObs public : pas de secret ni d'identifiant dans les fichiers commités.
 
 ## État actuel (réécrit intégralement à chaque /close)
-Migration C: vers D: presque terminée (originaux `TableauDeBord` et `ffmpeg` gardés jusqu'au redémarrage du PC) ; site `site_internet_Sereniatech_V2` laissé sur C:.
-Périmètre et règles de validation de la maintenance validés ; template `/maintenance` créé, documenté, inséré dans VertIA_v3 (bloc projet renseigné : limite prudente, chemins sensibles).
-`/maintenance` a tourné jusqu'au rapport sur VertIA_v3 (1012 tests passent, quatre lots) ; décisions sur les lots en attente de l'utilisateur.
+Migration C: vers D: presque terminée : PC redémarré le 2026-11-25, contrôles puis quarantaine des originaux `TableauDeBord` et `ffmpeg` à faire ; site `site_internet_Sereniatech_V2` laissé sur C:.
+Périmètre et règles de validation validés ; template `/maintenance` créé, documenté, inséré dans VertIA_v3.
+Essai sur VertIA_v3 : rapport produit, lot A validé (non commité) ; lots restants, journal et amélioration de la commande à faire ; aucune session de maintenance en cours.
 
 ## Décisions structurantes (append only — 10 entrées max, 5 lignes max/entrée, archiver au-delà)
 - 2026-11-19 : Création de l'agent maintenance (rôle : assurer la maintenance complète du projet VibeObs puis concevoir et maintenir le template « maintenance » inséré dans les projets suivis). Écriture : tout le dépôt VibeObs ; lecture étendue : projets de `DEPLOYMENTS.md` (lecture seule). Aucun projet suivi n'est nommé dans le rôle, pour pouvoir en ajouter.
