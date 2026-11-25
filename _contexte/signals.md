@@ -30,9 +30,6 @@
 - Diffuser par `/update` aux projets déployés : le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite ; `/create_team` n'était pas déployée, seul `init_projet` l'est) et la section `## IA locale et GPU` ajoutée le 2026-11-23, après les trois validations, aux `CLAUDE.md` du kit et du template. Réserves de la règle : le portail refuse les sessions non déclarées dans `vram_lock.py`, seuil de 20 appels non mesuré, chemins propres à cette machine, fonctionnement de `vertia_gen.py` non relu.
   - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur. 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session (actions classées « Plus tard ») ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse ; restent les projets à session ouverte et Nettoyage_PC (sans git).
   - réf: `templates/.claude/commands/init_projet.md` ; `templates/.claude/CLAUDE.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0 et v8.1 ; `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md`.
-- Suivre le chantier Roberto « commande du PC » (manette, voix, interface) développé dans `D:\ServOMorph\Roberto\lot_dictee\` (cas 5 de `prises_de_controle.md`). Fait le 2026-11-25 : dictée X maintenu, Entrée A, session par la voix (Y), session voisine (stick), tests à la croix, commande vocale « Roberto, ouvre WhatsApp » (bouton +), mode conversation vers VibeObs (bouton −), voix Piper et statut toutes les 30 s (bouton de capture = voix on/off), interface HTML sombre avec bouton souris MANETTE active/désactivée, 122 tests verts. Aucun lot envoyé à Roberto : accord de l'utilisateur requis avant tout envoi (règle de `.claude/memory.md`). Dossier `lot_dictee/` non commité (dépôt propre de Roberto, VibeObs n'y commite pas). Non vérifié : appuis réels pendant la désactivation de la manette, allumage réel du bouton de capture, rendu du bouton souris. Ouvert : intégration de la prise en charge des réponses par Roberto (pont `com_telephone`, base de connaissance de Roberto) ; types de questions (réponse vocale courte sans outil vs travail annoncé) ; lags de VibeObs (à préciser par l'utilisateur) ; latence ; erreurs de transcription (volume du micro Windows non modifié sans accord) ; phrase interrompue « tu vas pouvoir intégrer la fonctionnalité dans Roberto, mais… ».
-  - fait quand: l'utilisateur a validé les tests de `tests_manuels.md` (section « Roberto commande PC ») et décidé de l'envoi du lot à Roberto, ou abandonne le chantier.
-  - réf: `roadmap_roberto_commande_pc.md` ; `D:\ServOMorph\Roberto\lot_dictee\` ; `DOCUMENTATION/30_decisions/prises_de_controle.md` cas 5 ; `.claude/memory.md`.
 - [à transférer vers maintenance] `MAINTENANCE/_contexte/contexte.md` et `signals.md` sont en CRLF dans la copie de travail (index Git en LF, `.gitattributes` `eol=lf`) : `check_kit.py` sort en code 1 depuis le 2026-11-23 sur ces deux fichiers ; non modifiés par cette session (zone MAINTENANCE, `journal_session.md` modifié le 2026-11-23 04:32).
   - fait quand: `python scripts/check_kit.py` sort en code 0, après conversion en LF décidée par la zone `maintenance`.
   - réf: `MAINTENANCE/_contexte/signals.md` ; `MAINTENANCE/_contexte/contexte.md` ; `scripts/check_kit.py`.
@@ -52,21 +49,20 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 # Session du 2026-11-25
 
 ## Décisions prises
-- Chantier Roberto « commande du PC » mené depuis VibeObs dans `Roberto/lot_dictee/` (cas 5 de `prises_de_controle.md`) ; arrêt de boucle atteint : dictée Win+H on/off testée automatiquement puis par l'utilisateur.
-- Aucun lot envoyé à Roberto sans demander à l'utilisateur d'abord (règle écrite dans `.claude/memory.md`).
-- Mapping manette : X dictée, A Entrée, Y session par la voix, stick gauche session voisine, croix tests, + commande vocale, − conversation, bouton de capture voix on/off ; B défectueux retiré. Voix Piper (Jessica), statut toutes les 30 s.
-- Bouton souris MANETTE active/désactivée dans l'interface (fichier drapeau `voix/manette_off`).
+- Chantier Roberto « commande du PC » mené depuis VibeObs puis remis à la session Roberto (décision de l'utilisateur) : lot `lot_dictee/` validé, commité par Roberto (`b933637`, `b77282e`), `demarrer.py`, README du lot, commande `/manette` et hook Stop créés chez Roberto ; cas 6 de `prises_de_controle.md` (intégration autonome).
+- Fonctions du bouton Y supprimées ; commandes « Roberto … » exécutées en mode conversation (comparaison approximative, non envoyées au chat) ; mode conversation mémorisé au redémarrage ; bouton maison, capture, +, −, stick gauche, X, A et disposition validés.
+- Hook Stop de lecture vocale retiré de VibeObs (`.claude/settings.local.json` supprimé).
 
 ## Livrables produits ou modifiés
-- `Roberto/lot_dictee/` (hors dépôt VibeObs, non commité) : 122 tests verts ; contrôle visuel seulement sur l'interface refaite.
-- `roadmap_roberto_commande_pc.md`, `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 5), `.claude/memory.md` : créés ou modifiés, commités ici.
+- `Roberto/lot_dictee/` (dépôt Roberto, commité par sa session) : 143 tests verts annoncés par Roberto, non relancés ici.
+- `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 6), `roadmap_roberto_commande_pc.md` (phases 1 à 5 FAIT, phase 6 TODO), `tests_manuels.md` (section Roberto retirée) : commités ici.
 
 ## Hypothèses validées / invalidées
-- VALIDE : dictée Win+H par F12 et par la manette (essais de l'utilisateur) ; mode conversation reçu dans VibeObs.
-- EN ATTENTE : essais manuels restants (`tests_manuels.md`) ; réponses prises en charge par Roberto ; lags et latence.
+- VALIDE : tous les essais manuels du chantier (déclaration de l'utilisateur) ; intégration dans Roberto.
+- EN ATTENTE : test de `/manette` et de la lecture vocale dans une nouvelle session Roberto (suivi chez Roberto, `tests_manuels.md` de Roberto).
 
 ## Prochaine étape exacte
-Faire valider par l'utilisateur les essais manuels du chantier, puis préciser l'intégration des réponses par Roberto ; ne rien envoyer à Roberto sans son accord. En parallèle, la diffusion `/update` v8.1 reste à traiter (sessions ouvertes).
+Traiter la diffusion `/update` v8.1 (sessions ouvertes) ; la phase 6 (template manette) seulement sur demande de l'utilisateur ; la règle « Lots Roberto » de `.claude/memory.md` est à retirer par `/create_memory` (chantier remis à Roberto).
 
 ## Question bloquante pour la session suivante
 Aucune

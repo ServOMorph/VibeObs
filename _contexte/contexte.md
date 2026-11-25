@@ -17,17 +17,15 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-25 : chantier Roberto « commande du PC » (manette, voix, interface) développé dans `Roberto/lot_dictee/` (cas 5) ; 122 tests verts ; aucun lot envoyé à Roberto sans accord ; essais manuels restants dans `tests_manuels.md`.
-- 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse ; restent les sessions ouvertes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) et Nettoyage_PC (sans git).
-- Kit v8.1 ; backlog à 6 entrées ; skill `chatgpt-orchestrateur` en quarantaine (purge à partir du 2026-12-21) ; délégation à Codex en service (modèle `gpt-6.2-sol`, flag levé).
-- Attentes : règle d'IA locale à diffuser par `/update` avec `init_projet` ; hook PreCompact : cas automatique à observer ; `.gitattributes` de `creation_llm` à commiter par sa session.
+- 2026-11-25 : chantier Roberto « commande du PC » (manette, voix) intégré et remis à la session Roberto (cas 5 et 6) ; VibeObs n'y travaille plus ; phase 6 (template) non décidée.
+- 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session ; VertIA_v3 refuse provisoirement, Creation llm sans réponse ; restent les sessions ouvertes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) et Nettoyage_PC (sans git).
+- Kit v8.3 ; backlog à 6 entrées ; skill `chatgpt-orchestrateur` en quarantaine (purge à partir du 2026-12-21) ; délégation à Codex en service (modèle `gpt-6.2-sol`, flag levé).
+- Attentes : règle d'IA locale à diffuser par `/update` avec `init_projet` ; hook PreCompact : cas automatique à observer ; `.gitattributes` de `creation_llm` à commiter par sa session ; règle « Lots Roberto » de `.claude/memory.md` à retirer.
 - Non poussés : Rayonne_Toi, challenge_magic et Shorts (sans remote), Moulin du Sud (sans amont), Nettoyage_PC. Système d'apprentissage : phase 1 (v0) en cours, session gardienne `sereniatech_dev`.
 
 ## Décisions structurantes
 _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisions.md`._
 
-- 2026-11-19 : zone `MAINTENANCE/` créée (rôle sans nom de projet suivi ; écriture sur tout le dépôt du kit, lecture des projets de `DEPLOYMENTS.md`) ; template « maintenance » à concevoir plus tard.
-- 2026-11-20 : modèle Codex `gpt-6.2-sol` imposé par la politique centrale ; consigne « Modèle Codex » des `AGENTS.md` écrite sans nom de modèle (trois validations) et diffusée : écriture directe par lot sur les projets sans session ouverte, proposition par message aux sessions ouvertes ; `-Statut` donne un verdict explicite, le flag prime sur le quota ; flag levé par l'utilisateur, conservé comme interrupteur d'urgence.
 - 2026-11-20 : périmètre de VibeObs validé comme base (§ Périmètre) : kit de protocole, zones documentation/pedagogie/maintenance, relais, délégation ; hors périmètre : travail et décisions métier des projets suivis ; règles gardées : session ouverte validée avant modification, trois validations pour `CLAUDE.md`/`AGENTS.md`/`GEMINI.md`.
 - 2026-11-20 : veille IA traitée par `VertIA_v3` seule ; en relais Roberto, VibeObs relaie sans garder en mémoire le contenu des sessions, sauf impact sur le kit ou template réutilisable ; section « Modèle Codex » ajoutée à `VibeObs/AGENTS.md` (trois validations).
 - 2026-11-21 : Intercom agent abandonné (les sessions communiquent par `ListAgents` et `SendMessage`) ; premier essai réel de `/maintenance` : 5 améliorations appliquées (v7.7), écart `AGENTS.md` / `GEMINI.md` / `CLAUDE.md` assumé (section « Modèle Codex » propre à `AGENTS.md`).
@@ -37,4 +35,4 @@ _Décisions antérieures au 2026-10-10 archivées dans `_contexte/archive_decisi
 - 2026-11-22 : skill `chatgpt-orchestrateur` abandonné (quarantaine, purge validée à part après 30 jours) ; hook PreCompact validé en manuel ; backlog réduit à 6 entrées.
 - 2026-11-23 : règle d'IA locale de VertIA_v3 ajoutée aux `CLAUDE.md` du kit et du template (section `## IA locale et GPU`, trois validations) : portail `vertia_gen.py` pour image, musique, voix, vidéo et texte sous 20 appels ; un seul jeton GPU pour un lot de texte de 20 appels ou plus, jamais un jeton par appel ; diffusion par `/update` en attente.
 - 2026-11-24 : `/update` v8.1 reconnu par VertIA_v3 (section ajoutée à son `CLAUDE.md` par elle-même) ; `/update` complet à reproposer après son `/close`, sans écriture dans VertIA.
-- 2026-11-25 : chantier Roberto « commande du PC » mené dans `Roberto/lot_dictee/` sur décision de l'utilisateur (cas 5 de `prises_de_controle.md`) ; insertion dans Roberto par sa session seule, après accord ; aucun lot envoyé à Roberto sans demander (règle de `.claude/memory.md`).
+- 2026-11-25 : chantier Roberto « commande du PC » mené depuis VibeObs (cas 5) puis intégré et remis à la session Roberto (cas 6 : intégration autonome) ; module, `/manette`, hook de lecture vocale et suivi vivent chez Roberto ; VibeObs ne garde que le registre et la roadmap.

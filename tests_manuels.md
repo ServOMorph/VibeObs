@@ -101,13 +101,3 @@ Au prochain `/maintenance` (essai du 2026-11-21 : étapes 0, 9, 10 et 11 avec «
 ## /create_projet — numérotation de la liste des templates
 
 Au prochain `/create_projet` réel (exécuté le 2026-10-12 : 8 templates listés, rendu côté utilisateur non confirmé) : vérifier que la liste s'affiche `0. Aucun template` suivi de `1.` à `8.`, sans décalage de numérotation. Réf : `.claude/commands/create_projet.md` étape [TEMPLATES] 17. Transmettre toute divergence au kit.
-
-## Roberto commande PC — essais manuels (lot_dictee)
-
-À jouer par l'utilisateur à la manette (interface sur `http://127.0.0.1:8765`) :
-- mode conversation (bouton −) : phrase longue avec pauses, vérifier qu'elle arrive en un seul message dans VibeObs ;
-- bouton + maintenu : « Roberto, ouvre WhatsApp » ;
-- Y maintenu : « vibe obs » puis « observatoire », vérifier le clic sur le bon chat ;
-- bouton de capture (bas gauche) : voix on/off, voyant VOIX de l'interface ;
-- bouton souris MANETTE : désactivée, aucun bouton de la manette n'agit ; réactivée, ils agissent de nouveau ;
-- tests listés dans `Roberto/lot_dictee/tests.json`.

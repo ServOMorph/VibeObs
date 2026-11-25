@@ -2,7 +2,7 @@
 type: decision
 description: Registre des cas où l'utilisateur autorise VibeObs à dépasser les restrictions et à prendre le contrôle d'une autre session
 tags: decisions, sessions, dérogation, contrôle
-maj: 2026-11-17
+maj: 2026-11-25
 ---
 
 # Prises de contrôle sur les sessions — registre
@@ -99,6 +99,21 @@ Ces limites viennent du harnais Claude Code, pas des règles du kit : aucune dé
 - Règles maintenues : insertion dans le code de Roberto par la session Roberto seule, après accord de
   l'utilisateur ; aucune écriture dans `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` ; la session Roberto peut
   refuser.
+- Reste impossible : voir « Ce qui ne se dépasse jamais ».
+- Trace : `_contexte/journal_session.md`, `roadmap_roberto_commande_pc.md`.
+
+## Cas 6 — Intégration autonome du module de commande PC dans Roberto
+
+- Date : 2026-11-25. Décision (verbatim) : « Je veux que tu gères toute l'intégration avec Roberto en
+  autonomie. » Contexte : le lot `lot_dictee/` a été validé par l'utilisateur puis commité par la
+  session Roberto (commit `b933637`) ; restent la documentation, le démarrage et le suivi chez Roberto.
+- Règles levées pour ce cas : la règle de `.claude/memory.md` « ne jamais envoyer un lot à la session
+  Roberto sans demander » et la validation préalable de l'utilisateur, pour les seules tâches
+  d'intégration du module de commande PC : messages d'instruction à la session Roberto, écriture dans
+  `Roberto/lot_dictee/`, modifications demandées à Roberto (contexte, README, démarrage, hook).
+- Règles maintenues : VibeObs n'écrit pas lui-même hors de `lot_dictee/` ; la session Roberto peut
+  refuser ; aucune écriture dans `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` ; `.claude/memory.md` ne se
+  modifie que par `/create_memory`.
 - Reste impossible : voir « Ce qui ne se dépasse jamais ».
 - Trace : `_contexte/journal_session.md`, `roadmap_roberto_commande_pc.md`.
 

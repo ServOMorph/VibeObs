@@ -3,6 +3,14 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v8.3 — 2026-11-25
+
+### Ajouté
+- `DOCUMENTATION/30_decisions/prises_de_controle.md` : cas 6, intégration autonome du module de commande PC (manette, voix) dans Roberto, sur décision de l'utilisateur ; chantier remis à la session Roberto.
+
+### Modifié
+- `roadmap_roberto_commande_pc.md` : phases 1 à 5 FAIT, phase 6 TODO (idée, sur demande) ; `tests_manuels.md` : section Roberto retirée (essais validés, test `/manette` transféré chez Roberto).
+
 ## v8.2 — 2026-11-25
 
 ### Ajouté
