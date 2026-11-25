@@ -62,7 +62,7 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 - EN ATTENTE : test de `/manette` et de la lecture vocale dans une nouvelle session Roberto (suivi chez Roberto, `tests_manuels.md` de Roberto).
 
 ## Prochaine étape exacte
-Traiter la diffusion `/update` v8.1 (sessions ouvertes) ; la phase 6 (template manette) seulement sur demande de l'utilisateur ; la règle « Lots Roberto » de `.claude/memory.md` est à retirer par `/create_memory` (chantier remis à Roberto).
+Traiter la diffusion `/update` v8.1 (sessions ouvertes) ; phase 6 (template manette) abandonnée par l'utilisateur ; roadmap à archiver sur accord ; la règle « Lots Roberto » de `.claude/memory.md` est à retirer par `/create_memory` (chantier remis à Roberto).
 
 ## Question bloquante pour la session suivante
 Aucune

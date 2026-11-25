@@ -52,8 +52,8 @@ Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmati
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
 
-## Phase 6 — Template réutilisable [TODO]
-- Extraire le système en template du kit pour d'autres projets. Idée seulement, non décidée : à lancer sur demande explicite de l'utilisateur (touche le kit).
+## Phase 6 — Template réutilisable [ABANDONNÉ]
+- Extraire le système en template du kit pour d'autres projets. Abandonnée par l'utilisateur le 2026-11-25 : pas de template.
 
 **⏸ Checkpoint** — Demander à l'utilisateur de faire `/compact` avant de continuer.
 Attendre sa réponse écrite. Ne pas commencer la phase suivante sans confirmation.
