@@ -17,7 +17,7 @@ Fournir un kit reproductible pour gérer le vibecoding sur des projets multi-ses
 - **Déploiement** : copie template vers projets via `/init`, tracking dans DEPLOYMENTS.md
 
 ## État actuel
-- 2026-11-25 : chantier Roberto « commande du PC » (manette, voix) intégré et remis à la session Roberto (cas 5 et 6) ; VibeObs n'y travaille plus ; phase 6 (template) abandonnée par l'utilisateur.
+- 2026-11-25 : chantier Roberto « commande du PC » (manette, voix) intégré et remis à la session Roberto (cas 5 et 6) ; VibeObs n'y travaille plus ; phase 6 (template) abandonnée par l'utilisateur. Projet `Entretien_Ordis` créé en v8.3 (Git local).
 - 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session ; VertIA_v3 refuse provisoirement, Creation llm sans réponse ; restent les sessions ouvertes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) et Nettoyage_PC (sans git).
 - Kit v8.3 ; backlog à 6 entrées ; skill `chatgpt-orchestrateur` en quarantaine (purge à partir du 2026-12-21) ; délégation à Codex en service (modèle `gpt-6.2-sol`, flag levé).
 - Attentes : règle d'IA locale à diffuser par `/update` avec `init_projet` ; hook PreCompact : cas automatique à observer ; `.gitattributes` de `creation_llm` à commiter par sa session ; règle « Lots Roberto » de `.claude/memory.md` à retirer.

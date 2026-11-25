@@ -28,9 +28,9 @@
   - fait quand: `creation_llm` a commité son `.gitattributes`, ou l'utilisateur écarte ce commit.
   - réf: `D:\ServOMorph\creation_llm\.gitattributes` ; `.claude/commands/delegation.md` ; `_codex/run_codex.ps1` ; `~/.codex/politique_delegation.json`.
 - Diffuser par `/update` aux projets déployés : le template `init_projet` modifié (question 9 limitée à `/create_agent`, étape 6 réécrite ; `/create_team` n'était pas déployée, seul `init_projet` l'est) et la section `## IA locale et GPU` ajoutée le 2026-11-23, après les trois validations, aux `CLAUDE.md` du kit et du template. Réserves de la règle : le portail refuse les sessions non déclarées dans `vram_lock.py`, seuil de 20 appels non mesuré, chemins propres à cette machine, fonctionnement de `vertia_gen.py` non relu.
-  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur. 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session (actions classées « Plus tard ») ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse ; restent les projets à session ouverte et Nettoyage_PC (sans git).
+  - fait quand: les projets de `DEPLOYMENTS.md` reçoivent `init_projet` et la section `IA locale et GPU` à jour par `/update` (sessions ouvertes proposées une par une), ou le report à la prochaine diffusion est décidé par l'utilisateur. 2026-11-24 : `/update` v8.1 diffusé à 23 projets sans session (actions classées « Plus tard ») ; VertIA_v3 refuse provisoirement (à reproposer après son `/close`), Creation llm sans réponse ; restent les projets à session ouverte et Nettoyage_PC (sans git). 2026-11-25 : les fichiers diffusés n'ont pas changé entre v8.1 et v8.3 hors en-tête de version du protocole.
   - réf: `templates/.claude/commands/init_projet.md` ; `templates/.claude/CLAUDE.md` ; `DEPLOYMENTS.md` ; `CHANGELOG.md` v8.0 et v8.1 ; `D:\ServOMorph\VertIA_v3\_docs\benchmark_texte_methodes.md`.
-- [à transférer vers maintenance] `MAINTENANCE/_contexte/contexte.md` et `signals.md` sont en CRLF dans la copie de travail (index Git en LF, `.gitattributes` `eol=lf`) : `check_kit.py` sort en code 1 depuis le 2026-11-23 sur ces deux fichiers ; non modifiés par cette session (zone MAINTENANCE, `journal_session.md` modifié le 2026-11-23 04:32).
+- [à transférer vers maintenance] `MAINTENANCE/_contexte/contexte.md` et `signals.md` sont en CRLF dans la copie de travail (index Git en LF, `.gitattributes` `eol=lf`) : `check_kit.py` sort en code 1 depuis le 2026-11-23 sur ces deux fichiers ; non modifiés par cette session (zone MAINTENANCE, `journal_session.md` modifié le 2026-11-23 04:32). 2026-11-25 : `check_kit.py` sort en code 0 ; retrait proposé à l'utilisateur.
   - fait quand: `python scripts/check_kit.py` sort en code 0, après conversion en LF décidée par la zone `maintenance`.
   - réf: `MAINTENANCE/_contexte/signals.md` ; `MAINTENANCE/_contexte/contexte.md` ; `scripts/check_kit.py`.
 Backlog : 6 entrées (finding 1, amélioration 4, piste 1) — `_contexte/backlog.md`
@@ -49,20 +49,17 @@ Voir [`signals_backlog_2026-09-04.md`](signals_backlog_2026-09-04.md) : validati
 # Session du 2026-11-25
 
 ## Décisions prises
-- Chantier Roberto « commande du PC » mené depuis VibeObs puis remis à la session Roberto (décision de l'utilisateur) : lot `lot_dictee/` validé, commité par Roberto (`b933637`, `b77282e`), `demarrer.py`, README du lot, commande `/manette` et hook Stop créés chez Roberto ; cas 6 de `prises_de_controle.md` (intégration autonome).
-- Fonctions du bouton Y supprimées ; commandes « Roberto … » exécutées en mode conversation (comparaison approximative, non envoyées au chat) ; mode conversation mémorisé au redémarrage ; bouton maison, capture, +, −, stick gauche, X, A et disposition validés.
-- Hook Stop de lecture vocale retiré de VibeObs (`.claude/settings.local.json` supprimé).
+- Projet `Entretien_Ordis` créé (objectif : réaliser des entretiens de PC) : Git local uniquement, sans template, `AGENTS.md`, `GEMINI.md` ni agent.
 
 ## Livrables produits ou modifiés
-- `Roberto/lot_dictee/` (dépôt Roberto, commité par sa session) : 143 tests verts annoncés par Roberto, non relancés ici.
-- `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 6), `roadmap_roberto_commande_pc.md` (phases 1 à 5 FAIT, phase 6 TODO), `tests_manuels.md` (section Roberto retirée) : commités ici.
+- `D:\ServOMorph\Entretien_Ordis` : dépôt initialisé, protocole v8.3 (commits `5aec7c2`, `9597a31`), `CLAUDE.md` écrit après les trois validations.
+- `DEPLOYMENTS.md` : ligne `Entretien_Ordis` ajoutée (fichier ignoré par Git).
 
 ## Hypothèses validées / invalidées
-- VALIDE : tous les essais manuels du chantier (déclaration de l'utilisateur) ; intégration dans Roberto.
-- EN ATTENTE : test de `/manette` et de la lecture vocale dans une nouvelle session Roberto (suivi chez Roberto, `tests_manuels.md` de Roberto).
+- VALIDE : depuis la v8.1, seul l'en-tête de version de `Protocole_start_close_context.md` a changé dans les fichiers comparés (`templates/`, `.claude/commands/`, `.claude/CLAUDE.md`, protocole) ; diffuser la v8.3 revient au contenu de la v8.1.
 
 ## Prochaine étape exacte
-Traiter la diffusion `/update` v8.1 (sessions ouvertes) ; phase 6 (template manette) abandonnée par l'utilisateur ; roadmap à archiver sur accord ; la règle « Lots Roberto » de `.claude/memory.md` est à retirer par `/create_memory` (chantier remis à Roberto).
+Reproposer `/update` (v8.3) aux projets restants à session ouverte ; archiver `roadmap_roberto_commande_pc.md` sur accord ; retirer la règle « Lots Roberto » de `.claude/memory.md` par `/create_memory`.
 
 ## Question bloquante pour la session suivante
 Aucune

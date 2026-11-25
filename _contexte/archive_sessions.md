@@ -1971,3 +1971,26 @@ Reproposer `/update` v8.1 à VertIA_v3 après son `/close`, relancer Creation ll
 
 ## Question bloquante pour la session suivante
 Aucune
+
+---
+
+# Session du 2026-11-25
+
+## Décisions prises
+- Chantier Roberto « commande du PC » mené depuis VibeObs puis remis à la session Roberto (décision de l'utilisateur) : lot `lot_dictee/` validé, commité par Roberto (`b933637`, `b77282e`), `demarrer.py`, README du lot, commande `/manette` et hook Stop créés chez Roberto ; cas 6 de `prises_de_controle.md` (intégration autonome).
+- Fonctions du bouton Y supprimées ; commandes « Roberto … » exécutées en mode conversation (comparaison approximative, non envoyées au chat) ; mode conversation mémorisé au redémarrage ; bouton maison, capture, +, −, stick gauche, X, A et disposition validés.
+- Hook Stop de lecture vocale retiré de VibeObs (`.claude/settings.local.json` supprimé).
+
+## Livrables produits ou modifiés
+- `Roberto/lot_dictee/` (dépôt Roberto, commité par sa session) : 143 tests verts annoncés par Roberto, non relancés ici.
+- `DOCUMENTATION/30_decisions/prises_de_controle.md` (cas 6), `roadmap_roberto_commande_pc.md` (phases 1 à 5 FAIT, phase 6 TODO), `tests_manuels.md` (section Roberto retirée) : commités ici.
+
+## Hypothèses validées / invalidées
+- VALIDE : tous les essais manuels du chantier (déclaration de l'utilisateur) ; intégration dans Roberto.
+- EN ATTENTE : test de `/manette` et de la lecture vocale dans une nouvelle session Roberto (suivi chez Roberto, `tests_manuels.md` de Roberto).
+
+## Prochaine étape exacte
+Traiter la diffusion `/update` v8.1 (sessions ouvertes) ; phase 6 (template manette) abandonnée par l'utilisateur ; roadmap à archiver sur accord ; la règle « Lots Roberto » de `.claude/memory.md` est à retirer par `/create_memory` (chantier remis à Roberto).
+
+## Question bloquante pour la session suivante
+Aucune
