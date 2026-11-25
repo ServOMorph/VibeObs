@@ -87,6 +87,21 @@ Ces limites viennent du harnais Claude Code, pas des règles du kit : aucune dé
 - Reste impossible : voir « Ce qui ne se dépasse jamais ».
 - Trace : `_contexte/journal_session.md`.
 
+## Cas 5 — Développement de la commande PC (dictée et retour vocal) dans Roberto
+
+- Date : 2026-11-25. Décision (verbatim) : « Tout ce système va devoir être fait dans Roberto dans le
+  dossier Roberto [...] Tu vas expliquer à Roberto que tu as la main complète dans son dossier et que
+  lui à chaque fois que tu vas vouloir faire une modification il va la vérifier [...] il faudra que tu
+  lui fasses un lot [...] qu'il valide ton travail et qu'il l'insère dans son projet. Je vais devoir
+  valider avant que Roberto insère la feature dans son projet, il devra me poser la question. »
+- Règles levées pour ce cas : « VibeObs n'écrit jamais dans un autre projet » et validation préalable
+  dans la session cible, pour le seul sous-dossier `lot_dictee/` de Roberto.
+- Règles maintenues : insertion dans le code de Roberto par la session Roberto seule, après accord de
+  l'utilisateur ; aucune écriture dans `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` ; la session Roberto peut
+  refuser.
+- Reste impossible : voir « Ce qui ne se dépasse jamais ».
+- Trace : `_contexte/journal_session.md`, `roadmap_roberto_commande_pc.md`.
+
 ## Juger un cas
 
 Pour chaque cas, vérifier dans la trace : la décision citée existe, l'action est restée dans le

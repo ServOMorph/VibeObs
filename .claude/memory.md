@@ -30,3 +30,6 @@ Précise la règle « Sessions ouvertes avant modification » (point « Tracer c
 ## 2026-11-15 — Validation par la session ouverte
 
 Précise « Sessions ouvertes avant modification » : avant de modifier un projet qui a une session ouverte (update, règle, fichier du protocole), demander à cette session de valider ou de refuser la modification, puis attendre sa réponse. Refus (travail en cours, écriture de CLAUDE.md sans les trois validations dans cette session) : ne rien toucher, la recontacter après la clôture de son travail en cours ; ne jamais passer outre. Constaté le 2026-11-15 : VertIA_v3 et Moulin du Sud ont refusé un /update pour ces raisons.
+
+## 2026-11-25 — Lots Roberto : demander avant envoi
+Chantier Roberto (commande PC, `lot_dictee/`) : ne jamais envoyer un lot à la session Roberto sans avoir demandé à l'utilisateur avant, y compris l'annonce d'un lot prêt ou d'un résultat d'essai. Décision de l'utilisateur du 2026-11-25.

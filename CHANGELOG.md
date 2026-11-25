@@ -3,6 +3,13 @@
 Toutes les modifications notables du kit sont consignées ici.
 Le détail complet par version reste documenté dans `CHANGELOG.md` (ce fichier).
 
+## v8.2 — 2026-11-25
+
+### Ajouté
+- `DOCUMENTATION/30_decisions/prises_de_controle.md` : cas 5, développement de la commande PC (manette, voix) de Roberto dans `Roberto/lot_dictee/`, sur décision de l'utilisateur ; insertion par la session Roberto seule après accord.
+- `.claude/memory.md` : règle « Lots Roberto : demander avant envoi ».
+- `roadmap_roberto_commande_pc.md` : roadmap du chantier ; `tests_manuels.md` : section d'essais manuels du chantier.
+
 ## v8.1 — 2026-11-23
 
 ### Ajouté

@@ -1949,3 +1949,25 @@ Aucune
 ## Hypothèses validées / invalidées
 - EN ATTENTE : diffusion de la règle par `/update` ; fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
 - EN ATTENTE (reporté) : compactage automatique (ligne `auto`) et non-échec du compactage, dans `tests_manuels.md` ; action de la Maintenance (`control_PC/analysis`, droits sur `DOCUMENTATION/20_guides/`) retirée des signaux sans décision consignée de l'utilisateur sur `control_PC`.
+
+---
+
+# Session du 2026-11-24
+
+## Décisions prises
+- `/update` v8.1 diffusé à 23 projets sans session ouverte ; actions classées « Plus tard ».
+- VertIA_v3 refuse provisoirement le `/update` v8.1 (trois validations de `CLAUDE.md` requises, travail GPU en cours) ; à recontacter après son `/close`. Elle a ajouté elle-même la section `IA locale et GPU` à son `CLAUDE.md` (trois validations obtenues chez elle). Ne pas écrire dans VertIA.
+- Creation llm sans réponse.
+
+## Livrables produits ou modifiés
+- Aucun fichier du dépôt VibeObs hors `_contexte/` ; les `/update` ont été commités dans chaque projet cible.
+
+## Hypothèses validées / invalidées
+- EN ATTENTE : `/update` v8.1 à VertIA_v3 (après son `/close`), à Creation llm (sans réponse), aux sessions ouvertes restantes.
+- EN ATTENTE : fonctionnement de `vertia_gen.py` non relu ; seuil de 20 appels non mesuré.
+
+## Prochaine étape exacte
+Reproposer `/update` v8.1 à VertIA_v3 après son `/close`, relancer Creation llm, puis traiter les sessions ouvertes restantes (Moulin du Sud, creation_3d, World Model, Shorts, creation_videos, creation_llm, SérénIATech_dev) ; Nettoyage_PC (sans git) à traiter à part. Purge de la quarantaine à partir du 2026-12-21 (lot validé à part).
+
+## Question bloquante pour la session suivante
+Aucune
